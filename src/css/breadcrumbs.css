@@ -1,0 +1,46 @@
+.breadcrumbs {
+  display: none;
+  flex: 1 1;
+  padding: 0 0.5rem 0 0.75rem;
+  line-height: var(--nav-line-height);
+}
+
+@media screen and (min-width: 1024px) {
+  .breadcrumbs {
+    display: block;
+  }
+}
+
+a + .breadcrumbs {
+  padding-left: 0.05rem;
+}
+
+.breadcrumbs ul {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.breadcrumbs li {
+  display: inline;
+  margin: 0;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #999dad;
+}
+
+.breadcrumbs li::after {
+  content: "❯";
+  padding: 0 0.5rem;
+  color: #c9cef6;
+}
+
+.breadcrumbs li:last-of-type::after {
+  content: none;
+}

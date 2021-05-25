@@ -1,0 +1,42 @@
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a href="{{{or site.url (or siteRootUrl siteRootPath)}}}">
+        <img height="56px" src="{{{uiRootPath}}}/img/logo.svg"/>
+      </a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-end__group">
+        {{#if env.DOCSEARCH_ENABLED}}
+            <div class="navbar-item">
+                <input id="search-input" type="text" placeholder="Search docs">
+            </div>
+        {{/if}}
+          <a class="navbar-item" href="/en/landing_page/doc/landing_page/current.html">Docs</a>
+          <!--<a class="navbar-item" href="/community">Community</a>-->
+          <!--<a class="navbar-item" href="/blog">Blog</a>-->
+          <!-- <a class="navbar-item search" href="/results">
+            <img width="34px" height="34px" src="{{{uiRootPath}}}/img/search.svg"/>
+          </a>-->
+        </div>
+        <div class="navbar-end__group">
+          <!--<a class="navbar-item social-icon" href="https://twitter.com/stargateio" target="_blank" rel="noopener noreferrer">
+            <img width="34px" height="34px" src="{{{uiRootPath}}}/img/twitter.svg"/>
+          </a>-->
+          <!--<a class="navbar-item social-icon" href="https://groups.google.com/a/lists.stargate.io/g/stargate-users" target="_blank">
+            <img width="34px" height="34px" src="{{{uiRootPath}}}/img/groups.svg"/>
+          </a>-->
+          <!--<a class="navbar-item social-icon" href="https://github.com/riptano/pulsar-distro" target="_blank" rel="noopener noreferrer">
+            <img width="34px" height="34px" src="{{{uiRootPath}}}/img/github.svg"/>
+          </a>-->
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

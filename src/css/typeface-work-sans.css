@@ -1,0 +1,54 @@
+@font-face {
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 400;
+  src:
+    local("Work Sans"),
+    local("Work Sans-Regular"),
+    url(~typeface-work-sans/files/work-sans-latin-400.woff) format("woff"),
+    url(~typeface-work-sans/files/work-sans-latin-400.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Work Sans";
+  font-style: italic;
+  font-weight: 400;
+  src:
+    local("Work Sans Italic"),
+    local("Work Sans-Italic"),
+    url(~typeface-work-sans/files/work-sans-latin-400.woff) format("woff"),
+    url(~typeface-work-sans/files/work-sans-latin-400.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Work Sans";
+  font-style: bold;
+  font-weight: 400;
+  src:
+    local("Work Sans Bold"),
+    local("Work Sans-Bold"),
+    url(~typeface-work-sans/files/work-sans-latin-400.woff) format("woff"),
+    url(~typeface-work-sans/files/work-sans-latin-400.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 500;
+  src:
+    local("Work Sans Medium"),
+    local("Work Sans-Medium"),
+    url(~typeface-work-sans/files/work-sans-latin-500.woff) format("woff"),
+    url(~typeface-work-sans/files/work-sans-latin-500.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Work Sans";
+  font-style: italic;
+  font-weight: 500;
+  src:
+    local("Work Sans Medium Italic"),
+    local("Work Sans-MediumItalic"),
+    url(~typeface-work-sans/files/work-sans-latin-500.woff) format("woff"),
+    url(~typeface-work-sans/files/work-sans-latin-500.woff2) format("woff2");
+}
