@@ -1,12 +1,10 @@
-= Pulsar Antora UI
+= DataStax Antora UI
 // Settings:
 :experimental:
 :hide-uri-scheme:
 // Project URLs:
-:url-project: https://github.com/riptano/antora-ui-pulsar
+:url-project: https://github.com/riptano/antora-ui-docs
 :url-preview:
-:url-ci-pipelines: {url-project}/workflows
-:img-ci-status: {url-project}/workflows/bundle/badge.svg
 // External URLs:
 :url-antora: https://antora.org
 :url-antora-docs: https://docs.antora.org
@@ -30,7 +28,7 @@ If you want to simply use the UI for your Antora-generated site, add the followi
 ----
 ui:
   bundle:
-    url: https://github.com/riptano/antora-ui-pulsar/raw/main/releases/download/v0.1/ui-bundle.zip
+    url: https://github.com/riptano/antora-ui-docs/raw/main/releases/download/v0.5/ui-bundle.zip
 ----
 
 Read on to learn how to customize the default UI for your own documentation.
