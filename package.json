@@ -37,7 +37,7 @@
     "gulp-terser": "~2.0",
     "gulp-vinyl-zip": "^2.2.1",
     "handlebars": "~4.7",
-    "highlight.js": "~9",
+    "highlight.js": "~10",
     "js-yaml": "~3.14",
     "merge-stream": "~2.0",
     "postcss-calc": "~7.0",
