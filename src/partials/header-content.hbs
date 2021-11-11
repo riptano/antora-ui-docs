@@ -13,11 +13,13 @@
     <div id="topbar-nav" class="navbar-menu">
       <div class="navbar-end">
         <div class="navbar-end__group">
-        {{#if env.DOCSEARCH_ENABLED}}
-            <div class="navbar-item">
-                <input id="search-input" type="text" placeholder="Search docs">
-            </div>
-        {{/if}}
+          <form id="alg-search-form" class="ds-search-form" action="https://www.datastax.com/search" target="_blank" method="GET">
+                <div>
+                    <input id="alg-search-input" class="ds-datastax-search-input" type="text" name="query" placeholder="Search docs"/>
+                    <button id="alg-search-button" class="ds-search-button" type="submit" style="display: none"></button>
+                    <input id="dataset" type="hidden" name="dataset" value="docs"/>
+                </div>
+          </form>
           <a class="navbar-item" href="/en/landing_page/doc/landing_page/current.html">Docs</a>
         </div>
       </div>
