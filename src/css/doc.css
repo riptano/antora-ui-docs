@@ -315,6 +315,10 @@
   content: attr(title);
 }
 
+.doc .admonitionblock a {
+  color: var(--purple-300);
+}
+
 .doc .imageblock {
   display: flex;
   flex-direction: column;
