@@ -549,7 +549,6 @@
   line-height: 1;
 }
 
-
 .doc .listingblock:hover .source-toolbox {
   visibility: visible;
 }
@@ -622,7 +621,6 @@
   opacity: 1;
   transition: none;
 }
-
 
 .doc .listingblock code[data-lang]::before {
   content: attr(data-lang);
