@@ -1,0 +1,67 @@
+<div id="feedback" class="feedback-wrapper">
+    <h2>Was this page helpful?</h2>
+    <div id="feedback-stars" class="stars" data-stars="">
+        <svg height="25" width="23" class="star rating" data-rating="1">
+            <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"/>
+        </svg>
+        <svg height="25" width="23" class="star rating" data-rating="2">
+            <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"/>
+        </svg>
+        <svg height="25" width="23" class="star rating" data-rating="3">
+            <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"/>
+        </svg>
+        <svg height="25" width="23" class="star rating" data-rating="4">
+            <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"/>
+        </svg>
+        <svg height="25" width="23" class="star rating" data-rating="5">
+            <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"/>
+        </svg>
+    </div>
+    <div id="feedback-form">
+        <form action="#">
+            <label>
+                <span>
+                Name:
+                </span>
+                <input placeholder="Name" />
+            </label>
+            <label>
+                Email: 
+                <input placeholder="Email" />
+            </label>
+            <label>
+                Suggestions: 
+                <textarea placeholder="Suggestions"></textarea>
+            </label>
+            <button>Submit!</button>
+        </form>
+    </div>
+    <div id="feedback-thankyou">
+        <h1>Thank you for your Feedback!</h1>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('#feedback-form form').addEventListener('submit', function(evt) {
+            evt.preventDefault();
+            document.querySelector('#feedback-stars').style.display = 'none';
+            document.querySelector('#feedback-form').style.display = 'none';
+            document.querySelector('#feedback-thankyou').style.display = 'block';
+        });
+
+        document.querySelector('#feedback-stars').addEventListener('click', function(evt) {
+            let rating = null;
+            if(evt.target.tagName === "polygon") {
+                rating = evt.target.parentNode.getAttribute('data-rating');
+            } else if(evt.target.tagName === "svg") {
+                rating = evt.target.getAttribute('data-rating');
+            }
+
+            if(!!rating) {
+                document.querySelector('#feedback-stars').setAttribute('data-stars', rating);
+                document.querySelector('#feedback-form').style.display = 'block';   
+            }
+        });
+    });
+</script>

@@ -1,4 +1,10 @@
+
+{{#if (eq page.layout 'gcx')}}
+<article class="doc gcx">
+{{else}}
 <article class="doc">
+{{/if}}
+
 {{#if (eq page.layout '404')}}
 <h1 class="page">{{{or page.title 'Page Not Found'}}}</h1>
 <div class="paragraph">
@@ -14,5 +20,8 @@ If you typed the URL of this page manually, please double check that you entered
 {{/with}}
 {{{page.contents}}}
 {{/if}}
+
+{{> feedback}}
+
 {{> pagination}}
 </article>

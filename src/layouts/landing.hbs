@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{> head defaultPageTitle='GCX'}}
+    <link href="{{{uiRootPath}}}/css/gcx.css" rel="stylesheet">
+    <style>
+      body: {
+        padding: 0 !important;
+        height: 100vh !important;
+      }
+    </style>
+  </head>
+  <body class="article{{#with (or page.attributes.role page.role)}} {{{this}}}{{/with}}">
+    {{> header}}
+    {{> body}}
+    {{> footer}}
+    {{> intercom}}
+  </body>
+</html>
