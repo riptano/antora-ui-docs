@@ -111,6 +111,9 @@ page:
       - content: English + 中文
         url: '/xyz/5.2/index.html#english+中文'
         urlType: internal
+    - content: GCX Navigation
+      url: '/xyz/5.2/gcx-nav.html'
+      urlType: internal
     - content: GCX
       url: '/xyz/5.2/gcx.html'
       urlType: internal

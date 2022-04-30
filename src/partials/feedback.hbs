@@ -23,21 +23,21 @@
                 <span>
                 Name:
                 </span>
-                <input placeholder="Name" />
+                <input placeholder="Name" id="feedback-name" />
             </label>
             <label>
                 Email: 
-                <input placeholder="Email" />
+                <input placeholder="Email" id="feedback-email" />
             </label>
             <label>
                 Suggestions: 
-                <textarea placeholder="Suggestions"></textarea>
+                <textarea placeholder="Suggestions" id="feedback-suggestions"></textarea>
             </label>
-            <button>Submit!</button>
+            <button type="submit">Submit</button>
         </form>
     </div>
     <div id="feedback-thankyou">
-        <h1>Thank you for your Feedback!</h1>
+        <span>Thank you for your Feedback!</span>
     </div>
 </div>
 
@@ -45,9 +45,30 @@
     document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('#feedback-form form').addEventListener('submit', function(evt) {
             evt.preventDefault();
-            document.querySelector('#feedback-stars').style.display = 'none';
-            document.querySelector('#feedback-form').style.display = 'none';
-            document.querySelector('#feedback-thankyou').style.display = 'block';
+
+            const feedbackInfo = {
+            email: "mo.mejia@datastax.com",
+            subject: `Feedback | ${document.querySelector('h1.page')?.innerText}`,
+            message:
+`
+Page: <a href="${window.location.href}">${document.querySelector('h1.page')?.innerText ?? ""}</a>
+Rating: ${document.querySelector('#feedback-stars').getAttribute('data-stars')}
+
+Name: ${document.querySelector('#feedback-name').value}
+Email: ${document.querySelector('#feedback-email').value}
+Suggestions: ${document.querySelector('#feedback-suggestions').value}
+`
+            };
+
+            //console.log('feedbackInfo', feedbackInfo);
+            var oReq = new XMLHttpRequest();
+            oReq.addEventListener("load", function() {
+                document.querySelector('#feedback-stars').style.display = 'none';
+                document.querySelector('#feedback-form').style.display = 'none';
+                document.querySelector('#feedback-thankyou').style.display = 'block';
+            });
+            oReq.open("POST", "https://contact.api.docs.datastax.com/contact-us");
+            oReq.send(feedbackInfo);
         });
 
         document.querySelector('#feedback-stars').addEventListener('click', function(evt) {
