@@ -68,7 +68,8 @@ Suggestions: ${document.querySelector('#feedback-suggestions').value}
                 document.querySelector('#feedback-thankyou').style.display = 'block';
             });
             oReq.open("POST", "https://contact.api.docs.datastax.com/contact-us");
-            oReq.send(feedbackInfo);
+            oReq.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            oReq.send(JSON.stringify(feedbackInfo));
         });
 
         document.querySelector('#feedback-stars').addEventListener('click', function(evt) {
