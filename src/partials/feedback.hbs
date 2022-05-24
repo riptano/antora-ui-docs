@@ -26,11 +26,11 @@
                 <input placeholder="Name" id="feedback-name" />
             </label>
             <label>
-                Email: 
+                Email:
                 <input placeholder="Email" id="feedback-email" />
             </label>
             <label>
-                Suggestions: 
+                Suggestions:
                 <textarea placeholder="Suggestions" id="feedback-suggestions"></textarea>
             </label>
             <button type="submit">Submit</button>
@@ -47,7 +47,7 @@
             evt.preventDefault();
 
             const feedbackInfo = {
-            email: "mo.mejia@datastax.com",
+            email: "docs@datastax.com",
             subject: `Feedback | ${document.querySelector('h1.page')?.innerText}`,
             message:
 `
@@ -82,7 +82,7 @@ Suggestions: ${document.querySelector('#feedback-suggestions').value}
 
             if(!!rating) {
                 document.querySelector('#feedback-stars').setAttribute('data-stars', rating);
-                document.querySelector('#feedback-form').style.display = 'block';   
+                document.querySelector('#feedback-form').style.display = 'block';
             }
         });
     });
