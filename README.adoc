@@ -4,7 +4,7 @@
 :hide-uri-scheme:
 // Project URLs:
 :url-project: https://github.com/riptano/antora-ui-docs
-:url-preview:
+:url-preview: https://gitlab.com/antora/antora-ui-default
 // External URLs:
 :url-antora: https://antora.org
 :url-antora-docs: https://docs.antora.org
@@ -17,30 +17,37 @@
 :url-nvm-install: {url-nvm}#installation
 :url-source-maps: https://developer.mozilla.org/en-US/docs/Tools/Debugger/How_to/Use_a_source_map
 
-This project is a UI bundle that can be used by {url-antora}[Antora] to generate a documentation site.
-You can see a preview of the default UI at {url-preview}.
+This project houses the elements of a UI bundle that can be used by {url-antora}[Antora] to generate a documentation site. You can see a preview of the default UI at https://gitlab.com/antora/antora-ui-default.
 
-== Use the Default UI
+DataStax has customized the UI with the changes that are located in this repository. 
+The elements defined are: CSS, fonts, images, helper programs, Javascript elements, layouts, and Handlebar partials (*.hbs) that are used in the layouts.
 
-If you want to simply use the UI for your Antora-generated site, add the following UI configuration to your playbook:
+== Using the UI in Antora playbooks to build a docset
+
+The UI bundle is defined in an Antora playbook YAML file, and retrieved from the designated URL. 
+All DataStax docsets use the UI bundle defined and built from this repository. 
+Most repositories also have supplemental files, defined in `playbooks/supplemental_ui` in the doc repository, that override the defined UI bundle and provide specific banner images for each DataStax product.
+
+To use the UI bundle built in this repository, add the following UI configuration to your playbook:
 
 [source,yaml]
 ----
 ui:
   bundle:
-    url: https://github.com/riptano/antora-ui-docs/raw/main/releases/download/v0.5/ui-bundle.zip
+    url: https://github.com/riptano/antora-ui-docs/raw/main/releases/download/v0.8/ui-bundle.zip
 ----
 
-Read on to learn how to customize the default UI for your own documentation.
+Read on to learn how to customize the UI for your our documentation.
 
-== Development Quickstart
+== Developing a new UI bundle
 
 This section offers a basic tutorial to teach you how to set up the UI project, preview it locally, and bundle it for use with Antora.
-A more comprehensive example can be found in the documentation at {url-antora-docs}.
+A more comprehensive example can be found in the documentation at https://docs.antora.org.
 
 === Prerequisites
 
-To preview and bundle the default UI, you need the following software on your computer:
+In order to build a bundle, you'll want to preview your changes, and then bundle them.
+To do those steps, you need the following software on your computer:
 
 * {url-git}[git] (command: `git`)
 * {url-nodejs}[Node.js] (commands: `node` and `npm`)
@@ -62,22 +69,22 @@ Next, make sure that you have Node.js installed (which also provides npm).
 
 If this command fails with an error, you don't have Node.js installed.
 If the command doesn't report an LTS version of Node.js (e.g., v10.15.3), it means you don't have a suitable version of Node.js installed.
-In this guide, we'll be installing Node.js 10.
+In this guide, we'll be installing Node.js 16.
 
 While you can install Node.js from the official packages, we strongly recommend that you use {url-nvm}[nvm] (Node Version Manager) to manage your Node.js installation(s).
 Follow the {url-nvm-install}[nvm installation instructions] to set up nvm on your machine.
 
-Once you've installed nvm, open a new terminal and install Node.js 10 using the following command:
+Once you've installed nvm, open a new terminal and install Node.js 16 using the following command:
 
- $ nvm install 10
+ $ nvm install 16
 
 You can switch to this version of Node.js at any time using the following command:
 
- $ nvm use 10
+ $ nvm use 16
 
-To make Node.js 10 the default in new terminals, type:
+To make Node.js 16 the default in new terminals, type:
 
- $ nvm alias default 10
+ $ nvm alias default 16
 
 Now that you have Node.js installed, you can proceed with installing the Gulp CLI.
 
@@ -98,13 +105,13 @@ Now that you have the prerequisites installed, you can fetch and build the UI pr
 
 === Clone and Initialize the UI Project
 
-Clone the Pulsar UI project using git:
+Clone the `antora-ui-docs`` project using git:
 
 [subs=attributes+]
  $ git clone {url-project} &&
    cd "`basename $_`"
 
-The example above clones the Pulsar UI project and then switches to the project folder on your filesystem.
+The example above clones this repository and then switches to the project folder on your filesystem.
 Stay in this project folder when executing all subsequent commands.
 
 Use npm to install the project's dependencies inside the project.
@@ -150,13 +157,27 @@ If you need to package the UI so you can use it to generate the documentation si
 If any errors are reported by lint, you'll need to fix them.
 
 When the command completes successfully, the UI bundle will be available at [.path]_build/ui-bundle.zip_.
-You can point Antora at this bundle using the `--ui-bundle-url` command-line option.
+
+Next, you'll need to create a new release following https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository[these instructions].
+Be sure to include the [.path]_build/ui-bundle.zip_ file as a binary in the release.
 
 If you have the preview running, and you want to bundle without causing the preview to be clobbered, use:
 
  $ gulp bundle:pack
 
 The UI bundle will again be available at [.path]_build/ui-bundle.zip_.
+
+=== Update documentation repository playbooks to use a new UI bundle
+
+If you build a new UI bundle, all the DataStax docs repositories must be updated. 
+The following steps must be completed in each doc repository:
+
+. Create a PR branch for the work..
+. Update all affected playbooks with an appropriate ui bundle url.
+. Test if the UI is building correctly with a local build.
+. Get PR approval and merge the PR to the appropriate branch (`main` for most repositories).
+. Rebuild the documentation for all affected playbooks using the scripsi `bsys` command.
+. Deploy to docs-preview and sync all docsets.
 
 == Copyright and License
 
@@ -168,3 +189,5 @@ See link:LICENSE[] to find the full license text.
 == Authors
 
 Development of Antora is led and sponsored by {url-opendevise}[OpenDevise Inc].
+
+In addition, this repository has been modified by the DataStax Documentation Team.
