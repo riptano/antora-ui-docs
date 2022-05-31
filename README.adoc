@@ -37,7 +37,7 @@ ui:
     url: https://github.com/riptano/antora-ui-docs/raw/main/releases/download/v0.8/ui-bundle.zip
 ----
 
-Read on to learn how to customize the UI for your our documentation.
+Read on to learn how to customize the UI for our documentation.
 
 == Developing a new UI bundle
 
@@ -173,9 +173,11 @@ If you build a new UI bundle, all the DataStax docs repositories must be updated
 The following steps must be completed in each doc repository:
 
 . Create a PR branch for the work..
-. Update all affected playbooks with an appropriate ui bundle url.
+. Update all affected playbooks with an appropriate UI bundle url.
 . Test if the UI is building correctly with a local build.
 . Get PR approval and merge the PR to the appropriate branch (`main` for most repositories).
+. Rebuild one updated playbook.
+. Deploy to coppi to review the build to ensure the latest UI changes are working.
 . Rebuild the documentation for all affected playbooks using the scripsi `bsys` command.
 . Deploy to docs-preview and sync all docsets.
 
