@@ -37,7 +37,7 @@ ui:
     url: https://github.com/riptano/antora-ui-docs/raw/main/releases/download/v0.8/ui-bundle.zip
 ----
 
-Read on to learn how to customize the UI for your our documentation.
+Read on to learn how to customize the UI for our documentation.
 
 == Developing a new UI bundle
 
