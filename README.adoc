@@ -105,7 +105,7 @@ Now that you have the prerequisites installed, you can fetch and build the UI pr
 
 === Clone and Initialize the UI Project
 
-Clone the `antora-ui-docs`` project using git:
+Clone the `github.com/riptano/antora-ui-docs` project using git:
 
 [subs=attributes+]
  $ git clone {url-project} &&
