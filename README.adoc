@@ -172,7 +172,7 @@ The UI bundle will again be available at [.path]_build/ui-bundle.zip_.
 If you build a new UI bundle, all the DataStax docs repositories must be updated. 
 The following steps must be completed in each doc repository:
 
-. Create a PR branch for the work..
+. Create a PR branch for the work.
 . Update all affected playbooks with an appropriate UI bundle url.
 . Test if the UI is building correctly with a local build.
 . Get PR approval and merge the PR to the appropriate branch (`main` for most repositories).
