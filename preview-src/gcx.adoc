@@ -1,0 +1,12 @@
+= Landing
+Author Name
+:page-layout: gcx
+
+GCX Viewer
+++++
+<div id="gcx-nav"></div>
+++++
+
+++++
+<div id="gcx-viewer"></div>
+++++

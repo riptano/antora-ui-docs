@@ -1,6 +1,6 @@
 antoraVersion: '1.0.0'
 site:
-  url: http://localhost:5252
+  url: http://localhost:3000
   title: Brand Docs
   homeUrl: &home_url /xyz/5.2/index.html
   components:
@@ -111,6 +111,15 @@ page:
       - content: English + 中文
         url: '/xyz/5.2/index.html#english+中文'
         urlType: internal
+    - content: GCX Navigation
+      url: '/xyz/5.2/gcx-nav.html'
+      urlType: internal
+    - content: GCX
+      url: '/xyz/5.2/gcx.html'
+      urlType: internal
+    - content: Landing Page
+      url: '/xyz/5.2/landing.html'
+      urlType: internal
     - content: Liber Recusabo
       url: '#liber-recusabo'
       urlType: fragment

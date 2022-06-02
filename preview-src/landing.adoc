@@ -1,0 +1,56 @@
+= Landing
+Author Name
+:page-layout: landing
+
+++++
+<div class="landing-row">
+++++
+
+[sidebar.landing-card]
+.Getting Started
+****
+
+--
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris finibus dictum nisi ut efficitur. Integer finibus ligula at augue faucibus, ac accumsan magna feugiat.
+Vivamus a erat faucibus, sollicitudin turpis eu, volutpat felis. Aliquam ex orci, tincidunt sed tellus finibus, gravida vestibulum dui.
+
+[.landing-card-body-icon]
+image:landing-icon-1.svg[Card Icon,100]
+--
+****
+
+++++
+</div>
+++++
+
+++++
+<div class="landing-row">
+++++
+
+[sidebar.landing-card]
+.Getting Started
+****
+
+--
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris finibus dictum nisi ut efficitur. Integer finibus ligula at augue faucibus, ac accumsan magna feugiat.
+
+[.landing-card-body-icon]
+image:landing-icon-2.svg[Card Icon,100]
+--
+****
+
+[sidebar.landing-card]
+.Getting Started
+****
+
+--
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris finibus dictum nisi ut efficitur. Integer finibus ligula at augue faucibus, ac accumsan magna feugiat.
+
+[.landing-card-body-icon]
+image:landing-icon-3.svg[Card Icon,100]
+--
+****
+
+++++
+</div>
+++++
