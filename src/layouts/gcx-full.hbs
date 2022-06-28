@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+{{> head defaultPageTitle='Untitled'}}
+  </head>
+  <body class="article{{#with (or page.attributes.role page.role)}} {{{this}}}{{/with}}">
+  <div id="gcx">
+{{> header}}
+<div class="body">
+{{> nav}}
+
+<main class="article">
+{{> toolbar}}
+  <div class="content">
+{{#if (eq page.layout '404')}}
+{{> article-404}}
+{{else}}
+<!--{{> toc}}-->
+<script id="antora-main-block" type="text/html">  
+{{> article}}
+</script> 
+<gcx-full template-script="antora-main-block" ></gcx-full>
+{{/if}}
+  </div>
+</main>
+
+
+</div>
+
+{{> footer}}
+</div>
+  </body>
+</html>
