@@ -129,3 +129,11 @@
 	    }
 	}
     */
+	
+	:root {
+	    --announcement-height: 48px;
+	}
+	
+	.navbar {
+	    top: var(--announcement-height);
+	}
