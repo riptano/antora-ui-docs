@@ -1,46 +1,85 @@
-	.landing-row {
-	    display: flex;
-	    gap: 20px;
-	}
-	
-	.full-articles .doc {
-	    position: sticky;
-	    top: 0;
-	}
-	
-	.nav-list {
-	    display: flex;
-	}
-	
-	.nav-menu>.nav-list {
-	    margin: 0 0 0 .75rem;
-	    display: flex;
-	    flex-direction: column;
-	    align-items: flex-start;
-	    padding: 0px;
-	    position: absolute;
-	    width: 328px;
-	    height: 458px;
-	    left: calc(50% - 328px/2);
-	    top: 88px;
-	}
-	
-	.navbar {
-	    background: #20293A;
-	    z-index: 4;
-	    height: 80px;
-	}
-	
-	.nav-container {
-	    width: 360px;
-	}
-	
-	@media screen and (min-width:769px) {
-	    .nav-container {
-	        width: 360px !important
-	    }
-	}
-	/*
+:root {
+    --nav-background: #FFF;
+}
+
+.landing-row {
+    display: flex;
+    gap: 20px;
+}
+
+.full-articles .doc {
+    position: sticky;
+    top: 0;
+}
+
+.nav-menu>.nav-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.nav-menu {
+    padding: 0.5rem 0;
+}
+
+.navbar {
+    background: #20293A;
+    z-index: 4;
+    height: 80px;
+}
+
+.nav-container {
+    width: 360px;
+}
+
+@media screen and (min-width:769px) {
+    .nav-container {
+        width: 360px !important
+    }
+}
+
+.nav-list.toggler,
+.nav-item[data-depth='0'] {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.nav-item {
+    padding: 8px 40px;
+    margin: 0;
+    position: relative;
+}
+
+li.nav-item.toggler.is-active:hover {
+    background-color: #FFF;
+}
+
+.nav-item[data-depth='1']:hover,
+.nav-item[data-depth='2']:hover,
+.nav-item[data-depth='3']:hover,
+.nav-item[data-depth='4']:hover {
+    background-color: #f6f8fa;
+}
+
+.nav-item a:hover {
+    text-decoration: none !important;
+}
+
+.nav-item.is-current-page {
+    background-color: #f6f8fa;
+}
+
+.nav-item.is-current-page::before {
+    content: '';
+    border: 2px solid var(--blue);
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 100%;
+}
+
+
+/*
 	.navbar {
 	    background: #20293A;
 	    z-index: 4;
@@ -129,11 +168,11 @@
 	    }
 	}
     */
-	
-	:root {
-	    --announcement-height: 48px;
-	}
-	
-	.navbar {
-	    top: var(--announcement-height);
-	}
+
+:root {
+    --announcement-height: 48px;
+}
+
+.navbar {
+    top: var(--announcement-height);
+}
