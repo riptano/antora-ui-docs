@@ -1,7 +1,7 @@
 
   
+<gcx-schema-topbar uri="./_attachments/schema.json"></gcx-schema-topbar>
 <header class="header">
-  <gcx-schema-topbar uri="./_attachments/schema.json"></gcx-schema-topbar>
   <nav class="navbar">
     <div class="navbar-brand">
       <a href="{{{or site.url (or siteRootUrl siteRootPath)}}}">
@@ -27,8 +27,16 @@
       </button>
     </div>
     <div id="topbar-nav" class="navbar-menu">
-      <!--<div class="navbar-end">
-        <div class="navbar-end__group">
+      <div class="navbar-end">
+         <div class="doc-link">
+          <ul id="ds_sites_list">
+            <li><a href="/en/glossary/doc" target="_blank">Glossary</a></li>
+            <li><a href="https://support.datastax.com/" target="_blank">Support</a></li>
+            <li><a href="https://downloads.datastax.com/" target="_blank">Downloads</a></li>
+            <li><a href="https://www.datastax.com/" target="_self">DataStax Home</a></li>
+          </ul>
+        </div>
+        <div class="navbar-end__group"> 
           <form id="alg-search-form" class="ds-search-form" action="https://www.datastax.com/search" target="_blank" method="GET">
                 <div>
                     <input id="alg-search-input" class="ds-datastax-search-input" type="text" name="query" placeholder="Search docs"/>
@@ -37,8 +45,10 @@
                 </div>
           </form>
           <a class="navbar-item" href="/en/landing_page/doc/landing_page/current.html">Docs</a>
+          <span onclick="window.Intercom('show');" class="ds_buttons_button get-started">Get Live Help</span>
         </div>
-      </div>-->
+       
+      </div>
     </div>
   </nav>
 </header> 
