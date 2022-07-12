@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  <script defer type="module">
+      "use strict"; import schema from "./_attachments/schema.json" assert { type: "json" }; console.log(schema); 
+      const topbar = document.querySelector("gcx-schema-topbar"); 
+      const sidebar = document.querySelector("gcx-schema-bottom-sidebar"); 
+      const sampleApp = document.querySelector("gcx-schema-sample-app-gallery"); 
+      topbar.uri = schema; sidebar.uri = schema; sampleApp.uri = schema;
+  </script>
 {{> head defaultPageTitle='Untitled'}}
   </head>
   <body class="article{{#with (or page.attributes.role page.role)}} {{{this}}}{{/with}}">

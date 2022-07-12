@@ -1,4 +1,4 @@
-import { r as registerInstance, h } from './index-24922380.js';
+import { r as registerInstance, h } from './index-8f52db79.js';
 
 const gcxSchemaCss = ":host{display:block}";
 
