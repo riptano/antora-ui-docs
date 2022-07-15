@@ -52,8 +52,8 @@
 }
 
 .nav-item {
-    padding: 8px 40px;
-    margin: 0;
+    /*padding: 8px 40px;
+    margin: 0;*/
     position: relative;
 }
 
@@ -152,4 +152,141 @@ ul#ds_sites_list li a:active {
 .toolbar {
     position: unset;
     top: unset;
+}
+
+
+/*Card Styles*/
+
+.doc .sidebarblock {
+    padding: 24px;
+    box-shadow: 0px 6px 8px rgb(32 41 58 / 8%), 0px 4px 10px rgb(32 41 58 / 8%), 0px 3px 12px rgb(32 41 58 / 12%);
+    border-radius: 6px;
+}
+
+.doc .sidebarblock>.content>.title {
+    text-align: left;
+}
+
+.doc p {
+    text-align: left;
+}
+
+.doc .imageblock {
+    align-items: flex-end;
+}
+
+.landing-row {
+    gap: 24px;
+}
+
+.doc .sidebarblock {
+    margin: 24px 0 0;
+}
+
+
+/*Button in Header*/
+
+.ds_buttons_button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    padding: 8px 12px;
+    gap: 10px;
+    width: 135px;
+    height: 40px;
+    left: 247px;
+    top: 1462px;
+    background: var(--blue);
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.ds_buttons_button:hover {
+    background: #7BB3F7;
+}
+
+
+/*Search input*/
+
+.ds-search-input-icon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: var(--white);
+    ;
+    border: 1px solid #A6B1C2;
+    border-radius: 6px;
+    padding: 14px;
+    width: 320px;
+    height: 48px;
+}
+
+.ds-search-input-icon input,
+.ds-search-input-icon input:focus,
+.ds-search-input-icon input:focus-visible {
+    border: none;
+    outline: none;
+}
+
+.ds-search-input-icon input {
+    padding-left: 10px;
+}
+
+.ds-search-input-icon input::placeholder {
+    font-size: 16px;
+    line-height: 24px;
+    color: #A6B1C2;
+}
+
+
+/*Navigation Sidebar*/
+
+.nav-menu h3.title {
+    padding: 8px 40px!important;
+}
+
+.nav-item.toggler {
+    padding: 8px 0;
+    cursor: pointer;
+}
+
+.nav-item.toggler>button {
+    padding: 0;
+    margin: 0 10px;
+}
+
+.nav-item.toggler .nav-text {
+    padding: 0 40px;
+}
+
+.nav-item.toggler .nav-list {
+    margin: 8px 0;
+}
+
+li.nav-item[data-depth='2'] {
+    padding: 8px 60px;
+}
+
+
+/* Footer */
+
+.wh_footer {
+    padding-bottom: 32px;
+    font-size: 16px;
+}
+
+.contact-us p {
+    line-height: 26px;
+}
+
+.copyright-line {
+    font-weight: bold;
+}
+
+a.nav-link {
+    display: block;
+    padding: 8px 40px;
+    margin: 0;
 }
