@@ -1,3 +1,23 @@
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/materialicons/v134/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2) format('woff2');
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    white-space: nowrap;
+    word-wrap: normal;
+    -webkit-font-smoothing: antialiased;
+}
+
 :root {
     --nav-background: #FFF;
     --navbar-height: 0;
@@ -289,4 +309,10 @@ a.nav-link {
     display: block;
     padding: 8px 40px;
     margin: 0;
+}
+
+gcx-schema-topbar {
+    --gcx-topbar-padding: 14px 0;
+    font-size: 16px;
+    font-weight: 700;
 }
