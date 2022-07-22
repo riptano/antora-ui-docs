@@ -100,6 +100,7 @@ li.nav-item.toggler.is-active:hover {
     content: '';
     border: 2px solid var(--blue);
     top: 0;
+    background: var(--blue);
     left: 0;
     position: absolute;
     height: 100%;
@@ -115,7 +116,7 @@ ul#ds_sites_list {
     font-weight: 300;
     letter-spacing: 1px;
     color: #FFF;
-    margin: 0 0 0 19px;
+    margin: 0;
     padding: 0;
 }
 
@@ -213,18 +214,25 @@ ul#ds_sites_list li a:active {
     align-items: center;
     font-size: 16px;
     padding: 8px 12px;
-    gap: 10px;
     width: 135px;
     height: 40px;
-    left: 247px;
-    top: 1462px;
     background: var(--blue);
     border-radius: 6px;
     cursor: pointer;
 }
 
+a.ds_buttons_button {
+    margin: 0 8px;
+    width: 74px;
+}
+
 .ds_buttons_button:hover {
     background: #7BB3F7;
+}
+
+a.ds_buttons_button:hover {
+    color: var(--white)!important;
+    text-decoration: none!important;
 }
 
 
@@ -235,7 +243,6 @@ ul#ds_sites_list li a:active {
     flex-direction: row;
     align-items: center;
     background: var(--white);
-    ;
     border: 1px solid #A6B1C2;
     border-radius: 6px;
     padding: 14px;
@@ -315,4 +322,230 @@ gcx-schema-topbar {
     --gcx-topbar-padding: 14px 0;
     font-size: 16px;
     font-weight: 700;
+}
+
+
+/*Navigation menu*/
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+
+/*lists*/
+
+.nav-item.toggler[data-depth="1"] {
+    z-index: 1;
+}
+
+.nav-item.toggler[data-depth="1"] .nav-text {
+    z-index: -1;
+    position: relative;
+}
+
+
+/* Switch Dark Mode */
+
+.doc-link {
+    display: flex;
+}
+
+.switch[type=checkbox] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+    margin-top: -10px;
+}
+
+label.switch_label {
+    cursor: pointer;
+    text-indent: -65px;
+    width: 50px;
+    height: 30px;
+    background: #d4cfcf;
+    display: flex;
+    align-items: flex-end;
+    border-radius: 20px;
+    position: relative;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+label.switch_label:after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.switch[type="checkbox"]+label {
+    background-image: url(../img/moon.svg);
+    height: 40px;
+    width: 40px;
+    display: inline-block;
+    z-index: 1;
+}
+
+.switch[type="checkbox"]:checked+label {
+    background-image: url(../img/sun.svg);
+    height: 40px;
+    width: 40px;
+    display: inline-block;
+}
+
+
+/*Dark mode: Mobile Header */
+
+.dark-mode .navbar-menu {
+    background: var(--color-black);
+    ;
+}
+
+
+/* Dark mode: Navigation*/
+
+.dark-mode .nav {
+    background: var(--color-jet-80);
+}
+
+.dark-mode li.nav-item.toggler.is-active:hover {
+    background: var(--color-jet-80);
+}
+
+.dark-mode .nav-item span,
+.dark-mode .nav-item a,
+.dark-mode .nav-item button,
+.dark-mode .nav-menu h3.title {
+    color: var(--white);
+}
+
+.dark-mode .nav-item a:hover {
+    color: var(--color-black);
+}
+
+.dark-mode .nav-item.toggler[data-depth="1"]:hover .nav-text {
+    color: var(--color-black);
+}
+
+.dark-mode .nav-item.toggler[data-depth="1"]:hover .nav-item-toggle {
+    color: var(--color-black);
+}
+
+.dark-mode li.nav-item.toggler.is-active:hover .nav-text {
+    color: var(--white);
+}
+
+.dark-mode li.nav-item.toggler.is-active:hover .nav-item-toggle {
+    color: var(--white);
+}
+
+.dark-mode .nav-item.is-current-page a {
+    color: var(--color-black);
+}
+
+.dark-mode .nav-item.is-current-page::before {
+    background: var(--gray);
+    border: 2px solid var(--gray);
+}
+
+
+/* Dark mode: Toolbar*/
+
+.dark-mode .toolbar {
+    color: var(--white);
+    background-color: var(--color-jet-80);
+}
+
+
+/* Dark mode: Body*/
+
+.dark-mode body {
+    background-color: var(--color-jet-80);
+}
+
+
+/* Dark mode: Titles*/
+
+.dark-mode .doc h1,
+.dark-mode .doc h2,
+.dark-mode .doc h3,
+.dark-mode .doc h4,
+.dark-mode .doc h5,
+.dark-mode .doc h6 {
+    color: var(--white);
+}
+
+
+/*Dark mode: Footer*/
+
+.dark-mode .wh_footer {
+    background-color: var(--color-black);
+}
+
+
+/* Dark mode: Header*/
+
+.dark-mode .header,
+.dark-mode .navbar {
+    background-color: var(--color-black);
+}
+
+
+/* Dark mode: Top Bar*/
+
+.dark-mode gcx-schema-topbar {
+    --gcx-topbar-bgcolor: var(--gray-dark);
+}
+
+
+/* Dark mode: Bottom Sidebar*/
+
+.dark-mode gcx-schema-bottom-sidebar {
+    --gcx-sidebar-h4-color: var(--white);
+    --gcx-sidebar-li-color: var(--white);
+    --gcx-sidebar-li-dark-color: var(--color-black)
+}
+
+
+/* Dark mode: buttons */
+
+.dark-mode .ds_buttons_button {
+    background: var(--gray-dark);
+}
+
+.dark-mode .ds_buttons_button:hover {
+    background: var(--gray);
+}
+
+
+/* Dark mode: cards*/
+
+.dark-mode .doc {
+    color: var(--white);
+}
+
+.dark-mode .doc .sidebarblock {
+    background: var(--gray-dark);
+}
+
+.dark-mode .helios-card {
+    background-color: var(--gray-dark);
+}
+
+.dark-mode .doc pre:not(.highlight),
+.doc pre.highlight code {
+    background: var(--gray-dark);
+    box-shadow: inset 0 0 1.75px var(--gray-dark);
+}
+
+.dark-mode .doc .exampleblock>.content {
+    background: var(--gray-dark);
+}
+
+.dark-mode .doc .admonitionblock td.content {
+    background: var(--gray-dark);
 }
