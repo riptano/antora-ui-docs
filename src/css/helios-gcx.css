@@ -299,6 +299,10 @@ li.nav-item[data-depth='2'] {
 
 /* Footer */
 
+.bottom-icons a:hover {
+    opacity: 0.8;
+}
+
 .wh_footer {
     padding-bottom: 32px;
     font-size: 16px;
