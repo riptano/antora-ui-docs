@@ -243,6 +243,7 @@ a.ds_buttons_button:hover {
     flex-direction: row;
     align-items: center;
     background: var(--white);
+    ;
     border: 1px solid #A6B1C2;
     border-radius: 6px;
     padding: 14px;
@@ -326,6 +327,10 @@ gcx-schema-topbar {
     --gcx-topbar-padding: 14px 0;
     font-size: 16px;
     font-weight: 700;
+}
+
+.dark-mode feedback-form {
+    --color-text-primary: #FFF;
 }
 
 
@@ -503,6 +508,7 @@ label.switch_label:after {
 
 .dark-mode gcx-schema-topbar {
     --gcx-topbar-bgcolor: var(--gray-dark);
+    ;
 }
 
 
@@ -511,7 +517,6 @@ label.switch_label:after {
 .dark-mode gcx-schema-bottom-sidebar {
     --gcx-sidebar-h4-color: var(--white);
     --gcx-sidebar-li-color: var(--white);
-    --gcx-sidebar-li-dark-color: var(--color-black)
 }
 
 
@@ -552,4 +557,28 @@ label.switch_label:after {
 
 .dark-mode .doc .admonitionblock td.content {
     background: var(--gray-dark);
+}
+
+
+/*Dark Mode Aside Menu*/
+
+.dark-mode .toc .toc-menu a {
+    color: var(--white);
+}
+
+.dark-mode .toc .toc-menu a {
+    color: var(--white);
+    border-left: 2px solid var(--color-sidebar);
+}
+
+.dark-mode .toc .toc-menu h3 {
+    color: var(--color-blue-gray-2);
+}
+
+.dark-mode .toc .toc-menu a:hover {
+    color: #c8cbd3;
+}
+
+.dark-mode .helios-text-field-label {
+    color: var(--white);
 }
