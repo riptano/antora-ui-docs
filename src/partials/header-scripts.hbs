@@ -3,4 +3,14 @@
   analytics.load("d24gQtyKIUu5mLdkp11xjfiXLhRqx0HH");
   analytics.page();
   }}();
-</script>{{!-- Add header scripts here --}}
+</script>
+  
+  <script defer type="module">
+    "use strict";  
+
+    import schema from '{{#with (schema uiRootPath)}}{{{this}}}{{/with}}' assert { type: "json" };  
+    const topbar = document.querySelector("gcx-schema-topbar"); 
+    const sidebar = document.querySelector("gcx-schema-bottom-sidebar"); 
+    const sampleApp = document.querySelector("gcx-schema-sample-app-gallery"); 
+    topbar.uri = schema; sidebar.uri = schema; sampleApp.uri = schema;
+  </script>
