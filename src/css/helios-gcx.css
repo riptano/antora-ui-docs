@@ -29,11 +29,6 @@
     gap: 20px;
 }
 
-.full-articles .doc {
-    position: sticky;
-    top: 0;
-}
-
 .header {
     padding: 1em;
     background-color: var(--navbar-background);
@@ -436,11 +431,15 @@ label.switch_label:after {
     color: var(--color-black);
 }
 
-.dark-mode .nav-item.toggler[data-depth="1"]:hover .nav-text {
+.dark-mode li.nav-item.toggler[data-depth="1"]:hover .nav-text {
     color: var(--color-black);
 }
 
-.dark-mode .nav-item.toggler[data-depth="1"]:hover .nav-item-toggle {
+.dark-mode li.nav-item.toggler[data-depth="1"]:hover button {
+    color: var(--color-black);
+}
+
+.dark-mode .nav-item button:hover {
     color: var(--color-black);
 }
 
