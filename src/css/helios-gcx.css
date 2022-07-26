@@ -420,14 +420,19 @@ label.switch_label:after {
     background: var(--color-jet-80);
 }
 
-.dark-mode .nav-item span,
-.dark-mode .nav-item a,
-.dark-mode .nav-item button,
 .dark-mode .nav-menu h3.title {
     color: var(--white);
 }
 
-.dark-mode .nav-item a:hover {
+.dark-mode .nav-item span,
+.dark-mode .nav-item a,
+.dark-mode .nav-item button {
+    color: var(--white);
+}
+
+.dark-mode .nav-item span:hover,
+.dark-mode .nav-item a:hover,
+.dark-mode .nav-item button:hover {
     color: var(--color-black);
 }
 
@@ -439,15 +444,19 @@ label.switch_label:after {
     color: var(--color-black);
 }
 
-.dark-mode .nav-item button:hover {
-    color: var(--color-black);
-}
-
-.dark-mode li.nav-item.toggler.is-active:hover .nav-text {
+.dark-mode li.nav-item.toggler.is-active[data-depth="1"] .nav-text {
     color: var(--white);
 }
 
-.dark-mode li.nav-item.toggler.is-active:hover .nav-item-toggle {
+.dark-mode li.nav-item.toggler.is-active[data-depth="1"] .nav-item-toggle {
+    color: var(--white);
+}
+
+.dark-mode li.nav-item.toggler.is-active[data-depth="1"]:hover .nav-text {
+    color: var(--white);
+}
+
+.dark-mode li.nav-item.toggler.is-active[data-depth="1"]:hover .nav-item-toggle {
     color: var(--white);
 }
 

@@ -1,0 +1,9 @@
+node_modules
+public
+.vscode
+build
+.DS_Store
+src/js/vendor
+src/js/lib
+*~
+
