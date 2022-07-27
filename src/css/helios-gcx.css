@@ -30,7 +30,7 @@
 }
 
 .header {
-    padding: 1em;
+    padding: 18px 40px;
     background-color: var(--navbar-background);
 }
 
@@ -51,12 +51,12 @@
 }
 
 .nav-container {
-    width: 360px;
+    width: 280px;
 }
 
 @media screen and (min-width:769px) {
     .nav-container {
-        width: 360px !important
+        width: 280px !important
     }
 }
 
@@ -184,11 +184,22 @@ ul#ds_sites_list li a:active {
 }
 
 .doc p {
+    font-size: 16px;
     text-align: left;
 }
 
 .doc .imageblock {
     align-items: flex-end;
+}
+
+.doc pre:not(.highlight),
+.doc pre.highlight code {
+    font-size: 14px;
+}
+
+.doc h2:not(.discrete) {
+    font-size: 21px;
+    font-weight: 700;
 }
 
 .landing-row {
@@ -197,6 +208,26 @@ ul#ds_sites_list li a:active {
 
 .doc .sidebarblock {
     margin: 24px 0 0;
+}
+
+
+/* CODE PAGE */
+
+.full-articles .doc {
+    margin: 0;
+}
+
+.full-articles {
+    flex: 0 1 50%;
+}
+
+gcx-full {
+    width: 100%;
+}
+
+gcx-full-code {
+    flex: 0 1 50%;
+    min-width: auto;
 }
 
 
@@ -292,8 +323,32 @@ li.nav-item[data-depth='2'] {
     padding: 8px 60px;
 }
 
+gcx-schema-sample-app-gallery {
+    --gcx-sample-appgallery-h4-font-size: 14px;
+    --gcx-app-gallery-p-font-size: 14px;
+    --gcx-sample-appgallery-h4-font-weight: 700;
+    padding-top: 36px;
+    padding-bottom: 221px;
+}
+
+gcx-schema-bottom-sidebar {
+    --gcx-sidebar-li-font-size: 14px;
+}
+
+
+/* Header Navbar */
+
+.navbar {
+    padding-left: 0;
+    padding-right: 0;
+}
+
 
 /* Footer */
+
+footer .container-fluid {
+    margin: 0 40px;
+}
 
 .bottom-icons a:hover {
     opacity: 0.8;
@@ -316,6 +371,12 @@ a.nav-link {
     display: block;
     padding: 8px 40px;
     margin: 0;
+}
+
+.nav-item a,
+.nav-item span,
+.nav-item.toggler>span {
+    font-size: 14px;
 }
 
 gcx-schema-topbar {
