@@ -8,7 +8,7 @@
   <script defer type="module">
     "use strict";  
 
-    import schema from '{{#with (schema uiRootPath)}}{{{this}}}{{/with}}' assert { type: "json" };  
+    import schema from './_attachments/schema.json' assert { type: "json" };  
     const topbar = document.querySelector("gcx-schema-topbar"); 
     const sidebar = document.querySelector("gcx-schema-bottom-sidebar"); 
     const sampleApp = document.querySelector("gcx-schema-sample-app-gallery"); 
