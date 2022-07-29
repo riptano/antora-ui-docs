@@ -56,7 +56,7 @@
 
 @media screen and (min-width:769px) {
     .nav-container {
-        width: 280px !important
+        width: 280px;
     }
 }
 
@@ -328,11 +328,97 @@ gcx-schema-sample-app-gallery {
     --gcx-app-gallery-p-font-size: 14px;
     --gcx-sample-appgallery-h4-font-weight: 700;
     padding-top: 36px;
-    padding-bottom: 221px;
+    padding-bottom: 76px;
 }
-
+.nav-container{
+    transition: 150ms ease-in-out
+}
 gcx-schema-bottom-sidebar {
     --gcx-sidebar-li-font-size: 14px;
+}
+
+/* Collapsible Sidebar */
+.sidebar.small-container {
+    width: 5%;
+}
+.small-container .small-nav-list{
+    display: block!important;
+}
+
+.small-nav-list{
+    transition: 150ms ease-in-out;
+    display: none;
+    margin-top:20rem;
+}
+.small-nav-list a.nav-link{
+    padding: 0 10px;
+}
+
+.sidebar.small-container .main-content .panels{
+    display: none;
+}
+
+.main-content{
+    width: 100%;
+}
+
+.navbar-end-custom{
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.small-container .navbar-end-custom{
+    justify-content: center;
+}
+
+.collapse[type=checkbox] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+    margin-top: -10px;
+}
+
+label.collapse_label {
+    cursor: pointer;
+    text-indent: -65px;
+    width: 50px;
+    height: 30px;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+label.collapse_label:after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 20px;
+    height: 20px;
+    transition: 0.3s;
+}
+
+.collapse[type="checkbox"]+label {
+    background-image: url(../img/open.svg);
+    background-repeat: no-repeat;
+    height: 25px;
+    width: 25px;
+    display: inline-block;
+    transition: width 150ms ease-in-out;
+    z-index: 1;
+}
+
+.collapse[type="checkbox"]:checked+label {
+    background-image: url(../img/closed.svg);
+    background-repeat: no-repeat;
+    height: 25px;
+    width: 25px;
+    transition: width 150ms ease-in-out;
+    display: inline-block;
 }
 
 
