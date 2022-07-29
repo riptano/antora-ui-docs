@@ -303,7 +303,7 @@ a.ds_buttons_button:hover {
 }
 
 li.nav-item[data-depth='2'] {
-    padding: 8px 60px;
+    padding: 8px 40px;
 }
 
 gcx-schema-sample-app-gallery {
@@ -316,13 +316,14 @@ gcx-schema-sample-app-gallery {
 
 gcx-schema-bottom-sidebar {
     --gcx-sidebar-li-font-size: 14px;
+    --gcx-sidebar-li-display: inline-flex;
 }
 
 
 /* Collapsible Sidebar */
 
 .sidebar.small-container {
-    width: 5%;
+    width: 55px;
 }
 
 .small-container .small-nav-list {
@@ -339,8 +340,28 @@ gcx-schema-bottom-sidebar {
     padding: 0 10px;
 }
 
-.sidebar.small-container .main-content .panels {
+.sidebar.small-container .main-content .nav-list {
     display: none;
+}
+
+.sidebar.small-container .main-content .title {
+    display: none;
+}
+
+.small-container gcx-schema-sample-app-gallery {
+    --gcx-sample-appgallery-card-padding: 0;
+    --gcx-sample-appgallery-card-background: transparent;
+    --gcx-sample-appgallery-card-border: 0;
+    --gcx-app-gallery-name-display: none;
+    --gcx-app-gallery-icon-font-size: 20px;
+    padding-bottom: 0;
+}
+
+.small-container gcx-schema-bottom-sidebar {
+    --gcx-sidebar-h4-display: none;
+    --gcx-sidebar-li-padding: 10px 16px;
+    --gcx-sidebar-li-display: none;
+    --gcx-sidebar-li-font-size: 20px;
 }
 
 .main-content {
@@ -401,7 +422,7 @@ label.collapse_label:after {
     background-image: url(../img/closed.svg);
     background-repeat: no-repeat;
     height: 25px;
-    width: 25px;
+    width: 15px;
     transition: width 150ms ease-in-out;
     display: inline-block;
 }
