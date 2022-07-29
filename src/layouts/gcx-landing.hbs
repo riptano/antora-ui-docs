@@ -10,20 +10,5 @@
 {{> footer}}
 
 {{> intercom}}
-
-  <script >
-     !(function () {
-   let divs = document.querySelector("[class*=gcx-feedback-form]");
-      if(divs!==null){
-      const titulo = divs.querySelector("h2").innerText;
-
-      divs.innerHTML = `
-      <feedback-form article="${titulo}"></feedback-form>
-      `;
-      }
-     })();
-   
-      
-    </script>
   </body>
 </html>
