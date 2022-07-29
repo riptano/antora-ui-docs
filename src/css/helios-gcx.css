@@ -6,7 +6,7 @@
 }
 
 .material-icons {
-    font-family: 'Material Icons';
+    font-family: 'Material Icons', sans-serif;
     font-weight: normal;
     font-style: normal;
     font-size: 24px;
@@ -26,7 +26,7 @@
 
 .landing-row {
     display: flex;
-    gap: 20px;
+    gap: 24px;
 }
 
 .header {
@@ -44,14 +44,9 @@
     padding: 0.5rem 0;
 }
 
-.navbar {
-    background: var(--navbar-background);
-    z-index: 4;
-    height: 80px;
-}
-
 .nav-container {
     width: 280px;
+    transition: 150ms ease-in-out
 }
 
 @media screen and (min-width:769px) {
@@ -133,15 +128,20 @@ ul#ds_sites_list li a:active {
 }
 
 .ds_buttons_button {
-    border-radius: 20px;
     color: #FFF;
-    font-size: 18px;
     font-weight: 500;
     line-height: 1.22;
-    background: #FF9d2C;
-    padding: 8px 11px 8px 14px;
     text-decoration: none;
-    display: inline;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    padding: 8px 12px;
+    width: 135px;
+    height: 40px;
+    background: var(--blue);
+    border-radius: 6px;
     cursor: pointer;
 }
 
@@ -159,10 +159,14 @@ ul#ds_sites_list li a:active {
 }
 
 .navbar {
-    /*top: var(--announcement-height);*/
     justify-content: space-between;
     top: unset;
     position: unset;
+    background: var(--navbar-background);
+    z-index: 4;
+    height: 80px;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .toolbar {
@@ -172,12 +176,6 @@ ul#ds_sites_list li a:active {
 
 
 /*Card Styles*/
-
-.doc .sidebarblock {
-    padding: 24px;
-    box-shadow: 0px 6px 8px rgb(32 41 58 / 8%), 0px 4px 10px rgb(32 41 58 / 8%), 0px 3px 12px rgb(32 41 58 / 12%);
-    border-radius: 6px;
-}
 
 .doc .sidebarblock>.content>.title {
     text-align: left;
@@ -202,12 +200,11 @@ ul#ds_sites_list li a:active {
     font-weight: 700;
 }
 
-.landing-row {
-    gap: 24px;
-}
-
 .doc .sidebarblock {
     margin: 24px 0 0;
+    padding: 24px;
+    box-shadow: 0px 6px 8px rgb(32 41 58 / 8%), 0px 4px 10px rgb(32 41 58 / 8%), 0px 3px 12px rgb(32 41 58 / 12%);
+    border-radius: 6px;
 }
 
 
@@ -232,20 +229,6 @@ gcx-full-code {
 
 
 /*Button in Header*/
-
-.ds_buttons_button {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-    padding: 8px 12px;
-    width: 135px;
-    height: 40px;
-    background: var(--blue);
-    border-radius: 6px;
-    cursor: pointer;
-}
 
 a.ds_buttons_button {
     margin: 0 8px;
@@ -330,46 +313,48 @@ gcx-schema-sample-app-gallery {
     padding-top: 36px;
     padding-bottom: 76px;
 }
-.nav-container{
-    transition: 150ms ease-in-out
-}
+
 gcx-schema-bottom-sidebar {
     --gcx-sidebar-li-font-size: 14px;
 }
 
+
 /* Collapsible Sidebar */
+
 .sidebar.small-container {
     width: 5%;
 }
-.small-container .small-nav-list{
+
+.small-container .small-nav-list {
     display: block!important;
 }
 
-.small-nav-list{
+.small-nav-list {
     transition: 150ms ease-in-out;
     display: none;
-    margin-top:20rem;
+    margin-top: 20rem;
 }
-.small-nav-list a.nav-link{
+
+.small-nav-list a.nav-link {
     padding: 0 10px;
 }
 
-.sidebar.small-container .main-content .panels{
+.sidebar.small-container .main-content .panels {
     display: none;
 }
 
-.main-content{
+.main-content {
     width: 100%;
 }
 
-.navbar-end-custom{
+.navbar-end-custom {
     margin-top: 0.5rem;
     margin-bottom: 0;
     display: flex;
     justify-content: flex-end;
 }
 
-.small-container .navbar-end-custom{
+.small-container .navbar-end-custom {
     justify-content: center;
 }
 
@@ -423,11 +408,6 @@ label.collapse_label:after {
 
 
 /* Header Navbar */
-
-.navbar {
-    padding-left: 0;
-    padding-right: 0;
-}
 
 
 /* Footer */
@@ -716,10 +696,6 @@ label.switch_label:after {
 
 
 /*Dark Mode Aside Menu*/
-
-.dark-mode .toc .toc-menu a {
-    color: var(--white);
-}
 
 .dark-mode .toc .toc-menu a {
     color: var(--white);
