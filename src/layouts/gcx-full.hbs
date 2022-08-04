@@ -23,6 +23,23 @@
     </div>
   </main>
 
+  <script> 
+    let schemaScript = document.querySelector("#antora-main-block").innerHTML;
+    var htmlObject = document.createElement('div');
+    htmlObject.innerHTML = schemaScript;
+    let schemaFull = htmlObject.querySelector("#gcx-schema").innerHTML;
+
+    if (schemaFull !== null) {
+
+        schemaFull = JSON.parse(schemaFull);
+        const topbar = document.querySelector("gcx-schema-topbar");
+        const sidebar = document.querySelector("gcx-schema-bottom-sidebar");
+        const sampleApp = document.querySelector("gcx-schema-sample-app-gallery");
+        topbar.uri = schemaFull;
+        sidebar.uri = schemaFull;
+        sampleApp.uri = schemaFull;
+    }
+  </script>
   </div>
 {{> footer}} 
 

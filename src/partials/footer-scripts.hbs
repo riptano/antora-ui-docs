@@ -2,3 +2,15 @@
 <script src="{{{uiRootPath}}}/js/site.js"></script>
 <script async src="{{{uiRootPath}}}/js/08-gcx-helios.js"></script>
 <script async src="{{{uiRootPath}}}/js/vendor/highlight.js"></script>
+
+  <script async>
+    let schema = document.querySelector("#gcx-schema"); 
+    if(schema!==null){
+
+    schema=JSON.parse(schema.innerText);
+    const topbar = document.querySelector("gcx-schema-topbar"); 
+    const sidebar = document.querySelector("gcx-schema-bottom-sidebar"); 
+    const sampleApp = document.querySelector("gcx-schema-sample-app-gallery"); 
+    topbar.uri = schema; sidebar.uri = schema; sampleApp.uri = schema;
+    }
+  </script>
