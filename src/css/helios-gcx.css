@@ -30,7 +30,7 @@
 }
 
 .header {
-    padding: 18px 40px;
+    padding: 18px 32px;
     background-color: var(--navbar-background);
 }
 
@@ -62,7 +62,7 @@
 }
 
 .nav-item {
-    /*padding: 8px 40px;
+    /*padding: 8px 32px;
     margin: 0;*/
     position: relative;
 }
@@ -174,8 +174,131 @@ ul#ds_sites_list li a:active {
     top: unset;
 }
 
+/* breadcrumbs */
+
+.breadcrumbs li{
+color:#74767B;
+}
+
+
+/* Alerts */
+
+.doc .admonitionblock td.content {
+    --admonition-background: transparent;
+}
+
+.doc .admonitionblock tr{
+    display: block;
+}
+
+.doc .admonitionblock.caution tr{
+    display: block;
+    background: #d8ddf2;
+    border: 1px solid #3b4260;
+    border-radius: 6px;
+
+}
+.doc .admonitionblock.caution td.content{
+    --admonition-color: #3b4260;
+}
+
+.doc .admonitionblock.caution .title {
+    --caption-font-color: #3b4260;
+}
+
+
+.doc .admonitionblock.tip tr{
+    display: block;
+    background: #F0F8F4;
+    border: 1px solid #008040;
+    border-radius: 6px;
+
+}
+.doc .admonitionblock.tip td.content{
+    --admonition-color: #008040;
+}
+
+.doc .admonitionblock.tip .icon {
+    --tip-color: #008040;
+}
+
+.doc .admonitionblock.tip .title {
+    --caption-font-color: #008040;
+}
+
+
+.doc .admonitionblock.warning tr{
+    display: block;
+    background: #F9F6F0;
+    border: 1px solid #916707;
+    border-radius: 6px;
+
+}
+.doc .admonitionblock.warning td.content{
+    --admonition-color: #916707;
+}
+
+.doc .admonitionblock.warning .icon {
+    --warning-color: #916707;
+}
+
+.doc .admonitionblock.warning .title {
+    --caption-font-color: #916707;
+}
+
+.doc .admonitionblock.important tr{
+    display: block;
+    background: #FEF1F1;
+    border: 1px solid #D52424;
+    border-radius: 6px;
+
+}
+.doc .admonitionblock.important td.content{
+    --admonition-color: #D52424;
+}
+
+.doc .admonitionblock.important .icon {
+    --important-color: #D52424;
+}
+
+.doc .admonitionblock.important .title {
+    --caption-font-color: #D52424;
+}
+
+
+.doc .admonitionblock.note tr{
+    display: block;
+    background: #F3F8FF;
+    border: 1px solid #1E71D4;
+    border-radius: 6px;
+
+}
+.doc .admonitionblock.note td.content{
+    --admonition-color: #1E71D4;
+}
+
+.doc .admonitionblock.note .icon {
+    --note-color: #1E71D4;
+}
+
+.doc .admonitionblock.note .title {
+    --caption-font-color: #1E71D4;
+}
+
+.doc .exampleblock > .content {
+    border-width: 1.5px;
+}
 
 /*Card Styles*/
+
+feedback-stars{
+    --spacing-space01h: 16px;
+}
+
+
+.feedback-wrapper{
+    --spacing-space01h: 16px;
+}
 
 .doc .sidebarblock>.content>.title {
     text-align: left;
@@ -198,6 +321,8 @@ ul#ds_sites_list li a:active {
 .doc h2:not(.discrete) {
     font-size: 21px;
     font-weight: 700;
+    padding: 0;
+    padding-bottom: 12px!important;
 }
 
 .doc .sidebarblock {
@@ -252,12 +377,11 @@ a.ds_buttons_button:hover {
     flex-direction: row;
     align-items: center;
     background: var(--white);
-    ;
     border: 1px solid #A6B1C2;
     border-radius: 6px;
     padding: 14px;
     width: 320px;
-    height: 48px;
+    height: 40px;
 }
 
 .ds-search-input-icon input,
@@ -281,7 +405,7 @@ a.ds_buttons_button:hover {
 /*Navigation Sidebar*/
 
 .nav-menu h3.title {
-    padding: 8px 40px!important;
+    padding: 8px 32px!important;
 }
 
 .nav-item.toggler {
@@ -295,7 +419,7 @@ a.ds_buttons_button:hover {
 }
 
 .nav-item.toggler .nav-text {
-    padding: 0 40px;
+    padding: 0 32px;
 }
 
 .nav-item.toggler .nav-list {
@@ -303,7 +427,7 @@ a.ds_buttons_button:hover {
 }
 
 li.nav-item[data-depth='2'] {
-    padding: 8px 40px;
+    padding: 8px 32px;
 }
 
 gcx-schema-sample-app-gallery {
@@ -315,7 +439,7 @@ gcx-schema-sample-app-gallery {
 }
 
 gcx-schema-bottom-sidebar {
-    --gcx-sidebar-li-font-size: 14px;
+    --gcx-sidebar-li-font-size: 16px;
     --gcx-sidebar-li-display: inline-flex;
 }
 
@@ -456,8 +580,12 @@ footer .container-fluid {
 
 a.nav-link {
     display: block;
-    padding: 8px 40px;
+    padding: 8px 32px;
     margin: 0;
+}
+
+gcx-schema-bottom-sidebar {
+    --gcx-sidebar-li-padding: 8px 32px;
 }
 
 .nav-item a,
