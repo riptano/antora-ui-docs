@@ -337,10 +337,17 @@ feedback-stars {
 
 .full-articles .doc {
     margin: 0 0 0 2em;
+    -ms-overflow-style: none;
+    /* for Internet Explorer, Edge */
+    scrollbar-width: none;
+    /* for Firefox */
+    overflow-y: scroll;
+    padding: 0;
 }
 
 .enlighter-default {
     margin: 0!important;
+    font-family: 'Roboto Mono', monospace!important;
 }
 
 gcx-full-code {
@@ -350,20 +357,13 @@ gcx-full-code {
     scrollbar-width: none;
     /* for Firefox */
     overflow-y: scroll;
+    flex: 0 1 50%;
+    min-width: auto;
 }
 
 gcx-full-code::-webkit-scrollbar {
     display: none;
     /* for Chrome, Safari, and Opera */
-}
-
-.full-articles .doc {
-    -ms-overflow-style: none;
-    /* for Internet Explorer, Edge */
-    scrollbar-width: none;
-    /* for Firefox */
-    overflow-y: scroll;
-    padding: 0;
 }
 
 .full-articles .doc::-webkit-scrollbar {
@@ -408,11 +408,6 @@ schema#gcx-schema {
 
 gcx-full {
     width: 100%;
-}
-
-gcx-full-code {
-    flex: 0 1 50%;
-    min-width: auto;
 }
 
 
@@ -930,10 +925,6 @@ label.switch_label:after {
 
 /* Right Block - Code */
 
-.enlighter-default {
-    font-family: 'Roboto Mono', monospace!important;
-}
-
 .enlighter-t-bootstrap4 .enlighter-m0 {
     color: #8A3FFC!important;
 }
@@ -995,10 +986,6 @@ label.switch_label:after {
 
 .dark-mode .enlighter-t-bootstrap4 .enlighter-k5 {
     color: #ffffff;
-}
-
-.dark-mode .doc .sect1.active {
-    background-color: #20293A!important;
 }
 
 .dark-mode .doc .sect1.active {
