@@ -169,6 +169,10 @@ ul#ds_sites_list li a:active {
     padding-right: 0;
 }
 
+.navbar-brand img {
+    height: 40px;
+}
+
 .toolbar {
     position: unset;
     top: unset;
