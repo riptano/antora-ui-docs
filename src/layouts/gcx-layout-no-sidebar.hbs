@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  
+{{> head defaultPageTitle='Untitled'}}
+  </head>
+  <body class="article{{#with (or page.attributes.role page.role)}} {{{this}}}{{/with}}">
+{{> header}}
+<div class="body"> 
+  <main class="article">
+  {{> toolbar}}
+    <div class="content">
+  {{#if (eq page.layout '404')}}
+  {{> article-404}}
+  {{else}} 
+  {{> article}}  
+  {{/if}}
+    </div>
+  </main>  
+  </div>
+{{> footer}}
+
+{{> intercom}}
+  </body>
+</html>
