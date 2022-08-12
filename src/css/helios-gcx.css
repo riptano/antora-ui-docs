@@ -45,13 +45,15 @@
 }
 
 .nav-container {
-    width: 280px;
+    width: 294px;
+    box-shadow: 2px 0px 0px var(--nav-border-color);
     transition: 150ms ease-in-out
 }
 
 @media screen and (min-width:769px) {
     .nav-container {
-        width: 280px;
+        width: 294px;
+        
     }
 }
 
@@ -289,6 +291,9 @@ ul#ds_sites_list li a:active {
 
 
 /*Card Styles*/
+.helios-card.mdc-card--outlined{
+    margin-top: 4rem;
+}
 
 feedback-stars {
     --spacing-space01h: 16px;
@@ -330,6 +335,7 @@ feedback-stars {
     padding: 24px;
     box-shadow: 0px 6px 8px rgb(32 41 58 / 8%), 0px 4px 10px rgb(32 41 58 / 8%), 0px 3px 12px rgb(32 41 58 / 12%);
     border-radius: 6px;
+    width: 100%;
 }
 
 
@@ -407,7 +413,7 @@ gcx-full-code {
     flex: 0 1 50%;
     min-width: auto;
     position: relative;
-    right: 0.75px;
+    right: 1.05px;
     height: auto!important;
 }
 
@@ -508,6 +514,7 @@ gcx-schema-bottom-sidebar {
 
 .sidebar.small-container {
     width: 55px;
+    box-shadow: 2px 0px 0px var(--nav-border-color);
 }
 
 .small-container .small-nav-list {
@@ -611,6 +618,14 @@ label.collapse_label:after {
     display: inline-block;
 }
 
+
+.dark-mode .collapse[type="checkbox"]+label {
+    background-image: url(../img/open-white.svg);
+}
+
+.dark-mode .collapse[type="checkbox"]:checked+label {
+    background-image: url(../img/close-white.svg);
+}
 
 /* Header Navbar */
 
@@ -736,20 +751,39 @@ label.switch_label:after {
 
 /*Dark mode: Mobile Header */
 
-.dark-mode .navbar-menu {
-    background: var(--color-black);
-    ;
+/* gcx-schema-sample-app-gallery */
+.dark-mode gcx-schema-sample-app-gallery {
+    --gcx-app-appgallery-h4-color: var(--white);
+    --gcx-app-gallery-p-color: var(--color-interface-night-300);
+    --gcx-sample-appgallery-card-background: var(--color-interface-night-900);
+    --gcx-sample-appgallery-card-border: 2px solid #2E394E;
 }
 
+.dark-mode .small-container gcx-schema-sample-app-gallery {
+    --gcx-sample-appgallery-card-border: 0;
+}
+
+.dark-mode .mdc-card--outlined{
+    border: 2px solid #2E394E;
+}
+
+.dark-mode .doc h2:not(.discrete){
+    border-bottom: 1px solid #2E394E;
+}
 
 /* Dark mode: Navigation*/
 
 .dark-mode .nav {
-    background: var(--color-jet-80);
+    background: var(--color-interface-night-900);
+    box-shadow: 2px 0px 0px #2e394e;
+}
+
+.dark-mode .nav-container{
+    box-shadow: 2px 0px 0px #2E394E;
 }
 
 .dark-mode li.nav-item.toggler.is-active:hover {
-    background: var(--color-jet-80);
+    background: var(--color-interface-night-900);
 }
 
 .dark-mode .nav-menu h3.title {
@@ -793,27 +827,34 @@ label.switch_label:after {
 }
 
 .dark-mode .nav-item.is-current-page a {
-    color: var(--color-black);
+    color: var(--color-interface-night-300);
 }
 
 .dark-mode .nav-item.is-current-page::before {
-    background: var(--gray);
-    border: 2px solid var(--gray);
+    background: var(--color-interface-night-300);
+    border: 2px solid var(--color-interface-night-300);
 }
+
+.dark-mode .nav-item.is-current-page {
+    background-color: var(--color-interface-night-800);
+}
+
 
 
 /* Dark mode: Toolbar*/
 
 .dark-mode .toolbar {
     color: var(--white);
-    background-color: var(--color-jet-80);
+    background-color: var(--color-interface-night-900);
 }
 
-
+.dark-mode .breadcrumbs li {
+    color: var(--color-interface-night-300);
+}
 /* Dark mode: Body*/
 
 .dark-mode body {
-    background-color: var(--color-jet-80);
+    background-color: var(--color-interface-night-900);
 }
 
 
@@ -832,7 +873,7 @@ label.switch_label:after {
 /*Dark mode: Footer*/
 
 .dark-mode .wh_footer {
-    background-color: var(--color-black);
+    background-color: var(--color-interface-night-800);
 }
 
 
@@ -840,14 +881,14 @@ label.switch_label:after {
 
 .dark-mode .header,
 .dark-mode .navbar {
-    background-color: var(--color-black);
+    background-color: var(--color-interface-night-800);
 }
 
 
 /* Dark mode: Top Bar*/
 
 .dark-mode gcx-schema-topbar {
-    --gcx-topbar-bgcolor: var(--gray-dark);
+    --gcx-topbar-bgcolor: var(--color-blue-gray-4);
     ;
 }
 
@@ -860,46 +901,41 @@ label.switch_label:after {
 }
 
 
-/* Dark mode: buttons */
-
-.dark-mode .ds_buttons_button {
-    background: var(--gray-dark);
-}
-
-.dark-mode .ds_buttons_button:hover {
-    background: var(--gray);
-}
-
-
 /* Dark mode: cards*/
 
 .dark-mode .doc {
-    color: var(--white);
+    color: var(--color-interface-night-300);
 }
 
 .dark-mode .doc .sidebarblock {
-    background: var(--gray-dark);
+    background: var(--color-interface-night-800);
 }
 
 .dark-mode .helios-card {
-    background-color: var(--gray-dark);
+    background-color: var(--color-interface-night-900);
 }
 
 .dark-mode .doc pre:not(.highlight),
 .doc pre.highlight code {
-    background: var(--gray-dark);
-    box-shadow: inset 0 0 1.75px var(--gray-dark);
+    background: var(--color-interface-night-800);
+    box-shadow: inset 0 0 1.75px var(--color-interface-night-800);
 }
 
 .dark-mode .doc .exampleblock>.content {
-    background: var(--gray-dark);
+    background: var(--color-interface-night-800);
 }
 
 .dark-mode .doc .admonitionblock td.content {
-    background: var(--gray-dark);
+   /* background: var(--gray-dark);*/
 }
 
+.dark-mode .doc .sidebarblock > .content > .title{
+    color: var(--white);
+}
 
+.dark-mode .doc .sidebarblock > .content > .title a{
+    color: var(--white);
+}
 /*Dark Mode Aside Menu*/
 
 .dark-mode .toc .toc-menu a {
@@ -991,17 +1027,18 @@ label.switch_label:after {
 }
 
 .dark-mode .enlighter-t-bootstrap4 .enlighter-k5 {
-    color: #ffffff;
+    color: var(--white);
 }
 
 .dark-mode .doc .sect1.active {
-    background-color: #20293A!important;
+    background-color: var(--color-interface-night-800);
 }
 
 .dark-mode .enlighter-t-bootstrap4 div.enlighter>div.enlighter-special {
-    background-color: #20293A!important;
+    background-color: var(--color-interface-night-800);
 }
 
 .dark-mode .enlighter-t-bootstrap4 .enlighter-k10 {
-    color: #ffffff!important;
+    color: var(--white)!important;
 }
+

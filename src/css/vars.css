@@ -62,6 +62,10 @@
     --color-red: red;
     --color-sidebar: #f7f8ff;
     --color-navbar-hover: #ccc;
+    --color-interface-night-300: #A6B1C2;
+    --color-interface-night-800: #2E394E;
+    --color-interface-night-900: #20293A;
+    --color-blue-500: #1E71D4;
     /* fonts */
     --rem-base: 18;
     /* used to compute rem value from desired pixel value (e.g., calc(18 / var(--rem-base) * 1rem) = 18px) */
