@@ -53,7 +53,6 @@
 @media screen and (min-width:769px) {
     .nav-container {
         width: 294px;
-        
     }
 }
 
@@ -289,9 +288,20 @@ ul#ds_sites_list li a:active {
     border-width: 1.5px;
 }
 
+.nav.pagination {
+    margin-bottom: 20px;
+}
+
+@media screen and (min-width: 1024px) {
+    .doc {
+        --doc-max-width--desktop: calc(1028 / var(--rem-base) * 1rem);
+    }
+}
+
 
 /*Card Styles*/
-.helios-card.mdc-card--outlined{
+
+.helios-card.mdc-card--outlined {
     margin-top: 4rem;
 }
 
@@ -481,6 +491,9 @@ a.ds_buttons_button:hover {
 .nav-item.toggler>button {
     padding: 0;
     margin: 0 10px;
+    position: absolute;
+    top: 10px;
+    right: 0;
 }
 
 .nav-item.toggler .nav-text {
@@ -618,7 +631,6 @@ label.collapse_label:after {
     display: inline-block;
 }
 
-
 .dark-mode .collapse[type="checkbox"]+label {
     background-image: url(../img/open-white.svg);
 }
@@ -626,6 +638,7 @@ label.collapse_label:after {
 .dark-mode .collapse[type="checkbox"]:checked+label {
     background-image: url(../img/close-white.svg);
 }
+
 
 /* Header Navbar */
 
@@ -751,7 +764,9 @@ label.switch_label:after {
 
 /*Dark mode: Mobile Header */
 
+
 /* gcx-schema-sample-app-gallery */
+
 .dark-mode gcx-schema-sample-app-gallery {
     --gcx-app-appgallery-h4-color: var(--white);
     --gcx-app-gallery-p-color: var(--color-interface-night-300);
@@ -763,13 +778,14 @@ label.switch_label:after {
     --gcx-sample-appgallery-card-border: 0;
 }
 
-.dark-mode .mdc-card--outlined{
+.dark-mode .mdc-card--outlined {
     border: 2px solid #2E394E;
 }
 
-.dark-mode .doc h2:not(.discrete){
+.dark-mode .doc h2:not(.discrete) {
     border-bottom: 1px solid #2E394E;
 }
+
 
 /* Dark mode: Navigation*/
 
@@ -778,7 +794,7 @@ label.switch_label:after {
     box-shadow: 2px 0px 0px #2e394e;
 }
 
-.dark-mode .nav-container{
+.dark-mode .nav-container {
     box-shadow: 2px 0px 0px #2E394E;
 }
 
@@ -840,7 +856,6 @@ label.switch_label:after {
 }
 
 
-
 /* Dark mode: Toolbar*/
 
 .dark-mode .toolbar {
@@ -851,6 +866,8 @@ label.switch_label:after {
 .dark-mode .breadcrumbs li {
     color: var(--color-interface-night-300);
 }
+
+
 /* Dark mode: Body*/
 
 .dark-mode body {
@@ -925,17 +942,15 @@ label.switch_label:after {
     background: var(--color-interface-night-800);
 }
 
-.dark-mode .doc .admonitionblock td.content {
-   /* background: var(--gray-dark);*/
-}
-
-.dark-mode .doc .sidebarblock > .content > .title{
+.dark-mode .doc .sidebarblock>.content>.title {
     color: var(--white);
 }
 
-.dark-mode .doc .sidebarblock > .content > .title a{
+.dark-mode .doc .sidebarblock>.content>.title a {
     color: var(--white);
 }
+
+
 /*Dark Mode Aside Menu*/
 
 .dark-mode .toc .toc-menu a {
@@ -1041,4 +1056,3 @@ label.switch_label:after {
 .dark-mode .enlighter-t-bootstrap4 .enlighter-k10 {
     color: var(--white)!important;
 }
-
