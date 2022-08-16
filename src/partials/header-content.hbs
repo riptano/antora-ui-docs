@@ -2,7 +2,8 @@
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a href="{{{or site.url (or siteRootUrl siteRootPath)}}}">
+      <!-- <a href="{{{or site.url (or siteRootUrl siteRootPath)}}}"> -->
+      <a href="https://docs.datastax.com">
               <img src="{{{uiRootPath}}}/img/logo.png" alt=""> </a>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
@@ -14,7 +15,7 @@
       <div class="navbar-end">
          <div class="doc-link">
           <ul id="ds_sites_list">
-            <li><a href="/en/glossary/docs" target="_blank">Glossary</a></li>
+            <li><a href="https://docs.datastax.com/en/glossary/docs" target="_blank">Glossary</a></li>
             <li><a href="https://support.datastax.com/" target="_blank">Support</a></li>
             <li><a href="https://downloads.datastax.com/" target="_blank">Downloads</a></li>
             <li><a href="https://www.datastax.com/" target="_self">DataStax Home</a></li>
@@ -33,11 +34,10 @@
                     </svg>
                     <input id="alg-search-input" class="ds-datastax-search-input" type="text" name="query" placeholder="Search"/>
                   </div>
-                    <button id="alg-search-button" class="ds-search-button" type="submit" style="display: none"></button>
-                    <input id="dataset" type="hidden" name="dataset" value="docs"/>
+                   <button id="alg-search-button" class="ds-search-button" type="submit" style="display: none"></button>
+		   <input id="dataset" type="hidden" name="dataset" value="docs"/>
                 </div>
           </form>
-          <a class="navbar-item ds_buttons_button" href="/en/landing_page/doc/landing_page/current.html">Docs</a>
           <span onclick="window.Intercom('show');" class="ds_buttons_button get-started">Get Live Help</span>
         </div>
        
