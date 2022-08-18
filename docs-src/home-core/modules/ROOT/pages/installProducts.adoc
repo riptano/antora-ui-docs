@@ -1,0 +1,49 @@
+= Installing DataStax Products and Related Projects
+
+DataStax provides a number of ways to install DataStax products and related projects.
+
+== Installing DataStax Enterprise
+
+* https://docs.datastax.com/en/install/6.8/install/installWhichOne.html[Choosing the install method to use]
+* Installing DataStax Enterprise (DSE) on a https://docs.datastax.com/en/install/6.8/install/dseBasicInstall.html[single node]
+* Installing the https://docs.datastax.com/en/jdk-install/doc/jdk-install/installJDKabout.html[JDK] for DSE or Cassandra
+* Installing a DSE cluster using Lifecycle Manager https://docs.datastax.com/en/install/6.8/install/installLCM.html[6.8] | https://docs.datastax.com/en/opscenter/6.7/opsc/LCM/opscLCMInstallDSE.html[6.7] |
+https://docs.datastax.com/en/opscenter/6.5/opsc/LCM/opscLCMInstallDSE.html[6.5] | https://docs.datastax.com/en/opscenter/6.1/opsc/LCM/opscLCMgetStartedWorkflow.html[6.1]
+* Installing DSE on RHEL-based systems using Yum https://docs.datastax.com/en/install/6.8/install/installRHELdse.html[6.8] | https://docs.datastax.com/en/install/6.7/install/installRHELdse.html[6.7] |  https://docs.datastax.com/en/install/6.0/install/installRHELdse.html[6.0] | https://docs.datastax.com/en/dse/5.1/dse-admin/datastax_enterprise/install/installRHELdse.html[5.1]
+* Installing DSE on Debian-based systems using APT https://docs.datastax.com/en/install/6.8/install/installDEBdse.html[6.8] | https://docs.datastax.com/en/install/6.7/install/installDEBdse.html[6.7] | https://docs.datastax.com/en/install/6.0/install/installDEBdse.html[6.0] | https://docs.datastax.com/en/dse/5.1/dse-admin/datastax_enterprise/install/installDEBdse.html[5.1]
+
+* Installing DSE using the binary tarball https://docs.datastax.com/en/install/6.8/install/installTARdse.html[6.8] | https://docs.datastax.com/en/install/6.7/install/installTARdse.html[6.7] | https://docs.datastax.com/en/install/6.0/install/installTARdse.html[6.0] | https://docs.datastax.com/en/dse/5.1/dse-admin/datastax_enterprise/install/installTARdse.html[5.1]
+* Installing DSE on cloud  platforms https://docs.datastax.com/en/install/6.8/install/installCloud.html[6.8] | https://docs.datastax.com/en/install/6.7/install/installCloud.html[6.7] | https://docs.datastax.com/en/install/6.0/install/installCloud.html[6.0] | https://docs.datastax.com/en/dse/5.1/dse-admin/datastax_enterprise/install/installCloud.html[5.1]
+* Installing DSE on Docker https://docs.datastax.com/en/docker/doc/docker/docker68/dockerAbout.html[6.8] | https://docs.datastax.com/en/docker/doc/docker/docker67/dockerAbout.html[6.7] | https://docs.datastax.com/en/docker/doc/docker/docker60/dockerAbout.html[6.0] | https://docs.datastax.com/en/dse/5.1/dse-admin/datastax_enterprise/install/installDocker.html[5.1]
+
+== Stargate project
+Install https://stargate.io/docs/stargate/1.0/developers-guide/install/install_overview.html[Stargate] and use its APIs (Document, REST, GraphQL) to directly access Apache Cassandra® or DSE databases.
+
+== K8ssandra project
+An open-source project that makes it easy to deploy and manage Cassandra in your preferred Kubernetes environment.
+
+* https://docs.k8ssandra.io/install/local/[Install K8ssandra on local Kubernetes]
+* https://docs.k8ssandra.io/install/aks/[Install K8ssandra on Microsoft Azure Kubernetes Service (AKS)]
+* https://docs.k8ssandra.io/install/doks/[Install K8ssandra on DigitalOcean Kubernetes (DOKS)]
+* https://docs.k8ssandra.io/install/eks/[Install K8ssandra on Amazon Elastic Kubernetes Service (EKS)]
+* https://docs.k8ssandra.io/install/gke/[Install K8ssandra on Google Kubernetes Engine (GKE)]
+
+== Installing DataStax OpsCenter
+DSE OpsCenter https://docs.datastax.com/en/install/6.8/install/opscInstallOpsc.html[6.8] | https://docs.datastax.com/en/install/6.7/install/opscInstallOpsc.html[6.7] | https://docs.datastax.com/en/install/6.0/install/opscInstallOpsc.html[6.5 on DSE 6.0] | https://docs.datastax.com/en/opscenter/6.1/opsc/install/opscInstallOpsc_g.html[6.1]
+
+== Installing supporting software
+* Open JDK 8 https://docs.datastax.com/en/jdk-install/doc/jdk-install/installOpenJdkDeb.html[Debian] | https://docs.datastax.com/en/jdk-install/doc/jdk-install/installOpenJdkRHEL.html[RHEL]
+* Oracle JDK 8 https://docs.datastax.com/en/jdk-install/doc/jdk-install/installOracleJdkDeb.html[Debian] | https://docs.datastax.com/en/jdk-install/doc/jdk-install/installOracleJdkRHEL.html[RHEL]
+* https://docs.datastax.com/en/jdk-install/doc/jdk-install/installPython27RHEL.html[Python 2.7] for older RHEL platforms
+
+== Installing developer tools
+DataStax Studio https://docs.datastax.com/en/install/6.8/install/installStudio.html[6.8] | https://docs.datastax.com/en/install/6.7/install/installStudio.html[6.7] | https://docs.datastax.com/en/install/6.0/install/installStudio.html[6.0]
+
+== Installing data loaders
+* https://docs.datastax.com/en/pulsar-connector/1.4/index.html[DataStax Apache Pulsar Connector]
+* https://docs.datastax.com/en/install/6.7/install/installGraph.html[DSE Graph Loader]
+* https://docs.datastax.com/en/dsbulk/doc/dsbulk/install/dsbulkInstall.html[DataStax Bulk Loader]
+* https://docs.datastax.com/en/kafka/doc/kafka/install/kafkaInstall.html[DataStax Apache Kafka® Connector]
+
+== Installing Apache Cassandra
+Apache Cassandra (OSS) installation https://docs.datastax.com/en/cassandra-oss/3.x/cassandra/install/install_cassandraTOC.html[3.x] | https://docs.datastax.com/en/cassandra-oss/3.0/cassandra/install/install_cassandraTOC.html[3.0] | https://docs.datastax.com/en/cassandra-oss/2.2/cassandra/install/install_cassandraTOC.html[2.2] | https://docs.datastax.com/en/cassandra-oss/2.1/cassandra/install/install_cassandraTOC.html[2.1]

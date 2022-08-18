@@ -1,0 +1,19 @@
+= DataStax database tools
+
+Here are tools for developing and managing your database.
+
+== Developer tools
+* https://docs.datastax.com/en/astra/docs/[DataStax Astra DB]
+* https://docs.datastax.com/en/dsdesktop/doc/desktop/dsDesktopAbout.html[DataStax Desktop]
+* https://docs.datastax.com/en/driver-matrix/doc/driver-matrix.html[DataStax drivers]
+* https://www.datastax.com/blog/nosqlbench[NoSQLBench]
+* DataStax Studio https://docs.datastax.com/en/studio/6.8/index.html[6.8] | https://docs.datastax.com/en/studio/6.7/index.html[6.7] | https://docs.datastax.com/en/dse/5.1/dse-dev/datastax_enterprise/studio/stdToc.html[2.0]
+* Docker https://docs.datastax.com/en/docker/doc/docker/docker68/dockerReadme.html[6.8] | https://docs.datastax.com/en/docker/doc/docker/docker67/dockerReadme.html[6.7] | https://docs.datastax.com/en/docker/doc/docker/docker60/dockerReadme.html[6.0] | https://docs.datastax.com/en/docker/doc/docker/docker51/dockerReadme.html[5.1]
+
+== Administrator/Operator tools
+* DSE OpsCenter/Lifecycle Manager https://docs.datastax.com/en/opscenter/6.8/[6.8] | https://docs.datastax.com/en/opscenter/6.7/[6.7] | https://docs.datastax.com/en/opscenter/6.5/[6.5] | https://docs.datastax.com/en/opscenter/6.1/[6.1]
+* Data Loaders
+** https://docs.datastax.com/en/kafka/doc/index.html[DataStax Apache Kafka™ Connector]
+** https://docs.datastax.com/en/dsbulk/doc/index.html[DataStax Bulk Loader for Apache Cassandra®]
+** DSE Graph Loader https://docs.datastax.com/en/dse/6.7/dse-dev/datastax_enterprise/graph/dgl/graphloaderTOC.html[6.7] | https://docs.datastax.com/en/dse/6.0/dse-dev/datastax_enterprise/graph/dgl/graphloaderTOC.html[6.0] | https://docs.datastax.com/en/dse/5.1/dse-dev/datastax_enterprise/graph/dgl/graphloaderTOC.html[5.1]
+* Docker https://docs.datastax.com/en/docker/doc/docker/docker68/dockerReadme.html[6.8] | https://docs.datastax.com/en/docker/doc/docker/docker67/dockerReadme.html[6.7] | https://docs.datastax.com/en/docker/doc/docker/docker60/dockerReadme.html[6.0] | https://docs.datastax.com/en/docker/doc/docker/docker51/dockerReadme.html[5.1]

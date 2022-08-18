@@ -1,0 +1,4859 @@
+= DataStax Studio 6.8.x Third-party Software
+
+Third-party software licensed for DataStax Studio 6.8.0.
+
+.DataStax Studio 6.8.0 Third-Party Software
+[cols=3,*]
+|===
+h| Component h| Version  h| License
+
+| abab
+| 1.0.3
+| ISC
+
+| abstract
+| 1.0.0
+| LGPL-2.1-only
+
+| abstract_type		
+| 0.0.7
+| MIT
+
+| ace	
+| 3cb6ded6b2051dde87bf15d9c73c8a9fd2d8b9c8	
+| MPL-1.1; GPL-2.0-only; MPL-2.0; LGPL-2.1-only
+
+| acorn	
+| 4.0.13
+| MIT
+
+| acorn-globals
+| 3.1.0
+| MIT
+
+| actioncable	
+| 5.1.4
+| MIT
+
+| actionmailer
+| 5.1.4	
+| MIT
+
+| actionpack
+| 5.1.4	
+| MIT
+
+| actionview
+| 5.1.5	
+| MIT
+
+| activejob	
+| 5.1.4	
+| MIT
+
+| activemodel	
+| 5.1.4	
+| MIT
+
+| activerecord	
+| 5.1.4	
+| MIT
+
+| activerecord-jdbc-adapter		
+| 1.3.22
+| BSD-3-Clause; BSD-2-Clause
+
+| activerecord-jdbcsqlite3-adapter	
+| 1.3.22	
+| MIT
+
+| activeresource	
+| 3.2.16	
+| MIT
+
+| activesupport	
+| 5.1.4	
+| MIT
+
+| adamantium	
+| 0.2.0	
+| MIT
+
+| addressable	
+| 2.5.2	
+| Apache License, Version 2.0
+
+| ae	
+| 1.8.2	
+| BSD-2-Clause
+
+| afm	
+| 0.2.2	
+| MIT
+
+| aggregate	
+| 0.2.2	
+| MIT
+
+| ajv	
+| 4.11.8	
+| MIT
+
+| akka-actor
+| 2.4.17	
+| Apache License, Version 2.0
+
+| akka-slf4j	
+| 2.4.17
+| Apache License, Version 2.0
+
+| align-text	
+| 0.1.4	
+| MIT
+
+| allocation_stats	
+| 0.1.5
+| Apache License, Version 2.0
+
+| amdefine	
+| 1.0.1	
+| Multi-license: BSD-2-Clause or BSD-3-Clause or MIT; Multi-license: BSD-3-Clause or MIT
+
+| ammeter	
+| 1.1.4	
+| MIT
+
+| anima	
+| 0.3.0	
+| MIT
+
+| Animal Sniffer Annotations	
+| 1.14	
+| MIT
+
+| Annotations for Metrics	
+| 3.1.2	
+| Apache License, Version 2.0
+
+| ansi	
+| 1.5.0	
+| BSD-3-Clause; BSD-2-Clause
+
+| ansi-font	
+| 6275711e4c1d9b102144d4f126d5b7015159d3a2	
+| MIT
+
+| ansi-font		
+| 0.0.2
+| Multi-license: MIT or http://jeditoolkit.com/LICENSE
+
+| AOP alliance	
+| 1.0	
+| Public-Domain
+
+| aopalliance-repackaged	
+| 2.3.0-b05
+|
+
+| Apache Commons Codec	
+| 1.9	
+| Apache License, Version 2.0
+
+| Apache Commons Compress	
+| 1.11	
+| Apache License, Version 2.0
+
+| Apache Commons Exec	
+| 1.3	
+| Apache License, Version 2.0
+
+| Apache Commons Lang	
+| 3.9	
+| Apache License, Version 2.0
+
+| Apache Commons Logging	
+| 1.2	
+| Apache License, Version 2.0
+
+| Apache Commons Net	
+| 3.6	
+| Apache License, Version 2.0
+
+| Apache Commons Text	
+| 1.6	
+| Apache License, Version 2.0
+
+| Apache HttpClient	
+| 4.5.8	
+| Apache License, Version 2.0
+
+| Apache HttpClient Mime	
+| 4.5.8	
+| Apache License, Version 2.0
+
+| Apache HttpCore	
+| 4.4.6	
+| Apache License, Version 2.0
+
+| Apache Log4j 1.x Compatibility API	
+| 2.9.0	
+| Apache License, Version 2.0
+
+| Apache Log4j API	
+| 2.9.0	
+| LGPL-2.1-only
+
+| Apache Log4j Core	
+| 2.9.0
+|
+
+| Apache Log4j SLF4J Binding	
+| 2.9.0	
+| Apache License, Version 2.0
+
+| Apache Log4j Web	
+| 2.9.0	
+| Apache License, Version 2.0
+
+| appraisal	
+| 2.2.0	
+| MIT
+
+| arch		
+| f108ada9a904dba57ca1c9ef5026e1e89cb735a8
+| BSD-3-Clause
+
+| archive-tar-minitar		
+| 0.6.1
+| Multi-license: BSD-2-Clause or Ruby
+
+| arel	
+| 8.0.0	
+| MIT
+
+| argparse	
+| 1.0.10
+| MIT
+
+| array-equal	
+| 1.0.0	
+| MIT
+
+| array-find	
+| 1.0.0
+| MIT
+
+| aruba	
+| 0.6.2
+| MIT
+
+| asap	
+| 2.0.5	
+| MIT
+
+| Ascii85	
+| 1.0.2	
+| MIT
+
+| asciidoctor	
+| 1.5.6.1
+| MIT
+
+| asciimath	
+| 1.0.4
+| MIT
+
+| ASM Analysis	
+| 6.2
+| Multi-license: BSD-2-Clause or BSD-3-Clause
+
+| ASM Commons	
+| 6.2
+| Multi-license: BSD-2-Clause or BSD-3-Clause
+
+| ASM Core	
+| 6.2	
+| Multi-license: BSD-2-Clause or BSD-3-Clause
+
+| ASM library repackaged as OSGi bundle		
+| 2.3.0-b05
+| Multi-license: CDDL-1.1 or GPL-2.0-only or GPL-3.0-only
+
+| ASM Tree		
+| 6.2
+| Multi-license: BSD-2-Clause or BSD-3-Clause
+
+| asn1	
+| 0.2.3
+| MIT
+
+| assert-plus	
+| 1.0.0	
+| MIT
+
+| ast	
+| 2.3.0
+| MIT
+
+| ast-types	
+| 0.9.6	
+| MIT
+
+| astw	
+| 0.0.0	
+| MIT
+
+| async	
+| 1.5.2
+| MIT
+
+| Asynchronous Http Client	
+| 2.0.14
+| Apache License, Version 2.0; public-domain
+
+| Asynchronous Http Client Netty Utils	
+| 2.0.14 
+| Apache License, Version 2.0
+
+| asyncjs	
+| 0.0.10	
+| MIT
+
+| asynckit
+| 0.4.0
+| MIT
+
+| atomic	
+| 1.1.99
+| Apache License, Version 2.0
+
+| attr-accept	
+| 1.1.0	
+| MIT
+
+| automatiek	
+| 0.1.2	
+| MIT
+
+| autoprefixer-rails	
+| 7.0.1
+| MIT
+
+| awesome_print	
+| 1.8.0	
+| 	MIT
+
+| aws4	
+| 1.6.0	
+| MIT
+
+| aws-sign
+| 2	0.6.0
+| Apache License, Version 2.0
+
+| babel-runtime	
+| 5.8.38
+| MIT
+
+| babel-source	
+| 5.8.35
+| MIT
+
+| babel-transpiler	
+| 0.7.0
+| MIT
+
+| backports	
+| 3.11.4
+| MIT
+
+| bacon	
+| 1.2.0
+| MIT
+
+| bacon-colored_output	
+| 1.1.1	
+| MIT
+
+| balanced-match	
+| 1.0.0
+| MIT
+
+| base62	
+| 1.1.2	
+| MIT
+
+| base64-js	
+| 0.0.2
+| MIT
+
+| bcat	
+| 0.6.2
+| MIT
+
+| bcrypt-pbkdf		
+| 1.0.1
+| Multi-license: BSD-2-Clause or BSD-3-Clause
+
+| Bean Validation API		
+| 1.1.0.Final
+| Apache License, Version 2.0
+
+| bean-validator		
+| 2.3.0-b05
+| Multi-license: CDDL-1.1 or GPL-2.0-only or GPL-2.0-with-classpath-exception or GPL-3.0-only
+
+| benchmark_suite	
+| 0.8.0
+| MIT
+
+| benchmark-ips	
+| 2.7.2
+| MIT
+
+| benchmark-memory	
+| 0.1.2	MIT
+| 0.1.2	MIT
+
+| big.js	
+| 3.1.3
+| MIT
+
+| binding_of_caller	
+| 0.7.2
+| MIT
+
+| blankslate	
+| 3.1.3	
+| MIT
+
+| blockenspiel	
+| 0.5.0	
+| BSD-3-Clause
+
+| bluecloth		
+| 2.2.0
+| Multi-license: BSD-2-Clause or BSD-3-Clause; BSD-3-Clause
+
+| bond	
+| 0.4.3
+| MIT
+
+| bones	
+| 3.8.4
+| MIT
+
+| boom		
+| 2.10.1
+| BSD-3-Clause; Multi-license: BSD-2-Clause or BSD-3-Clause
+
+| bootstrap-sass	
+| 3.3.6
+| MIT
+
+| bouncy-castle-java	
+| 1.5.0147
+| MIT
+
+| Bouncy Castle JSSE provider and TLS/DTLS API		
+| 1.61
+| Bouncy Castle Licence
+
+| Bouncy Castle PKIX, CMS, EAC, TSP, PKCS, OCSP, CMP, and CRMF APIs	
+| 1.61
+| Bouncy Castle Licence
+
+| Bouncy Castle Provider	
+| 1.61	
+| Bouncy Castle Licence
+
+| bourne	
+| 1.5.0	
+| MIT
+
+| bowser	
+| 1.7.3	
+| MIT
+
+| brace	
+| 0.8.0
+| MIT
+
+| brace-expansion	
+| 1.1.8
+| MIT
+
+| brass	
+| 1.2.1	
+| BSD-3-Clause
+
+| browserify	
+| 2.13.3
+| Multi-license: BSD-3-Clause or MIT
+
+| browser-pack	
+| 0.8.1	
+| MIT
+
+| browser-resolve	
+| 0.1.1
+| MIT
+
+| buffer-browserify	
+| 0.0.5
+| Multi-license: MIT or X11
+
+| buffer-shims	
+| 1.0.0	
+| MIT
+
+| builder	
+| 3.2.3	
+| MIT
+
+| bump	
+| 0.5.3	
+| MIT
+
+| bundler	
+| 1.16.0
+| MIT
+
+| byebug	
+| 9.0.6	
+| BSD-3-Clause; BSD-2-Clause
+
+| Byte Buddy (without dependencies)	
+| 1.8.15
+| Apache License, Version 2.0
+
+| callsite	
+| 1.0.0	
+| MIT
+
+| camelcase	
+| 1.2.1	
+| MIT
+
+| cane	
+| 3.0.0
+| Apache License, Version 2.0
+
+| capybara	
+| 2.14.0
+| MIT
+
+| caseless	
+| 0.12.0
+| Apache License, Version 2.0
+
+| celluloid	
+| 0.17.3
+| MIT
+
+| celluloid-essentials	
+| 0.20.5
+| MIT
+
+| celluloid-extras	
+| 0.20.5
+| MIT
+
+| celluloid-fsm	
+| 0.20.5
+| MIT
+
+| celluloid-io	
+| 0.17.3
+| MIT
+
+| celluloid-pool	
+| 0.20.5
+| MIT
+
+| celluloid-supervision	
+| 0.20.6
+| MIT
+
+| center-align	
+| 0.1.3
+| MIT
+
+| certificate_authority	
+| 0.1.6
+| MIT
+
+| cgi_multipart_eof_fix	
+| 2.5.0	
+| GPL-2.0-only; Ruby
+
+| chain-function	
+| 1.0.0
+| MIT
+
+| chamber	
+| 2.12.3
+| MIT
+
+| chardet	
+| 0.9.0
+| LGPL-2.1-only
+
+| charlock_holmes	
+| 0.7.6	
+| MIT
+
+| Checker Qual		
+| 2.0.0
+| LGPL-3.0-only; Multi-license: GPL-2.0-with-classpath-exception or MIT
+
+| childprocess	
+| 0.8.0	
+| MIT
+
+| chronic	
+| 0.10.2
+| MIT
+
+| chunky_png	
+| 1.3.8
+| MIT
+
+| ci_reporter	
+| 2.0.0
+| MIT
+
+| citron	
+| 0.4.0
+| BSD-3-Clause
+
+| citrus	
+| 3.0.1
+| MIT
+
+| ClassMate		
+| 0.8.0
+| Apache License, Version 2.0
+
+| Class Model for Hk2	2.3.0-b05	Multi-license: CDDL-1.1 or GPL-2.0-only or GPL-2.0-with-classpath-exception or GPL-3.0-only
+| 
+| 
+
+| classnames	
+| 2.2.5
+| MIT
+
+| clean-css	
+| 2.1.8
+| MIT
+
+| cliui	
+| 2.1.0	
+| ISC; MIT
+
+| cliver	
+| 0.3.2
+| MIT
+
+| co	
+| 4.6.0
+| MIT
+
+| cockpit		
+| 0.1.1
+| Multi-license: GPL-2.0-only or LGPL-2.1-only or LGPL-3.0-only or MPL-2.0
+
+| code_statistics	
+| 0.2.13
+| MIT
+
+| codeclimate-engine-rb	
+| 0.4.0	
+| MIT
+
+| codeclimate-test-reporter	
+| 0.6.0
+| MIT
+
+| coderay	
+| 1.0.9
+| MIT
+
+| coffee-rails	
+| 4.2.1
+| MIT
+
+| coffee-script	
+| 2.4.1	
+| MIT
+
+| coffee-script-source	
+| 1.12.2
+| MIT
+
+| color_difference	
+| 0.0.1
+| MIT
+
+| color-proximity	
+| 0.2.1
+| MIT
+
+| columnize		
+| 0.9.0
+| Multi-license: GPL-3.0-only or Ruby
+
+| combined-stream	
+| 1.0.5	
+| MIT
+
+| combine-source-map	
+| 0.1.3	
+| MIT
+
+| commander	
+| 2.20.3
+| MIT
+
+| commondir	
+| 0.0.2	
+| Multi-license: MIT or X11
+
+| commoner	
+| 0.10.8
+| MIT
+
+| commonjs	
+| 0.2.7	
+| MIT
+
+| commonjs	
+| f30bc7e7268c0574432f4d5f825ec787474a5804
+| MIT
+
+| commonmarker	
+| 0.17.5
+| MIT
+
+| Commons IO	
+| 2.6
+| Apache License, Version 2.0
+
+| compass	
+| 1.0.3
+| MIT
+
+| compass-core	
+| 1.0.3	
+| MIT
+
+| compass-import-once	
+| 1.0.5
+| MIT
+
+| component-emitter	
+| 1.2.1
+| MIT
+
+| concat-map	
+| 0.0.1
+| MIT
+
+| concat-stream	
+| 0.1.1
+| MIT
+
+| concord	
+| 0.1.5
+| MIT
+
+| concourse	
+| 0.16.0
+| MIT
+
+| concurrent-ruby	
+| 1.0.5	
+| MIT
+
+| config	
+| 1.3.0	
+| Apache License, Version 2.0
+
+| configuration		
+| 1.3.4
+| same as Ruby's
+
+| console-browserify		
+| 0.1.6
+| Multi-license: MIT or https://github.com/browserify/console-browserify/blob/master/LICENCE
+
+| content-type-parser	
+| 1.0.1
+| WTFPL
+
+| contracts	
+| 0.15.0
+| BSD-3-Clause; BSD-2-Clause
+
+| convert-source-map	
+| 0.2.6
+| MIT
+
+| cookiejar	
+| 0.3.3
+| BSD-2-Clause
+
+| cookiejar	
+| 2.1.0	
+| MIT
+
+| core-js	
+| 1.2.7
+| MIT
+
+| core-util-is	
+| 1.0.2
+| 1.0.2	MIT
+
+| core-utils	
+| 0.0.4
+| Multi-license: GPL-2.0-only or LGPL-2.1-only or MPL-2.0
+
+| countloc	
+| 0.4.0
+| Ruby
+
+| coveralls	
+| 0.8.21
+| MIT
+
+| crack	
+| 0.4.3	
+| MIT
+
+| create-react-class	
+| 15.6.0	
+| BSD-3-Clause
+
+| creole	
+| 0.5.0	
+| 
+
+| cryptiles		
+| 2.0.5
+| BSD-3-Clause; Multi-license: BSD-2-Clause or BSD-3-Clause
+
+| crypto	
+| d6449816ce06963d9d136eee5a56fca5b0616e7e	
+| BSD-3-Clause
+
+| crypto-browserify	
+| 0.2.1	
+|
+
+| css-element-queries	
+| 0.3.2	
+| MIT
+
+| cssom	
+| 0.3.2	
+| MIT
+
+| css-parse	
+| 1.7.0	
+| MIT
+
+| cssstyle	
+| 0.2.37	
+| MIT
+
+| cucumber	
+| 1.3.20	
+| MIT
+
+| cucumber-core	
+| 3.0.0	
+| MIT
+
+| cucumber-expressions	
+| 4.0.4	
+| MIT
+
+| cucumber-pro	
+| 0.0.17	
+| MIT
+
+| cucumber-tag_expressions	
+| 1.0.1	
+| MIT
+
+| cucumber-wire	
+| 0.0.1	
+| MIT
+
+| culture	
+| befa16032465eb1513b98f9c8a8f0d2aba5539e9	
+| MIT
+
+| curb	
+| 0.9.4	
+| Multi-license: MIT or Ruby
+
+| curl_ffi	
+| 0.0.8	
+| MIT
+
+| d3	
+| 5.15.0	
+| Multi-license: BSD-2-Clause or BSD-3-Clause; BSD-3-Clause
+
+| d3	
+| 5.15.0	
+| BSD-3-Clause; Multi-license: BSD-2-Clause or BSD-3-Clause
+
+| d3-array	
+| 1.2.4	
+| BSD-3-Clause; Multi-license: BSD-2-Clause or BSD-3-Clause
+
+| d3-axis	
+| 1.0.12	
+| Multi-license: BSD-2-Clause or BSD-3-Clause; BSD-3-Clause
+
+| d3-brush	
+| 1.1.5	
+| Multi-license: BSD-2-Clause or BSD-3-Clause; BSD-3-Clause
+
+| d3-chord	
+| 1.0.6	
+| Multi-license: BSD-2-Clause or BSD-3-Clause; BSD-3-Clause
+
+| d3-collection	
+| 1.0.7	
+| BSD-3-Clause; Multi-license: BSD-2-Clause or BSD-3-Clause
+
+| d3-color	
+| 1.4.0	
+| BSD-3-Clause; Multi-license: BSD-2-Clause or BSD-3-Clause
+
+| d3-contour	
+| 1.3.2	
+| Multi-license: BSD-2-Clause or BSD-3-Clause; BSD-3-Clause
+
+| d3-dispatch
+| 1.0.6
+| Multi-license: BSD-2-Clause or BSD-3-Clause; BSD-3-Clause
+
+| d3-drag	
+| 1.2.5	
+| Multi-license: BSD-2-Clause or BSD-3-Clause; BSD-3-Clause
+
+| d3-dsv	
+| 1.2.0	
+| Multi-license: BSD-2-Clause or BSD-3-Clause; BSD-3-Clause
+
+| d3-ease	
+| 1.0.6	
+| Multi-license: BSD-2-Clause or BSD-3-Clause; BSD-3-Clause; Multi-license: BSD-2-Clause or BSD-3-Clause; BSD-3-Clause
+
+| d3-fetch	
+| 1.1.2	
+| Multi-license: BSD-2-Clause or BSD-3-Clause; BSD-3-Clause
+
+| d3-force	
+| 1.2.1	
+| Multi-license: BSD-2-Clause or BSD-3-Clause; BSD-3-Clause
+
+| d3-format	
+| 1.4.3	
+| Multi-license: BSD-2-Clause or BSD-3-Clause; BSD-3-Clause
+
+| d3-geo	
+| 1.11.9	
+| Multi-license: BSD-2-Clause or BSD-3-Clause or MIT; Multi-license: BSD-3-Clause or MIT
+
+| d3-hierarchy	
+| 1.1.9	
+| Multi-license: BSD-2-Clause or BSD-3-Clause; BSD-3-Clause
+
+| d3-interpolate	
+| 1.4.0	
+| Multi-license: BSD-2-Clause or BSD-3-Clause; BSD-3-Clause
+
+| d3-path	
+| 1.0.9	
+| Multi-license: BSD-2-Clause or BSD-3-Clause; BSD-3-Clause
+
+| d3-polygon	
+| 1.0.6	
+| Multi-license: BSD-2-Clause or BSD-3-Clause; BSD-3-Clause
+
+| d3-quadtree	
+| 1.0.7	
+| Multi-license: BSD-2-Clause or BSD-3-Clause; BSD-3-Clause
+
+| d3-random	
+| 1.1.2	
+| Multi-license: BSD-2-Clause or BSD-3-Clause; BSD-3-Clause
+
+| d3-scale	
+| 2.2.2	
+| Multi-license: BSD-2-Clause or BSD-3-Clause; BSD-3-Clause
+
+| d3-scale-chromatic	
+| 1.5.0	
+| Multi-license: Apache License, Version 2.0 or BSD-2-Clause or BSD-3-Clause; Multi-license: Apache License, Version 2.0 or BSD-3-Clause
+
+| d3-selection	
+| 1.4.1	
+| Multi-license: BSD-2-Clause or BSD-3-Clause; BSD-3-Clause
+
+| d3-shape	
+| 1.3.7	
+| Multi-license: BSD-2-Clause or BSD-3-Clause; BSD-3-Clause
+
+| d3-time	
+| 1.1.0	
+| Multi-license: BSD-2-Clause or BSD-3-Clause; BSD-3-Clause
+
+| d3-time-format	
+| 2.2.3	
+| Multi-license: BSD-2-Clause or BSD-3-Clause; BSD-3-Clause
+
+| d3-timeline	
+| 67537bfeb14479f1bdd73d2a612a615d328dee30	
+| MIT
+
+| d3-timer	
+| 1.0.9	
+| Multi-license: BSD-2-Clause or BSD-3-Clause; BSD-3-Clause
+
+| d3-tip	
+| 0.6.7	
+| MIT
+
+| d3-transition	
+| 1.3.2	
+| Multi-license: BSD-2-Clause or BSD-3-Clause; BSD-3-Clause
+
+| d3-voronoi	
+| 1.1.4	
+| Multi-license: BSD-2-Clause or BSD-3-Clause or MIT; Multi-license: BSD-3-Clause or MIT
+
+| d3-zoom	
+| 1.8.3	
+| Multi-license: BSD-2-Clause or BSD-3-Clause; BSD-3-Clause
+
+| daemons	
+| 1.2.5	
+| MIT
+
+| dalli	
+| 2.7.9	
+| MIT
+
+| dashdash	
+| 1.14.1	
+| MIT
+
+| debug	
+| 2.6.3	
+| MIT
+
+| debug_inspector	
+| 0.0.2	
+| MIT
+
+| debugger	
+| 1.6.8	
+| BSD-3-Clause; BSD-2-Clause
+
+| debugger-linecache	
+| 1.2.0	
+| MIT
+
+| debugger-ruby_core_source	
+| 1.3.8	
+| MIT
+
+| decamelize	
+| 1.2.0	
+| MIT
+
+| *Deep Dependencies*
+| 
+| 
+
+| deep-diff	
+| 0.3.4	
+| MIT
+
+| deep-equal	
+| 1.0.1	
+| MIT
+
+| defined	
+| 1.0.0	
+| MIT
+
+| delayed-stream	
+| 1.0.0	
+| MIT
+
+| delorean	
+| 2.1.0	
+| MIT
+
+| descendants_tracker	
+| 0.0.4	
+| MIT
+
+| detective	
+| 4.5.0	
+| MIT
+
+| detroit	
+| 0.4.0	
+| GPL-3.0-only
+
+| detroit-gem	
+| 0.4.0	
+| GPL-3.0-only
+
+| detroit-standard	
+| 0.4.0	
+| GPL-3.0-only
+
+| detroit-yard	
+| 0.2.0	
+| GPL-3.0-only
+
+| devtools	
+| 0.1.16	
+| MIT
+
+| diff-lcs	
+| 1.3	
+| MIT
+
+| docile	
+| 1.3.0	
+| MIT
+
+| domain_name	
+| 0.5.20161129	
+| BSD-3-Clause; MPL-2.0
+
+| dom-helpers	
+| 3.2.1	
+| MIT
+
+| dompurify	
+| 2.0.7	
+| Multi-license: Apache License, Version 2.0 or MPL-2.0-no-copyleft-exception; MPL-2.0
+
+| dotenv	
+| 2.5.0	
+| MIT
+
+| dotopts	
+| 0.2.0	
+| BSD-3-Clause; BSD-2-Clause
+
+| dryice	
+| 0.4.11	
+| Apache License, Version 2.0
+
+| duktape	
+| 1.6.1.0	
+| MIT
+
+| duplexer	
+| 0.0.4	
+| Multi-license: MIT or UPL-1.0
+
+| ecc-jsbn	
+| 0.1.1	
+| MIT
+
+| eclipse Compiler for Java™	
+| 3.12.3	
+| EPL-1.0
+
+| em-http-request	
+| 1.1.5	
+| MIT
+
+| emitter-component	
+| 1.1.1	
+| MIT
+
+| emojis-list	
+| 2.1.0	
+| MIT
+
+| em-socksify	
+| 0.3.1	
+| MIT
+
+| em-synchrony	
+| 1.0.6	
+| MIT
+
+| encoding	
+| 0.1.12	
+| MIT
+
+| envify	
+| 3.4.1	
+| MIT
+
+| equalizer	
+| 0.0.11	
+| MIT
+
+| erector
+| 0.7.2	
+| MIT
+
+| errno	
+| 0.1.4	
+| MIT
+
+| error-prone annotations	
+| 2.1.3	
+| Apache License, Version 2.0
+
+| erubi	
+| 1.7.0	
+| MIT
+
+| erubis	
+| 2.7.0
+|
+
+| escape_utils	
+| 1.2.1	
+| MIT
+
+| escodegen	
+| 1.8.1	
+| BSD-2-Clause; BSD-3-Clause; Custom License File
+
+| esprima	
+| 2.7.3	
+| BSD-2-Clause; BSD-3-Clause
+
+| esprima-fb	
+| 3001.1.0-dev-harmony-fb	
+| BSD-2-Clause; Multi-license: BSD-2-Clause or BSD-3-Clause
+
+| ethon	
+| 0.6.3	
+| MIT
+
+| eventmachine	
+| 1.2.5	
+| Ruby
+
+| eventsource	
+| 0.1.6	
+| Multi-license: MIT or http://github.com/aslakhellesoy/eventsource-node/raw/master/LICENSE
+
+| excon	
+| 0.60.0	
+| MIT
+
+| execjs	
+| 2.7.0	
+| MIT
+
+| exenv	
+| 1.2.2	
+| Multi-license: BSD-2-Clause or BSD-3-Clause; BSD-3-Clause
+
+| exports-loader	
+| 0.6.3	
+| MIT
+
+| expression_parser	
+| 0.9.0	
+| CC-BY-SA-4.0
+
+| Expression Language 2.2 Implementation	
+| 2.2.4	
+| CDDL-1.0
+
+| Expression Language 3.0 API	
+| 2.2.4	
+| Multi-license: CDDL-1.0 or GPL-2.0-only or GPL-2.0-with-classpath-exception
+
+| extend	
+| 3.0.0	
+| MIT
+
+| extlib	
+| 0.9.16	
+| MIT
+
+| extsprintf	
+| 1.3.0	
+| MIT
+
+| ezamar	
+| 2009.06	
+| MIT
+
+| facets	
+| 3.1.0	
+| GPL-2.0-only; Zlib; BSD-3-Clause; Ruby
+
+| fakefs	
+| 0.11.0	
+| MIT
+
+| fakeweb	
+| 1.3.0	
+| MIT
+
+| faraday	
+| 0.11.0	
+| MIT
+
+| fast_xs	
+| 0.8.0	
+|
+
+| fastthread	
+| 1.0.7	
+| LGPL-2.1-only
+
+| fattr	
+| 2.3.0	
+| same as Ruby's
+
+| faye-websocket	
+| 0.4.7	
+| MIT
+
+| faye-websocket	
+| 0.11.1	
+| MIT
+
+| fbjs	
+| 0.8.15	
+| Unknown Licenses
+
+| fcgi	
+| 0.9.2.1	
+| MIT
+
+| fetch	
+| d4ed806fdcbdeaef707d27f6c88943f0336a647d	
+| MIT
+
+| ffi	
+| 1.9.18	
+| BSD-3-Clause; BSD-3-Clause; Multi-license: BSD-2-Clause or BSD-3-Clause
+
+| ffi2-generators	
+| 0.1.1	
+| BSD-3-Clause
+
+| findBugs-Annotations	
+| 2.0.1	
+| LGPL-2.1-only
+
+| findBugs-jsr305	
+| 1.3.9	
+| Apache License, Version 2.0
+
+| fivemat	
+| 1.3.7	
+| MIT
+
+| flay	
+| 2.8.1	
+| MIT
+
+| flexmock	
+| 0.9.0	
+| 
+
+| flog	
+| 4.4.1	
+| MIT
+
+| font-awesome	
+| 4.7.0	
+| MIT
+
+| forever-agent	
+| 0.6.1	
+| Apache License, Version 2.0
+
+| formatador	
+| 0.2.5	
+| MIT
+
+| form-data	
+| 2.1.2	
+| MIT
+
+| formidable	
+| 1.1.1	
+| MIT
+
+| fs
+| 0.0.1-security	
+| ISC
+
+| fs.realpath	
+| 1.0.0	
+| MIT
+
+| fuubar	
+| 2.2.0	
+| MIT
+
+| gauntlet	
+| 2.1.0	
+| MIT
+
+| gem_hadar	
+| 1.9.1	
+| MIT
+
+| gem_plugin	
+| 0.2.3	
+| GPL-2.0-only; Ruby
+
+| getpass	
+| 0.1.7	
+| MIT
+
+| gettext	
+| 3.2.2	
+| Ruby
+
+| gherkin	
+| 2.12.2	
+| MIT
+
+| git	
+| 1.2.5	
+| MIT
+
+| github-linguist	
+| 6.4.1	
+| MIT; MIT
+
+| github-markup	
+| 2.0.1	
+| MIT
+
+| glob	
+| 7.1.1	
+| Multi-license: ISC or MIT
+
+| globalid	
+| 0.4.1	
+| MIT
+
+| go	
+| e369490fb7db5f2d42bb0e8ee19b48378dee0ebf	
+| BSD-3-Clause; BSD-3-Clause
+
+| graceful-fs	
+| 4.1.11	
+| MIT
+
+| growl	
+| 1.0.3	
+| MIT
+
+| gson	
+| 0.6.1	
+| Apache License, Version 2.0
+
+| guard	
+| 2.14.1	
+| MIT
+
+| guard-bundler	
+| 2.0.0	
+| MIT
+
+| guard-coffeescript	
+| 2.0.1	
+| MIT
+
+| guard-compat	
+| 1.2.1	
+| MIT
+
+| guard-mutant	
+| 0.0.1	
+| MIT
+
+| guard-rspec	
+| 4.7.3	
+| MIT
+
+| guard-rubocop	
+| 1.2.0	
+| MIT
+
+| Guava: Google Core Libraries for Java	
+| 25.0-jre
+| 
+
+| Hamcrest All	
+| 1.3	
+| BSD-2-Clause
+
+| Hamcrest Core	
+| 1.1	
+| BSD-3-Clause
+
+| haml	
+| 5.0.4	
+| MIT
+
+| haml-rails	
+| 1.0.0	
+| MIT
+
+| haml-spec	
+| d9acf0e9077ab9c41aeec71a46dab362bb0e9c01	
+| WTFPL
+
+| hammerjs	
+| 2.0.8	
+| MIT
+
+| handlebars	
+| 4.0.5	
+| MIT
+
+| har-schema	
+| 1.0.5	
+| MIT
+
+| har-validator	
+| 4.2.1	
+| MIT
+
+| hashdiff	
+| 0.3.7	
+| MIT
+
+| hashery	
+| 2.1.2	
+| BSD-3-Clause; BSD-2-Clause
+
+| hashie	
+| 3.5.7	
+| MIT
+
+| hawk	
+| 3.1.3	
+| Multi-license: BSD-2-Clause or BSD-3-Clause or ./LICENSE; BSD-3-Clause
+
+| HawtJNI Runtime	
+| 1.9	
+| Apache License, Version 2.0
+
+| heckle	
+| 1.4.3	
+| MIT
+
+| Hibernate Validator Engine	
+| 5.0.0.Final	
+| Apache License, Version 2.0
+
+| highline	
+| 1.7.10	
+| GPL-2.0-only; Multi-license: GPL-2.0-only or Ruby
+
+| hike	
+| 1.2.3	
+| MIT
+
+| history	
+| 2.1.2	
+| MIT
+
+| hitimes	
+| 1.2.4	
+| ISC; MIT
+
+| HK2 API module	
+| 2.3.0-b05	
+| 
+
+| HK2 config types	
+| 2.3.0-b05	
+| Multi-license: CDDL-1.1 or GPL-2.0-only or GPL-2.0-with-classpath-exception or GPL-3.0-only
+
+| HK2 configuration module	
+| 2.3.0-b05	
+| Multi-license: CDDL-1.1 or GPL-2.0-only or GPL-2.0-with-classpath-exception or 
+GPL-3.0-only
+
+| HK2 core module	
+| 2.3.0-b05	
+| Multi-license: CDDL-1.1 or GPL-2.0-only or GPL-2.0-with-classpath-exception or GPL-3.0-only
+
+| HK2 Implementation Utilities	
+| 2.3.0-b05	
+| 
+
+| HK2 module of HK2 itself	
+| 2.3.0-b05	
+| Multi-license: CDDL-1.1 or GPL-2.0-only or GPL-2.0-with-classpath-exception or 
+GPL-3.0-only
+
+| HK2 Spring Bridge	
+| 2.3.0-b05	
+| Multi-license: CDDL-1.1 or GPL-2.0-only or GPL-2.0-with-classpath-exception or GPL-3.0-only
+
+| hoe	
+| 3.16.2	
+| MIT
+
+| hoe-bundler	
+| 1.3.0	
+| MIT
+
+| hoe-debugging	
+| 1.4.2	
+| MIT
+
+| hoe-doofus	
+| 1.0.0	
+| MIT
+
+| hoe-gemspec	
+| 1.0.0	
+| MIT
+
+| hoe-gemspec2	
+| 1.2.0	
+| MIT
+
+| hoe-git	
+| 1.6.0	
+| MIT
+
+| hoe-highline	
+| 0.0.1	
+| BSD-3-Clause
+
+| hoe-ignore	
+| 1.0.0	
+| MIT
+
+| hoek	
+| 2.16.3	
+| BSD-3-Clause; Multi-license: BSD-2-Clause or BSD-3-Clause
+
+| hoe-mercurial	
+| 1.3.1	
+| BSD-3-Clause
+
+| hoe-rubygems	
+| 1.0.0	
+| MIT
+
+| hoe-travis	
+| 1.4.1	
+| MIT
+
+| hoist-non-react-statics	
+| 1.2.0	
+| Multi-license: BSD-3-Clause or https://github.com/mridgway/hoist-non-react-statics/blob/master/LICENSE.md BSD-3-Clause
+
+| hpricot	
+| 0.8.6
+| 
+
+| html2haml	
+| 2.2.0	
+| MIT
+
+| html-encoding-sniffer	
+| 1.0.1	
+| WTFPL
+
+| htmlentities	
+| 4.3.4	
+| MIT
+
+| htmlparser	
+| 1.7.7	
+| MIT; Multi-license: MIT or http://github.com/tautologistics/node-htmlparser/raw/master/LICENSE
+
+| html-pipeline	
+| 1.11.0	
+| MIT
+
+| HtmlUnit	
+| 2.35.0	
+| Apache License, Version 2.0
+
+| HtmlUnit Core JS	
+| 2.35.0	
+| MPL-2.0; MPL-2.0
+
+| HtmlUnit CSS Parser	
+| 1.4.0	
+| Apache License, Version 2.0; Apache License, Version 2.0
+
+| htmlunit-driver	
+| 2.35.1	
+| Apache License, Version 2.0
+
+| HtmlUnit NekoHtml	
+| 2.35.0	
+| Apache License, Version 2.0
+
+| http	
+| 4.0.0	
+| MIT
+
+| http_parser.rb	
+| 0.6.0	
+| MIT
+
+| httparty	
+| 0.14.0	
+| MIT
+
+| http-browserify	
+| 0.1.11	
+| Multi-license: MIT or X11
+
+| httpclient	
+| 2.8.3	
+| Ruby
+
+| http-cookie	
+| 1.0.3	
+| MIT
+
+| http-form_data	
+| 2.1.1	
+| MIT
+
+| http-parser	
+| 335850f6b868d3411968cbf5a4d59fe619dee36f	
+| MIT
+
+| http-parser.java	
+| ff70651461d79b2a9458dd062a3796ce7fed7c15	
+| MIT
+
+| http-parser.java	
+| 1d6cef028e4c074f6d59d9f57e974e2d39406503	
+| MIT
+
+| http-parser-js	
+| 0.4.5
+| MIT
+
+| http-signature	
+| 1.1.1	
+| MIT; MIT
+
+| hyphenate-style-name	
+| 1.0.2	
+| BSD-3-Clause; Multi-license: BSD-2-Clause or BSD-3-Clause
+
+| i18n	
+| 1.1.0	
+| MIT
+
+| ice_nine	
+| 0.9.0	
+| MIT
+
+| iconv-lite	
+| 0.4.19	
+| MIT
+
+| idn	
+| 0.0.2	
+| BSD-2-Clause; Apache License, Version 2.0
+
+| idn-ruby	
+| 0.1.0	
+| BSD-2-Clause; Apache License, Version 2.0
+
+| image_size	
+| 1.5.0	
+| Ruby
+
+| image-size	
+| 0.5.1	
+| MIT
+
+| imports-loader	
+| 0.6.5	
+| MIT
+
+| inch	
+| 0.5.10	
+| MIT
+
+| indexer	
+| 0.3.1	
+| BSD-3-Clause
+
+| inflecto	
+| 0.0.2	
+| MIT
+
+| inflight	
+| 1.0.6	
+| MIT
+
+| inherits	
+| 2.0.3	
+| MIT
+
+| inline-source-map	
+| 0.2.5
+| MIT
+
+| inline-style-prefix-all	
+| 2.0.2	
+| MIT
+
+| inline-style-prefixer	
+| 2.0.5
+| MIT
+
+| innate	
+| 015.10.28
+| 
+
+| insert-module-globals	
+| 0.2.1	
+| MIT
+
+| interact.js	
+| 1.2.8	
+| MIT
+
+| interception	
+| 0.5	
+| MIT
+
+| introspection	
+| 0.0.4	
+| MIT
+
+| invariant	
+| 2.2.2	
+| BSD-3-Clause
+
+| ir_b	
+| 1.5.0	
+| MIT
+
+| isarray	
+| 1.0.0	
+| MIT
+
+| is-buffer	
+| 1.1.5	
+| MIT
+
+| isomorphic-fetch	
+| 2.2.1	
+| MIT
+
+| isstream	
+| 0.1.2	
+| MIT
+
+| is-stream	
+| 1.1.0	
+| MIT
+
+| is-typedarray	
+| 1.0.0	
+| MIT
+
+| itextomml	
+| 1.5.8
+| 
+
+| J2ObjC Annotations	
+| 1.1	
+| Apache License, Version 2.0
+
+| Jackson-annotations	
+| 2.9.10	
+| Apache License, Version 2.0
+
+| Jackson-core	
+| 2.9.9	
+| Apache License, Version 2.0
+
+| jackson-databind	
+| 2.9.9	
+| Apache License, Version 2.0
+
+| Jackson datatype: JSR310	
+| 2.9.10	
+| Apache License, Version 2.0
+
+| Jackson-datatype-jdk8	
+| 2.9.10	
+| Apache License, Version 2.0
+
+| Jackson-JAXRS-base	
+| 2.3.2	
+| 
+
+| Jackson-JAXRS-JSON	
+| 2.3.2	
+| Multi-license: Apache License, Version 2.0 or LGPL-2.1-only
+
+| Jackson-module-Afterburner	
+| 2.4.4	
+| Apache License, Version 2.0
+
+| Jackson-module-JAXB-annotations	
+| 2.3.2	
+| Multi-license: Apache License, Version 2.0 or LGPL-2.1-only
+
+| jar-dependencies	
+| 0.4.0	
+| MIT
+
+| jaro_winkler	
+| 1.5.3	
+| MIT
+
+| Java JWT	
+| 3.8.1	
+| MIT
+
+| Java Native Access	
+| 4.1.0	
+| ASL, version 2; LGPL-2.1-only
+
+| Javassist	
+| 3.20.0-GA	
+| Multi-license: Apache License, Version 2.0 or LGPL-2.1-only or MPL-1.1 or MPL-2.0; MPL-1.1
+
+| javax.annotation-api	
+| 1.2	
+| Multi-license: CDDL-1.1 or GPL-2.0-only or GPL-2.0-with-classpath-exception
+
+| javax.inject	
+| 1	
+| Apache License, Version 2.0
+
+| javax.inject	
+| 2.3.0-b05
+| 
+
+| javax.ws.rs-api	
+| 2.0	
+| 
+
+| JBoss Logging 3	
+| 3.1.1.GA	
+| LGPL-2.1-only
+
+| jdbc-sqlite3	
+| 3.15.1	
+| Apache License, Version 2.0
+
+| jeremymcanally-pending	
+| 0.1	
+| MIT
+
+| jersey-container-servlet	
+| 2.9	
+| Multi-license: CDDL-1.1 or GPL-2.0-only or GPL-2.0-with-classpath-exception or GPL-3.0-only; 
+Multi-license: CDDL-1.1 or GPL-2.0-only or GPL-2.0-with-classpath-exception
+
+| jersey-container-servlet-core	
+| 2.9	
+| Multi-license: CDDL-1.1 or GPL-2.0-only or GPL-2.0-with-classpath-exception or GPL-3.0-only
+
+| jersey-core-client	
+| 2.9	
+| Multi-license: CDDL-1.1 or GPL-2.0-only or GPL-2.0-with-classpath-exception or GPL-3.0-only
+
+| jersey-core-common	
+| 2.9	
+| GPL-2.0-only; CDDL-1.0
+
+| jersey-core-server	
+| 2.9	
+| Multi-license: Apache License, Version 2.0 or CDDL-1.1 or GPL-2.0-only or 
+GPL-2.0-with-classpath-exception or GPL-3.0-only
+
+| jersey-ext-bean-validation	
+| 2.9	
+| Multi-license: CDDL-1.1 or GPL-2.0-only or GPL-2.0-with-classpath-exception or GPL-3.0-only
+
+| jersey-media-json-jackson	
+| 2.9	
+| GPL-2.0-only; CDDL-1.0
+
+| jersey-media-multipart	
+| 2.9	
+| Multi-license: CDDL-1.1 or GPL-2.0-only or GPL-2.0-with-classpath-exception or GPL-3.0-only
+
+| jersey-media-sse	
+| 2.9	
+| Multi-license: CDDL-1.1 or GPL-2.0-only or GPL-2.0-with-classpath-exception or GPL-3.0-only
+
+| jersey-repackaged-guava	
+| 2.9	
+| GPL-2.0-only; CDDL-1.0
+
+| jersey-spring3	
+| 2.9	
+| Multi-license: CDDL-1.1 or GPL-2.0-only or GPL-2.0-with-classpath-exception or GPL-3.0-only
+
+| Jettison	
+| 1.3.3	
+| Apache License, Version 2.0
+
+| Jetty :: Asynchronous HTTP Client	
+| 9.4.16.v20190411	
+| Multi-license: Apache License, Version 2.0 or EPL-1.0
+
+| Jetty :: Http Utility	
+| 9.4.16.v20190411	
+| Multi-license: Apache License, Version 2.0 or EPL-1.0
+
+| Jetty :: IO Utility	
+| 9.4.16.v20190411	
+| Multi-license: Apache License, Version 2.0 or EPL-1.0
+
+| Jetty :: Utilities	
+| 9.4.16.v20190411	
+| Multi-license: Apache License, Version 2.0 or EPL-1.0
+
+| Jetty :: Websocket :: Client	
+| 9.4.16.v20190411	
+| Multi-license: Apache License, Version 2.0 or EPL-1.0
+
+| Jetty :: XML utilities	
+| 9.4.16.v20190411	
+| Multi-license: Apache License, Version 2.0 or EPL-1.0
+
+| jeweler	
+| 1.8.4	
+| MIT
+
+| jist	
+| 1.5.1	
+| MIT
+
+| journey	
+| 1.0.4	
+| MIT
+
+| jquery	
+| 2.2.0	
+| MIT
+
+| jquery	
+| 3.2.1	
+| MIT
+
+| jquery-rails	
+| 4.3.1	
+| MIT
+
+| jrjackson	
+| 0.2.9	
+| Apache License, Version 2.0
+
+| JRuby Complete	
+| 1.6.8	
+| BSD-2-Clause
+
+| jruby-openssl	
+| 0.9.21	
+| Multi-license: EPL-1.0 or GPL-2.0-only or GPL-2.0-with-classpath-exception or LGPL-2.1-only; 
+Multi-license: EPL-1.0 or GPL-2.0-only or LGPL-2.1-only
+
+| jsbn	
+| 0.1.1	
+| MIT
+
+| jsdom	
+| 9.11.0	
+| MIT
+
+| js-logging	
+| 0.1.0
+| MIT
+
+| json	
+| 2.1.0
+| Ruby
+
+| json_pure	
+| 2.1.0	
+| Ruby
+
+| JSON.simple	
+| 1.1.1	
+| Apache License, Version 2.0
+
+| json2csv	
+| 4.3.1	
+| MIT
+
+| json3	
+| 3.3.2	
+| MIT
+
+| json5	
+| 0.5.1
+| MIT
+
+| jsonify
+| 0.0.0
+| public-domain
+
+| jsonparse	
+| 1.3.1
+| MIT
+
+| json-schema
+| 0.2.3	
+| BSD 3-Clause "New" or "Revised" License
+
+| json-stable-stringify	
+| 1.0.1	
+| MIT
+
+| JSONStream
+| 0.4.4	
+| MIT; Apache License, Version 2.0
+
+| json-stringify-safe	
+| 5.0.1
+| MIT
+
+| jsprim	
+| 1.4.1	
+| MIT
+
+| js-stylesheet	
+| 0.0.1	
+| MIT
+
+| js-tokens	
+| 3.0.2	
+| MIT
+
+| jstransform	
+| 3.0.0
+| Apache License, Version 2.0
+
+| js-yaml
+| 3.6.0
+| MIT
+
+| JUnit	
+| 4.10
+| Common Public License Version 1.0
+
+| katex	
+| 0.4.3	
+| MIT
+
+| keycharm	
+| 0.2.0	
+| MIT; Apache License, Version 2.0
+
+| kgio	
+| 2.11.1	
+| LGPL-2.1-only
+
+| kind-of	
+| 3.2.2	
+| MIT
+
+| kpeg	
+| 1.1.0	
+| Multi-license: BSD-3-Clause or MIT
+
+| kramdown	
+| 1.13.2	
+| MIT
+
+| latest_ruby	
+| 0.0.6	
+| Zlib
+
+| launchy	
+| 2.4.3
+| ISC; MIT
+
+| lazy-cache
+| 1.0.4
+| MIT
+
+| lemon	
+| 10.03.06
+| 
+
+| less	
+| 2.6.0	
+| Apache License, Version 2.0
+
+| less.js	
+| ff5760e0994fd1ecc45bf50c242eaece9f109603
+| Apache License, Version 2.0
+
+| lexical-scope	
+| 0.0.15	
+| MIT
+
+| libnotify	
+| 0.8.4	
+| MIT
+
+| libv8	
+| 6.3.292.48.1	
+| MIT
+
+| licensed	
+| 1.1.0	
+| MIT; MIT
+
+| licensee
+| 9.9.2
+| MIT
+
+| linecache	
+| 1.3.1
+| GPL-3.0-only
+
+| liquid
+| 4.0.0	
+| MIT
+
+| listen	
+| 3.1.5
+| MIT
+
+| literati
+| 0.0.3
+| MIT
+
+| little-plugger
+| 1.1.4	
+| MIT
+
+| livescript	
+| 2.4.0	
+| MIT
+
+| livescript-source	
+| 1.5.0	
+| MIT
+
+| loader-utils	
+| 0.2.17
+| MIT
+
+| locale
+| 2.1.2	
+| Ruby
+
+| localmemcache	
+| 0.4.4
+| MIT
+
+| lodash
+| 4.17.4
+| MIT
+
+| lodash._getnative	
+| 3.9.1
+| MIT
+
+| lodash._isnative	
+| 2.4.1
+| MIT
+
+| lodash._objecttypes
+| 2.4.1
+| MIT
+
+| lodash.clonedeep
+| 4.5.0
+| MIT
+
+| lodash.debounce
+| 2.4.1	
+| MIT
+
+| lodash.get
+| 4.4.2
+| MIT
+
+| lodash.isarguments
+| 3.1.0
+| MIT
+
+| lodash.isarray
+| 3.0.4
+| MIT
+
+| lodash.isequal
+| 4.5.0
+| MIT
+
+| lodash.isfunction
+| 2.4.1
+| MIT
+
+| lodash.isobject
+| 2.4.1
+| MIT
+
+| lodash.keys
+| 3.1.2	
+| MIT
+
+| lodash.now
+| 2.4.1
+| MIT
+
+| lodash.set
+| 4.3.2
+| MIT
+
+| lodash.throttle
+| 2.4.1
+| MIT
+
+| lodash-es	
+| 4.17.4
+| MIT
+
+| lokar	
+| 0.1.0
+| BSD-3-Clause
+
+| longest
+| 1.0.1	
+| Multi-license: MIT or https://github.com/jonschlinkert/longest/blob/master/LICENSE MIT
+
+| loofah
+| 2.0.3
+| MIT
+
+| loose-envify
+| 1.3.1
+| MIT
+
+| loquacious
+| 1.9.1
+| MIT
+
+| lumberjack
+| 1.0.12	
+| MIT
+
+| LZ4 and xxHash
+| 1.4.1	
+| Apache License, Version 2.0
+
+| m	
+| 1.5.1
+| MIT
+
+| mail
+| 2.7.0
+| MIT
+
+| markaby
+| 0.9.0
+| MIT
+
+| markdown4j
+| 2.2-cj-1.0	
+| 
+
+| markdown-js	
+| 0.0.3	
+| 
+
+| maruku
+| 0.7.3
+| MIT
+
+| mast
+| 1.4.0	
+| 
+
+| mechanize	
+| 0.9.3	
+| GPL-2.0-only
+
+| memcache-client
+| 1.8.5
+| BSD-3-Clause
+
+| memoizable
+| 0.4.2
+| MIT
+
+| memory_profiler
+| 0.9.8
+| MIT
+
+| merb-core	
+| 1.0.15	
+| MIT
+
+| metaclass
+| 0.0.4
+| MIT
+
+| method_source
+| 0.9.0
+| MIT
+
+| methods
+| 1.1.2	
+| MIT
+
+| Metrics Core
+| 3.1.2
+| Public-Domain
+
+| mhennemeyer-output_catcher
+| 1.0.1
+| MIT
+
+| mime
+| 1.3.4
+| Multi-license: MIT
+
+| mime-db
+| 1.30.0
+| MIT
+
+| MIME streaming extension
+| 1.9.3
+| GPL-3.0-only; CDDL-1.0
+
+| mime-types
+| 3.1	
+| MIT
+
+| mime-types
+| 2.1.17	
+| MIT
+
+| mime-types-data
+| 3.2018.0812	
+| MIT
+
+| mini_mime
+| 0.1.4
+| MIT
+
+| mini_portile
+| 0.6.2
+| MIT
+
+| mini_portile2	
+| 2.1.0	
+| MIT
+
+| mini_racer
+| 0.1.15	
+| MIT
+
+| minimatch	
+| 3.0.4	
+| MIT
+
+| minimist
+| 0.0.8
+| MIT
+
+| minitar
+| 0.8	
+| Multi-license: BSD-2-Clause or Ruby
+
+| minitar-cli
+| 0.8	
+| Multi-license: BSD-2-Clause or Ruby
+
+| minitest	
+| 5.11.3	
+| MIT
+
+| minitest_tu_shim	
+| 1.3.3	
+| MIT
+
+| minitest-autotest	
+| 1.0.3
+| MIT
+
+| minitest-bonus-assertions
+| 3.0	
+| MIT
+
+| minitest-focus
+| 1.1.2
+| MIT
+
+| minitest-hooks
+| 1.5.0
+| MIT
+
+| minitest-power_assert
+| 0.3.0
+| BSD-3-Clause
+
+| minitest-reporters
+| 1.3.0
+| MIT
+
+| minitest-rg
+| 5.2.0
+| MIT
+
+| minitest-server	
+| 1.0.4
+| MIT
+
+| minitest-shared_description
+| 1.0.0	
+| MIT
+
+| minitest-sprint
+| 1.2.0	
+| MIT
+
+| mkdirp
+| 0.5.1
+| MIT
+
+| mocha	
+| 1.3.0
+| Multi-license: BSD-3-Clause or MIT
+
+| module-deps
+| 0.7.1	
+| MIT
+
+| moment
+| 2.18.1
+| MIT
+
+| mongrel
+| 1.2.0.pre2	
+| GPL-2.0-only; Ruby
+
+| morecane
+| 0.2.0
+| MIT
+
+| morpher
+| 0.2.6
+| MIT
+
+| ms
+| 0.7.2
+| MIT
+
+| mspec	
+| 1.9.1
+| MIT
+
+| multi_json
+| 1.13.1
+| MIT
+
+| multi_test
+| 0.1.2
+| MIT
+
+| multi_xml	
+| 0.6.0
+| MIT
+
+| multipart-post
+| 2.0.0
+| MIT
+
+| mustache	
+| 1.0.5
+| MIT
+
+| mustermann
+| 1.0.3
+| MIT
+
+| mutant
+| 0.8.12
+| MIT
+
+| mutant-rspec
+| 0.8.11	
+| MIT
+
+| mutter
+| 0.5.3	
+| MIT
+
+| nagoro
+| 2009.05	
+| 
+
+| nanotest
+| 0.9.4.1
+| MIT
+
+| nenv
+| 0.3.0
+| MIT
+
+| net
+| cbe0f9307d0156177f9dd5dc85da1a31abc5f2fb
+| BSD-3-Clause
+
+| net-http-persistent
+| 1.4.1
+| MIT
+
+| net-http-server
+| 0.2.2
+| MIT
+
+| netrc
+| 0.11.0
+| MIT
+
+| Netty/Buffer
+| 4.0.40.Final
+| Apache License, Version 2.0
+
+| Netty/Codec
+| 4.0.40.Final	
+| Apache License, Version 2.0
+
+| Netty/Codec/DNS
+| 2.0.14	
+| Apache License, Version 2.0
+
+| Netty/Codec/HTTP
+| 4.0.40.Final
+| Apache License, Version 2.0
+
+| Netty/Common
+| 4.0.40.Final
+| Apache License, Version 2.0
+
+| Netty/Handler	
+| 4.0.40.Final
+| Apache License, Version 2.0
+
+| Netty/Resolver
+| 2.0.14	
+| Apache License, Version 2.0
+
+| Netty/Resolver/DNS
+| 2.0.14	
+| Apache License, Version 2.0
+
+| Netty/Transport
+| 4.0.40.Final
+| Apache License, Version 2.0
+
+| Netty/Transport/Native/Epoll
+| 4.0.40.Final
+| Apache License, Version 2.0
+
+| Netty Reactive Streams Implementation
+| 1.0.6
+| Apache License, Version 2.0
+
+| nio4r	
+| 2.1.0
+| MIT
+
+| node-fetch
+| 1.6.3
+| MIT
+
+| nokogiri
+| 1.8.1	
+| Multi-license: Apache License, Version 2.0 or BSD-3-Clause or MIT or Zlib; MIT
+
+| nokogiri-diff
+| 0.2.0
+| MIT
+
+| notiffany	
+| 0.1.1	
+| MIT
+
+| notify
+| 0.5.2
+| Unknown Licenses
+
+| npm
+| 4.3.0
+| Artistic-2.0
+
+| NuProcess
+| 1.1.0	
+| Apache License, Version 2.0
+
+| nvd3
+| 1.8.1
+| Multi-license: Apache License, Version 2.0 or BSD-3-Clause; Apache License, Version 2.0
+
+| nwmatcher
+| 1.3.9	
+| MIT
+
+| oauth-sign
+| 0.8.2	
+| Apache License, Version 2.0
+
+| object-assign	
+| 4.1.1	
+| MIT
+
+| object-keys
+| 0.4.0
+| MIT
+
+| octokit
+| 4.7.0
+| MIT
+
+| oedipus_lex
+| 2.5.0
+| MIT
+
+| oj	
+| 2.18.5	
+| MIT
+
+| OkHttp
+| 3.11.0	
+| Apache License, Version 2.0
+
+| Okio	
+| 1.14.0	
+| Apache License, Version 2.0
+
+| once
+| 1.4.0
+| MIT
+
+| open4
+| 1.3.4
+| Custom License File; Ruby
+
+| optimist
+| 0.3.7
+| X11; MIT
+
+| org-ruby
+| 0.9.12
+| MIT
+
+| original
+| 1.0.0	
+| MIT
+
+| OSGi resource locator
+| 1.0.1
+| Multi-license: CDDL-1.1 or GPL-2.0-only or GPL-2.0-with-classpath-exception or GPL-3.0-only
+
+| packnga	
+| 1.0.4	
+| GPL-2.0-only
+
+| pandoc-ruby
+| 2.0.2	
+| MIT
+
+| parallel
+| 1.17.0	
+| MIT
+
+| parse5
+| 1.5.1
+| Multi-license: MIT or Ivan Nikulin
+
+| parse-base64vlq-mappings
+| 0.1.4	
+| MIT
+
+| parser
+| 2.4.0.0	
+| MIT
+
+| parslet
+| 1.7.1	
+| MIT
+
+| path
+| 1.3.1
+| MIT
+
+| path_expander	
+| 1.0.1
+| MIT
+
+| path-is-absolute
+| 1.0.1
+| MIT
+
+| pathname-common_prefix
+| 0.0.1	
+| LGPL-2.1-only
+
+| patron
+| 0.10.0
+| MIT
+
+| pdf-core
+| 0.7.0
+| GPL-2.0-only; GPL-3.0-only; Ruby
+
+| pdf-inspector	
+| 1.1.0	
+| Multi-license: GPL-3.0-only or Ruby
+
+| pdf-reader
+| 1.4.1
+| MIT
+
+| pelusa
+| 0.2.4
+| MIT
+
+| performance-now
+| 0.2.0
+| MIT
+
+| phantomjs	
+| 1.9.8.0
+| MIT
+
+| pilot	
+| 0.1.1
+| GPL-2.0-only; MPL-2.0; LGPL-2.1-only
+
+| plist	
+| 3.4.0
+| MIT
+
+| poltergeist
+| 1.15.0
+| MIT
+
+| polyglot
+| 0.3.5	
+| MIT
+
+| posix_mq
+| 2.4.0
+| Multi-license: GPL-3.0-only or LGPL-3.0-or-later
+
+| posix-spawn
+| 0.3.13
+| MIT
+
+| PostgreSQL JDBC Driver - JDBC 4.1	
+| 9.2-1003-jdbc4	
+| Multi-license: BSD-2-Clause or BSD-3-Clause
+
+| power_assert 
+| 1.1.1
+| Multi-license: BSD-3-Clause or Ruby
+
+| powerbar
+| 1.0.18	
+| MIT
+
+| powerpack	
+| 0.1.1	
+| MIT
+
+| prawn	
+| 2.2.2
+| GPL-2.0-only; GPL-3.0-only; Ruby
+
+| prawn-core
+| 0.8.4
+| GPL-2.0-only; Ruby
+
+| prawn-layout
+| 0.8.4
+| GPL-2.0-only
+
+| prawn-manual_builder
+| 0.2.0	
+| Multi-license: GPL-3.0-only or Ruby
+
+| prawn-security
+| 0.8.4
+| GPL-2.0-only; Ruby
+
+| prawn-table
+| 0.2.2	
+| Multi-license: GPL-2.0-only or GPL-3.0-only or Ruby or RUBY
+
+| private
+| 0.1.7	
+| MIT
+
+| process
+| 0.5.2
+| MIT
+
+| process-nextick-args
+| 1.0.7
+| MIT
+
+| procto
+| 0.0.3
+| MIT
+
+| promise
+| 7.3.1	
+| MIT
+
+| promised-fs
+| 0.1.0	
+| MPL-2.0
+
+| promised-utils
+| 0.0.9
+| MPL-2.0
+
+| propagating-hammerjs
+| 1.4.6
+| MIT
+
+| prop-types
+| 15.5.10	
+| BSD-3-Clause
+
+| protostuff :: api
+| 1.4.4
+| Apache License, Version 2.0
+
+| protostuff :: collectionschema
+| 1.4.4	
+| Apache License, Version 2.0
+
+| protostuff :: core
+| 1.4.4	
+| Apache License, Version 2.0
+
+| protostuff :: json
+| 1.4.4	
+| Apache License, Version 2.0
+
+| protostuff :: runtime	
+| 1.4.4	
+| Apache License, Version 2.0
+
+| prr	
+| 0.0.0
+| MIT
+
+| pry
+| 0.11.3
+| MIT
+
+| pry-byebug
+| 3.5.0
+| MIT
+
+| pry-debugger
+| 0.2.3	
+| MIT
+
+| pry-doc
+| 0.8.0
+| MIT
+
+| pry-editline
+| 1.1.2
+| MIT
+
+| pry-nav
+| 0.2.4
+| MIT
+
+| pry-remote
+| 0.1.8
+| Zlib
+
+| pry-rescue
+| 1.4.4
+| MIT
+
+| pry-stack_explorer
+| 0.4.9.2	
+| MIT
+
+| pstree
+| 0.1.0
+| GPL-2.0-only
+
+| puma
+| 3.11.4
+| BSD-3-Clause
+
+| punycode
+| 1.4.1	
+| MIT
+
+| pygments.rb
+| 0.3.7
+| MIT
+
+| q	
+| 1.5.0
+| MIT
+
+| qed
+| 10.03.04
+|
+
+| qs
+| 6.4.0
+| Multi-license: BSD-2-Clause or BSD-3-Clause; BSD-3-Clause
+
+| query-string
+| 3.0.3
+| MIT
+
+| querystringify
+| 0.0.4
+| MIT
+
+| quickl
+| 0.4.3	
+| MIT
+
+| rabl
+| 0.13.1
+| MIT
+
+| racc
+| 1.4.14
+| MIT
+
+| rack
+| 2.0.3
+| MIT
+
+| rack-cache
+| 1.7.0
+| MIT
+
+| rack-contrib
+| 0.9.2	
+| MIT
+
+| rack-mount
+| 0.6.14
+| MIT
+
+| rack-protection
+| 2.0.4
+| MIT
+
+| rack-ssl
+| 1.3.4
+| MIT
+
+| rack-test
+| 0.8.2	
+| MIT
+
+| radium
+| 0.18.4	
+| MIT
+
+| radius
+| 0.7.4	
+| MIT
+
+| rails
+| .1.4
+| MIT
+
+| rails-dom-testing
+| 2.0.3
+| MIT
+
+| rails-html-sanitizer
+| 1.0.3
+| MIT
+
+| railties	
+| 5.1.4
+| MIT
+
+| rainbow
+| 2.2.2
+| MIT
+
+| raindrops
+| 0.19.0
+| LGPL-2.1-only
+
+| rake
+| 12.2.1
+| MIT
+
+| rake-compiler	
+| 1.0.4
+| MIT
+
+| rake-compiler-dock
+| 0.6.3	
+| MIT
+
+| rake-contrib
+| 1.0.0
+| MIT 
+
+| ramaze
+| 2012.12.08
+| 
+
+| rbench
+| 0.2.3
+| MIT
+
+| rb-fchange
+| 0.0.6
+| MIT
+
+| rb-fsevent
+| 0.9.8
+| MIT
+
+| rb-inotify
+| 0.9.10	
+| MIT
+
+| rb-kqueue
+| 0.2.5	
+| MIT
+
+| rb-notifu
+| 0.0.4
+| MIT
+
+| rb-readline
+| 0.5.4
+| BSD-3-Clause
+
+| rcov
+| 1.0.0	
+| Ruby
+
+| rdiscount
+| 2.2.0.1	
+| BSD-3-Clause
+
+| rdoc	
+| 6.1.1
+| Multi-license: GPL-2.0-only or Ruby; Ruby
+
+| react	
+| 15.6.1
+| BSD-3-Clause
+
+| react	
+| 15.4.2	
+| BSD-3-Clause
+
+| react-ace
+| 3.3.0
+| MIT
+
+| react-addons-pure-render-mixin
+| 15.6.0	
+| BSD-3-Clause
+
+| react-addons-shallow-compare
+| 15.6.0	
+| BSD-3-Clause
+
+| react-addons-update
+| 15.6.0
+| BSD-3-Clause
+
+| react-dom	
+| 15.6.1
+| BSD-3-Clause
+
+| react-dropzone
+| 3.13.4
+| MIT
+
+| react-fullscreen-component
+| 0.0.5
+| MIT
+
+| react-hot-api
+| 0.4.7	
+| MIT
+
+| react-hot-loader
+| 1.3.1
+| MIT
+
+| reactive-streams
+| 1.0.0	
+| CC0-1.0
+
+| react-onclickoutside
+| 4.5.0
+| MIT
+
+| react-overlay-popup
+| 4.0.2
+| MIT
+
+| react-redux
+| 5.0.3
+| MIT
+
+| react-router
+| 2.8.1
+| MIT
+
+| react-tabs
+| 0.8.2
+| MIT
+
+| react-test-renderer
+| 15.6.1
+| BSD-3-Clause
+
+| react-tooltip	
+| 3.2.9	
+| MIT
+
+| react-transition-group
+| 1.2.0
+| BSD-3-Clause
+
+| react-treebeard
+| 1.1.4
+| MIT
+
+| react-validation
+| 2.10.9	
+| ISC
+
+| react-window-mixins
+| 0.0.6
+| ISC
+
+| readable-stream
+| 2.2.6
+| MIT
+
+| reap
+| 9.4.0
+| 
+
+| recast
+| 0.11.23	
+| MIT
+
+| redcarpet	
+| 3.4.0
+| MIT
+
+| RedCloth
+| 4.3.2
+| MIT
+
+| redgreen	
+| 1.2.2
+| 
+
+| redis	
+| 3.3.5
+| MIT
+
+| redux	
+| 3.6.0
+| MIT
+
+| redux-logger
+| 3.0.0
+| MIT
+
+| redux-router
+| 2.1.2	
+| MIT
+
+| redux-thunk
+| 2.2.0
+| MIT
+
+| reek
+| 4.5.5
+| MIT
+
+| reel
+| 0.6.1
+| MIT
+
+| reel-rack	
+| 0.2.3
+| MIT
+
+| ref
+| 2.0.0
+| MIT
+
+| Reflections
+| 0.9.10	
+| BSD-3-Clause; WTFPL
+
+| regexp_parser
+| 0.3.6
+| MIT
+
+| relish
+| 0.7.1
+| MIT
+
+| Remarkably
+| 0.5.2
+| MIT
+
+| repeat-string	
+| 1.6.1
+| MIT
+
+| request
+| 2.81.0	
+| Apache License, Version 2.0
+
+| requires-port	
+| 1.0.0
+| MIT
+
+| reselect
+| 3.0.1	
+| MIT
+
+| resolve
+| 0.3.1
+| MIT
+
+| rest-client
+| 1.6.9
+| MIT
+
+| rexical
+| 1.0.5	
+|
+
+| rfile
+| 1.0.0
+| MIT
+
+| right-align
+| 0.1.3
+| MIT
+
+| rimraf
+| 2.6.1	
+| ISC; MIT
+
+| ripper_ruby_parser
+| 0.0.8
+| MIT
+
+| ritex
+| 1.0.1
+| GPL-2.0-only
+
+| rocco
+| 0.8.2
+| MIT
+
+| ronn	
+| 0.7.3	
+| MIT
+
+| roodi	
+| 2.1.0
+| MIT
+
+| rouge	
+| 3.3.0
+| Multi-license: BSD-2-Clause or MIT
+
+| rr
+| 1.2.0
+| MIT
+
+| rspec
+| 3.7.0
+| MIT
+
+| rspec-core
+| 3.7.0	
+| MIT
+
+| rspec-expectations
+| 2.14.5
+| MIT
+
+| rspec-fire
+| 1.3.0
+| MIT
+
+| rspec-its	
+| 1.2.0
+| MIT
+
+| rspec-mocks
+| 3.8.0	
+| MIT
+
+| rspec-pending_for
+| 0.1.5
+| MIT
+
+| rspec-rails
+| 3.6.0	
+| MIT
+
+| rspec-retry
+| 0.5.6
+| MIT
+
+| rspec-support	
+| 3.8.0
+| MIT
+
+| rspectacular
+| 0.70.7	
+| 
+
+| rubinius
+| 2.0.1	
+| BSD-3-Clause
+
+| rubinius-ast
+| 2.4.0
+| MPL-2.0
+
+| rubinius-build_tools
+| 2.0.0	
+| BSD-3-Clause
+
+| rubinius-compiler	
+| 2.3.1	
+| BSD-3-Clause
+
+| rubinius-coverage	
+| 2.1	
+| BSD-3-Clause
+
+| rubinius-debugger
+| 2.6	
+| BSD-3-Clause
+
+| rubinius-developer_tools
+| 2.0.0	
+| BSD-3-Clause
+
+| rubinius-melbourne
+| 3.8	
+| MPL-2.0
+
+| rubinius-processor
+| 2.3.0	
+| BSD-3-Clause
+
+| rubinius-profiler	
+| 2.1	
+| BSD-3-Clause
+
+| rubinius-toolset	
+| 2.3.1
+| BSD-3-Clause
+
+| rubocop
+| 0.49.1	
+| MIT
+
+| rubocop-github
+| 0.10.0
+| MIT
+
+| ruby_dep
+| 1.5.0
+| MIT
+
+| ruby_engine
+| 1.0.1
+| MIT
+
+| ruby_gntp	
+| 0.3.4
+| MIT
+
+| ruby_parser
+| 3.9.0	
+| MIT
+
+| ruby_version
+| 1.0.1
+| MIT
+
+| ruby2ruby
+| 2.3.2
+| MIT
+
+| ruby-debug
+| 0.10.6	
+| BSD-2-Clause
+
+| ruby-debug19
+| 0.11.6
+| BSD-2-Clause
+
+| ruby-debug-base
+| 0.10.6	
+| BSD-2-Clause
+
+| ruby-enum
+| 0.7.1
+| MIT
+
+| rubyforge	
+| 2.0.4	
+| MIT
+
+| rubygems-tasks
+| 0.2.4
+| MIT
+
+| RubyInline
+| 3.8.4
+| MIT
+
+| ruby-maven
+| 3.3.12	
+| EPL-1.0
+
+| ruby-maven-libs
+| 3.3.9	
+| APL
+
+| rubypants	
+| 0.6.0
+| BSD-3-Clause; MIT
+
+| ruby-prof
+| 0.16.2	
+| BSD-3-Clause; BSD-2-Clause
+
+| ruby-progressbar
+| 1.9.0
+| MIT
+
+| ruby-rc4
+| 0.1.5
+| MIT
+
+| rubysl
+| 2.2.0
+| BSD-3-Clause
+
+| rubysl-abbrev
+| 2.0.4
+| BSD-3-Clause
+
+| rubysl-base64
+| 2.0.0
+| BSD-3-Clause
+
+| rubysl-benchmark
+| 2.0.1
+| BSD-3-Clause
+
+| rubysl-bigdecimal	
+| 2.0.2
+| BSD-3-Clause
+
+| rubysl-cgi
+| 2.0.1
+| BSD-3-Clause; MIT
+
+| rubysl-cgi-session
+| 2.1.0
+| BSD-3-Clause
+
+| rubysl-cmath
+| 2.0.0
+| BSD-3-Clause
+
+| rubysl-complex
+| 2.0.0
+| BSD-3-Clause
+
+| rubysl-continuation
+| 2.0.0	
+| BSD-3-Clause
+
+| rubysl-coverage
+| 2.1	
+| BSD-3-Clause
+
+| rubysl-csv
+| 2.0.2
+| BSD-3-Clause
+
+| rubysl-curses
+| 2.0.1
+| BSD-3-Clause
+
+| rubysl-date
+| 2.0.9	
+| BSD-3-Clause
+
+| rubysl-delegate
+| 2.0.1
+| BSD-3-Clause
+
+| rubysl-digest
+| 2.0.8	
+| BSD-3-Clause
+
+| rubysl-drb
+| 2.0.1
+| BSD-3-Clause
+
+| rubysl-e2mmap
+| 2.0.0
+| BSD-3-Clause
+
+| rubysl-english
+| 2.0.0
+| BSD-3-Clause
+
+| rubysl-enumerator
+| 2.0.0
+| BSD-3-Clause
+
+| rubysl-erb
+| 2.0.2
+| BSD-3-Clause
+
+| rubysl-etc
+| 2.0.3	
+| BSD-3-Clause
+
+| rubysl-expect
+| 2.0.0
+| BSD-3-Clause
+
+| rubysl-fcntl
+| 2.0.4
+| BSD-3-Clause
+
+| rubysl-fiber
+| 2.0.0
+| BSD-3-Clause
+
+| rubysl-fileutils
+| 2.0.3
+| BSD-3-Clause
+
+| rubysl-find
+| 2.0.1
+| BSD-3-Clause
+
+| rubysl-forwardable
+| 2.0.1
+| BSD-3-Clause
+
+| rubysl-getoptlong
+| 2.0.0	
+| BSD-3-Clause
+
+| rubysl-gserver
+| 2.0.0	
+| BSD-3-Clause
+
+| rubysl-io-console
+| 2.0.0
+| BSD-3-Clause
+
+| rubysl-io-nonblock
+| 2.0.0
+| BSD-3-Clause
+
+| rubysl-io-wait
+| 2.0.0
+| BSD-3-Clause
+
+| rubysl-ipaddr	
+| 2.0.0
+| BSD-3-Clause
+
+| rubysl-irb
+| 2.1.1
+| BSD-3-Clause
+
+| rubysl-logger	
+| 2.1.0
+| BSD-3-Clause
+
+| rubysl-mathn
+| 2.0.0
+| BSD-3-Clause
+
+| rubysl-matrix	
+| 2.1.0
+| BSD-3-Clause
+
+| rubysl-mkmf
+| 2.1	
+| BSD-3-Clause
+
+| rubysl-monitor
+| 2.0.0
+| BSD-3-Clause
+
+| rubysl-mutex_m
+| 2.0.0
+| BSD-3-Clause
+
+| rubysl-net-ftp
+| 2.0.1
+| BSD-3-Clause
+
+| rubysl-net-http
+| 2.0.4
+| BSD-3-Clause
+
+| rubysl-net-imap
+| 2.0.1	
+| BSD-3-Clause
+
+| rubysl-net-pop
+| 2.0.1
+| BSD-3-Clause
+
+| rubysl-net-protocol
+| 2.0.1
+| BSD-3-Clause
+
+| rubysl-net-smtp
+| 2.0.1
+| BSD-3-Clause
+
+| rubysl-net-telnet	
+| 2.0.0	
+| BSD-3-Clause
+
+| rubysl-nkf
+| 2.0.1	
+| BSD-3-Clause
+
+| rubysl-observer
+| 2.0.0
+| BSD-3-Clause
+
+| rubysl-open3
+| 2.0.0
+| BSD-3-Clause
+
+| rubysl-openssl
+| 2.9	
+| BSD-3-Clause
+
+| rubysl-open-uri
+| 2.0.0
+| BSD-3-Clause
+
+| rubysl-optparse
+| 2.0.1
+| BSD-3-Clause
+
+| rubysl-ostruct
+| 2.1.0	
+| BSD-3-Clause
+
+| rubysl-pathname
+| 2.3	
+| BSD-3-Clause; MPL-2.0
+
+| rubysl-prettyprint
+| 2.0.3
+| BSD-3-Clause
+
+| rubysl-prime
+| 2.0.1	
+| BSD-3-Clause
+
+| rubysl-profile
+| 2.0.0
+| BSD-3-Clause
+
+| rubysl-profiler
+| 2.1	
+| BSD-3-Clause
+
+| rubysl-pstore
+| 2.0.0
+| BSD-3-Clause
+
+| rubysl-pty
+| 2.0.3	
+| BSD-3-Clause
+
+| rubysl-rational
+| 2.0.1
+| BSD-3-Clause
+
+| rubysl-readline
+| 2.0.2
+| BSD-3-Clause
+
+| rubysl-resolv
+| 2.1.2
+| BSD-3-Clause
+
+| rubysl-rexml
+| 2.0.4	
+| BSD-3-Clause
+
+| rubysl-rinda
+| 2.0.1
+| BSD-3-Clause
+
+| rubysl-rss
+| 2.0.0
+| BSD-3-Clause
+
+| rubysl-scanf
+| 2.0.0
+| BSD-3-Clause
+
+| rubysl-securerandom
+| 2.0.0
+| BSD-3-Clause
+
+| rubysl-set
+| 2.0.1
+| BSD-3-Clause
+
+| rubysl-shellwords
+| 2.0.0
+| BSD-3-Clause
+
+| rubysl-singleton
+| 2.0.0
+| BSD-3-Clause
+
+| rubysl-socket
+| 2.2.1
+| BSD-3-Clause
+
+| rubysl-stringio
+| 2.1.0
+| BSD-3-Clause
+
+| rubysl-strscan
+| 2.0.0
+| BSD-3-Clause
+
+| rubysl-sync
+| 2.0.0
+| BSD-3-Clause
+
+| rubysl-syslog
+| 2.1.0
+| BSD-3-Clause
+
+| rubysl-tempfile
+| 2.0.1
+| BSD-3-Clause
+
+| rubysl-test-unit
+| 2.0.3
+| BSD-3-Clause
+
+| rubysl-thread
+| 2.0.3
+| BSD-3-Clause
+
+| rubysl-thwait	
+| 2.0.0
+| BSD-3-Clause
+
+| rubysl-time
+| 2.0.3
+| BSD-3-Clause
+
+| rubysl-timeout
+| 2.0.0
+| BSD-3-Clause
+
+| rubysl-tmpdir
+| 2.0.1
+| BSD-3-Clause
+
+| rubysl-tsort
+| 2.0.1
+| BSD-3-Clause
+
+| rubysl-un
+| 2.0.0
+| BSD-3-Clause
+
+| rubysl-unicode_normalize
+| 2.0	
+| BSD-3-Clause; MPL-2.0
+
+| rubysl-uri
+| 2.0.0
+| BSD-3-Clause
+
+| rubysl-weakref
+| 2.0.0
+| BSD-3-Clause
+
+| rubysl-webrick
+| 2.0.0
+| BSD-3-Clause
+
+| rubysl-xmlrpc
+| 2.0.0
+| BSD-3-Clause
+
+| rubysl-yaml
+| 2.1.0
+| BSD-3-Clause
+
+| rubysl-zlib
+| 2.0.1
+| BSD-3-Clause
+
+| rubytest
+| 0.8.1
+| BSD-3-Clause; BSD-2-Clause
+
+| rubytest-cli
+| 0.2.0
+| BSD-3-Clause
+
+| rubyzip
+| 1.2.1	
+| BSD-3-Clause
+
+| rugged
+| 0.27.4
+| MIT
+
+| ruglify
+| 1.0.0
+| MIT
+
+| rulebow
+| 0.4.0
+| BSD-3-Clause; BSD-2-Clause
+
+| Run Level Service	
+| 2.3.0-b05	
+| Multi-license: CDDL-1.1 or GPL-2.0-only or GPL-2.0-with-classpath-exception or GPL-3.0-only
+
+| rvm	
+| 1.11.3.9
+| MIT
+
+| rw
+| 1.3.3
+| BSD-3-Clause
+
+| safe_yaml
+| 1.0.4
+| MIT
+
+| safe-buffer
+| 5.1.1
+| MIT
+
+| safer-buffer
+| 2.1.2
+| MIT
+
+| sanitize
+| 2.1.0
+| MIT
+
+| sass
+| 3.5.5
+| MIT
+
+| sass-listen
+| 4.0.0
+| MIT
+
+| sass-rails
+| 5.0.6	
+| MIT
+
+| sawyer
+| 0.8.1
+| MIT
+
+| sax
+| 1.2.2	
+| ISC; MIT
+
+| scaffolding_extensions
+| 1.4.0
+| MIT
+
+| scala-java8-compat
+| 0.7.0
+| BSD-3-Clause
+
+| Scala Library
+| 2.11.8
+| BSD-3-Clause
+
+| screenfull.js	
+| 2b11c98235127b4dcdd4a9a0fc3a8bcd7441faff
+| MIT
+
+| selenium-api
+| 3.141.59
+| Apache License, Version 2.0
+
+| selenium-chrome-driver
+| 3.141.59
+| Apache License, Version 2.0
+
+| selenium-client
+| 1.2.17	
+| Apache License, Version 2.0
+
+| selenium-edge-driver
+| 3.141.59
+| Apache License, Version 2.0
+
+| selenium-firefox-driver
+| 3.141.59
+| Apache License, Version 2.0
+
+| selenium-ie-driver
+| 3.141.59
+| Apache License, Version 2.0
+
+| selenium-java	
+| 3.141.59
+| Apache License, Version 2.0
+
+| selenium-opera-driver
+| 3.141.59
+| Apache License, Version 2.0
+
+| selenium-remote-driver
+| 3.141.59
+| Apache License, Version 2.0
+
+| selenium-safari-driver
+| 3.141.59
+| Apache License, Version 2.0
+
+| selenium-support
+| 3.141.59
+| Apache License, Version 2.0
+
+| selenium-webdriver
+| 3.7.0
+| Apache License, Version 2.0
+
+| semver
+| 5.3.0
+| MIT
+
+| sequel
+| 5.9.0
+| MIT
+
+| ServiceLocator Default Implementation	
+| 2.3.0-b05	
+| 
+
+| session
+| 3.2.0
+| same as Ruby's
+
+| setimmediate
+| 1.0.5
+| MIT
+
+| sexp_processor
+| 4.9.0
+| MIT
+
+| shallow-compare-without-functions
+| 0.0.2
+| MIT
+
+| shallowequal
+| 0.2.2
+| MIT
+
+| shellany
+| 0.0.1
+| MIT
+
+| shell-quote
+| 0.0.1
+| MIT
+
+| shindo
+| 0.3.8
+| MIT
+
+| shotgun
+| 0.9.2
+| MIT
+
+| shoulda
+| 3.5.0
+| MIT
+
+| shoulda-context
+| 1.2.2
+| MIT
+
+| shoulda-matchers
+| 2.8.0
+| MIT
+
+| simplecov	
+| 0.15.1
+| MIT
+
+| simplecov-html
+| 0.9.0
+| MIT
+
+| sinatra
+| 2.0.0
+| MIT
+
+| sinatra-contrib
+| 2.0.4
+| MIT
+
+| SLF4J API Module
+| 1.7.7
+| MIT
+
+| slim
+| 2.1.0
+| MIT
+
+| slim-rails
+| 3.1.2
+| MIT
+
+| slippers
+| 0.0.14
+| MIT
+
+| slop	
+| 3.6.0
+| MIT
+
+| SnakeYAML	
+| 1.18
+| Apache License, Version 2.0
+
+| snappy-java
+| 1.1.2.6	
+| Apache License, Version 2.0
+
+| sntp
+| 1.0.9
+| Multi-license: BSD-3-Clause or Sideway Inc; BSD-3-Clause
+
+| sockjs-client
+| 1.1.1
+| MIT
+
+| source-map
+| 0.1.43
+| BSD-3-Clause
+
+| sparkr
+| 0.4.1
+| MIT
+
+| spectroscope
+| 0.1.0
+| BSD-3-Clause; BSD-2-Clause
+
+| spoon	
+| 0.0.6
+| Apache License, Version 2.0
+
+| spork	
+| 1.0.0rc4
+| MIT
+
+| Spring AOP
+| 5.0.16.RELEASE	
+| Apache License, Version 2.0
+
+| Spring Beans
+| 5.0.16.RELEASE
+| Apache License, Version 2.0
+
+| Spring Commons Logging Bridge
+| 5.0.16.RELEASE
+| Apache License, Version 2.0
+
+| Spring Context
+| 5.0.16.RELEASE	
+| Apache License, Version 2.0
+
+| Spring Core
+| 5.0.16.RELEASE	
+| Apache License, Version 2.0
+
+| Spring Expression Language (SpEL)	
+| 5.0.16.RELEASE
+| Apache License, Version 2.0
+
+| Spring Messaging
+| 5.0.16.RELEASE
+| Apache License, Version 2.0
+
+| Spring Web
+| 5.0.16.RELEASE	
+| Apache License, Version 2.0
+
+| Spring Web MVC
+| 5.0.16.RELEASE
+| Apache License, Version 2.0
+
+| Spring WebSocket
+| 5.0.16.RELEASE	
+| Apache License, Version 2.0
+
+| sprintf-js	
+| 1.0.3
+| BSD-3-Clause; Multi-license: BSD-2-Clause or BSD-3-Clause 
+
+| sprockets
+| 3.7.1
+| MIT
+
+| sprockets-rails
+| 3.2.0
+| MIT
+
+| sqlite3
+| 1.3.13
+| BSD-3-Clause
+
+| sqlite3-ruby
+| 1.2.5
+| BSD-3-Clause
+
+| sshpk
+| 1.13.1
+| MIT
+
+| sskatex
+| 0.9.39
+| MIT
+
+| StAX API
+| 1.0.1	
+| Apache License, Version 2.0
+
+| streamly_ffi
+| 0.2.6
+| MIT
+
+| strict-uri-encode
+| 1.1.0
+| MIT
+
+| string_decoder
+| 0.10.31	
+| MIT
+
+| stringex
+| 1.5.1
+| MIT
+
+| stringstream
+| 0.0.5
+| MIT
+
+| stylus
+| 1.0.2	
+| MIT
+
+| stylus-source
+| 0.54.5
+| MIT
+
+| superagent
+| 3.5.2
+| MIT
+
+| superagent-mock
+| 3.5.0
+| MIT
+
+| superagent-promise
+| 1.1.0
+| MIT
+
+| symbol-observable	
+| 1.0.4
+| MIT
+
+| symbol-tree
+| 3.2.2
+| MIT
+
+| syntax
+| 1.2.2	
+| BSD-3-Clause
+
+| syntax-error
+| 0.0.1
+| MIT
+
+| sys	
+| ecfd8b563e1320e7282dccf28ad48ec2c68aaebf
+| BSD-3-Clause
+
+| system
+| 1.2.0
+| MIT; BSD-3-Clause
+
+| SystemTimer
+| 1.2.3
+| GPL-2.0-only; Ruby
+
+| tach
+| 0.0.8
+| MIT
+
+| tagz
+| 7.2.3
+| 
+
+| tdiff
+| 0.3.3
+| MIT
+
+| teleport
+| 0.3.2	
+| MPL-2.0
+
+| teleport-dashboard
+| 0.0.5
+| MPL-2.0
+
+| temple
+| 0.8.0
+| MIT
+
+| tenjin
+| 0.6.1
+|
+
+| term-ansicolor
+| 1.6.0
+| Apache License, Version 2.0
+
+| terminal-notifier-guard
+| 1.5.3
+| MIT
+
+| terminal-table
+| 1.7.3
+| MIT
+
+| test
+| 0.6.0
+| MIT
+
+| test-construct
+| 1.2.2
+| MIT
+
+| test-spec
+| 0.9.0	
+| 
+
+| test-unit	
+| 3.2.7
+| Multi-license: Ruby or PSFL
+
+| test-unit-notify
+| 1.0.4	
+| 
+
+| test-unit-rr
+| 1.0.5
+| GPL-2.0-only
+
+| text
+| 1.3.1
+| MIT
+
+| text
+| b7ef84aaf62aa3e70962625c80a571ae7c17cb40
+| BSD-3-Clause
+
+| therubyracer
+| 0.12.3	
+| MIT
+
+| therubyrhino
+| 2.0.4
+| 
+
+| thin
+| 1.7.2
+| Multi-license: GPL-2.0-only or Ruby
+
+| thor
+| 0.20.0
+| MIT
+
+| thoughtbot-shoulda
+| 2.11.1
+| MIT
+
+| thread_order
+| 1.1.0
+| MIT
+
+| thread_safe
+| 0.3.6
+| Apache License, Version 2.0
+
+| through
+| 2.3.8
+| MIT; Apache License, Version 2.0
+
+| tidy-ext
+| 0.1.14
+| W3C
+
+| tilt	
+| 2.0.8
+| MIT
+
+| timecop
+| 0.9.1
+| MIT
+
+| timers
+| 4.1.2
+| MIT
+
+| tins
+| 1.20.2
+| MIT
+
+| *Title*	
+| *Version*	
+| *Declared License*
+
+| tmail
+| 1.2.7.1	
+| MIT
+
+| tomcat-embed-core	
+| 8.5.15	
+| Apache License, Version 2.0
+
+| tomcat-embed-el
+| 8.5.15	
+| Apache License, Version 2.0
+
+| tomcat-embed-jasper
+| 8.5.15
+| Apache License, Version 2.0
+
+| tomcat-embed-websocket
+| 8.5.15
+| Apache License, Version 2.0
+
+| tomcat-extras-juli
+| 8.5.2
+| Apache License, Version 2.0
+
+| tomcat-extras-juli-adapters
+| 8.5.2
+| Apache License, Version 2.0
+
+| tomcat-juli
+| 8.5.15
+| Apache License, Version 2.0
+
+| tomlrb
+| 1.2.7
+| MIT
+
+| tomparse
+| 0.4.2
+| BSD-3-Clause; BSD-2-Clause
+
+| tools
+| 9bd2f442688b66c5289262d70f537c2ecf81d7de
+| BSD-3-Clause
+
+| tough-cookie
+| 2.3.2
+| BSD-3-Clause
+
+| treetop
+| 1.6.8
+| MIT
+
+| truthy
+| 1.0.0
+| MIT
+
+| ttfunk
+| 1.5.1
+| Ruby
+
+| tunnel-agent
+| 0.6.0
+| Apache License, Version 2.0
+
+| turn
+| 0.9.7
+| MIT
+
+| tweetnacl
+| 0.14.5
+| Multi-license: MIT or Unlicense
+
+| twitter-text
+| 1.14.7
+| Apache License, Version 2.0
+
+| twitter-text-conformance
+| 9feb0f0e6c6d3e85c67c7b380458f52b8f96fd9b
+| Apache License, Version 2.0
+
+| Type arithmetic library for Java5
+| 1.4	
+|
+
+| typescript-node
+| 1.6.2
+| MIT
+
+| typescript-src
+| 1.6.2.0	
+| Apache License, Version 2.0
+
+| typhoeus
+| 1.3.1
+| MIT
+
+| tzinfo
+| 1.2.5
+| MIT
+
+| tzinfo-data
+| 1.2017.2
+| MIT
+
+| ua-parser-js
+| 0.7.14
+| GPL-2.0-only
+
+| uglifier
+| 3.2.0
+| MIT
+
+| uglify-js	
+| 2.8.29
+| BSD-2-Clause; BSD-3-Clause
+
+| uglify-to-browserify
+| 1.0.2
+| MIT
+
+| umd
+| 1.1.1
+| MIT
+
+| unf
+| 0.1.4
+| BSD-3-Clause; BSD-2-Clause
+
+| unf_ext
+| 0.0.7.2
+| MIT
+
+| unicode-display_width	
+| 1.4.0
+| MIT
+
+| unicorn
+| 5.4.0
+| Multi-license: GPL-2.0-only or GPL-3.0-only or Ruby
+
+| unindent
+| 1.0
+| MIT
+
+| unique-id-mixin
+| 1.0.0
+| MIT
+
+| unparser
+| 0.2.5
+| MIT
+
+| url_escape
+| 2009.06.24
+| MIT
+
+| url-parse
+| 1.1.8
+| MIT
+
+| util-deprecate
+| 1.0.2
+| MIT
+
+| utils	
+| 0.9.0
+| GPL-2.0-only
+
+| uuid
+| 3.0.1
+| MIT
+
+| validator	
+| 7.0.0
+| MIT
+
+| vcr
+| 4.0.0
+| MIT
+
+| velocity-animate
+| 1.5.0
+| MIT
+
+| velocity-react
+| 1.3.3
+| MIT
+
+| verror
+| 1.10.0
+| MIT
+
+| versionomy
+| 0.5.0
+| BSD-3-Clause
+
+| virtus
+| 1.0.5
+| MIT
+
+| vis
+| 4.20.1	
+| MIT; Apache License, Version 2.0
+
+| vm-browserify	
+| 0.0.1	
+| X11; MIT
+
+| w3c-blob
+| 0.0.1
+| MIT
+
+| warning	
+| 3.0.0	
+| BSD-3-Clause; Multi-license: BSD-2-Clause or BSD-3-Clause
+
+| warning_filter
+| 0.0.6
+| MIT
+
+| watchr
+| 0.7	
+| MIT
+
+| webidl-conversions
+| 4.0.1
+| BSD-3-Clause; BSD-2-Clause
+
+| webmock
+| 3.4.2
+| MIT
+
+| webrat
+| 0.7.3
+| MIT
+
+| websocket
+| 1.2.4
+| MIT
+
+| websocket-driver
+| 0.6.5
+| MIT
+
+| websocket-driver
+| 0.7.0
+| MIT
+
+| websocket-extensions
+| 0.1.2
+| MIT
+
+| websocket-extensions
+| 0.1.2
+| MIT
+
+| webstomp-client
+| 1.0.3
+| Apache License, Version 2.0
+
+| whatwg-encoding
+| 1.0.1
+| WTFPL
+
+| whatwg-fetch
+| 2.0.3
+| MIT
+
+| whatwg-url
+| 4.4.0
+| MIT
+
+| wikicloth
+| 0.8.3
+| MIT
+
+| window-size
+| 0.1.0	
+| MIT
+
+| wlang	
+| 2.3.1
+| MIT
+
+| wordwrap
+| 0.0.3
+| MIT
+
+| wrappy
+| 1.0.2
+| MIT
+
+| Xalan Java
+| 2.7.2
+| W3C
+
+| Xerces2-j	
+| 2.12.0
+| Apache License, Version 2.0
+
+| xml-apis
+| 1.4.01
+| The SAX License; Public-Domain; W3C; Apache License, Version 2.0
+
+| xml-name-validator
+| 2.0.1
+| WTFPL
+
+| xpath
+| 2.1.0
+| MIT
+
+| xtend	
+| 2.1.2
+| MIT
+
+| yajl-ruby	
+| 1.3.0
+| MIT
+
+| yard
+| 0.9.9
+| MIT
+
+| yard-spellcheck
+| 0.1.5
+| Custom License File
+
+| yardstick
+| 0.9.9
+| MIT
+
+| yard-tomdoc
+| 0.7.1
+| MIT
+
+| yargs
+| 3.10.0
+| MIT
+
+| ZenTest
+| 4.4.2	
+| 
+
+| zlib-browserify
+| 0.0.1	
+| MIT
+
+|===

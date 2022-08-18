@@ -1,0 +1,2458 @@
+= DataStax Enterprise 6.8.11 third-party software
+
+//shortdesc: Third-party software licensed for DataStax Enterprise 6.8.11.
+
+.DataStax Enterprise 6.8.11 third-party software
+[cols=3*]
+|===
+|*Component* | *Version* | *License*
+
+| %systemBundle
+| 3.7.1
+| https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| aalto-xml
+| 1.0.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Adobe XMPCore
+| 5.1.3
+| Multi-license: Adobe OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| agrona
+| 0.9.26
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| aircompressor
+| 0.10
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| airline
+| 0.7
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Airline - IO Library
+| 2.2.0, 2.7.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Airline - Library
+| 2.2.0, 2.7.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| An implementation of the Apache Cassandra® native protocol
+| 1.4.5
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| An open source Java toolkit for Amazon S3
+| 0.7.1, 0.9.0, 0.9.4
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause] OR https://spdx.org/licenses/LGPL-2.1-only.html[LGPL-2.1-only]
+
+| Annotation Processing Commons
+| 0.0.2
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| antlr
+| 2.7.7, 3.5.2
+| Multi-license: https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| Antlr 3.4-beta4 Runtime
+| 3.4, 3.5, 3.5.2
+| https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| ANTLR 4 Runtime
+| 4.7, 4.7.1
+| https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| AOP alliance
+| 1.0
+| public-domain
+
+| aopalliance-repackaged
+| 2.5.0
+| Multi-license: https://spdx.org/licenses/EPL-1.0.html[EPL-1.0] OR https://spdx.org/licenses/EPL-2.0.html[EPL-2.0] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception]
+
+| Apache Ant Core
+| 1.10.9
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache Ant Launcher
+| 1.10.9
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache Avro IPC
+| 1.7.7, 1.8.2
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/MIT.html[MIT]
+
+| Apache Avro Mapred API
+| 1.8.2
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache Commons Codec
+| 1.15
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| Apache Commons Collections
+| 4.1, 4.2
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache Commons Compress
+| 1.18, 1.19, 1.4.1, 1.8.1
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| Apache Commons Crypto
+| 1.0.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache Commons FileUpload
+| 1.3.3
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache Commons Lang
+| 3.5
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache Commons Math
+| 3.1.1, 3.4.1
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| Apache Commons Text
+| 1.6
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache Directory API ASN.1 API
+| 1.0.0, 1.0.0-M20
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache Directory API ASN.1 BER
+| 1.0.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache Directory LDAP API Extras Stored Procedures
+| 1.0.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache Directory LDAP API Extras Trigger
+| 1.0.0
+| Multi-license: https://spdx.org/licenses/ANTLR-PD.html[ANTLR-PD] OR https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache Directory LDAP API Extras Util
+| 1.0.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache Directory LDAP API I18n
+| 1.0.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache Directory LDAP API Model
+| 1.0.0
+| Multi-license: https://spdx.org/licenses/ANTLR-PD.html[ANTLR-PD] OR https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/MIT.html[MIT]
+
+| Apache Directory LDAP API Utilities
+| 1.0.0, 1.0.0-M20
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache Extras Companion for log4j 1.2.
+| 1.2.17
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache FontBox
+| 2.0.6
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| Apache Groovy
+| 2.5.7
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause] OR https://spdx.org/licenses/CC-BY-2.5.html[CC-BY-2.5]
+
+| Apache Hadoop Mini-Cluster
+| 1.0.3
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache Ivy
+| 2.3.0, 2.4.0
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| Apache JAMES Mime4j (Core)
+| 0.7.2
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache JAMES Mime4j (DOM)
+| 0.7.2
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache JempBox
+| 1.8.13
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache MINA Core API
+| 2.0.21
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache OpenNLP Maxent
+| 3.0.3
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache OpenNLP Tools
+| 1.8.4
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| Apache Parquet Column
+| 1.10.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache Parquet Common
+| 1.10.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache Parquet Encodings
+| 1.10.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache Parquet Format
+| 2.4.0
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/MIT.html[MIT]
+
+| Apache Parquet Hadoop
+| 1.10.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache Parquet Jackson
+| 1.10.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache PDFBox
+| 2.0.6
+| Multi-license: https://spdx.org/licenses/APAFML.html[APAFML] OR https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause] OR https://spdx.org/licenses/GPL-3.0-only.html[GPL-3.0-only] OR https://spdx.org/licenses/OFL-1.1.html[OFL-1.1] OR https://spdx.org/licenses/Zlib.html[Zlib]
+
+| Apache PDFBox Debugger
+| 2.0.6
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache PDFBox tools
+| 2.0.6
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache SIS common storage
+| 0.8
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache SIS features
+| 0.8
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| Apache SIS metadata
+| 0.8
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache SIS netCDF storage
+| 0.8
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache SIS referencing
+| 0.8
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache SIS utilities
+| 0.8
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache Thrift
+| 0.9.3
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache Tika core
+| 1.25
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache Tika plugin for Ogg, Vorbis and FLAC
+| 0.8
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache Velocity
+| 1.7
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apache XBean :: ASM 6 shaded (repackaged)
+| 4.8
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| Apache ZooKeeper - Server
+| 3.4.6
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS AdministrativePoint Interceptor
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Authentication Interceptor
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Authorization Interceptor
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS ChangeLog Interceptor
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Collective Attribute Interceptor
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Core
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Core Annotations
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Core API
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Core AVL
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Core Constants
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Core Integration
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Core JNDI
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Core Shared
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS DirectoryService-WebApp bridge
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Event Interceptor
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Exception Interceptor
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Generalized (X) DBM Partition
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS I18n
+| 2.0.0-M15, 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Interceptor to increment numeric attributes
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Interceptors for Kerberos
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS JDBM Original Implementation
+| 2.0.0-M3
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| ApacheDS JDBM Partition
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Jetty HTTP Server Integration
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Journal Interceptor
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS LDIF Partition
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Mavibot Partition
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS MVCC BTree implementation
+| 1.0.0-M8
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Normalization Interceptor
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Operational Attribute Interceptor
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Password Hashing Interceptor
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Protocol Dhcp
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Protocol Dns
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Protocol Kerberos
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Protocol Kerberos Codec
+| 2.0.0-M15, 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Protocol Ldap
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Protocol Ntp
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Protocol Shared
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Referral Interceptor
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Schema Interceptor
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Apacheds Server Annotations
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Server Config
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Service Builder
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Subtree Interceptor
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Test Framework
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ApacheDS Triggers Interceptor
+| 2.0.0-M24
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Arrow Format
+| 0.10.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Arrow Memory
+| 0.10.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Arrow Vectors
+| 0.10.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| asm
+| 3.1, 7.0
+| Multi-license: https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| ASM based accessors helper used by json-smart
+| 1.2
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ASM Commons
+| 7.0
+| Multi-license: https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| ASM Tree
+| 7.0
+| Multi-license: https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| asm-analysis
+| 7.0
+| Multi-license: https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| asm-util
+| 7.0
+| Multi-license: https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| Async Logback appender implementation
+| 3.1.6.RELEASE
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Auto Common Libraries
+| 0.6
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| AutoFactory
+| 1.0-beta5
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Automaton
+| 1.11-8
+| https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| AutoValue Processor
+| 1.5, 1.5.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| avro
+| 1.7.4, 1.8.2
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Awaitility
+| 3.1.2
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| AWS Java SDK for Amazon S3
+| 1.11.647
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| AWS Java SDK for AWS KMS
+| 1.11.647
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| AWS Java SDK for AWS STS
+| 1.11.647
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| AWS SDK For Java
+| 1.7.4
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/JSON.html[JSON]
+
+| AWS SDK for Java - Core
+| 1.11.647
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| base64
+| 2.3.8
+| Multi-license: https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/MIT.html[MIT]
+
+| Bean Validation API
+| 1.1.0.Final, 2.0.1.Final
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Boilerpipe -- Boilerplate Removal and Fulltext Extraction from HTML pages
+| 1.1.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| BoneCP :: Core Library
+| 0.8.0.RELEASE
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Bouncy Castle PKIX, CMS, EAC, TSP, PKCS, OCSP, CMP, and CRMF APIs
+| 1.58
+| Multi-license: public-domain OR unknown
+
+| Bouncy Castle Provider
+| 1.58
+| Multi-license: https://spdx.org/licenses/MIT.html[MIT]
+
+| breeze
+| 0.13.2
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| breeze-macros
+| 0.13.2
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| builder
+| 2.8.3
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Byte Buddy (without dependencies)
+| 1.9.7
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| Byte Buddy agent
+| 1.9.7
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| byteman
+| 4.0.7
+| Multi-license: https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause] OR https://spdx.org/licenses/LGPL-2.1-only.html[LGPL-2.1-only] OR https://spdx.org/licenses/LGPL-2.1-or-later.html[LGPL-2.1-or-later]
+
+| byteman-bmunit
+| 4.0.7
+| Multi-license: https://spdx.org/licenses/LGPL-2.1-only.html[LGPL-2.1-only] OR https://spdx.org/licenses/LGPL-2.1-or-later.html[LGPL-2.1-or-later]
+
+| byteman-install
+| 4.0.7
+| Multi-license: https://spdx.org/licenses/LGPL-2.1-only.html[LGPL-2.1-only] OR https://spdx.org/licenses/LGPL-2.1-or-later.html[LGPL-2.1-or-later]
+
+| byteman-submit
+| 4.0.7
+| Multi-license: https://spdx.org/licenses/LGPL-2.1-only.html[LGPL-2.1-only] OR https://spdx.org/licenses/LGPL-2.1-or-later.html[LGPL-2.1-or-later]
+
+| Caffeine cache
+| 2.6.2
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Calcite Avatica
+| 1.2.0-incubating
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Calcite Core
+| 1.2.0-incubating
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Calcite Linq4j
+| 1.2.0-incubating
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| CDI APIs
+| 1.2
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| cglib
+| 3.1, 3.2.9
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause] OR https://spdx.org/licenses/CPL-1.0.html[CPL-1.0]
+
+| CGLIB
+| 2.2.1-v20090111
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| chill
+| 0.9.3
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| chill-java
+| 0.9.3
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ClassGraph
+| 4.6.32
+| https://spdx.org/licenses/MIT.html[MIT]
+
+| Commons BeanUtils Core
+| 1.8.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Commons Compiler
+| 3.0.0, 3.0.9
+| Multi-license: https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| Commons Configuration
+| 1.10, 1.6
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Commons DBCP
+| 1.4
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Commons Exec
+| 1.3
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Commons Math
+| 2.1
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| Commons Pool
+| 1.5.4, 1.6
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| commons-beanutils
+| 1.7.0, 1.9.4
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| commons-cli
+| 1.3.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| commons-collections
+| 3.2.2
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| commons-httpclient
+| 3.1
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/LGPL-2.0-or-later.html[LGPL-2.0-or-later]
+
+| commons-io
+| 2.5
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| compiler
+| 0.9.6
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Concurrent-Trees
+| 2.4.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| config
+| 1.3.0, 1.3.1
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/JSON.html[JSON]
+
+| core
+| 1.1.1, 1.1.2, 2.3.2
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| Core File Systems
+| 1.3.100
+| https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Core Resource Management
+| 3.7.100
+| https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Curator Client
+| 2.7.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Curator Framework
+| 2.7.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Curator Recipes
+| 2.7.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| curvesapi
+| 1.04
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| Dagger
+| 2.26
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Data Mapper for Jackson
+| 1.9.13
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| DataNucleus Core
+| 3.2.10
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| DataNucleus JDO API plugin
+| 3.2.6
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| DataNucleus RDBMS plugin
+| 3.2.9
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| DataStax Enterprise Java Driver - Core
+| 2.1.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| DataStax Java driver for Apache Cassandra(R) - core
+| 4.1.0
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| Derby Engine
+| 10.12.1.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Digester
+| 1.8
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Disruptor Framework
+| 3.3.6
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| dnsjava
+| 2.1.8
+| Multi-license: https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause] OR https://spdx.org/licenses/ISC.html[ISC] OR https://spdx.org/licenses/MIT.html[MIT]
+
+| durian
+| 3.4.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| EasyMock
+| 3.3.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Eclipse Compiler for Java(TM)
+| 3.15.1
+| Multi-license: https://spdx.org/licenses/EPL-1.0.html[EPL-1.0] OR https://spdx.org/licenses/EPL-2.0.html[EPL-2.0]
+
+| Eclipse Core Commands
+| 3.6.0
+| https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Eclipse Equinox Appt
+| 1.3.100
+| https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| ehcache
+| 2.10.4
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause] OR https://spdx.org/licenses/CDDL-1.0.html[CDDL-1.0] OR https://spdx.org/licenses/CDDL-1.1.html[CDDL-1.1] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception] OR https://spdx.org/licenses/MIT.html[MIT]
+
+| eigenbase-properties
+| 1.1.5
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| EL
+| 1.0
+| Multi-license: https://spdx.org/licenses/Apache-1.1.html[Apache-1.1] OR https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Elephant Bird Hadoop Compatibility
+| 4.3
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| empty
+| 1.0.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Esri Geometry API for Java
+| 1.2.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| exp4j
+| 0.4.8
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Expression Language
+| 3.4.300
+| https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Expression Language 3.0 API
+| 3.0.0
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/CDDL-1.1.html[CDDL-1.1] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception]
+
+| Extended StAX API
+| 1.8
+| Multi-license: https://spdx.org/licenses/CDDL-1.1.html[CDDL-1.1] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception]
+
+| Extension of the Apache Cassandra® native protocol for DataStax Enterprise
+| 1.2.1
+| unknown
+
+| fastinfoset
+| 1.2.15
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/CDDL-1.1.html[CDDL-1.1] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception]
+
+| fastutil
+| 6.5.7
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/LGPL-2.1-only.html[LGPL-2.1-only] OR https://spdx.org/licenses/MIT.html[MIT]
+
+| FindBugs-Annotations
+| 2.0.1, 2.0.3
+| Multi-license: https://spdx.org/licenses/LGPL-2.1-only.html[LGPL-2.1-only] OR https://spdx.org/licenses/LGPL-3.0-only.html[LGPL-3.0-only]
+
+| FindBugs-jsr305
+| 3.0.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| FlatBuffers Java API
+| 1.2.0-3f79e055
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Fortran to Java ARPACK
+| 0.1
+| Multi-license: https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| futures
+| 3.3.0
+| https://spdx.org/licenses/Python-2.0.html[Python-2.0]
+
+| GeoAPI
+| 3.0.1
+| https://spdx.org/licenses/W3C.html[W3C]
+
+| Google Guice - Core Library
+| 3.0, 4.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Google Guice - Extensions - AssistedInject
+| 4.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Google Guice - Extensions - MultiBindings
+| 4.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Google Guice - Extensions - Servlet
+| 3.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Google Java Format
+| 1.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Graphite Integration for Metrics
+| 3.1.5
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| gremlin-scala
+| 3.2.2.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Gson
+| 2.2.4
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Guava: Google Core Libraries for Java
+| 19.0
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| hadoop-core
+| 1.0.3
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| hadoop-test
+| 1.0.3
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Hamcrest Core
+| 1.3
+| BSD 3-Clause
+
+| Hamcrest library
+| 1.3
+| BSD 3-Clause
+
+| hazelcast
+| 3.12.1
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0] OR https://spdx.org/licenses/GPL-2.0-or-later.html[GPL-2.0-or-later] OR https://spdx.org/licenses/LGPL-2.1-or-later.html[LGPL-2.1-or-later] OR https://spdx.org/licenses/MIT.html[MIT]
+
+| hazelcast-client
+| 3.12.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| HdrHistogram
+| 2.1.10
+| Multi-license: https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| High Performance Primitive Collections
+| 0.7.1, 0.7.2, 0.7.3
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| HK2 API module
+| 2.5.0
+| Multi-license: https://spdx.org/licenses/EPL-1.0.html[EPL-1.0] OR https://spdx.org/licenses/EPL-2.0.html[EPL-2.0] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception]
+
+| HK2 Implementation Utilities
+| 2.5.0
+| Multi-license: https://spdx.org/licenses/EPL-1.0.html[EPL-1.0] OR https://spdx.org/licenses/EPL-2.0.html[EPL-2.0] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception]
+
+| Hotspot compile command annotations
+| 1.2.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| hsqldb
+| 1.8.0.10
+| Multi-license: https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| htrace-core
+| 3.0.4, 3.1.0-incubating
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| HttpClient
+| 4.5.4, 4.5.5, 4.5.9
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| HttpCore
+| 4.1.2, 4.4.11, 4.4.7, 4.4.9
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| HttpMime
+| 4.5.5
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ICU4J
+| 56.1
+| Multi-license: https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause] OR https://spdx.org/licenses/SPL-1.0.html[SPL-1.0]
+
+| IntelliJ IDEA annotations
+| 9.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ion-java
+| 1.0.2
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ipython
+| None
+| Multi-license: https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause] OR https://spdx.org/licenses/Python-2.0.html[Python-2.0]
+
+| ipywidgets
+| 8.0.0a4
+| https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| ISO Parser
+| 1.1.18
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/LGPL-2.1-only.html[LGPL-2.1-only] OR https://spdx.org/licenses/MIT.html[MIT] OR https://spdx.org/licenses/MS-PL.html[MS-PL]
+
+| istack common utility code runtime
+| 3.0.7, 3.0.8
+| Multi-license: https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause] OR https://spdx.org/licenses/CDDL-1.1.html[CDDL-1.1] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception] OR https://spdx.org/licenses/PHP-3.01.html[PHP-3.01]
+
+| Jackcess
+| 2.1.8
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Jackcess Encrypt
+| 2.1.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Jackson dataformat: CBOR
+| 2.6.7
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Jackson dataformat: Smile
+| 2.7.9
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Jackson datatype: JSR310
+| 2.10.0, 2.10.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Jackson Integration for Metrics
+| 3.2.6
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Jackson module: Old JAXB Annotations (javax.xml.bind)
+| 2.10.1, 2.9.8
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Jackson module: Paranamer
+| 2.10.0, 2.7.9
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Jackson-annotations
+| 2.10.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Jackson-core
+| 2.10.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| jackson-databind
+| 2.10.5.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| jackson-dataformat-msgpack
+| 0.8.16
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Jackson-dataformat-XML
+| 2.10.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Jackson-dataformat-YAML
+| 2.9.8
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Jackson-datatype-Guava
+| 2.10.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Jackson-datatype-jdk8
+| 2.10.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Jackson-JAXRS: base
+| 2.9.8
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Jackson-JAXRS: JSON
+| 2.9.8
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| jackson-module-scala
+| 2.10.0, 2.6.7.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Jakarta Activation API
+| 1.2.1
+| Multi-license: https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause] OR https://spdx.org/licenses/PHP-3.01.html[PHP-3.01]
+
+| Jakarta Commons/Net
+| 1.4.1, 3.1
+| Multi-license: https://spdx.org/licenses/Apache-1.1.html[Apache-1.1] OR https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/NTP.html[NTP]
+
+| Jakarta XML Binding API
+| 2.3.2
+| Multi-license: https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause] OR https://spdx.org/licenses/PHP-3.01.html[PHP-3.01]
+
+| jakarta.annotation-api
+| 1.3.4
+| Multi-license: https://spdx.org/licenses/EPL-1.0.html[EPL-1.0] OR https://spdx.org/licenses/EPL-2.0.html[EPL-2.0] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception] OR https://spdx.org/licenses/GPL-3.0-only.html[GPL-3.0-only]
+
+| jakarta.inject
+| 2.5.0
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0] OR https://spdx.org/licenses/EPL-2.0.html[EPL-2.0] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception]
+
+| Janino
+| 3.0.0, 3.0.9
+| Multi-license: https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| jansi
+| 1.11
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Java Agent for Memory Measurements
+| 0.3.3
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Java Architecture for XML Binding 2.3
+| 1.0.1.Final
+| Multi-license: https://spdx.org/licenses/CDDL-1.1.html[CDDL-1.1] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception]
+
+| Java Concurrency Tools Core Library
+| 2.1.2
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Java Development Tools Core
+| 3.10.0
+| unknown
+
+| Java Native Access
+| 5.0.0
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/LGPL-2.1-only.html[LGPL-2.1-only]
+
+| Java Native Access Platform
+| 5.0.0
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/LGPL-2.1-only.html[LGPL-2.1-only]
+
+| Java Servlet 4.0 API
+| 1.0.0.Final
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/CDDL-1.1.html[CDDL-1.1] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception] OR https://spdx.org/licenses/GPL-3.0-only.html[GPL-3.0-only]
+
+| Java Servlet API
+| 3.1.0
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/CDDL-1.1.html[CDDL-1.1] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception]
+
+| Java Transaction API
+| 1.1
+| https://spdx.org/licenses/CDDL-1.1.html[CDDL-1.1]
+
+| Java UUID Generator
+| 3.1.3
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Java WordNet Library
+| 1.3.3
+| https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| java-libpst
+| 0.8.1
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/LGPL-3.0-only.html[LGPL-3.0-only]
+
+| java-xmlbuilder
+| 0.4, 1.2
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| JavaBeans(TM) Activation Framework
+| 1.1, 1.1.1
+| Multi-license: https://spdx.org/licenses/CDDL-1.1.html[CDDL-1.1] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception]
+
+| JavaEWAH
+| 0.3.2
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| JavaMail API
+| 1.6.1
+| Multi-license: https://spdx.org/licenses/CDDL-1.1.html[CDDL-1.1] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception]
+
+| JavaMail API jar
+| 1.6.2
+| Multi-license: https://spdx.org/licenses/CDDL-1.1.html[CDDL-1.1] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception]
+
+| JavaPoet
+| 1.8.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| JavaServer Pages(TM) Specification
+| 2.1
+| Multi-license: https://spdx.org/licenses/Apache-1.1.html[Apache-1.1] OR https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/CDDL-1.1.html[CDDL-1.1]
+
+| JavaServlet(TM) Specification
+| 2.5
+| Multi-license: https://spdx.org/licenses/CDDL-1.1.html[CDDL-1.1] OR https://spdx.org/licenses/SPL-1.0.html[SPL-1.0]
+
+| Javassist
+| 3.22.0-CR2, 3.22.0-GA, 3.24.0-GA
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/LGPL-2.1-only.html[LGPL-2.1-only] OR https://spdx.org/licenses/LGPL-2.1-or-later.html[LGPL-2.1-or-later] OR https://spdx.org/licenses/MPL-1.1.html[MPL-1.1] OR https://spdx.org/licenses/MPL-2.0.html[MPL-2.0]
+
+| javatuples
+| 1.2
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| javax.annotation-api
+| 1.3.2
+| Multi-license: https://spdx.org/licenses/CDDL-1.1.html[CDDL-1.1] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception]
+
+| javax.inject
+| 1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| javax.interceptor-api
+| 1.2
+| Multi-license: https://spdx.org/licenses/CDDL-1.1.html[CDDL-1.1] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception]
+
+| javax.transaction-api
+| 1.3
+| Multi-license: https://spdx.org/licenses/CDDL-1.1.html[CDDL-1.1] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception]
+
+| javax.ws.rs-api
+| 2.1.1, 2.1.5
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0] OR https://spdx.org/licenses/EPL-2.0.html[EPL-2.0] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception] OR https://spdx.org/licenses/GPL-3.0-only.html[GPL-3.0-only]
+
+| Javolution
+| 5.5.1
+| Multi-license: BSD-possibility OR Public-domain
+
+| JAX-RS provider for JSON content type
+| 1.8.3, 1.9.13
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/LGPL-2.1-only.html[LGPL-2.1-only]
+
+| JAXB Runtime
+| 2.3.1, 2.3.2
+| Multi-license: https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause] OR https://spdx.org/licenses/CDDL-1.1.html[CDDL-1.1] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception] OR https://spdx.org/licenses/PHP-3.01.html[PHP-3.01]
+
+| jaxb-api
+| 2.2.2, 2.3.0
+| Multi-license: https://spdx.org/licenses/CDDL-1.0.html[CDDL-1.0] OR https://spdx.org/licenses/CDDL-1.1.html[CDDL-1.1] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception] OR https://spdx.org/licenses/GPL-3.0-only.html[GPL-3.0-only] OR https://spdx.org/licenses/SPL-1.0.html[SPL-1.0]
+
+| jaxb-impl
+| 2.2.3-1
+| Multi-license: https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause] OR https://spdx.org/licenses/CDDL-1.1.html[CDDL-1.1] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception] OR https://spdx.org/licenses/GPL-3.0-only.html[GPL-3.0-only]
+
+| jbool_expressions
+| 1.14
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| JBoss Jakarta Annotations API
+| 1.0.1.Final
+| Multi-license: https://spdx.org/licenses/CDDL-1.1.html[CDDL-1.1] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception]
+
+| JBoss Logging 3
+| 3.3.2.Final
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| jboss-jakarta-jaxrs-api_spec
+| 1.0.2.Final
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/CDDL-1.0.html[CDDL-1.0] OR https://spdx.org/licenses/CDDL-1.1.html[CDDL-1.1] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception]
+
+| jcabi-log
+| 0.14
+| https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| jcabi-manifests
+| 1.1
+| https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| JCIP Annotations under Apache License
+| 1.0-1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| JCL 1.2 implemented over SLF4J
+| 1.7.25
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| jcommander
+| 1.30
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| JDO API
+| 3.0.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| jdom
+| 1.0
+| https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| JDOM
+| 2.0.2
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| jersey-client
+| 1.9
+| Multi-license: https://spdx.org/licenses/CDDL-1.0.html[CDDL-1.0] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception]
+
+| jersey-container-servlet
+| 2.29
+| Multi-license: https://spdx.org/licenses/EPL-1.0.html[EPL-1.0] OR https://spdx.org/licenses/EPL-2.0.html[EPL-2.0] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception]
+
+| jersey-container-servlet-core
+| 2.29
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0] OR https://spdx.org/licenses/EPL-2.0.html[EPL-2.0] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception] OR https://spdx.org/licenses/MIT.html[MIT] OR https://spdx.org/licenses/W3C.html[W3C]
+
+| jersey-core
+| 1.9
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/CDDL-1.0.html[CDDL-1.0] OR https://spdx.org/licenses/CDDL-1.1.html[CDDL-1.1] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception]
+
+| jersey-core-client
+| 2.29
+| Multi-license: https://spdx.org/licenses/EPL-1.0.html[EPL-1.0] OR https://spdx.org/licenses/EPL-2.0.html[EPL-2.0] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception]
+
+| jersey-core-common
+| 2.29
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0] OR https://spdx.org/licenses/EPL-2.0.html[EPL-2.0] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception]
+
+| jersey-core-server
+| 2.29
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0] OR https://spdx.org/licenses/EPL-2.0.html[EPL-2.0] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception]
+
+| jersey-guice
+| 1.9
+| Multi-license: https://spdx.org/licenses/CDDL-1.0.html[CDDL-1.0] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception]
+
+| jersey-inject-hk2
+| 2.29
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0] OR https://spdx.org/licenses/EPL-2.0.html[EPL-2.0] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception] OR https://spdx.org/licenses/MIT.html[MIT] OR https://spdx.org/licenses/W3C.html[W3C]
+
+| jersey-json
+| 1.9
+| Multi-license: https://spdx.org/licenses/CDDL-1.1.html[CDDL-1.1] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception]
+
+| jersey-media-jaxb
+| 2.29
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0] OR https://spdx.org/licenses/EPL-2.0.html[EPL-2.0] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception] OR https://spdx.org/licenses/MIT.html[MIT] OR https://spdx.org/licenses/W3C.html[W3C]
+
+| jersey-server
+| 1.9
+| Multi-license: https://spdx.org/licenses/CDDL-1.0.html[CDDL-1.0] OR https://spdx.org/licenses/CDDL-1.1.html[CDDL-1.1] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception]
+
+| JetBrains Java Annotations
+| 15.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Jettison
+| 1.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Jetty :: Aggregate :: All core Jetty
+| 9.4.34.v20201102
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Jetty :: ALPN :: Client
+| 9.4.34.v20201102
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Jetty :: Asynchronous HTTP Client
+| 9.4.34.v20201102
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Jetty :: Continuation
+| 9.4.34.v20201102
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Jetty :: Deployers
+| 9.4.34.v20201102
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Jetty :: Http Utility
+| 9.4.34.v20201102
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Jetty :: HTTP2 :: Client
+| 9.4.34.v20201102
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Jetty :: HTTP2 :: Common
+| 9.4.34.v20201102
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Jetty :: HTTP2 :: HPACK
+| 9.4.34.v20201102
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Jetty :: HTTP2 :: Server
+| 9.4.34.v20201102
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Jetty :: IO Utility
+| 9.4.34.v20201102
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Jetty :: JASPI Security
+| 9.4.34.v20201102
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Jetty :: JMX Management
+| 9.4.34.v20201102
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Jetty :: JNDI Naming
+| 9.4.34.v20201102
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Jetty :: Plus
+| 9.4.34.v20201102
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Jetty :: Quick Start
+| 9.4.34.v20201102
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Jetty :: Rewrite Handler
+| 9.4.34.v20201102
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Jetty :: Security
+| 9.4.34.v20201102
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Jetty :: Server Core
+| 9.4.34.v20201102
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Jetty :: Servlet Annotations
+| 9.4.34.v20201102
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Jetty :: Servlet Handling
+| 9.4.34.v20201102
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Jetty :: Utilities
+| 9.4.34.v20201102
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0] OR https://spdx.org/licenses/MIT.html[MIT]
+
+| Jetty :: Utility Servlets and Filters
+| 9.4.34.v20201102
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Jetty :: Webapp Application Support
+| 9.4.34.v20201102
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Jetty :: Websocket :: API
+| 9.4.34.v20201102
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Jetty :: Websocket :: Client
+| 9.4.34.v20201102
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Jetty :: Websocket :: Common
+| 9.4.34.v20201102
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Jetty :: Websocket :: javax.websocket :: Client Implementation
+| 9.4.34.v20201102
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Jetty :: Websocket :: javax.websocket.server :: Server Implementation
+| 9.4.34.v20201102
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Jetty :: Websocket :: Server
+| 9.4.34.v20201102
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Jetty :: Websocket :: Servlet Interface
+| 9.4.34.v20201102
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Jetty :: XML utilities
+| 9.4.34.v20201102
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Jetty Orbit :: Activation
+| 1.1.0.v201105071233
+| https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Jetty Orbit :: Glassfish Mail
+| 1.4.1.v201005082020
+| https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Jetty Orbit :: JASPI API
+| 1.0.0.v201108011116
+| https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Jetty Server
+| 6.1.26
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| Jetty Utilities
+| 6.1.26
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| jffi
+| 1.2.16
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/LGPL-3.0-or-later.html[LGPL-3.0-or-later]
+
+| JHighlight
+| 1.0.2
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/CDDL-1.0.html[CDDL-1.0] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/LGPL-2.1-only.html[LGPL-2.1-only] OR https://spdx.org/licenses/MIT.html[MIT]
+
+| JLine
+| 0.9.94, 2.12, 2.14.6
+| Multi-license: https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| JMatIO
+| 1.2
+| https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| JMES Path Query library
+| 1.11.647
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| jnr-constants
+| 0.9.9
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| jnr-ffi
+| 2.1.7
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| jnr-posix
+| 3.0.44
+| Multi-license: https://spdx.org/licenses/CPL-1.0.html[CPL-1.0] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/GPL-2.0-or-later.html[GPL-2.0-or-later] OR https://spdx.org/licenses/LGPL-2.1-only.html[LGPL-2.1-only] OR https://spdx.org/licenses/LGPL-2.1-or-later.html[LGPL-2.1-or-later]
+
+| jnr-x86asm
+| 1.0.2
+| https://spdx.org/licenses/MIT.html[MIT]
+
+| Joda-Convert
+| 1.2, 1.8.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Joda-Time
+| 2.9.3
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Journal.IO
+| 1.4.2
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| JPam
+| 1.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| JSch
+| 0.1.54
+| Multi-license: https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| JSON in Java
+| 20090211, 20140107
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/JSON.html[JSON]
+
+| JSON Small and Fast Parser
+| 2.3
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| json-patch
+| 1.9
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/LGPL-2.1-only.html[LGPL-2.1-only] OR https://spdx.org/licenses/LGPL-3.0-only.html[LGPL-3.0-only]
+
+| JSON.simple
+| 1.1, 1.1.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| json4s-ast
+| 3.5.3
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| json4s-core
+| 3.5.3
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| json4s-ext
+| 3.5.3
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| json4s-jackson
+| 3.5.3
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| json4s-native
+| 3.5.3
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| json4s-scalap
+| 3.5.3
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| jsonic
+| 1.2.7
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| JTransforms
+| 2.4.0
+| Multi-license: https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/LGPL-2.1-only.html[LGPL-2.1-only] OR https://spdx.org/licenses/MPL-1.1.html[MPL-1.1] OR https://spdx.org/licenses/MPL-2.0.html[MPL-2.0]
+
+| jts-core
+| 1.16.0
+| Multi-license: https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| JUL to SLF4J bridge
+| 1.7.25
+| https://spdx.org/licenses/MIT.html[MIT]
+
+| JUnit
+| 4.12
+| https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| JUnit Toolbox
+| 2.2
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| JUnitBenchmarks
+| 0.7.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| JUnitParams
+| 1.0.6
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| juniversalchardet
+| 1.0.3
+| Multi-license: https://spdx.org/licenses/GPL-2.0-or-later.html[GPL-2.0-or-later] OR https://spdx.org/licenses/LGPL-2.1-or-later.html[LGPL-2.1-or-later] OR https://spdx.org/licenses/MPL-1.1.html[MPL-1.1]
+
+| jupyter
+| None
+| https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| JVM Integration for Metrics
+| 3.2.6
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| jvm-attach-api
+| 1.4
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| KeePassJava2 :: All
+| 2.1.4
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| KeePassJava2 :: DOM
+| 2.1.4
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| KeePassJava2 :: JAXB
+| 2.1.4
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| KeePassJava2 :: KDB
+| 2.1.4
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| KeePassJava2 :: KDBX
+| 2.1.4
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| KeePassJava2 :: Simple
+| 2.1.4
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| kosmosfs
+| 0.3
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Kryo
+| 3.0.3, 4.0.2
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| kryo serializers
+| 0.37
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Kryo Shaded
+| 4.0.2
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| Lang
+| 2.6
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/LGPL-2.1-only.html[LGPL-2.1-only]
+
+| language-detection-lib
+| 1.1-20120112
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only]
+
+| leveldbjni-all
+| 1.8
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| log4j
+| 1.2.17
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Log4j Implemented Over SLF4J
+| 1.7.25
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Logback Classic Module
+| 1.2.3
+| Multi-license: https://spdx.org/licenses/EPL-1.0.html[EPL-1.0] OR https://spdx.org/licenses/LGPL-2.1-only.html[LGPL-2.1-only]
+
+| Logback Core Module
+| 1.2.3
+| Multi-license: https://spdx.org/licenses/EPL-1.0.html[EPL-1.0] OR https://spdx.org/licenses/LGPL-2.1-only.html[LGPL-2.1-only]
+
+| Lucene Core
+| 8.8.1
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause] OR https://spdx.org/licenses/MIT.html[MIT]
+
+| LZ4 and xxHash
+| 1.4.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| machinist
+| 0.6.1
+| https://spdx.org/licenses/MIT.html[MIT]
+
+| macros
+| 0.13.0, 3.2.2.0
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/MIT.html[MIT]
+
+| matplotlib
+| 3.4.1
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause] OR https://spdx.org/licenses/CC0-1.0.html[CC0-1.0] OR https://spdx.org/licenses/GPL-3.0-only.html[GPL-3.0-only] OR https://spdx.org/licenses/LGPL-3.0-only.html[LGPL-3.0-only] OR https://spdx.org/licenses/MIT.html[MIT] OR https://spdx.org/licenses/MPL-2.0.html[MPL-2.0] OR https://spdx.org/licenses/OFL-1.1.html[OFL-1.1] OR https://spdx.org/licenses/Python-2.0.html[Python-2.0]
+
+| metadata-extractor
+| 2.9.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Metrics Core
+| 3.2.6
+| public-domain
+
+| Metrics Core Library
+| 2.2.0
+| public-domain
+
+| Metrics Health Checks
+| 3.2.6
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Metrics Integration for Logback
+| 3.2.6
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| metrics reporter config 3.x
+| 3.0.3
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| metrics reporter config base
+| 3.0.3
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| metrics-scala
+| 3.5.6
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| MicroProfile Config API
+| 1.3
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Microsoft Azure client library for Blob Storage
+| 12.4.0
+| Multi-license: https://spdx.org/licenses/MIT.html[MIT]
+
+| Microsoft Azure client library for Identity
+| 1.1.0
+| https://spdx.org/licenses/MIT.html[MIT]
+
+| Microsoft Azure common module for Storage
+| 12.4.0
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/MIT.html[MIT]
+
+| Microsoft Azure Java Core Library
+| 1.7.0
+| https://spdx.org/licenses/MIT.html[MIT]
+
+| Microsoft Azure Netty HTTP Client Library
+| 1.3.0
+| https://spdx.org/licenses/MIT.html[MIT]
+
+| Microsoft Azure Storage Client SDK
+| 2.0.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| MinLog
+| 1.3.0
+| Multi-license: https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| Mobility-RPC
+| 1.2.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| mock
+| 4.0.3
+| Multi-license: https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| mockito-core
+| 3.0.0
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/MIT.html[MIT]
+
+| mockito-inline
+| 3.0.0
+| https://spdx.org/licenses/MIT.html[MIT]
+
+| Morfologik FSA (Traversal)
+| 2.1.0
+| https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause]
+
+| Morfologik Stemming APIs
+| 2.1.0
+| https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause]
+
+| Morfologik Stemming Dictionary for Polish
+| 2.1.0
+| https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause]
+
+| Moshi
+| 1.5.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| msal4j
+| 1.6.1
+| Multi-license: https://spdx.org/licenses/MIT.html[MIT]
+
+| msal4j-persistence-extension
+| 1.0.0
+| https://spdx.org/licenses/MIT.html[MIT]
+
+| msgpack-core
+| 0.8.16
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| mxdump
+| 0.10.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| NanoHttpd-Core
+| 2.3.1
+| https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| Neko HTML
+| 1.9.17
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Netty/Buffer
+| 4.0.56.Final
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Netty/Codec
+| 4.0.56.Final
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Netty/Common
+| 4.0.56.Final
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/MIT.html[MIT]
+
+| Netty/Handler
+| 4.0.56.Final
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Netty/Transport
+| 4.0.56.Final
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Nimbus Content Type
+| 2.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Nimbus JOSE+JWT
+| 8.14.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Nimbus LangTag
+| 1.4.4
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Ning-compress-LZF
+| 1.0.3
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Noggit
+| 0.6
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Non-Blocking Reactive Foundation for the JVM
+| 3.1.5.RELEASE, 3.3.8.RELEASE
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| nose
+| None
+| Multi-license: https://spdx.org/licenses/LGPL-2.0-or-later.html[LGPL-2.0-or-later] OR https://spdx.org/licenses/LGPL-2.1-only.html[LGPL-2.1-only] OR https://spdx.org/licenses/LGPL-3.0-only.html[LGPL-3.0-only] OR https://spdx.org/licenses/MIT.html[MIT]
+
+| numpy
+| 1.20.2
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause] OR https://spdx.org/licenses/GPL-3.0-only.html[GPL-3.0-only] OR https://spdx.org/licenses/LGPL-3.0-only.html[LGPL-3.0-only] OR https://spdx.org/licenses/MIT.html[MIT] OR https://spdx.org/licenses/Python-2.0.html[Python-2.0] OR https://spdx.org/licenses/Zlib.html[Zlib]
+
+| OAuth 2.0 SDK with OpenID Connect extensions
+| 7.4
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Objenesis
+| 2.1, 2.5.1, 2.6
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Ogg and Vorbis for Java, Core
+| 0.8
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| OHC core
+| 0.7.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| okhttp
+| 3.8.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Okio
+| 1.13.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| opencsv
+| 2.3
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| OpenHFT/Java-Lang/lang
+| 6.6.2
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| OpenHFT/Java-Runtime-Compiler
+| 2.2.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| OpenHFT/Java-Thread-Affinity/affinity
+| 2.2
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| OpenHTF/Java-Chronicle
+| 3.4.2
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ORC Core
+| 1.5.2
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ORC MapReduce
+| 1.5.2
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ORC Shims
+| 1.5.2
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| org.apache.servicemix.bundles.antlr
+| 2.7.7_5
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| org.eclipse.core.contenttype
+| 3.4.100
+| https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| org.eclipse.core.jobs
+| 3.5.100
+| https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| org.eclipse.core.runtime
+| 3.7.0
+| https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| org.eclipse.equinox.common
+| 3.6.0
+| https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| org.eclipse.equinox.preferences
+| 3.4.1
+| https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| org.eclipse.equinox.registry
+| 3.5.101
+| https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| org.osgi:org.osgi.annotation.versioning
+| 1.0.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| org.roaringbitmap:RoaringBitmap
+| 0.7.45
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| org.roaringbitmap:shims
+| 0.7.45
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| oro
+| 2.0.8
+| https://spdx.org/licenses/Apache-1.1.html[Apache-1.1]
+
+| OSGi resource locator
+| 1.0.3
+| Multi-license: https://spdx.org/licenses/EPL-1.0.html[EPL-1.0] OR https://spdx.org/licenses/EPL-2.0.html[EPL-2.0] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception] OR https://spdx.org/licenses/GPL-3.0-only.html[GPL-3.0-only]
+
+| pandas
+| 1.2.3
+| https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| ParaNamer Core
+| 2.3, 2.8
+| https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| Parquet Hadoop Bundle
+| 1.6.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| picocli
+| 3.9.5
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| presto-parser
+| 0.122
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Protocol Buffers [Core]
+| 2.5.0, 3.0.0-beta-1
+| Multi-license: https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| psjava
+| 0.1.19
+| https://spdx.org/licenses/MIT.html[MIT]
+
+| PWDB :: Database
+| 2.1.4
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Py4J
+| 0.10.7
+| Multi-license: https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| pyrolite
+| 4.13
+| https://spdx.org/licenses/MIT.html[MIT]
+
+| RandomizedTesting Randomized Runner
+| 2.1.2
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| reactive-streams
+| 1.0.2, 1.0.3
+| Multi-license: https://spdx.org/licenses/CC0-1.0.html[CC0-1.0]
+
+| Reactor Netty with all modules
+| 0.9.0.RELEASE
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Reactor Pool
+| 0.1.0.RELEASE
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ReflectASM
+| 1.10.1, 1.11.3
+| Multi-license: https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| Reflections
+| 0.9.10
+| Multi-license: https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause] OR https://spdx.org/licenses/WTFPL.html[WTFPL]
+
+| RESTEasy Jackson 2 Provider
+| 4.0.0.Final
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| RESTEasy JAX-RS Client
+| 4.0.0.Final
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| RESTEasy JAX-RS Client API
+| 4.0.0.Final
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| RESTEasy JAX-RS Core
+| 4.0.0.Final
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| RESTEasy JAX-RS Core SPI
+| 4.0.0.Final
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| RESTEasy JAXB Provider
+| 4.0.0.Final
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| RESTEasy Netty 4 Integration
+| 4.0.0.Final
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Restlet Core - API and Engine
+| 2.3.0
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/CDDL-1.0.html[CDDL-1.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0] OR https://spdx.org/licenses/LGPL-3.0-only.html[LGPL-3.0-only]
+
+| Restlet Extension - Servlet
+| 2.3.0
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/CDDL-1.0.html[CDDL-1.0] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0] OR https://spdx.org/licenses/LGPL-3.0-only.html[LGPL-3.0-only]
+
+| RMI IO Utilites
+| 2.1.2
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| rome
+| 1.5.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| rome-utils
+| 1.5.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| rxjava
+| 1.3.6, 2.2.7
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| rxjava-string
+| 1.1.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| rxjava2-extensions
+| 0.20.5
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| rxscala
+| 0.26.5
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Scala Compiler
+| 2.11.12
+| Multi-license: https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/MIT.html[MIT]
+
+| scala-async
+| 0.9.6
+| unknown
+
+| scala-library
+| 2.11.12
+| Multi-license: https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| scala-logging
+| 3.5.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| scala-parser-combinators
+| 1.0.6
+| https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| scala-xml
+| 1.0.5
+| https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| scalactic
+| 2.2.6
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| scalatest
+| 2.2.6
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| scipy
+| None
+| Multi-license: https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause] OR https://spdx.org/licenses/BSL-1.0.html[BSL-1.0] OR https://spdx.org/licenses/GPL-3.0-only.html[GPL-3.0-only] OR https://spdx.org/licenses/GPL-3.0-with-GCC-exception.html[GPL-3.0-with-GCC-exception] OR https://spdx.org/licenses/MIT.html[MIT] OR https://spdx.org/licenses/Python-2.0.html[Python-2.0]
+
+| scopt
+| 3.7.0
+| https://spdx.org/licenses/MIT.html[MIT]
+
+| serial
+| 2.8.3
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| ServiceLocator Default Implementation
+| 2.5.0
+| Multi-license: https://spdx.org/licenses/EPL-1.0.html[EPL-1.0] OR https://spdx.org/licenses/EPL-2.0.html[EPL-2.0] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception]
+
+| setuptools
+| None
+| Multi-license: https://spdx.org/licenses/MIT.html[MIT] OR https://spdx.org/licenses/Python-2.0.html[Python-2.0]
+
+| Shaded Guava artifact for use in the DataStax Java driver for Apache Cassandra®
+| 25.1-jre
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| sigar
+| 1.6.4
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Simple XML
+| 2.7.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| sjk-cli
+| 0.10.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| sjk-core
+| 0.10.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| sjk-hflame
+| 0.10.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| sjk-jfr
+| 0.3
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| sjk-nps
+| 0.3
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| sjk-stacktrace
+| 0.10.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| SLF4J API Module
+| 1.7.25
+| https://spdx.org/licenses/MIT.html[MIT]
+
+| SLF4J LOG4J-12 Binding
+| 1.7.25
+| https://spdx.org/licenses/MIT.html[MIT]
+
+| slice
+| 0.15
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| SmallRye: MicroProfile Config Implementation
+| 1.3.3
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| SnakeYAML
+| 1.15, 1.23
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause] OR https://spdx.org/licenses/EPL-1.0.html[EPL-1.0] OR https://spdx.org/licenses/GPL-2.0-or-later.html[GPL-2.0-or-later] OR https://spdx.org/licenses/LGPL-2.1-or-later.html[LGPL-2.1-or-later]
+
+| snappy
+| 0.2
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Snappy for Java
+| 1.0.4.1, 1.1.1.6, 1.1.7.2
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| snowball-stemmer
+| 1.3.0.581.1
+| https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| Spatial4J
+| 0.7
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| spire
+| 0.13.0
+| https://spdx.org/licenses/MIT.html[MIT]
+
+| Spongy Castle
+| 1.54.0.0
+| Multi-license: https://spdx.org/licenses/MIT.html[MIT]
+
+| Spotify DNS wrapper library
+| 3.1.5
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| spray-json
+| 1.3.5
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| StAX
+| 1.2.0
+| Multi-license: https://spdx.org/licenses/Apache-1.1.html[Apache-1.1] OR https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause]
+
+| StAX API
+| 1.0.1
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Stax2 API
+| 3.1.4, 4.2
+| Multi-license: https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| stream-lib
+| 2.7.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| StreamEx
+| 0.6.5
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Streaming API for XML
+| 1.0-2
+| Multi-license: https://spdx.org/licenses/CDDL-1.1.html[CDDL-1.1] OR https://spdx.org/licenses/GPL-3.0-only.html[GPL-3.0-only]
+
+| StringTemplate 4
+| 4.0.4, 4.0.7, 4.0.8
+| https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| StringTemplate Template Engine
+| 3.2.1
+| Multi-license: https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| Super CSV Core
+| 2.2.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| swagger-annotations
+| 2.0.8
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| swagger-core
+| 2.0.8
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| swagger-integration
+| 2.0.8
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| swagger-jaxrs2
+| 2.0.8
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| swagger-models
+| 2.0.8
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| t-digest
+| 3.1
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| TagSoup
+| 1.2.1
+| Multi-license: https://spdx.org/licenses/AFL-3.0.html[AFL-3.0] OR https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/GPL-2.0-or-later.html[GPL-2.0-or-later]
+
+| Text
+| 3.5.101
+| https://spdx.org/licenses/EPL-1.0.html[EPL-1.0]
+
+| The Netty Project
+| 3.6.2.Final, 3.7.0.Final, 3.9.9.Final
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause] OR https://spdx.org/licenses/MIT.html[MIT]
+
+| tomcat-annotations-api
+| 8.5.61
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| tomcat-api
+| 8.5.61
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| tomcat-el-api
+| 8.5.61
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| tomcat-embed-core
+| 8.5.61
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/CDDL-1.1.html[CDDL-1.1] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception]
+
+| tomcat-embed-el
+| 8.5.61
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| tomcat-embed-jasper
+| 8.5.61
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| tomcat-jasper
+| 8.5.61
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| tomcat-jasper-el
+| 8.5.61
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| tomcat-jsp-api
+| 8.5.61
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| tomcat-juli
+| 8.5.61
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| tomcat-servlet-api
+| 8.5.61
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/CDDL-1.0.html[CDDL-1.0] OR https://spdx.org/licenses/CDDL-1.1.html[CDDL-1.1] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception]
+
+| tomcat-util
+| 8.5.61
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| tomcat-util-scan
+| 8.5.61
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| TXW2 Runtime
+| 2.3.1
+| Multi-license: https://spdx.org/licenses/CDDL-1.1.html[CDDL-1.1] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception]
+
+| TypeTools
+| 0.5.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Unitils core module
+| 3.4.6
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| Units of Measurement API
+| 1.0
+| https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| univocity-parsers
+| 2.7.3
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| value
+| 2.8.3
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| value-annotations
+| 2.8.3
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| WebSocket client API
+| 1.0
+| https://spdx.org/licenses/CDDL-1.1.html[CDDL-1.1]
+
+| WebSocket server API
+| 1.0
+| Multi-license: https://spdx.org/licenses/CDDL-1.1.html[CDDL-1.1] OR https://spdx.org/licenses/GPL-2.0-only.html[GPL-2.0-only] OR https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html[GPL-2.0-with-classpath-exception]
+
+| Woodstox
+| 4.4.1, 6.0.2
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| xercesImpl
+| 2.9.1
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/W3C.html[W3C]
+
+| Xml Compatibility extensions for Jackson
+| 1.8.3, 1.9.13
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/LGPL-2.1-only.html[LGPL-2.1-only]
+
+| xml-apis
+| 1.3.04
+| Multi-license: https://spdx.org/licenses/Apache-2.0.html[Apache-2.0] OR https://spdx.org/licenses/W3C.html[W3C]
+
+| XmlBeans
+| 2.6.0
+| https://spdx.org/licenses/Apache-2.0.html[Apache-2.0]
+
+| xmlenc
+| 0.52
+| Multi-license: https://spdx.org/licenses/BSD-2-Clause.html[BSD-2-Clause] OR https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+| xpp3
+| 1.1.3.3
+| Indiana University Extreme! Lab Software License, Version 1.1.1
+
+| XZ for Java
+| 1.0, 1.5, 1.6
+| public-domain
+
+| zstd-jni
+| 1.3.2-2
+| https://spdx.org/licenses/BSD-3-Clause.html[BSD-3-Clause]
+
+|===

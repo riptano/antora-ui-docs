@@ -1,0 +1,1353 @@
+= DSE OpsCenter and DataStax Agent 6.8.0
+
+//shortdesc: Third-party software licensed for DSE OpsCenter and DataStax Agent 6.8.0.
+
+.DSE OpsCenter and DataStax Agent 6.8.0
+[cols=3*]
+|===
+|*Component* | *Version* | *License*
+
+| @babel/runtime
+| 7.1.5
+| MIT
+
+| @types/node
+| 10.12.10
+| MIT
+
+| a connector for Pageant using JNA
+| 0.0.9
+| BSD-3-Clause
+
+| a connector for ssh-agent
+| 0.0.9
+| BSD-3-Clause
+
+| again
+| 0.1.0
+| EPL-1.0
+
+| a library to use jsch-agent-proxy with JSch
+| 0.0.9
+| BSD-3-Clause
+
+| Animal Sniffer Annotations
+| 1.14
+| MIT
+
+| an implementation of USocketFactory using JNA
+| 0.0.9
+| BSD-3-Clause
+
+| an implementation of USocketFactory using netcat
+| 0.0.9
+| BSD-3-Clause
+
+| Apache Commons Codec
+| 1.10
+| Apache License, Version 2.0
+
+| Apache Commons Codec
+| 1.11
+| Apache License, Version 2.0
+
+| Apache Commons Compress
+| 1.8
+| Apache License, Version 2.0
+
+| Apache Commons DBCP
+| 2.1.1
+| Apache License, Version 2.0
+
+| Apache Commons FileUpload
+| 1.3.3
+| Apache License, Version 2.0
+
+| Apache Commons Lang
+| 3.3.2
+| Apache License, Version 2.0
+
+| Apache Commons Logging
+| 1.2
+| Apache License, Version 2.0
+
+| Apache Commons Pool
+| 2.4.2
+| Apache License, Version 2.0
+
+| Apache Directory API All
+| 1.0.2
+| Apache License, Version 2.0
+
+| Apache HttpClient
+| 4.5.5
+| Apache License, Version 2.0
+
+| Apache HttpClient Mime
+| 4.5.2
+| Apache License, Version 2.0
+
+| Apache HttpCore
+| 4.4.9
+| Apache License, Version 2.0
+
+| Apache Log4j
+| 1.2.17
+| Apache License, Version 2.0
+
+| Apache MINA Core ${project.version}
+| 2.0.18
+| Apache License, Version 2.0
+
+| asap
+| 2.0.6
+| MIT
+
+| ASM All
+| 4.1
+| BSD-3-Clause; Apache License, Version 2.0
+
+| ASM All
+| 4.2
+| BSD-3-Clause; Apache License, Version 2.0
+
+| ASM Analysis
+| 5.0.3
+| BSD-3-Clause; Apache License, Version 2.0
+
+| ASM Commons
+| 5.0.3
+| BSD-3-Clause; Apache License, Version 2.0
+
+| ASM Core
+| 5.0.3
+| BSD-3-Clause; Apache License, Version 2.0
+
+| ASM License
+| ASM License
+| ASM License
+
+| ASM Tree
+| 5.0.3
+| BSD-3-Clause; Apache License, Version 2.0
+
+| ASM Util
+| 5.0.3
+| BSD-3-Clause; Apache License, Version 2.0
+
+| AWS Java SDK for Amazon S3
+| 1.11.340
+| Apache License, Version 2.0
+
+| AWS Java SDK for AWS KMS
+| 1.11.340
+| Apache License, Version 2.0
+
+| AWS SDK for Java - Core
+| 1.11.340
+| Apache License, Version 2.0
+
+| babel-polyfill
+| 6.23.0
+| MIT
+
+| babel-runtime
+| 6.23.0
+| MIT
+
+| boolbase
+| 1.0.0
+| ISC
+
+| Bouncy Castle PKIX, CMS, EAC, TSP, PKCS, OCSP, CMP, and CRMF
+                            APIs
+| 1.55
+| Bouncy Castle Licence
+
+| Bouncy Castle Provider
+| 1.58
+| Bouncy Castle Licence
+
+| bowser
+| 1.7.0
+| MIT
+
+| bowser
+| 1.9.4
+| MIT
+
+| buddy-core
+| 1.1.1
+| Apache License, Version 2.0
+
+| Byte Buddy (without dependencies)
+| 1.8.10
+| Apache License, Version 2.0
+
+| Byte Buddy Java agent
+| 1.8.10
+| Apache License, Version 2.0
+
+| c3p0
+| 0.9.5.5
+| LGPL-2.1-only or EPL-1.0
+
+| cheerio
+| 1.0.0-rc.2
+| MIT
+
+| cheshire
+| 5.6.3
+| MIT
+
+| cheshire
+| 5.8.0
+| MIT
+
+| chosen-dojo
+| 02d9dc7f9983100d1452f34290a6217bb4050deb
+| BSD-3-Clause or Trac License, ./LICENSE.md; MIT
+
+| classnames
+| 2.2.6
+| MIT
+
+| clj-http
+| 3.1.0
+| MIT
+
+| clj-ssh
+| 0.5.14
+| EPL-1.0
+
+| clj-stacktrace
+| 0.2.7
+| MIT
+
+| clj-stacktrace
+| 0.2.8
+| MIT
+
+| clj-time
+| 0.12.0
+| MIT
+
+| clj-time
+| 0.14.4
+| MIT
+
+| clj-tuple
+| 0.2.2
+| MIT; MIT
+
+| clojure
+| 1.10.0
+| EPL-1.0 or PHP-3.01
+
+| clout
+| 2.2.1
+| EPL-1.0
+
+| codemirror
+| 5.2.0
+| MIT
+
+| colors
+| 0.5.1
+| MIT
+
+| commons-collections
+| 3.2.2
+| Apache License, Version 2.0
+
+| Commons IO
+| 2.5
+| Apache License, Version 2.0
+
+| Commons IO
+| 2.6
+| Apache License, Version 2.0
+
+| Commons Lang
+| 2.6
+| Apache License, Version 2.0
+
+| Commons Pool
+| 1.6
+| Apache License, Version 2.0
+
+| compojure
+| 1.6.1
+| EPL-1.0
+
+| compojure-api
+| 2.0.0-alpha28
+| EPL-1.0
+
+| conch
+| 0.8.0
+| EPL-1.0
+
+| core.async
+| 0.4.490
+| EPL-1.0
+
+| core.cache
+| 0.6.5
+| PHP-3.0 or EPL-1.0
+
+| core.match
+| 0.3.0-alpha4
+| PHP-3.0 or EPL-1.0
+
+| core.match
+| 0.3.0-alpha5
+| PHP-3.01 or EPL-1.0
+
+| core.memoize
+| 0.5.9
+| PHP-3.0 or EPL-1.0
+
+| core.specs.alpha
+| 0.2.44
+| EPL-1.0 or PHP-3.01
+
+| core-js
+| 1.2.7
+| MIT
+
+| core-js
+| 2.5.7
+| MIT
+
+| create-react-class
+| 15.6.3
+| MIT or BSD-3-Clause
+
+| crypto-equality
+| 1.0.0
+| EPL-1.0
+
+| crypto-random
+| 1.2.0
+| EPL-1.0
+
+| css-in-js-utils
+| 2.0.1
+| MIT
+
+| css-select
+| 1.2.0
+| BSD-2-Clause or BSD-3-Clause
+
+| css-what
+| 2.1.2
+| BSD-2-Clause
+
+| data.codec
+| 0.1.1
+| EPL-1.0
+
+| data.csv
+| 0.1.2
+| EPL-1.0
+
+| data.priority-map
+| 0.0.7
+| EPL-1.0
+
+| dateformat
+| 2.0.0
+| MIT
+
+| define-properties
+| 1.1.3
+| MIT
+
+| dependency
+| 0.1.1
+| EPL-1.0
+
+| dgrid
+| 1.1.0
+| BSD-3-Clause; BSD-3-Clause or BSD-2-Clause or undefined
+
+| digest
+| 1.4.4
+| EPL-1.0
+
+| digest
+| 1.4.8
+| EPL-1.0
+
+| dijit
+| 1.14.2
+| AFL-2.1 or BSD-3-Clause or BSD-2-Clause; AFL-2.1 or
+                            BSD-3-Clause
+
+| discontinuous-range
+| 1.0.0
+| MIT
+
+| dojo
+| 1.14.2
+| BSD-3-Clause or AFL-2.1 or BSD-2-Clause; BSD-3-Clause or
+                            AFL-2.1
+
+| dojo-dstore
+| 1.1.1
+| BSD-3-Clause or BSD-2-Clause or undefined; BSD-3-Clause
+
+| dojo-util
+| 1.14.2
+| BSD-3-Clause or BSD-2-Clause or Trac License, Academic Free License
+                            version 2; AFL-2.1 or BSD-3-Clause
+
+| dojox
+| 1.14.2
+| AFL-2.1 or BSD-3-Clause or BSD-2-Clause; AFL-2.1 or
+                            BSD-3-Clause
+
+| domelementtype
+| 1.1.3
+| BSD-2-Clause
+
+| domelementtype
+| 1.2.1
+| BSD-2-Clause
+
+| domelementtype
+| 1.3.0
+| BSD-2-Clause
+
+| domhandler
+| 2.4.2
+| BSD-2-Clause or BSD-3-Clause
+
+| dom-helpers
+| 3.4.0
+| MIT
+
+| dom-serializer
+| 0.1.0
+| MIT
+
+| domutils
+| 1.5.1
+| BSD-2-Clause
+
+| encoding
+| 0.1.12
+| MIT
+
+| entities
+| 1.1.2
+| BSD-2-Clause
+
+| enzyme
+| 3.3.0
+| MIT
+
+| enzyme-adapter-react-16
+| 1.7.0
+| MIT
+
+| enzyme-adapter-utils
+| 1.9.0
+| MIT
+
+| error-prone annotations
+| 2.0.18
+| Apache License, Version 2.0
+
+| es-abstract
+| 1.12.0
+| MIT
+
+| es-to-primitive
+| 1.2.0
+| MIT
+
+| exenv
+| 1.2.2
+| BSD-3-Clause
+
+| fbjs
+| 0.8.17
+| MIT or BSD-3-Clause
+
+| fetch-mock
+| 5.11.0
+| MIT
+
+| FindBugs-jsr305
+| 1.3.9
+| Apache License, Version 2.0
+
+| for-each
+| 0.3.3
+| MIT or MIT License; MIT
+
+| formatio
+| 1.1.1
+| BSD-3-Clause
+
+| fs
+| 1.4.6
+| EPL-1.0
+
+| function.prototype.name
+| 1.1.0
+| MIT
+
+| function-bind
+| 1.1.1
+| MIT
+
+| glob-to-regexp
+| 0.3.0
+| BSD-3-Clause
+
+| Guava: Google Core Libraries for Java
+| 23.0
+| Apache License, Version 2.0
+
+| has
+| 1.0.3
+| MIT
+
+| has-symbols
+| 1.0.0
+| MIT
+
+| hiccup
+| 1.0.5
+| Eclipse Public License
+
+| history
+| 3.3.0
+| MIT
+
+| hoist-non-react-statics
+| 1.2.0
+| BSD-3-Clause; BSD-3-Clause or BSD License
+
+| hoist-non-react-statics
+| 2.5.5
+| BSD-3-Clause; BSD-3-Clause or BSD-2-Clause
+
+| hooke
+| 1.3.0
+| EPL-1.0
+
+| htmlparser2
+| 3.10.0
+| MIT
+
+| http-kit
+| 2.2.0
+| Apache License, Version 2.0
+
+| Humanize for Java - Slim
+| 1.2.2
+| Apache License, Version 2.0
+
+| hyphenate-style-name
+| 1.0.2
+| BSD-3-Clause
+
+| iconv-lite
+| 0.4.24
+| MIT
+
+| inherits
+| 2.0.3
+| MIT or ISC
+
+| inline-style-prefixer
+| 4.0.2
+| MIT
+
+| instaparse
+| 1.4.8
+| EPL-1.0
+
+| invariant
+| 2.2.4
+| BSD-3-Clause or MIT
+
+| ion-java
+| 1.0.2
+| Apache License, Version 2.0
+
+| isarray
+| 0.0.1
+| MIT
+
+| is-boolean-object
+| 1.0.0
+| MIT
+
+| is-callable
+| 1.1.4
+| MIT
+
+| is-date-object
+| 1.0.1
+| MIT
+
+| is-number-object
+| 1.0.3
+| MIT
+
+| isobject
+| 3.0.1
+| MIT
+
+| isomorphic-fetch
+| 2.2.1
+| MIT
+
+| is-regex
+| 1.0.4
+| MIT
+
+| is-stream
+| 1.1.0
+| MIT
+
+| is-string
+| 1.0.4
+| MIT
+
+| is-subset
+| 0.1.1
+| MIT
+
+| is-symbol
+| 1.0.2
+| MIT
+
+| J2ObjC Annotations
+| 1.1
+| Apache License, Version 2.0
+
+| Jackson-annotations
+| 2.10.2
+| Apache License, Version 2.0
+
+| Jackson-core
+| 2.10.2
+| Apache License, Version 2.0
+
+| jackson-databind
+| 2.10.2
+| Apache License, Version 2.0
+
+| Jackson dataformat: CBOR
+| 2.10.2
+| Apache License, Version 2.0
+
+| Jackson-dataformat-Smile
+| 2.10.2
+| Apache License, Version 2.0
+
+| Jackson-datatype-json.org
+| 2.10.2
+| Apache License, Version 2.0
+
+| Jackson Integration for Metrics
+| 3.1.2
+| Apache License, Version 2.0
+
+| java.classpath
+| 0.2.2
+| EPL-1.0
+
+| java.classpath
+| 0.2.3
+| EPL-1.0
+
+| java.jdbc
+| 0.6.1
+| EPL-1.0
+
+| java.jdbc
+| 0.7.7
+| EPL-1.0
+
+| java.jmx
+| 0.3.1
+| EPL-1.0
+
+| Java Native Access
+| 4.1.0
+| ASL, version 2; LGPL-2.1-only
+
+| Java Native Access Platform
+| 4.1.0
+| ASL, version 2; LGPL-2.1-only
+
+| Java Servlet API
+| 3.1.0
+| CDDL-1.1 or GPL-2.0-only or GPL-2.0-with-classpath-exception
+
+| Javassist
+| 3.12.1.GA
+| MPL-2.0; LGPL-2.1-only
+
+| jbcrypt
+| 0.4
+| ISC
+
+| JCL 1.1.1 implemented over SLF4J
+| 1.7.25
+| MIT
+
+| Jetty :: Http Utility
+| 9.2.10.v20150310
+| EPL-1.0; Apache License, Version 2.0
+
+| Jetty :: Http Utility
+| 9.4.12.v20180830
+| Apache License, Version 2.0 or EPL-1.0
+
+| Jetty :: IO Utility
+| 9.2.10.v20150310
+| EPL-1.0; Apache License, Version 2.0
+
+| Jetty :: IO Utility
+| 9.4.12.v20180830
+| Apache License, Version 2.0 or EPL-1.0
+
+| Jetty :: Server Core
+| 9.2.10.v20150310
+| EPL-1.0; Apache License, Version 2.0
+
+| Jetty :: Server Core
+| 9.4.12.v20180830
+| EPL-1.0 or Apache License, Version 2.0
+
+| Jetty :: Utilities
+| 9.2.10.v20150310
+| EPL-1.0; Apache License, Version 2.0
+
+| Jetty :: Utilities
+| 9.4.12.v20180830
+| Apache License, Version 2.0 or EPL-1.0
+
+| jffi
+| 1.2.16
+| Apache License, Version 2.0
+
+| JGroups
+| 4.0.21.Final
+| Apache License, Version 2.0
+
+| JMES Path Query library
+| 1.11.340
+| Apache License, Version 2.0
+
+| jnr-constants
+| 0.9.9
+| Apache License, Version 2.0
+
+| jnr-ffi
+| 2.1.7
+| Apache License, Version 2.0
+
+| jnr-posix
+| 3.0.44
+| GPL-2.0-only or LGPL-2.1-only or Common Public License - v
+                            1.0
+
+| jnr-x86asm
+| 1.0.2
+| MIT
+
+| Joda-Time
+| 2.9.3
+| Apache License, Version 2.0
+
+| Joda-Time
+| 2.9.9
+| Apache License, Version 2.0
+
+| JSch
+| 0.1.54
+| BSD-3-Clause
+
+| jsch-agent-proxy core library
+| 0.0.9
+| BSD-3-Clause
+
+| json-html
+| 0.4.4
+| MIT
+
+| JSON in Java
+| 20180813
+| JSON or The JSON License
+
+| js-tokens
+| 4.0.0
+| MIT
+
+| korma
+| 0.4.3
+| EPL-1.0
+
+| lazymap
+| 3.1.0
+| MIT
+
+| lodash
+| 4.17.15
+| MIT
+
+| lodash.flattendeep
+| 4.4.0
+| MIT
+
+| lodash-amd
+| 4.13.1
+| MIT
+
+| lodash-es
+| 4.17.15
+| MIT
+
+| Log4j Implemented Over SLF4J
+| 1.7.25
+| Apache License, Version 2.0
+
+| Logback Classic Module
+| 1.2.3
+| LGPL-2.1-only or EPL-1.0
+
+| Logback Core Module
+| 1.2.3
+| LGPL-2.1-only or EPL-1.0
+
+| lolex
+| 1.3.2
+| BSD-3-Clause
+
+| loose-envify
+| 1.4.0
+| MIT
+
+| LZ4 and xxHash
+| 1.5.0
+| Apache License, Version 2.0
+
+| math.combinatorics
+| 0.1.3
+| EPL-1.0
+
+| mchange-commons-java
+| 0.2.19
+| LGPL-2.1-only or EPL-1.0
+
+| medley
+| 1.0.0
+| EPL-1.0
+
+| Metrics Core
+| 3.2.2
+| Apache License, Version 2.0
+
+| Microsoft Azure SDK for Key Vault
+| 1.0.0
+| MIT
+
+| Microsoft Azure Storage Client SDK
+| 8.0.0
+| Apache License, Version 2.0
+
+| Mockito
+| 2.19.0
+| MIT
+
+| moo
+| 0.4.3
+| BSD-2-Clause or BSD-3-Clause
+
+| mount
+| 0.1.12
+| EPL-1.0
+
+| mutationobserver-shim
+| 0.3.1
+| WTFPL
+
+| nearley
+| 2.15.1
+| MIT
+
+| Netty/Buffer
+| 4.0.56.Final
+| Apache License, Version 2.0
+
+| Netty/Codec
+| 4.0.56.Final
+| Apache License, Version 2.0
+
+| Netty/Common
+| 4.0.56.Final
+| Apache License, Version 2.0
+
+| Netty/Handler
+| 4.0.56.Final
+| Apache License, Version 2.0
+
+| Netty/Transport
+| 4.0.56.Final
+| Apache License, Version 2.0
+
+| node-fetch
+| 1.7.3
+| MIT
+
+| node-polyglot
+| 2.2.2
+| BSD-2-Clause or BSD-3-Clause
+
+| nomnom
+| 1.6.2
+| MIT
+
+| ns-tracker
+| 0.3.0
+| Eclipse Public License
+
+| ns-tracker
+| 0.3.1
+| Eclipse Public License
+
+| nth-check
+| 1.0.2
+| BSD-2-Clause
+
+| object.assign
+| 4.1.0
+| MIT
+
+| object.entries
+| 1.0.4
+| MIT
+
+| object.values
+| 1.0.4
+| MIT
+
+| object-assign
+| 4.1.1
+| MIT
+
+| object-inspect
+| 1.6.0
+| MIT
+
+| object-is
+| 1.0.1
+| MIT
+
+| object-keys
+| 1.0.12
+| MIT
+
+| Objenesis
+| 2.6
+| Apache License, Version 2.0
+
+| org.apache.servicemix.bundles.antlr
+| 2.7.7_5
+| Apache License, Version 2.0
+
+| org.apache.servicemix.bundles.dom4j
+| 1.6.1_5
+| Apache License, Version 2.0
+
+| org.apache.servicemix.bundles.xpp3
+| 1.1.4c_7
+| Apache License, Version 2.0
+
+| pandect
+| 0.6.1
+| MIT
+
+| parse5
+| 3.0.3
+| MIT
+
+| path-to-regexp
+| 1.7.0
+| MIT
+
+| performance-now
+| 2.1.0
+| MIT
+
+| plumbing
+| 0.5.5
+| EPL-1.0
+
+| potemkin
+| 0.4.3
+| MIT
+
+| PrettyTime - Core
+| 3.2.5.Final
+| Apache License, Version 2.0
+
+| promise
+| 7.3.1
+| MIT
+
+| prop-types
+| 15.6.2
+| BSD-3-Clause or MIT
+
+| put-selector
+| 0.3.6
+| AFL-2.1 or BSD-3-Clause or Trac License; AFL-2.1 or
+                            BSD-3-Clause
+
+| query-string
+| 4.3.4
+| MIT
+
+| radium
+| 0.24.0
+| MIT
+
+| raf
+| 3.4.1
+| MIT
+
+| railroad-diagrams
+| 1.0.0
+| CC0-1.0
+
+| randexp
+| 0.4.6
+| MIT
+
+| react
+| 16.3.2
+| MIT or BSD-3-Clause
+
+| react-dom
+| 16.3.2
+| MIT or BSD-3-Clause
+
+| react-is
+| 16.6.3
+| MIT
+
+| react-lifecycles-compat
+| 3.0.4
+| MIT
+
+| react-modal
+| 3.4.5
+| MIT
+
+| react-onclickoutside
+| 4.5.0
+| MIT
+
+| react-redux
+| 5.0.6
+| MIT
+
+| react-router
+| 3.2.0
+| MIT
+
+| react-test-renderer
+| 16.3.2
+| MIT or BSD-3-Clause
+
+| react-virtualized
+| 9.12.0
+| MIT
+
+| readable-stream
+| 3.0.6
+| MIT
+
+| redux
+| 3.0.4
+| MIT
+
+| redux-logger
+| 2.0.4
+| MIT
+
+| redux-thunk
+| 1.0.0
+| MIT
+
+| regenerator-runtime
+| 0.10.5
+| MIT
+
+| regenerator-runtime
+| 0.12.1
+| MIT
+
+| reselect
+| 2.1.0
+| MIT
+
+| ret
+| 0.1.15
+| MIT
+
+| riddley
+| 0.1.12
+| MIT
+
+| ring
+| 1.7.1
+| MIT
+
+| ring-codec
+| 1.0.1
+| MIT
+
+| ring-codec
+| 1.1.1
+| MIT
+
+| ring-core
+| 1.5.0
+| MIT
+
+| ring-core
+| 1.7.1
+| MIT
+
+| ring-devel
+| 1.5.0
+| MIT
+
+| ring-devel
+| 1.7.1
+| MIT
+
+| ring-jetty-adapter
+| 1.5.0
+| MIT
+
+| ring-jetty-adapter
+| 1.7.1
+| MIT
+
+| ring-json
+| 0.4.0
+| MIT
+
+| ring-servlet
+| 1.5.0
+| MIT
+
+| ring-servlet
+| 1.7.1
+| MIT
+
+| rst-selector-parser
+| 2.2.3
+| BSD-3-Clause
+
+| safe-buffer
+| 5.1.2
+| MIT
+
+| safer-buffer
+| 2.1.2
+| MIT
+
+| samsam
+| 1.1.2
+| BSD-3-Clause
+
+| schema
+| 1.1.9
+| EPL-1.0
+
+| scrypt
+| 1.2.0
+| EPL-1.0
+
+| scrypt
+| 1.4.0
+| Apache License, Version 2.0
+
+| selmer
+| 1.12.5
+| EPL-1.0
+
+| semver
+| 5.6.0
+| MIT
+
+| setimmediate
+| 1.0.5
+| MIT
+
+| sinon
+| 1.17.2
+| BSD-3-Clause or BSD-2-Clause
+
+| SLF4J API Module
+| 1.7.25
+| MIT
+
+| SLF4J API Module
+| 1.7.7
+| MIT
+
+| SLF4J LOG4J-12 Binding
+| 1.7.7
+| MIT
+
+| slingshot
+| 0.12.2
+| EPL-1.0
+
+| SnakeYAML
+| 1.23
+| Apache License, Version 2.0
+
+| snappy-java
+| 1.1.0.1
+| Apache License, Version 2.0
+
+| SNMP4J
+| 2.5.8
+| Apache License, Version 2.0
+
+| Sortable
+| 4e797dacd14440828a701c74aa4a8e57a6f30988
+| MIT
+
+| spec.alpha
+| 0.2.176
+| PHP-3.01 or EPL-1.0
+
+| SQLite JDBC
+| 3.23.1
+| Apache License, Version 2.0
+
+| SQLite JDBC
+| 3.30.1
+| Apache License, Version 2.0
+
+| strict-uri-encode
+| 1.1.0
+| MIT
+
+| string_decoder
+| 1.2.0
+| MIT
+
+| string.prototype.trim
+| 1.1.2
+| MIT
+
+| support
+| 0.20.0
+| EPL-1.0
+
+| tigris
+| 0.1.1
+| EPL-1.0
+
+| tools.analyzer
+| 0.6.9
+| EPL-1.0
+
+| tools.analyzer.jvm
+| 0.6.10
+| EPL-1.0
+
+| tools.analyzer.jvm
+| 0.7.1
+| EPL-1.0
+
+| tools.cli
+| 0.2.4
+| EPL-1.0
+
+| tools.logging
+| 0.4.0
+| EPL-1.0
+
+| tools.logging
+| 0.4.1
+| EPL-1.0
+
+| tools.macro
+| 0.1.5
+| EPL-1.0
+
+| tools.namespace
+| 0.2.10
+| EPL-1.0
+
+| tools.namespace
+| 0.2.11
+| EPL-1.0
+
+| tools.reader
+| 1.0.0-beta2
+| PHP-3.0 or EPL-1.0
+
+| tools.reader
+| 1.0.0-beta4
+| PHP-3.0 or EPL-1.0
+
+| ua-parser-js
+| 0.7.19
+| GPL-2.0-only
+
+| underscore
+| 1.4.4
+| MIT
+
+| unidecode
+| 0.0.7
+| Apache License, Version 2.0
+
+| useful
+| 0.10.6
+| EPL-1.0
+
+| util
+| 0.11.1
+| MIT
+
+| util-deprecate
+| 1.0.2
+| MIT
+
+| warning
+| 3.0.0
+| BSD-3-Clause
+
+| whatwg-fetch
+| 3.0.0
+| MIT
+
+| xml-apis
+| 1.0.b2
+| Apache License, Version 2.0
+
+| XZ for Java
+| 1.5
+| Public-Domain
+
+|===

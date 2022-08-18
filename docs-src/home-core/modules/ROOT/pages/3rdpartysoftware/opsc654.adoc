@@ -1,0 +1,10 @@
+= DSE OpsCenter and DataStax Agent 6.5.4
+
+//shortdesc: Third-party software licensed for DSE OpsCenter and DataStax Agent 6.5.4.
+
+.DSE OpsCenter and DataStax Agent 6.5.4
+[cols=3*]
+|===
+|*Component* | *Version* | *License*
+
+|===

@@ -1,0 +1,40 @@
+= DSE OpsCenter and DataStax Agent 6.1.x
+
+xref:3rdpartysoftware/opsc6112.adoc[DSE OpsCenter and DataStax Agent 6.1.13 and 6.1.12]
+Third-party software licensed for DSE OpsCenter and DataStax Agent 6.1.13 and 6.1.12.
+
+xref:3rdpartysoftware/opsc6111.adoc[DSE OpsCenter and DataStax Agent 6.1.11]
+Third-party software licensed for DSE OpsCenter and DataStax Agent 6.1.11.
+
+xref:3rdpartysoftware/opsc6110.adoc[DSE OpsCenter and DataStax Agent 6.1.10]
+Third-party software licensed for DSE OpsCenter and DataStax Agent 6.1.10.
+
+xref:3rdpartysoftware/opsc619.adoc[DSE OpsCenter and DataStax Agent 6.1.9]
+Third-party software licensed for DSE OpsCenter and DataStax Agent 6.1.9.
+
+xref:3rdpartysoftware/opsc618.adoc[DSE OpsCenter and DataStax Agent 6.1.8]
+Third-party software licensed for DSE OpsCenter and DataStax Agent 6.1.8.
+
+xref:3rdpartysoftware/opsc617.adoc[DSE OpsCenter and DataStax Agent 6.1.7]
+Third-party software licensed for DSE OpsCenter and DataStax Agent 6.1.7.
+
+xref:3rdpartysoftware/opsc616.adoc[DSE OpsCenter and DataStax Agent 6.1.6]
+Third-party software licensed for DSE OpsCenter and DataStax Agent 6.1.6.
+
+xref:3rdpartysoftware/opsc615.adoc[DSE OpsCenter and DataStax Agent 6.1.5]
+Third-party software licensed for DSE OpsCenter and DataStax Agent 6.1.5.
+
+xref:3rdpartysoftware/opsc614.adoc[DSE OpsCenter and DataStax Agent 6.1.4]
+Third-party software licensed for DSE OpsCenter and DataStax Agent 6.1.4.
+
+xref:3rdpartysoftware/opsc613.adoc[DSE OpsCenter and DataStax Agent 6.1.3]
+Third-party software licensed for DSE OpsCenter and DataStax Agent 6.1.3.
+
+xref:3rdpartysoftware/opsc612.adoc[DSE OpsCenter and DataStax Agent 6.1.2]
+Third-party software licensed for DSE OpsCenter and DataStax Agent 6.1.2.
+
+xref:3rdpartysoftware/opsc611.adoc[DSE OpsCenter and DataStax Agent 6.1.1]
+Third-party software licensed for DSE OpsCenter and DataStax Agent 6.1.1.
+
+xref:3rdpartysoftware/opsc610.adoc[DSE OpsCenter and DataStax Agent 6.1.0]
+Third-party software licensed for DSE OpsCenter and DataStax Agent 6.1.0.

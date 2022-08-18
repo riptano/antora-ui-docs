@@ -1,0 +1,2342 @@
+= DataStax Enterprise 6.7.12 third-party software
+
+//shortdesc: Third-party software licensed for DataStax Enterprise 6.7.12.
+
+.DataStax Enterprise 6.7.12 third-party software
+[cols=3*]
+|===
+|*Component* | *Version* | *License*
+
+| agrona
+| 0.9.16
+| Apache License, Version 2.0
+
+| airline
+| 0.7
+| Apache License, Version 2.0
+
+| Airline - IO Library
+| 2.2.0
+| Apache License, Version 2.0
+
+| Airline - Library
+| 2.2.0
+| Apache License, Version 2.0
+
+| Annotation Processing Commons
+| 0.0.2
+| Apache License, Version 2.0
+
+| AntLR
+| 2.7.7
+| Multi-license: BSD-2-Clause OR BSD-3-Clause
+
+| ANTLR 3 Runtime
+| 3.4
+| BSD-3-Clause
+
+| ANTLR 3 Runtime
+| 3.5
+| BSD-3-Clause
+
+| ANTLR 3 Runtime
+| 3.5.2
+| BSD-3-Clause
+
+| ANTLR 3 Tool
+| 3.5.2
+| BSD-3-Clause
+
+| ANTLR 4 Runtime
+| 4.5.3
+| BSD-3-Clause
+
+| ANTLR StringTemplate 4.0.2
+| 3.2.1
+| BSD-3-Clause
+
+| AOP alliance
+| 1.0
+| Public-Domain
+
+| aopalliance-repackaged
+| 2.5.0
+| Multi-license: EPL-1.0 OR EPL-2.0 OR GPL-2.0-with-classpath-exception;
+              Multi-license: EPL-2.0 OR GPL-2.0-with-classpath-exception
+
+| Apache Ant Core
+| 1.9.6
+| Apache License, Version 2.0
+
+| Apache Ant Launcher
+| 1.9.6
+| Apache License, Version 2.0
+
+| Apache Avro
+| 1.7.4
+| Apache License, Version 2.0
+
+| Apache Avro
+| 1.7.7
+| Apache License, Version 2.0
+
+| Apache Avro IPC
+| 1.7.7
+| MIT; Apache License, Version 2.0
+
+| Apache Avro Mapred API
+| 1.7.7
+| Apache License, Version 2.0
+
+| Apache Cassandra
+| 3.11
+| Apache License, Version 2.0
+
+| Apache Commons BeanUtils
+| 1.9.4
+| Apache License, Version 2.0
+
+| Apache Commons CLI
+| 1.3.1
+| Apache License, Version 2.0
+
+| Apache Commons Codec
+| 1.10
+| Apache License, Version 2.0
+
+| Apache Commons Codec
+| 1.11
+| Apache License, Version 2.0
+
+| Apache Commons Codec
+| 1.12
+| Apache License, Version 2.0
+
+| Apache Commons Codec
+| 1.4
+| Apache License, Version 2.0
+
+| Apache Commons Collections
+| 4.1
+| Apache License, Version 2.0
+
+| Apache Commons Compress
+| 1.18
+| Apache License, Version 2.0; Apache License, Version 2.0
+
+| Apache Commons Compress
+| 1.4.1
+| Apache License, Version 2.0
+
+| Apache Commons Configuration
+| 1.10
+| Apache License, Version 2.0
+
+| Apache Commons Configuration
+| 1.6
+| Apache License, Version 2.0
+
+| Apache Commons Crypto
+| 1.0.0
+| Apache License, Version 2.0
+
+| Apache Commons Exec
+| 1.3
+| Apache License, Version 2.0
+
+| Apache Commons FileUpload
+| 1.3.3
+| Apache License, Version 2.0
+
+| Apache Commons Lang
+| 3.5
+| Apache License, Version 2.0
+
+| Apache Commons Math
+| 3.4.1
+| BSD-2-Clause; Apache License, Version 2.0
+
+| Apache Commons Math
+| 3.1.1
+| Apache License, Version 2.0
+
+| Apache Commons Net
+| 1.4.1
+| Apache License, Version 2.0
+
+| Apache Commons Net
+| 3.1
+| Apache License, Version 2.0
+
+| Apache Commons Text
+| 1.6
+| Apache License, Version 2.0
+
+| Apache Derby Database Engine and Embedded JDBC Driver
+| 10.12.1.1
+| Apache License, Version 2.0
+
+| Apache Directory API ASN.1 API
+| 1.0.0
+| Apache License, Version 2.0
+
+| Apache Directory API ASN.1 API
+| 1.0.0-M20
+| Apache License, Version 2.0
+
+| Apache Directory API ASN.1 BER
+| 1.0.0
+| Apache License, Version 2.0
+
+| Apache Directory LDAP API Extras Stored Procedures
+| 1.0.0
+| Apache License, Version 2.0
+
+| Apache Directory LDAP API Extras Trigger
+| 1.0.0
+| Apache License, Version 2.0
+
+| Apache Directory LDAP API Extras Util
+| 1.0.0
+| Apache License, Version 2.0
+
+| Apache Directory LDAP API I18n
+| 1.0.0
+| Apache License, Version 2.0
+
+| Apache Directory LDAP API Model
+| 1.0.0
+| Apache License, Version 2.0
+
+| Apache Directory LDAP API Utilities
+| 1.0.0
+| Apache License, Version 2.0
+
+| Apache Directory LDAP API Utilities
+| 1.0.0-M20
+| Apache License, Version 2.0
+
+| ApacheDS AdministrativePoint Interceptor
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Authentication Interceptor
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Authorization Interceptor
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS ChangeLog Interceptor
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Collective Attribute Interceptor
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Core
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Core Annotations
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Core API
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Core AVL
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Core Constants
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Core Integration
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Core JNDI
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Core Shared
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS DirectoryService-WebApp bridge
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Event Interceptor
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Exception Interceptor
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Generalized (X) DBM Partition
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS I18n
+| 2.0.0-M15
+| Apache License, Version 2.0
+
+| ApacheDS I18n
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Interceptors for Kerberos
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Interceptor to increment numeric attributes
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS JDBM Original Implementation
+| 2.0.0-M3
+| Apache License, Version 2.0
+
+| ApacheDS JDBM Partition
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Jetty HTTP Server Integration
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Journal Interceptor
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS LDIF Partition
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Mavibot Partition
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS MVCC BTree implementation
+| 1.0.0-M8
+| Apache License, Version 2.0
+
+| ApacheDS Normalization Interceptor
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Operational Attribute Interceptor
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Password Hashing Interceptor
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Protocol Dhcp
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Protocol Dns
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Protocol Kerberos
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Protocol Kerberos Codec
+| 2.0.0-M15
+| Apache License, Version 2.0
+
+| ApacheDS Protocol Kerberos Codec
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Protocol Ldap
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Protocol Ntp
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Protocol Shared
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Referral Interceptor
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Schema Interceptor
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| Apacheds Server Annotations
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Server Config
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Service Builder
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Subtree Interceptor
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Test Framework
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| ApacheDS Triggers Interceptor
+| 2.0.0-M24
+| Apache License, Version 2.0
+
+| Apache Extras™ for Apache log4j™.
+| 1.2.17
+| Apache License, Version 2.0
+
+| Apache FontBox
+| 2.0.6
+| Apache License, Version 2.0
+
+| Apache Groovy
+| 2.4.16
+| Apache License, Version 2.0
+
+| Apache Groovy
+| 2.4.16
+| Apache License, Version 2.0
+
+| Apache Groovy
+| 2.4.16
+| Apache License, Version 2.0
+
+| Apache Groovy
+| 2.4.16
+| Apache License, Version 2.0
+
+| Apache Groovy
+| 2.4.16
+| Apache License, Version 2.0
+
+| Apache Groovy
+| 2.4.16
+| Apache License, Version 2.0
+
+| Apache Groovy
+| 2.4.16
+| Apache License, Version 2.0
+
+| Apache Groovy
+| 2.4.16
+| Apache License, Version 2.0
+
+| Apache Groovy
+| 2.4.16
+| Apache License, Version 2.0
+
+| Apache Hadoop Mini-Cluster
+| 1.0.3
+| Apache License, Version 2.0
+
+| Apache HttpClient
+| 4.5.5
+| Apache License, Version 2.0
+
+| Apache HttpClient
+| 4.5.9
+| Apache License, Version 2.0
+
+| Apache HttpClient Mime
+| 4.5.5
+| Apache License, Version 2.0
+
+| Apache HttpCore
+| 4.4.9
+| Apache License, Version 2.0
+
+| Apache HttpCore
+| 4.1.2
+| Apache License, Version 2.0
+
+| Apache HttpCore
+| 4.4.11
+| Apache License, Version 2.0
+
+| Apache Ivy
+| 2.3.0
+| Apache License, Version 2.0
+
+| Apache Ivy
+| 2.4.0
+| Apache License, Version 2.0
+
+| Apache JAMES Mime4j (Core)
+| 0.7.2
+| Apache License, Version 2.0
+
+| Apache JAMES Mime4j (DOM)
+| 0.7.2
+| Apache License, Version 2.0
+
+| Apache JempBox
+| 1.8.13
+| Apache License, Version 2.0
+
+| Apache Log4j
+| 1.2.17
+| Apache License, Version 2.0
+
+| Apache MINA Core ${project.version}
+| 2.0.21
+| Apache License, Version 2.0
+
+| Apache OpenNLP Maxent
+| 3.0.3
+| Apache License, Version 2.0
+
+| Apache OpenNLP Tools
+| 1.8.4
+| Apache License, Version 2.0
+
+| Apache Parquet Column
+| 1.8.2
+| Apache License, Version 2.0
+
+| Apache Parquet Common
+| 1.8.2
+| Apache License, Version 2.0
+
+| Apache Parquet Encodings
+| 1.8.2
+| Apache License, Version 2.0
+
+| Apache Parquet Format
+| 2.3.1
+| Apache License, Version 2.0
+
+| Apache Parquet Hadoop
+| 1.8.2
+| Apache License, Version 2.0
+
+| Apache Parquet Hadoop Bundle (Incubating)
+| 1.6.0
+| Apache License, Version 2.0
+
+| Apache Parquet Jackson
+| 1.8.2
+| Apache License, Version 2.0
+
+| Apache PDFBox
+| 2.0.6
+| GPL-3.0-only; Apache License, Version 2.0
+
+| Apache PDFBox Debugger
+| 2.0.6
+| Apache License, Version 2.0
+
+| Apache PDFBox tools
+| 2.0.6
+| Apache License, Version 2.0
+
+| Apache SIS common storage
+| 0.8
+| Apache License, Version 2.0
+
+| Apache SIS features
+| 0.8
+| Apache License, Version 2.0
+
+| Apache SIS metadata
+| 0.8
+| Apache License, Version 2.0
+
+| Apache SIS NetCDF storage
+| 0.8
+| Apache License, Version 2.0
+
+| Apache SIS referencing
+| 0.8
+| Apache License, Version 2.0
+
+| Apache SIS utilities
+| 0.8
+| Apache License, Version 2.0
+
+| Apache Spark
+| 2.2.3.XXX
+| Apache License, Version 2.0
+
+| Apache Thrift
+| 0.9.3
+| Apache License, Version 2.0
+
+| Apache Thrift
+| 0.9.3
+| Apache License, Version 2.0
+
+| Apache Tika core
+| 1.12
+| Apache License, Version 2.0
+
+| Apache Tika plugin for Ogg, Vorbis and FLAC
+| 0.8
+| Apache License, Version 2.0
+
+| Apache TinkerPop
+| 3.2.5.XXX
+| Apache License, Version 2.0
+
+| Apache TinkerPop
+| 3.4.5.XXXX
+| Apache License, Version 2.0
+
+| Apache Velocity
+| 1.7
+| Apache License, Version 2.0
+
+| Apache XBean :: ASM 5 shaded (repackaged)
+| 4.4
+| http://asm.ow2.org/license.html[http://asm.ow2.org/license.html]
+
+| ASM Analysis
+| 6.2
+| Multi-license: BSD-2-Clause OR BSD-3-Clause
+
+| ASM Commons
+| 6.2
+| Multi-license: BSD-2-Clause OR BSD-3-Clause
+
+| ASM Core
+| 3.1
+| BSD-3-Clause
+
+| ASM Core
+| 6.2
+| Multi-license: BSD-2-Clause OR BSD-3-Clause
+
+| ASM Tree
+| 6.2
+| Multi-license: BSD-2-Clause OR BSD-3-Clause
+
+| ASM Util
+| 6.2
+| Multi-license: BSD-2-Clause OR BSD-3-Clause
+
+| Async Logback appender implementation
+| 3.1.6.RELEASE
+| Apache License, Version 2.0
+
+| Auto Common Libraries
+| 0.4
+| Apache License, Version 2.0
+
+| AutoFactory
+| 1.0-beta3
+| Apache License, Version 2.0
+
+| Automaton
+| 1.11-8
+| BSD-3-Clause
+
+| AWS SDK For Java
+| 1.7.4
+| Apache License, Version 2.0
+
+| base64
+| 2.3.8
+| GPL-2.0-only; public-domain; Public-Domain
+
+| Bean Validation API
+| 1.1.0.Final
+| Apache License, Version 2.0
+
+| Bean Validation API
+| 2.0.1.Final
+| Apache License, Version 2.0
+
+| Boilerpipe -- Boilerplate Removal and Fulltext Extraction from HTML pages
+| 1.1.0
+| Apache License, Version 2.0
+
+| BoneCP :: Core Library
+| 0.8.0.RELEASE
+| Apache License, Version 2.0
+
+| Bouncy Castle PKIX, CMS, EAC, TSP, PKCS, OCSP, CMP, and CRMF APIs
+| 1.58
+| Bouncy Castle Licence
+
+| Bouncy Castle Provider
+| 1.58
+| Bouncy Castle Licence
+
+| breeze
+| 0.13.2
+| Apache License, Version 2.0
+
+| breeze-macros
+| 0.13.2
+| Apache License, Version 2.0
+
+| Byte Buddy (without dependencies)
+| 1.9.3
+| Apache License, Version 2.0
+
+| Byte Buddy (without dependencies)
+| 1.6.14
+| Apache License, Version 2.0
+
+| Byte Buddy Java agent
+| 1.9.3
+| Apache License, Version 2.0
+
+| Byte Buddy Java agent
+| 1.6.14
+| Apache License, Version 2.0
+
+| byteman-agent
+| 3.0.15
+| LGPL-2.1-only
+
+| byteman-bmunit
+| 3.0.15
+| Multi-license: LGPL-2.1-only OR LGPL-2.1-or-later
+
+| byteman-install
+| 3.0.15
+| Multi-license: LGPL-2.1-only OR LGPL-2.1-or-later
+
+| byteman-submit
+| 3.0.15
+| Multi-license: LGPL-2.1-only OR LGPL-2.1-or-later
+
+| Caffeine cache
+| 2.6.2
+| Apache License, Version 2.0
+
+| Calcite Avatica
+| 1.2.0-incubating
+| Apache License, Version 2.0
+
+| Calcite Core
+| 1.2.0-incubating
+| Apache License, Version 2.0
+
+| Calcite Linq4j
+| 1.2.0-incubating
+| Apache License, Version 2.0
+
+| cglib
+| 3.2.4
+| Apache License, Version 2.0
+
+| cglib
+| 3.1
+| Multi-license: Apache License, Version 2.0 OR ASF 2.0
+
+| CGLIB
+| 2.2.1-v20090111
+| Apache License, Version 2.0
+
+| cglib-nodep
+| 2.2.2
+| Multi-license: Apache License, Version 2.0 OR ASF 2.0
+
+| chill
+| 0.8.0
+| Apache License, Version 2.0
+
+| chill-java
+| 0.8.0
+| Apache License, Version 2.0
+
+| Commons BeanUtils Core
+| 1.8.0
+| Apache License, Version 2.0
+
+| commons-collections
+| 3.2.2
+| Apache License, Version 2.0
+
+| Commons Compiler
+| 3.0.0
+| BSD-3-Clause
+
+| Commons Compiler
+| 3.0.8
+| BSD-2-Clause
+
+| Commons DBCP
+| 1.4
+| Apache License, Version 2.0
+
+| Commons Digester
+| 1.8
+| Apache License, Version 2.0
+
+| Commons IO
+| 2.5
+| Apache License, Version 2.0
+
+| Commons Lang
+| 2.6
+| Apache License, Version 2.0
+
+| Commons Math
+| 2.1
+| Apache License, Version 2.0
+
+| Commons Pool
+| 1.5.4
+| Apache License, Version 2.0
+
+| Commons Pool
+| 1.6
+| Apache License, Version 2.0
+
+| compiler
+| 0.9.6
+| Apache License, Version 2.0
+
+| Compress-LZF
+| 1.0.3
+| Apache License, Version 2.0
+
+| Concurrent-Trees
+| 2.4.0
+| Apache License, Version 2.0
+
+| config
+| 1.3.1
+| Apache License, Version 2.0; JSON
+
+| config
+| 1.3.0
+| Apache License, Version 2.0
+
+| core
+| 2.3.2
+| Apache License, Version 2.0
+
+| core
+| 1.1.2
+| BSD-3-Clause
+
+| core
+| 0.13.0
+| MIT
+
+| core
+| 1.1.1
+| Apache License, Version 2.0
+
+| Curator Client
+| 2.7.1
+| Apache License, Version 2.0
+
+| Curator Framework
+| 2.7.1
+| Apache License, Version 2.0
+
+| Curator Recipes
+| 2.7.1
+| Apache License, Version 2.0
+
+| curvesapi
+| 1.04
+| BSD-3-Clause
+
+| Dagger
+| 2.0.2
+| Apache License, Version 2.0
+
+| Data Mapper for Jackson
+| 1.9.13
+| Apache License, Version 2.0
+
+| DataNucleus Core
+| 3.2.10
+| Apache License, Version 2.0
+
+| DataNucleus JDO API plugin
+| 3.2.6
+| Apache License, Version 2.0
+
+| DataNucleus RDBMS plugin
+| 3.2.9
+| Apache License, Version 2.0
+
+| DataStax Enterprise Java Driver - Core
+| 1.7.1
+| 
+
+| DataStax Enterprise Java Driver - Graph
+| 1.7.1
+| Apache License, Version 2.0
+
+| DataStax Enterprise Java Driver - Object Mapping
+| 1.7.1
+| 
+
+| Deep Dependencies
+| None
+| 
+
+| Disruptor Framework
+| 3.3.6
+| Apache License, Version 2.0
+
+| dnsjava
+| 2.1.8
+| 
+
+| durian
+| 3.4.0
+| Apache License, Version 2.0
+
+| Duzzt :: Annotations
+| 0.0.2
+| Apache License, Version 2.0
+
+| Duzzt :: Processor
+| 0.0.2
+| Apache License, Version 2.0
+
+| EasyMock
+| 3.3.1
+| Apache License, Version 2.0
+
+| Eclipse ECJ
+| 4.6.1
+| EPL-1.0
+
+| ehcache
+| 2.10.4
+| Apache License, Version 2.0; CDDL-1.1
+
+| eigenbase-properties
+| 1.1.5
+| Apache License, Version 2.0
+
+| EL
+| 1.0
+| Apache License, Version 2.0
+
+| Elephant Bird Hadoop Compatibility
+| 4.3
+| Apache License, Version 2.0
+
+| empty
+| 1.0.0
+| Apache License, Version 2.0
+
+| Esri Geometry API for Java
+| 1.2.1
+| Apache License, Version 2.0
+
+| exp4j
+| 0.4.8
+| Apache License, Version 2.0
+
+| fastutil
+| 6.5.7
+| Apache License, Version 2.0
+
+| FindBugs-Annotations
+| 2.0.1
+| LGPL-2.1-only
+
+| FindBugs-Annotations
+| 2.0.3
+| LGPL-2.1-only
+
+| FindBugs-jsr305
+| 3.0.0
+| Apache License, Version 2.0
+
+| FindBugs-jsr305
+| 3.0.2
+| Apache License, Version 2.0
+
+| Fortran to Java ARPACK
+| 0.1
+| BSD-3-Clause
+
+| futures
+| 3.3.0
+| Python-2.0
+
+| GeoAPI
+| 3.0.1
+| W3C
+
+| Google Guice - Core Library
+| 3.0
+| Apache License, Version 2.0
+
+| Google Guice - Core Library
+| 4.0
+| Apache License, Version 2.0
+
+| Google Guice - Extensions - AssistedInject
+| 4.0
+| Apache License, Version 2.0
+
+| Google Guice - Extensions - MultiBindings
+| 4.0
+| Apache License, Version 2.0
+
+| Google Guice - Extensions - Servlet
+| 3.0
+| Apache License, Version 2.0
+
+| gremlin-scala
+| 3.2.2.0
+| Apache License, Version 2.0
+
+| Gson
+| 2.2.4
+| Apache License, Version 2.0
+
+| Guava: Google Core Libraries for Java
+| 19.0
+| Apache License, Version 2.0
+
+| hadoop-core
+| 1.0.3
+| Apache License, Version 2.0
+
+| hadoop-test
+| 1.0.3
+| Apache License, Version 2.0
+
+| Hamcrest Core
+| 1.3
+| BSD-2-Clause
+
+| Hamcrest library
+| 1.3
+| BSD-3-Clause
+
+| hazelcast
+| 3.12.1
+| Apache License, Version 2.0
+
+| hazelcast-client
+| 3.12.1
+| Apache License, Version 2.0
+
+| HdrHistogram
+| 2.1.10
+| Multi-license: BSD-3-Clause OR Public-Domain
+
+| HK2 API module
+| 2.5.0
+| Multi-license: EPL-1.0 OR EPL-2.0 OR GPL-2.0-with-classpath-exception
+
+| HK2 Implementation Utilities
+| 2.5.0
+| Multi-license: EPL-1.0 OR EPL-2.0 OR GPL-2.0-with-classpath-exception
+
+| Hotspot compile command annotations
+| 1.2.0
+| Apache License, Version 2.0
+
+| HPPC Collections
+| 0.7.2
+| Apache License, Version 2.0
+
+| HPPC Collections
+| 0.7.1
+| Apache License, Version 2.0
+
+| HSQLDB
+| 1.8.0.10
+| HSQLDB License
+
+| htrace-core
+| 3.1.0-incubating
+| Apache License, Version 2.0
+
+| htrace-core
+| 3.0.4
+| Apache License, Version 2.0
+
+| HttpClient
+| 3.1
+| Apache License, Version 2.0
+
+| ICU4J
+| 56.1
+| ICU
+
+| IntelliJ IDEA annotations
+| 9.0
+| Apache License, Version 2.0
+
+| ISO Parser
+| 1.1.18
+| Apache License, Version 2.0
+
+| Jackcess
+| 2.1.8
+| Apache License, Version 2.0
+
+| Jackcess Encrypt
+| 2.1.1
+| Apache License, Version 2.0
+
+| Jackson-annotations
+| 2.9.10
+| Apache License, Version 2.0
+
+| Jackson-core
+| 2.9.10
+| Apache License, Version 2.0
+
+| jackson-databind
+| 2.9.10
+| Apache License, Version 2.0
+
+| jackson-databind
+| 2.9.10.4
+| Apache License, Version 2.0
+
+| Jackson-dataformat-Smile
+| 2.7.9
+| Apache License, Version 2.0
+
+| Jackson datatype: Guava
+| 2.9.10
+| Apache License, Version 2.0
+
+| Jackson datatype: JSR310
+| 2.9.10
+| Apache License, Version 2.0
+
+| Jackson-datatype-jdk8
+| 2.9.10
+| Apache License, Version 2.0
+
+| Jackson Integration for Metrics
+| 3.2.6
+| Apache License, Version 2.0
+
+| Jackson module: Paranamer
+| 2.9.10
+| Apache License, Version 2.0
+
+| jackson-module-scala
+| 2.6.7.1
+| Apache License, Version 2.0
+
+| jackson-module-scala
+| 2.9.10
+| Apache License, Version 2.0
+
+| jakarta.annotation-api
+| 1.3.4
+| Multi-license: EPL-1.0 OR EPL-2.0 OR GPL-2.0-with-classpath-exception OR
+              GPL-3.0-only
+
+| jakarta.inject
+| 2.5.0
+| Multi-license: EPL-1.0 OR EPL-2.0 OR GPL-2.0-with-classpath-exception
+
+| Janino
+| 3.0.0
+| BSD-3-Clause
+
+| Janino
+| 3.0.8
+| BSD-2-Clause
+
+| Jansi
+| 1.11
+| Apache License, Version 2.0
+
+| Java Agent for Memory Measurements
+| 0.3.2
+| Apache License, Version 2.0
+
+| Java Architecture For XML Binding
+| 2.2.2
+| CDDL-1.0
+
+| JavaBeans(TM) Activation Framework
+| 1.1
+| CDDL-1.0
+
+| JavaBeans(TM) Activation Framework
+| 1.1.1
+| CDDL-1.1
+
+| Java Concurrency Tools Core Library
+| 2.1.2
+| Apache License, Version 2.0
+
+| JavaEWAH
+| 0.3.2
+| Apache License, Version 2.0
+
+| java-libpst
+| 0.8.1
+| Apache License, Version 2.0
+
+| JavaMail API (compat)
+| 1.4.7
+| CDDL-1.0; GPL-2.0-only
+
+| Java Native Access
+| 4.5.1
+| Multi-license: Apache License, Version 2.0 OR LGPL-2.1-only
+
+| Java Native Access Platform
+| 4.5.1
+| Multi-license: Apache License, Version 2.0 OR LGPL-2.1-only
+
+| JavaPoet
+| 1.8.0
+| Apache License, Version 2.0
+
+| JavaServer Pages(TM) API
+| 2.1
+| GPL-2.0-only; CDDL-1.0
+
+| JavaServlet(TM) Specification
+| 2.5
+| CDDL-1.0
+
+| Java Servlet API
+| 3.1.0
+| Multi-license: CDDL-1.1 OR GPL-2.0-only OR GPL-2.0-with-classpath-exception;
+              CDDL-1.1
+
+| Javassist
+| 3.21.0-GA
+| LGPL-2.1-only; MPL-1.1; MPL-2.0; Apache License, Version 2.0
+
+| Javassist
+| 3.22.0-CR2
+| MPL-2.0; LGPL-2.1-only; Apache License, Version 2.0
+
+| Java Transaction API
+| 1.1
+| CDDL-1.0
+
+| javatuples
+| 1.2
+| Apache License, Version 2.0
+
+| Java UUID Generator
+| 3.1.3
+| Apache License, Version 2.0
+
+| Java WordNet Library
+| 1.3.3
+| BSD-3-Clause
+
+| JavaWriter
+| 2.5.1
+| Apache License, Version 2.0
+
+| javax.annotation-api
+| 1.3
+| GPL-2.0-only
+
+| javax.inject
+| 1
+| Apache License, Version 2.0
+
+| javax.transaction-api
+| 1.3
+| Multi-license: CDDL-1.1 OR GPL-2.0-only OR
+              GPL-2.0-with-classpath-exception
+
+| None
+| 2.1.5
+| Multi-license: EPL-1.0 OR EPL-2.0 OR GPL-2.0-with-classpath-exception OR
+              GPL-3.0-only
+
+| java-xmlbuilder
+| 0.4
+| Apache License, Version 2.0
+
+| java-xmlbuilder
+| 1.2
+| Apache License, Version 2.0
+
+| Javolution
+| 5.5.1
+| BSD-3-Clause
+
+| JAX-RS provider for JSON content type
+| 1.9.13
+| LGPL-2.1-only; Apache License, Version 2.0
+
+| jbool_expressions
+| 1.9
+| Apache License, Version 2.0
+
+| jcabi-log
+| 0.14
+| BSD-3-Clause
+
+| jcabi-manifests
+| 1.1
+| BSD-3-Clause
+
+| JCL 1.1.1 implemented over SLF4J
+| 1.7.25
+| MIT
+
+| JCommander
+| 1.30
+| Apache License, Version 2.0
+
+| JDO API
+| 3.0.1
+| Apache License, Version 2.0
+
+| jdom
+| 1.0
+| Apache License, Version 2.0
+
+| JDOM
+| 2.0.2
+| Apache License, Version 2.0
+
+| jersey-client
+| 1.9
+| Multi-license: CDDL-1.0 OR GPL-2.0-only OR
+              GPL-2.0-with-classpath-exception
+
+| jersey-container-servlet
+| 2.29
+| Multi-license: EPL-2.0 OR GPL-2.0-with-classpath-exception; EPL-1.0
+
+| jersey-container-servlet-core
+| 2.29
+| Multi-license: Apache License, Version 2.0 OR BSD-2-Clause OR EPL-1.0 OR EPL-2.0
+              OR GPL-2.0-with-classpath-exception OR MIT OR EDL 1.0, Public OR W3C
+
+| jersey-core
+| 1.9
+| Multi-license: CDDL-1.0 OR GPL-2.0-only OR
+              GPL-2.0-with-classpath-exception
+
+| jersey-core-client
+| 2.29
+| Multi-license: EPL-2.0 OR GPL-2.0-with-classpath-exception
+
+| jersey-core-common
+| 2.29
+| Multi-license: Apache License, Version 2.0 OR EPL-1.0 OR EPL-2.0 OR
+              GPL-2.0-with-classpath-exception OR public-domain
+
+| jersey-core-server
+| 2.29
+| Multi-license: Apache License, Version 2.0 OR BSD-2-Clause OR EPL-1.0 OR EPL-2.0
+              OR GPL-2.0-with-classpath-exception
+
+| jersey-guice
+| 1.9
+| Multi-license: CDDL-1.0 OR GPL-2.0-only OR
+              GPL-2.0-with-classpath-exception
+
+| jersey-inject-hk2
+| 2.29
+| Multi-license: Apache License, Version 2.0 OR BSD-2-Clause OR EPL-1.0 OR EPL-2.0
+              OR GPL-2.0-with-classpath-exception OR MIT OR EDL 1.0, Public OR W3C
+
+| jersey-json
+| 1.9
+| Multi-license: CDDL-1.0 OR GPL-2.0-only OR
+              GPL-2.0-with-classpath-exception
+
+| jersey-media-jaxb
+| 2.29
+| Multi-license: Apache License, Version 2.0 OR BSD-2-Clause OR EPL-1.0 OR EPL-2.0
+              OR GPL-2.0-with-classpath-exception OR MIT OR EDL 1.0, Public OR W3C
+
+| jersey-server
+| 1.9
+| Multi-license: CDDL-1.0 OR GPL-2.0-only OR
+              GPL-2.0-with-classpath-exception
+
+| JetS3t
+| 0.9.4
+| Apache License, Version 2.0
+
+| JetS3t
+| 0.7.1
+| Apache License, Version 2.0
+
+| JetS3t
+| 0.9.0
+| Apache License, Version 2.0
+
+| Jettison
+| 1.1
+| Apache License, Version 2.0
+
+| Jetty :: Aggregate :: All core Jetty
+| 9.4.20.v20190813
+| Multi-license: Apache License, Version 2.0 OR EPL-1.0
+
+| Jetty :: ALPN :: Client
+| 9.4.20.v20190813
+| Multi-license: Apache License, Version 2.0 OR EPL-1.0
+
+| Jetty :: Asynchronous HTTP Client
+| 9.4.20.v20190813
+| 
+
+| Jetty :: Continuation
+| 9.4.20.v20190813
+| 
+
+| Jetty :: Deployers
+| 9.4.20.v20190813
+| Multi-license: Apache License, Version 2.0 OR EPL-1.0
+
+| Jetty :: HTTP2 :: Client
+| 9.4.20.v20190813
+| Multi-license: Apache License, Version 2.0 OR EPL-1.0
+
+| Jetty :: HTTP2 :: Common
+| 9.4.20.v20190813
+| Multi-license: Apache License, Version 2.0 OR EPL-1.0
+
+| Jetty :: HTTP2 :: HPACK
+| 9.4.20.v20190813
+| Multi-license: Apache License, Version 2.0 OR EPL-1.0
+
+| Jetty :: HTTP2 :: Server
+| 9.4.20.v20190813
+| Multi-license: Apache License, Version 2.0 OR EPL-1.0
+
+| Jetty :: Http Utility
+| 9.4.20.v20190813
+| 
+
+| Jetty :: IO Utility
+| 9.4.20.v20190813
+| 
+
+| Jetty :: JASPI Security
+| 9.4.20.v20190813
+| Multi-license: Apache License, Version 2.0 OR EPL-1.0
+
+| Jetty :: JMX Management
+| 9.4.20.v20190813
+| 
+
+| Jetty :: JNDI Naming
+| 9.4.20.v20190813
+| 
+
+| Jetty :: Plus
+| 9.4.20.v20190813
+| 
+
+| Jetty :: Quick Start
+| 9.4.20.v20190813
+| Multi-license: Apache License, Version 2.0 OR EPL-1.0
+
+| Jetty :: Rewrite Handler
+| 9.4.20.v20190813
+| Multi-license: Apache License, Version 2.0 OR EPL-1.0
+
+| Jetty :: Security
+| 9.4.20.v20190813
+| 
+
+| Jetty :: Server Core
+| 9.4.20.v20190813
+| 
+
+| Jetty :: Servlet Annotations
+| 9.4.20.v20190813
+| 
+
+| Jetty :: Servlet Handling
+| 9.4.20.v20190813
+| Apache License, Version 2.0
+
+| Jetty :: Utilities
+| 9.4.20.v20190813
+| 
+
+| Jetty :: Utility Servlets and Filters
+| 9.4.20.v20190813
+| 
+
+| Jetty :: Webapp Application Support
+| 9.4.20.v20190813
+| 
+
+| Jetty :: Websocket :: API
+| 9.4.20.v20190813
+| 
+
+| Jetty :: Websocket :: Client
+| 9.4.20.v20190813
+| 
+
+| Jetty :: Websocket :: Common
+| 9.4.20.v20190813
+| 
+
+| Jetty :: Websocket :: javax.websocket :: Client Implementation
+| 9.4.20.v20190813
+| Multi-license: Apache License, Version 2.0 OR EPL-1.0
+
+| Jetty :: Websocket :: javax.websocket.server :: Server Implementation
+| 9.4.20.v20190813
+| Multi-license: Apache License, Version 2.0 OR EPL-1.0
+
+| Jetty :: Websocket :: Server
+| 9.4.20.v20190813
+| 
+
+| Jetty :: Websocket :: Servlet Interface
+| 9.4.20.v20190813
+| 
+
+| Jetty :: XML utilities
+| 9.4.20.v20190813
+| 
+
+| Jetty Orbit :: Activation
+| 1.1.0.v201105071233
+| EPL-1.0
+
+| Jetty Orbit :: Glassfish Mail
+| 1.4.1.v201005082020
+| EPL-1.0
+
+| Jetty Orbit :: JASPI API
+| 1.0.0.v201108011116
+| EPL-1.0
+
+| Jetty Utilities
+| 6.1.26
+| EPL-1.0; Apache License, Version 2.0
+
+| jffi
+| 1.2.16
+| Apache License, Version 2.0
+
+| JHighlight
+| 1.0.2
+| GPL-2.0-only; CDDL-1.0; LGPL-2.1-only
+
+| JLine
+| 2.14.6
+| Multi-license: BSD-2-Clause OR BSD-3-Clause
+
+| JLine
+| 2.12
+| BSD-3-Clause
+
+| JMatIO
+| 1.2
+| BSD-3-Clause
+
+| jnr-constants
+| 0.9.9
+| Apache License, Version 2.0
+
+| jnr-ffi
+| 2.1.7
+| Apache License, Version 2.0
+
+| jnr-posix
+| 3.0.44
+| Multi-license: GPL-2.0-only OR LGPL-2.1-only OR Common Public License - v
+              1.0
+
+| jnr-x86asm
+| 1.0.2
+| MIT
+
+| Joda-Convert
+| 1.2
+| Apache License, Version 2.0
+
+| Joda-Convert
+| 1.6
+| Apache License, Version 2.0
+
+| Joda-Time
+| 2.9.3
+| Apache License, Version 2.0
+
+| Journal.IO
+| 1.4.2
+| Apache License, Version 2.0
+
+| JPam
+| 1.1
+| Apache License, Version 2.0
+
+| JPMML class model
+| 1.4.14
+| Multi-license: BSD-2-Clause OR BSD-3-Clause
+
+| JSch
+| 0.1.54
+| BSD-3-Clause
+
+| JSON.simple
+| 1.1
+| Apache License, Version 2.0
+
+| JSON.simple
+| 1.1.1
+| Apache License, Version 2.0
+
+| json4s-ast
+| 3.2.11
+| ASL
+
+| json4s-core
+| 3.2.11
+| ASL
+
+| json4s-ext
+| 3.2.11
+| ASL
+
+| json4s-jackson
+| 3.2.11
+| ASL
+
+| json4s-native
+| 3.2.11
+| ASL
+
+| jsonic
+| 1.2.7
+| Apache License, Version 2.0
+
+| JSON in Java
+| 20090211
+| provided without support or warranty
+
+| JSON in Java
+| 20140107
+| JSON
+
+| JTransforms
+| 2.4.0
+| Multi-license: GPL-2.0-only OR LGPL-2.1-only OR MPL-2.0
+
+| jts-core
+| 1.16.0
+| EDL 1.0
+
+| JUL to SLF4J bridge
+| 1.7.25
+| MIT
+
+| JUnit
+| 4.12
+| EPL-1.0
+
+| JUnitBenchmarks
+| 0.7.0
+| Apache License, Version 2.0
+
+| Junit ClassLoader per test runner
+| 1.2
+| Apache License, Version 2.0
+
+| JUnitParams
+| 1.0.6
+| Apache License, Version 2.0
+
+| JUnit Toolbox
+| 2.2
+| Apache License, Version 2.0
+
+| juniversalchardet
+| 1.0.3
+| MPL-1.1
+
+| jvm-attach-api
+| 1.2
+| Apache License, Version 2.0
+
+| JVM Integration for Metrics
+| 3.2.6
+| Apache License, Version 2.0
+
+| kosmosfs
+| 0.3
+| Apache License, Version 2.0
+
+| Kryo
+| 3.0.3
+| BSD-2-Clause
+
+| kryo serializers
+| 0.37
+| Apache License, Version 2.0
+
+| Kryo Shaded
+| 3.0.3
+| BSD-2-Clause
+
+| language-detection-lib
+| 1.1-20120112
+| Apache License, Version 2.0
+
+| Level DB JNI
+| 1.8
+| BSD-3-Clause; Apache License, Version 2.0
+
+| Log4j Implemented Over SLF4J
+| 1.7.25
+| Apache License, Version 2.0
+
+| Logback Classic Module
+| 1.2.3
+| Multi-license: EPL-1.0 OR LGPL-2.1-only
+
+| Logback Core Module
+| 1.2.3
+| Multi-license: EPL-1.0 OR LGPL-2.1-only
+
+| LZ4 and xxHash
+| 1.4.1
+| Apache License, Version 2.0
+
+| machinist
+| 0.6.1
+| MIT
+
+| macros
+| 3.2.2.0
+| Apache License, Version 2.0
+
+| macros
+| 0.13.0
+| MIT
+
+| metadata-extractor
+| 2.9.1
+| Apache License, Version 2.0
+
+| Metrics Core
+| 3.2.6
+| Apache License, Version 2.0
+
+| Metrics Core Library
+| 2.2.0
+| Public-Domain
+
+| Metrics Health Checks
+| 3.2.6
+| Apache License, Version 2.0
+
+| Metrics Integration for Logback
+| 3.2.6
+| Apache License, Version 2.0
+
+| metrics reporter config 3.x
+| 3.0.3
+| Apache License, Version 2.0
+
+| metrics reporter config base
+| 3.0.3
+| Apache License, Version 2.0
+
+| metrics-scala
+| 3.5.6
+| Apache License, Version 2.0
+
+| Microsoft Azure Storage Client SDK
+| 2.0.0
+| Apache License, Version 2.0
+
+| MinLog
+| 1.3.0
+| BSD-3-Clause
+
+| Mobility-RPC
+| 1.2.1
+| Apache License, Version 2.0
+
+| mock
+| 4.0.2
+| BSD-2-Clause
+
+| Mockito
+| 2.8.9
+| MIT
+
+| mockito-inline
+| 2.8.9
+| MIT
+
+| Morfologik FSA (Traversal)
+| 2.1.0
+| BSD-2-Clause
+
+| Morfologik Stemming (Polish Dictionary)
+| 2.1.0
+| BSD-2-Clause
+
+| Morfologik Stemming APIs
+| 2.1.0
+| BSD-2-Clause
+
+| Moshi
+| 1.5.0
+| Apache License, Version 2.0
+
+| mxdump
+| 0.5.1
+| Apache License, Version 2.0
+
+| Neko HTML
+| 1.9.17
+| Apache License, Version 2.0
+
+| Netty/All-in-One
+| 3.9.9.Final
+| Apache License, Version 2.0
+
+| Netty/All-in-One
+| 3.7.0.Final
+| Apache License, Version 2.0
+
+| Netty/Buffer
+| 4.0.56.Final
+| Apache License, Version 2.0
+
+| Netty/Codec
+| 4.0.56.Final
+| Apache License, Version 2.0
+
+| Netty/Common
+| 4.0.56.Final
+| Apache License, Version 2.0
+
+| Netty/Handler
+| 4.0.56.Final
+| Apache License, Version 2.0
+
+| Netty/Transport
+| 4.0.56.Final
+| Apache License, Version 2.0
+
+| Noggit
+| 0.6
+| Apache License, Version 2.0
+
+| Non-Blocking Reactive Foundation for the JVM
+| 3.1.5.RELEASE
+| Apache License, Version 2.0
+
+| nose
+| None
+| LGPL-3.0-only
+
+| Objenesis
+| 2.4
+| Apache License, Version 2.0
+
+| Objenesis
+| 2.1
+| Apache License, Version 2.0
+
+| Objenesis
+| 2.5
+| Apache License, Version 2.0
+
+| Ogg and Vorbis for Java, Core
+| 0.8
+| Apache License, Version 2.0
+
+| OHC core
+| 0.5.1
+| Apache License, Version 2.0
+
+| OHC core - Java8 optimization
+| 0.5.1
+| Apache License, Version 2.0
+
+| OkHttp
+| 3.8.1
+| Apache License, Version 2.0
+
+| Okio
+| 1.13.0
+| Apache License, Version 2.0
+
+| Old JAXB Runtime
+| 2.2.3-1
+| Multi-license: CDDL-1.0 OR GPL-2.0-only OR GPL-2.0-with-classpath-exception OR
+              GPL-3.0-only
+
+| opencsv
+| 2.3
+| Apache License, Version 2.0
+
+| OpenHFT/Java-Lang/lang
+| 6.6.2
+| Apache License, Version 2.0
+
+| OpenHFT/Java-Runtime-Compiler
+| 2.2.0
+| Apache License, Version 2.0
+
+| OpenHFT/Java-Thread-Affinity/affinity
+| 2.2
+| Apache License, Version 2.0
+
+| OpenHTF/Chronicle-Queue/chronicle
+| 3.4.2
+| Apache License, Version 2.0
+
+| org.apache.servicemix.bundles.antlr
+| 2.7.7_5
+| Apache License, Version 2.0
+
+| oro
+| 2.0.8
+| Apache License, Version 2.0
+
+| OSGi resource locator
+| 1.0.3
+| Multi-license: EPL-1.0 OR EPL-2.0 OR GPL-2.0-with-classpath-exception OR
+              GPL-3.0-only
+
+| ParaNamer Core
+| 2.3
+| BSD-3-Clause
+
+| ParaNamer Core
+| 2.8
+| BSD-3-Clause
+
+| PowerMock
+| 1.7.3
+| Apache License, Version 2.0
+
+| powermock-api-easymock
+| 1.7.3
+| Apache License, Version 2.0
+
+| powermock-api-mockito-common
+| 1.7.3
+| Apache License, Version 2.0
+
+| powermock-api-support
+| 1.7.3
+| Apache License, Version 2.0
+
+| powermock-core
+| 1.7.3
+| Apache License, Version 2.0
+
+| powermock-module-junit4
+| 1.7.3
+| Apache License, Version 2.0
+
+| powermock-module-junit4-common
+| 1.7.3
+| Apache License, Version 2.0
+
+| powermock-reflect
+| 1.7.3
+| Apache License, Version 2.0
+
+| presto-parser
+| 0.122
+| Apache License, Version 2.0
+
+| Protocol Buffer Java API
+| 2.5.0
+| BSD-3-Clause
+
+| Protocol Buffer Java API
+| 3.0.0-beta-1
+| BSD-3-Clause
+
+| psjava
+| 0.1.19
+| MIT
+
+| Py4J
+| 0.10.7
+| Multi-license: BSD-2-Clause OR BSD-3-Clause
+
+| pyrolite
+| 4.13
+| MIT
+
+| RandomizedTesting Randomized Runner
+| 2.1.2
+| Apache License, Version 2.0
+
+| reactive-streams
+| 1.0.1
+| CC0; CC0-1.0
+
+| reactive-streams
+| 1.0.2
+| CC0-1.0
+
+| ReflectASM
+| 1.10.1
+| BSD-3-Clause
+
+| Reflections
+| 0.9.10
+| BSD-3-Clause; WTFPL
+
+| Restlet Core - API and Engine
+| 2.3.0
+| Multi-license: Apache License, Version 2.0 OR CDDL-1.0 OR EPL-1.0 OR
+              LGPL-3.0-only
+
+| Restlet Extension - Servlet
+| 2.3.0
+| Multi-license: Apache License, Version 2.0 OR CDDL-1.0 OR EPL-1.0 OR
+              LGPL-3.0-only
+
+| RMI IO Utilites
+| 2.1.0
+| Apache License, Version 2.0
+
+| RoaringBitmap
+| 0.7.45
+| Apache License, Version 2.0
+
+| rome
+| 1.5.1
+| Apache License, Version 2.0
+
+| rome-utils
+| 1.5.1
+| Apache License, Version 2.0
+
+| rxjava
+| 2.1.3
+| Apache License, Version 2.0
+
+| rxjava
+| 1.3.6
+| Apache License, Version 2.0
+
+| rxjava-string
+| 1.1.1
+| Apache License, Version 2.0
+
+| rxscala
+| 0.26.5
+| Apache License, Version 2.0
+
+| scala-async
+| 0.9.6
+| Scala license
+
+| Scala Compiler
+| 2.11.8
+| BSD-3-Clause
+
+| Scala Compiler
+| 2.11.8
+| BSD-3-Clause
+
+| scalactic
+| 2.2.6
+| Apache License, Version 2.0
+
+| Scala Library
+| 2.11.8
+| BSD-3-Clause
+
+| scala-logging
+| 3.5.0
+| Apache License, Version 2.0
+
+| Scalap
+| 2.11.8
+| BSD-3-Clause
+
+| scala-parser-combinators
+| 1.0.6
+| BSD-3-Clause
+
+| scalatest
+| 2.2.6
+| Apache License, Version 2.0
+
+| scala-xml
+| 1.0.5
+| BSD-3-Clause
+
+| scopt
+| 3.7.0
+| MIT
+
+| ServiceLocator Default Implementation
+| 2.5.0
+| Multi-license: EPL-1.0 OR EPL-2.0 OR GPL-2.0-with-classpath-exception
+
+| shims
+| 0.7.45
+| Apache License, Version 2.0
+
+| sigar
+| 1.6.4
+| Apache License, Version 2.0
+
+| sjk-cli
+| 0.5.1
+| Apache License, Version 2.0
+
+| sjk-core
+| 0.5.1
+| Apache License, Version 2.0
+
+| sjk-stacktrace
+| 0.5.1
+| Apache License, Version 2.0
+
+| SLF4J API Module
+| 1.7.25
+| MIT
+
+| SLF4J LOG4J-12 Binding
+| 1.7.25
+| MIT
+
+| slice
+| 0.15
+| Apache License, Version 2.0
+
+| SnakeYAML
+| 1.15
+| Apache License, Version 2.0
+
+| snappy
+| 0.2
+| Apache License, Version 2.0
+
+| snappy-java
+| 1.0.4.1
+| Apache License, Version 2.0
+
+| snappy-java
+| 1.1.1.6
+| Apache License, Version 2.0
+
+| snappy-java
+| 1.1.2.6
+| Apache License, Version 2.0
+
+| snowball-stemmer
+| 1.3.0.581.1
+| BSD-3-Clause
+
+| Spark JobServer
+| 0.8.0.XXX
+| Apache License, Version 2.0
+
+| Spatial4J
+| 0.7
+| Apache License, Version 2.0
+
+| Spotify DNS wrapper library
+| 3.1.5
+| Apache License, Version 2.0
+
+| spray-json
+| 1.3.5
+| Apache License, Version 2.0
+
+| Stax2 API
+| 3.1.4
+| BSD-3-Clause
+
+| StAX API
+| 1.0.1
+| Apache License, Version 2.0
+
+| Streaming API for XML
+| 1.0-2
+| CDDL-1.0
+
+| stream-lib
+| 2.7.0
+| Apache License, Version 2.0
+
+| StringTemplate 4
+| 4.0.4
+| BSD-3-Clause
+
+| StringTemplate 4
+| 4.0.7
+| BSD-3-Clause
+
+| StringTemplate 4
+| 4.0.8
+| BSD-3-Clause
+
+| Super CSV Core
+| 2.2.0
+| Apache License, Version 2.0
+
+| TagSoup
+| 1.2.1
+| Apache License, Version 2.0
+
+| T-Digest
+| 3.1
+| Apache License, Version 2.0
+
+| Title
+| Version
+| Declared License
+
+| tomcat-annotations-api
+| 8.0.53
+| Apache License, Version 2.0
+
+| tomcat-api
+| 8.0.53
+| Apache License, Version 2.0
+
+| tomcat-el-api
+| 8.0.53
+| Apache License, Version 2.0
+
+| tomcat-embed-core
+| 8.0.53
+| Apache License, Version 2.0
+
+| tomcat-embed-el
+| 8.0.53
+| Apache License, Version 2.0
+
+| tomcat-embed-jasper
+| 8.0.53
+| Apache License, Version 2.0
+
+| tomcat-embed-logging-juli
+| 8.0.53
+| Apache License, Version 2.0
+
+| tomcat-jasper
+| 8.0.53
+| Apache License, Version 2.0
+
+| tomcat-jasper-el
+| 8.0.53
+| Apache License, Version 2.0
+
+| tomcat-jsp-api
+| 8.0.53
+| Apache License, Version 2.0
+
+| tomcat-juli
+| 8.0.53
+| Apache License, Version 2.0
+
+| tomcat-servlet-api
+| 8.0.53
+| Multi-license: Apache License, Version 2.0 OR CDDL-1.0
+
+| tomcat-util
+| 8.0.53
+| Apache License, Version 2.0
+
+| tomcat-util-scan
+| 8.0.53
+| Apache License, Version 2.0
+
+| TypeTools
+| 0.5.0
+| Apache License, Version 2.0
+
+| Unitils core module
+| 3.4.2
+| Apache License, Version 2.0
+
+| Units of Measurement API
+| 1.0
+| BSD-3-Clause
+
+| univocity-parsers
+| 2.2.1
+| Apache License, Version 2.0
+
+| WebSocket client API
+| 1.0
+| CDDL-1.1
+
+| WebSocket server API
+| 1.0
+| GPL-2.0-only; CDDL-1.0
+
+| Woodstox
+| 4.4.1
+| Apache License, Version 2.0
+
+| Xerces2-j
+| 2.9.1
+| Apache License, Version 2.0
+
+| xml-apis
+| 1.3.04
+| Apache License, Version 2.0
+
+| XmlBeans
+| 2.6.0
+| Apache License, Version 2.0
+
+| Xml Compatibility extensions for Jackson
+| 1.9.13
+| LGPL-2.1-only; Apache License, Version 2.0
+
+| xmlenc
+| 0.52
+| BSD-3-Clause
+
+| XMP Library for Java
+| 5.1.3
+| BSD-3-Clause
+
+| XZ for Java
+| 1.0
+| Public-Domain
+
+| XZ for Java
+| 1.6
+| public-domain
+
+| zookeeper
+| 3.4.6
+| Apache License, Version 2.0
+
+|===

@@ -1,0 +1,228 @@
+
+= Welcome to DataStax Docs
+// shortdesc: https://docs.datastax.com/en/landing_page/doc/landing_page/current.html
+
+== DataStax and open-source docs
+[cols="2*"]
+|===
+a| https://docs.datastax.com/en/astra/docs/[*DataStax Astra DB*] 
+
+Astra DB is a serverless, multi-cloud DBaaS built on Apache Cassandra®. 
+| https://docs.datastax.com/en/astra-streaming/docs/[*DataStax Astra Streaming*] 
+
+Quickly create Apache Pulsar™ instances, scale across cloud regions, and manage Pulsar resources.
+
+| https://docs.datastax.com/en/dse/6.8/dse-dev/datastax_enterprise/dseGettingStarted.html#dseGettingStartedTOC__AdvFunctionality[*DataStax Enterprise (DSE)*] 
+
+Provides open-source Cassandra capabilities plus advanced functionality.
+| https://cassandra.apache.org/doc/latest/[*Apache Cassandra*]
+
+A distributed, highly available, eventually consistent NoSQL open-source database.
+
+| https://docs-v2.k8ssandra.io/components/k8ssandra-operator/architecture/[*K8ssandra Operator Project*]
+
+Integrated components providing a cohesive Cassandra experience on Kubernetes.
+| https://stargate.io/docs/stargate/1.0/quickstart/quickstart.html[*Stargate Project*]
+
+Brings together an API platform and data request coordination code into a single open-source project.
+
+a| *Enhanced Pulsar products* 
+
+Distribution of Apache Pulsar plus production-ready tools and features.
+
+* https://docs.datastax.com/en/luna/streaming/[DataStax Luna Streaming]
+* https://docs.datastax.com/en/pulsar-connector/[DataStax Apache Pulsar Connector]
+* https://docs.datastax.com/en/fast-pulsar-jms/docs/1.1/[DataStax Starlight for JMS]
+* https://docs.datastax.com/en/starlight-rabbitmq/docs/1.0/index.html[DataStax Starlight for RabbitMQ]
+a| *Change Data Capture (CDC) products*
+
+Capture and stream Cassandra table updates.
+
+* https://docs.datastax.com/en/cdc-for-cassandra/[DataStax CDC for Apache Cassandra] 
+* https://docs.datastax.com/en/astra/docs/astream-cdc.html[DataStax CDC for Astra DB]
+|===
+
+== New and Noteworthy - Recent Updates
+
+.New and Noteworthy - Recent Updates
+[frame=all,grid=all]
+[cols=2*]
+|===
+a| *Astra DB* 
+
+* https://docs.datastax.com/en/astra/docs/gRPC.html[gRPC API]
+
+* https://docs.datastax.com/en/astra/docs/byok.html[Bring Your Own Key] 
++
+https://docs.datastax.com/en/astra/docs/db-devops-aws-cmk.html[AWS (UI and API) & GCP (API)]
+
+* https://docs.datastax.com/en/astra/docs/third-party-metrics.html[Astra DB Telemetry]
++
+Exports metrics to 3rd-party apps (Private Preview feature)
+* https://docs.datastax.com/en/astra/docs/astream-cdc.html[DataStax CDC for Astra DB]
+* https://docs.datastax.com/en/astra/docs/configuring-sso.html[Configuring single sign-on]
+* https://docs.datastax.com/en/astra/docs/managing-payment-methods.html[Enhanced payment methods]  
+* https://docs.datastax.com/en/astra/docs/private-endpoints.html[Private endpoints UI & API] 
+* https://docs.datastax.com/en/astra/docs/astra-data-loader.html[Data Loader], includes DynamoDB data
+
+| *Astra Streaming*
+
+Integration with https://docs.datastax.com/en/astra-streaming/docs/astream-cdc.html[DataStax CDC for Astra DB], which captures changes in real time, removes duplicates, and streams the cleaned data into Astra Streaming. Data can be processed by client apps or sent to downstream systems like Elasticsearch® or Snowflake®.
+
+| *K8ssandra Operator*
+
+Open-source project supporting single- or multi-cluster/ multi-region Kubernetes deployments of Cassandra databases.
+|
+|===
+[frame=all,grid=all]
+[cols="2*"]
+|===
+a| https://docs.datastax.com/en/dse/6.8/dse-dev/datastax_enterprise/dseGettingStarted.html[*Docs for DSE developers*]
+Start developing applications.
+a| https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/dseGettingStarted.html[*Docs for DSE Administrators*]
+Information on managing, upgrading, and securing your DataStax Enterprise database.
+
+a| *Install and upgrade DSE & related products:* 
+
+* https://docs.datastax.com/en/landing_page/doc/landing_pageinstallProducts.html[Installing DataStax products & related projects.]
++
+* https://docs.datastax.com/en/upgrade/doc/[Upgrading DataStax products.]
+| xref:cassandra.adoc[*Docs for Apache Cassandra®*]
+DataStax documentation for open-source Apache Cassandra] (OSS).
+
+| xref:databaseTools.adoc[*DSE and Related Database Tools*] 
+Tools for developing and managing your database.
+|
+|===
+
+== Doc Quick Links
+
+Here are links to commonly-used docs for supported products.
+
+*APIs* ::
+* https://docs.datastax.com/en/astra/docs/api.html[Stargate APIs (Document, REST, GraphQL)]
+* https://docs.datastax.com/en/landing_page/doc/landing_page/apiDocs.html#apiDocs__dse-drivers-api-faXi8sY9[DataStax drivers API]
+* https://github.com/datastax/spark-cassandra-connector/tree/master[DataStax Spark Cassandra Connector]
+* DSE Graph API https://docs.datastax.com/en/dse-graphframe-api/6.8/#package[6.8] | https://docs.datastax.com/en/dse-graphframe-api/6.7/#package[6.7] | https://docs.datastax.com/en/dse-graphframe-api/6.0/#package[6.0] | https://docs.datastax.com/en/dse-graphframe-api/5.1/#package[5.1]
+* OpsCenter API https://docs.datastax.com/en/opscenter/6.8/api/docs/index.html[6.8] | https://docs.datastax.com/en/opscenter/6.7/api/docs/index.html[6.7]
+
+*Astra products* ::
+* https://docs.datastax.com/en/astra/docs/[Astra DB guide]
+* https://docs.datastax.com/en/astra-streaming/docs/[Astra Streaming guide]
+* https://docs.datastax.com/en/astra/docs/api.html[Astra DB API reference (Stargate)]
+* https://docs.datastax.com/en/astra/docs/devops-api.html[Astra DB DevOps API reference]
+* https://docs.datastax.com/en/astra-streaming/docs/astream-use-devops.html[Astra Streaming DevOps API reference]
+* https://docs.datastax.com/en/astra-cql/doc/index.html[CQL for Astra DB]
+
+*Bulk Loader* ::
+DataStax Bulk Loader https://docs.datastax.com/en/dsbulk/doc/dsbulk/install/dsbulkInstall.html[Installation] | https://docs.datastax.com/en/dsbulk/doc/index.html[Guide]
+
+*Cassandra Open-Source Software (OSS)* ::
+* https://cassandra.apache.org/doc/latest/[Cassandra 4.0 docs] on cassandra.apache.org/_/index.html
+* https://docs.datastax.com/en/cassandra-oss/3.x/[OSS 3.x] (3.1 - 3.9) | https://docs.datastax.com/en/cql-oss/3.x/[CQL 3.x]
+* https://docs.datastax.com/en/cassandra-oss/3.0/[OSS 3.0] | https://docs.datastax.com/en/cql-oss/3.3/index.html[CQL 3.3]
+* https://docs.datastax.com/en/cassandra-oss/2.2/index.html[OSS 2.2] | https://docs.datastax.com/en/cql-oss/3.x/index.html[CQL 3.x]
+* https://docs.datastax.com/en/cassandra-oss/2.1/index.html[OSS 2.1] | https://docs.datastax.com/en/cql-oss/3.1/index.html[CQL 3.1]
+
+*CQL* ^Version^ ^correspondence^ ::
+* CQL for https://docs.datastax.com/en/astra-cql/doc/[Astra] | https://docs.datastax.com/en/astra-cql/doc/cql/cqlQuickReference.html[Quick reference] | https://docs.datastax.com/en/astra-cql/doc/cql/cql_reference/cqlsh_commands/cqlshCommandsTOC.html[cqlsh reference]
+* CQL https://docs.datastax.com/en/dse/6.8/cql/[6.8] | https://docs.datastax.com/en/dse/6.8/cql/cql/cqlQuickReference.html[Quick reference] | https://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/cqlsh_commands/cqlshCommandsTOC.html[cqlsh reference]
+* CQL https://docs.datastax.com/en/dse/6.7/cql/[6.7] | https://docs.datastax.com/en/dse/6.7/cql/cql/cqlQuickReference.html[Quick reference] | https://docs.datastax.com/en/dse/6.7/cql/cql/cql_reference/cqlsh_commands/cqlshCommandsTOC.html[cqlsh reference]
+* CQL https://docs.datastax.com/en/dse/6.0/cql/[6.0] | https://docs.datastax.com/en/dse/6.0/cql/cql/cqlQuickReference.html[Quick reference] | https://docs.datastax.com/en/dse/6.0/cql/cql/cql_reference/cqlsh_commands/cqlshCommandsTOC.html[cqlsh reference]
+* CQL https://docs.datastax.com/en/dse/5.1/cql/[5.1] | https://docs.datastax.com/en/dse/5.1/cql/cql/cqlQuickReference.html[Quick reference] | https://docs.datastax.com/en/dse/5.1/cql/cql/cql_reference/cqlsh_commands/cqlshCommandsTOC.html[cqlsh reference]
+* CQLSH standalone tool https://docs.datastax.com/en/install/6.8/install/installCqlsh.html[6.8] | https://docs.datastax.com/en/install/6.7/install/installCqlsh.html[6.7] | https://docs.datastax.com/en/install/6.0/install/installCqlsh.html[6.0] | https://docs.datastax.com/en/dse/5.1/dse-dev/datastax_enterprise/install/installCqlsh.html[5.1]
+
+*DataStax Desktop* ::
+DataStax Desktop https://docs.datastax.com/en/dsdesktop/doc/desktop/dsDesktopAbout.html[About DataStax Desktop]
+
+*DataStax Enterprise (DSE)* ::
+* DSE Administrator Guides https://docs.datastax.com/en/dse/6.8/dse-admin/[6.8] | https://docs.datastax.com/en/dse/6.7/dse-admin/[6.7] | https://docs.datastax.com/en/dse/6.0/dse-admin/[6.0] | https://docs.datastax.com/en/dse/5.1/dse-admin/[5.1]
+* DSE Developer Guides https://docs.datastax.com/en/dse/6.8/dse-dev/[6.8] | https://docs.datastax.com/en/dse/6.7/dse-dev/[6.7] | https://docs.datastax.com/en/dse/6.0/dse-dev/[6.0] | https://docs.datastax.com/en/dse/5.1/dse-dev/[5.1]
+* DSE Architecture Guides https://docs.datastax.com/en/dse/6.8/dse-arch/[6.8] | https://docs.datastax.com/en/dse/6.7/dse-arch/[6.7] | https://docs.datastax.com/en/dse/6.0/dse-arch/[6.0] | https://docs.datastax.com/en/dse/5.1/dse-arch/[5.1]
+
+*DSE Installation Guides* ::
+* DSE https://docs.datastax.com/en/install/6.8/install/installTOC.html[6.8] | https://docs.datastax.com/en/install/6.7/install/installTOC.html[6.7] | https://docs.datastax.com/en/install/6.0/install/installTOC.html[6.0] | https://docs.datastax.com/en/dse/5.1/dse-admin/datastax_enterprise/install/installTOC.html[5.1]
+* DSE Release Notes https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/releaseNotes/releaseNotes.html[6.8] | https://docs.datastax.com/en/dse/6.7/dse-admin/datastax_enterprise/releaseNotes/releaseNotes.html[6.7] | https://docs.datastax.com/en/dse/6.0/dse-admin/datastax_enterprise/releaseNotes/releaseNotes.html[6.0] | https://docs.datastax.com/en/dse/5.1/dse-admin/datastax_enterprise/releaseNotes/RNdse.html[5.1]
+
+*Drivers* ::
+* https://docs.datastax.com/en/devapp/doc/devapp/aboutDrivers.html[Developing applications with DataStax drivers guide] 
+* https://docs.datastax.com/en/landing_page/doc/landing_page/current.html[DataStax drivers]
+*  https://docs.datastax.com/en/landing_page/doc/landing_page/current.html[Spark Cassandra Connector]
+* https://docs.datastax.com/en/landing_page/doc/landing_page/current.html[JDBC/ODBC Drivers]
+* https://docs.datastax.com/en/landing_page/doc/landing_page/current.html[DSE maintenance only drivers]
+
+*Graph Loader* ::
+DSE Graph Loader https://docs.datastax.com/en/install/6.7/install/installGraph.html[Installation] | https://docs.datastax.com/en/dse/6.7/dse-dev/datastax_enterprise/graph/dgl/graphloaderTOC.html[Guide]
+
+*Install guides* ::
+* https://stargate.io/docs/stargate/1.0/developers-guide/install/install_overview.html[Stargate installation]
+* https://docs.k8ssandra.io/install/[K8ssandra installation on local Kubernetes or a cloud provider platform: AKS, DOKS, EKS, GKE]
+* Apache Cassandra (OSS) installation https://docs.datastax.com/en/cassandra-oss/3.x/cassandra/install/install_cassandraTOC.html[3.x] | https://docs.datastax.com/en/cassandra-oss/3.0/cassandra/install/install_cassandraTOC.html[3.0] | https://docs.datastax.com/en/cassandra-oss/2.2/cassandra/install/install_cassandraTOC.html[2.2] | https://docs.datastax.com/en/cassandra-oss/2.1/cassandra/install/install_cassandraTOC.html[2.1]
+* DSE installation https://docs.datastax.com/en/install/6.8/install/installTOC.html[6.8] | https://docs.datastax.com/en/install/6.7/install/installTOC.html[6.7] | https://docs.datastax.com/en/install/6.0/install/installTOC.html[6.0] | https://docs.datastax.com/en/dse/5.1/dse-admin/datastax_enterprise/install/installTOC.html[5.1]
+* DSE OpsCenter https://docs.datastax.com/en/install/6.8/install/opscInstallOpsc.html[6.8] | https://docs.datastax.com/en/install/6.7/install/opscInstallOpsc.html[6.7] | https://docs.datastax.com/en/install/6.0/install/opscInstallOpsc.html[6.5] | https://docs.datastax.com/en/opscenter/6.1/opsc/install/opscInstallOpsc_g.html[6.1]
+* DataStax Bulk Loader https://docs.datastax.com/en/dsbulk/doc/dsbulk/install/dsbulkInstall.html[Installation Guide]
+* DataStax Apache Pulsar Connector https://docs.datastax.com/en/pulsar-connector/[Installation Guide]
+* DataStax Apache Kafka® Connector https://docs.datastax.com/en/kafka/doc/kafka/install/kafkaInstall.html[Installation Guide]
+* DSE Graph Loader https://docs.datastax.com/en/install/6.7/install/installGraph.html[Installation Guide]
+* Open JDK 8 https://docs.datastax.com/en/jdk-install/doc/jdk-install/installOpenJdkDeb.html[Debian] | https://docs.datastax.com/en/jdk-install/doc/jdk-install/installOpenJdkRHEL.html[RHEL]
+* Oracle JDK 8 https://docs.datastax.com/en/jdk-install/doc/jdk-install/installOracleJdkDeb.html[Debian] | https://docs.datastax.com/en/jdk-install/doc/jdk-install/installOracleJdkRHEL.html[RHEL]
+* https://docs.datastax.com/en/jdk-install/doc/jdk-install/installPython27RHEL.html[Python 2.7] for older RHEL platforms
+
+*Kafka* ::
+DataStax Apache Kafka™ Connector https://docs.datastax.com/en/kafka/doc/kafka/install/kafkaInstall.html[Installation] | https://docs.datastax.com/en/kafka/doc/index.html[DataStax Guide]
+
+*Kubernetes* ::
+* https://k8ssandra.io/[K8ssandra] open-source project
+* https://docs.datastax.com/en/cass-operator/doc/cass-operator/cassOperatorTOC.html[DataStax Kubernetes Operator for Apache Cassandra] (Cass Operator)
+* https://docs.datastax.com/en/luna/streaming/index.html[DataStax Luna Streaming] production-ready distribution of Apache Pulsar plus admin and operational features
+
+*Monitoring* ::
+https://docs.datastax.com/en/monitoring/doc/[Monitoring Guide]
+
+*OpsCenter* ::
+* OpsCenter Guides https://docs.datastax.com/en/opscenter/6.8/[6.8] | https://docs.datastax.com/en/opscenter/6.7/[6.7] | https://docs.datastax.com/en/opscenter/6.5/[6.5] | https://docs.datastax.com/en/opscenter/6.1/[6.1]
+* OpsCenter Release Notes https://docs.datastax.com/en/opscenter/6.8/opsc/release_notes/opscReleaseNotes_g.html[6.8] | https://docs.datastax.com/en/opscenter/6.7/opsc/release_notes/opscReleaseNotes_g.html[6.7] | https://docs.datastax.com/en/opscenter/6.5/opsc/release_notes/opscReleaseNotes_g.html[6.5] | https://docs.datastax.com/en/opscenter/6.1/opsc/release_notes/opscReleaseNotes_g.html[6.1]
+
+*Planning and troubleshooting* ::
+* https://docs.datastax.com/en/dse-planning/doc/[Planning Guide and testing]
+* https://docs.datastax.com/en/dse-trblshoot/doc/[Troubleshooting Guide]
+
+*Pulsar (enhanced)* ::
+* https://docs.datastax.com/en/cdc-for-cassandra/[DataStax CDC for Apache Cassandra]
+* https://docs.datastax.com/en/luna/streaming/[DataStax Luna Streaming]
+* https://docs.datastax.com/en/pulsar-connector/[DataStax Apache Pulsar Connector]
+* https://docs.datastax.com/en/fast-pulsar-jms/docs/1.1/[DataStax Starlight for JMS]
+* https://docs.datastax.com/en/starlight-rabbitmq/docs/1.0/index.html[DataStax Starlight for RabbitMQ]
+
+*Security* ::
+DSE Security Guides https://docs.datastax.com/en/security/6.8/index.html[6.8] | https://docs.datastax.com/en/security/6.7/index.html[6.7] | https://docs.datastax.com/en/security/6.0/index.html[6.0] | https://docs.datastax.com/en/security/5.1/index.html[5.1]
+
+*Storage-Attached Indexing* ::
+https://docs.datastax.com/en/storage-attached-index/6.8/sai/saiTOC.html[Storage-Attached Indexing (SAI)]
+
+*Studio* :: 
+* https://docs.datastax.com/en/studio/6.8/index.html[Studio 6.8]
+* https://docs.datastax.com/en/studio/6.7/index.html[Studio 6.7]
+* https://docs.datastax.com/en/studio/6.0/index.html[Studio 6.0]
+* https://docs.datastax.com/en/dse/5.1/dse-dev/datastax_enterprise/studio/stdToc.html[Studio 2.0]
+[NOTE]
+====
+Studio Notebook Compatability:
+
+Studio 6.8 only supports DataStax Enterprise 6.8
+
+Studio 6.7 only supports DataStax Enterprise 6.7
+
+Studio 6.0 only supports DataStax Enterprise 6.0
+
+Studio 2.0 only supports DataStax Enterprise 5.1 and 5.0 (EOSL).
+
+Notebooks created in earlier versions are automatically upgraged when starting later versions.
+====
+
+*Upgrading* ::
+* https://docs.datastax.com/en/upgrade/doc/upgrade/datastax_enterprise/upgrdDSE.html[Upgrading DataStax Enterprise (DSE)]
+* https://docs.datastax.com/en/upgrade/doc/upgrade/opscenter/upgdOpsc.html[Upgrading DSE OpsCenter]
+* https://docs.datastax.com/en/upgrade/doc/upgrade/datastax_enterprise/upgrdCstarToDSE.html[Upgrading Apache Cassandra to DSE]
+
+//== DataStax Japan documentation
