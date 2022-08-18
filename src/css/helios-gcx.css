@@ -5,7 +5,6 @@
     src: url(https://fonts.gstatic.com/s/materialicons/v134/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2) format('woff2');
 }
 
-
 .material-icons {
     font-family: 'Material Icons', sans-serif;
     font-weight: normal;
@@ -159,7 +158,6 @@ ul#ds_sites_list li a:active {
 .navbar-end__group form {
     margin-right: 15px;
 }
-
 
 .navbar-end {
     flex-direction: column;
@@ -385,13 +383,39 @@ gcx-full-code::-webkit-scrollbar {
     /* for Chrome, Safari, and Opera */
 }
 
+
+/*Scroll for Code block */
+
+.enlighter-default {
+    overflow: scroll!important;
+    -ms-overflow-style: none;
+    font-family: 'Roboto Mono', monospace!important;
+    margin: 0!important;
+    /* for Internet Explorer, Edge */
+    scrollbar-width: none;
+}
+
+.enlighter-default::-webkit-scrollbar {
+    display: none;
+    /* for Chrome, Safari, and Opera */
+}
+
 schema#gcx-schema {
     display: none;
 }
 
+gcx-full .full-articles {
+    margin-left: 1px;
+}
+
 .doc .sect1 {
-    margin-top: 1rem;
-    padding: 0 0 0 20px;
+    margin-top: 1rem!important;
+    padding: 20px 0 20px 20px;
+    border-width: 1px 0px 1px 1px;
+    border-style: solid;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-color: white;
 }
 
 .doc .sect1 .paragraph {
@@ -400,12 +424,10 @@ schema#gcx-schema {
 
 .doc .sect1.active {
     background-color: #eceef0;
-    padding: 20px 0 20px 20px;
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
     border-width: 1px 0px 1px 1px;
     border-style: solid;
-    margin-top: 1rem;
     border-color: var(--section-divider-color);
 }
 
@@ -435,14 +457,12 @@ gcx-full-code {
     overflow-y: scroll;
     flex: 0 1 50%;
     min-width: auto;
-    position: relative;
     right: 1.05px;
     height: calc(100vh - 1px)!important;
     display: flex;
     flex-direction: column;
     position: sticky;
-    top:0;
-
+    top: 0;
 }
 
 
@@ -1079,11 +1099,6 @@ label.switch_label:after {
 
 
 /* Right Block - Code */
-
-.enlighter-default {
-    font-family: 'Roboto Mono', monospace!important;
-    margin: 0!important;
-}
 
 .enlighter-t-bootstrap4 .enlighter-m0 {
     color: #8A3FFC!important;
