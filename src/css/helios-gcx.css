@@ -5,6 +5,7 @@
     src: url(https://fonts.gstatic.com/s/materialicons/v134/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2) format('woff2');
 }
 
+
 .material-icons {
     font-family: 'Material Icons', sans-serif;
     font-weight: normal;
@@ -152,8 +153,13 @@ ul#ds_sites_list li a:active {
 
 .navbar-end__group {
     margin: 12px 0 0 0;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
+
+.navbar-end__group form {
+    margin-right: 15px;
+}
+
 
 .navbar-end {
     flex-direction: column;
@@ -305,6 +311,7 @@ ul#ds_sites_list li a:active {
     grid-row-start: 1;
     align-items: start;
     margin-top: 0;
+    margin-bottom: 12px;
 }
 
 .doc .content {
@@ -365,7 +372,7 @@ feedback-stars {
     /* for Firefox */
     overflow-y: scroll;
     padding: 0;
-    height: 100vh!important;
+    height: 100%!important;
 }
 
 gcx-full-code::-webkit-scrollbar {
@@ -430,7 +437,12 @@ gcx-full-code {
     min-width: auto;
     position: relative;
     right: 1.05px;
-    height: 100vh!important;
+    height: calc(100vh - 1px)!important;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top:0;
+
 }
 
 
