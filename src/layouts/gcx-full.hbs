@@ -27,7 +27,7 @@
     let schemaScript = document.querySelector("#antora-main-block").innerHTML;
     var htmlObject = document.createElement('div');
     htmlObject.innerHTML = schemaScript;
-    let schemaFull = htmlObject.querySelector("#gcx-schema").innerHTML;
+    let schemaFull = htmlObject.querySelector("#gcx-schema")==null?null:htmlObject.querySelector("#gcx-schema").innerHTML;
 
     if (schemaFull !== null) {
 

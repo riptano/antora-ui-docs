@@ -386,15 +386,6 @@ gcx-full-code::-webkit-scrollbar {
 
 /*Scroll for Code block */
 
-.enlighter-default {
-    overflow: scroll!important;
-    -ms-overflow-style: none;
-    font-family: 'Roboto Mono', monospace!important;
-    margin: 0!important;
-    /* for Internet Explorer, Edge */
-    scrollbar-width: none;
-}
-
 .enlighter-default::-webkit-scrollbar {
     display: none;
     /* for Chrome, Safari, and Opera */
@@ -408,6 +399,26 @@ gcx-full .full-articles {
     margin-left: 1px;
 }
 
+.doc .admonitionblock .title,
+.doc .exampleblock .title,
+.doc .imageblock .title,
+.doc .literalblock .title,
+.doc .listingblock .title,
+.doc .openblock .title,
+.doc .tableblock caption {
+    color: var(--heading-font-color);
+}
+
+.dark-mode .doc .admonitionblock .title,
+.dark-mode .doc .exampleblock .title,
+.dark-mode .doc .imageblock .title,
+.dark-mode .doc .literalblock .title,
+.dark-mode .doc .listingblock .title,
+.dark-mode .doc .openblock .title,
+.dark-mode .doc .tableblock caption {
+    color: var(--white);
+}
+
 .doc .sect1 {
     margin-top: 1rem!important;
     padding: 20px 0 20px 20px;
@@ -416,6 +427,14 @@ gcx-full .full-articles {
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
     border-color: white;
+}
+
+.dark-mode .doc .sect1 {
+    border-color: #20293a;
+}
+
+.dark-mode .anchor {
+    color: white;
 }
 
 .doc .sect1 .paragraph {
@@ -1100,6 +1119,15 @@ label.switch_label:after {
 
 /* Right Block - Code */
 
+.enlighter-default {
+    font-family: 'Roboto Mono', monospace!important;
+    margin: 0!important;
+    overflow: scroll!important;
+    -ms-overflow-style: none;
+    /* for Internet Explorer, Edge */
+    scrollbar-width: none;
+}
+
 .enlighter-t-bootstrap4 .enlighter-m0 {
     color: #8A3FFC!important;
 }
@@ -1155,7 +1183,7 @@ label.switch_label:after {
     color: #3797f0!important;
 }
 
-.dark-mode .enlighter-t-bootstrap4 .enlighter-n1 {
+.enlighter-default .dark-mode .enlighter-t-bootstrap4 .enlighter-n1 {
     color: #FF832B!important;
 }
 
