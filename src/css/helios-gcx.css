@@ -24,9 +24,24 @@
     --announcement-height: 48px;
 }
 
+[data-template="landing"] .toc.sidebar{
+    display:none;
+}
+
+[data-template="landing"] .doc {
+    --doc-max-width--desktop: calc(1280 / var(--rem-base) * 1rem);
+}
+
 .landing-row {
     display: flex;
     gap: 24px;
+    flex-direction: column;
+}
+
+@media screen and (min-width:769px) {
+    .landing-row {
+        flex-direction: row;
+    }
 }
 
 .header {
@@ -76,6 +91,20 @@ li.nav-item.toggler.is-active:hover {
 .nav-item[data-depth='2']:hover,
 .nav-item[data-depth='3']:hover,
 .nav-item[data-depth='4']:hover {
+    background-color: #f6f8fa;
+}
+
+.nav-item[data-depth='1'].toggler:hover,
+.nav-item[data-depth='2'].toggler:hover,
+.nav-item[data-depth='3'].toggler:hover,
+.nav-item[data-depth='4'].toggler:hover {
+    background:none;
+}
+
+.nav-item[data-depth='1'].toggler > .nav-text:hover,
+.nav-item[data-depth='2'].toggler > .nav-text:hover,
+.nav-item[data-depth='3'].toggler > .nav-text:hover,
+.nav-item[data-depth='4'].toggler > .nav-text:hover {
     background-color: #f6f8fa;
 }
 
@@ -150,9 +179,16 @@ ul#ds_sites_list li a:active {
     display: table-cell;
 }
 
-.navbar-end__group {
+.navbar-end .navbar-end__group {
     margin: 12px 0 0 0;
     justify-content: flex-end;
+    display: none;
+}
+
+@media screen and (min-width:769px) {
+    .navbar-end .navbar-end__group {
+        display:flex;
+    }
 }
 
 .navbar-end__group form {
@@ -541,16 +577,24 @@ a.ds_buttons_button:hover {
 }
 
 .nav-item.toggler {
-    padding: 8px 0;
+    padding: 0;
     cursor: pointer;
+    width:100%;
+    box-sizing: border-box;
 }
 
 .nav-item.toggler>button {
     padding: 0;
-    margin: 0 10px;
+    margin: 0;
     position: absolute;
-    top: 10px;
+    top: 7px;
     right: 0;
+    width: 22px;
+    height: 22px;
+}
+
+[data-depth="2"] .nav-item.toggler>button {
+    top:7px;
 }
 
 .nav-item.toggler .nav-text {
@@ -562,7 +606,11 @@ a.ds_buttons_button:hover {
 }
 
 li.nav-item[data-depth='2'] {
-    padding: 8px 32px;
+    padding: 0 32px;
+}
+
+li.nav-item[data-depth='3'] {
+    padding: 0 32px 0 48px;
 }
 
 gcx-schema-sample-app-gallery {
@@ -723,9 +771,19 @@ footer .container-fluid {
     font-weight: bold;
 }
 
-a.nav-link {
+.nav-item.toggler .nav-item .nav-text{
+    display: block;
+}
+
+a.nav-link{
     display: block;
     padding: 8px 32px;
+    margin: 0;
+}
+
+.nav-item .nav-text a{
+    display: block;
+    padding: 8px 0;
     margin: 0;
 }
 
@@ -760,7 +818,6 @@ gcx-schema-topbar {
 }
 
 .nav-item.toggler[data-depth="1"] .nav-text {
-    z-index: -1;
     position: relative;
 }
 
@@ -768,8 +825,14 @@ gcx-schema-topbar {
 /* Switch/toggle Dark-Light Mode */
 
 .doc-link {
-    display: flex;
+    display: none;
     align-items: center;
+}
+
+@media screen and (min-width:769px) {
+    .doc-link {
+        display: flex;
+    }
 }
 
 .navbar-switch {
