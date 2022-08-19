@@ -14,8 +14,8 @@ content:
 
 ui:
   bundle:
-    url: https://github.com/riptano/antora-ui-docs/releases/latest/download/ui-bundle.zip
-    # url: ./ui-bundle-test-16aug2022.zip
+    # url: https://github.com/riptano/antora-ui-docs/releases/latest/download/ui-bundle.zip
+    url: ./ui-bundle-test-18aug2022.zip
     snapshot: true
   supplemental_files: ./supplemental-ui
   output_dir: assets

@@ -48,7 +48,7 @@ image::create-db-now.svg[Guided Code Experience card icon,48]
 Quickly create Apache Pulsar&trade; instances, scale across cloud regions, and manage resources. Watch https://youtu.be/MCj58S56Z2U[this video^] and https://docs.datastax.com/en/astra-streaming/docs/[read our docs^] to learn more.
 
 [.landing-card-body-icon]
-image::wha-is-astra-streaming.svg[Astra Streaming card icon,48]
+image::what-is-astra-streaming.svg[Astra Streaming card icon,48]
 --
 ****
 

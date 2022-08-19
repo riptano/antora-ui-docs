@@ -18,3 +18,34 @@
 * xref:compatibility.adoc[Compatibility]
 * xref:supportedPlatforms.adoc[Supported platforms]
 * xref:3rdpartysoftware/thirdpartysoftware.adoc[Third-party software]
+// Below is an additional "dummy" nav to use for testing the UI.
+////
+* About OpsCenter
+** New features
+** Key features
+** Labs features
+*** Exporting and importing dashboard presets
+*** Adding a Swift CLI backup location
+*** Configuring named route linking
+*** Viewing logs from node details
+** Architecture overview
+** OpsCenter policy for DDAC and OSS
+** Feedback about OpsCenter
+* Release notes
+* Installing OpsCenter
+* Upgrading OpsCenter
+* OpsCenter recommended settings
+** OpsCenter basic configurations
+** Cluster synchronization settings
+** Backup Service settings
+** Knowledge Base articles
+* Configuring OpsCenter
+** OpsCenter Security
+*** OpsCenter SSL overview
+**** Enabling/Disabling HTTPS for the OpsCenter server
+**** Configuring SSL/TLS between OpsCenter and the DataStax Agents
+**** Connect to DSE with client-to-node encryption in OpsCenter and the DataStax Agents
+**** Editing/OpsCenter cluster connections for authentication or encryption
+**** SSL configuration options for OpsCenter
+*** Configuring OpsCenter role-based security
+////
