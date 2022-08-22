@@ -14,7 +14,7 @@
 :asciidoctor-link: https://docs.asciidoctor.org/asciidoc/latest/
 :antora-link: https://docs.antora.org/antora/latest/
 
-This repo contains the source files for various "landing pages" within the DataStax documentation, including the homepage for docs.datastax.com.
+This repo contains the source files for various "landing pages" within the DataStax documentation, including the main homepage for docs.datastax.com.
 
 The docs are written in {asciidoctor-link}[AsciiDoc] and use {antora-link}[Antora] to generate the HTML output.
 

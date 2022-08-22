@@ -12,7 +12,7 @@
 * https://docs.datastax.com/en/fast-pulsar-jms/docs/1.1/[DataStax Starlight for JMS^]
 * https://docs.datastax.com/en/starlight-kafka/docs/1.0/index.html[DataStax Starlight for Kafka^]
 * https://docs.datastax.com/en/starlight-rabbitmq/docs/1.0/index.html[DataStax Starlight for RabbitMQ&trade;^]
-* https://docs.datastax.com/en/cdc-for-cassandra/cdc-apache-cassandra/1.0.4/index.html[DataStax CDC for Cassandra^]
+* https://docs.datastax.com/en/cdc-for-cassandra[DataStax CDC for Cassandra^]
 * https://docs.datastax.com/en/astra-serverless/docs/connect/astream-cdc.html[DataStax CDC for Astra DB^]
 * xref:apiDocs.adoc[DataStax and OSS APIs]
 * xref:compatibility.adoc[Compatibility]

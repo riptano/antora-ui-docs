@@ -5,7 +5,7 @@
     "build:dev:landing-pages": "npm run build:local:landing-pages",
     "build:publish:landing-pages": "antora --fetch --clean playbooks/site-publish-landing-pages.yaml",
     "build:local:landing-pages": "antora --stacktrace --fetch --clean playbooks/site-local-landing-pages.yaml",
-    "build:linkinator": "npx linkinator https://docs.datastax/en/home/docs --recurse --skip ' http://localhost?'"
+    "build:linkinator": "npx linkinator https://docs.datastax.com/en/home/docs --recurse --skip ' http://localhost?'"
   },
   "repository": {
     "type": "git",
@@ -15,7 +15,7 @@
     "@antora/cli": "^3.0.1",
     "@antora/site-generator-default": "^3.0.1",
     "linkinator": "^3.0.3",
-    "async":"3.2.4",
+    "async": "3.2.4",
     "mobx": "^6.0.4",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
