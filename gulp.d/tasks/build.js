@@ -59,6 +59,38 @@ module.exports = (src, dest, preview) => () => {
     // NOTE concat already uses stat from newest combined file
       .pipe(concat('js/site.js')),
     vfs
+      .src('js/vendor/enlighterjs/*.js', { ...opts, read: false })
+      .pipe(
+        // see https://gulpjs.org/recipes/browserify-multiple-destination.html
+        map((file, enc, next) => {
+          if (file.relative.endsWith('.bundle.js')) {
+            const mtimePromises = []
+            const bundlePath = file.path
+            browserify(file.relative, { basedir: src, detectGlobals: false })
+              .plugin('browser-pack-flat/plugin')
+              .on('file', (bundledPath) => {
+                if (bundledPath !== bundlePath) mtimePromises.push(fs.stat(bundledPath).then(({ mtime }) => mtime))
+              })
+              .bundle((bundleError, bundleBuffer) =>
+                Promise.all(mtimePromises).then((mtimes) => {
+                  const newestMtime = mtimes.reduce((max, curr) => (!max || curr > max ? curr : max))
+                  if (newestMtime > file.stat.mtime) file.stat.mtimeMs = +(file.stat.mtime = newestMtime)
+                  if (bundleBuffer !== undefined) file.contents = bundleBuffer
+                  file.path = file.path.slice(0, file.path.length - 10) + '.js'
+                  next(bundleError, file)
+                })
+              )
+          } else {
+            fs.readFile(file.path, 'UTF-8').then((contents) => {
+              file.contents = Buffer.from(contents)
+              next(null, file)
+            })
+          }
+        })
+      )
+      .pipe(buffer())
+      .pipe(terser()),
+    vfs
       .src('js/vendor/gcx-contact-form/*.js', { ...opts, read: false })
       .pipe(
         // see https://gulpjs.org/recipes/browserify-multiple-destination.html
