@@ -1,0 +1,1 @@
+import{r,h as s}from"./p-da0aa791.js";const o=class{constructor(s){r(this,s)}render(){return s("div",null,"Hello, World!")}};o.style=":host{display:block}";export{o as gcx_schema}

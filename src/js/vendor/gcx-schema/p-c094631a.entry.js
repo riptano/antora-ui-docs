@@ -1,1 +1,0 @@
-import{r as o,h as s}from"./p-da0aa791.js";const t=class{constructor(s){o(this,s)}componentWillLoad(){this.loadSchemaData()}render(){return s("div",null,"Hello, World!")}loadSchemaData(){return fetch(this.uri).then((o=>o.json())).then((o=>{console.log(o)}))}};t.style=":host{display:block}";export{t as gcx_schema}

@@ -24,8 +24,8 @@
     --announcement-height: 48px;
 }
 
-[data-template="landing"] .toc.sidebar{
-    display:none;
+[data-template="landing"] .toc.sidebar {
+    display: none;
 }
 
 [data-template="landing"] .doc {
@@ -98,13 +98,13 @@ li.nav-item.toggler.is-active:hover {
 .nav-item[data-depth='2'].toggler:hover,
 .nav-item[data-depth='3'].toggler:hover,
 .nav-item[data-depth='4'].toggler:hover {
-    background:none;
+    background: none;
 }
 
-.nav-item[data-depth='1'].toggler > .nav-text:hover,
-.nav-item[data-depth='2'].toggler > .nav-text:hover,
-.nav-item[data-depth='3'].toggler > .nav-text:hover,
-.nav-item[data-depth='4'].toggler > .nav-text:hover {
+.nav-item[data-depth='1'].toggler>.nav-text:hover,
+.nav-item[data-depth='2'].toggler>.nav-text:hover,
+.nav-item[data-depth='3'].toggler>.nav-text:hover,
+.nav-item[data-depth='4'].toggler>.nav-text:hover {
     background-color: #f6f8fa;
 }
 
@@ -187,7 +187,7 @@ ul#ds_sites_list li a:active {
 
 @media screen and (min-width:769px) {
     .navbar-end .navbar-end__group {
-        display:flex;
+        display: flex;
     }
 }
 
@@ -451,8 +451,9 @@ gcx-full .full-articles {
 .dark-mode .doc .literalblock .title,
 .dark-mode .doc .listingblock .title,
 .dark-mode .doc .openblock .title,
-.dark-mode .doc .tableblock caption {
-    color: var(--white);
+.dark-mode .doc .tableblock caption,
+.dark-mode .doc a.link {
+    color: var(--white)
 }
 
 .doc .sect1 {
@@ -579,7 +580,7 @@ a.ds_buttons_button:hover {
 .nav-item.toggler {
     padding: 0;
     cursor: pointer;
-    width:100%;
+    width: 100%;
     box-sizing: border-box;
 }
 
@@ -594,7 +595,7 @@ a.ds_buttons_button:hover {
 }
 
 [data-depth="2"] .nav-item.toggler>button {
-    top:7px;
+    top: 7px;
 }
 
 .nav-item.toggler .nav-text {
@@ -771,17 +772,17 @@ footer .container-fluid {
     font-weight: bold;
 }
 
-.nav-item.toggler .nav-item .nav-text{
+.nav-item.toggler .nav-item .nav-text {
     display: block;
 }
 
-a.nav-link{
+a.nav-link {
     display: block;
     padding: 8px 32px;
     margin: 0;
 }
 
-.nav-item .nav-text a{
+.nav-item .nav-text a {
     display: block;
     padding: 8px 0;
     margin: 0;
@@ -1088,6 +1089,15 @@ label.switch_label:after {
 .dark-mode .doc h4,
 .dark-mode .doc h5,
 .dark-mode .doc h6 {
+    color: var(--white);
+}
+
+.dark-mode .doc h1 a,
+.dark-mode .doc h2 a,
+.dark-mode .doc h3 a,
+.dark-mode .doc h4 a,
+.dark-mode .doc h5 a,
+.dark-mode .doc h6 a {
     color: var(--white);
 }
 

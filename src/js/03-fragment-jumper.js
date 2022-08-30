@@ -1,16 +1,17 @@
-;(function () {
+;
+(function () {
   'use strict'
 
-  var article = document.querySelector('article.doc')
-  var toolbar = document.querySelector('.toolbar')
+  //var article = document.querySelector('article.doc')
+  //var toolbar = document.querySelector('.toolbar')
 
   function decodeFragment (hash) {
     return hash && (~hash.indexOf('%') ? decodeURIComponent(hash) : hash).slice(1)
   }
 
-  function computePosition (el, sum) {
-    return article.contains(el) ? computePosition(el.offsetParent, el.offsetTop + sum) : sum
-  }
+  /*function computePosition (el, sum) {
+          return article.contains(el) ? computePosition(el.offsetParent, el.offsetTop + sum) : sum
+        }*/
 
   function jumpToAnchor (e) {
     if (e) {
@@ -18,7 +19,11 @@
       window.location.hash = '#' + this.id
       e.preventDefault()
     }
-    window.scrollTo(0, computePosition(this, 0) - toolbar.getBoundingClientRect().bottom)
+    //window.scrollTo(0, computePosition(this, 0) - toolbar.getBoundingClientRect().bottom)
+    var elementToScroll = document.getElementById('#' + this.id)
+    if (elementToScroll) {
+      elementToScroll.scrollIntoView()
+    }
   }
 
   window.addEventListener('load', function jumpOnLoad (e) {
