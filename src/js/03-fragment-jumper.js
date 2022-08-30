@@ -10,8 +10,8 @@
   }
 
   /*function computePosition (el, sum) {
-          return article.contains(el) ? computePosition(el.offsetParent, el.offsetTop + sum) : sum
-        }*/
+              return article.contains(el) ? computePosition(el.offsetParent, el.offsetTop + sum) : sum
+            }*/
 
   function jumpToAnchor (e) {
     if (e) {
@@ -22,7 +22,7 @@
     //window.scrollTo(0, computePosition(this, 0) - toolbar.getBoundingClientRect().bottom)
     var elementToScroll = document.getElementById('#' + this.id)
     if (elementToScroll) {
-      elementToScroll.scrollIntoView()
+      elementToScroll.scrollIntoView({ block: 'start', behavior: 'smooth' })
     }
   }
 

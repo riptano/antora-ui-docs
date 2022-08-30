@@ -107,19 +107,37 @@
 }
 
 a.facebook-icon:before {
-    content: url('../img/facebook.png');
+    content: url('../img/facebook.svg');
     width: 32px;
     height: 32px;
 }
 
 a.twitter-icon:before {
-    content: url('../img/twitter.png');
+    content: url('../img/twitter.svg');
     width: 32px;
     height: 32px;
 }
 
 a.git-icon:before {
-    content: url('../img/git.png');
+    content: url('../img/github.svg');
+    width: 32px;
+    height: 32px;
+}
+
+a.medium-icon:before {
+    content: url('../img/medium.svg');
+    width: 32px;
+    height: 32px;
+}
+
+a.linkedin-icon:before {
+    content: url('../img/linkedin.svg');
+    width: 32px;
+    height: 32px;
+}
+
+a.twitch-icon:before {
+    content: url('../img/twitch.svg');
     width: 32px;
     height: 32px;
 }

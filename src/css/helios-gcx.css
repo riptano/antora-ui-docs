@@ -176,6 +176,8 @@ ul#ds_sites_list li a:active {
 }
 
 .navbar-menu {
+    background: transparent!important;
+    box-shadow: 0!important;
     display: table-cell;
 }
 
@@ -451,9 +453,8 @@ gcx-full .full-articles {
 .dark-mode .doc .literalblock .title,
 .dark-mode .doc .listingblock .title,
 .dark-mode .doc .openblock .title,
-.dark-mode .doc .tableblock caption,
-.dark-mode .doc a.link {
-    color: var(--white)
+.dark-mode .doc .tableblock caption {
+    color: var(--white);
 }
 
 .doc .sect1 {
@@ -1274,4 +1275,41 @@ label.switch_label:after {
 
 .dark-mode .enlighter-t-bootstrap4 .enlighter-k10 {
     color: var(--white)!important;
+}
+
+@media only screen and (max-width: 600px) {
+    gcx-schema-topbar {
+        --gcx-topbar-padding: 10px 0;
+        font-size: 12px;
+    }
+    .is-clipped--navbar .navbar-menu {
+        background: #2e394e;
+        box-shadow: none!important;
+    }
+    .is-clipped--navbar #topbar-nav {
+        transition: all .7s linear;
+    }
+    .is-clipped--navbar .ds_buttons_button {
+        margin: 12px 0 0;
+    }
+    .is-clipped--navbar .navbar-switch {
+        margin: 12px 0 0;
+    }
+    .is-clipped--navbar .header {
+        padding: 18px 32px 205px 32px
+    }
+    .is-clipped--navbar .doc-link {
+        display: flex!important;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+    .navbar-brand a {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .is-clipped--navbar .navbar-end .navbar-end__group {
+        display: flex!important;
+        align-items: flex-start;
+        flex-direction: column;
+    }
 }
