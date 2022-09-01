@@ -22,6 +22,22 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   document.addEventListener('click', function (event) {
+    //No es un clic en el sidebar
+    //if (!event.target.matches('li[data-depth="1"]') && !event.target.matches('.switch')) return;
+    /*    if (event.target.closest('li.nav-item.toggler')) {
+          console.log(event.target)
+          event.target.closest('li.nav-item.toggler').classList.toggle('is-active')
+        }
+        /*if ((event.target.matches('span.nav-text') ||
+                    event.target.matches('button.nav-item-toggle')) &&
+                (event.target.offsetParent.matches('li[data-depth="1"]') ||
+                    event.target.offsetParent.matches('li[data-depth="0"]'))) {
+                event.target.offsetParent.classList.toggle('is-active');
+            }
+            if (event.target.matches('li[data-depth="1"]') ||
+                event.target.matches('li[data-depth="0"]')) {
+                event.target.classList.toggle('is-active');
+            }*/
     if (event.target.matches('.switch')) {
       var root = document.getElementsByTagName('html')[0]
       if (event.target.checked) {
@@ -33,10 +49,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
       }
     }
   }, false)
-})
-document.querySelector('.nav-item.toggler').addEventListener('click', function (event) {
-  if (!event.target.matches('li[data-depth="1"]') && !event.target.matches('.switch')) return
-  if (event.target.matches('li[data-depth="1"]')) { event.target.classList.toggle('is-active') }
 })
 
 document.querySelector('#collapse').addEventListener('click', function (event) {
