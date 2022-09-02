@@ -1,0 +1,185 @@
+= Loading data examples
+
+//shortdesc: Examples of loading data using dsbulk.
+
+This topic presents examples of using the `dsbulk load` command to write CSV or JSON data to a database table.
+
+== Databases supported by DataStax Bulk Loader
+
+DataStax Bulk Loader for Apache Cassandra® supports the use of the `dsbulk load`, `dsbulk unload`, and `dsbulk count` commands with:
+
+* https://docs.astra.datastax.com/docs[DataStax Astra] cloud databases
+* DataStax Enterprise (DSE) 4.7 and later databases
+* Open source Apache Cassandra® 2.1 and later databases
+
+== dsbulk load examples
+
+Load data from CSV data read from `stdin` to table _table1_ in keyspace _ks1_:
+
+[source,language-bash]
+----
+dsbulk load -k ks1 -t table1
+----
+
+Load a configuration file from /tmp/dsbulk_load.conf to use for loading the file export.csv to table _table1_ in keyspace _ks1_:
+
+[source,language-bash]
+----
+dsbulk load -f /tmp/dsbulk_load.conf --connector.csv.url export.csv -k ks1 -t table1
+----
+
+Load the file export.csv to table _table1_ in keyspace _ks1_ using the short form option for `url`:
+
+[source,language-bash]
+----
+dsbulk load -url export.csv -k ks1 -t table1
+----
+
+Load the file export.csv to table _table1_ in keyspace _ks1_ using the short form option for `url` and the tab character as a field delimiter:
+
+[source,language-bash]
+----
+dsbulk load -k ks1 -t table1 -url export.csv -delim '\t'
+----
+
+Load the file /tmp/export.csv to table _table1_ in keyspace _ks1_ using the long form option for `url`:
+
+[source,language-bash]
+----
+dsbulk load --connector.csv.url file:///tmp/export.csv -k ks1 -t table1
+----
+
+[NOTE]
+====
+`\file:///tmp/export.csv` is loading from localhost, hence the empty host in the `file://` designation.
+
+==== 
+
+Load table _table1_ in keyspace _ks1_ from a gzipped CSV file by unzipping it to stdout and piping to `stdin` of dsbulk:
+
+[source,language-bash]
+----
+gzcat table1.csv.gz | dsbulk load -k ks1 -t table1
+----
+
+Specify a few hosts (initial contact points) that belong to the desired cluster and load from a local file, without headers.
+Map field indices of the input to table columns with `-m`:
+
+[source,language-bash]
+----
+dsbulk load -url ~/export.csv -k ks1 -t table1 -h '10.200.1.3, 10.200.1.4' -header false -m '0=col1,1=col3'
+----
+
+Specify port 9876 for the cluster hosts and load from an external source URL:
+
+[source,language-bash]
+----
+dsbulk load -url https://192.168.1.100/data/export.csv -k ks1 -t table1 -h '10.200.1.3,10.200.1.4' -port 9876
+----
+
+Load all csv files from a directory.
+The files do not have a header row, `-header false`.
+Map field indices of the input to table columns with `-m`:
+
+[source,language-bash]
+----
+dsbulk load -url ~/export-dir -k ks1 -t table1 -header false -m '0=col1,1=col3'
+----
+
+Specify a file that contains a list of multiple, well-formed URLs for the CSV or JSON data files to load:
+
+[source,language-bash]
+----
+dsbulk load --connector.json.urlfile "my/local/multiple-input-data-urls.txt" -k ks1 -t table1 -h '10.200.1.3'
+----
+
+Load data using a CQL query and include TTL values from the input data:
+
+[source,language-bash]
+----
+dsbulk load -query
+  "INSERT INTO dsbulkblog.iris_with_id
+    (sepal_length,sepal_width,petal_length,petal_width,species,id)
+    VALUES (:sepal_length,:sepal_width,:petal_length,:petal_width,:species,:id)
+    USING TTL :ttl_to_use"
+----
+
+Load data using a field-to-column mapping.
+The example also shows how a function call can be used to apply a function to one or more fields before mapping to a single column named `odd_column`:
+
+[source,language-bash]
+----
+dsbulk load
+  -url /tmp/dsbulkblog/iris.csv
+  -k dsbulkblog
+  -t iris_with_id
+  --schema.mapping "sepal_length = sepal_length, sepal_width = sepal_width, petal_length = petal_length,
+    petal_width = petal_width, species = species, id = id, max(sepal_length, petal_length) = odd_column"
+----
+
+With default port for cluster hosts, keyspace, table, and mapping set in `conf/application.conf`:
+
+[source,language-bash]
+----
+dsbulk load -url https://192.168.1.100/data/export.csv -h '10.200.1.3,10.200.1.4'
+----
+
+Load table _table1_ in keyspace _ks1_ from a CSV file, where double-quote characters in fields are escaped with a double-quote;
+for example, `"f1","value with ""quotes"" and more"` is a line in the CSV file:
+
+[source,language-bash]
+----
+dsbulk load -url ~/export.csv -k ks1 -t table1 -escape '\"'
+----
+
+Loading collections to a table has some specific helpful simplification.
+Collections inside a CSV file can contain valid JSON or simpler non-compliant JSON.
+For example, for the following table:
+
+[source,language-bash]
+----
+CREATE TABLE t1 (col1 set<int> PRIMARY KEY, col2 list<int>, col3 map<text,int>);
+----
+
+This pipe-delimited CSV file contains valid JSON and could be loaded:
+
+[source,language-bash]
+----
+col1|col2|col3
+[1,2,3]|[1,2,3]|{"key1":1,"key2":2}
+----
+
+Or, you could load the same CSV file as follows:
+
+[source,language-bash]
+----
+col1|col2|col3
+1,2,3|1,2,3|"key1":1,"key2":2
+----
+
+Notice that the surrounding brackets and braces are omitted from the valid JSON in the third column.
+
+[IMPORTANT]
+====
+Simplification of the JSON data does not work for nested collections.
+If your table has a column _col4_ of type `list<list<int>>`, only the outermost structure can omit the surrounding characters.
+
+==== 
+
+For example:
+
+[source,language-bash]
+----
+col1,col2,col3,col4
+[1,2,3]|[1,2,3]|{"key1":1,"key2":2}|[[1,2,3],[4,5,6]]
+----
+
+You can simplify the prior example, as follows:
+
+[source,language-bash]
+----
+col1,col2,col3,col4
+1,2,3|1,2,3|"key1":1,"key2":2|[1,2,3],[4,5,6]
+----
+
+However, the inner-list items cannot be simplified further.

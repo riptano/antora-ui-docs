@@ -1,7 +1,7 @@
 
 * xref:index.adoc[Documentation Home]
 * xref:docList.adoc[All documentation links]
-* xref:gs-load-data.adoc[TEST CODE BLOCKS]
+* xref:dsbulkLoad.adoc[TEST CODE BLOCKS]
 * https://docs.datastax.com/en/astra-serverless/docs[DataStax Astra DB^]
 * https://docs.datastax.com/en/astra-streaming/docs/[DataStax Astra Streaming^]
 * https://cassandra.apache.org/doc/latest/[Apache Cassandra&reg;^]
