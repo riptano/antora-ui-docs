@@ -14,11 +14,13 @@ content:
 
 ui:
   bundle:
-    # url: https://github.com/riptano/antora-ui-docs/releases/latest/download/ui-bundle.zip
-    url: ./ui-bundle-test-29aug2022.zip
+    url: https://github.com/riptano/antora-ui-docs/releases/latest/download/ui-bundle.zip
+    # Use the url below for testing UI changes with local static UI files rather than with a pre-compiled bundle
+    # url: ./src
     snapshot: true
-  # Uncomment "supplemental_files" line only if you added a new upper-left banner logo. NOTE: Banner logo must be located at 'playbooks/supplemental-ui/img/logo.svg'
-  supplemental_files: ./supplemental-ui
+  # Uncomment "supplemental_files" line only if you added a new upper-left banner logo.
+  # NOTE: Banner logo must be located at 'playbooks/supplemental-ui/img/logo.svg'
+  # supplemental_files: ~/work/guide-docs/playbooks/supplemental-ui
   output_dir: assets
 
 asciidoc:
@@ -104,6 +106,11 @@ asciidoc:
     support_url: 'https://houston.datastax.com/hc/requests/new'
     astra_docs_base_url: 'https://docs.datastax.com/en/astra/docs'
 
+    # To link to pages in other Antora docsets, use these attributes.
+    # Example: {glossary-url}gloss_agent.html[agent,window="_blank"]
+    glossary-url: 'https://docs.datastax.com/en/glossary/docs/'
+
+    # The source repo of the current docset must be listed as an attribute
     guide-docs: 'ssh://github.com/riptano/guide-docs.git'
 
   extensions:

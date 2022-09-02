@@ -1,6 +1,6 @@
 = Third-party software
 
-The following files list, by DataStac Enterprise (DSE) version, the third-party software that is licensed for use with DSE.
+The following files list, by DataStax Enterprise (DSE) version, the third-party software that is licensed for use with DSE.
 
 == xref:3rdpartysoftware/dse68x.adoc[DataStax Enterprise 6.8.x third-party software]
 Third-party software licensed for DataStax Enterprise 6.8.x.

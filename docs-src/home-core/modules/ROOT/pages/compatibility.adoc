@@ -1,11 +1,12 @@
 = Product compatibility
-// shortdesc: https://docs.datastax.com/en/landing_page/doc/landing_page/compatibility.html
 
 DataStax Enterprise, Apache Cassandra, CQL, and SSTable compatibility
-The following tables list each supported version of DataStax Enterprise (DSE) and its corresponding Apache Cassandra®, CQL, and SSTable versions:
-End of Life (https://www.datastax.com/legal/datastax-support-policy#9-end-of-life-policy[EOL]) — Patches and bug fixes are not available.
 
-End of Service Life (https://www.datastax.com/legal/supported-software[EOSL]) — Patches, bug fixes, and support are not available.  Documentation updates are not provided.
+The following tables list each supported version of DataStax Enterprise (DSE) and its corresponding Apache Cassandra®, CQL, and SSTable versions:
+
+* End of Life (https://www.datastax.com/legal/datastax-support-policy#9-end-of-life-policy[EOL, window="_blank"]) — Patches and bug fixes are not available.
+
+* End of Service Life (https://www.datastax.com/legal/supported-software[EOSL, window="_blank"]) — Patches, bug fixes, and support are not available.  Documentation updates are not provided.
 
 == Current versions 
 
@@ -363,7 +364,7 @@ See https://docs.datastax.com/en/driver-matrix/doc/[Version compatability].
 
 DataStax Bulk Loader is supported on Linux, macOS, and Windows platforms. Using dsbulk commands, CSV or JSON files can be loaded or unloaded to or from the following supported databases:
 
-* https://docs.datastax.com/en/astra/docs/[DataStax Astra] cloud databases
+* https://docs.datastax.com/en/astra-serverless/docs/[DataStax Astra] cloud databases
 * DataStax Enterprise (DSE) 4.7 and later databases
 * Open source Apache Cassandra® 2.1 and later databases
 

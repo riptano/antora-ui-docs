@@ -14,8 +14,8 @@
 --
 New to DataStax & Apache Cassandra&reg; technology? We've got you covered. Astra DB is a serverless, multi-cloud DBaaS built on open-source Cassandra.
 
-* https://astra.datastax.com[Login and start today] with a $300/year free credit.
-* Watch https://youtu.be/s73qwGaKyv0[this video] and https://docs.datastax.com/en/astra-serverless/docs/[read our docs] to learn more.
+* https://astra.datastax.com[Login and start today, window="_blank"] with a $300/year free credit.
+* Watch https://youtu.be/s73qwGaKyv0[this video, window="_blank"] and https://docs.datastax.com/en/astra-serverless/docs/[read our docs,window="_blank"] to learn more.
 --
 [.landing-card-body-icon]
 image::what-is-astra-db.svg[Astra DB card icon,40]
@@ -33,7 +33,7 @@ image::what-is-astra-db.svg[Astra DB card icon,40]
 .Guided Code Experience
 ****
 --
-To get up and running quickly, follow the steps in our Guided Code Experience to connect your clients via provided Java or Python drivers with a cloud-native Astra DB database. See our docs to https://docs.datastax.com/en/gcx-demo/docs/[learn more] and start coding now.
+To get up and running quickly, follow the steps in our Guided Code Experience to connect your clients via provided Java or Python drivers with a cloud-native Astra DB database. Read our docs to https://docs.datastax.com/en/gcx-demo/docs/[learn more,window="_blank"] and start coding now.
 --
 [.landing-card-body-icon]
 image::create-db-now.svg[Guided Code Experience card icon,40]
@@ -43,17 +43,17 @@ image::create-db-now.svg[Guided Code Experience card icon,40]
 .Astra Streaming
 ****
 --
-Quickly create Apache Pulsar&trade; instances, scale across cloud regions, and manage resources. Watch https://youtu.be/MCj58S56Z2U[this video] and https://docs.datastax.com/en/astra-streaming/docs/[read our docs] to learn more.
+Quickly create Apache Pulsar&trade; instances, scale across cloud regions, and manage resources. Watch https://youtu.be/MCj58S56Z2U[this video, window="_blank"] and https://docs.datastax.com/en/astra-streaming/docs/[read our docs,window="_blank"] to learn more.
 --
 [.landing-card-body-icon]
 image::what-is-astra-streaming.svg[Astra Streaming card icon,40]
 ****
 
 [sidebar.landing-card]
-.Open-source Stargate project
+.Stargate
 ****
 --
-Stargate is an open-source data API gateway that sits between your app and your databases, bringing an API platform and data request coordination code into one OSS project. Watch https://youtu.be/2ltVf2EscmM[this video] and https://stargate.io/docs/stargate/1.0/quickstart/quickstart.html[read our docs] to learn more.
+Stargate is an open-source data API gateway that sits between your app and your databases, bringing an API platform and data request coordination code into one OSS project. Watch https://youtu.be/2ltVf2EscmM[this video, window="_blank"] and https://stargate.io/docs/stargate/1.0/quickstart/quickstart-overview.html[read our docs,window="_blank"] to learn more.
 --
 [.landing-card-body-icon]
 image::what-is-stargate-api.svg[Stargate card icon,40]
@@ -68,10 +68,10 @@ image::what-is-stargate-api.svg[Stargate card icon,40]
 ++++
 
 [sidebar.landing-card]
-.Open-source K8ssandra project
+.K8ssandra
 ****
 --
-K8ssandra is an open-source project enabling you to quickly deploy and manage Cassandra databases in Kubernetes. Watch https://youtu.be/3Hqyfl-BMEs[this video] and https://docs.k8ssandra.io[read our docs] to learn more.
+K8ssandra is an open-source project enabling you to quickly deploy and manage Cassandra databases in Kubernetes. Watch https://youtu.be/3Hqyfl-BMEs[this video,window="_blank"] and https://docs.k8ssandra.io[read our docs,window="_blank"] to learn more.
 --
 [.landing-card-body-icon]
 image::what-is-k8ssandra.svg[K8ssandra card icon,40]
@@ -81,7 +81,7 @@ image::what-is-k8ssandra.svg[K8ssandra card icon,40]
 .DataStax Luna
 ****
 --
-Luna gives you access to Cassandra and Pulsar expertise at DataStax as you run your own open-source deployments, but with the peace of mind that comes from having direct access to experts. See the https://www.datastax.com/products/luna[Luna overview] and https://www.datastax.com/blog/datastax-luna-provides-enterprise-grade-support-most-reliable-elastic-and-fastest[this blog] to learn more.
+Luna gives you access to Cassandra and Pulsar expertise at DataStax as you run your own open-source deployments, but with the peace of mind that comes from having direct access to experts. See the https://www.datastax.com/products/luna[Luna overview, window="_blank"] and https://www.datastax.com/blog/datastax-luna-provides-enterprise-grade-support-most-reliable-elastic-and-fastest[this blog, window="_blank"] to learn more.
 --
 [.landing-card-body-icon]
 image::what-is-datastax-luna.svg[Luna card icon,40]
@@ -101,7 +101,7 @@ image::what-is-datastax-luna.svg[Luna card icon,40]
 .Loading data into Astra DB databases
 ****
 --
-Use the Astra Data Loader features to load data in your database from a variety of sources, including CSV files, sample datasets, and Amazon DynamoDB. Watch https://youtu.be/xg3SPqKpP7Q[this video] and https://docs.datastax.com/en/astra/docs/manage/upload/astra-data-loader.html[read our docs] to learn more.
+Use the Astra Data Loader features to load data in your database from a variety of sources, including CSV files, sample datasets, and Amazon DynamoDB. Watch https://youtu.be/xg3SPqKpP7Q[this video, window="_blank"] and https://docs.datastax.com/en/astra/docs/manage/upload/astra-data-loader.html[read our docs,window="_blank"] to learn more.
 --
 [.landing-card-body-icon]
 image::loading-data-into-astra-db.svg[Loading data into Astra DB card icon,40]
@@ -111,7 +111,7 @@ image::loading-data-into-astra-db.svg[Loading data into Astra DB card icon,40]
 .Programmatically manage Astra resources via DevOps API
 ****
 --
-The DevOps API lets you programmatically manage your Astra resources including users, roles, metrics, keys, &amp; private endpoints. Watch https://youtu.be/BWYKQHXfpsg[this video] and https://docs.datastax.com/en/astra/docs/_attachments/devopsv2.html[read our docs] to learn more.
+The DevOps API lets you programmatically manage your Astra resources including users, roles, metrics, keys, &amp; private endpoints. Watch https://youtu.be/BWYKQHXfpsg[this video, window="_blank"] and https://docs.datastax.com/en/astra/docs/_attachments/devopsv2.html[read our docs,window="_blank"] to learn more.
 --
 [.landing-card-body-icon]
 image::devops-api.svg[DevOps card icon,40]
@@ -129,7 +129,7 @@ image::devops-api.svg[DevOps card icon,40]
 .Enhance Astra DB by integrating with additional tools
 ****
 --
-Astra DB includes integrations with DataGrip, DBSchema, JanusGraph, & Strapi. https://docs.datastax.com/en/astra-serverless/docs/getting-started/integrations.html[Read our docs] to learn more.
+Astra DB includes integrations with DataGrip, DBSchema, JanusGraph, & Strapi. https://docs.datastax.com/en/astra-serverless/docs/getting-started/integrations.html[Read our docs,window="_blank"] to learn more.
 --
 [.landing-card-body-icon]
 image::extend-astra-db.svg[Extend Astra DB card icon,40]
@@ -139,7 +139,7 @@ image::extend-astra-db.svg[Extend Astra DB card icon,40]
 .Connect your clients to Astra DB data
 ****
 --
-Learn how to connect your clients to Astra DB, including drivers for C++, C#, Java, Node.js, and Python. https://docs.datastax.com/en/astra-serverless/docs/connect/connecting-to-astra-databases-using-datastax-drivers.html[Read our docs] to learn more.
+Learn how to connect your clients to Astra DB, including drivers for C++, C#, Java, Node.js, and Python. https://docs.datastax.com/en/astra-serverless/docs/connect/connecting-to-astra-databases-using-datastax-drivers.html[Read our docs,window="_blank"] to learn more.
 --
 [.landing-card-body-icon]
 image::connect-clients-to-astra-db.svg[Connect clients to Astra DB card icon,40]
@@ -157,7 +157,7 @@ image::connect-clients-to-astra-db.svg[Connect clients to Astra DB card icon,40]
 .Configure SSO access to Astra DB console
 ****
 --
-SSO via Okta, Microsoft Azure AD, or OneLogin gives you &amp; coworkers seamless sign-on experiences with your secure company credentials. https://docs.datastax.com/en/astra-serverless/docs/manage/org/configuring-sso.html[Read our docs] to learn more.
+SSO via Okta, Microsoft Azure AD, or OneLogin gives you &amp; coworkers seamless sign-on experiences with your secure company credentials. https://docs.datastax.com/en/astra-serverless/docs/manage/org/configuring-sso.html[Read our docs,window="_blank"] to learn more.
 --
 [.landing-card-body-icon]
 image::security.svg[SSO security to Astra DB card icon,40]
@@ -177,8 +177,25 @@ image::security.svg[SSO security to Astra DB card icon,40]
 .DataStax Enterprise 6.8 plus related tools
 ****
 --
-Learn about and use DataStax Enterprise (DSE) 6.8, OpsCenter, and related tools. They're based on proven Cassandra functionality plus DataStax support expertise and enhancements. Watch https://youtu.be/otiYs_3N5Hw[this video] and
-https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/dseGettingStarted.html[read our docs] to learn more.
+Learn about and use DataStax Enterprise (DSE) 6.8, OpsCenter, and related tools. Based on proven Cassandra functionality plus DataStax support expertise and enhancements. Watch https://youtu.be/otiYs_3N5Hw[this video, window="_blank"] and
+https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/dseGettingStarted.html[read our docs,window="_blank"] to learn more.
+
+https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/dseGettingStarted.html[Getting Started,window="_blank"] | 
+https://docs.datastax.com/en/dseplanning/docs/capacityPlanning.html[Plan,window="_blank"] |
+https://docs.datastax.com/en/installing/docs/installTOC.html[Install,window="_blank"] | 
+https://docs.datastax.com/en/upgrading/docs/upgrdAbout.html[Upgrade,window="_blank"] | 
+https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/config/configTOC.html[Config,window="_blank"] |
+https://docs.datastax.com/en/dse/6.8/dse-dev/index.html[Dev,window="_blank"] | 
+https://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/cqlsh_commands/cqlshCommandsTOC.html[CQLSH,window="_blank"] |
+https://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/cqlReferenceTOC.html[CQL,window="_blank"] | 
+https://docs.datastax.com/en/dse/6.8/dse-admin/index.html[Admin,window="_blank"] | 
+https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/operations/opsTOC.html[Operations,window="_blank"] |
+https://docs.datastax.com/en/security/6.8/index.html[Secure,window="_blank"] | 
+https://docs.datastax.com/en/dse/6.8/dse-dev/datastax_enterprise/tools/toolsTOC.html[Tools,window="_blank"] | 
+https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/config/configRecommendedSettings.html[Tune,window="_blank"] |
+https://docs.datastax.com/en/dse-trblshoot/doc/[Troubleshoot,window="_blank"] | 
+https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/usingDSEtoc.html[Advanced,window="_blank"] |
+https://github.com/datastax/release-notes/blob/master/DSE_6.8_Release_Notes.md[Release Notes,window="_blank"]
 --
 [.landing-card-body-icon]
 image::dse-plus-tools.svg[DataStax Enterprise card icon,40]

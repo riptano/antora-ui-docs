@@ -1,6 +1,4 @@
-
 = Supported platforms
-// shortdesc: https://docs.datastax.com/en/landing_page/doc/landing_page/supportedPlatforms.html
 
 [IMPORTANT]
 ====
@@ -11,7 +9,7 @@ Be sure to check the support status for your platform. DataStax no longer suppor
 The following platforms and versions are supported and tested by DataStax to work with DataStax products. Other platforms or versions may work, but have not been tested.
 
 == Requirement for Uniform Licensing
-All nodes in each DataStax Licensed cluster must be uniformly licensed to use the same subscription. For example, if a cluster contains 5 nodes, all 5 nodes must be DataStax Enterprise. Mixing different subscriptions within a cluster is not permitted. The DataStax Advanced Workloads Pack may be added to any DataStax Enterprise (not DataStax Distribution of Apache Cassandra) cluster in an incremental fashion. For example, a 10-node DSE cluster may be extended to include 3 nodes of the Advanced Workloads Pack. "Cluster" means a collection of nodes running the software which communicate with one another using https://docs.datastax.com/en/glossary/doc/glossary/gloss_gossip.html[gossip]. See https://www.datastax.com/legal/datastax-enterprise-terms[Enterprise Terms].
+All nodes in each DataStax Licensed cluster must be uniformly licensed to use the same subscription. For example, if a cluster contains 5 nodes, all 5 nodes must be DataStax Enterprise. Mixing different subscriptions within a cluster is not permitted. The DataStax Advanced Workloads Pack may be added to any DataStax Enterprise cluster in an incremental fashion. For example, a 10-node DSE cluster may be extended to include 3 nodes of the Advanced Workloads Pack. "Cluster" means a collection of nodes running the software which communicate with one another using https://docs.datastax.com/en/glossary/docs/gloss_gossip.html[gossip]. See https://www.datastax.com/legal/datastax-enterprise-terms[Enterprise Terms, window="_blank"].
 
 == Supported platforms for DataStax Enterprise 6.8, 6.7, 6.0, and 5.1
 
@@ -511,6 +509,6 @@ h|Docker version h| Production h| Development xref:supportedPlatforms.adoc#Docke
 | Linux
 | Linux, Mac, Windows
 |===
-See https://www.datastax.com/blog/running-dse-microsoft-windows-using-docker[Running DSE on Microsoft Windows Using Docker].
+See https://www.datastax.com/blog/running-dse-microsoft-windows-using-docker[Running DSE on Microsoft Windows Using Docker, window="_blank"].
 
 //https://success.docker.com/article/compatibility-matrix[Docker Compatibility Matrix] no longer exists

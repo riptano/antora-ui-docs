@@ -1,11 +1,11 @@
-= All DataStax documentation
+= All documentation links
 
 Here's a complete list of DataStax documentation, plus links to related open-source project docs.
 
 == DataStax Astra DB
 
-* https://docs.datastax.com/en/astra-serverless/docs/[Astra DB Serverless^]
-* https://docs.datastax.com/en/astra-classic/docs/[Astra DB Classic^]
+* https://docs.datastax.com/en/astra-serverless/docs/[Astra DB Serverless]
+* https://docs.datastax.com/en/astra-classic/docs/[Astra DB Classic]
 
 == DataStax Astra Streaming
 
@@ -13,176 +13,190 @@ Here's a complete list of DataStax documentation, plus links to related open-sou
 * https://docs.datastax.com/en/astra-streaming/docs/astream-code-examples.html[Astra Streaming code examples]
 * https://docs.datastax.com/en/astra-streaming/docs/astream-use-devops.html[Astra Streaming DevOps API reference]
 
-== Stargate project
+== Stargate
 
-* https://stargate.io/docs/stargate/1.0/quickstart/quickstart.html[Quickstarts^] for:
-** https://stargate.io/docs/stargate/1.0/quickstart/quick_start-document.html[Document API^]
-** https://stargate.io/docs/stargate/1.0/quickstart/quick_start-rest.html[REST API^]
-** https://stargate.io/docs/stargate/1.0/quickstart/quick_start-graphql.html[GraphQL API^]
-** https://stargate.io/docs/stargate/1.0/developers-guide/gRPC.html[gRPC API^]
+* https://stargate.io/docs/stargate/1.0/quickstart/quickstart-overview.html[Quickstarts, window="_blank"] for:
+** https://stargate.io/docs/stargate/1.0/quickstart/qs-document.html[Document API, window="_blank"]
+** https://stargate.io/docs/stargate/1.0/quickstart/qs-rest.html[REST API, window="_blank"]
+** https://stargate.io/docs/stargate/1.0/quickstart/qs-graphql-cql-first.html[GraphQL API, window="_blank"]
+** https://stargate.io/docs/stargate/1.0/develop/dev-with-grpc.html[gRPC API, window="_blank"]
 
-== K8ssandra project
+== K8ssandra
 
-* https://docs.k8ssandra.io/[docs.k8ssandra.io]: Common-interest topics for users of K8ssandra Operator and K8ssandra, such as FAQs, Release Notes, Components, Glossary
-* https://docs-v1.k8ssandra.io/[docs-v1.k8ssandra.io]: Specific topics for K8ssandra 1.4.x users (the initial project releases)
-* https://docs-v2.k8ssandra.io/[docs-v2.k8ssandra.io]: Specific topics for users of K8ssandra Operator, including single- and multi-cluster installs
+* https://docs.k8ssandra.io/[docs.k8ssandra.io, window="_blank"]: Common-interest topics for users of K8ssandra Operator and K8ssandra, such as FAQs, Release Notes, Components, Glossary
+* https://docs-v1.k8ssandra.io/[docs-v1.k8ssandra.io, window="_blank"]: Specific topics for K8ssandra 1.4.x users (the initial project releases)
+* https://docs-v2.k8ssandra.io/[docs-v2.k8ssandra.io, window="_blank"]: Specific topics for users of K8ssandra Operator, including single- and multi-cluster installs
 
 == Pulsar-enhanced products
 
-* https://docs.datastax.com/en/luna/streaming/[DataStax Luna Streaming^]
-* https://docs.datastax.com/en/pulsar-connector/[DataStax Apache Pulsar Connector^]
-* https://docs.datastax.com/en/fast-pulsar-jms/docs/1.1/[DataStax Starlight for JMS^]
-* https://docs.datastax.com/en/starlight-kafka/docs/1.0/index.html[DataStax Starlight for Kafka^]
-* https://docs.datastax.com/en/starlight-rabbitmq/docs/1.0/index.html[DataStax Starlight for RabbitMQ&trade;^]
+* https://docs.datastax.com/en/luna/streaming/[DataStax Luna Streaming]
+* https://docs.datastax.com/en/pulsar-connector/[DataStax Apache Pulsar Connector]
+* https://docs.datastax.com/en/fast-pulsar-jms/docs/1.1/[DataStax Starlight for JMS]
+* https://docs.datastax.com/en/starlight-kafka/docs/1.0/index.html[DataStax Starlight for Kafka]
+* https://docs.datastax.com/en/starlight-rabbitmq/docs/1.0/index.html[DataStax Starlight for RabbitMQ&trade;]
 
 == Change Data Capture (CDC)
 
-* https://docs.datastax.com/en/cdc-for-cassandra/[DataStax CDC for Apache Cassandra&reg;^]
-* https://docs.datastax.com/en/astra-serverless/docs/connect/astream-cdc.html[DataStax CDC for Astra DB^]
+* https://docs.datastax.com/en/cdc-for-cassandra/[DataStax CDC for Apache Cassandra&reg;]
+* https://docs.datastax.com/en/astra-serverless/docs/connect/astream-cdc.html[DataStax CDC for Astra DB]
 
 == DataStax Enterprise (DSE)
 
-* DSE Release Notes on GitHub:
-https://github.com/datastax/release-notes/blob/master/DSE_6.8_Release_Notes.md[DSE 6.8] |
-https://github.com/datastax/release-notes/blob/master/DSE_6.7_Release_Notes.md[DSE 6.7] |
-https://github.com/datastax/release-notes/blob/master/DSE_6.0_Release_Notes.md[DSE 6.0] |
-https://github.com/datastax/release-notes/blob/master/DSE_5.1_Release_Notes.md[DSE 5.1]
+* DSE Release Notes on GitHub: 
+https://github.com/datastax/release-notes/blob/master/DSE_6.8_Release_Notes.md[DSE 6.8, window="_blank"] |
+https://github.com/datastax/release-notes/blob/master/DSE_6.7_Release_Notes.md[DSE 6.7, window="_blank"] |
+https://github.com/datastax/release-notes/blob/master/DSE_6.0_Release_Notes.md[DSE 6.0, window="_blank"] |
+https://github.com/datastax/release-notes/blob/master/DSE_5.1_Release_Notes.md[DSE 5.1, window="_blank"]
+
+* DSE 6.8 topics organized by major task: https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/dseGettingStarted.html[Getting Started,window="_blank"] | 
+https://docs.datastax.com/en/dseplanning/docs/capacityPlanning.html[Plan,window="_blank"] |
+https://docs.datastax.com/en/installing/docs/installTOC.html[Install,window="_blank"] | 
+https://docs.datastax.com/en/upgrading/docs/upgrdAbout.html[Upgrade,window="_blank"] | 
+https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/config/configTOC.html[Config,window="_blank"] |
+https://docs.datastax.com/en/dse/6.8/dse-dev/index.html[Dev,window="_blank"] | 
+https://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/cqlsh_commands/cqlshCommandsTOC.html[CQLSH,window="_blank"] |
+https://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/cqlReferenceTOC.html[CQL,window="_blank"] | 
+https://docs.datastax.com/en/dse/6.8/dse-admin/index.html[Admin,window="_blank"] | 
+https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/operations/opsTOC.html[Operations,window="_blank"] |
+https://docs.datastax.com/en/security/6.8/index.html[Secure,window="_blank"] | 
+https://docs.datastax.com/en/dse/6.8/dse-dev/datastax_enterprise/tools/toolsTOC.html[Tools,window="_blank"] | 
+https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/config/configRecommendedSettings.html[Tune,window="_blank"] |
+https://docs.datastax.com/en/dse-trblshoot/doc/[Troubleshoot,window="_blank"] | 
+https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/usingDSEtoc.html[Advanced,window="_blank"]
 
 * DSE 6.8 Install:
-https://docs.datastax.com/en/install/6.8/install/installTOC.html[HTML^] |
+https://docs.datastax.com/en/install/6.8/install/installTOC.html[HTML] |
 https://docs.datastax.com/en/pdf/install68.pdf[PDF] |
 https://docs.datastax.com/en/install/6.8/zip/install68.zip[Zips]
 
 * DSE 6.8 Architecture:
-https://docs.datastax.com/en/dse/6.8/dse-arch/[HTML^] |
+https://docs.datastax.com/en/dse/6.8/dse-arch/[HTML] |
 https://docs.datastax.com/en/pdf/dsearch68.pdf[PDF] |
 https://docs.datastax.com/en/dse/6.8/dse-arch/zip/dsearch68.zip[Zip]
 
 * DSE 6.8 Dev:
-https://docs.datastax.com/en/dse/6.8/dse-dev/[HTML^] |
+https://docs.datastax.com/en/dse/6.8/dse-dev/[HTML] |
 https://docs.datastax.com/en/pdf/dsedev68.pdf[PDF] |
 https://docs.datastax.com/en/dse/6.8/dse-dev/zip/dsedev68.zip[Zip]
 
 * DSE 6.8 Admin:
-https://docs.datastax.com/en/dse/6.8/dse-admin/[HTML^] |
+https://docs.datastax.com/en/dse/6.8/dse-admin/[HTML] |
 https://docs.datastax.com/en/dse/6.8/dse-admin/zip/dseadmin68.zip[Zip]
 
 * DSE 6.8 Security:
-https://docs.datastax.com/en/security/6.8/index.html[HTML^] |
+https://docs.datastax.com/en/security/6.8/index.html[HTML] |
 https://docs.datastax.com/en/pdf/security68.pdf[PDF] |
 https://docs.datastax.com/en/security/6.8/zip/security68.zip[Zip]
 
 * DSE 6.8 Storage-Attached Indexing (SAI):
-https://docs.datastax.com/en/storage-attached-index/6.8/sai/saiTOC.html[HTML^] |
+https://docs.datastax.com/en/storage-attached-index/6.8/sai/saiTOC.html[HTML] |
 https://docs.datastax.com/en/pdf/sai68.pdf[PDF] |
 https://docs.datastax.com/en/storage-attached-index/6.8/zip/sai68.zip[Zip]
 
-
 * DSE 6.7 Install:
-https://docs.datastax.com/en/install/6.7/install/installTOC.html[HTML^] |
+https://docs.datastax.com/en/install/6.7/install/installTOC.html[HTML] |
 https://docs.datastax.com/en/pdf/install67.pdf[PDF] |
 https://docs.datastax.com/en/install/6.7/zip/install67.zip[Zip]
 
 * DSE 6.7 Architecture:
-https://docs.datastax.com/en/dse/6.7/dse-arch/[HTML^] |
-https://docs.datastax.com/en/pdf/dsearch67.pdf[PDF] |
-https://docs.datastax.com/en/dse/6.7/dse-arch/zip/dsearch68.zip[Zip]
+https://docs.datastax.com/en/dse/6.7/dse-arch/[HTML] |
+https://docs.datastax.com/en/pdf/dsearch67.pdf[PDF] 
+// | https://docs.datastax.com/en/dse/6.7/dse-arch/zip/dsearch68.zip[Zip]
 
 * DSE 6.7 Dev:
-https://docs.datastax.com/en/dse/6.7/dse-dev/[HTML^] |
+https://docs.datastax.com/en/dse/6.7/dse-dev/[HTML] |
 https://docs.datastax.com/en/pdf/dsedev67.pdf[PDF] |
 https://docs.datastax.com/en/dse/6.7/dse-dev/zip/dsedev67.zip[Zip]
 
 * DSE 6.7 Admin:
-https://docs.datastax.com/en/dse/6.7/dse-admin/[HTML^] |
+https://docs.datastax.com/en/dse/6.7/dse-admin/[HTML] |
 https://docs.datastax.com/en/pdf/dseadmin67.pdf[PDF] |
 https://docs.datastax.com/en/dse/6.7/dse-admin/zip/dseadmin67.zip[Zip]
 
 * DSE 6.7 Security:
-https://docs.datastax.com/en/security/6.7/index.html[HTML^] |
+https://docs.datastax.com/en/security/6.7/index.html[HTML] |
 https://docs.datastax.com/en/pdf/security67.pdf[PDF] |
 https://docs.datastax.com/en/security/6.7/zip/security67.zip[Zip]
 
 * DSE 6.0 Install:
-https://docs.datastax.com/en/install/6.0/install/installTOC.html[HTML^] |
+https://docs.datastax.com/en/install/6.0/install/installTOC.html[HTML] |
 https://docs.datastax.com/en/pdf/install60.pdf[PDF] |
 https://docs.datastax.com/en/install/6.0/zip/install60.zip[Zip]
 
 * DSE 6.0 Architecture:
-https://docs.datastax.com/en/dse/6.0/dse-arch/[HTML^] |
+https://docs.datastax.com/en/dse/6.0/dse-arch/[HTML] |
 https://docs.datastax.com/en/pdf/dsearch60.pdf[PDF] |
 https://docs.datastax.com/en/dse/6.0/dse-arch/zip/dsearch60.zip[Zip]
 
 * DSE 6.0 Dev:
-https://docs.datastax.com/en/dse/6.0/dse-dev/[HTML^] |
+https://docs.datastax.com/en/dse/6.0/dse-dev/[HTML] |
 https://docs.datastax.com/en/pdf/dsedev60.pdf[PDF] |
 https://docs.datastax.com/en/dse/6.0/dse-dev/zip/dsedev60.zip[Zip]
 
 * DSE 6.0 Admin:
-https://docs.datastax.com/en/dse/6.0/dse-admin/[HTML^] |
+https://docs.datastax.com/en/dse/6.0/dse-admin/[HTML] |
 https://docs.datastax.com/en/pdf/dseadmin60.pdf[PDF] |
 https://docs.datastax.com/en/dse/6.0/dse-admin/zip/dseadmin60.zip[Zip]
 
 * DSE 6.0 Security:
-https://docs.datastax.com/en/security/6.0/index.html[HTML^] |
+https://docs.datastax.com/en/security/6.0/index.html[HTML] |
 https://docs.datastax.com/en/pdf/security60.pdf[PDF] |
 https://docs.datastax.com/en/security/6.0/zip/security60.zip[Zip]
 
-
 * DSE 5.1 Install:
-https://docs.datastax.com/en/dse/5.1/dse-admin/datastax_enterprise/install/installTOC.html[HTML^] |
+https://docs.datastax.com/en/dse/5.1/dse-admin/datastax_enterprise/install/installTOC.html[HTML] |
 https://docs.datastax.com/en/pdf/dseadmin51.pdf[PDF] |
 https://docs.datastax.com/en/dse/5.1/dse-admin/zip/dseadmin51.zip[Zip]
 
 * DSE 5.1 Architecture:
-https://docs.datastax.com/en/dse/5.1/dse-arch/[HTML^] |
+https://docs.datastax.com/en/dse/5.1/dse-arch/[HTML] |
 https://docs.datastax.com/en/pdf/dsearch51.pdf[PDF] |
 https://docs.datastax.com/en/dse/5.1/dse-arch/zip/dsearch51.zip[Zip]
 
 * DSE 5.1 Dev:
-https://docs.datastax.com/en/dse/5.1/dse-dev/[HTML^] |
+https://docs.datastax.com/en/dse/5.1/dse-dev/[HTML] |
 https://docs.datastax.com/en/pdf/dsedev51.pdf[PDF] |
 https://docs.datastax.com/en/dse/5.1/dse-dev/zip/dsedev51.zip[Zip]
 
 * DSE 5.1 Admin:
-https://docs.datastax.com/en/dse/5.1/dse-admin/[HTML^] |
+https://docs.datastax.com/en/dse/5.1/dse-admin/[HTML] |
 https://docs.datastax.com/en/pdf/dseadmin51.pdf[PDF] |
 https://docs.datastax.com/en/dse/5.1/dse-admin/zip/dseadmin51.zip[Zip]
 
 * DSE 5.1 Security:
-https://docs.datastax.com/en/security/5.1/index.html[HTML^] |
+https://docs.datastax.com/en/security/5.1/index.html[HTML] |
 https://docs.datastax.com/en/pdf/security51.pdf[PDF] |
 https://docs.datastax.com/en/security/5.1/zip/security51.zip[Zip]
 
 == Related Guides for DSE
 
 * Upgrade:
-https://docs.datastax.com/en/upgrade/doc/index.html[HTML^] |
+https://docs.datastax.com/en/upgrade/doc/index.html[HTML] |
 https://docs.datastax.com/en/pdf/upgrade.pdf[PDF] |
 https://docs.datastax.com/en/upgrade/doc/zip/upgrade.zip[Zip]
 
 * Cassandra Planning:
-https://docs.datastax.com/en/oss-planning/doc/[HTML^] |
+https://docs.datastax.com/en/oss-planning/doc/[HTML] |
 https://docs.datastax.com/en/pdf/ossplanning.pdf[PDF] |
 https://docs.datastax.com/en/oss-planning/doc/zip/cassandraplanning.zip[Zip]
 
 * DSE Planning:
-https://docs.datastax.com/en/dse-planning/doc/[HTML^] |
+https://docs.datastax.com/en/dse-planning/doc/[HTML] |
 https://docs.datastax.com/en/pdf/planning.pdf[PDF] |
 https://docs.datastax.com/en/dse-planning/doc/zip/planning.zip[Zip]
 
 * DSE Monitoring:
-https://docs.datastax.com/en/monitoring/doc/[HTML^] |
+https://docs.datastax.com/en/monitoring/doc/[HTML] |
 https://docs.datastax.com/en/pdf/monitoring.pdf[PDF] |
 https://docs.datastax.com/en/monitoring/doc/zip/monitoring.zip[Zip]
 
 * DSE Troubleshooting:
-https://docs.datastax.com/en/dse-trblshoot/doc/[HTML^] |
+https://docs.datastax.com/en/dse-trblshoot/doc/[HTML] |
 https://docs.datastax.com/en/pdf/troubleshooting.pdf[PDF] |
 https://docs.datastax.com/en/dse-trblshoot/doc/zip/dsetrblshoot.zip[Zip]
 
 * DataStax Desktop:
-https://docs.datastax.com/en/dsdesktop/doc/desktop/dsDesktopAbout.html[HTML^] |
+https://docs.datastax.com/en/dsdesktop/doc/desktop/dsDesktopAbout.html[HTML] |
 https://docs.datastax.com/en/pdf/desktop.pdf[PDF] |
 https://docs.datastax.com/en/dsdesktop/doc/zip/desktop.zip[Zip]
 
@@ -190,43 +204,43 @@ https://docs.datastax.com/en/dsdesktop/doc/zip/desktop.zip[Zip]
 
 Latest on cassandra.apache.org:
 
-* https://cassandra.apache.org/doc/latest[Apache Cassandra 4.x^]
-* https://cassandra.apache.org/doc/latest/cassandra/cql/index.html[Apache Cassandra CQL^]
+* https://cassandra.apache.org/doc/latest[Apache Cassandra 4.x, window="_blank"]
+* https://cassandra.apache.org/doc/latest/cassandra/cql/index.html[Apache Cassandra CQL, window="_blank"]
 
 Cassandra 3.x docs hosted by DataStax:
 
 * Cassandra 3.1 - 3.11:
-https://docs.datastax.com/en/cassandra-oss/3.x/index.html[HTML^] |
+https://docs.datastax.com/en/cassandra-oss/3.x/index.html[HTML] |
 https://docs.datastax.com/en/pdf/osscassandra3x.pdf[PDF] |
 https://docs.datastax.com/en/cassandra-oss/3.x/zip/cassandra3x.zip[Zip]
 
 * Cassandra Query Language (CQL) 3.x:
-https://docs.datastax.com/en/cql-oss/3.x/index.html[HTML^] |
+https://docs.datastax.com/en/cql-oss/3.x/index.html[HTML] |
 https://docs.datastax.com/en/pdf/osscql3x.pdf[PDF] |
 https://docs.datastax.com/en/cql-oss/3.x/zip/cql3x.zip[Zip]
 
 * Cassandra 3.0:
-https://docs.datastax.com/en/cassandra-oss/3.0/index.html[HTML^] |
+https://docs.datastax.com/en/cassandra-oss/3.0/index.html[HTML] |
 https://docs.datastax.com/en/pdf/osscassandra30.pdf[PDF] |
 https://docs.datastax.com/en/cassandra-oss/3.0/zip/cassandra30.zip[Zip]
 
 * Cassandra Query Language 3.3:
-https://docs.datastax.com/en/cql-oss/3.3/index.html[HTML^] |
+https://docs.datastax.com/en/cql-oss/3.3/index.html[HTML] |
 https://docs.datastax.com/en/pdf/osscql33.pdf[PDF] |
 https://docs.datastax.com/en/cql-oss/3.3/zip/cql33.zip[Zip]
 
 * Cassandra Query Language 3.1:
-https://docs.datastax.com/en/cql-oss/3.1/index.html[HTML^] |
+https://docs.datastax.com/en/cql-oss/3.1/index.html[HTML] |
 https://docs.datastax.com/en/pdf/osscql31.pdf[PDF] |
 https://docs.datastax.com/en/cql-oss/3.1/zip/cql31.zip[Zip]
 
 * Cassandra 2.2:
-https://docs.datastax.com/en/cassandra-oss/2.2/index.html[HTML^] |
+https://docs.datastax.com/en/cassandra-oss/2.2/index.html[HTML] |
 https://docs.datastax.com/en/pdf/osscassandra22.pdf[PDF] |
 https://docs.datastax.com/en/cassandra-oss/2.2/zip/cassandra22.zip[Zip]
 
 * Cassandra 2.1:
-https://docs.datastax.com/en/cassandra-oss/2.1/index.html[HTML^] |
+https://docs.datastax.com/en/cassandra-oss/2.1/index.html[HTML] |
 https://docs.datastax.com/en/pdf/osscassandra21.pdf[PDF] |
 https://docs.datastax.com/en/cassandra-oss/2.1/zip/cassandra21.zip[Zip]
 
@@ -234,16 +248,16 @@ https://docs.datastax.com/en/cassandra-oss/2.1/zip/cassandra21.zip[Zip]
 
 * https://docs.datastax.com/en/astra-serverless/docs/develop/dev-upload-data.html[Load Data feature in Astra DB console], including CSV data, sample datasets, or DynamoDB data exported to S3
 
-* https://docs.datastax.com/en/dsbulk/docs/1.9.0/dsbulkAbout.html[DataStax Bulk Loader for Apache Cassandra^] (DSBulk) for load and unload operations with CSV/JSON data, and counting table rows.
+* https://docs.datastax.com/en/dsbulk/docs/dsbulkAbout.html[DataStax Bulk Loader for Apache Cassandra^] (DSBulk) for load and unload operations with CSV/JSON data, and counting table rows.
 
 * See also the xref:pulsar-enhanced[Pulsar enhanced] docs list.
 
 * https://docs.datastax.com/en/kafka/doc/index.html[DataStax Kafka for Apache Cassandra^]
 
 * DSE Graph Loader - included in the following DSE releases:
-https://docs.datastax.com/en/dse/6.7/dse-dev/datastax_enterprise/graph/dgl/graphloaderTOC.html[6.7^] |
-https://docs.datastax.com/en/dse/6.0/dse-dev/datastax_enterprise/graph/dgl/graphloaderTOC.html[6.0^] |
-https://docs.datastax.com/en/dse/5.1/dse-dev/datastax_enterprise/graph/dgl/graphloaderTOC.html[5.1^]
+https://docs.datastax.com/en/dse/6.7/dse-dev/datastax_enterprise/graph/dgl/graphloaderTOC.html[6.7] |
+https://docs.datastax.com/en/dse/6.0/dse-dev/datastax_enterprise/graph/dgl/graphloaderTOC.html[6.0] |
+https://docs.datastax.com/en/dse/5.1/dse-dev/datastax_enterprise/graph/dgl/graphloaderTOC.html[5.1]
 
 == DSE OpsCenter
 
@@ -274,9 +288,19 @@ https://docs.datastax.com/en/dse/5.1/dse-dev/datastax_enterprise/graph/dgl/graph
 
 * DataStax Studio 6.8 https://docs.datastax.com/en/studio/6.8/index.html[HTML] | https://docs.datastax.com/en/studio/6.8/studio/releaseNotes/RelNotesstudio.html[Release notes] | https://docs.datastax.com/en/pdf/studio68.pdf[PDF] | https://docs.datastax.com/en/studio/6.8/zip/studio68.zip[Zip]
 
-* DataStax Studio 6.7 https://docs.datastax.com/en/studio/6.7/index.html[HTML] | https://docs.datastax.com/en/studio/6.7/studio/releaseNotes/RelNotesstudio.html[Release notes] | https://docs.datastax.com/en/pdf/studio67.pdf[PDF] | https://docs.datastax.com/en/studio/6.7/zip/studio67.zip[Zip]
+* DataStax Studio 6.7 https://docs.datastax.com/en/install/6.7/install/installStudio.html[Install HTML] 
 
-* DataStax Studio 6.0 https://docs.datastax.com/en/studio/6.0/index.html[HTML] | https://docs.datastax.com/en/studio/6.0/studio/releaseNotes/RelNotesstudio.html[Release notes] | https://docs.datastax.com/en/pdf/studio60.pdf[PDF] | https://docs.datastax.com/en/studio/6.0/zip/studio60.zip[Zip]
+//// 
+Unable to find the following Studio 6.7 docs, 24-Aug-2022 ... TBD.
+| https://docs.datastax.com/en/studio/6.7/studio/releaseNotes/RelNotesstudio.html[Release notes] | https://docs.datastax.com/en/pdf/studio67.pdf[PDF] | https://docs.datastax.com/en/studio/6.7/zip/studio67.zip[Zip]
+////
+
+* DataStax Studio 6.0 https://docs.datastax.com/en/install/6.0/install/installStudio.html[Install HTML] 
+
+//// 
+Unable to find the following Studio 6.0 docs, 24-Aug-2022 ... TBD.
+| https://docs.datastax.com/en/studio/6.0/studio/releaseNotes/RelNotesstudio.html[Release notes] | https://docs.datastax.com/en/pdf/studio60.pdf[PDF] | https://docs.datastax.com/en/studio/6.0/zip/studio60.zip[Zip]
+////
 
 * DataStax Studio 2.0 https://docs.datastax.com/en/dse/5.1/dse-dev/datastax_enterprise/studio/stdToc.html[HTML] | https://docs.datastax.com/en/dse/5.1/dse-dev/datastax_enterprise/studio/releaseNotes/RNstudio.html[Release notes] | https://docs.datastax.com/en/dse/5.1/dse-dev/zip/dsedev51.zip[Zip]
 
@@ -331,45 +355,56 @@ For language-specific driver documentation, see the list below (the starting ver
 
 | C++ (v2.15.0+)
 | https://docs.datastax.com/en/developer/cpp-driver/latest[Docs] +
-https://github.com/beccam/quickstart-c[Quickstart] +
-https://docs.datastax.com/en/driver-matrix/doc/driver-matrix.html[Version Compatibility] +
+https://github.com/beccam/quickstart-c[Quickstart, window="_blank"] +
+https://docs.datastax.com/en/driver-matrix/doc/cpp-drivers.html[Version Compatibility] +
 https://docs.datastax.com/en/developer/cpp-driver/latest/#upgrading[Upgrade]
 |
-| https://github.com/datastax/cpp-driver[Source]
+| https://github.com/datastax/cpp-driver[Source, window="_blank"]
 
 | C# (v3.13.0+)
 | https://docs.datastax.com/en/developer/csharp-driver/latest[Docs] +
-https://github.com/beccam/quickstart-csharp[Quickstart] +
-https://docs.datastax.com/en/driver-matrix/doc/driver_matrix/csharpDrivers.html#csharp-drivers__csharp-driver-cstar[Version Compatibility] +
+https://github.com/beccam/quickstart-csharp[Quickstart, window="_blank"] +
+https://docs.datastax.com/en/driver-matrix/doc/csharp-drivers.html[Version Compatibility] +
 https://docs.datastax.com/en/developer/csharp-driver/latest/upgrade-guide/[Upgrade]
 | https://docs.datastax.com/en/developer/csharp-dse-graph/latest/[Graph Extension Docs]
-| https://github.com/datastax/csharp-driver[Source]
+| https://github.com/datastax/csharp-driver[Source, window="_blank"]
 
 | Java (v4.4.0+)
 | https://docs.datastax.com/en/developer/java-driver/latest[Docs] +
-https://github.com/beccam/quickstart-java[Quickstart] +
-https://docs.datastax.com/en/driver-matrix/doc/driver_matrix/javaDrivers.html#java-drivers__java-driver-cstar[Version Compatibility] +
+https://github.com/beccam/quickstart-java[Quickstart, window="_blank"] +
+https://docs.datastax.com/en/driver-matrix/doc/java-drivers.html[Version Compatibility] +
 https://docs.datastax.com/en/developer/java-driver/latest/upgrade_guide/[Upgrade]
 | Included
-| https://github.com/datastax/java-driver[Source]
+| https://github.com/datastax/java-driver[Source, window="_blank"]
 
 | Node.js (v4.4.0+)
 | https://docs.datastax.com/en/developer/nodejs-driver/latest[Docs] +
-https://github.com/beccam/quickstart-nodejs[Quickstart] +
-https://docs.datastax.com/en/driver-matrix/doc/driver_matrix/nodejsDrivers.html#nodejs-drivers__nodejs-driver-cstar[Version Compatibility] +
+https://github.com/beccam/quickstart-nodejs[Quickstart, window="_blank"] +
+https://docs.datastax.com/en/driver-matrix/doc/nodejs-drivers.html[Version Compatibility] +
 https://docs.datastax.com/en/developer/nodejs-driver/latest/upgrade-guide/[Upgrade]
 | https://docs.datastax.com/en/developer/nodejs-dse-graph/latest/[Graph Extension Docs]
-| https://github.com/datastax/nodejs-driver[Source]
+| https://github.com/datastax/nodejs-driver[Source, window="_blank"]
 
 
 | Python (v3.21.0+)
-| https://github.com/datastax/python-driver[Docs] +
-https://github.com/beccam/quickstart-python[Quickstart] +
-https://docs.datastax.com/en/driver-matrix/doc/driver_matrix/pythonDrivers.html#python-drivers__python-driver-cstar[Version Compatibility] +
+| https://github.com/datastax/python-driver[Docs, window="_blank"] +
+https://github.com/beccam/quickstart-python[Quickstart, window="_blank"] +
+https://docs.datastax.com/en/driver-matrix/doc/python-drivers.html[Version Compatibility] +
 https://docs.datastax.com/en/developer/python-driver/latest/upgrading/[Upgrade]
 | https://docs.datastax.com/en/developer/python-driver/latest/installation/#installation-datastax-graph[Graph Extension Docs (optional)]
-| https://github.com/beccam/quickstart-python[Source]
+| https://github.com/beccam/quickstart-python[Source, window="_blank"]
+
+// TODO: table rows for PHP and Ruby - for now, refer users to: 
+// https://docs.datastax.com/en/driver-matrix/doc/php-drivers.html
+// https://docs.datastax.com/en/driver-matrix/doc/ruby-drivers.html
+
 |===
+
+For information about the DataStax PHP and Ruby drivers, see:
+
+* https://docs.datastax.com/en/driver-matrix/doc/php-drivers.html[PHP]
+
+* https://docs.datastax.com/en/driver-matrix/doc/ruby-drivers.html[Ruby]
 
 
 .DSE drivers (only bug fixes are included in new nersions)
