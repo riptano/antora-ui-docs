@@ -112,6 +112,7 @@ li.nav-item.toggler.is-active:hover {
 
 .nav-item a:hover {
     text-decoration: none !important;
+    color: black;
 }
 
 .nav-item.is-current-page {
@@ -787,7 +788,7 @@ a.nav-link {
 
 .nav-item .nav-text a {
     display: block;
-    padding: 8px 0;
+    padding: 0;
     margin: 0;
 }
 
@@ -1232,7 +1233,7 @@ label.switch_label:after {
 /*Landing*/
 
 [data-template=landing] .doc {
-    max-width: 100%;
+    max-width: calc(1280 / 18 * 1rem);
 }
 
 
@@ -1321,4 +1322,118 @@ label.switch_label:after {
         align-items: flex-start;
         flex-direction: column;
     }
+}
+
+
+/* CARDS WIDTH */
+
+@media screen and (min-width: 1024px) {
+    .doc {
+        flex: auto;
+        font-size: calc(17 / 18 * 1rem);
+        margin: 0 2rem;
+        max-width: calc(828 / 18 * 1rem);
+        min-width: 0;
+    }
+}
+
+
+/* DARK MODE LISTS */
+
+.dark-mode .nav-item[data-depth="1"].toggler:hover,
+.dark-mode .nav-item[data-depth="2"].toggler:hover,
+.dark-mode .nav-item[data-depth="3"].toggler:hover,
+.dark-mode .nav-item[data-depth="4"].toggler:hover {
+    color: #000;
+    background-color: #f6f8fa;
+}
+
+.dark-mode .nav-item[data-depth="1"].toggler>.nav-text:hover,
+.dark-mode .nav-item[data-depth="2"].toggler>.nav-text:hover,
+.dark-mode .nav-item[data-depth="3"].toggler>.nav-text:hover,
+.dark-mode .nav-item[data-depth="4"].toggler>.nav-text:hover {
+    background-color: transparent;
+}
+
+.dark-mode .nav-item[data-depth="1"]:hover,
+.dark-mode .nav-item[data-depth="2"]:hover,
+.dark-mode .nav-item[data-depth="3"]:hover,
+.dark-mode .nav-item[data-depth="4"]:hover {
+    color: #000;
+    background-color: #f6f8fa;
+}
+
+.dark-mode .nav-item[data-depth="1"].toggler.is-active:hover,
+.dark-mode .nav-item[data-depth="2"].toggler.is-active:hover,
+.dark-mode .nav-item[data-depth="3"].toggler.is-active:hover,
+.dark-mode .nav-item[data-depth="4"].toggler.is-active:hover {
+    background-color: #20293a;
+}
+
+.nav-item[data-depth="1"].toggler.is-active:hover,
+.nav-item[data-depth="2"].toggler.is-active:hover,
+.nav-item[data-depth="3"].toggler.is-active:hover,
+.nav-item[data-depth="4"].toggler.is-active:hover {
+    background-color: transparent;
+}
+
+.dark-mode .nav-item.is-current-page a:hover {
+    color: black;
+}
+
+.dark-mode li.nav-item.toggler.is-active[data-depth="2"] .nav-text {
+    color: #fff;
+}
+
+li.nav-item.toggler.is-active[data-depth="2"]:hover .nav-text {
+    color: #000;
+}
+
+li.nav-item[data-depth="2"]:hover a {
+    color: #000;
+}
+
+.nav-item[data-depth="1"].toggler:hover button {
+    color: #000;
+}
+
+.dark-mode .nav-item[data-depth="1"].toggler:hover button {
+    color: #fff;
+}
+
+
+/* LIGHT MODE LISTS */
+
+.nav-item[data-depth="1"].toggler.is-active:hover button {
+    color: #6a7086;
+}
+
+.nav-item[data-depth="1"].toggler:hover,
+.nav-item[data-depth="2"].toggler:hover,
+.nav-item[data-depth="3"].toggler:hover,
+.nav-item[data-depth="4"].toggler:hover {
+    background-color: #f6f8fa;
+}
+
+.nav-item[data-depth="1"].toggler:hover span {
+    color: #000;
+}
+
+.nav-item[data-depth="1"].toggler.is-active:hover span {
+    color: #6a7086;
+}
+
+.nav-item[data-depth="1"].toggler.is-active>.nav-text:hover,
+.nav-item[data-depth="2"].toggler.is-active>.nav-text:hover,
+.nav-item[data-depth="3"].toggler.is-active>.nav-text:hover,
+.nav-item[data-depth="4"].toggler.is-active>.nav-text:hover {
+    background-color: transparent;
+    color: #6a7086;
+}
+
+.nav-item[data-depth="1"].toggler.is-active>button:hover,
+.nav-item[data-depth="2"].toggler.is-active>.button:hover,
+.nav-item[data-depth="3"].toggler.is-active>button:hover,
+.nav-item[data-depth="4"].toggler.is-active>button:hover {
+    color: #6a7086;
 }
