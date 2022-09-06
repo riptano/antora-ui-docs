@@ -1,5 +1,17 @@
 /*Dark theme verification*/
 var theme = window.localStorage.getItem('theme')
+
+function isMobile () {
+  // eslint-disable-next-line no-undef
+  if (sessionStorage.desktop) return false
+  // eslint-disable-next-line no-undef
+  else if (localStorage.mobile) return true
+  // eslint-disable-next-line max-len
+  var mobile = ['iphone', 'ipad', 'android', 'blackberry', 'nokia', 'opera mini', 'windows mobile', 'windows phone', 'iemobile']
+  for (var i in mobile) if (navigator.userAgent.toLowerCase().indexOf(mobile[i].toLowerCase()) > 0) return true
+  return false
+}
+
 window.addEventListener('DOMContentLoaded', (event) => {
   var path = window.location.pathname
   var page = path.split('/').pop()
@@ -16,7 +28,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     checkbox.checked = false
   }
 
-  if (name === 'landing') {
+  if (name === 'landing' && !isMobile()) {
     col.checked = true
     sidebar.classList.add('small-container')
   }
@@ -62,9 +74,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 document.querySelector('#collapse').addEventListener('click', function (event) {
   const sidebar = document.querySelector('.sidebar')
-  if (event.target.checked) {
-    sidebar.classList.add('small-container')
-  } else {
-    sidebar.classList.remove('small-container')
+  if (!isMobile()) {
+    if (event.target.checked) {
+      sidebar.classList.add('small-container')
+    } else {
+      sidebar.classList.remove('small-container')
+    }
   }
 })
