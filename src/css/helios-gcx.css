@@ -231,7 +231,7 @@ ul#ds_sites_list li a:active {
 /* Alerts */
 
 .doc .admonitionblock td.content {
-    --admonition-background: transparent;
+    background: transparent;
 }
 
 .doc .admonitionblock tr {
@@ -241,96 +241,99 @@ ul#ds_sites_list li a:active {
 .doc .admonitionblock.caution tr {
     display: block;
     background: #d8ddf2;
-    border: 1px solid #3b4260;
+    border: 2px solid #3b4260;
     border-radius: 6px;
 }
 
 .doc .admonitionblock.caution td.content {
-    --admonition-color: #3b4260;
+    color: #3b4260;
 }
 
 .doc .admonitionblock.caution .title {
-    --caption-font-color: #3b4260;
+    color: #3b4260!important;
 }
 
 .doc .admonitionblock.tip tr {
     display: block;
     background: #F0F8F4;
-    border: 1px solid #008040;
+    border: 2px solid #008040;
     border-radius: 6px;
 }
 
 .doc .admonitionblock.tip td.content {
-    --admonition-color: #008040;
+    color: #008040;
 }
 
 .doc .admonitionblock.tip .icon {
-    --tip-color: #008040;
+    color: #008040;
 }
 
 .doc .admonitionblock.tip .title {
-    --caption-font-color: #008040;
+    color: #008040!important;
 }
 
 .doc .admonitionblock.warning tr {
     display: block;
     background: #F9F6F0;
-    border: 1px solid #916707;
+    border: 2px solid #916707;
     border-radius: 6px;
 }
 
 .doc .admonitionblock.warning td.content {
-    --admonition-color: #916707;
+    color: #916707;
 }
 
 .doc .admonitionblock.warning .icon {
-    --warning-color: #916707;
+    color: #916707;
 }
 
 .doc .admonitionblock.warning .title {
-    --caption-font-color: #916707;
+    color: #916707!important;
 }
 
 .doc .admonitionblock.important tr {
     display: block;
     background: #FEF1F1;
-    border: 1px solid #D52424;
+    border: 2px solid #D52424;
     border-radius: 6px;
 }
 
 .doc .admonitionblock.important td.content {
-    --admonition-color: #D52424;
+    color: #D52424;
 }
 
 .doc .admonitionblock.important .icon {
-    --important-color: #D52424;
+    color: #D52424;
 }
 
 .doc .admonitionblock.important .title {
-    --caption-font-color: #D52424;
+    color: #D52424!important;
 }
 
 .doc .admonitionblock.note tr {
     display: block;
     background: #F3F8FF;
-    border: 1px solid #1E71D4;
+    border: 2px solid #1E71D4;
     border-radius: 6px;
 }
 
 .doc .admonitionblock.note td.content {
-    --admonition-color: #1E71D4;
+    color: #1E71D4;
 }
 
 .doc .admonitionblock.note .icon {
-    --note-color: #1E71D4;
+    color: #1E71D4;
 }
 
 .doc .admonitionblock.note .title {
-    --caption-font-color: #1E71D4;
+    color: #1E71D4!important;
 }
 
 .doc .exampleblock>.content {
     border-width: 1.5px;
+}
+.doc .admonitionblock .icon i::after {
+    color: white;
 }
 
 .nav.pagination {
@@ -378,9 +381,35 @@ feedback-stars {
     text-align: left;
 }
 
-.doc pre:not(.highlight),
-.doc pre.highlight code {
+.doc pre:not(.highlight) {
     font-size: 14px;
+}
+
+.doc pre.highlight code{
+    display: block;
+    font-size: 14px;
+    padding: .75rem;
+    box-shadow: none;
+   
+}
+
+.highlight-has-code{
+    overflow: hidden;
+    padding: 1rem 0 0 0;
+}
+
+.doc pre.highlight,
+.doc pre:not(.highlight) {
+    background: #f7f8ff;
+    display: block;
+    font-size: 14px;
+    padding: .75rem;
+    box-shadow: inset 0 0 1.75px #c9cef6;
+    overflow-x: auto
+}
+
+.doc .source-toolbox {
+    color: #5c6a85
 }
 
 .doc h2:not(.discrete) {
@@ -423,7 +452,6 @@ gcx-full-code::-webkit-scrollbar {
     display: none;
     /* for Chrome, Safari, and Opera */
 }
-
 
 /*Scroll for Code block */
 
@@ -1152,7 +1180,7 @@ label.switch_label:after {
 }
 
 .dark-mode .doc pre:not(.highlight),
-.doc pre.highlight code {
+.dark-mode .doc pre.highlight code {
     background: var(--color-interface-night-800);
     box-shadow: inset 0 0 1.75px var(--color-interface-night-800);
 }
@@ -1401,6 +1429,16 @@ li.nav-item[data-depth="2"]:hover a {
     color: #fff;
 }
 
+.has-code{
+    overflow: hidden!important;
+    padding: 1rem 0.1rem 0.1rem 0.1rem!important;
+}
+
+.dark-mode .doc pre.highlight, 
+.dark-mode .doc pre:not(.highlight) {
+    box-shadow: inset 0 0 1.75px #c9cef6;
+    background: #2e394e;
+}
 
 /* LIGHT MODE LISTS */
 
@@ -1436,4 +1474,24 @@ li.nav-item[data-depth="2"]:hover a {
 .nav-item[data-depth="3"].toggler.is-active>button:hover,
 .nav-item[data-depth="4"].toggler.is-active>button:hover {
     color: #6a7086;
+}
+
+.copy-icon{
+    background-image: url(../img/octicons-16.svg#view-clippy);
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+}
+
+.dark-mode .copy-icon{
+    background-image: url(../img/octicons-16-white.svg#view-clippy);
+}
+
+.dark-mode .doc .source-toolbox {
+    color: white;
+}
+
+code::before{
+    content:''!important;
 }
