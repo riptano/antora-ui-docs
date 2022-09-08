@@ -6,6 +6,10 @@
     --announcement-height: 48px;
 }
 
+.doc .source-toolbox .copy-button {
+    flex-direction: row!important;
+}
+
 @font-face {
     font-family: 'Material Icons';
     font-style: normal;
@@ -332,6 +336,7 @@ ul#ds_sites_list li a:active {
 .doc .exampleblock>.content {
     border-width: 1.5px;
 }
+
 .doc .admonitionblock .icon i::after {
     color: white;
 }
@@ -385,15 +390,14 @@ feedback-stars {
     font-size: 14px;
 }
 
-.doc pre.highlight code{
+.doc pre.highlight code {
     display: block;
     font-size: 14px;
     padding: .75rem;
     box-shadow: none;
-   
 }
 
-.highlight-has-code{
+.highlight-has-code {
     overflow: hidden;
     padding: 1rem 0 0 0;
 }
@@ -452,6 +456,7 @@ gcx-full-code::-webkit-scrollbar {
     display: none;
     /* for Chrome, Safari, and Opera */
 }
+
 
 /*Scroll for Code block */
 
@@ -1429,16 +1434,17 @@ li.nav-item[data-depth="2"]:hover a {
     color: #fff;
 }
 
-.has-code{
+.has-code {
     overflow: hidden!important;
     padding: 1rem 0.1rem 0.1rem 0.1rem!important;
 }
 
-.dark-mode .doc pre.highlight, 
+.dark-mode .doc pre.highlight,
 .dark-mode .doc pre:not(.highlight) {
     box-shadow: inset 0 0 1.75px #c9cef6;
     background: #2e394e;
 }
+
 
 /* LIGHT MODE LISTS */
 
@@ -1476,7 +1482,7 @@ li.nav-item[data-depth="2"]:hover a {
     color: #6a7086;
 }
 
-.copy-icon{
+.copy-icon {
     background-image: url(../img/octicons-16.svg#view-clippy);
     background-size: contain;
     width: 100%;
@@ -1484,7 +1490,7 @@ li.nav-item[data-depth="2"]:hover a {
     background-repeat: no-repeat;
 }
 
-.dark-mode .copy-icon{
+.dark-mode .copy-icon {
     background-image: url(../img/octicons-16-white.svg#view-clippy);
 }
 
@@ -1492,44 +1498,42 @@ li.nav-item[data-depth="2"]:hover a {
     color: white;
 }
 
-code::before{
-    content:''!important;
+code::before {
+    content: ''!important;
 }
 
 @media only screen and (max-width: 600px) {
     .navbar-brand img {
         height: 30px;
     }
-
-    .nav-toggle.is-active{
+    .nav-toggle.is-active {
         position: absolute;
         z-index: 99999;
         top: 10px;
         left: 15px;
     }
-    .nav-container.is-active{
+    .nav-container.is-active {
         width: 100%;
         height: 100%;
     }
-    
-    .collapse[type=checkbox]+label{
+    .collapse[type=checkbox]+label {
         display: none;
     }
-
-    .nav, .nav-container{
+    .nav,
+    .nav-container {
         background: white;
         z-index: 9999;
     }
-    
-    .dark-mode .nav, .dark-mode .nav-container {
+    .dark-mode .nav,
+    .dark-mode .nav-container {
         background: #20293a;
         z-index: 9999;
-    }       
+    }
 }
 
 .dark-mode .nav-toggle {
     background: url(../img/menu-white.svg) no-repeat 50% 47.5%;
-    background-size: 49%;    
+    background-size: 49%;
 }
 
 .dark-mode .nav-toggle.is-active {
