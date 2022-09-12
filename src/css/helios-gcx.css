@@ -1654,3 +1654,7 @@ li.nav-item.is-active.is-current-path[data-depth="1"] a:hover {
 .dark-mode li.nav-item.is-current-path.is-active li.nav-item[data-depth="2"]:hover span a {
     color: black;
 }
+
+.navbar-burger {
+    height: 20px!important;
+}
