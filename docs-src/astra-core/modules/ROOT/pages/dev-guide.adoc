@@ -1,0 +1,13 @@
+= Connect to your database
+:slug: connecting-to-database
+
+Connect to {company} {astra_db} the way you want. Use the Stargate Data APIs (schemaless JSON Documents, REST, or GraphQL) or JavaScript SDK from your application, language-specific drivers for server-side code, or the CQL console for direct interaction.
+
+[NOTE]
+====
+You must create a database or be granted access to a database by another user before establishing connections.
+====
+
+== How can I connect to my database?
+
+include::partial$connect_options.adoc[]

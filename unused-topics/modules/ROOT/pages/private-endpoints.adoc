@@ -1,0 +1,21 @@
+= Connect via a private endpoint
+
+To better protect your database connection, you can connect to a private endpoint using the {company} {astra_db} console or DevOps API.
+
+Private endpoints are available on only {serverless} databases.
+
+Using {astra_db} console:
+
+* xref:aws-private-endpoints.adoc[Connect to AWS Private Endpoints via {astra_db} console]
+* xref:azure-private-endpoints.adoc[Connect to Azure Private Endpoints via {astra_db} console]
+* xref:gcp-private-endpoints.adoc[Connect to Google Cloud Private Endpoints via {astra_db} console]
+
+Using the DevOps API:
+
+* xref:db-devops-private-endpoints.adoc[Get private endpoints information with the DevOps API]
+* xref:db-devops-aws-private-endpoints.adoc[Connect to AWS PrivateLink with the DevOps API]
+* xref:db-devops-azure-private-endpoints.adoc[Connect to Azure Private Link with the DevOps API]
+* xref:db-devops-gcp-private-endpoints.adoc[Connect to Google Cloud Private Service Connect with the DevOps API]
+* For more about adding private endpoints with the DevOps API, see the link:_attachments/devopsv2.html[DevOps API reference].
+
+For details around private endpoint pricing, see xref:pricing-and-billing.adoc#private-endpoints[Pricing and billing].

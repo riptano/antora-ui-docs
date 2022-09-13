@@ -1,0 +1,56 @@
+= Set your environment variables
+:slug: environment-variables
+
+To use the Connect your app to {company} {astra_db} using the Document API in node.js.
+
+The {astra_db} Collection Node.js Client connects to the {astra_db} Document API.
+
+== Set up your environment
+* Install the {astra_db} JS Collection:
+```
+npm install @astrajs/collections
+```
+
+* Open a browser, navigate to https://astra.datastax.com/[{astra_db}], and log in.
+* From your *Dashboard* page, select your database.
+* Copy the **Cluster ID** of your database.
+
+You can also find the **Cluster ID** in the URL, which is the last UUID in the path:
+```
+https://astra.datastax.com/org/{org-Id}/database/{databaseid}
+```
+
+* Add the **Cluster ID** as an environment variable with the following command:
+```
+export ASTRA_DB_ID={databaseid}
+```
+
+=== Example
+```
+export ASTRA_DB_ID=b5285f63-8da5-4c6e-afd8-ade371a48795
+```
+
+* Copy the *Region* of your database, the region where your database is located.
+* Add the *Region* as an environment variable with the following command:
+```
+export ASTRA_DB_REGION={region}
+```
+
+=== Example
+```
+export ASTRA_DB_REGION=us-east1
+```
+
+* Add your username and your password as environment variables with the following command:
+
+[NOTE]
+====
+Get _Client ID_ and _Client Secret_ by creating your xref:manage:org/managing-org.adoc#_manage_application_tokens[application token] for your username and password.
+====
+
+```
+export ASTRA_DB_USERNAME=clientId
+export ASTRA_DB_PASSWORD=clientSecret
+```
+
+* Use `printenv` to ensure the environment variables were exported.

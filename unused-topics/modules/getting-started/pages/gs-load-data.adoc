@@ -1,0 +1,89 @@
+= Get started: Load and retrieve data in your database
+:page-tag: getting-started,dev,astra-db
+
+This quick start will help you so you can load and retrieve your data in your link:https://astra.datastax.com[{company} {astra_db}, window="_blank"] database with ease. For this example, we'll use the xref:ROOT:dev-with-doc-api.adoc[Document API].
+
+Here are the basic steps:
+
+. link:https://astra.datastax.com/register[Create your {astra_db} account., window="_blank"]
+. Create your database.
+. Get your application token.
+. Load data to your database.
+. Get data from your database.
+
+[NOTE]
+====
+If you want to create multiple databases, xref:manage:org/managing-org#_add_organizations_in_astra_db[create a new organization] first.
+====
+
+== Create your {astra_db} account
+
+Register for a new link:https://astra.datastax.com/register[{astra_db} account, window="_blank"]. You can use your business email and a password, or create an account with GitHub or Google.
+
+Now you can create your database.
+
+== Create your database
+
+You've already created your link:https://astra.datastax.com/register[{astra_db} account, window="_blank"]. Let's create a database where you'll be able to load and get your data for your application.
+
+Here are a few key things you should know as you create your database:
+
+* Your database stores all of your information. For this example, name your database `example`.
+* A keyspace stores your group of tables, like a schema in a relational database. This helps keep related tables of information in a single place within your database. +
+  For this example, name your keyspace `fitness`.
+* Select a region that is geographically close to your users to optimize performance.
+
+include::partial$create_db.adoc[]
+
+Congrats! You have a database! Before you can load data into your database, you need to get a new application token.
+
+== Get an application token
+
+Before you can load data into your newly created database, you need to create your application token.
+
+include::partial$create_app_token.adoc[]
+
+Copy your application token and let's go load some data into your database.
+
+== Load data into your database
+
+You've already created your database and created your application token. Let's take a look at loading data into your link:https://astra.datastax.com[{astra_db}, window="_blank"] database.
+
+For this example, we will use the xref:ROOT:dev-with-doc-api.adoc[Document API].
+
+[NOTE]
+====
+You can also load data into your database with these methods:
+
+* xref:ROOT:dev-with-rest-api.adoc[REST API]
+* xref:ROOT:dev-with-graphql-api.adoc[GraphQL API]
+* xref:connect:cql/connect-cqlsh.adoc[Cassandra Query Language (CQL)]
+* xref:connect:drivers/connect-drivers.adoc[Drivers]
+====
+
+include::develop:page$api-doc/doc-writing-documents.adoc[tag=WriteBasicData]
+
+Now, let's get data from your database.
+
+== Get data from your database
+
+So far, we've created a database, created an application token, and loaded data into your database. Next, let's get your data from your database.
+
+include::develop:page$api-doc/doc-reading-documents.adoc[tag=ReadBasicData]
+
+== What's next?
+
+Are you ready to explore more in {astra_db}? Check out these topics:
+
+* Ways to get data into and out of your database
+** xref:ROOT:dev-with-doc-api.adoc[Document API]
+** xref:ROOT:dev-with-rest-api.adoc[REST API]
+** xref:ROOT:dev-with-graphql-api.adoc[GraphQL API]
+** xref:connect:cql/connect-cqlsh.adoc[Cassandra Query Language (CQL)]
+** xref:connect:drivers/connect-drivers.adoc[Drivers]
+* Learn how to create and manage an organization
+** xref:manage:org/managing-org.adoc#_invite_users_to_an_organization[Invite users to your organization]
+** xref:manage:org/managing-org.adoc#_manage_application_tokens[Create application tokens]
+* Browse other tutorials
+** xref:sample-apps.adoc[Build a sample application]
+** xref:ROOT:gs-katacoda.adoc[Use Katacoda scenarios]

@@ -1,0 +1,16 @@
+= gRPC Go Client
+
+include::page$api-grpc/go/go-setup.adoc[leveloffset=+1]
+
+include::page$api-grpc/go/go-connecting.adoc[leveloffset=+1]
+
+include::page$api-grpc/go/go-querying.adoc[leveloffset=+1]
+
+include::page$api-grpc/go/go-processing.adoc[leveloffset=+1]
+
+include::page$api-grpc/go/go-full.adoc[leveloffset=+1]
+
+include::page$api-grpc/go/go-developing.adoc[leveloffset=+1]
+
+The Stargate gRPC Go Client repository is located at
+https://github.com/stargate/stargate-grpc-go-client[https://github.com/stargate/stargate-grpc-go-client]. 

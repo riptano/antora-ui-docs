@@ -1,0 +1,189 @@
+= Java legacy driver versions
+:slug: java-legacy-drivers
+:page-tag: driver,dev,astra-db,connect
+
+Connect to {company} {astra_db} from Java using a previous version of the {company} Driver.
+Before proceeding please consider upgrading to the most current driver if possible.
+However, if you cannot upgrade, or are using a Framework that doesn't support {astra_db} secure connect, the following instructions will help you get connected.
+
+== Prerequisites
+* Ensure the Java driver is installed.
+For more, see https://docs.datastax.com/en/developer/java-driver/[{company} Java Driver]. +
+* {empty}
+include::partial$collect_legacy_driver_info.adoc[]
+* Also collect the `trustStore.jks` and `identity.jks` from the secure connect bundle.
+* From the `config.json` in the secure connect bundle collect the `keyStorePassword` and `trustStorePassword`.
+* * _Client ID_ and _Client Secret_  correspond to username and password. They are created when you generate  your xref:manage:org/managing-org.adoc#_manage_application_tokens[application token].
+
+== Procedure
+. Copy the certificate files from the {astra_db} secure connect bundle to `../secure-connect/`.
+This folder should contain the `trustStore.jks` and `identity.jks` files.
+. Replace the `<hostname>` with your {astra_db} database hostname.
+. Replace the `<port>` with your {astra_db} database port.
+. Replace `<username>` and `<password>` with the {astra_db} database _Client ID_ and _Client Secret_.
+. Replace `<keyStore pass>` and `<trustStore pass>` with the values from the `config.json`.
+
+=== Java 11
+```
+import com.datastax.driver.core.RemoteEndpointAwareJdkSSLOptions;
+import com.datastax.driver.core.SSLOptions;
+import org.springframework.data.cassandra.config.CassandraClusterFactoryBean;
+
+import javax.net.ssl.*;
+import java.io.File;
+import java.security.KeyStore;
+import java.security.SecureRandom;
+
+public class Test {
+    private static final String KEYSTORE_PATH = "../secure-connect/identity.jks";
+    private static final char[] KEYSTORE_PASSWORD = "<keystore pass>".toCharArray();
+    private static final String TRUSTSTORE_PATH = "../secure-connect/trustStore.jks";
+    private static final char[] TRUSTSTORE_PASSWORD ="<trustStore pass>".toCharArray();
+    private static final String contactPoints = "<hostname>";
+    private static final int port = <port>;
+    private static final boolean sslEnabled = true;
+    private static final String username = "<clientId>";
+    private static final String password = "<clientSecret>";
+
+    @Override
+    public CassandraClusterFactoryBean cluster(){
+
+        CassandraClusterFactoryBean cluster = new CassandraClusterFactoryBean();
+
+        cluster.setJmxReportingEnabled(false);
+        cluster.setContactPoints(contactPoints);
+        cluster.setPort(port);
+        cluster.setSslEnabled(sslEnabled);
+        cluster.setContactPoints(contactPoints);
+        cluster.setUsername(username);
+        cluster.setPassword(password);
+        cluster.setSslOptions(generateSSLConf());
+
+        return cluster;
+    }
+    public SSLOptions generateSSLConf() {
+        try {
+            KeyManagerFactory kmf;
+            try {
+                kmf = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
+                kmf.init(KeyStore.getInstance(KEYSTORE_PATH), KEYSTORE_PASSWORD);
+            } catch (Exception e) {
+                throw new RuntimeException("Unable to init KeyManagerFactory. Please check password and location.", e);
+            }
+
+            KeyStore truststore;
+            try {
+                truststore = KeyStore.getInstance(new File(TRUSTSTORE_PATH),TRUSTSTORE_PASSWORD);
+            } catch (Exception e) {
+                throw new RuntimeException("Unable to load the truststore. Check path and password.", e);
+            }
+            TrustManagerFactory tmf;
+            try {
+                tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+                tmf.init(truststore);
+            } catch (Exception e) {
+                throw new RuntimeException("Unable to init TrustManagerFactory.", e);
+            }
+
+            try {
+                SSLContext sslContext = SSLContext.getInstance("TLSv1.2");
+                sslContext.init(kmf.getKeyManagers(), tmf.getTrustManagers(), new SecureRandom());
+                return RemoteEndpointAwareJdkSSLOptions.builder()
+                        .withSSLContext(sslContext)
+                        .build();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        } catch (Throwable th) {
+            throw new RuntimeException("Failed to load truststore for casandra", th);
+        }
+    }
+}
+```
+
+== Example
+```
+import com.datastax.driver.core.RemoteEndpointAwareJdkSSLOptions;
+import com.datastax.driver.core.SSLOptions;
+import org.springframework.data.cassandra.config.CassandraClusterFactoryBean;
+
+import javax.net.ssl.*;
+import java.io.File;
+import java.security.KeyStore;
+import java.security.SecureRandom;
+
+public class Test {
+    private static final String KEYSTORE_PATH = "../secure-connect/identity.jks";
+    private static final char[] KEYSTORE_PASSWORD = "7cU6YS5jHbh8a".toCharArray();
+    private static final String TRUSTSTORE_PATH = "../secure-connect/trustStore.jks";
+    private static final char[] TRUSTSTORE_PASSWORD = "Dwp6KMa2lRd01".toCharArray();
+    private static final String contactPoints = "7bb9cd7a-e49d-49a6-aa3d-be4878f974ef-us-east1.db.astra.datastax.com";
+    private static final int port = 31575;
+    private static final boolean sslEnabled = true;
+    private static final String username = "john.smith";
+    private static final String password = "jsP@ssw0rd";
+
+    @Override
+    public CassandraClusterFactoryBean cluster(){
+
+        CassandraClusterFactoryBean cluster = new CassandraClusterFactoryBean();
+
+        cluster.setJmxReportingEnabled(false);
+        cluster.setContactPoints(contactPoints);
+        cluster.setPort(port);
+        cluster.setSslEnabled(sslEnabled);
+        cluster.setContactPoints(contactPoints);
+        cluster.setUsername(username);
+        cluster.setPassword(password);
+        cluster.setSslOptions(generateSSLConf());
+
+        return cluster;
+    }
+    public SSLOptions generateSSLConf() {
+        try {
+            KeyManagerFactory kmf;
+            try {
+                kmf = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
+                kmf.init(KeyStore.getInstance(KEYSTORE_PATH), KEYSTORE_PASSWORD);
+            } catch (Exception e) {
+                throw new RuntimeException("Unable to init KeyManagerFactory. Please check password and location.", e);
+            }
+
+            KeyStore truststore;
+            try {
+                truststore = KeyStore.getInstance(new File(TRUSTSTORE_PATH),TRUSTSTORE_PASSWORD);
+            } catch (Exception e) {
+                throw new RuntimeException("Unable to load the truststore. Check path and password.", e);
+            }
+            TrustManagerFactory tmf;
+            try {
+                tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+                tmf.init(truststore);
+            } catch (Exception e) {
+                throw new RuntimeException("Unable to init TrustManagerFactory.", e);
+            }
+
+            try {
+                SSLContext sslContext = SSLContext.getInstance("TLSv1.2");
+                sslContext.init(kmf.getKeyManagers(), tmf.getTrustManagers(), new SecureRandom());
+                return RemoteEndpointAwareJdkSSLOptions.builder()
+                        .withSSLContext(sslContext)
+                        .build();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        } catch (Throwable th) {
+            throw new RuntimeException("Failed to load truststore for casandra", th);
+        }
+    }
+}
+```
+
+In the example above, the following variables are used:
+
+* `hostname` is `7bb9cd7a-e49d-49a6-aa3d-be4878f974ef-us-east1.db.astra.datastax.com`
+* `port` is `31575`
+* `username` is `john.smith`
+* `password` is `jsP@ssw0rd`
+* `trustStore pass` is `Dwp6KMa2lRd01`
+* `keystore pass` is `7cU6YS5jHbh8a`

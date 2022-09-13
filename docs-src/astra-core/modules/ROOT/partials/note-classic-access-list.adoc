@@ -1,0 +1,4 @@
+[NOTE]
+====
+The access list feature will be rolled out for classic databases over a few weeks. If you do not see the access list feature in your database settings, please {support_url}[open a support ticket, window="_blank"].
+====

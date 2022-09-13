@@ -1,0 +1,83 @@
+= Adding and removing data in {astra_db} tables
+:slug: adding-and-removing-data-in-astra-tables
+
+GraphQL uses queries and mutations to retrieve and change data.
+
+In xref:using-glitch-and-the-astra-data-api.adoc[Using Glitch and the {generic_astra} Data API], you used the {company} {generic_astra} API to generate data for our Better Botz database.
+When {company} {astra_db} was made generally available, GraphQL was added as a feature for creating, reading, updating, and deleting data.
+
+== Goal 1: See the status of current products
+Better Botz has created a new and improved Heavy Lift Arms.
+While planning when to add Heavy Lift Arms II, Better Botz needs to know if the existing Heavy Lift Arms are already listed.
+
+. If necessary, get a fresh authorization token using the {company} {generic_astra} API.
+Replace {auth-token} with the value for your database:
+
+[source]
+----
+curl --request POST \
+  --url https://{databaseid}-{region}.apps.astra.datastax.com/api/rest/v1/auth \
+  --header 'accept: */*' \
+  --header 'content-type: application/json' \
+  --header 'x-cassandra-request-id: {auth-token}'
+----
+
+. Using GraphQL, run a query to see if you already have the Heavy Lift Arms II.
++
+[source]
+----
+curl --location --request POST 'https://{databaseid}-{region}.apps.astra.datastax.com/api/graphql' \
+  --header 'accept: */*' \
+  --header 'content-type: application/json' \
+  --header 'x-cassandra-request-id: {unique-UUID}' \
+  --header 'X-Cassandra-Token: {auth-token}' \
+  --header 'Content-Type: application/json' \
+  --data-raw '{"query":"query {products(value: {product_id:"Heavy Lift Arms"}) {values {product_id product_name price description created}}}"}'
+----
+. Replace the following values with the values for your database:
+ * Replace `{databaseid}` with the UUID of your database, copied from the {astra_db} URL.
+ * Replace `{region}` with the region where your database is located, as listed on the **Database Details** page in {astra_db}. For example, `us-east1`.
+ * Enter a `{unique-UUID}` for the request and the `{auth-token}` you created earlier.
+. Check for an existing "`Heavy Lift Arms II`".
+This should verify that you do not have an existing "`Heavy Lift Arms II`" product.
+
+== Goal 2: Add a new product
+Now that you know there aren't any Heavy Lift Arms in the `products` table, you want to add the new and improved product to our table for customers to be able to order.
+. Use the following cURL command:
+[source]
+----
+curl --request POST \
+  --url https://{databaseid}-{region}.apps.astra.datastax.com/api/rest/v1/keyspaces/{keyspace_name}/tables/{table_name}/rows \
+  --header 'accept: application/json' \
+  --header 'content-type: application/json' \
+  --header 'x-cassandra-request-id: {unique-UUID}' \
+  --header 'x-cassandra-token: {auth-token}' \
+  --data-raw '{"query":"mutation {superarms: insertProducts(value:{product_id:"65cad0df-4fc8-42df-90e5-4effcd221ef7"
+    name:"Arm Spec A2" description:"Heavy Lift Arms II"price: "9999.99" created: "2012-04-23T18:25:43.511Z"}){value {product_name description price created}}}","variables":{}}' +
+----
+. Replace the following values with the values for your database:
+* Replace `{databaseid}` with the UUID of your database, copied from the {astra_db} URL.
+ * Replace `{region}` with the region where your database is located, as listed on the **Database Details** page in {astra_db}. For example, `us-east1`.
+ * Modify `{keyspace_name}` to match the name of your keyspace.
+ * Replace `{table_name}` with the name of the table you want to create.
+In this example, enter products as the table name.
+ * Enter a `{unique-UUID}` for the request and the `{auth-token}` you created earlier.
+ * The `--data-raw` option defines the new product, including a description, price, and created timestamp.
+. Using a GraphQL query, confirm the new product is available in the database:
++
+[source]
+----
+curl --location --request POST 'https://{databaseid}-{region}.apps.astra.datastax.com/api/graphql' \
+  --header 'accept: */*' \
+  --header 'content-type: application/json' \
+  --header 'x-cassandra-request-id: {unique-UUID}' \
+  --header 'X-Cassandra-Token: {auth-token}' \
+  --header 'Content-Type: application/json' \
+  --data-raw '{"query":"query {products(value: {product_id:"Heavy Lift Arms II"}) {values {product_id product_name price description created}}}"}'
+----
+. Replace the following values with the values for your database:
+ * Replace `{databaseid}` with the UUID of your database, copied from the {astra_db} URL.
+ * Replace `{region}` with the region where your database is located, as listed on the Database Details page in {astra_db}. For example, us-east1.
+ * Enter a `{unique-UUID}` for the request and the {auth-token} you created earlier.
+
+In the next post, Better Botz you will learn to create a new table for orders that have shipped and explore further data modeling!

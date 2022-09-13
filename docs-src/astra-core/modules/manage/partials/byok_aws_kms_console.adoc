@@ -1,0 +1,142 @@
+// This partial content is imported at build time into:
+// byok_ui_aws.adoc
+// db-devops-aws-cmk.adoc
+
+[IMPORTANT]
+====
+Before you create a Customer Managed Key in the AWS Key Management Service (KMS), submit the following REST API call:
+
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/cmk/curl_get_cmk_for_provider_and_region.sh[]
+----
+--
+ 
+The GET's response includes the `provider_id` of the AWS account where DataStax will store your S3 buckets. **Copy the ID number returned in the GET's response.** Then, when you configure your AWS KMS Customer Managed Key (see the steps below), you'll specify this account number, and grant DataStax permission to access this account.
+====
+
+. After authenticating into your AWS organization and account, search for, or navigate to, the Key Management Service (KMS).
+. On the https://console.aws.amazon.com/kms/home[KMS] page, click the left sidebar link for Customer managed keys.
+. Click **Create key**.
+. Choose the **Symmetric** option for a single key, which will be used to encrypt and decrypt data for your {astra_db} database in an Amazon S3 bucket. Click **Next**.
+. On **Add labels**, enter a memorable alias for your CMK, such as `datastax-byok-cmk`, and optionally provide a brief **Description** and user-defined **Tags**. Click **Next**.
+. On **Define key administrative permissions**, decide if you want to keep the option to **Allow key administrators to delete this key**. Also on this dialog, expand the down arrow in **Key administrators** section and select the relevant AWS accounts. Click **Next**.
+. On **Define key usage permissions**, decide which AWS accounts you want to authorize for the CMK's usage. For now, skip the **Other AWS Accounts** option; there's an option on the next screen to edit the in-progress **Key policy** definition. Click **Next**.
+. On the **Review** page, check the selected options, and then scroll through the generated **Key policy**. There are a couple manual edits to perform. Add the full section (see below) that starts with:
++
+----
+        {
+            "Sid": "Allow an external account to use this KMS key",
+            .
+            .
+            .
+        }
+----
+. Ensure that you have actions defined that are shown in the following example. Of course, your `arn:aws:iam::...` values will be different. The first sample ARN shown below is the account owner's ID, and the second ARN in this sample is the ID of the AWS S3 storage account. 
++
+[TIP]
+====
+Again, to get the appropriate storage account ID value, if you haven't already, use the following GET to retrieve the `provider_id` of the account that DataStax will use, and for which you'll grant access permission.
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/cmk/curl_get_cmk_for_provider_and_region.sh[]
+----
+--
+Make sure that your Key policy here in KMS, again in the section under "Allow an external account to use this KMS key", is using the intended S3 storage account ID's `arn:aws:iam::<storage-account-id>:role/creator` value.
+====
++
+----
+{
+    "Version": "2012-10-17",
+    "Id": "key-consolepolicy-3",
+    "Statement": [
+        {
+            "Sid": "Enable IAM User Permissions",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::111111111111:root"
+            },
+            "Action": "kms:*",
+            "Resource": "*"
+        },
+        {
+            "Sid": "Allow an external account to use this KMS key",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::222222222222:role/creator"
+            },
+            "Action": [
+                "kms:EnableKey",
+                "kms:Encrypt",
+                "kms:Decrypt",
+                "kms:GenerateDataKey",
+                "kms:GenerateDataKeyWithoutPlaintext",
+                "kms:ReEncryptTo",
+                "kms:ReEncryptFrom",
+                "kms:DescribeKey"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "Allow attachment of persistent resources",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::222222222222:role/creator"
+            },
+            "Action": [
+                "kms:CreateGrant",
+                "kms:ListGrants",
+                "kms:RevokeGrant"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+----
++
+In your edits, match the `kms:...` values in the `Action:...` section, under the `Sid` label that begins with "Allow an external account to use this KMS key". Ensure that your Key policy has the following actions defined. To use the KMS CMK with your {astra_db} data, DataStax requires these eight actions: 
++
+----
+            "Action": [
+                "kms:EnableKey",
+                "kms:Encrypt",
+                "kms:Decrypt",
+                "kms:GenerateDataKey",
+                "kms:GenerateDataKeyWithoutPlaintext",
+                "kms:ReEncryptTo",
+                "kms:ReEncryptFrom",
+                "kms:DescribeKey"
+            ]
+----
+You can copy/paste in those values (if not present already) into your KMS CMK's **Key policy** textbox.
++
+If you have questions, please contact us at mailto:Astra-PM@datastax.com[Astra DB Product Management].
++
+. Also, in the **Key policy** section that starts with:
++
+----
+            "Sid": "Allow attachment of persistent resources",
+----
++
+Be sure to use the three actions shown in the sample below:
++
+----
+"Action": [
+                "kms:CreateGrant",
+                "kms:ListGrants",
+                "kms:RevokeGrant"
+            ],
+----
+. When you are ready, click **Finish**.
+. On the AWS KMS *Customer managed keys* page, notice the alias name that you defined for your newly created CMK and its ID value. 
+
+[TIP]
+====
+Copy the ARN of the key you just created. That ARN can serve as the `keyID` that you'll provide in:
+
+* {astra_ui}'s **Add Keys** UI of your organization's **Security Settings** 
+
+* Or in the DevOps API `/v2/kms` *POST* request payload 
+====

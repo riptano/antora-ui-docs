@@ -1,0 +1,23 @@
+== Directives for Schema-first GraphQL
+:slug: graphql-first-directives
+
+// tag::Directives[]
+Schema-first GraphQL can use Stargate-specific directives that decorate a schema or
+operation with additional configuration.
+These directives are mostly specific to the Cassandra database storage engine design.
+
+|===
+| Name | Description | Arguments
+| @cql_column | Set type field CQL values | name, partitionKey, clusteringOrder, typeHint
+| @cql_delete | Conditional delete clause | if Exists: true
+| @cql_entity | Set a type field data type | name, target (UDT)
+| @cql_payload | Identify a type as a payload type | N/A
+| @cql_index | Create a type field index | name, class (org.apache.cassandra.index.sasi.SASIIndex), type, options (mode: 'CONTAINS')
+| @cql_input | Identify a type as an input type | N/A
+| @cql_insert | Add a conditional clause | ifNotExists: true
+| @cql_pagingState | The paging state to inject in the query | N/A
+| @cql_select | Set response arguments | pageSize, limit
+| @cql_update | Set an insertion to be an update | N/A
+| @cql_where | Predicates that customize the conditions of a parameter | field, predicate (EQ (default), IN, GT, GTE, LT, LTE, CONTAINS)
+|===
+// end::Directives[]

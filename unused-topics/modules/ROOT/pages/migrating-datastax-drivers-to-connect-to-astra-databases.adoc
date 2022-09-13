@@ -1,0 +1,14 @@
+= Migrate {company} drivers
+:slug: migrating-datastax-drivers-to-connect-to-astra-databases
+
+If you are using an existing version of a {company} driver, migrate to a version that is compatible with {company} {astra_db}.
+
+To migrate your {company} Apache Cassandra or {company} Enterprise (DSE) driver, follow the instructions to change any required dependencies and modify the connection code to use the new {astra_db} API.
+
+After migrating, follow the instructions to xref:connect:drivers/connect-drivers.adoc[connect to your Astra database using the {company} drivers].
+
+* xref:migrating-your-datastax-c-driver-to-connect-with-astra-databases.adoc[Migrate C{pp} driver]
+* xref:migrating-the-c-driver-to-connect-with-astra-databases.adoc[Migrate C# driver]
+* xref:migrating-your-datastax-java-driver-to-connect-with-astra-databases.adoc[Migrate Java driver]
+* xref:migrating-your-datastax-nodejs-driver-to-connect-with-astra-databases.adoc[Migrate Node.js driver]
+* xref:migrating-your-datastax-python-driver-to-connect-with-astra-databases.adoc[Migrate Python driver]

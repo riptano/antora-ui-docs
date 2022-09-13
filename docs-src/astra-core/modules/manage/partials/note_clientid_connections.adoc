@@ -1,0 +1,4 @@
+You can use your _Client ID_ and _Client Secret_ to connect to your database. See more about the available connection options:
+
+* xref:connecting-to-databases-using-standalone-cqlsh.adoc[Standalone CQL shell]
+* xref:connecting-to-astra-databases-using-datastax-drivers.adoc[Drivers]

@@ -1,0 +1,345 @@
+== Database regions
+:slug: database-regions
+:page-tag: plan,planning,astra-db,regions
+
+// Author's note: refer to the Astra DB Region List tab of the FY<year> Master Price List spreadsheet.
+// E.g. for FY23: 
+// https://docs.google.com/spreadsheets/d/1B4h185MtrXvd2kQmBcto4IRNoA4mJpj3N8qhFH-7xHU/edit#gid=740721253
+// Contacts: Rob Harris, Ali Zaheeruddin, Dave Roberts, Karan Dhingra, Fiona Tse, Paul Libenson, 
+//  Craig Kitterman, David Chitayat, Bea Johnson, John Smart.
+
+When creating a database, select a region for your database. Choose a region that is geographically close to your users to optimize performance.
+
+include::ROOT:partial$note_region.adoc[]
+
+ifeval::["{evalproduct}" == "DB Serverless"]
+[#serverless-regions]
+== {serverless_cap} database regions
+
+=== Google Cloud
+
+[cols=3*,options=header]
+|===
+|Region
+|Location
+|Pricing
+
+|us-east1
+|Moncks Corner, South Carolina, US
+|Standard
+
+|us-east4
+|Ashburn, Virginia, US
+|Standard
+
+|us-west1
+|The Dalles, Oregon, US
+|Standard
+
+|us-central1
+|Council Bluffs, Iowa, US
+|Standard
+
+|northamerica-northeast1
+|Montréal, Québec, Canada
+|Standard
+
+|us-west4
+|Las Vegas, Nevada, US
+|Standard
+
+|europe-west1
+|Saint-Ghislain, Belgium
+|Standard
+
+|europe-west2
+|London, England
+|Premium
+
+|asia-south1
+|Mumbai, India
+|Standard
+
+|australia-southeast1
+|Sydney, Australia
+|Premium
+
+|asia-northeast1
+|Tokyo, Japan
+|Standard
+
+|asia-northeast2
+|Osaka, Japan
+|Standard
+
+|southamerica-east1
+|São Paulo, Brazil
+|Premium Plus
+
+|===
+
+=== AWS
+
+[cols=3*,options=header]
+|===
+|Region
+|Location
+|Pricing
+
+|us-east-1
+|Northern Virginia, US
+|Standard
+
+|us-west-2
+|Oregon, US
+|Standard
+
+|us-east-2
+|Ohio, US
+|Standard
+
+|eu-central-1
+|Frankfurt, Germany
+|Standard
+
+|eu-west-1
+|Ireland
+|Standard
+
+|ap-south-1
+|Mumbai, India
+|Standard
+
+|ap-southeast-1
+|Singapore
+|Standard
+
+|ap-southeast-2
+|Sydney, Australia
+|Standard
+
+|ap-east-1
+|Hong Kong
+|Premium
+
+|sa-east-1
+|São Paulo, Brazil
+|Premium Plus
+
+|===
+
+=== Azure
+
+[cols=3*,options=header]
+|===
+|Region
+|Location
+|Pricing
+
+|northeurope
+|Ireland
+|Standard
+
+|westeurope
+|West Europe
+|Standard
+
+|francecentral
+|Paris, France
+|Standard
+
+|southcentralus
+|Texas, US
+|Standard
+
+|westus2
+|Washington (state), US
+|Standard
+
+|eastus2
+|Virginia, US
+|Standard
+
+|canadacentral
+|Toronto, Ontario, Canada
+|Standard
+
+|eastus
+|Washington, DC US
+|Standard
+
+|australiaeast
+|Australia East
+|Standard
+
+|centralindia
+|Central India (Pune)
+|Standard
+
+|brazilsouth
+|Brazil 
+|Premium Plus
+
+|===
+endif::[]
+
+
+// |southcentralus
+// |South Central, US
+// |Standard
+//|===
+
+
+[#classic-regions]
+ifeval::["{evalproduct}" == "DB Classic"]
+== {classic_cap} database regions
+
+=== AWS
+
+[cols=3*,options=header]
+
+|===
+|Region
+|Location
+|Pricing
+
+|us-east-1
+|Northern Virginia, US
+|Standard
+
+|us-west2
+|Oregon, US
+|Standard
+
+|us-east-2
+|Ohio, US
+|Standard
+
+|ca-central-1
+|Canada (Central)
+|Standard
+
+|eu-central-1
+|Frankfurt, Germany
+|Standard
+
+|eu-west-1
+|Ireland
+|Standard
+
+|eu-west-2
+|London, England
+|Standard
+
+|ap-southeast-1
+|Singapore
+|Standard
+
+|ap-south-1
+|Mumbai, India
+|Standard
+
+|ap-southeast-2
+|Sydney, Australia
+|Premium
+
+|ap-northeast-1
+|Tokyo, Japan
+|Standard
+
+|===
+
+=== Google Cloud
+
+[cols=3*,options=header]
+
+|===
+|Region
+|Location
+|Pricing
+
+|us-east1
+|Moncks Corner, South Carolina, US
+|Standard
+
+|us-east4
+|Ashburn, Northern Virginia, US
+|Standard
+
+|us-central1
+|Council Bluffs, Iowa, US
+|Standard
+
+|us-west1
+|The Dalles, Oregon, US
+|Standard
+
+|northamerica-northeast1
+|Montréal, Québec, Canada
+|Standard
+
+|asia-east1
+|Changhua County, Taiwan
+|Standard
+
+|asia-east2
+|Hong Kong
+|Standard
+
+|australia-southeast1
+|Sydney, Australia
+|Standard
+
+|europe-north1
+|Hamina, Finland
+|Standard
+
+|europe-west1
+|Saint-Ghislain, Belgium
+|Standard
+
+|europe-west4
+|Eemshaven, Netherlands
+|Standard
+
+|===
+
+=== Azure
+
+[cols=3*,options=header]
+|===
+|Region
+|Location
+|Pricing
+
+|eastus
+|Virginia, US
+|Standard
+
+|westus2
+|Washington (state) US
+|Standard
+
+|westeurope
+|West Europe (Netherlands)
+|Standard
+
+|northeurope
+|North Europe (Ireland)
+|Premium
+
+|australiaeast
+|New South Wales, Australia
+|Premium
+
+|australiasoutheast
+|Victoria, Australia
+|Premium
+
+// Verify: is the following supported in Classic Azure? Not in UI 20-Jul-2022.
+// |centralcanada
+// |Toronto, Ontario, Canada
+// |Standard
+
+|===
+endif::[]

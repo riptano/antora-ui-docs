@@ -1,0 +1,41 @@
+=== Parking your {classic} database
+:slug: parking-databases
+
+Park a database to reduce costs and manage resources efficiently. Parking a database suspends the database but does not destroy it.
+Parked databases are available to xref:manage:db/manage-unpark-db.adoc[unpark] when the database needs to be active again.
+
+
+The cost of parking a database is only the storage cost from the infrastructure as a service (IaaS) provider.
+
+include::ROOT:partial$note_classic_only.adoc[]
+
+Parking provides an effective means for managing costs and ensuring that databases are running only when needed.
+When parking a database, the {astra_db} console calculates the estimated cost of parking the database versus the cost of keeping the database running.
+
+You can resume your parked databases at any time.
+If database operations are issued for a parked database, those operations will not be implemented until the database is unparked.
+
+[TIP]
+====
+When viewing details for a database, click the ellipsis (*\...*) next to the database name to access the Park option.
+====
+
+=== Procedure
+
+. Open a browser, navigate to https://astra.datastax.com/[{company} {astra_db}], and log in.
+. From the *Dashboard* page, select *Park* for the database you want to park.
+. To park the database, select *Park Database*.
+
+=== Results
+The status of the database changes to *Parking* until the database is parked;
+the status then changes to *Parked*.
+
+[IMPORTANT]
+====
+You cannot make changes to your database while the status is *Parking*.
+====
+
+The database is parked and remains in that state until you unpark it.
+The only cost incurred while the database is parked is storage cost from your selected cloud provider.
+
+You will receive an email when your database is successfully parked, along with a link to the database.

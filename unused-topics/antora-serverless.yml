@@ -1,0 +1,8 @@
+name: astra-serverless
+title: DataStax Astra DB Serverless Documentation
+version: ~
+
+nav:
+- modules/ROOT/nav.adoc
+- modules/develop/dnav.adoc
+- modules/contribute/nav.adoc

@@ -1,0 +1,70 @@
+= Managing payment methods
+:slug: managing-payment-methods
+
+Optionally, update your payment method in the *Billing & Payments* section. Your Billing & Payments also displays each database included in your server, allowing you to see  your total cost per database.
+
+Update the payment method you entered when xref:manage:db/managing-db.adoc#_create_your_astra_db_database[creating your {company} {astra_db} database].
+Before your monthly credit runs out, you must enter your credit card number and associated billing information to ensure your database remains accessible.
+
+Enter updated credit card information and associated billing details, or delete the existing payment method.
+
+{astra_db} supports one payment method for each organization.
+
+== Updating your payment information
+
+. From any page in https://astra.datastax.com[{astra_db}], select the *Organizations* dropdown.
+
+image::ROOT:OrgSelection.png[]
+
+[arabic, start=2]
+. In the main dropdown, select *Organization Settings*.
+. From *Billing & Payment*, select *Invite User*.
+* From your Astra *Dashboard*, select *Add Payment Method* or *Update* beside the existing payment method.
+* In the *Update Payment Method* menu, confirm that you want to *Update* your payment method.
+* Enter the new billing information and *Save*.
+
+Your payment method is updated.
+All future billing will use the new payment entered.
+
+ifeval::["{evalproduct}" == "DB Serverless"]
+== Removing a Payment Method
+
+Use this section to remove any payment method associated with {astra_db} serverless and https://docs.datastax.com/en/astra-streaming/docs/[Astra Streaming].
+
+There are two selections to consider before removing your payment method: any outstanding balance for your organization and any premium features added to this plan. A premium feature, such as multi-region or private endpoints, is optionally applied to a resource.
+
+To remove your payment method, open your {astra_db} account and go to *Billing*. Your organization’s dashboard of billing services and payments made is available for viewing. Click *Remove*.
+endif::[]
+
+=== Prerequisites
+
+Ensure your organization meets the following requirements to remove your payment method:
+
+* With no outstanding balance and no premium features, you can remove your payment method at any time. A dialog box appears to confirm you want to remove the payment method; select *Remove Payment Method*.
++
+image::ROOT:want_to_remove_payment.png[]
++
+A message appears that you have successfully removed the payment method. An email is also sent for your records.
+
+* If you have no outstanding balance and premium features, you must remove all of these features before you can proceed. Click the link for each premium feature (as shown below) to remove them.
+
++
+image::ROOT:payment_removal.png[]
+
+* If you have an outstanding balance and no premium features, you must wait until the next billing cycle to settle this account.
++
+image::ROOT:ob_features.png[]
+
+* If you have an outstanding balance and premium features, you must remove your premium features before you can remove your payment method. You must wait until the next billing cycle to settle this account.
++
+image::ROOT:balance_and_features.png[]
+
+=== Removing premium features
+
+Each premium feature is unique and has specific instructions for removal. The following links offer instructions on removing the following premium features:
+
+** Private endpoints
+*** xref:connect:private_endpoints/aws-private-endpoints.adoc[AWS private endpoints]
+*** xref:connect:private_endpoints/azure-private-endpoints.adoc[Azure private enddpoints]
+*** xref:connect:private_endpoints/gcp-private-endpoints.adoc[Google Cloud private endpoints]
+** xref:manage:db/manage-multi-region.adoc[Managing multiple regions]

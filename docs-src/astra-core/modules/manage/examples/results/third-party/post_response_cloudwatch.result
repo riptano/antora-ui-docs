@@ -1,0 +1,23 @@
+202 OK
+
+Or one of the following:
+
+400 Bad request.
+401 Unauthorized.
+403 The user is forbidden to perform the operation.
+404 The specified resource was not found.
+409 The request could not be processed because of conflict.
+5XX A server error occurred.
+
+Example:
+
+{
+  "errors": [
+    {
+      "description": "The name of the environment must be provided",
+      "internalCode": "a1012",
+      "internalTxId": "103B-A018-3898-0ABF"
+    }
+  ]
+}
+

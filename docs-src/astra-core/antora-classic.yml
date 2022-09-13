@@ -1,0 +1,15 @@
+name: docs
+title: DataStax Astra DB Classic Documentation
+version: ~
+start_page: index.adoc
+
+nav:
+- modules/ROOT/nav.adoc
+- modules/getting-started/nav.adoc
+- modules/plan/nav.adoc
+- modules/connect/nav.adoc
+- modules/develop/dnav.adoc
+- modules/quickstart/nav.adoc
+- modules/manage/nav.adoc
+- modules/secure/nav.adoc
+- modules/ROOT/apinav.adoc

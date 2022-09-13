@@ -1,0 +1,16 @@
+= Default {astra_db} user permissions
+:slug: default-user-permissions
+:page-tag: security,astra-db,permissions
+
+When creating an {company} {astra_db} database, the default user is created with the required permissions to manage the created keyspace.
+This default user is not equivalent to the `cassandra` superuser.
+However, the default user is granted the following permissions in the keyspace created on the database:
+
+* Create, select, modify, drop, and describe database objects, including keyspaces, tables, and roles
+* Grant the same or lesser permissions to additional user roles
+* Create and drop additional user roles
+
+[NOTE]
+====
+You must be the default user to create additional users within the selected keyspace.
+====

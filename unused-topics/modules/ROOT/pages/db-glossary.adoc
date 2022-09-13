@@ -1,0 +1,67 @@
+= {astra_db} glossary
+
+=== authenticate
+To establish the identity of a user or application.
+
+=== authorization
+To establish permissions to database resources through roles.
+
+=== capacity unit
+Represents three database instances grouped together with three replicas.
+
+=== Classless inter-domain routing (CIDR)
+
+Set of internet protocol (IP) standards used to create unique identifiers for networks and individual devices.
+
+=== clustering column
+
+In the table definition, a clustering column is a column that is part of the compound primary key definition, but not the first column, which is the position reserved for the partition key. Columns are clustered in multiple rows within a single partition. The clustering order is determined by the position of columns in the compound primary key definition.
+
+=== column
+The smallest increment of data, which contains a name, a value, and a timestamp. Also known as a cell.
+
+=== CQL shell
+The Cassandra Query Language shell (cqlsh) utility.
+
+=== database
+A group of distributed instances for storing data. Each paid {astra_db} database has at least three instances.
+
+=== index
+A native capability for finding a column in the database that does not involve using the primary key.
+
+=== instances
+The basic database infrastructure component where you store your data. Commonly referred to as a "node" in Cassandra terminology.
+
+=== keyspace
+The defining container for replication, similar to a schema in a relational database. All tables belong to a keyspace. See xref:planning.adoc#_astra_db_database_guardrails_and_limits[Guardrails & Limits page] for more info.
+
+
+=== partition index
+A list of primary keys and the start position of data.
+
+=== partition key
+The first column declared in the PRIMARY KEY definition, or in the case of a compound key, multiple columns can declare those columns that form the primary key.
+
+=== partition summary
+A subset of the partition index. By default, 1 partition key out of every 128 is sampled.
+
+=== primary key
+The partition key. One or more columns that uniquely identify a row in a table.
+
+=== region
+A group of related nodes configured together within a database for replication purposes. A region is virtual datacenter hosted on your selected cloud provider. Using separate regions prevents transactions from being impacted by other workloads and lowers latency. Depending on the replication factor, data can be written to multiple regions. Regions cannot span physical locations. A region in {astra_db} is the same concept as a "datacenter" in Apache Cassandra™ or {company} Enterprise.
+
+=== replication
+The process of storing copies of data on multiple instances. Replication ensures reliability and fault tolerance. All replicas are equally important; there is no primary or master replica.
+
+=== replication factor
+Determines the number of copies of a database. Higher replication factors provide increased reliability and fault tolerance.
+
+=== row
+1) Columns that have the same primary key. 2) A collection of cells per combination of columns in the storage engine.
+
+=== service account
+Allows you to manage your databases with the DevOps API, which can be used to create, terminate, resize, park, and unpark your database. The service account is created at the organization level.
+
+=== table
+Stores data based on a primary key, which consists of a partition key and optional clustering columns. A partition key defines the node on which the data is stored, and divides data into logical groups. Define partition keys that evenly distribute the data and also satisfy specific queries. Query and write requests across multiple partitions should be avoided if possible. A clustering column defines the sort order of rows within a partition. When defining a clustering column, consider the purpose of the data. For example, retrieving the most recent transactions, sorted by date, in descending order.

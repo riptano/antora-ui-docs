@@ -1,0 +1,154 @@
+ifeval::["{evalproduct}" == "DB Serverless"]
+== BYOK GCP with {astra_ui}
+
+Encryption is a widely accepted mechanism to secure data against breaches. By default, {company} {astra_db} encrypts data, and providers such as Google Cloud offer encryption solutions. However, you may want to further limit data access, because cloud providers have access to the keys and ultimately to the data. 
+
+To address this security concern, {company} {astra_db} allows you to associate a *Customer Managed Encryption Key* (one per region) that you defined in Google Cloud console with a *Customer Key* that you create in {astra_db}.
+
+In this topic, we'll use these terms:
+
+* Bring Your Own Key (BYOK) refers to the overall capability.
+* *Customer Managed Encryption Key* (CMEK) refers to a particular key type in Google Cloud Key Management Service (KMS).
+* *Customer Key* refers to the corresponding key association in Astra DB. 
+
+ifeval::["{evalproduct}" == "DB Serverless"]
+[TIP]
+====
+This BYOK feature:
+
+* Is available for serverless {astra_db} databases with these cloud providers:
+** AWS - supported via xref:manage:org/byok-ui-aws.adoc[BYOK AWS with Astra DB console], and xref:manage:devops/devops-aws-cmk.adoc[BYOK AWS with DevOps API].
+** Google Cloud - supported via BYOK GCP with Astra DB console (this topic), and xref:manage:devops/devops-gcp-cmek.adoc[BYOK GCP with DevOps API].
+* Is not available in the {astra_db} Free Tier.
+* Free Tier users: instead of submitting a Support ticket, click the **Chat icon** in {astra_ui}'s lower-right corner. Ask the DataStax onboarding representative about options to upgrade your organization and use BYOK. 
+====
+endif::[]
+
+=== Introduction
+
+Data encryption is defined as a process that transforms data into an encoded format. Once encoded, the data is incomprehensible without being decrypted. Data encryption is essential for organizations in all industries because it protects data from unauthorized access. When thinking of data encryption, two main scenarios are often considered:
+
+* *Data at rest*
++
+Encrypting data while it is stored in the file storage in use.
+
+* *Data in transit*
++
+Encrypting data while it travels through private or public networks.
+
+BYOK allows customers to manage encryption for *data at rest*. 
+
+=== Benefits
+
+With BYOK, you can take full control of the encryption keys when storing data in the cloud. Google Cloud  link:https://cloud.google.com/kms/docs[Key Management Service,window="_blank"] (KMS) provides protection against data breaches by alerting you when tampering occurs. In KMS, you can configure specific policies to adhere to compliance guidelines, such as auditing, key rotation, and access. 
+
+Setting up a corresponding Customer Key for a Google Cloud based {astra_db} database separates the:
+
+* The encrypted lock
+* The key that encrypts/decrypts data
+
+This separation of lock and key is considered a best practice to secure data via encryption.
+
+After setting up a Customer Managed Encryption Key (CMEK) in your Google Cloud project, you can use either {astra_ui} or the {company} DevOps API, to associate the existing CMEK with a Customer Key in {astra_db}. 
+
+In {astra_ui}, under **Organization Settings**, see the **Key Encryption** section of **Security Settings**. 
+
+In addition to the console UI, BYOK provides three {company} DevOps API calls that allow you to programmatically:
+
+* Create a new association between a CMEK (created in Google Cloud KMS) and your {astra_db} data, in a specific region.
+* List all Customer Keys that are associated with protecting the Google Cloud based {astra_db} data for your organization.
+* List a specific Customer Key for an organization, based on the specified cloud provider (`gcp`) &amp; region combination. 
+
+[NOTE]
+====
+Please contact https://www.datastax.com/services/support[DataStax Support] if you need to delete Customer Keys from your {astra_db} organization. If you agree, the DataStax Support team may perform the key deletion on your behalf. Once a registered association with a Google Cloud Customer Managed Encryption Key is deleted from your Astra DB organization, the *default* data encryption provided by {astra_db} is used.
+====
+
+=== Prerequisites
+
+. xref:manage:db/manage-create.adoc[Create your {astra_db} database] using {astra_ui}. In the case of this BYOK feature, create a Google Cloud based database, and choose one of the available regions to start.
+. Set up a Customer Managed Encryption Key (one per region, as needed) in Google Cloud KMS.
+. Ensure you have the required <<_roles_and_permissions,Roles and permissions>>.
+. Ensure that you know your {astra_db} organization ID. When you log into the Astra DB console, your organization ID is in the generated URL. For example, in the URL \https://astra.datastax.com/org/a99999c7-b934-436c-9999-9999999a3b5d/manage, the organization ID is `a99999c7-b934-436c-9999-9999999a3b5d`.
+
+=== Multi-region support
+
+include::partial$byok-multi-regions-note.adoc[]
+
+=== Pricing
+
+There is no additional cost to using BYOK with {astra_db}. As noted previously, BYOK is not available in the {astra_db} Free Tier.
+
+Customer Managed Encryption Keys in Google Cloud may incur a monthly fee, and a fee for use in excess of the Google Cloud free tier. The fees are counted against the Google Cloud KMS quotas for your project. For details, see link:https://cloud.google.com/kms/docs/cmek[Customer Managed Encryption Key,window="_blank"] in the Google Cloud documentation.
+
+[roles_and_permissions]
+=== Roles and permissions
+
+The following {astra_db} roles can manage Customer Keys.
+
+* Organization Administrator
+* Database Administrator
+
+To manage Customer Keys, your {astra_db} account must have these permissions enabled.
+
+* org-cmk-read
+* org-cmk-write
+
+=== Google Cloud KMS
+
+include::partial$byok_gcp_kms_console.adoc[]
+
+=== Astra DB console's Security Settings &amp; Key Encryption 
+
+**Reminder:** By default, {astra_db} encrypts data. The BYOK feature enhances data security by allowing you to instead associate a Customer Key in {astra_db} with a Customer Managed Encryption Key (CMEK) that you defined via a cloud provider, such as in Google Cloud KMS. 
+
+=== Adding a new Customer Key
+
+Having completed the steps in Google Cloud KMS to set up a CMEK, and granted DataStax access to your Google Cloud Storage (GCS) buckets, follow these steps in {astra_ui} to add a new Customer Key:
+
+. From your **Organization** name near {astra_ui}'s upper-left corner, click **Organization Settings**, and navigate to **Security Settings**.
+. On **Security Settings**, if your account includes the necessary permissions and roles, notice **Key Encryption**, a Premium feature.
++
+image::byok-security-settings-key-encryption.png[Astra DB console's Security Settings and Key Encryption UI]
+. On **Key Encryption**, click **Add Keys**.
+. On **Add Customer Key**:
+.. Choose Google Cloud Platform as the provider.
+.. Choose the **same region** used by your Google Cloud KMS Customer Managed Encryption Key and the {astra_db} database that will have its data encrypted. Example:
++
+image:byok-add-key-select-region-gcp.png[Add Key dialog with GCP provider and region selected.]
+.. For the **Key ID** value, paste in the **resource name** of your Customer Managed Encryption Key, which you copied in Google Cloud KMS.
+.. Click **Add Key**.
+. The Security Settings page displays the one or more Customer Key(s) defined in your organization. Example:
++
+image:byok-security-settings-aws-gcp.png[Security Settings displays keys for your organization.]
+
+In the Status column:
+
+* **In-Use** means a database in your organization is actively using the Customer Key.
+* **Available** status indicates a Customer Key has been added for your organization, but no {astra_db} database with that Provider and Region combination is using the key.
+
+=== Customer Key status indicators
+
+In addition to the status on **Key Encryption** in **Security Settings** (illustrated above), look for Customer Key status indicators on the Dashboard's **Overview** tab.  
+
+Here's an example with the **key icon** for the current database, indicating a Customer Key is used to protect its data:
+
+image:byok-db-details-key-icon-gcp.png[Astra DB database details has Customer Key icon]
+
+A **Region Details** example with a Customer Key status indicator:
+
+image:byok-region-details-status.png[Astra DB regions details with status indicator]
+
+// Note that DELETE is not available in this release.
+
+=== What's next?
+
+Related topics:
+
+* xref:manage:org/byok.adoc[Bring Your Own Key]
+// * xref:manage:org/byok-ui-gcp.adoc[BYOK GCP with {astra_ui}]
+* xref:manage:devops/devops-gcp-cmek.adoc[BYOK GCP with DevOps API]
+* xref:manage:org/byok-ui-aws.adoc[BYOK AWS with {astra_ui}]
+* xref:manage:devops/devops-aws-cmk.adoc[BYOK AWS with DevOps API]
+* https://docs.datastax.com/en/astra/docs/_attachments/devopsv2.html#tag/Customer-Keys[Customer Keys API reference, window="_blank"]
+endif::[]

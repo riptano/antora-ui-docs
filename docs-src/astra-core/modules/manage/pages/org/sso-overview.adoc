@@ -1,0 +1,1 @@
+As the Organization Administrator, setting up single sign-on (SSO) is crucial to managing access to various applications. SSO allows for a seamless sign-on experience, and gives centralized and streamlined access control to security operations teams.

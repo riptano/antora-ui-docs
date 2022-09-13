@@ -1,0 +1,20 @@
+= Explore your keyspace
+:slug: exploring-your-keyspace
+
+To view all available keyspaces, run the following command:
+=== CQL
+```
+DESCRIBE KEYSPACES;
+```
+
+To view the keyspace that you created for your Astra database:
+=== CQL
+```
+DESCRIBE KEYSPACE keyspace_name;
+```
+
+To switch to your keyspace, which you can use to issue CQL commands to create tables, insert data, and manage database resources:
+=== CQL
+```
+USE <keyspace_name>
+```

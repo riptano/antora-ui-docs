@@ -1,0 +1,23 @@
+= Managing your {astra_db} organization
+:page-tag: admin,astra-db
+
+As an administrator, you can manage your database and organization. This includes the following tasks:
+
+
+include::page$org/manage-add-org.adoc[Adding an organization, leveloffset=+1]
+
+include::page$org/manage-invite-users.adoc[Inviting users, leveloffset=+1]
+
+include::page$org/manage-permissions.adoc[Managing user permissions, leveloffset=+1]
+
+include::page$org/manage-tokens.adoc[Managing application tokens, leveloffset=+1]
+
+include::page$org/manage-classic-authentication.adoc[Managing {classic} database authentication, leveloffset=+1]
+
+include::page$org/manage-custom-roles.adoc[Managing custom user roles, leveloffset=+1]
+
+include::page$org/byok.adoc[Managing your own Customer Keys, leveloffset=+1]
+
+include::page$org/manage-billing.adoc[Pricing and billing, leveloffset=+1]
+
+include::page$org/manage-payment.adoc[Manage payments, leveloffset=+1]

@@ -1,0 +1,8 @@
+name: astra-classic
+title: DataStax Astra DB Classic Documentation
+version: ~
+
+nav:
+- modules/ROOT/nav.adoc
+- modules/develop/dnav.adoc
+- modules/contribute/nav.adoc

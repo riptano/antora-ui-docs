@@ -1,0 +1,9 @@
+
+== Security guidelines
+Because security is a priority for all modern cloud applications, DataStax has implemented several protocols to ensure security remains a priority.
+
+DataStax Astra DB is a SOC2 Type2-compliant database that is secured by default including encryption over the wire and at rest.
+
+For details on Astra DB security, check out the link:https://www.datastax.com/resources/whitepaper/astra-security[Astra DB Security Whitepaper].
+
+The following sections discuss security policies that are specific to Astra DB. To view security protocols implemented across DataStax, see Security assurance on the DataStax website.

@@ -1,0 +1,20 @@
+= Serverless databases: Connect via a private endpoint
+:page-tag: dev,astra-db,connect,manage
+
+To better protect your database connection, you can connect to a private endpoint using the {company} {astra_db} private endpoint.
+
+Private endpoints available on only {serverless} databases.
+
+* xref:connect:private_endpoints/aws-private-endpoints.adoc[Connect to AWS PrivateLink]
+* xref:connect:private_endpoints/azure-private-endpoints.adoc[Connect to Azure Private Link]
+* xref:connect:private_endpoints/gcp-private-endpoints.adoc[Connect to GCP Private Endpoints]
+
+include::manage:page$devops/devops-private-endpoints.adoc[Private endpoints]
+
+include::manage:page$devops/devops-aws-private-endpoints.adoc[Connect to AWS PrivateLink with the DevOps API]
+
+include::manage:page$devops/devops-azure-private-endpoints.adoc[Connect to Azure Private Link with the DevOps API]
+
+include::manage:page$devops/devops-gcp-private-endpoints.adoc[Connect to Azure Private Link with the DevOps API]
+
+For more about adding private endpoints with the DevOps API, see the link:_attachments/devopsv2.html[DevOps API reference].

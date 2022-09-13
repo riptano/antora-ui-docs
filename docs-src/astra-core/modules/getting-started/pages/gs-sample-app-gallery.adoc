@@ -1,0 +1,21 @@
+= Get started: Explore the Sample App Gallery
+
+If you're new to {astra_db}, be sure to explore the pre-built, fully-functional projects in our Sample App Gallery. There's a convenient link to the gallery in your {astra_db} dashboard; also see the source https://github.com/DataStax-Examples[Github repo].
+
+image::getting-started:sample_app.png[Sample App Gallery,border=1]
+
+The sample apps include:
+
+* A Netflix Clone using GraphQL and Astra DB
+* A NextJS Fullstack Tutorial
+* A Social Media App using React, JAMStack and Astra DB
+* And much more
+
+== Video introduction
+
+For a quick introduction about the {astra_db} Sample App Gallery, see this video on our {company} Developers YouTube channel:
+
+video::feC5gXth2FQ[youtube,width=640,height=480]
+
+Also see the full set of YouTube-hosted video tutorials in the https://youtube.com/playlist?list=PL2g2h-wyI4SpWK1G3UaxXhzZc6aUFXbvL[Astra DB playlist].
+

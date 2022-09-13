@@ -1,0 +1,51 @@
+= Manage multiple keyspaces
+:slug: managing-keyspaces
+
+Creating a database with multiple keyspaces allows you to create different data models for each keyspace or store unique data in unique keyspaces.
+Multiple keyspaces within a single region allows for an application built on a per-keyspace data model.
+
+
+== Adding a new keyspace
+
+. Open a browser, navigate to link:https://astra.datastax.com[{astra_db}, window="_blank"], and log in.
+
+[arabic,start=2]
+. On the **Dashboard** page, select the database name to access the **Overview** page for your selected database.
+
+[arabic,start=3]
+. Select **Add Keyspace**.
+
+[arabic,start=4]
+. Enter the name of the new keyspace.
+
+[arabic,start=5]
+. Select **Save**.
+
+Your list of keyspaces displays on the *Overview* page for your database.
+
+== Removing a keyspace
+
+[CAUTION]
+====
+If you delete a keyspace, all data in that keyspace is removed and cannot be recovered.
+====
+
+[arabic,start=1]
+. Open a browser, navigate to link:https://astra.datastax.com[{company} {astra_db}, window="_blank"], and log in.
+
+[arabic,start=2]
+. On the *Dashboard* page, select the database name to access the *Overview* page for your selected database.
+
+[arabic,start=3]
+. Select the overflow menu for the keyspace you want to delete.
+
+[arabic,start=4]
+. Select *Delete*.
+
+[arabic,start=5]
+. In the *Delete keyspace* menu, type in the name of the keyspace to delete.
+
+[arabic,start=6]
+. Select *Delete Keyspace*.
+
+Your list of keyspaces will be updated on the *Overview* page to show only the remaining keyspaces for your database.

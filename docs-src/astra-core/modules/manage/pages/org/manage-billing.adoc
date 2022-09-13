@@ -1,0 +1,167 @@
+= Pricing and billing
+:slug: pricing-and-billing
+
+Learn about the pricing model and billing structure for {company} {astra_db} {serverless} and databases.
+
+For more, see the https://www.datastax.com/products/datastax-astra-db-calculator[{astra_db} Pricing Calculator].
+//old calc--https://www.datastax.com/products/datastax-astra/pricing[{astra_db} Pricing page].
+
+ifeval::["{evalproduct}" == "DB Serverless"]
+== {serverless_cap} pricing
+
+There are three primary factors that affect the pricing:
+
+* plan selection
+* units of measure
+* cloud provider and region
+
+=== Plan selection
+
+DataStax allows you to choose your commitment, and thus your savings. To get an accurate cost for your database, select a cloud provider/region and create your first database. To get started for free without entering credit card details, select the Free plan and receive a $25 credit. This credit is good for up to 80GB storage and 20 million Read/Write operations.
+
+=== Units of measure
+
+The following units of measure affect the pricing of your database:
+
+* Read requests (per 1M): the unit of measure for billing database reads. This unit is based on the payload of each read query response. A read request that returns up to 4KB of data is considered one Read Request Unit (RRU). If the request returns more than 4KB of data, additional read requests are required.
+** If the read request involves an ALLOW FILTERING query, the data is measured prior to in-memory filtering.
+* Write requests (per 1M): the unit of measure for billing database writes. This unit is based on the payload size of each write request. A write request with up to 1KB of data  is considered one Write Request Unit (WRU). If the request has more than 1KB of data, additional writes are required.
+** Insert/Update/Upsert: each option is treated as a write operation and is calculated as part of the Write Request Unit (WRU).
+** https://docs.datastax.com/en/astra-cql/doc/cql/cql_reference/cql_commands/cqlBatch.html[Logged and Unlogged] are the two types of batched writes. Logged batched writes have an additional WRU consumed.
++
+For example, a single-partition unlogged batch write operation with 10 rows, each row containing 1.2KB of data has 12 WRUs (Total size of the single-partition rows divided by 1KB. That is, [(10 rows * 1.2KB)/1KB = 12 WRUs]). A 2-partition logged batch with 2 rows (one row for each partition), each row containing 1.2KB of data has 5 WRUs ([ (2 * 1.2KB) /1KB + 2 = 5 WRU]). This calculation depends on the size per table in the batch. In this case, the size of the table (2 * 1.2KB) results in 3 WRUs and 2 additional WRUs for logged batch operation.
+//A 2-partition logged batch with 2 rows (one row for each partition), each row containing 1.2KB of data has 5 WRUs ([2 partitions * (1.2KB/1KB)+ 1 = 5 WRUs]. this calculation, each partition results in 2 WRUs. It takes 4 WRUs for 2 partitions and 1 additional WRU for logged batch operation to equal 5 WRUs.
+** The write index https://docs.datastax.com/en/storage-attached-index/6.8/sai/saiAbout.html[SAI] is treated the same as a write, but has an additional cost.
+*** The write index SAI size is based on the size of each indexed column (not the size of the index), regardless of the column type. For example, the SAI index for a column with a value of 2KB in size results in 2 WRUs.
+
+** One delete operation is considered one write request regardless of the size. This is calculated as part of the WRU.
+*** There is no charge for the TTL delete operation, DROP statements or TRUNCATE statements.
+** Lightweight Transactions (LWT) are treated as a combination of a read and write event. LWTs do a read, evaluate a condition, and a write if the condition is true. For LWT, there are both WRU and additional RRU costs. The number of RRUs is always one regardless of the size.
+** User-defined Types https://docs.datastax.com/en/cql-oss/3.3/cql/cql_using/useCreateUDT.html[UDT]: there are no additional charges for UDTs. The column data size is counted regardless of the type.
+* Data storage (GB/month): all data stored in the database (including the actual data, indexes, and metadata). You are not billed extra for standard backups of your data. It is included in the base storage costs.
+* Data transfer (GB): the transfer of Customer Data out of the database. Billable units and pricing vary depending on whether the Data Transfer occurs within the same region of a cloud provider network (“Data Transfer - Same Region”), across regions within the same cloud provider network (“Data Transfer - Cross Region within Cloud Provider Network”), or leaves the cloud provider network over the internet (“Data Transfer - Internet”).
+** If a private endpoint is not used and data transfer is within the same region of the same Cloud Service Provider (e.g. application and database are both in AWS us-east-1), no data transfer charges are incurred, effective July 1, 2022. 
+
+=== REST and Document API
+
+These are the additional points to consider for REST and Document APIs:
+
+* For the REST API, there is a one-to-one mapping between REST operations and CQL requests.
+* For the Document API, the writes are similar to unlogged batched writes. Your JSON is translated to one row per leaf data and is written as a Cassandra batch. A document such as { "a": "b", "b": "c"} is turned into two rows and written in a batch. This is also how inserts, updates, and upserts work.
+* Document API deletions works similar to Cassandra API deletions.
+* Indexing has an additional cost. For example, this document {`a`: `something`, `b`: 1, `c`: true, `d`: 2} is stored as:
+
+
+ key, dbl_value, text_value, bool_value
+ "a", null, something, null
+ "b", 1, null, null
+ "c", null, null, true
+ "d", 2, null null
+
+
+For each non-null value column, there is also an index. SAI cost is computed as the size of each indexed column (regardless of the column type).
+
+For more, see https://stargate.io/[Stargate].
+
+=== Cloud providers and regions
+
+You can select AWS, Google Cloud, or Azure as your cloud provider. Each cloud provider offers different database regions. See each offering xref:plan:regions.adoc[by region]. The cloud provider and region you select affects the price of each unit of measure for your database.
+
+=== Multiple regions
+
+include::ROOT:partial$note_multi-region_billing.adoc[]
+
+If you are using xref:manage:db/managing-db.adoc#using-multiple-regions[multiple regions] for your {serverless} database:
+
+* Write requests are replicated in all regions and charged at the respective rates for each region.
+* Read requests are performed at the region level and charged at the region-specific rate.
+
+Data Storage is calculated based on actual disk consumption per region at the region-specific rate.
+
+=== CDC for {astra_stream}
+
+Enabling xref:connect:astream-cdc.adoc[CDC for {astra_stream}] results in increased usage costs based on your Astra Streaming usage.
+
+=== Free plans
+
+For free plans, your remaining credits will be displayed. These credits include the $25 credit that is renewed every month.
+
+=== Pay as you go plans
+
+For pay as you go plans, you must have a billing method for your account. Any remaining credits are displayed. Any usage amount appears in the Estimated Bill, which is auto-drafted monthly based on Greenwich Mean Time (GMT), also known as Coordinated Universal Time (UTC).
+
+=== Annual plans
+
+For the annual plan, you are committing to the minimum monthly spend for 12 months. Your remaining credits display the balance of any unused credits you have, along with the committed monthly minimum that is billed in arrears at the end of the month. If you exceed your credit and committed monthly minimum, the overages will be charged at your discounted rate. This amount shows up in the Estimated Bill, which is auto-drafted monthly based on Greenwich Mean Time (GMT), also known as Coordinated Universal Time (UTC).
+
+[#private-endpoints]
+=== Private endpoints
+
+Private endpoints are charged per endpoint per region at $0.01/hour.
+
+Additionally, you will be billed for ingress and egress data at $0.01/GB for all data that uses the private endpoint. If you exceed your monthly credit and you do not have a payment method in {astra_db}, your database will not be available for use until you xref:org/manage-payment.adoc[add a payment method].
+
+
+[NOTE]
+====
+Egress charges for private endpoints is in addition to your regular data egress charges.
+====
+endif::[]
+
+
+ifeval::["{evalproduct}" == "DB Classic"]
+== {classic_cap} pricing
+
+[IMPORTANT]
+====
+{classic_cap} databases can no longer be created through {astra_ui}. We recommend migrating your database to our current {serverless} option, which could save you money and allow you to manage your compute and storage capabilities separately.
+====
+
+Pricing for {astra_db} classic databases is based on plan, units of measure, cloud provider, and region.
+
+The cost of your classic {astra_db} database depends on the classic database plan you select. Classic {astra_db} databases use a single capacity unit (CU) by default, which represents three database instances that are grouped together for three replicas. The classic database plan represents the amount of compute power allocated to each CU, and represents three compute instances per CU. Classic database pricing is presented in the DataStax {astra_ui} in hourly terms, but billed in one-minute granularity.
+
+In addition, all Astra Classic customers are charged additional data transfer cost as state below: 
+
+* Data transfer (GB): the transfer of Customer Data out of the database. Billable units and pricing vary depending on whether the Data Transfer occurs within the same region of a cloud provider network (“Data Transfer - Same Region”), across regions within the same cloud provider network (“Data Transfer - Cross Region within Cloud Provider Network”), or leaves the cloud provider network over the internet (“Data Transfer - Internet”).
+** If data transfer is within the same region of the same Cloud Service Provider (e.g. application and database are both in AWS us-east-1), no data transfer charges are incurred, effective July 1, 2022.
+endif::[]
+
+
+
+
+=== Cloud providers and regions
+
+You can select AWS, Google Cloud, or Azure as your cloud provider. Each cloud provider offers Standard, Premium and Premium+ regions. The cloud provider and region you select affects the price of each unit of measure for your database.
+
+[IMPORTANT]
+====
+Effective July 1, 2022, there is no separate premium pricing for Astra Classic Multi-region. All Astra Classic customers are charged additional data transfer cost. Data Transfer pricing is the same as Astra Serverless pricing. For more details on the definitions of "Multi-Region" and "Data Transfer" as well as respective pricing, please visit the https://www.datastax.com/products/datastax-astra/pricing[Astra Serverless pricing page]. 
+====
+////
+== Multiple regions
+
+If you are using xref:manage:db/managing-db.adoc#using-multiple-regions[multiple regions] for your {classic} database, you pay a pricing premium for each additional region:
+
+* 15% premium for US and EMEA
+* 30% premium for APAC
+
+This premium pricing includes 1.25 TB of data egress. If your data egress exceeds 1.25 TB, the excess data egress is charged at the following rates:
+
+* $0.03/GB for AWS US and EMEA regions
+* $0.03/GB for Google Cloud North America regions
+* $0.11/GB for all other clouds/regions combinations
+////
+
+== Billing
+
+{astra_db} handles billing through an integration with Stripe, and displays all related billing information in the Billing & Payments section of your Organization. +
+In Billing & Payments, you can see your plan and payment method, along with when the plan was created. You can also select *Manage* to change your plan. +
+////
+[NOTE]
+====
+If you cancel your annual plan, you can continue to use the free option.
+====
+////
+
+You can also update your payment method in the Billing & Payments section. Your Billing & Payments also displays each database included in your server, allowing you to see what your total cost is per database.

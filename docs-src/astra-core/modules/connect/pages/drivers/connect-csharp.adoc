@@ -1,0 +1,73 @@
+= {company} C# driver
+:slug: connecting-to-your-database-with-the-c-driver
+:page-tag: driver,dev,astra-db,connect
+
+include::partial$driver-intro.adoc[Driver information]
+
+== Prerequisites
+* https://dotnet.microsoft.com/download/dotnet-core[Download] and https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-install-script[install] the current version of the .NET Core SDK.
+
+include::partial$app_client_id_secret.adoc[]
+
+include::page$secure-connect-bundle.adoc[Secure connect bundle, leveloffset=+2]
+
+== Connecting C# driver
+. Create a new C# project and configure it to connect to your Cassandra database.
+```
+mkdir csharpproject
+cd csharpproject
+dotnet new console
+```
+
+[arabic, start=2]
+. Add the dependencies for the C# driver to your project.
+```
+dotnet add package CassandraCSharpDriver -v 3.15.0
+```
+
+[arabic, start=3]
+. Replace the code in `Program.cs` with the following code to connect to your {astra_db} database.
+[NOTE]
+====
+Include the absolute path to the secure connect bundle for your {astra_db} database (`secure-connect-database_name.zip`) in the `WithCloudSecureConnectionBundle` method call, and your credentials in the `WithCredentials` method call, as shown in the following examples.
+====
+
+```
+using System;
+using System.Linq;
+using Cassandra;
+
+namespace csharpproject
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var session =
+                Cluster.Builder()
+                       .WithCloudSecureConnectionBundle(@"C:\path\to\secure-connect-database_name.zip")
+                       .WithCredentials("clientId", "clientSecret")
+                       .Build()
+                       .Connect();
+        }
+    }
+}
+```
+
+[arabic, start=4]
+. After the connection code, add the following code to the `Main` method in `Program.cs`. This code runs a CQL query, and prints the output to the console.
+```
+var rowSet = session.Execute("select * from system.local");
+Console.WriteLine(rowSet.First().GetValue<string>("cluster_name"));
+```
+
+[arabic, start=5]
+. Run your C# project with the `dotnet` runtime.
+```
+dotnet restore
+dotnet build
+dotnet run --no-build
+```
+
+
+include::page$drivers/migrate-csharp.adoc[Migrating your C# driver, leveloffset=+2]

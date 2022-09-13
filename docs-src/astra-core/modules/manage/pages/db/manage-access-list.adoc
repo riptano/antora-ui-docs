@@ -1,0 +1,148 @@
+ifeval::["{evalproduct}" == "DB Serverless"]
+= Manage access list for public endpoints
+
+Use access lists to limit what public endpoints are able to access your database.
+You can choose to restrict access in one of two ways:
+
+* Restrict access to specific IP addresses
+* Restrict access to a range of IP addresses using https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing[_Classless Inter-Domain Routing_ (CIDR)]
+
+[NOTE]
+====
+When Access List is configured and active, access to these endpoints is restricted:
+
+* CQL, GraphQL, and REST
+* GraphQL Playground
+* Swagger
+* CQLsh
+====
+
+include::ROOT:partial$note_serverless_only.adoc[]
+
+
+You can also manage your access list using the xref:manage:devops/devops-api.adoc#devops-access-list[DevOps API].
+
+[NOTE]
+====
+If you are using the access list and restricting public access, these restrictions exclude the Astra internal site reliability controls.
+====
+
+[IMPORTANT]
+====
+Only Organization and Database Administrators for the database have permissions to manage the access list.
+====
+
+== Restrict public access
+
+[WARNING]
+====
+By default, public access to your database is not restricted. Access to your database is possible via public internet.
+====
+
+. In your database *Settings*, select the toggle to restrict public access.
+. Confirm your selection to *Restrict Public Access*.
+
+[NOTE]
+====
+Until you add an address to your access list, public access is still available.
+====
+
+== Add IP address or CIDR to access list
+
+. Ensure public access is restricted.
+. Select *Add Access*.
+. Select *Add new endpoint*.
+. Select *IP Address* or *CIDR* from the *Type* menu.
++
+[NOTE]
+====
+A *CIDR* indicates a range of IP addresses. For example, the CIDR range '192.168.0.0/16' represents the first IP address of '192.168.0.0' through the last IP address of '192.168.255.255'.
+The '/16' mask indicates that the first 16 bits of the IP address are static. The addresses in the CIDR range are represented by all the permutations of the last 16 bits.
+====
+
+. Enter the IP address or CIDR into the *Address* field.
++
+If you want to add you current IP address, copy it from the display and paste it into the *Address* field.
++
+[NOTE]
+====
+All IP address must be entered in the IPv4 format, which is four decimal numbers, each ranging from 0 to 255. For example, `179.46.234.11`.
+====
+// +
+// include::ROOT:partial$warning-classic-vpc-access-list.adoc[]
+
+. Optional: Add a description for the address you are adding. For example, `office` or `home`.
+. Select *Add* to add the address to the access list.
+
+It takes approximately five minutes for each address to sync and have access.
+
+== Upload list of endpoints
+
+. Ensure public access is restricted.
+. Select *Add Access*.
+. Select *Upload from file*.
++
+include::manage:example$json/astra-access-list-addresses.json[]
+
+. Use the *Select File* button to find the `JSON` file with your access list to upload.
++
+You will see the list of addresses to be added to the access list.
+
+. Select *Import* to add the addresses to your access list.
+
+== Import endpoints from database
+
+[NOTE]
+====
+You can import an access list from another Astra database. If you do not have another active Astra database, this option will not be available.
+====
+
+. Ensure public access is restricted.
+. Select *Add Access*.
+. Select *Import from database*.
+. Select the active Astra database from which you want to import the addresses.
++
+You will see the list of addresses to be added to the access list.
+
+. Select *Import* to add the addresses to your access list.
+
+== Enable or disable an endpoint
+
+. Select the overflow menu for the address you want to enable or disable.
+. Select *Enable* or *Disable*.
++
+[NOTE]
+====
+The overflow menu will show the *Disable* option only when the address is enabled and the *Enable* option only when the address is disabled.
+====
+
+. Confirm your selection to *Enable* or *Disable* the endpoint.
+
+[NOTE]
+====
+Your access list remains active, even if all endpoints are disabled. If you want to allow public access, you must select the toggle to stop restricting public access.
+====
+
+== Delete an endpoint
+
+[WARNING]
+====
+If you remove all of the addresses on your access list, your database will be accessible from the public internet, even if *Restrict public access* is selected.
+====
+
+. Select the overflow menu for the address you want to remove.
+. Select *Delete*.
+. Confirm your selection to *Delete* the endpoint.
+
+It takes approximately five minutes for each address to sync and be removed from the access list.
+
+== Allow public access
+
+[WARNING]
+====
+If you stop restricting public access, access to your database is possible via public internet.
+====
+
+. Select the toggle to stop restricting public access.
+. Confirm your selection to *Enable public access*.
+endif::[]

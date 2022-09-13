@@ -1,0 +1,203 @@
+= BYOK AWS with DevOps API
+
+Encryption is a widely accepted mechanism to secure data against breaches. By default, {company} {astra_db} encrypts data, and cloud providers such as AWS or Google Cloud offer encryption solutions. However, you may want to further limit data access, because cloud providers have access to the keys and ultimately to the data. 
+
+To address this security concern, {company} {astra_db} allows you to associate a *Customer Managed Key* (one per region) that you defined in the AWS Key Management Service (KMS) with a *Customer Key* that you create in {astra_db}.
+
+In this topic, we'll use these terms:
+
+* Bring Your Own Key (BYOK) refers to the overall capability.
+* *Customer Managed Key* (CMK) refers to a particular key type in AWS KMS.
+* *Customer Key* refers to the corresponding key association in Astra DB. 
+
+[TIP]
+====
+This BYOK feature:
+
+* Is available for serverless {astra_db} databases with these cloud providers:
+** AWS - supported via BYOK AWS with DevOps API (this topic) and xref:byok-ui-aws.adoc[BYOK AWS with {astra_db} console].
+** Google Cloud - supported via {astra_db} xref:db-devops-gcp-cmek.adoc[BYOK GCP with DevOps API], and xref:byok-ui-gcp[BYOK GCP with {astra_db} console].
+* Is not available in the {astra_db} Free Tier.
+* Free Tier users: instead of submitting a Support ticket, click the **Chat icon** in the {astra_db} console's lower-right corner. Ask the DataStax onboarding representative about options to upgrade your organization and use BYOK.
+====
+
+== Introduction
+
+Data encryption is defined as a process that transforms data into an encoded format. Once encoded, the data is incomprehensible without being decrypted. Data encryption is essential for organizations in all industries because it protects data from unauthorized access. When thinking of data encryption, two main scenarios are often considered:
+
+* *Data at rest*
++
+Encrypting data while it is stored in the file storage in use.
+
+* *Data in transit*
++
+Encrypting data while it travels through private or public networks.
+
+BYOK allows customers to manage encryption for *data at rest*. 
+
+== Benefits
+
+BYOK allows you to take full control of the encryption keys when storing data in the cloud. AWS KMS provides protection against data breaches by alerting you when tampering occurs. In KMS, you can configure specific policies to adhere to compliance guidelines, such as auditing, key rotation, and access. 
+
+Setting up a corresponding Customer Key for an {astra_db} database hosted in an AWS region enables the separation of:
+
+* The encrypted lock
+* The key that encrypts/decrypts data
+
+This separation of lock and key is considered a best practice to secure data via encryption.
+
+After setting up a Customer Managed Key (CMK) in your AWS account's Key Management Service, use the {astra_db} console, or the {company} DevOps API, to associate an existing AWS CMK with a Customer Key in {astra_db}. 
+
+In {astra_db} console, under **Organization Settings**, see the **Key Encryption** section of **Security Settings**. 
+
+In addition to the console UI, BYOK provides DevOps API calls that allow you to programmatically:
+
+* Create a new association between a CMK (created in AWS KMS) and your {astra_db} data, in a specific region.
+* List all Customer Keys that are associated with protecting the AWS-based {astra_db} data for your organization.
+* List a specific Customer Key for an organization, based on the specified cloud provider (`aws`) &amp; region combination. 
+
+[NOTE]
+====
+Please contact https://www.datastax.com/services/support[DataStax Support] if you need to delete Customer Keys from your {astra_db} organization. If you agree, the DataStax Support team may perform the key deletion on your behalf. Once a registered association with an AWS KMS Customer Managed Key is deleted from your Astra DB organization, the *default* data encryption provided by {astra_db} is used.
+====
+
+== Prerequisites
+
+. xref:creating-your-astra-database.adoc[Create your {astra_db} database] using the {astra_db} console. In the case of this BYOK feature, create an AWS-based database, and choose one of the available regions to start.
+. Before submitting the DataStax DevOps API calls, set up a Customer Managed Key (one per region, as needed) in the AWS KMS, as outlined in this topic.
+. Create an xref:manage-application-tokens.adoc[application token] to link:_attachments/devopsv2.html[authenticate your service account] in the DevOps API.
+. Ensure you have xref:user-permissions.adoc[permission] to create and view Customer Keys. See <<#_roles_and_permissions>>.
+. Ensure that you know your {astra_db} organization ID. When you log into the Astra DB console, your organization ID is in the generated URL. For example, in the URL \https://astra.datastax.com/org/a99999c7-b934-436c-9999-9999999a3b5d/manage, the organization ID is `a99999c7-b934-436c-9999-9999999a3b5d`.
+
+== Pricing
+
+There is no additional cost to using BYOK with {astra_db}. As noted previously, BYOK is not available in the {astra_db} Free Tier.
+
+Customer Managed Keys in AWS may incur a monthly fee, and a fee for use in excess of the AWS free tier. The fees are counted against the AWS KMS quotas for your AWS account. For details, see:
+
+* link:https://aws.amazon.com/kms/pricing/[AWS Key Management Service Pricing] 
+* link:https://docs.aws.amazon.com/kms/latest/developerguide/limits.html[Quotas]
+
+== Roles and permissions
+
+The following {astra_db} roles can manage Customer Keys.
+
+* Organization Administrator
+* Database Administrator
+
+To manage Customer Keys, your {astra_db} account must have these permissions enabled.
+
+* org-cmk-read
+* org-cmk-write
+
+== AWS KMS console
+
+include::partial$byok_aws_kms_console.adoc[]
+
+== DevOps v2 API to manage Customer Keys
+
+Submit DevOps API calls to create and view Customer Keys in your {astra_db} organization. 
+
+[TIP]
+====
+If you are using Postman for your API calls, ensure you use the `raw` option to enter the body of your API call.
+====
+
+For descriptions of the `/v2/kms` calls, see the sections below. For more, see the link:_attachments/devopsv2.html#tag/Customer-Keys[DevOps v2 API, window="_blank"] reference details.
+
+=== Create a Customer Key for {astra_db}
+
+Use the following `POST` to create a Customer Key in {astra_db} that will be associated with an existing Customer Managed Key in the AWS Key Management Service (KMS). 
+
+In the request payload, specify your {astra_db} `organizationID`, and the `keyID` of the Customer Managed Key that you created in AWS KMS, and the `region`. In each {astra_db} organization, there can be *one Customer Key* for a given cloud provider and region combination. A successful Customer Key creation returns `200 OK` in the response.
+
+[TIP]
+====
+When you log into the Astra DB console, your organization ID is in the generated URL. For example, in the URL \https://astra.datastax.com/org/a99999c7-b934-436c-9999-9999999a3b5d/manage, the organization ID is `a99999c7-b934-436c-9999-9999999a3b5d`.
+====
+
+[tabs]
+====
+cURL command (/v2/kms)::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::example$devops/cmk/curl_create_cmk_aws.sh[]
+----
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::example$result/cmk/devops_create_cmk_aws.result[]
+----
+--
+====
+
+=== Get all Customer Keys in an {astra_db} organization
+
+Retrieve all existing Customer Keys of an {astra_db} organization.
+
+[tabs]
+====
+cURL command (/v2/kms)::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::example$devops/cmk/curl_get_all_cmks.sh[]
+----
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::example$result/cmk/devops_get_all_cmks.result[]
+----
+--
+====
+
+=== Get a single Customer Key in an {astra_db} organization
+
+Retrieves a Customer Key in an {astra_db} organization for a given cloud provider &amp; region combination. The provider value in this case should be `aws`. 
+
+The **GET** response also returns the provider ID of the storage account where your Amazon S3 buckets exist. If not done already, you can use this information to configure or modify (back in the AWS Key Management Service) your KMS Customer Managed Key, so that Astra DB has access to the key.
+
+[tabs]
+====
+cURL command (/v2/kms)::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::example$devops/cmk/curl_get_cmk_for_provider_and_region.sh[]
+----
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::example$result/cmk/devops_get_cmk_for_provider_and_region.result[]
+----
+--
+====
+
+// Note that DELETE is not available in this release.
+
+== What's next?
+
+Related topics:
+
+* xref:byok.adoc[Bring Your Own Key]
+* xref:byok-ui-aws.adoc[BYOK AWS with Astra DB console]
+// * xref:db-devops-aws-cmk.adoc[BYOK AWS with DevOps API]
+* xref:byok-ui-gcp.adoc[BYOK GCP with {astra_db} console]
+* xref:db-devops-gcp-cmek.adoc[BYOK GCP with DevOps API]
+* link:_attachments/devopsv2.html#tag/Customer-Keys[Customer Keys API reference, window="_blank"]

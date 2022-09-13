@@ -1,0 +1,26 @@
+== CQL console
+:slug: connecting-to-astra-databases-using-cqlsh
+
+The Cassandra Query Language SHell (CQLSH) is a command line shell for interacting with your database through Cassandra Query Language (CQL). This tool provides a useful interface for accessing the database and issuing CQL commands.
+
+Each {company} {astra_db} database includes an embedded CQL shell instance.
+In {astra_ui}, navigate to your database and click the **CQL Console** tab to open a CQLSH instance that is connected to your database.
+Issue CQL commands directly to your {astra_db} database without navigating outside of your browser.
+
+[TIP]
+====
+To see the CQL console in a full browser window, use this URL format:
+```
+https://<database_id>-<region>.apps.astra.datastax.com/cqlsh
+```
+
+For example, `https://2f0c6j8b-9790-4276-a16c-0cd7b055344a-us-east1.apps.astra.datastax.com/cqlsh`
+====
+
+Once you open the CQL shell in Astra, you will automatically be signed in and connected to your database.
+You can now run https://docs.datastax.com/en/astra-cql/doc/cql/cqlQuickReference.html[CQL commands] in your embedded CQL shell.
+
+[NOTE]
+====
+Alternatively, you can connect to your {astra_db} database using the xref:connect:cql/connect-cqlsh.adoc#standalone-cql-shell[standalone version of CQLSH].
+====

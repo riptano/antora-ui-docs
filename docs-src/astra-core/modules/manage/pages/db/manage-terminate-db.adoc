@@ -1,0 +1,32 @@
+= Terminating your database
+:slug: terminating-databases
+
+When you no longer need a database, terminate it to reduce costs and streamline operations.
+When you terminate a database, all data is permanently deleted and cannot be recovered.
+
+[NOTE]
+====
+If you have administrator privileges in the {company} {astra_ui} for your team, you can contact {company} to terminate databases that are owned by other team members.
+For example, if a team member leaves your organization and you want to delete their databases, contact {company} with the names of the databases owned by that team member.
+====
+
+== Procedure
+
+[TIP]
+====
+See instructions on how to terminate a multi-region database xref:manage:db/manage-multi-region.adoc#can-i-remove-a-datacenter-region-that-i-no-longer-need[here].
+====
+
+. Open a browser, navigate to link:https://astra.datastax.com/[{astra_db}, window="_blank"], and log in.
+. From the *Dashboard* page, select the overflow menu for the database you want to terminate and select *Terminate*.
++
+[WARNING]
+====
+All data in the database will be permanently deleted. You cannot restart the database. Proceed with caution.
+====
+. To terminate the database, type in the database name you want to terminate and select *Terminate*.
+
+== Results
+
+Your database is removed from the list of available databases.
+You will receive an email when your database is successfully terminated.

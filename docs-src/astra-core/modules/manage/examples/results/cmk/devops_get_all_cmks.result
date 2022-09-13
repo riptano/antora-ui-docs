@@ -1,0 +1,26 @@
+When one or more keys are found for the organization, 
+the 200 OK response contains, for each key:
+
+{
+    "OrganizationID": "String - The ID of your organization",
+    "CloudProvider": "String - The cloud provider, such as aws or gcp",
+    "KeyID": "String - The ID of the Customer Key",
+    "Region": "String - The region in which the Customer Key is used"
+}
+   .
+   .
+   .
+
+If there are no keys setup for the organization, 
+the 404 response contains:
+
+{
+  "description": "Organization: <orgID> does not have 
+                  any CMKs associated with it."
+}
+
+Other potential response codes:
+
+400 Bad request.
+403 The user is forbidden to perform the operation.
+500 A server error occurred.

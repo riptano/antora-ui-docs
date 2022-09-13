@@ -1,0 +1,42 @@
+= Managing with DevOps API
+:page-tag: admin,api,astra-db
+
+The DevOps API allows you to manage your databases, users, and tokens.
+
+For more, see the https://docs.datastax.com/en/astra/docs/_attachments/devopsv2.html[DevOps API reference].
+
+[[devops-service-account]]
+include::manage:page$devops/devops-service-account.adoc[Manage databases with DevOps API]
+
+[[devops-roles]]
+include::manage:page$devops/devops-roles.adoc[Manage roles]
+
+[[devops-users]]
+include::manage:page$devops/devops-users.adoc[Manage users]
+
+[[devops-tokens]]
+include::manage:page$devops/devops-tokens.adoc[Manage tokens]
+
+[[devops-aws-cmk]]
+include::manage:page$devops/devops-aws-cmk.adoc[BYOK AWS with DevOps API]
+
+[[devops-gcp-cmk]]
+include::manage:page$devops/devops-gcp-cmek.adoc[BYOK GCP with DevOps API]
+
+[[devops-access-list]]
+include::manage:page$devops/devops-access-list.adoc[Manage access list]
+
+[[devops-multi-region]]
+include::manage:page$devops/devops-multi-region.adoc[Manage multiple regions]
+
+[[devops-private-endpoints]]
+include::manage:page$devops/devops-private-endpoints.adoc[Serverless: Private endpoints]
+
+[[devops-aws-private-endpoints]]
+include::manage:page$devops/devops-aws-private-endpoints.adoc[Connect to AWS PrivateLink]
+
+[[devops-azure-private-endpoints]]
+include::manage:page$devops/devops-azure-private-endpoints.adoc[Connect to Azure Private Link]
+
+[[devops-gcp-private-endpoints]]
+include::manage:page$devops/devops-gcp-private-endpoints.adoc[Connect to GCP Secure Client]

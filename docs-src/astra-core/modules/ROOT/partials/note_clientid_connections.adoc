@@ -1,0 +1,9 @@
+You can use your _Client ID_ and _Client Secret_ to connect to your database. See more about the available connection options:
+
+* xref:connect:cql/connect-cqlsh.adoc#_standalone_cql_shell[Standalone CQL shell]
+* xref:connect:drivers/connect-cplusplus.adoc[Connecting C++ driver]
+* xref:connect:drivers/connect-csharp.adoc[Connecting C# driver]
+* xref:connect:drivers/connect-java.adoc[Connecting Java driver]
+* xref:connect:drivers/connect-nodejs.adoc[Connecting Node.js driver]
+* xref:connect:drivers/connect-python.adoc[Connecting Python driver]
+* xref:connect:drivers/legacy-drivers.adoc[Connecting Legacy drivers]

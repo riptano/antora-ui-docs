@@ -1,0 +1,1 @@
+Collect the required information for xref:connecting-with-legacy-drivers.adoc[Connecting with legacy drivers].

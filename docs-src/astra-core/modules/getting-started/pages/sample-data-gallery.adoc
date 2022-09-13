@@ -1,0 +1,73 @@
+= Sample data gallery
+:slug: sample-data-gallery
+
+Use sample datasets to test the capabilities of Astra.
+
+++++
+<div id="sample-datasets" class="container">
+  <div class="row">
+  <div style="padding: 20px" class="col-md-4">
+    <img class="example-screenshot" src="https://user-images.githubusercontent.com/3254549/90816360-fc336600-e2e0-11ea-936b-a7063705ef96.jpg">
+    <div class="example-meta">
+      <div class="example-name">
+        <a target="_blank" id="chipotle" href="https://www.astraloader.com/?sample=Chipotle%20Locations">Chipotle Location Lists</a>
+      </div>
+      <div class="example-description">
+        All the Chipotle locations in the country including Latitude, Longitude, and Address.
+      </div>
+      <br/>
+    </div>
+  </div>
+
+  <div style="padding: 20px" class="col-md-4">
+    <img class="example-screenshot" src="https://user-images.githubusercontent.com/3254549/90816594-63511a80-e2e1-11ea-988b-7884365af2fb.jpg">
+    <div class="example-meta">
+      <div class="example-name">
+        <a target="_blank" id="amazon-reviews" href="https://www.astraloader.com/?sample=Amazon%20Reviews">Amazon Reviews</a>
+      </div>
+      <div class="example-description">
+        Amazon reviews for musical instruments including ratings and descriptions.
+      </div>
+      <br/>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+  <div style="padding: 20px" class="col-md-4">
+    <img class="example-screenshot" src="https://user-images.githubusercontent.com/3254549/90816676-8bd91480-e2e1-11ea-8101-5eb314fa68ac.jpg">
+    <div class="example-meta">
+      <div class="example-name">
+        <a target="_blank" id="kickstarter" href="https://www.astraloader.com/?sample=Kickstarter%20Projects">Kickstarter Projects</a>
+      </div>
+      <div class="example-description">
+        Top Kickstarter projects, number of backers, fundraising goal, and category.
+      </div>
+      <br/>
+    </div>
+  </div>
+
+</div>
+
+</div>
+  <style>
+  .example-name a {
+    color: #3B84C1;
+    font-weight: 600;
+    text-decoration: none!important;
+    font-size: 16px;
+  }
+  .example-meta {
+    padding: 15px;
+  }
+</style>
+<script>
+  var apps = Array.from(document.getElementById('sample-apps').getElementsByTagName('a')).map(item => item.id);
+
+  apps.forEach(function(app) {
+    var link = document.getElementById(app);
+    window.analytics.trackLink(link, 'Astra - Sample App Gallery GitHub Link Clicked', {
+    app: app
+  });
+  });
+</script>
+++++

@@ -1,0 +1,9 @@
+[IMPORTANT]
+====
+*Beta Feature*
+
+This is a closed beta feature.
+This feature is provided according to your Astra agreement and is considered a part of the No-Fee License.
+This beta feature is not intended for production use, has not been certified for production workloads, and might contain bugs and other functional issues.
+There is no guarantee that a beta feature will ever become generally available.
+====

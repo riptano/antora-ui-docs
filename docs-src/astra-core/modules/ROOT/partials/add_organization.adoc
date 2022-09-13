@@ -1,0 +1,11 @@
+. From any page in https://astra.datastax.com[{astra_db}], select the *Organizations* dropdown.
++
+image::ROOT:OrgSelection.png[alt=Organization Selection,width=300]
++
+. In the main dropdown, select *Manage Organizations*.
+. Select *Add Organization*. The *Add Organization* window opens.
+  * Enter the name and email address for your new organization.
+  * Select *Add* to add the new organization.
+
+The organization is added to the list.
+An email is sent to the email address entered for the organization owner.

@@ -1,0 +1,180 @@
+= Loading data with DSBulk
+:page-tag: getting-started,dev,astra-db
+
+== Introduction
+
+
+Here is a quick overview of how to get started with DSBulk and Astra. This will provide you with the necessary steps to load your CSV data into the Astra console through the command line.
+
+== Install
+
+. From your `desktop` in the terminal, download the `dsbulk` installation file:
+
++
+[source, curl]
+----
+curl -OL https://downloads.datastax.com/dsbulk/dsbulk-1.8.0.tar.gz
+----
+
++
+*Results*
+
++
+[source, plaintext]
+----
+  % Total  %  Received  % Xferd Average  Speed   Time     Time    Time   Current
+                                Dload   Upload   Total    Spent   Left   Speed
+100 30.0M 100 30.0M     0     0 7545k       0  0:00:04  0:00:04 --:--:--  7454k
+----
+
+. Unzip the folder:
+
++
+[source, shell, subs="attributes+"]
+----
+tar -xzvf dsbulk-1.8.0.tar.gz
+----
+
++
+The unzipped folder will be on the desktop. You can access the `dsbulk` executable through the `bin` folder:
++
+image::ROOT:3-binfolder.png[]
+
+. Make sure that everything is running correctly through the command line:
+
++
+[source, shell, subs="attributes+"]
+----
+dsbulk-1.8.0/bin/dsbulk --version
+----
+
++
+*Result*
+
++
+[source, plaintext]
+----
+DataStax Bulk Loader v1.8.0
+----
+
+DSBulk version 1.8.0 is installed and ready to use.
+
+== Astra Credentials
+
+Before you can run DSBulk, get the necessary credentials to connect to Astra. To run DSBulk, we need the _Client ID_, _Client Secret_ and *Secure Connect Bundle*.
+
+. Navigate to you *Organization Settings*.
++
+image::ROOT:OrgSelection.png[]
+
+. Select *Token Management*
+. From the dropdown menu, select *Admin User*.
++
+image::ROOT:generate_tokens.png[]
+
+. Generate a token for your *Admin User* role by selecting *Generate Token*.
++
+You will be provided with the _Client ID_, _Client Secret_, and _Token_. For your use case, you will need only the _Client ID_ and _Client Secret_.
+
+. Select *Download CSV* to store these credentials locally.
+. Navigate to your *Dashboard Overview*.
+. Select the *Connect* tab.
+. Download the *Secure Connect Bundle* to store locally.
+
++
+image::ROOT:secure_connect_bundle.png[]
+
+== Create keyspace and table
+
+To load your data with DSBulk, you need to create a keyspace and table.
+
+.Navigate to your *Dashboard Overview*.
+. Select *Add Keyspace*.
+
++
+image::ROOT:8-addkeyspace.png[]
+
+. Create a table through the CQL console in your database:
++
+image::ROOT:9-CQL.png[]
+
++
+[source, plaintext]
+----
+CREATE TABLE test.world_happiness_report_2021 (
+  country_name text,
+  regional_indicator text,
+  ladder_score float,
+  gdp_per_capita float,
+  social_support float,
+  healthy_life_expectancy float,
+  generosity float,
+  PRIMARY KEY (country_name)
+);
+----
+
++
+For more, see link:https://docs.datastax.com/en/astra-cql/doc/cql/cql_reference/cql_commands/cqlCreateTable.html[CREATE TABLE].
+
+. Run `desc tables;` to confirm the new table exists:
+
++
+*Results*
+
++
+[source, plaintext]
+----
+world_happiness_report_2021
+----
+
+The table has been successfully created.
+
+== Load your data
+
+With your keyspace and table set up, you can upload your data.
+
+If you want to use sample data, check out the link:https://www.kaggle.com/ajaypalsinghlo/world-happiness-report-2021?select=world-happiness-report-2021.csv[world_happiness_report_2021.csv].
+
+To execute the DSBulk upload, you will need access to the file path.
+
+image::ROOT:11-worldhappinessreport.png[]
+
+. Load your table using DSBulk:
+
++
+[source, shell, subs="attributes+"]
+----
+dsbulk-1.8.0/bin/dsbulk load -url **<path-to-csv-file>** -k **<keyspace_name>** -t **<table_name>** -b **<path-to-secure-connect-bundle>** -u **<client_id>** -p **<client_secret>
+----
+
++
+*Results*
+
++
+[source, shell, subs="attributes+"]
+----
+Operation directory: /path/to/directory/log/LOAD ...
+total | failed | rows/s |  p50ms |  p99ms | p999ms | batches
+  149 |      0 |    400 | 106.65 | 187.70 | 191.89 |    1.00
+----
+
+Success! Your rows were loaded into the table. This is a small test sample size, but DSBulk is capable of loading/unloading extremely large files.
+
+== View your data in Astra
+
+Now, all that is left is to view the data in the Astra console.
+
+. Navigate back to the CQL shell in Astra.
+. Run the following command to see the output:
+
++
+[source, shell, subs="attributes+"]
+----
+*select * from <keyspace_name>.<table_name>;*
+----
+
++
+*Results*
+
++
+image::ROOT:13-cqloutput.png[]

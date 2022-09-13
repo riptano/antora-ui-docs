@@ -1,0 +1,299 @@
+== Database regions
+
+// Author's note: refer to the Astra DB Region List tab of the FY<year> Master Price List spreadsheet.
+// E.g.: https://docs.google.com/spreadsheets/d/1pGAjO0OoUb9SMFWLJ2c9E_F01siWq9QSsdSf7HlaGwA/edit#gid=740721253
+// Contacts: David Chitayat, Bhavani Rao, Mala Tejwani, Ursula Zhou, Krithika Balagurunathan, John Smart.
+
+When creating a database, select a region for your database. Choose a region that is geographically close to your users to optimize performance.
+
+include::ROOT:partial$note_region.adoc[]
+
+[#serverless-regions]
+=== {serverless_cap} database regions
+
+==== Google Cloud
+
+[cols=3*,options=header]
+|===
+|Region
+|Location
+|Pricing Type
+
+|us-east1
+|Moncks Corner, South Carolina, US
+|Standard
+
+|us-east4
+|Ashburn, Virginia, US
+|Standard
+
+|us-west1
+|The Dalles, Oregon, US
+|Standard
+
+|us-central1
+|Council Bluffs, Iowa, US
+|Standard
+
+|northamerica-northeast1
+|Montréal, Quebec, Canada
+|Standard
+
+|europe-west1
+|Saint-Ghislain, Belgium
+|Standard
+
+|europe-west2
+|London, England
+|Premium
+
+|asia-south1
+|Mumbai, India
+|Standard
+
+// |asia-southeast1 (Note: not approved yet, thus commented out)
+// |Singapore
+
+|southamerica-east1
+|Osasco, São Paulo, Brazil
+|Premium Plus
+
+|===
+
+==== AWS
+
+[cols=3*,options=header]
+|===
+|Region
+|Location
+|Pricing Type
+
+|us-east-1
+|Northern Virginia, US
+|Standard
+
+|us-east-2
+|Ohio, US
+|Standard
+
+|us-west-2
+|Oregon, US
+|Standard
+
+|eu-central-1
+|Frankfurt, Germany
+|Standard
+
+|eu-west-1
+|Ireland
+|Standard
+
+|ap-south-1
+|Mumbai, India
+|Standard
+
+|ap-southeast-1
+|Singapore
+|Standard
+
+|===
+
+==== Azure
+
+[cols=3*,options=header]
+|===
+|Region
+|Location
+|Pricing Type
+
+|northeurope
+|Ireland
+|Standard
+
+|westeurope
+|West Europe
+|Standard
+
+|eastus
+|Washington, DC US
+|Standard
+
+|eastus2
+|Virginia, US
+|Standard
+
+|southcentralus
+|South Central, US
+|Standard
+
+|westus2
+|Washington (state), US
+|Standard
+
+|canadacentral
+|Toronto, Ontario, Canada
+|Standard
+
+|australiaeast
+|Australia East
+|Standard
+
+|centralindia
+|Central India (Pune)
+|Standard
+
+|brazilsouth
+|Brazil 
+|Premium Plus
+
+|===
+
+
+[#classic-regions]
+=== {classic_cap} database regions
+
+==== Google Cloud
+
+[cols=3*,options=header]
+|===
+|Region
+|Location
+|Pricing Type
+
+|asia-east1
+|Changhua County, Taiwan
+|Standard
+
+|asia-east2
+|Hong Kong
+|Standard
+
+|australia-southeast1
+|Sydney, Australia
+|Standard
+
+|europe-north1
+|Hamina, Finland
+|Standard
+
+|europe-west1
+|Saint-Ghislain, Belgium
+|Standard
+
+|europe-west4
+|Eemshaven, Netherlands
+|Standard
+
+|northamerica-northeast1
+|Montréal, Quebec, Canada
+|Standard
+
+|us-central1
+|Council Bluffs, Iowa, US
+|Standard
+
+|us-east1
+|Moncks Corner, South Carolina, US
+|Standard
+
+|us-east4
+|Ashburn, Northern Virginia, US
+|Standard
+
+|us-west1
+|The Dalles, Oregon, US
+|Standard
+
+|===
+
+==== AWS
+
+[cols=3*,options=header]
+|===
+|Region
+|Location
+|Pricing Type
+
+|ap-northeast-1
+|Tokyo, Japan
+|Standard
+
+|ap-southeast-1
+|Singapore
+|Standard
+
+|ap-southeast-2
+|Sydney, Australia
+|Premium
+
+|ap-south-1
+|Mumbai, India
+|Standard
+
+|ca-central-1
+|Canada (Central)
+|Standard
+
+|eu-central-1
+|Frankfurt, Germany
+|Standard
+
+|eu-west-1
+|Ireland
+|Standard
+
+|eu-west-2
+|London, England
+|Standard
+
+|us-east-1
+|Northern Virginia, US
+|Standard
+
+|us-east-2
+|Ohio, US
+|Standard
+
+|us-west2
+|Oregon, US
+|Standard
+
+|===
+
+==== Azure
+
+[cols=3*,options=header]
+|===
+|Region
+|Location
+|Pricing Type
+
+|centralcanada
+|Toronto, Ontario, Canada
+|Standard
+
+|australiaeast
+|New South Wales, Australia
+|Premium
+
+|australiasoutheast
+|Victoria, Australia
+|Premium
+
+|eastus
+|Virginia, US
+|Standard
+
+|northeurope
+|North Europe (Ireland)
+|Premium
+
+|westeurope
+|West Europe (Netherlands)
+|Standard
+
+|westus2
+|Washington (state) US
+|Standard
+
+|===

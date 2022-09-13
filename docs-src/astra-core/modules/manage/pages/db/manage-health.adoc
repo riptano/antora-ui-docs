@@ -1,0 +1,36 @@
+= View health and metrics
+:slug: viewing-database-health-and-metrics
+
+
+Select a database to view health metrics and performance information.
+When selecting a database, you can view health metrics that include information regarding latency and throughput to the database.
+These metrics provide insights into the performance of the database and how workloads are distributed.
+
+[TIP]
+====
+When viewing information about a database on the *Health* page, choose the region from the dropdown available at the right to view the health metrics of the database particular to that region. This is only applicable for xref:manage:db/manage-multi-region.adoc[multi-region databases].
+====
+
+== Procedure
+
+. Open a browser, navigate to https://astra.datastax.com[{company} {astra_db}], and log in.
+. On the *Databases* page, select the database name to view details for.
+Details for the database display on the *Overview* tab.
+. To view health metrics for the database, select the *Health* tab.
+. Select the time period to display in the health metrics for.
+
+== Results
+
+Metrics for the database display in the Grafana dashboard embedded in {astra_ui}.
+To view more granular metrics, hover over a specific time in the graph.
+Read and write latencies display in nanoseconds.
+
+image::ROOT:Health.png[]
+
+== View health dashboard in a full browser window
+. Select *Cycle View Mode* in the upper right corner.
+This selection displays the cycle view.
+. Press *Esc*.
+. Select the share icon in the upper left corner.
+. Copy the URL.
+. Paste the URL in a new browser tab or window to see the dashboard.

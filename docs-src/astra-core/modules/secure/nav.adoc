@@ -1,0 +1,8 @@
+* xref:secure:securing.adoc[Securing]
+**  xref:secure:secure-highlights.adoc[Security highlights]
+**  xref:secure:security-guidelines.adoc[Security guidelines]
+**  xref:secure:secure-default-permissions.adoc[Default user permissions]
+**  xref:secure:secure-change-password.adoc[Change your password]
+**  xref:secure:secure-reset-password.adoc[Reset your password]
+**  xref:secure:authnz.adoc[Authentication and Authorization]
+**  xref:secure:astra-plugin-hashi-vault.adoc[{astra_db} Plugin for HashiCorp Vault]

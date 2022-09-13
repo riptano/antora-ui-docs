@@ -1,0 +1,4 @@
+[NOTE]
+====
+If you are adding multiple regions to your database, you can use each region only once. You cannot add the same region to the same database more than one time.
+====

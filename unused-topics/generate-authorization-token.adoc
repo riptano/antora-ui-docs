@@ -1,0 +1,90 @@
+= Generate authorization token
+:slug: generate-authorization-token
+
+To use the Stargate Document API, an authorization token must be generated to access the interface.
+
+To authenticate with your DataStax Astra database, generate an authorization token.
+You'll use this token to authenticate with your database and make additional requests, such as creating tables or adding rows.
+
+Use the link:https://docs.datastax.com/en/astra/_attachments/restv2.html#operation/createToken[authorization] endpoint to generate the token.
+For the following examples, we'll use `cURL` commands.
+If you're making requests from your application, use the code samples described in the authorization endpoint details.
+
+[NOTE]
+====
+**Authorization token**
+The authorization token is active for 30 minutes from the most recent request made.
+If no request has been made within 30 minutes, the authorization token expires.
+====
+
+== Procedure
+. Open a browser, navigate to https://astra.datastax.com/[DataStax Astra], and log in.
+. From your *Dashboard* page, select your database.
+. Copy the **Cluster ID** of your database.
+You can also find the **Cluster ID** in the URL, which is the last UUID in the path: `https://astra.datastax.com/org/{org-Id}/database/{databaseid}`
+. Add the **Cluster ID** as an environment variable with the following command:
+```
+export ASTRA_CLUSTER_ID={databaseid}
+```
+
+=== Example
+```
+export ASTRA_CLUSTER_ID=b5285f63-8da5-4c6e-afd8-ade371a48795
+```
+
+. Copy the *Region* of your database, the region where your database is located.
+. Add the *Region* as an environment variable with the following command:
+```
+export ASTRA_CLUSTER_REGION={region}
+```
+
+For example: ` export ASTRA_CLUSTER_REGION=us-east1 `
+
+. Add your username, keyspace, and your password as environment variables with the following command:
+```
+export ASTRA_DB_USERNAME={username}
+export ASTRA_DB_KEYSPACE={keyspace}
+export ASTRA_DB_PASSWORD={password}
+```
+
+. Use `printenv` to ensure the environment variables were exported.
+. Run the entire `cURL` command with the values for your database:
+ * Replace db_username with your database username.
+ * Replace db_password with your database password.
+```
+curl --request POST \
+ --url https://${ASTRA_CLUSTER_ID}-${ASTRA_CLUSTER_REGION}.apps.astra.datastax.com/api/rest/v1/auth \
+ --header 'Content-Type: application/json' \
+ --data '{"username":"'"$ASTRA_DB_USERNAME"'", "password":"'"$ASTRA_DB_PASSWORD"'"}'
+```
+
+ * Optional: Add a unique UUID for the authorization request:
+```
+--header 'x-cassandra-request-id: {unique-UUID}`
+```
+
+[TIP]
+====
+**Generating UUIDs**
+Consider using a tool like this <a href="https://www.uuidgenerator.net/" target="_blank">Online UUID generator</a> to quickly create a random UUID to pass with your authorization request.
+====
+
+An authorization token is returned:
+```
+{"authToken": "37396a44-dcb8-4740-a97f-79f0dba47973"}
+```
+
+. Copy the value of the returned `authToken` and store the authorization token in the `ASTRA_AUTHORIZATION_TOKEN` environment variable:
+```
+export ASTRA_AUTHORIZATION_TOKEN={authToken}
+```
+
+*Example:*
+```
+export ASTRA_AUTHORIZATION_TOKEN=37396a44-dcb8-4740-a97f-79f0dba47973
+```
+
+The authorization token must be included when making requests to your database, such as creating tables, adding rows, or modifying columns.
+Throughout the documentation examples, the authorization token is `37396a44-dcb8-4740-a97f-79f0dba47973`.
+
+. If the authorization token expires, repeat steps 8 and 9 to store a new authorization token in the `ASTRA_AUTHORIZATION_TOKEN` environment variable.

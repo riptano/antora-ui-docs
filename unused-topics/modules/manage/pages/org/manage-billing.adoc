@@ -1,0 +1,116 @@
+= Pricing and billing
+:slug: pricing-and-billing
+
+Learn about the pricing model and billing structure for {company} {astra_db} {serverless} databases.
+
+For more, see the https://www.datastax.com/products/datastax-astra/pricing[{astra_db} Pricing page].
+
+== {serverless_cap} pricing
+
+There are three primary factors that affect the pricing:
+
+* plan selection
+* units of measure
+* cloud provider and region
+
+=== Plan selection
+
+Your commitment determines your savings. DataStax allows you to choose your commitment, thus your savings, and gives you a $25 free credit per month. The $25 credit is good for up to 80GB storage and 20 million read/write operations.
+To get an accurate cost for your database, select a cloud provider/region and create your first database. If you want to get started for free and without entering credit card details, select the free plan.
+
+=== Units of measure
+
+The following units of measure affect the pricing of your database:
+
+* Read requests (per 1M): the unit of measure for billing database reads; this unit is based on the payload of each read query response.
+* Write requests (per 1M): the unit of measure for billing database writes; this unit is based on the payload size of each write request.
+* Data storage (GB/month): all data stored in the database (including the actual data, indexes, and metadata)
+* Data transfer (GB/month): the transfer of Customer Data into and out of a cloud region.
+
+=== Cloud providers and regions
+
+You can select AWS, Google Cloud, or Azure as your cloud provider. Each cloud provider offers different database regions. See each offering xref:ROOT:planning.adoc#_database_regions[by region]. The cloud provider and region you select affects the price of each unit of measure for your database.
+
+=== Multiple regions
+
+include::ROOT:partial$note_multi-region_billing.adoc[]
+
+If you are using xref:manage:db/managing-db.adoc#_using_multiple_regions[multiple regions] for your {serverless} database:
+
+* Write requests are replicated in all regions and charged at the respective rates for each region.
+* Read requests are performed at the region level and charged at the region-specific rate.
+
+Data Storage is calculated based on actual disk consumption per region at the region-specific rate.
+
+=== CDC for {astra_stream}
+
+Enabling xref:connect:astream-cdc.adoc[CDC for {astra_stream}] will result in increased usage costs based on your Astra Streaming usage.
+
+=== Free plans
+
+For free plans, your remaining credits will be displayed. These credits include the $25 credit that is renewed every month for every plan.
+
+=== Pay as you go plans
+
+For pay as you go plans, your remaining credits will be displayed. These credits include the $25 credit that is renewed every month for every plan. You must have a billing method for your account. Any usage amount that exceeds the $25 monthly credit shows up in the Estimated Bill, which is auto-drafted monthly based on Greenwich Mean Time (GMT), also known as Coordinated Universal Time (UTC).
+
+=== Annual plans
+
+For the annual plan, you are committing to the minimum monthly spend for 12 months. Your remaining credits will display the balance of your $25 credit that is renewed every month for every plan, along with the committed monthly minimum that is billed in arrears at the end of the month. If you exceed your credit and committed monthly minimum, the overages will be charged at your discounted rate. This amount shows up in the Estimated Bill, which is auto-drafted monthly based on Greenwich Mean Time (GMT), also known as Coordinated Universal Time (UTC).
+
+[#private-endpoints]
+=== Private endpoints
+
+Private endpoints are charged per endpoint per region at $0.01/hour.
+
+Additionally, you will be billed for ingress and egress data at $0.01/GB for all data that uses the private endpoint. If you exceed your monthly credit and you do not have a payment method in {astra_db}, your database will not be available for use until you xref:org/manage-payment.adoc[add a payment method].
+
+[NOTE]
+====
+Egress charges for private endpoints is in addition to your regular data egress charges.
+====
+
+
+== {classic_cap} pricing
+
+[IMPORTANT]
+====
+{classic_cap} databases can no longer be created through the {astra_db} console. We recommend migrating your database to our current {serverless} option, which could save you money and allow you to manage your compute and storage capabilities separately.
+====
+
+Pricing for {astra_db} classic databases is based on plan, units of measure, cloud provider, and region.
+
+The cost of your classic {astra_db}
+DB database depends on the classic database plan you select. +
+Classic {astra_db} databases use a single capacity unit (CU) by default, which represents three database instances that are grouped together for three replicas. +
+The classic database plan represents the amount of compute power allocated to each CU, and represents three compute instances per CU. +
+Classic database pricing is presented in the DataStax Astra console in hourly terms, but billed in one-minute granularity.
+
+=== Cloud providers and regions
+
+You can select AWS, Google Cloud, or Azure as your cloud provider. Each cloud provider offers Standard, Premium and Premium+ regions. The cloud provider and region you select affects the price of each unit of measure for your database.
+
+=== Multiple regions
+
+If you are using xref:manage:db/managing-db.adoc#_using_multiple_regions[multiple regions] for your {classic} database, you will pay a pricing premium for each additional region:
+
+* 15% premium for US and EMEA
+* 30% premium for APAC
+
+This premium pricing includes 1.25 TB of data egress. If your data egress exceeds 1.25 TB, the excess data egress is charged at the following rates:
+
+* $0.03/GB for AWS US and EMEA regions
+* $0.03/GB for Google Cloud North America regions
+* $0.11/GB for all other clouds/regions combinations
+
+== Billing
+
+{astra_db} handles billing through an integration with Stripe, and displays all related billing information in the Billing & Payments section of your Organization. +
+In Billing & Payments, you will see your plan and payment method, along with when the plan was created. You can select *Manage* to change your plan. +
+
+[NOTE]
+====
+If you cancel your annual plan, you can continue to use the free option.
+====
+
+You can also update your payment method in the Billing & Payments section. Your Billing & Payments will also display each database included in your server, allowing you to see what your total cost is per database.

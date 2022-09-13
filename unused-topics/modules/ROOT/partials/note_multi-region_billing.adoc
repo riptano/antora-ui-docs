@@ -1,0 +1,4 @@
+[IMPORTANT]
+====
+Multiple regions is available on only pay as you go and annual plans.
+====

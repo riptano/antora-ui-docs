@@ -1,0 +1,18 @@
+= Drop a namespace
+:slug: drop-a-namespace
+
+[CAUTION]
+====
+**DO NOT PUBLISH**
+THIS IS NOT SUPPORTED IN ASTRA
+====
+
+Send a DELETE request to `+/v2/schemas/namespaces/{namespace_name}+` to delete a namespace.
+All collections and documents will be deleted along with the namespace.
+
+```
+curl --request DELETE \
+  --url https://${ASTRA_CLUSTER_ID}-${ASTRA_CLUSTER_REGION}.apps.astra.datastax.com/api/rest/v2/schemas/namespaces/myworld \
+  --header "X-Cassandra-Token: $ASTRA_AUTHORIZATION_TOKEN" \
+  --header 'Content-Type: application/json'
+```

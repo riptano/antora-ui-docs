@@ -1,0 +1,194 @@
+== Use DSBulk to load data
+:page-tag: getting-started,dev,astra-db
+
+=== Introduction
+
+Here is a quick overview of how to get started with DataStax Bulk Loader and {astra_db}. 
+This topic provides the necessary steps to load your CSV data into an {astra_db} database via a `dsbulk load` command. 
+
+[TIP]
+====
+Another option is to use the **Data Loader** feature, which is available for an existing database in {astra_ui}. You can load CSV data up to 40 MB through the UI. The Data Loader feature includes additional options to load data from the provided sample datasets; or load data from your Amazon S3 bucket that contains exported DynamoDB data.  See xref:manage:upload/astra-data-loader.adoc[Use {astra_db} Data Loader].
+
+
+Start on the {astra_db} **Dashboard** and click the link for your database. Follow the **Load Data** dialog to select your CSV file and have its data loaded into the database keyspace and table that you specify. Example:
+
+image::astra-data-loader-option1-csv.png[Astra Data Loader with CSV upload option]
+====
+
+=== DSBulk install
+
+. From your `desktop` in the terminal, download the `dsbulk` installation file:
+
++
+[source, curl]
+----
+curl -OL https://downloads.datastax.com/dsbulk/dsbulk-1.9.0.tar.gz
+----
+
++
+*Results*
+
++
+[source, plaintext]
+----
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 31.5M  100 31.5M    0     0  8514k      0  0:00:03  0:00:03 --:--:-- 8512k
+----
+
+. Unpack the folder:
+
++
+[source, shell, subs="attributes+"]
+----
+tar -xzvf dsbulk-1.9.0.tar.gz
+----
+
++
+Then access the `dsbulk` executable through the `bin` folder:
++
+image::ROOT:3-binfolder.png[]
+
+. Make sure that everything is running correctly through the command line:
+
++
+[source, shell, subs="attributes+"]
+----
+dsbulk-1.9.0/bin/dsbulk --version
+----
+
++
+*Result*
+
++
+[source, plaintext]
+----
+DataStax Bulk Loader v1.9.0
+----
+
+DSBulk version 1.9.0 is installed and ready to use.
+
+=== Astra Credentials
+
+Before you can run DSBulk, get the necessary credentials to connect to Astra DB. To run DSBulk, we need the _Client ID_, _Client Secret_ and *Secure Connect Bundle*.
+
+. In {astra_ui}, navigate to your *Organization Settings*.
+// image::ROOT:OrgSelection.png[]
+. Select *Token Management*.
+. From the *Select Role* dropdown menu, select *Administrator User*.
++
+image::ROOT:generate_tokens.png[]
+
+. Generate a token for your *Administrator User* role by selecting *Generate Token*.
++
+You will be provided with the _Client ID_, _Client Secret_, and a _Token_. For the `dsbulk load` command shown later in this topic, you'll need the _Client ID_ and _Client Secret_ values.
+. Select *Download Token Details* to store these credentials locally.
+. Navigate to your *Dashboard Overview* by clicking on the "DataStax Astra" icon in the top banner.
+. Create a database, if you haven't already. 
+. For one of your active databases, select the *Connect* tab. On the *Connect* page, to reveal the **Download Bundle** option, click any of the Driver types.  Example:
++
+image:astra-db-connect-download-bundle.png[Astra Secure Bundle option is shown a Connect Drivers page.]
+. Download the *Secure Connect Bundle* to store it locally.
+// image::ROOT:secure_connect_bundle.png[]
+
+=== Create keyspace and table
+
+To load your data with DataStax Bulk Loader, you need to create a keyspace and table.
+
+. Navigate to your *Dashboard Overview* for your existing database.
+. Select *Add Keyspace* and name it **test**, as used in the following example cqlsh commands.
+
++
+image::ROOT:8-addkeyspace.png[]
+
+. Create a table through the CQL Console in your database:
++
+image::ROOT:9-CQL.png[]
+
++
+[source, plaintext]
+----
+CREATE TABLE test.world_happiness_report_2021 (
+  country_name text,
+  regional_indicator text,
+  ladder_score float,
+  gdp_per_capita float,
+  social_support float,
+  healthy_life_expectancy float,
+  generosity float,
+  PRIMARY KEY (country_name)
+);
+----
+
++
+For more, see link:https://docs.datastax.com/en/astra-cql/doc/cql/cql_reference/cql_commands/cqlCreateTable.html[CREATE TABLE].
+
+. Run `desc tables;` to confirm the new table exists:
+
++
+*The results will include:*
+
++
+[source, plaintext]
+----
+world_happiness_report_2021
+----
+
+The `world_happiness_report_2021` table has been successfully created.
+
+=== Load your data
+
+With your keyspace and table set up, you can upload your data.  
+
+[TIP]
+====
+If you want to use sample data, check out this sample CSV file: xref:attachment$world-happiness-report-2021.csv[World Happiness Report 2021].
+====
+
+// Prior link (see comments below) went to improperly formatted csv data. Background info: CLOUD-1903.
+// CSV above is on our local web server, for use with this topic. Prior link:
+// link:https://www.kaggle.com/ajaypalsinghlo/world-happiness-report-2021?select=world-happiness-report-2021.csv[world_happiness_report_2021.csv].
+// To execute the DSBulk upload, you will need access to the file path.
+// image::ROOT:11-worldhappinessreport.png[]
+
+. Load your table using DataStax Bulk Loader. Here's the command format:
+
++
+[source, shell, subs="attributes+"]
+----
+dsbulk-1.9.0/bin/dsbulk load -url <path-to-csv-file> -k <keyspace_name> -t <table_name> -b <path-to-secure-connect-bundle> -u <client_id> -p <client_secret>
+----
+
++
+*Results:*
+
++
+[source, shell, subs="attributes+"]
+----
+Operation directory: /path/to/directory/log/LOAD ...
+total | failed | rows/s |  p50ms |  p99ms | p999ms | batches
+  149 |      0 |    400 | 106.65 | 187.70 | 191.89 |    1.00
+----
+
+Success! Your rows were loaded into the table. This is a small test sample size, but DataStax Bulk Loader can load, unload, and count extremely large files.
+
+=== View your data in {astra_db}
+
+Now, all that is left is to view the data in {astra_ui}.
+
+. Navigate back to the CQL Console tab in {astra_ui}.
+. Run the following command to see the output:
+
++
+[source, shell, subs="attributes+"]
+----
+select * from test.world_happiness_report_2021;
+----
+
++
+*Results include:*
+
++
+image::ROOT:13-cqloutput.png[]
+

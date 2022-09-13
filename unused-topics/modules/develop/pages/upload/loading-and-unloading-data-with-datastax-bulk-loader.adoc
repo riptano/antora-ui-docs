@@ -1,0 +1,81 @@
+== {company} Bulk Loader
+:slug: loading-and-unloading-data-with-datastax-bulk-loader
+
+Use {company} Bulk Loader (dsbulk) to load and unload data in CSV or JSON format with your {company} {astra_db} database efficiently and reliably.
+
+You can use `dsbulk` as a standalone tool to remotely connect to a cluster.
+The tool is not required to run locally on an instances, but can be used in this configuration.
+
+[TIP]
+====
+The `dsbulk` command examples often show a parameter such as `-url filename.csv` or `-url filename.json`.
+Optionally, you can load or unload data from/to compressed CSV or JSON files.
+For details, refer to the https://docs.datastax.com/en/dsbulk/doc/dsbulk/reference/connectorOptions.html#connectorOptions__connectorCompressionFile[--connector.(csv|json).compression] option.
+====
+
+=== Prerequisites
+. https://downloads.datastax.com/#bulk-loader[Download] `dsbulk`.
+. Unpack the distribution to your machine:
+```
+tar -xzfv dsbulk-1.8.0.tar.gz
+```
+[arabic, start=3]
+. Get your _Client ID_ and _Client Secret_ by creating your xref:manage:org/managing-org.adoc#_manage_application_tokens[application token].
+. Connect `dsbulk` to your {astra_db} database by including the path to the xref:connect:secure-connect-bundle.adoc[secure connect bundle], and the _Client ID_ and _Client Secret_.
+Use the `-b` option to specify the location of the secure connect bundle.
+The specified location must be a path on the local filesystem or a valid URL.
+
+[NOTE]
+====
+If a secure connect bundle is specified, any of the following options are ignored and a warning is logged:
+
+* Contact points
+* Consistency level other than `LOCAL_QUORUM` (only for loading operations)
+* SSL configurations
+
+See the link:https://docs.datastax.com/en/dsbulk/doc/dsbulk/reference/commonOptions.html#commonOptions__astraSecureConnectBundle[--driver.basic.cloud.secure-connect-bundle], window="_blank" parameter for more information.
+====
+
+=== Loading data
+Load CSV or JSON data with a `dsbulk load` command.
+
+==== Load data from a local file
+Load data from a local file `export.csv` with headers into keyspace `ks1` and table `table1`:
+```
+dsbulk load -url export.csv -k ks1 -t table1 -b "path/to/secure-connect-database_name.zip" -u client_id -p client_secret -header true
+```
+
+==== Specify an external data source
+
+```
+dsbulk load -url https://svr/data/export.csv -k ks1 -t table1 -b "path/to/secure-connect-database_name.zip" -u client_id -p client_secret
+```
+
+==== Specify a file with URLs
+
+Specify a file that contains a list of multiple, well-formed URLs for the CSV or JSON data files to load:
+```
+dsbulk load --connector.json.urlfile "my/local/multiple-input-data-urls.txt" -k ks1 -t table1 -b "path/to/secure-connect-database_name.zip" -u client_id -p client_secret
+```
+
+==== Load CSV data from stdin
+
+Load CSV data from `stdin` as it is generated from a loading script `generate_data`.
+The data is loaded to the keyspace `ks1` and table `table1`.
+If not specified, the field names are read from a header row in the input file.
+```
+generate_data | dsbulk load -url stdin:/ -k ks1 -t table1 -b "path/to/secure-connect-database_name.zip" -u client_id -p client_secret
+```
+
+=== Unloading data
+Use the `dsbulk unload` command to unload data from the specified keyspace and table to a CSV or JSON file.
+
+==== Unload data example
+
+Specify the keyspace `ks1` and table `table1` from which to unload the data to a CSV file:
+
+```
+dsbulk unload -url myData.csv -k ks1 -t table1 -b "path/to/secure-connect-database_name.zip" -u client_id -p client_secret
+```
+
+The `-url` value can designate a path on the local filesystem or a valid URL.

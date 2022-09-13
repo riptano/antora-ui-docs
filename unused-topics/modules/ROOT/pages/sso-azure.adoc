@@ -1,0 +1,154 @@
+= Configuring single sign-on for Microsoft Azure AD
+
+
+include::partial$sso-overview.adoc[]
+
+== Prerequisites
+To manage SSO settings, you must have the *Read External Auth* and the *Write External Auth* permissions. These permissions are included in the Organization Administrator role. 
+
+Ensure you map the following attributes in your IdP. They are required for Astra to identify your account and JIT provision new accounts.
+
+* email - Must be in email format and map to an attribute which matches the users Astra account ID (or desired account ID for JIT provisioning)
+* firstName -  The user's first name/given name
+* lastName - The user's last name/surname
+* Unique User Identifier - Must be in email format and map to an attribute which matches the users Astra account ID (or desired account ID for JIT provisioning)
+
+image::ROOT:azure_attributes.png[]
+
+Set up a https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/add-application-portal-assign-users[Microsoft Azure AD Enterprise Application account] to collect and add information for your IdP. 
+
+////
+== User Attributes 
+
+When setting up with SAML, ensure the attributes are correct. You must map attributes to where the variable corresponds with the user's information. For example, the corresponding attribute for *user.email* must be the user's email address.  Use the following list to ensure the mapping is correct.
+
+image::ROOT:AzureAD_attributes.png[]
+////
+
+== Adding identity provider
+
+. From any page from https://astra.datastax.com[{astra_db}], select the *Organizations* dropdown. Select the organization for which you want to configure your SSO.
+. Go to the dashboard and select *Organization Settings*. Select *Security Settings*.
++
+If this is your first time configuring SSO, no identity providers (IdP) will be listed for your organization.
+. Select *Add Identity Provider*.
+. The *Configure SSO* page opens. Select *Microsoft Azure AD* as your IdP.
++
+The following fields display information you need to provide your IdP:
+
+* Reply URL
+* Identifier (Entity ID), also called "SP Identity ID"
+* Relay State, also called "Default Relay State"
+
++
+image::ROOT:MS_Azure_linkIdP.png[]
+
+
+. Enter the provided *Reply URL*, *Identifier (Entity ID)*, and *Relay State* into your Azure AD Enterprise App. 
+For more, see the https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/add-application-portal-setup-sso#enable-single-sign-on[Azure AD documentation].
+. From Azure AD, get your *Login URL*, *Azure AD Identifier*, and *SAML Signing Certificate*.For more, see the https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/add-application-portal-setup-sso#enable-single-sign-on[Azure AD documentation^].
+. Copy and paste the provided *Reply URL*, *Identifier (Entity ID)*, and *Relay State* into your Azure AD Enterprise App.
+For more information on configuring SSO, see the https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/add-application-portal-setup-sso#enable-single-sign-on[Azure AD documentation].
+. From Azure AD, get your *Login URL*, *Azure Ad Identifier*, and *SAML Signing Certificate*.
+To learn where to find this information, see the https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/add-application-portal-setup-sso#enable-single-sign-on[Azure AD documentation^].
+
+. Enter your *Description*, *Login URL*, *Azure Ad Identifier*, and *SAML Signing Certificate* (Base64) for Azure AD into your {astra_db} SSO configuration.
++
+image::ROOT:MS_Azure_obtainIdP.png[]
+
+. After confirming all the information is correct, scroll down and select *Test Configuration*.
++
+A new tab opens in the browser window housing your IdP log-in screens and flow. When you complete the login, the window closes.
++
+The Test Configuration is deemed successful when a confirmation icon appears beside the *Test Configuration* button.
++
+[IMPORTANT]
+====
+If the test was unsuccessful, review the SSO settings in {astra_db} and your IdP console. If still unsuccessful, contact https://houston.datastax.com/hc/requests/new[DataStax Support].
+====
+
+. Select *Activate SSO* when your test configuration is successful. A message appears confirming the SSO is now active for your selected organization.
+
+== Disabling your configuration
+
+You can suspend any active configuration from your organization. The *Disable* option deactivates your active configuration.
+
+[WARNING]
+====
+If you disable your SSO configuration, users can access your organization without SSO authentication.
+====
+
+. Select the ellipsis (...) next to your active configuration. Select *Disable*.
+. A dialog box appears to confirm you want to disable this configuration. Type "disable" and select *Disable SSO Configuration*.
+
+image::ROOT:sso_disableactive.png[]
+
+// == Deleting your configuration
+
+//The *Delete* option displays a dialog box with the consequences of deleting the now active SSO configuration.
+
+//. Click the ellipsis (...) next to the row of the configuration you want to delete. Select *Delete*.
+//. A dialog box appears to confirm you want to delete this configuration. Type "delete"  and select *Delete SSO Authentication*. Selecting this option removes the row from the table. This option is permanent.
+
+//image::ROOT:sso_deleteactive.png[]
+
+== Using identity provider drafts
+
+To complete your configuration later, select *Esc* in your configuration to save the current information as a draft. All drafts and the active configuration appear on the table of the *Single Sign-on (SSO)* page.
+
+image::ROOT:sso_drafts.png[]
+
+. Select the ellipsis (…).
+. Select either *Edit* or *Delete*:
++
+* *Edit* returns to the *Configure SSO* page to continue editing the draft and complete the SSO configuration.
+* *Delete* removes the row from the table and is permanent. This choice displays a dialog box. To delete the draft, type "delete" and select *Delete SSO Authentication*.
+
+[NOTE]
+====
+An organization can have have multiple configuration drafts, but only one active configuration.
+====
+
+image::ROOT:sso_draftactive.png[]
+
+== The Astra Icon
+
+Optionally, the administrator can add the DataStax Astra logo to be recognizable to all users. Use the instructions below to download and add the logo.
+
+=== Downloading the Astra Logo
+
+Download the logo below to add to your account.
+
+image::ROOT:astra-square.png[]
+
+=== Adding the Astra Logo
+
+. Open Microsoft Azure AD and select *Properties*. 
+. There are several options to make changes here; the logo option is available. 
+. Click the blue folder and select the Astra logo. 
+
+image::ROOT:Azure_logo.png[]
+
+. Click *Save*. 
+
+== What's next?
+
+As needed, xref:manage:org/managing-org.adoc#_manage_user_permissions[Update user permissions] from the default JIT provision role.
+
+
+//// 
+== Attributes & Claims
+
+Each IdP has its own attributes to assist in the functional configuration of SSO.Individual users within an organization have his/her own identifiers, or attributes: first name, last name, and email are some of them.  To ensure each individual user connects to the SSO properly, ensure the user attribute corresponds with the source attribute. 
+
+=== How to use attributes with Azure AD
+
+. Sign up for an https://azure.microsoft.com/en-us/free/?WT.mc_id=A261C142F[Azure AD account] if you do not already have one. When you sign up for the account, select an administrator role and add the https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/add-application-portal[enterprise application].
+. Open the Azure AD link, Obtain the following information from your Identity Provider. Use this link to enable SSO. 
+. Use the instructions to configure SSO. You can skip testing the SSO.
+. After your account and enterprise application are set up, select Single Sign-On from the left navigation.
+. Go to *Attributes & Claims*, and select *Edit*.
+. The page, *Manage Claim*, appears. Enter information for *Name* and *Source attribute*. Select *Attribute* for the *Source* option. The information you enter into this form is pulled from the user's profile. The source name must correspond with the source attribute. For example, if the source is firstName for the *Name*, select user.givenname for the *Source attribute*.  If the information is incorrect, an error appears. The email field is the most important field to complete.
+////
+
+

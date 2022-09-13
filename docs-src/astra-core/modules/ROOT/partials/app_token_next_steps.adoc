@@ -1,0 +1,6 @@
+You can now use your token to connect to the {astra_db} APIs. See more about the available APIs:
+
+* xref:develop:dev-with-doc.adoc[Document API]
+* xref:develop:dev-with-rest.adoc[REST API]
+* xref:develop:dev-with-graphql-cql-first.adoc[GraphQL CQL first API]
+* xref:develop:dev-with-graphql-schema-first.adoc[GraphQL Schema first API]

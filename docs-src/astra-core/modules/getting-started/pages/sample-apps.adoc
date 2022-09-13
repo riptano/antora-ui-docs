@@ -1,0 +1,105 @@
+= Build sample apps
+:slug: sample-apps
+
+Use simple, sample applications to get started with {company} {astra_db}.
+//App list:
+//1 React.js
+//2 Node.js
+//3 Spring Data Cassandra
+//4 Next.js=astra
+//5 Tik tok
+//6 battlestax
+
+
+//1 React.js-jamstack
+// Create a simple React
+// image - https://monosnap.com/image/Fv0yPAznbeNJD3vYlQfztME6yogzFT.png
+//link
+[#img-1-monosnap]
+.A create simple React example
+image::ROOT:astra-react-js-serverless.png[alt=A create simple React example,window="_blank"]
+//image::ROOT:aws-vpc-owner-id-example.png[a]
+
+
+link:https://github.com/{company}-Examples/todo-astra-jamstack-netlify[React.js, JAMStack, REST Todo List]::
+Create a simple React Todo List using just front-end Javascript talking directly to {astra_db} REST API.
+
+10 minutes, Beginner
+
+Updated on July 8th, 2020
+//end 1
+
+
+//2 Nodejs react serveless content in asciidoc
+//Create a simple React Gatsby application
+//https://github.com/tjake/todo-astra-react-serverless
+[#img-2-monosnap]
+.A create simple React Gatsby example
+image::ROOT:GraphiQL+2020-07-27+15-41-40.png[alt= monosnap reactjs gatsby,window="_blank"]
+
+link:https://github.com/{company}-Examples/todo-astra-jamstack-netlify[React.js, Gatsby.js, GraphQL Starter]::
+Create a React.js, Gatsby application that reads data from {astra_db} using GraphQL.
+
+10 minutes, Intermediate
+
+Updated on July 8th, 2020
+//end 2
+
+
+//3 Spring cassandra REST API content in asciidoc
+//Create a simple Spring Cassandra application
+
+[#img-3-monosnap]
+.A create simple Spring Cassandra example
+image::ROOT:Screen+Shot+2020-08-07+at+2.53.38+PM.png[Image screenshot3 monosnap Spring Cassandra]
+
+link:https://github.com/{company}-Examples/spring-data-starter[Spring Data Cassandra REST API]::
+Use Spring Data Cassandra and {astra_db} to build a REST API for a backend service that interacts with products in orders.
+10 minutes, Beginner
+
+Updated on Aug 7th, 2020
+//end 3
+
+// 4 Next.js + astra sample app
+[#img-4-monosnap]
+.A create simple Next.js + Astra example
+image::ROOT:next-js-astra-awesome.png[Image screenshot4 Next.js + Astra]
+
+link:https://github.com/{company}-Examples/astra-next.js-starter[Next.js/{astra_db} Starter]::
+Create a React.js, Next.js application that reads data from {astra_db} using GraphQL.
+
+10 minutes, Beginner
+
+Updated on Aug 9th, 2020
+//end 4
+
+
+//5 Tik tok clone sample app
+//original - https://raw.githubusercontent.com/{company}-Examples/astra-tik-tok/master/screenshot.jpg
+[#img-5-tiktok]
+.A create Tik tok example
+image::https://raw.githubusercontent.com/DataStax-Examples/astra-tik-tok/master/hero.png[Image screenshot5 tiktok clone]
+
+link:https://github.com/{company}-Examples/astra-tik-tok/blob/master/README.md#running-astra-db-tik-tok[Tik Tok Clone]::
+A video tutorial showing how to use the Create-React-App, Netlify, and {astra_db}'s Document API to create a simple Tik-Tok clone.
+
+50 minutes, Advanced
+
+Updated on Dec 10th, 2020
+//end 5
+
+
+//6 BattleStax JAMStack sample app
+[#img-6-battlestax]
+.A create BattleStax example
+image::https://raw.githubusercontent.com/{company}-Examples/battlestax/master/tutorial/battlestax.png[Image screenshot6 BattleStax]
+
+link:https://github.com/datastax-Examples/battlestax[BattleStax JAMStack Game]
+
+BattleStax is a stateful JAMStack game that is wholesome fun for the entire crew. Deploy a scalable JAMStack app and use CI/CD to manage the application.
+
+50 minutes, Advanced
+
+Updated on Dec 10th, 2020
+
+//end 6 of 6

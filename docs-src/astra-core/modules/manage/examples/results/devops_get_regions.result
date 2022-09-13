@@ -1,0 +1,19 @@
+{
+	"id": "1234-5678-91011121-3141",
+	"name": "dc-1234-5678-91011121-3141",
+	"tier": "Serverless",
+	"cloudProvider": "GCP",
+	"region": "europe-west1",
+	"regionZone": "emea",
+	"regionClassification": "standard",
+	"capacityUnits": 1,
+	"studioUrl": "http://path-to-studio:port",
+	"grafanaUrl": "http://path-to-grafana:port",
+	"cqlshUrl": "http://path-to-cqlsh:port/cqlsh",
+	"graphqlUrl": "http://path-to-graqphl:port/api/graphql",
+	"dataEndpointUrl": "http://path-to-dataendpoint:port/api/rest",
+	"secureBundleUrl": "http://s3-signed-bundle-url",
+	"secureBundleInternalUrl": "http://s3-signed-internal-bundle-url",
+	"secureBundleMigrationProxyUrl": "http://s3-signed-proxy-bundle-url",
+	"secureBundleMigrationProxyInternalUrl": "http://s3-signed-proxy-internal-bundle-url"
+}

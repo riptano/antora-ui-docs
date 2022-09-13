@@ -1,0 +1,11 @@
+= Monitor your databases
+:slug: monitoring-databases
+
+View connection details, performance metrics, and health details for databases in your organization.
+
+The *Databases* page provides an overview of all databases in your organization, including the databases you created and databases created by other team members.
+However, only a database creator can make changes to a database and view its connection details, which can be xref:connect:secure-connect-bundle.adoc[shared manually] with other team members.
+
+include::page$db/manage-db-summary.adoc[View databases, leveloffset=+1]
+
+include::page$db/manage-health.adoc[View health and metrics, leveloffset=+1]

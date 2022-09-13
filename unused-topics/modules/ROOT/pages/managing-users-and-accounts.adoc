@@ -1,0 +1,6 @@
+= Manage your organization
+:slug: managing-users-and-accounts
+
+Organization Administrators and some other roles can manage users within your organization by xref:inviting-users-to-join-an-organization.adoc[inviting users] and assigning xref:manage:org/managing-org.adoc#_manage_user_permissions[user permissions]. Admins can also create xref:manage-custom-user-roles.adoc[custom roles].
+
+xref:manage:org/manage-tokens.adoc[Application tokens] allow users to connect to the database via xref:api.adoc[APIs].

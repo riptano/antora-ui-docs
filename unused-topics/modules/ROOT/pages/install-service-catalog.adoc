@@ -1,0 +1,85 @@
+= Install Service Catalog
+:slug: install-service-catalog
+
+The https://www.openservicebrokerapi.org/[Open Service Broker API] provides a standard RESTful interface for provisioning services from a provided catalog, such as {astra_db} databases.
+
+[IMPORTANT]
+====
+The {astra_db} Service Broker supports only Kubernetes v1.13 and later.
+====
+
+== Prerequisites
+
+* Running Kubernetes cluster you can access via command line
+* https://helm.sh/docs/intro/install/[Helm package manager] for Kubernetes
+* https://svc-cat.io/docs/install/#installing-the-service-catalog-cli[Service Catalog command-line interface]
+* https://astra.datastax.com[{company} {astra_db}] account with xref:manage:org/managing-org.adoc#_authenticating_classic_databases[service account credentials]
+
+== Procedure
+
+. For each Kubernetes cluster, install the service catalog:
+
+[source, plaintext]
+----
+helm repo add service-catalog https://kubernetes-sigs.github.io/service-catalog
+helm repo update
+helm install catalog service-catalog/catalog --namespace catalog --create-namespace
+----
+
+[arabic, start=2]
+. Create a Kubernetes secret with the xref:manage:org/managing-org.adoc#_authenticating_classic_databases[service account information] from {astra_db}:
+
+[source, shell, subs="attributes+"]
+----
+kubectl create secret generic astra-creds \
+ --from-literal=username=unused \
+ --from-literal=password=`echo '<creds>'| base64 -w 0
+----
+
+Replace the `<service_account_credentials>` with the snippet of JSON from your {astra_db} service account.
+For example:
+
+[source, plaintext]
+----
+{
+  "clientId":"<clientId>",
+  "clientName":"<clientName>",
+  "clientSecret":"<clientSecret>"
+}
+----
+
+[arabic, start=3]
+. Register the broker via the ServiceBroker custom resource:
+
+[source, plaintext]
+----
+svcat register astra \
+  --url https://broker.astra.datastax.com/ \
+  --basic-secret astra-creds
+----
+
+The Service Catalog automatically queries for available services on {astra_db} and displays the available xref:manage:org/managing-org.adoc#_plan_selection[plan options]:
+
+[source, plaintext]
+----
+svcat marketplace
+----
+
+
+returns:
+
+[source, plaintext]
+----
+NAME    NAMESPACE       CLASS                   DESCRIPTION
++-----------+-----------+----------------+------------------------------------+
+A10       default     astra-database   6 vCPU, 24GB DRAM, 20GB
+                                    Storage
+A20       default     astra-database   12 vCPU, 48GB DRAM, 40GB
+                                    Storage
+...
+----
+
+[NOTE]
+====
+This result shows only a portion of the available {astra_db} tiers from the Service Catalog.
+====

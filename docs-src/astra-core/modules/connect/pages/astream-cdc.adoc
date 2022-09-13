@@ -1,0 +1,246 @@
+= CDC for {astra_db}
+
+CDC for {astra_db} automatically captures changes in real time, de-duplicates the changes, and streams the clean set of changed data into {astra_stream} where it can be processed by client applications or sent to downstream systems.
+
+{astra_stream} processes data changes via a Pulsar topic. By design, the {astra_stream} Change Data Capture (CDC) component is simple, with a 1:1 correspondence between the table and a single Pulsar topic.
+
+This doc will show you how to create a CDC connector for your {astra_db} deployment and send change data to an Elasticsearch sink.
+
+[NOTE]
+====
+Enabling CDC for {astra_db} will result in increased costs based on your {astra_stream} usage. See xref:manage:org/managing-org.adoc#pricing-and-billing[Pricing].
+====
+
+== Supported data structures
+
+The following https://docs.datastax.com/en/cql-oss/3.x/cql/cql_reference/cql_data_types_c.html[Cassandra CQL 3.x data types] (with the associated AVRO type or logical-type) are supported for CDC for {astra_db}:
+
+* ascii (string)
+* bigint (long)
+* blob (bytes)
+* boolean (boolean)
+* counter (counter)
+* date (date)
+* decimal (cql_decimal)
+* double (double)
+* float (float)
+* inet (string)
+* int (int)
+* smallint (int)
+* text (string)
+* timeuuid (uuid)
+* tinyint (int)
+* uuid (uuid)
+* varchar (string)
+* varint (cql_varint)
+
+Cassandra static columns are supported:
+
+* On row-level updates, static columns are included in the message value.
+* On partition-level updates, the clustering keys are null in the message key. The message value only has static columns on `INSERT`/`UPDATE` operations.
+
+For columns using data types that are not supported, the data types are omitted from the events sent to the data topic. If a row update contains both supported and unsupported data types, the event will include only columns with supported data types.
+
+=== AVRO interpretation
+
+{astra_db} keys are strings, while CDC produces AVRO messages which are structures. The conversion for some AVRO structures requires additional tooling that can result in unexpected output.
+
+The table below describes the conversion of AVRO logical types. The `record` type is a schema containing the listed fields.
+
+.AVRO complex types
+[cols="1,1,1,1"]
+|===
+|Name |AVRO type |Fields |Explanation
+
+|collections
+|array
+|lists, sets
+|Sets and Lists are treated as AVRO type `array`, with the attribute `items` containing the schema of the array's items.
+
+|decimal
+|record
+|BIG_INT, DECIMAL_SCALE
+|The Cassandra DECIMAL type is converted to a `record` with the `cql_decimal` logical type
+
+|duration
+|record
+|CQL_DURATION_MONTHS, CQL_DURATION_DAYS, CQL_DURATION_NANOSECONDS
+|The Cassandra DURATION type is converted to a `record` with the `cql_duration` logical type
+
+|maps
+|map
+|
+|The Cassandra MAP type is converted to the AVRO map type, but the keys are converted to strings. +
+For complex types, the key is represented in JSON.
+
+|===
+
+== Limitations
+
+CDC for {astra_db} has the following limitations:
+
+* Does not manage table truncates.
+* Does not sync data available before starting the CDC agent.
+* Does not replay logged batches.
+* Does not manage time-to-live.
+* Does not support range deletes.
+* CQL column names must not match a Pulsar primitive type name (ex: INT32).
+* Does not support multi-region.
+
+== Creating a tenant and a topic
+
+. In *astra.datastax.com*, select *Create Streaming*.
+. Enter the name for your new streaming tenant and select a provider.
++
+image::astream-create-tenant.png[Create new tenant]
+
+. Select *Create Tenant*.
+
+Use the default *persistent* and *non-partitioned* topic.
+
+[NOTE]
+====
+{astra_db} CDC can only be used in a region that supports both {astra_stream} and {astra_db}. See https://docs.datastax.com/en/astra-streaming/docs/astream-regions.html[Regions] for more information.
+====
+
+== Creating a table
+
+. In your https://docs.datastax.com/en/astra/docs/creating-your-astra-database.html[database], create a table with a primary key column:
++
+[source]
+----
+CREATE TABLE IF NOT EXISTS <keyspacename>.tbl1 (key text PRIMARY KEY, c1 text);
+----
+
+. Confirm you created your table:
++
+[source]
+----
+select * from <mykeyspace>.tbl1;
+----
++
+Results:
++
+image::astream-create-cdc-table.png[Create a CDC table]
+
+== Connecting to CDC for {astra_db}
+
+. Select the *CDC* tab in your database dashboard.
+. Select *Enable CDC*.
+. Complete the fields to connect CDC.
++
+image::astream-enable-cdc.png[Enable CDC]
+
+. Select *Enable CDC*.
+Once created, your CDC connector will appear:
+
+image::astream-create-cdc-confirmed.png[Confirm CDC Created]
+
+== Connecting Elasticsearch sink
+
+Once you have created your CDC connector, connect an Elasticsearch sink to it. DataStax recommends using the default {astra_db} settings.
+
+. Select *Add Elastic Search Sink* from the database CDC console to enforce the default settings.
++
+image::astream-connect-ecs-cdc.png[Connect ECS Sink]
+
+. Use your Elasticsearch deployment to complete the fields.
++
+To find your *Elasticsearch URL*, navigate to your deployment within the Elastic Common Schema (ECS).
+Copy the Elasticsearch endpoint to the *Elastic Search URL* field.
++
+image::astream-ecs-find-url.png[Find ECS URL]
+
+. Complete the remaining fields.
++
+Most values will auto-populate. These values are recommended:
++
+* `ignoreKey` as `false`
+* `nullValueAction` as `DELETE`
+* `schemaEnable` as `true`
++
+image::astream-ecs-sink-options.png[Connect ECS Sink]
+
+. When the fields are completed, select *Create*.
+
+If creation is successful, `<sink-name> created successfully` will print at the top of the screen. You can confirm your new sink was created in the *Sinks* tab.
+
+image::astream-sink-created-confirm.png[ECS Created]
+
+== Sending messages
+
+Let's process some changes with CDC.
+
+. Go to the CQL console.
+. Modify the table you created.
++
+[source]
+----
+INSERT INTO <keyspacename>.tbl1 (key,c1) VALUES ('32a','bob3123');
+INSERT INTO <keyspacename>.tbl1 (key,c1) VALUES ('32b','bob3123b');
+----
+
+. Confirm the changes you've made:
++
+[source]
+----
+select * from <keyspacename>.tbl1;
+----
++
+Results:
++
+image::astream-table-change.png[Table Changes]
+
+== Confirming ECS is receiving data
+
+To confirm ECS is receiving your CDC changes, use a `curl` request to your ECS deployment.
+
+. Get your index name from your ECS sink tab:
++
+image::astream-ecs-index.png[ECS Index]
+
+. Issue your `curl` request with your Elastic `username`, `password`, and `index name`:
+
++
+[source,curl]
+----
+curl  -u <username>:<password>  \
+   -XGET "https://asdev.es.westus2.azure.elastic-cloud.com:9243/<index_name>.tbl1/_search?pretty=true"  \
+   -H 'Content-Type: application/json'
+----
+
++
+[NOTE]
+====
+If you have a trial account, the username is `elastic`.
+====
+
+You will receive a JSON response with your changes to the index, which confirms {astra_stream} is sending your CDC changes to your ECS sink.
+
+[source,json]
+----
+{
+    "_index" : "index.tbl1",
+    "_type" : "_doc",
+    "_id" : "32a",
+    "_score" : 1.0,
+    "_source" : {
+        "c1" : "bob3123"
+    }
+}
+{
+    "_index" : "index.tbl1",
+    "_type" : "_doc",
+    "_id" : "32b",
+    "_score" : 1.0,
+    "_source" : {
+        "c1" : "bob3123b"
+    }
+}
+----
+
+
+== What's next?
+
+* https://docs.datastax.com/en/astra-streaming/docs/astream-faq.html[Browse the Astra Streaming FAQ.]
+* https://docs.datastax.com/en/astra-streaming/docs/astream-code-examples.html[Check out the Astra Streaming code examples.]

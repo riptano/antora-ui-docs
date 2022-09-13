@@ -1,0 +1,28 @@
+200 OK
+
+Example:
+
+{
+    "aws": { 
+      "access_key": "AKIAIOSFODNN7EXAMPLE", 
+      "secret_key": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY", 
+      "region": "us-east-1" 
+    }
+}
+
+Or one of the following:
+
+400 Bad request.
+403 The user is forbidden to perform the operation.
+404 The specified resource was not found.
+500 A server error occurred.
+
+{
+  "errors": [
+    {
+      "description": "The name of the environment must be provided",
+      "internalCode": "a1012",
+      "internalTxId": "103B-A018-3898-0ABF"
+    }
+  ]
+}

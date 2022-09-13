@@ -1,0 +1,137 @@
+= {company} Java driver
+:page-tag: driver,dev,astra-db,connect
+
+include::partial$driver-intro.adoc[Driver information]
+
+You add a repository and dependencies to the `pom.xml` file for your project to download the appropriate .jar files for the Java driver and make them available to your code. Additionally, you implement a `ConnectDatabase` class to initialize the DSE Java driver.
+
+== Prerequisites
+* https://maven.apache.org/download.cgi[Download] and https://maven.apache.org/install.html[install] Maven.
+
+include::partial$app_client_id_secret.adoc[]
+
+include::page$secure-connect-bundle.adoc[Secure connect bundle, leveloffset=+2]
+
+== Connecting Java driver
+. Navigate to the `pom.xml` file at the root of your Java project and open it for editing.
+
+[TIP]
+====
+For a complete `pom.xml` file, see the example pom.xml file below.
+====
+
+[arabic,start=2]
+. Add the {company} Java driver dependency to your `pom.xml` file, ensuring that the name of the dependency corresponds to the installed version:
+This dependency causes Maven to automatically download the appropriate .jar files found at the `url` specified in the `repository` for the DSE Java driver and make them available to your code.
+[source, text]
+----
+<!--Use the latest version from https://search.maven.org/artifact/com.datastax.oss/java-driver-core -->
+<dependency>
+  <groupId>com.datastax.oss</groupId>
+  <artifactId>java-driver-core</artifactId>
+  <version>4.14.1</version>
+</dependency>
+----
+
+[arabic, start=3]
+. Save and close your `pom.xml` file.
+. Initialize the {company} Java driver.
+. Create a `ConnectDatabase.java` file in the `/src/main/java` directory for your Java project.
+
+[source, shell, subs="attributes+"]
+----
+cd **javaProject**/src/main/java
+touch ConnectDatabase.java
+----
+
+[arabic, start=6]
+. Copy the following code for your {company} driver into the `ConnectDatabase.java` file.
+The following example implements a `ConnectDatabase` class to connect to your {astra_db} database, runs a CQL query, and prints the output to the console.
+
+[source,java]
+----
+import com.datastax.oss.driver.api.core.CqlSession;
+import com.datastax.oss.driver.api.core.cql.ResultSet;
+import com.datastax.oss.driver.api.core.cql.Row;
+import java.nio.file.Paths;
+
+public class ConnectDatabase {
+
+   public static void main(String[] args) {
+       // Create the CqlSession object:
+       try (CqlSession session = CqlSession.builder()
+           .withCloudSecureConnectBundle(Paths.get("/path/to/secure-connect-database_name.zip"))
+           .withAuthCredentials("clientId","clientSecret")
+           .withKeyspace("keyspace_name")
+           .build()) {
+           // Select the release_version from the system.local table:
+           ResultSet rs = session.execute("select release_version from system.local");
+           Row row = rs.one();
+           //Print the results of the CQL query to the console:
+           if (row != null) {
+               System.out.println(row.getString("release_version"));
+           } else {
+               System.out.println("An error occurred.");
+           }
+       }
+       System.exit(0);
+   }
+}
+----
+
+[arabic, start=7]
+. Make the following changes:
+  * Use the `withCloudSecureConnectBundle()` method to specify the path to the secure connect bundle for your {astra_db} database.
+  * Use the `withAuthCredentials()` method to specify the username and password for your database.
+  * Use the `withKeyspace()` method to specify the keyspace name for your database.
+
+[arabic, start=8]
+. Save and close the `ConnectDatabase.java` file.
+
+== Example pom.xml file
+You can use the following `pom.xml` file in your Java project to connect to your {astra_db} database. If you already have a `pom.xml` file for your Java project, copy only the repository and dependencies as indicated in the previous steps.
+
+[source, text]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>net.techne.web</groupId>
+    <artifactId>cloudTest</artifactId>
+    <version>1.0</version>
+    <packaging>jar</packaging>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <!--Use the latest version from https://search.maven.org/artifact/com.datastax.oss/java-driver-core -->
+        <java.driver.version>4.14.1</java.driver.version>
+    </properties>
+    <dependencies>
+        <!-- START-javaDriverDependencyCore -->
+        <dependency>
+            <groupId>com.datastax.oss</groupId>
+            <artifactId>java-driver-core</artifactId>
+            <version>${java.driver.version}</version>
+        </dependency>
+        <!-- END-javaDriverDependencyCore -->
+        <!-- START-javaDriverDependencyQuery -->
+        <dependency>
+            <groupId>com.datastax.oss</groupId>
+            <artifactId>java-driver-query-builder</artifactId>
+            <version>${java.driver.version}</version>
+        </dependency>
+        <!-- END-javaDriverDependencyQuery -->
+        <!-- START-javaDriverDependencyMapper -->
+        <dependency>
+            <groupId>com.datastax.oss</groupId>
+            <artifactId>java-driver-mapper-runtime</artifactId>
+            <version>${java.driver.version}</version>
+        </dependency>
+        <!-- END-javaDriverDependencyMapper -->
+    </dependencies>
+</project>
+----
+
+
+include::page$drivers/migrate-java.adoc[Migrating your Java driver, leveloffset=+2]

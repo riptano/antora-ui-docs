@@ -1,0 +1,16 @@
+// LLP: NEED TO RECONCILE WITH migrate-cplusplus.adoc
+
+= Migrate {company} drivers
+:slug: migrating-datastax-drivers-to-connect-to-astra-databases
+
+If you are using an existing version of a {company} driver, migrate to a version that is compatible with {company} {astra_db}.
+
+To migrate your {company} Apache Cassandra or {company} Enterprise (DSE) driver, follow the instructions to change any required dependencies and modify the connection code to use the new {astra_db} API.
+
+After migrating, follow the instructions to xref:connect:drivers/connect-drivers.adoc[connect to your Astra database using the {company} drivers].
+
+* xref:connect:drivers/migrate-cplusplus.adoc[Migrate C{pp} driver]
+* xref:connect:drivers/migrate-csharp.adoc[Migrate C# driver]
+* xref:connect:drivers/migrate-java.adoc[Migrate Java driver]
+* xref:connect:drivers/migrate-nodejs.adoc[Migrate Node.js driver]
+* xref:connect:drivers/migrate-python.adoc[Migrate Python driver]

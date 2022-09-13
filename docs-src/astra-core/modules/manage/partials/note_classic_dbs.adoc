@@ -1,0 +1,4 @@
+[NOTE]
+====
+If you are using an {astra_db} classic database that was created before 4 March 2021 and has not been migrated to the newest authentication, you cannot use application tokens for authentication. For more, see xref:plan:plan-options.adoc[Plan options] and xref:classic-authentication.adoc[Authentication for {classic} databases.]
+====

@@ -1,0 +1,49 @@
+= Google Cloud VPC peering
+:slug: using-gcp-vpc-peering
+:page-tag: dev,astra-db,connect
+
+By creating a virtual private cloud (VPC), you can connect your Google Cloud resources and {company} {astra_db} databases. VPC peering allows you to communicate across the VPCs.
+
+For more about VPC peering on {astra_db} databases hosted on Google Cloud, see https://cloud.google.com/vpc/docs/vpc-peering[VPC Network Peering overview].
+
+[NOTE]
+====
+VPC peering is available on only Classic C- and D-tier {astra_db} databases.
+====
+
+// include::partial$warning-classic-vpc-access-list.adoc[]
+
+
+== Prerequisites
+
+* Create a VPC in your Google Cloud account.
+* Create your {astra_db} database.
+
+See xref:manage:db/managing-db.adoc#_create_your_astra_db_database[Creating your {astra_db} database].
+
+== Procedure
+
+The procedure is a two-step process using {astra_ui} and the Google Cloud Console.
+
+=== {astra_db}
+
+. From your database *Overview*, select *Add Peering Connection*.
+. In *Add Peering Connection*, enter the Google Cloud project name in the *Project ID*.
+. Enter the *VPC Network Name* from the list of VPCs in the VPC dashboard of your Google Cloud account.
+For example, _default_.
+. Select *Initiate*.
+
+=== Google Cloud Console
+
+. Open your Google Cloud project.
+. In the left sidebar, navigate to *VPC Network*.
+. Open *VPC network peering*.
+. Select *Create Connection* and then *Continue*.
+. On the *Create peering connection* dialog, enter:
+
+ * A name for the connection you're creating
+ * Your VPN network  You may select _default_ from the list.
+ * Under *Peered VPC Network*, enable *In another project* and enter:
+    * **{astra_db} Project ID:** Found on your database page in **Network Peering**. For example, `esmrahul3x7as3xbcj2grtexarskq`.
+    * **VPC network name:** Found on your database page in **Network Peering**. For example, `dse-4240ebe6-72e1-4ea1-ac25-cc728d9fa9ff`.
+. Select *Initiate Peering*.

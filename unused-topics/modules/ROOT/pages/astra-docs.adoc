@@ -1,0 +1,18 @@
+= Astra documentation
+
+== {astra_db}
+{company} {astra_db} provides the ability to develop and deploy data-driven applications with a cloud-native service, without the hassles of database and infrastructure administration.
+{astra_db} allows you to create databases in minutes, with reduced complexity, fewer operational concerns, and an approachable entry point for developing your applications.
+By automating tuning and configuration, {astra_db} radically simplifies database and streaming operations.
+{astra_db} is a true database-as-a-service (DBaaS) offering that provides simplified cluster management with flexible pricing.
+
+For more {astra_db} documentation, see xref:index.adoc[What is Astra DB?]
+
+== Astra Streaming
+Astra Streaming, powered by the open source project Apache Pulsar, is a hosted pay-as-you-go cloud-native, distributed messaging and streaming platform.
+Pulsar has a concept of Tenants which is the top level administrative unit.
+A tenant has multiple namespaces for logical grouping of different applications.
+In each namespace you can create multiple topics to send and receive data.
+Your Astra Streaming account allows you to create multiple Pulsar tenants, namespaces and topics.
+
+For more Astra Streaming documentation, see link:https://docs.datastax.com/en/astra-streaming/docs/[What is DataStax Astra Streaming?]

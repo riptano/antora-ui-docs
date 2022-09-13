@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<!-- saved from url=(0085)file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Using the Astra DB Stargate GraphQL API (CQL-first) :: DataStax Astra Documentation</title>
+    <link rel="prev" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#using-the-astra-graphql-api.adoc">
+    <link rel="next" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-schema-first.html">
+    <meta name="generator" content="Antora 3.0.0-beta.2">
+    <link rel="stylesheet" href="./Using the Astra DB Stargate GraphQL API (CQL-first) __ DataStax Astra Documentation_files/site.css">
+
+<meta class="swiftype" name="version" data-type="string" content="doc">
+<meta class="swiftype" name="book" data-type="string" content="DataStax Astra DB Documentation">
+<meta class="swiftype" name="doc-name" data-type="string" content="astra">
+<meta class="swiftype" name="site-priority-for-Corporate" data-type="integer" content="60">
+
+    <link rel="icon" href="https://www.datastax.com/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a href="file:///astra-docs/astra">
+        <img height="56px" src="./Using the Astra DB Stargate GraphQL API (CQL-first) __ DataStax Astra Documentation_files/logo.svg">
+      </a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-end__group">
+          <form id="alg-search-form" class="ds-search-form" action="https://www.datastax.com/search" target="_blank" method="GET">
+                <div>
+                    <input id="alg-search-input" class="ds-datastax-search-input" type="text" name="query" placeholder="Search docs">
+                    <button id="alg-search-button" class="ds-search-button" type="submit" style="display: none"></button>
+                    <input id="dataset" type="hidden" name="dataset" value="docs">
+                </div>
+          </form>
+          <a class="navbar-item" href="file:///en/landing_page/doc/landing_page/current.html">Docs</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/index.html">DataStax Astra DB Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item toggler is-active is-current-path" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/getting-started.html">Getting Started</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2"></path>
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/gs-grant-user-access.html">Grant a user access</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/gs-load-data.html">Load and retrieve data in your database</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/gs-dsbulk.html">Load data with DSBulk</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/gs-drivers.html">Connect a driver</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/gs-katacoda.html">Use Katacoda scenarios to start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/sample-apps.html">Build sample apps</a>
+  </li>
+  <li class="nav-item toggler" data-depth="2">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/integrations.html">Use integrations</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2"></path>
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/integration-datagrip.html">Connecting to DataGrip</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/integration-strapi.html">Connecting to Strapi using a hook</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#db-integration-datagrip.adoc">Connect with DataGrip</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/db-integration-dbschema.html">Connect with DBSchema</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/db-integration-janusgraph.html">Connect with JanusGraph</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler is-active is-current-path" data-depth="1">
+    <span class="nav-text">Guides &amp; Examples</span>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2"></path>
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item toggler" data-depth="2">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/index.html">Overview</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2"></path>
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/release-notes.html">Release notes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/astra-faq.html">Astra DB FAQs</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/db-glossary.html">Astra DB glossary</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/get-support.html">Get support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/planning.html">Planning</a>
+  </li>
+  <li class="nav-item toggler" data-depth="2">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#manage:managing.adoc">Managing</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2"></path>
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/manage/org/managing-org.html">Managing your organization</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/manage/db/managing-db.html">Managing your Astra DB database</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/manage/devops/devops-api.html">Managing with DevOps API</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#manage-astra-service-broker.adoc">Astra Service Broker</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/secure/securing.html">Securing</a>
+  </li>
+  <li class="nav-item toggler" data-depth="2">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/connect/connecting.html">Connecting</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2"></path>
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/connect/private_endpoints/connect-private-endpoints.html">Connecting private endpoints</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/connect/private_endpoints/connect-vpc-peering.html">Connecting to a VPC</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/connect/cql/connect-cqlsh.html">Connecting CQL console</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/connect/drivers/connect-cplusplus.html">Connecting C++ driver</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/connect/drivers/connect-csharp.html">Connecting C# driver</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/connect/drivers/connect-java.html">Connecting Java driver</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/connect/drivers/connect-nodejs.html">Connecting Node.js driver</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/connect/drivers/connect-python.html">Connecting Python driver</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/connect/drivers/legacy-drivers.html">Connecting Legacy drivers</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="2">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/dev-guide.html">Developing</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2"></path>
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/dev-with-rest-api.html">Developing the REST API</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/dev-with-doc-api.html">Developing the Document API</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/dev-with-graphql-api.html">Developing the GraphQL API</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="2">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#getting-started-with-datastax-astra.adoc">REST API</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2"></path>
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#creating-a-table-in-your-keyspace.adoc">Create a table in your keyspace</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#creating-an-index-for-a-table.adoc">Create an index for a table</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#adding-columns-to-your-table.adoc">Add columns to your table</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#deleting-columns-in-your-table.adoc">Delete columns in your table</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#dropping-an-index.adoc">Drop an index in your keyspace</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#dropping-a-table.adoc">Drop a table in your keyspace</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#adding-rows-to-your-table.adoc">Add rows to your table</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#retrieving-rows-from-your-table.adoc">Retrieve rows from your table</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#updating-rows-in-your-table.adoc">Update rows in your table</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#deleting-rows-in-your-table.adoc">Delete rows in your table</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#astra-rest-client.adoc">Node.js REST Client</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler is-active is-current-path" data-depth="2">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#using-the-astra-graphql-api.adoc">GraphQL API</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2"></path>
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item is-current-page is-active" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html">Using the GraphQL API (CQL-first)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-schema-first.html">Using the GraphQL API (Schema-first)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/apollo-federation.html">Apollo data federation for GraphQL schema-first</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="2">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#document-api.adoc">Document API</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2"></path>
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#check-for-namespace.adoc">Checking for namespace</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#write-documents.adoc">Writing documents</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#read-documents.adoc">Reading documents</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#update-documents.adoc">Updating documents</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#delete-documents.adoc">Deleting documents and collections</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#astra-collection-client.adoc">Node.js Collection Client</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="2">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/gRPC.html">gRPC API</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2"></path>
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/gRPC-using.html">Using Stargate gRPC API clients</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="2">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#connecting-to-astra-databases-using-datastax-drivers.adoc">Drivers for Astra DB</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2"></path>
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#obtaining-database-credentials.adoc">Get secure connect bundle</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/dev-upload-data.html">Uploading data to your database</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/develop/dev-sai.html">Querying quickly with Storage-Attached Indexing (SAI)</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item toggler" data-depth="1">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/api.html">APIs</a>
+    <button class="nav-item-toggle">
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2"></path>
+      </svg>
+    </button>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text"><a href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/_attachments/devopsv2.html" target="_blank" rel="noopener">DevOps REST API v2</a></span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text"><a href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/_attachments/docv2.html" target="_blank" rel="noopener">Stargate Document API v2</a></span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text"><a href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/_attachments/restv2.html" target="_blank" rel="noopener">Stargate REST API v2</a></span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#using-the-astra-graphql-api.adoc">Stargate GraphQL</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/gRPC.html">Stargate gRPC</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#tooling.adoc">Tooling Resources</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">DataStax Astra DB Documentation</span>
+    <span class="version">Latest</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">DataStax Astra DB Documentation</span>
+      <ul class="versions">
+        <li class="version is-current">
+          <a href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/index.html">Latest</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/index.html">DataStax Astra DB Documentation</a></li>
+    <li>Guides &amp; Examples</li>
+    <li><a href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#using-the-astra-graphql-api.adoc">GraphQL API</a></li>
+    <li><a href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html">Using the GraphQL API (CQL-first)</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"></div>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Using the Astra DB Stargate GraphQL API (CQL-first)</h1>
+<aside class="toc embedded"><div class="toc-menu"><h3>Contents</h3><ul><li data-level="1"><a href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_prerequisites">Prerequisites</a></li><li data-level="1"><a href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_create_or_delete_schema">Create or delete schema</a></li><li data-level="2"><a href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_creating_a_user_defined_type_udt">Creating a user-defined type (UDT)</a></li><li data-level="2"><a href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_create_an_index">Create an index</a></li><li data-level="2"><a href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_dropping_user_defined_types_udts_tables_columns_or_indexes">Dropping user-defined types (UDTs), tables, columns or indexes</a></li><li data-level="1"><a href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_interact_with_data_stored_in_tables">Interact with data stored in tables</a></li></ul></div></aside><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>DataStax Astra DB uses the Stargate GraphQL API to easily modify and query your
+table data using GraphQL types, queries, and mutations.</p>
+</div>
+<div class="paragraph">
+<p>The CQL-first approach directly translates CQL tables into GraphQL types, mutations, and queries.
+The GraphQL schema is automatically generated from the keyspace, tables, and columns
+defined, but no customization is allowed.
+A standard set of mutations and queries are produced for searching and modifying the table data.
+If you are familiar with Cassandra, you might prefer this approach.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prerequisites"><a class="anchor" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_prerequisites"></a><a class="link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_prerequisites">Prerequisites</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To use Stargate with Astra DB you need to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Register for <a href="https://astra.datastax.com/" target="_blank" rel="noopener">Astra DB</a>.</p>
+</li>
+<li>
+<p>Create a database after you log into your Astra account.</p>
+</li>
+<li>
+<p><a href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/manage/org/manage-tokens.html" class="xref page">Generate an application token</a> to use the GraphQL Playground and cURL.</p>
+</li>
+<li>
+<p>Run <a href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#using-the-astra-graphql-api.adoc#_using_the_graphql_playground" class="xref unresolved">GraphQL Playground</a> to deploy schema,
+and execute mutations and queries.
+<a href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/develop/api-graphql/graphql-creating-table.html" class="xref page">GraphQL Playground</a> to deploy schema,</p>
+</li>
+<li>
+<p>Optional: <code>cURL</code> to run GraphQL queries from command-line.</p>
+</li>
+<li>
+<p>Optional: Postman collections if you wish to execute mutations and queries in
+Postman.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_or_delete_schema"><a class="anchor" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_create_or_delete_schema"></a><a class="link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_create_or_delete_schema">Create or delete schema</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_creating_a_user_defined_type_udt"><a class="anchor" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_creating_a_user_defined_type_udt"></a><a class="link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_creating_a_user_defined_type_udt">Creating a user-defined type (UDT)</a></h3>
+<div class="paragraph">
+<p>User-defined types (UDTs) can be created as GraphQL object types.
+UDTs are optional, but if you wish to use a UDT in another object type definition,
+you’ll want to create the UDT first.
+Once created, you can include the type in the schema deployed via the GraphQL playground.</p>
+</div>
+<div class="sect3">
+<h4 id="_prerequisites_2"><a class="anchor" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_prerequisites_2"></a><a class="link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_prerequisites_2">Prerequisites</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/manage/org/manage-tokens.html" class="xref page">Get an application token</a>.</p>
+</li>
+<li>
+<p>Create a keyspace using the DataStax Astra DB dashboard.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Here are two examples that create a UDT called <code>Address</code> that includes a street, city, state, and zipcode,
+and a UDT called <code>Review</code> that includes a book title, comment, rating and review data.</p>
+</div>
+<div class="tabset">
+<div class="ulist tabs">
+<ul>
+<li class="is-active">
+<p><a id="tabset1_address-udt"></a>Address UDT</p>
+</li>
+<li>
+<p><a id="tabset1_review-udt"></a>Review UDT</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane is-active" aria-labelledby="tabset1_address-udt">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">Unresolved include directive in modules/ROOT/pages/creating-a-udt-in-your-keyspace-graphql-first.adoc - include::example$graphql/1createUDTAddress.graphql[]</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset1_review-udt">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">Unresolved include directive in modules/ROOT/pages/creating-a-udt-in-your-keyspace-graphql-first.adoc - include::example$graphql/1createUDTReview.graphql[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Directives in example:</p>
+</div>
+<div class="colist arabic">
+<table>
+<tbody><tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <code>@cql_entity(target: UDT)</code> denotes that the type is stored as a user-defined type (UDT)
+in the underlying database table.</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>Unresolved include directive in modules/ROOT/pages/graphql-using-cql-first.adoc - include::page$creating-a-table-in-your-keyspace-using-graphql.adoc[]</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_create_an_index"><a class="anchor" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_create_an_index"></a><a class="link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_create_an_index">Create an index</a></h3>
+<div class="sect3">
+<h4 id="_prerequisites_3"><a class="anchor" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_prerequisites_3"></a><a class="link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_prerequisites_3">Prerequisites</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/manage/org/manage-tokens.html" class="xref page">Get an application token</a>.</p>
+</li>
+<li>
+<p>Create a keyspace using the DataStax Astra DB dashboard.</p>
+</li>
+<li>
+<p><a href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_creating_a_table_in_your_keyspace_using_graphql">Create a table</a>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Use the <a href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#manage-tokens.adoc" class="xref unresolved">application token</a> you generated
+to create schema in your keyspace using the GraphQL playground.</p>
+</div>
+<div class="paragraph">
+<p>Tables can contain partition keys and clustering keys, both of which define the
+primary key. A table can also include non-primary keys.</p>
+</div>
+<div class="paragraph">
+<p>If you wish to create a table query that uses anything other than the partition key
+to define which row or rows are to be retrieved, a column index must be created
+on each column in order to read the data.</p>
+</div>
+<div class="paragraph">
+<p>Currently, those indexes can be created with
+<a href="https://cassandra.apache.org/doc/latest/cql/indexes.html#create-index">CQL</a>
+or GraphQL.</p>
+</div>
+<div class="paragraph">
+<p>Use the <a href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/manage/org/manage-tokens.html" class="xref page">application token</a> you generated
+to create schema in your keyspace using the GraphQL playground.</p>
+</div>
+<div class="paragraph">
+<p>You can create an index using a mutation in <code>/graphql-schema</code>.
+In the following example, three indexes are created for the tables <code>book</code> and <code>reader</code>.
+The table columns for these indexes are created are <code>author</code>, <code>birthdate</code>, and <code>email</code>.</p>
+</div>
+<div class="paragraph">
+<p>An index name can be defined, such as <code>author_idx</code> in this example.
+An additional option, <code>indexType</code> can be defined to use SAI indexes if desired.</p>
+</div>
+<div class="tabset">
+<div class="ulist tabs">
+<ul>
+<li class="is-active">
+<p><a id="tabset2_graphql-mutation"></a>graphQL mutation</p>
+</li>
+<li>
+<p><a id="tabset2_curl-command"></a>cURL command</p>
+</li>
+<li>
+<p><a id="tabset2_result"></a>Result</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane is-active" aria-labelledby="tabset2_graphql-mutation">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">Unresolved include directive in modules/ROOT/pages/creating-indexes-graphql.adoc - include::example$graphql/createIndexes.graphql[]</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset2_curl-command">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">Unresolved include directive in modules/ROOT/pages/creating-indexes-graphql.adoc - include::example$graphql/curl_createIndexes.sh[]</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset2_result">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">Unresolved include directive in modules/ROOT/pages/creating-indexes-graphql.adoc - include::example$result/gql_createIndexes.result[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Here is an additional example, which creates indexes that could be used in the REST API examples:</p>
+</div>
+<div class="tabset">
+<div class="ulist tabs">
+<ul>
+<li class="is-active">
+<p><a id="tabset3_curl-command"></a>cURL command</p>
+</li>
+<li>
+<p><a id="tabset3_cql-command"></a>CQL command</p>
+</li>
+<li>
+<p><a id="tabset3_result"></a>Result</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane is-active" aria-labelledby="tabset3_curl-command">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">Unresolved include directive in modules/ROOT/pages/creating-indexes-graphql.adoc - include::example$rest/curl_createIndexes_gql_astra.sh[]</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset3_cql-command">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-cql hljs" data-lang="cql">Unresolved include directive in modules/ROOT/pages/creating-indexes-graphql.adoc - include::example$cql/create_index_set.cql[]
+Unresolved include directive in modules/ROOT/pages/creating-indexes-graphql.adoc - include::example$cql/create_index_list.cql[]
+Unresolved include directive in modules/ROOT/pages/creating-indexes-graphql.adoc - include::example$cql/create_index_map.cql[]
+Unresolved include directive in modules/ROOT/pages/creating-indexes-graphql.adoc - include::example$cql/create_index_tuple.cql[]</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset3_result">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">Unresolved include directive in modules/ROOT/pages/creating-indexes-graphql.adoc - include::example$result/rest_createIndexes.result[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The CQL commands for creating these indexes is included here for reference.
+The <code>cqlsh</code> tool can be used to create the indexes if desired.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_dropping_user_defined_types_udts_tables_columns_or_indexes"><a class="anchor" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_dropping_user_defined_types_udts_tables_columns_or_indexes"></a><a class="link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_dropping_user_defined_types_udts_tables_columns_or_indexes">Dropping user-defined types (UDTs), tables, columns or indexes</a></h3>
+<div class="sect3">
+<h4 id="_prerequisites_4"><a class="anchor" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_prerequisites_4"></a><a class="link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_prerequisites_4">Prerequisites</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/manage/org/manage-tokens.html" class="xref page">Get an application token</a>.</p>
+</li>
+<li>
+<p>Create a keyspace using the DataStax Astra DB dashboard.</p>
+</li>
+<li>
+<p><em>Optional</em> <a href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_creating_a_user_defined_type_udt_in_your_keyspace_using_graphql">Creating UDTs</a>.</p>
+</li>
+<li>
+<p><a href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_creating_a_table_in_your_keyspace_using_graphql">Creating a table</a>.</p>
+</li>
+<li>
+<p><em>Optional</em> <a href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_create_an_index">Creating an index</a>.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_dropping_a_type"><a class="anchor" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_dropping_a_type"></a><a class="link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_dropping_a_type">Dropping a type</a></h4>
+<div class="paragraph">
+<p>You can delete a type. All tables that use the UDT must first be deleted.</p>
+</div>
+<div class="tabset">
+<div class="ulist tabs">
+<ul>
+<li class="is-active">
+<p><a id="tabset4_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset4_result"></a>Result</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane is-active" aria-labelledby="tabset4_graphql-command">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext"># drop a UDT
+mutation dropType {
+  dropType(keyspaceName:"library", typeName:"address_type", ifExists:true)
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset4_result">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
+  "data": {
+    "dropType": true
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_dropping_a_table"><a class="anchor" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_dropping_a_table"></a><a class="link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_dropping_a_table">Dropping a table</a></h4>
+<div class="paragraph">
+<p>You can delete a table. All data will be deleted along with the table schema.</p>
+</div>
+<div class="tabset">
+<div class="ulist tabs">
+<ul>
+<li class="is-active">
+<p><a id="tabset5_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset5_curl-command"></a>cURL command</p>
+</li>
+<li>
+<p><a id="tabset5_result"></a>Result</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane is-active" aria-labelledby="tabset5_graphql-command">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"><span class="hljs-meta">#</span><span class="bash"> drop a table</span>
+mutation dropTableBook {
+  dropTable(keyspaceName:"library",
+    tableName:"article")
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset5_curl-command">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -sL --request POST --url https://$ASTRA_CLUSTER_ID-$ASTRA_REGION.apps.astra.datastax.com/api/graphql-schema \
+--header "X-Cassandra-Token: $ASTRA_DB_APPLICATION_TOKEN" \
+--header 'Content-Type: application/json' \
+--data-raw '{"query":"mutation dropTableArticle {\n  dropTable(keyspaceName:\"library\",\n    tableName:\"article\")\n}","variables":{}}'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset5_result">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
+  "data": {
+    "dropTable": true
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_if_exists_option"><a class="anchor" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_if_exists_option"></a><a class="link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_if_exists_option">IF EXISTS option</a></h5>
+<div class="paragraph">
+<p>You can delete a table after checking that it exists with the <code>ifExists</code> option.
+All data will be deleted along with the table schema.</p>
+</div>
+<div class="tabset">
+<div class="ulist tabs">
+<ul>
+<li class="is-active">
+<p><a id="tabset6_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset6_curl-command"></a>cURL command</p>
+</li>
+<li>
+<p><a id="tabset6_result"></a>Result</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane is-active" aria-labelledby="tabset6_graphql-command">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"><span class="hljs-meta">#</span><span class="bash"> drop a table <span class="hljs-keyword">if</span> it exists</span>
+mutation dropTableIfExists {
+  dropTable(keyspaceName:"library",
+    tableName:"magazine",
+  ifExists: true)
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset6_curl-command">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -sL --request POST --url https://$ASTRA_CLUSTER_ID-$ASTRA_REGION.apps.astra.datastax.com/api/graphql-schema \
+--header "X-Cassandra-Token: $ASTRA_DB_APPLICATION_TOKEN" \
+--header 'Content-Type: application/json' \
+--data-raw '{"query":"mutation dropTableIfExists {\n  dropTable(keyspaceName:\"library\",\n    tableName:\"magazine\",\n  ifExists: true)\n}","variables":{}}'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset6_result">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
+  "data": {
+    "dropTable": true
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_dropping_columns_from_table_schema"><a class="anchor" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_dropping_columns_from_table_schema"></a><a class="link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_dropping_columns_from_table_schema">Dropping columns from table schema</a></h4>
+<div class="paragraph">
+<p>If you find an attribute is no longer required in a table, you can remove a column.
+All column data will be deleted along with the column schema.</p>
+</div>
+<div class="tabset">
+<div class="ulist tabs">
+<ul>
+<li class="is-active">
+<p><a id="tabset7_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset7_curl-command"></a>cURL command</p>
+</li>
+<li>
+<p><a id="tabset7_result"></a>Result</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane is-active" aria-labelledby="tabset7_graphql-command">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"><span class="hljs-meta">#</span><span class="bash"> drop a column format from a table</span>
+mutation dropColumnFormat {
+    alterTableDrop(
+    keyspaceName:"library",
+    tableName:"book",
+    toDrop:["format"]
+  )
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset7_curl-command">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -sL --request POST --url https://$ASTRA_CLUSTER_ID-$ASTRA_REGION.apps.astra.datastax.com/api/graphql-schema \
+--header "X-Cassandra-Token: $ASTRA_DB_APPLICATION_TOKEN" \
+--header 'Content-Type: application/json' \
+--data-raw '{"query":"mutation dropColumnFormat {\n    alterTableDrop(\n    keyspaceName:\"library\",\n    tableName:\"book\",\n    toDrop:[\"format\"]\n  )\n}","variables":{}}'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset7_result">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
+  "data": {
+    "alterTableDrop": true
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_dropping_an_index_from_table_schema"><a class="anchor" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_dropping_an_index_from_table_schema"></a><a class="link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_dropping_an_index_from_table_schema">Dropping an index from table schema</a></h4>
+<div class="paragraph">
+<p>If you find an index is no longer required on a table column, or you need to change the index,
+you can remove it.
+All index data will be deleted along with the index schema.</p>
+</div>
+<div class="tabset">
+<div class="ulist tabs">
+<ul>
+<li class="is-active">
+<p><a id="tabset8_graphql-command"></a>graphQL command</p>
+</li>
+<li>
+<p><a id="tabset8_curl-command"></a>cURL command</p>
+</li>
+<li>
+<p><a id="tabset8_result"></a>Result</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane is-active" aria-labelledby="tabset8_graphql-command">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mutation dropIndexBdate {
+
+  reader: dropIndex(
+      keyspaceName:"library",
+      indexName:"reader_bdate_idx"
+  )
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset8_curl-command">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --location --request POST 'https://8319febd-e7cf-4595-81e3-34f45d332d2a-us-east1.apps.astra.datastax.com/api/graphql-schema' \
+--header 'X-Cassandra-Token: AstraCS:txZMMdsloiGKPZhosGAnMsHY:0d54c888f49f4c5f3201a057c5e7124c30fa573a687fd16f23cb9c98167c26c8' \
+--header 'Content-Type: application/json' \
+--data-raw '{"query":"mutation dropIndexBdate {\n\n  reader: dropIndex(\n      keyspaceName:\"library\",\n      indexName:\"reader_bdate_idx\"\n  )\n}","variables":{}}'</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset8_result">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">{
+  "data": {
+    "reader": true
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_interact_with_data_stored_in_tables"><a class="anchor" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_interact_with_data_stored_in_tables"></a><a class="link" href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_interact_with_data_stored_in_tables">Interact with data stored in tables</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Unresolved include directive in modules/ROOT/pages/graphql-using-cql-first.adoc - include::page$adding-rows-in-your-table-using-graphql.adoc[]</p>
+</div>
+<div class="paragraph">
+<p>Unresolved include directive in modules/ROOT/pages/graphql-using-cql-first.adoc - include::page$retrieving-rows-in-your-table-using-graphql.adoc[]</p>
+</div>
+<div class="paragraph">
+<p>Unresolved include directive in modules/ROOT/pages/graphql-using-cql-first.adoc - include::page$updating-rows-in-your-table-using-graphql.adoc[]</p>
+</div>
+<div class="paragraph">
+<p>Unresolved include directive in modules/ROOT/pages/graphql-using-cql-first.adoc - include::page$deleting-rows-in-your-table-using-graphql.adoc[]</p>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#using-the-astra-graphql-api.adoc">GraphQL API</a></span>
+  <span class="next"><a href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-schema-first.html">Using the GraphQL API (Schema-first)</a></span>
+</nav>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"><h3>Contents</h3><ul><li data-level="1"><a href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_prerequisites">Prerequisites</a></li><li data-level="1"><a href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_create_or_delete_schema">Create or delete schema</a></li><li data-level="2"><a href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_creating_a_user_defined_type_udt">Creating a user-defined type (UDT)</a></li><li data-level="2"><a href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_create_an_index" class="">Create an index</a></li><li data-level="2"><a href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_dropping_user_defined_types_udts_tables_columns_or_indexes" class="">Dropping user-defined types (UDTs), tables, columns or indexes</a></li><li data-level="1"><a href="file:///Users/irisrogers/dstx/astra-docs/build/site/docs/graphql-using-cql-first.html#_interact_with_data_stored_in_tables" class="is-active">Interact with data stored in tables</a></li></ul></div>
+</aside>
+  </div>
+</main></div>
+<footer class="footer">
+  <div class="footer-row">
+    <div class="footer__notice align-items-center row">
+      <div class="order-1 order-lg-0 col-lg col-12">
+        <p class="small mb-0">
+          © 2022 DataStax |
+          <a href="https://www.datastax.com/legal/datastax-website-privacy-policy">Privacy Policy</a> |
+          <a href="https://www.datastax.com/legal/datastax-website-terms-use">Terms of Use</a>
+              <!-- UNCOMMENT IF USING ONETRUST FOR COOKIES
+                <span><a href="#" id="ot-sdk-btn" class="ot-sdk-show-settings">Do Not Sell My Personal Information</a></span>
+              -->
+        </p>
+      </div>
+    <div class="text-center text-lg-left mb-5 mb-lg-0 col-lg-auto col-12">
+        <a class="ml-1" href="https://www.facebook.com/datastax" target="_blank" rel="noreferrer"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTMyIDBIMHYzMS42NWgxNy4wOTVWMTkuNDM2aC00LjE4MlYxNC42Mmg0LjE2di0zLjUxNWMwLTQuMDkzIDIuNTItNi4zMiA2LjIwOS02LjMyYTM1LjI3IDM1LjI3IDAgMDEzLjc1LjIxMnY0LjI3aC0yLjU0OWMtMi4wMDQgMC0yLjM5MS45MzgtMi4zOTEgMi4zMnYzLjA1NWg0LjhsLS42MjMgNC43OTJoLTQuMTc3VjMxLjY1SDMyVjB6IiBmaWxsPSIjMUU3MUQ0Ii8+PC9zdmc+" alt="Facebook logo" loading="lazy"></a>
+        <a class="ml-1" href="https://twitter.com/datastax" target="_blank" rel="noreferrer"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTMyLjAwMSAzMS42NWgtMzJWMGgzMnYzMS42NXptLTE5LjcxMi03Ljc4NWM3LjU0NCAwIDExLjY3Mi02LjE4OCAxMS42NzItMTEuNTQ1IDAtLjE3NCAwLS4zNDgtLjAwOC0uNTIyLjgtLjU3IDEuNDk2LTEuMjkgMi4wNDgtMi4xMDVhOC4zODcgOC4zODcgMCAwMS0yLjM2LjY0MSA0LjA5IDQuMDkgMCAwMDEuODA4LTIuMjQ3IDguMjExIDguMjExIDAgMDEtMi42MDguOTgxIDQuMTE2IDQuMTE2IDAgMDAtMi45OTItMS4yODJjLTIuMjY0IDAtNC4xMDQgMS44Mi00LjEwNCA0LjA2IDAgLjMxNi4wNC42MjQuMTA0LjkyNUExMS42OTIgMTEuNjkyIDAgMDE3LjM5MyA4LjUzYTQuMDI0IDQuMDI0IDAgMDAtLjU1MiAyLjA0MSA0LjA2IDQuMDYgMCAwMDEuODI0IDMuMzggNC4xODQgNC4xODQgMCAwMS0xLjg1Ni0uNTA3di4wNTVjMCAxLjk2MiAxLjQxNiAzLjYwOCAzLjI4OCAzLjk4YTQuMDQgNC4wNCAwIDAxLTEuMDguMTQzYy0uMjY0IDAtLjUyLS4wMjQtLjc2OC0uMDcyYTQuMDk3IDQuMDk3IDAgMDAzLjgzMiAyLjgxNyA4LjI4NSA4LjI4NSAwIDAxLTUuMDk2IDEuNzQxYy0uMzI4IDAtLjY1Ni0uMDE2LS45NzYtLjA1NWExMS43NjMgMTEuNzYzIDAgMDA2LjI4IDEuODEyeiIgZmlsbD0iIzFFNzFENCIvPjwvc3ZnPg==" alt="Twitter logo" loading="lazy"></a>
+        <a class="ml-1" href="https://www.linkedin.com/company/datastax/" target="_blank" rel="noreferrer"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTS4wMDEgMHYzMS42NWgzMlYwaC0zMnptOS40ODEgMjYuOTYyaC00Ljc0VjExLjg0aDQuNzR2MTUuMTIyek03LjExMiA5Ljc4OGEyLjcwNCAyLjcwNCAwIDAxLTIuNzI2LTIuNjk2YzAtMS41MjQgMS4yNDUtMi42OTYgMi43MjYtMi42OTYgMS41NCAwIDIuNzI2IDEuMjMgMi43MjYgMi42OTYuMDYgMS40NjUtMS4xODUgMi42OTYtMi43MjYgMi42OTZ6TTI3LjI2IDI2Ljk2MmgtNC43NHYtNy4zMjdjMC0xLjc1OC0uMDYtMy45ODUtMi40OS0zLjk4NS0yLjQ4OCAwLTIuODQ0IDEuOTM0LTIuODQ0IDMuODY4djcuNDQ0aC00Ljc0VjExLjg0aDQuNTYydjIuMDUxaC4wNmMuNjUxLTEuMTcyIDIuMTkyLTIuNDYxIDQuNTAzLTIuNDYxIDQuOCAwIDUuNjkgMy4xMDYgNS42OSA3LjIwOXY4LjMyM3oiIGZpbGw9IiMxRTcxRDQiLz48L3N2Zz4=" alt="LinkedIn logo" loading="lazy"></a>
+        <a class="ml-1" href="https://github.com/datastax/" target="_blank" rel="noreferrer"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zMiAwSDB2MzEuNjVoMzJWMHpNNCAxNS44MDVDNCA5LjI4NyA5LjM1OCA0IDE1Ljk2MyA0IDIyLjU3IDQgMjcuOTI3IDkuMjg3IDI4IDE1LjgwNWMwIDUuMjE1LTMuMzc2IDkuNjMyLTguMTQ3IDExLjIyNi0uNTg3LjA3Mi0uODA3LS4yOS0uODA3LS41OHYtMy4yNTljMC0xLjA4Ni0uMzY3LTEuODEtLjgwOC0yLjE3MiAyLjY0My0uMjkgNS40MzItMS4yMzIgNS40MzItNS43OTRhNC42NSA0LjY1IDAgMDAtMS4yNDgtMy4xODdsLjAyMy0uMDg1YTQuNDQgNC40NCAwIDAwLS4xNy0zLjAzcy0xLjAyNy0uMjg5LTMuMzAyIDEuMjMyYTEzLjY4MSAxMy42ODEgMCAwMC0zLjAxLS4zNjJjLTEuMDI3IDAtMi4wNTUuMDcyLTMuMDA5LjM2Mi0yLjI3NS0xLjUyLTMuMzAzLTEuMjMxLTMuMzAzLTEuMjMxLS42NDggMS41NjQtLjIzNSAyLjc4LS4xNSAzLjAyOSAwIC4wMDQuMDAyLjAwOS4wMDQuMDEzLS44MDguODY5LTEuMjQ4IDEuODgzLTEuMjQ4IDMuMTg2IDAgNC41NjMgMi43ODkgNS41NzcgNS40MzEgNS44NjctLjI5My4yOS0uNjYuNzk2LS43MzQgMS41OTMtLjY2LjI5LTIuMzQ5Ljc5Ny0zLjQ1LTEuMDE0IDAgMC0uNjYtMS4xNTktMS44MzQtMS4yMzEgMCAwLTEuMTc1IDAtLjA3NC43MjQgMCAwIC44MDguMzYyIDEuMzIxIDEuNzM4IDAgMCAuNzM0IDIuMzE4IDQuMDM3IDEuNTkzdjIuMDI4YzAgLjI5LS4yMi42NTItLjgwNy41OEM3LjQ1IDI1LjQzNyA0IDIxLjAyIDQgMTUuODA1eiIgZmlsbD0iIzFFNzFENCIvPjwvc3ZnPg==" alt="GitHub logo" loading="lazy"></a>
+    </div>
+   </div>
+  </div>
+</footer>
+<script type="text/javascript" async="" src="./Using the Astra DB Stargate GraphQL API (CQL-first) __ DataStax Astra Documentation_files/bpbxnnmr"></script><script src="./Using the Astra DB Stargate GraphQL API (CQL-first) __ DataStax Astra Documentation_files/site.js"></script>
+<script async="" src="./Using the Astra DB Stargate GraphQL API (CQL-first) __ DataStax Astra Documentation_files/highlight.js"></script>
+<script>window.intercomSettings = {app_id: "bpbxnnmr"};</script>
+
+<script>// We pre-filled your app ID in the widget URL: 'https://widget.intercom.io/widget/bpbxnnmr'
+    (function(){
+        var w=window;
+        var ic=w.Intercom;
+        if(typeof ic==="function"){
+            ic('reattach_activator');
+            ic('update',w.intercomSettings);
+        }else{
+            var d=document;
+            var i=function(){
+                i.c(arguments);
+            };
+            i.q=[];
+            i.c=function(args){
+                i.q.push(args);
+            };
+            w.Intercom=i;
+            var l=function(){
+                var s=d.createElement('script');
+                s.type='text/javascript';
+                s.async=true;
+                s.src='https://widget.intercom.io/widget/bpbxnnmr';
+                var x=d.getElementsByTagName('script')[0];
+                x.parentNode.insertBefore(s,x);
+            };
+            if(w.attachEvent){
+                w.attachEvent('onload',l);
+            }else{
+                w.addEventListener('load',l,false);
+            }
+        }
+    })();
+</script>
+  
+
+<iframe id="intercom-frame" style="position: absolute !important; opacity: 0 !important; width: 1px !important; height: 1px !important; top: 0 !important; left: 0 !important; border: none !important; display: block !important; z-index: -1 !important; pointer-events: none;" aria-hidden="true" tabindex="-1" title="Intercom" src="./Using the Astra DB Stargate GraphQL API (CQL-first) __ DataStax Astra Documentation_files/saved_resource.html"></iframe></body></html>

@@ -1,0 +1,45 @@
+= Security checklists
+:slug: datastax-astra-security-checklists
+
+== Lists of security measures required for protecting a DataStax Astra database.
+
+DataStax Astra leverages enterprise standards to integrate cohesively with existing technology such as Active Directory (AD),
+// Lightweight Directory Access Protocol (LDAP),
+Public Key Infrastructure (PKI), and Key Management Interoperability Protocol (KMIP).
+
+DataStax Astra includes advanced data protection for enterprise-grade databases:
+[cols=2*,options=header]
+|===
+|Feature
+|Database
+
+|Authentication (External LDAP or internal)
+|Yes
+
+|Authorization (RBAC)
+|Yes
+
+|Row-level permissions (RLAC)
+|No
+
+|Data auditing
+|Yes
+
+|===
+
+== Security for DataStax Astra database nodes:
+
+=== Authentication
+
+Limit connections to the database to only known users.
+DSE supports user validation with internal authentication, which stores credentials in the internal database.
+// * **LDAP:** External LDAP service, such as Active Directory
+
+=== Authorization
+
+Restrict access to database resources for authenticated users with role-based access control (RBAC).
+DSE supports role management using the internal database with 1-1 mapping of user name or principal name to roles.
+// * **LDAP:** 1-many mapping, where users are assigned all roles that match groups they are members of in LDAP
+DataStax only supports RBAC with authentication enabled.
+// == Audit activity
+// Log and monitor activity for database resources.

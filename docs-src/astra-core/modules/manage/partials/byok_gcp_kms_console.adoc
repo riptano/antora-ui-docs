@@ -1,0 +1,118 @@
+// This partial content is imported at build time into:
+// byok_ui_gcp.adoc
+// db-devops-gcp-cmek.adoc
+
+This section describes steps you'll perform in Google Cloud console to:
+
+* Create a custom role with specific permissions needed by {astra_db}
+* Create a Customer Managed Encryption Key 
+
+Once your CMEK with assigned role and permissions are setup, you can use the DevOps API to submit calls that create and view associated Customer Keys for your {astra_db} data. 
+
+=== Prerequisite API step to determine account for GCS buckets
+
+[IMPORTANT]
+====
+Before you create a custom role and a Customer Managed Encryption Key (CMEK) in Google Cloud console, determine (for a given region) in which project does {astra_db} store your Google Cloud Storage (GCS) buckets. To find that information, use cURl or Postman to submit a `GET` on `/v2/kms/provider/gcp/region/<region-name>/accounts`. Example:
+
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/cmk/curl_get_cmek_provider_region.sh[]
+----
+--
+ 
+The GET's response includes the ID of the Google Cloud Storage (GCS) account, into which {astra_db} will store your database's encrypted data. **Copy the ID number returned in the GET's response.** Then, when you configure your Google Cloud CMEK (see the steps below), you'll specify this account number, and grant DataStax permission to access this account.
+====
+
+=== Create a custom role and grant permissions
+
+In Google Cloud console, create a custom role and grant the minimum required permissions needed by {astra_db} to access your Google Cloud Storage (GCS) buckets. Custom roles let you group permissions and assign them to principals in your project or organization. You can manually select permissions or import permissions from another role. 
+
+. After authenticating into your Google Cloud project, search for "IAM &amp; Admin".
+. On the "IAM &amp; Admin" page, from the left-side navigation panel, choose **Roles**.
+. Click **Create Role**.  
+. Click **ADD PERMISSIONS** and filter on `kms`.
+. From among the filtered results, further narrow down by enabling **Cloud KMS Viewer** and **Cloud KMS CryptoKey Encrypter/decrypter**.
+. Scroll down the refreshed results list, and at a minimum, enable the following permissions for your custom role:
++
+```
+cloudkms.cryptoKeyVersions.useToDecrypt
+cloudkms.cryptoKeyVersions.useToEncrypt
+cloudkms.cryptoKeys.get
+```
++
+Example:
++
+image:byok-gcp-add-permissions-by-role.png[Google Cloud Key Management Add Permissions By Role to ensure DataStax access to CMEK.]
++
+. Click **ADD**.
+. Modify values such as the custom role's Title and ID string.
+. Click **CREATE**.
+
+[TIP]
+====
+You'll specify this custom role during the CMEK steps outlined below.
+====
+
+=== Create a Customer Managed Encryption Key
+
+. While authenticated into your Google Cloud project, search for, or navigate to, the "Key Management" service. The Cloud Key Management Service (Cloud KMS) lets you create, use, rotate, and manage cryptographic keys. A cryptographic key is a resource that is used for encrypting and decrypting data or for producing and verifying digital signatures.
+. On the Cloud KMS page, if you haven't already, click **ENABLE**.
+. Click **Create Key Ring**, or open an existing Key Ring if already defined. Key rings group keys together to keep them organized.
+.. If new, provide a name for your Key Ring, such as `testkeyring`. 
+.. For **Location type**, choose **Region**.
+.. Select the same region of your {astra_db} database(s).  
+. On the "Create Key" page:
+.. Enter a Name for your key.
+.. For Key type, choose **Generated Key**.
+.. For Protection level, choose **Software**.
+.. For Purpose, choose **Symmetric encrypt/decrypt**.
+.. Decide on the key **Rotation** cadence to match your preference. The default is 90 days.  
+.. When ready, click **CREATE**.
+. On the "Keys for <your-key-ring-name> key ring" page, click the **link** for your newly created key's name. 
+. On the "Key: <your-key-name>" page, click the **PERMISSIONS** tab.
+. In this step, you'll provide:
++
+* The storage account ID returned in the GET `/v2/kms/provider/gcp/region/<region-name>/accounts` API call. See <<#_prerequisite_api_step_to_determine_account_for_gcs_buckets>>.
+* The custom role you created earlier. See <<#_create_a_custom_role_and_grant_permissions>>.
++
+Provide those values so you can properly setup, with the necessary role and permissions, the following principles:
++
+```
+<projectNumber>-compute@developer.gserviceaccount.com
+service-<projectNumber>@gs-project-accounts.iam.gserviceaccount.com
+```
++
+Where `<projectNumber>` is the output of GET `/v2/kms/provider/gcp/region/<region-name>/accounts`.
++
+.. On this PERMISSIONS tab, click **ADD**.
+.. **Paste** into the **New principals** textbox the account ID that you copied from the response of the GET `/v2/kms/provider/gcp/region/<region-name>/accounts`. (Again, refer to <<#_prerequisite_api_step_to_determine_account_for_gcs_buckets>>).
+.. Select the name of the **custom role** that you created earlier. As a reminder, in an earlier step, we applied the following permissions to the custom role:
++
+```
+cloudkms.cryptoKeyVersions.useToDecrypt
+cloudkms.cryptoKeyVersions.useToEncrypt
+cloudkms.cryptoKeys.get
+```
++
+Those are the minimum permissions needed in the role that's assigned to your CMEK.
++
+.. When you're ready, click **SAVE**.
+. On the "Key: <your-key-name>" page, click the **VERSIONS** tab.
+. Under Actions, expand the three vertical dots and select **Copy resource name**. Example:
++
+image:byok-gcp-copy-resource-name.png[Google Cloud Key Management menu selecting Copy Resource Name option for a newly created key.]
++
+The format of the copied resource name is:
++
+`projects/<id>/locations/<region-name>/keyRings/<your-key-ring-name>/cryptoKeys/<your-key-name>/cryptoKeyVersions/<version>`
++
+Optionally, you can remove the `/cryptoKeyVersions/<version>` portion at the end of the copied resource name. Copy the rest. Example:
++
+`projects/this-that-999999/locations/us-east1/keyRings/testkeyring/cryptoKeys/mydefaultkey`
+
+[TIP]
+====
+Save the copied **resource name** of your Customer Managed Encryption Key. You'll provide its value while adding a Customer Key association in {astra_ui}. For those steps, see the next section. 
+====

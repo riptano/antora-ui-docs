@@ -1,0 +1,11 @@
+. From any page in https://astra.datastax.com[{astra_db}], select the *Organizations* dropdown.
++
+image::ROOT:OrgSelection.png[alt="Organization Selection",width=300]
++
+. In the main dropdown, select *Organization Settings*.
+. From *User Management*, select *Invite User*.
+. Enter the email address for the user you want to invite for the specific user role. If adding multiple users, separate the email addresses with commas, spaces, or line breaks.
+. Select the user role(s) for the user(s) you are inviting. Multiple roles are available within each group of roles for Organization Access, Database, Keyspace, or Table Access, and API Access.
+. Select *Invite Users* to send email invitations to the users at their email address.
+
+Invited users are listed as pending until they accept the invitation to join your organization.

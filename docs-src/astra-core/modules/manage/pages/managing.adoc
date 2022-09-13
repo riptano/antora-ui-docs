@@ -1,0 +1,7 @@
+= Managing Astra DB
+
+With the right admin permissions granted to your account, you can manage your {astra_db} organizations and databases. See these management topics:
+
+* xref:org/managing-org.adoc[Managing your organization]
+* xref:db/managing-db.adoc[Managing your databases]
+* xref:devops/devops-api.adoc[Managing with DevOps API]

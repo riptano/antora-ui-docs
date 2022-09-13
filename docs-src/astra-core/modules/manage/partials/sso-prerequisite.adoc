@@ -1,0 +1,2 @@
+== Prerequisites
+To manage SSO settings, you must have the Organization Administrator role.

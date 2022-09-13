@@ -1,0 +1,4 @@
+[IMPORTANT]
+====
+This information applies to only {classic} databases.
+====

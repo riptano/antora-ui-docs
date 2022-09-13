@@ -1,0 +1,69 @@
+= Retry policies
+
+Retry policies allow the DataStax drivers to automatically retry a request upon encountering specific types of server errors.
+
+* https://docs.datastax.com/en/devapp/doc/devapp/driversServerErrors.html#driversServerErrors__readTimeouts[read timeouts]
+* https://docs.datastax.com/en/devapp/doc/devapp/driversServerErrors.html#driversServerErrors__writeTimeouts[write timeouts]
+* https://docs.datastax.com/en/devapp/doc/devapp/driversServerErrors.html#driversServerErrors__unavailableExceptions[unavailable exceptions]
+
+// * xref:serverErrors.adoc#_read_timeouts[read timeouts]
+// * xref:serverErrors.adoc#_write_timeouts[write timeouts]
+// * xref:serverErrors.adoc#_unavailable_exceptions[unavailable exceptions]
+
+In these scenarios, a node is designated as a coordinator for the request by the https://docs.datastax.com/en/devapp/doc/devapp/driversLoadBalancing.html[load balancing policy].
+The coordinator routes the request to the replicas and returns the response to the driver.
+
+Each DataStax driver implements a default retry policy.
+
+[cols=7*]
+|===
+| https://docs.datastax.com/en/developer/cpp-driver/2.16/api/struct.CassRetryPolicy/#struct-CassRetryPolicy[C/C{pp}]
+| https://docs.datastax.com/en/drivers/csharp/latest/api/Cassandra.DefaultRetryPolicy.html[C#]
+| https://docs.datastax.com/en/developer/java-driver/4.14/manual/core/retries/[Java]
+| https://docs.datastax.com/en/developer/nodejs-driver/4.6/api/module.policies/module.retry/class.RetryPolicy/[Node.js]
+| https://docs.datastax.com/en/developer/php-driver/1.3/api/Cassandra/RetryPolicy/class.DefaultPolicy/[PHP]
+| https://docs.datastax.com/en/developer/python-driver/3.25/api/cassandra/policies/#cassandra.policies.RetryPolicy[Python]
+| https://docs.datastax.com/en/developer/ruby-driver/3.2/features/retry_policies/#retry-policies[Ruby]
+|===
+
+Along with the driver-included retry policies, some drivers allow extended retry policies to implement custom behavior based on read timeout, write timeout, unavailable exceptions, and request errors.
+
+== Default retry policy
+
+The default retry policy retries a request when it is safe to do so while preserving the consistency level of the original request.
+Use this policy for most deployments.
+
+== Read timeout
+
+If the number of replicas that reply is greater than or equal to the number of required responses per the consistency level, the default retry policy retries the request.
+In all other cases, it returns an error.
+
+image::driversReadTimeout.png[Read timeout]
+
+== Write timeout
+
+If the request is a logged batch request and fails to write to the batch log, the default retry policy retries the request.
+In all other cases, it returns an error.
+
+image::driversWriteTimeout.png[Write timeout]
+
+== Unavailable errors
+
+If the request encounters an unavailable error, the default retry policy retries the request using the next host in the load balancing policy.
+
+image::driversUnavailable.png[Unavailable]
+
+== Fall-through retry policy
+
+The fall-through retry policy never retries or ignores a failed request.
+In all cases, the fall-through retry policy returns an error.
+Use this policy for applications that need to implement their own business logic to handle retrying a request.
+
+image::driversFailthroughRetry.png[Fall through retry]
+
+== Logging retry policy
+
+The logging retry policy is intended to be a parent policy for another retry policy implementation and _only_ logs the retry decision made by its child policy.
+This policy is typically used to debug driver retry behavior.
+
+image::driversLoggingRetry.png[Logging retry]

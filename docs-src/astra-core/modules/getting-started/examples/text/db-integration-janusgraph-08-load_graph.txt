@@ -1,0 +1,2 @@
+gremlin> graph = JanusGraphFactory.open('conf/janusgraph-cql.properties')
+==>standardjanusgraph[cql:[70bf8560-105f-11ec-a3ea-0800200c9a66-us-west1.db.astra.datastax.com]]

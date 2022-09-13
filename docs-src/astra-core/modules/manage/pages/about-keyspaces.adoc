@@ -1,0 +1,40 @@
+= About keyspaces
+:slug: about-keyspaces
+
+A keyspace is the top-level database object that controls the replication for the object it contains at each datacenter in the cluster.
+Keyspaces contain tables, materialized views and user-defined types, functions, and aggregates.
+Typically, a cluster has one keyspace per application.
+Because replication is controlled on a per-keyspace basis, store data with different replication requirements in the same region in different keyspaces.
+Keyspaces are not a significant map layer within the data model.
+
+[NOTE]
+====
+The following information is provided for informational purposes for {astra_db} users.
+{astra_db} uses the `NetworkTopologyStrategy`, which is controlled by {astra_db} and cannot be modified.
+====
+
+== Replication strategy and factor
+When you create or modify a keyspace, the `SimpleStrategy` replication strategy class is automatically assigned.
+
+`SimpleStrategy` class is intended for evaluating {company} Enterprise.
+For production use or for use with mixed workloads, use the `NetworkTopologyStrategy` class.
+
+[NOTE]
+====
+You can also use `NetworkTopologyStrategy` for evaluation purposes by changing the default snitch, `SimpleSnitch`, to a network-aware snitch.
+Choose a snitch and define one or more datacenter names in the snitch properties file, and then use the datacenter name(s) to set the keyspace replication factor.
+For example, if the cluster uses the `GossipingPropertyFileSnitch`, create the keyspace using the user-defined datacenter and rack names in the `cassandra-rackdc.properties` file.
+If the cluster uses the Configuring the Amazon EC2 single-region snitch, create the keyspace using EC2 datacenter and rack names.
+If the cluster uses the Configuring the Google Cloud Platform snitch, create the keyspace using GoogleCloud datacenter and rack names.
+====
+
+== Showing the keyspace details
+
+In cqlsh, the `DESCRIBE KEYSPACE` command outputs the full details of the keyspace, including all database objects the keyspace contains.
+Use the output from the `DESCRIBE` command to recreate the keyspace and all its components.
+
+[CAUTION]
+====
+The output includes all settings for tables and other objects including the default settings.
+When recreating a keyspace in another environment, verify that the settings are compatible, such as the keyspace replication factor datacenter names.
+====

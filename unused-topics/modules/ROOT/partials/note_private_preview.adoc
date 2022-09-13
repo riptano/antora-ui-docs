@@ -1,0 +1,9 @@
+[IMPORTANT]
+====
+*Private Preview Feature*
+
+This is a Private Preview feature.
+This feature is provided according to your Astra agreement and is considered a part of the No-Fee License.
+This feature is not intended for production use, has not been certified for production workloads, and might contain bugs and other functional issues.
+There is no guarantee that a private preview feature will ever become generally available.
+====

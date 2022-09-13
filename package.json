@@ -1,0 +1,47 @@
+{
+  "name": "astra-docs",
+  "scripts": {
+    "build:prod:classic": "npm run build:restapi && npm run build:restapiv1 && npm run build:docapi && npm run build:devopsapi && npm run build:publish:classic",
+    "build:prod:serverless": "npm run build:restapi && npm run build:restapiv1 && npm run build:docapi && npm run build:devopsapi && npm run build:publish:serverless",
+    "build:prod:ad4d": "npm run build:restapi && npm run build:restapiv1 && npm run build:docapi && npm run build:devopsapi && npm run build:publish:ad4d",
+    "build:prodlint:classic": "npm run build:oaslinter && npm run build:prod:classic",
+    "build:prodlint:serverless": "npm run build:oaslinter && npm run build:prod:serverless",
+    "build:prodlint:ad4d": "npm run build:oaslinter && npm run build:prod:ad4d",
+    "build:publish:classic": "antora --log-level error --fetch --clean playbooks/site-publish-classic.yaml",
+    "build:publish:serverless": "antora --log-level error --fetch --clean playbooks/site-publish-serverless.yaml",
+    "build:publish:ad4d": "antora --log-level error --fetch --clean playbooks/site-publish-ad4d.yaml",
+    "build:local:classic": "antora --log-level error --stacktrace --fetch --clean playbooks/site-local-classic.yaml",
+    "build:local:serverless": "antora --log-level error --stacktrace --fetch --clean playbooks/site-local-serverless.yaml",
+    "build:local:ad4d": "antora --log-level error --stacktrace --fetch --clean playbooks/site-local-ad4d.yaml",
+    "build:local:classicsg": "antora --log-level error --stacktrace --fetch --clean playbooks/site-local-classic-with-sg.yaml",
+    "build:local:serverlessg": "antora --log-level error --stacktrace --fetch --clean playbooks/site-local-serverless-with-sg.yaml",
+    "build:local:ad4dsg": "antora --log-level error --stacktrace --fetch --clean playbooks/site-local-ad4d-with-sg.yaml",
+    "build:dev-classic": "npm run build:restapi && npm run build:docapi && npm run build:devopsapi && npm run build:local:classic",
+    "build:dev-serverless": "npm run build:restapi && npm run build:docapi && npm run build:devopsapi && npm run build:local:serverless",
+    "build:dev-ad4d": "npm run build:restapi && npm run build:docapi && npm run build:devopsapi && npm run build:local:ad4d",
+    "build:oaslinter": "npx @redocly/cli lint api/StargateRESTv2.yaml && npx @redocly/cli lint api/StargateRESTv1.yaml && npx @redocly/cli lint api/StargateDocv2.yaml && npx @redocly/cli lint api/DevOpsv2.yaml",
+    "build:restapi": "redoc-cli build api/StargateRESTv2.yaml --output docs-src/astra-core/modules/ROOT/attachments/restv2.html",
+    "build:restapiv1": "redoc-cli build api/StargateRESTv1.yaml --output docs-src/astra-core/modules/ROOT/attachments/restv1.html",
+    "build:docapi": "npx redoc-cli build api/StargateDocv2.yaml --output docs-src/astra-core/modules/ROOT/attachments/docv2.html",
+    "build:devopsapi": "redoc-cli build api/DevOpsv2.yaml --output docs-src/astra-core/modules/ROOT/attachments/devopsv2.html",
+    "build:linkinator": "npx linkinator https://docs.datastax.com/en/astra/docs/ --recurse --skip ' https://localhost?'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/riptano/astra-docs.git"
+  },
+  "dependencies": {
+    "@antora/cli": "~3.0.1",
+    "@antora/site-generator-default": "~3.0.1",
+    "linkinator": "~3.0.3",
+    "@redocly/cli": "1.0.0-beta.102",
+    "async": "~3.2.4",
+    "mobx": "~6.0.4",
+    "react": "~16.8.4",
+    "react-dom": "~16.8.4",
+    "redoc": "~2.0.0-rc.70",
+    "redoc-cli": "~0.13.14",
+    "rxjs": "~7.0.1",
+    "styled-components": "~5.1.1"
+  }
+}

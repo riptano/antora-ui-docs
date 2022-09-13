@@ -1,0 +1,58 @@
+= Migrating Node.js driver
+:slug: migrating-your-datastax-nodejs-driver-to-connect-with-astra-databases
+:page-tag: driver,dev,astra-db,connect
+
+Complete the following procedure to migrate your existing {company} Node.js driver to a version that is capable of connecting to {astra_db} databases created using {company} {astra_db}.
+
+. Install the {company} Node.js driver:
+
+== {company} Node.js driver for Apache Cassandra
+
+[source, javascript]
+----
+npm install cassandra-driver
+----
+
+== DSE driver
+
+[source, javascript]
+----
+npm install dse-driver
+----
+
+[arabic, start=2]
+. In your existing {company} Node.js driver code, modify the connection code to use the {astra_db} API.
+Include the absolute path to the secure connect bundle for your Cassandra database (`secure-connect-*database_name*.zip`) in the `secureConnectBundle` parameter, as shown in the following examples.
+
+== {company} Node.js driver for Apache Cassandra
+
+[source, javascript]
+----
+const { Client } = require('cassandra-driver');
+const client = new Client({
+    cloud: { secureConnectBundle: 'path/to/secure-connect-database_name.zip' },
+    credentials: { username: 'clientId', password: 'clientSecret' }
+  });
+----
+
+== DSE Node.js driver
+
+[source, javascript]
+----
+const dse = require('dse-driver');
+
+const client = new Client({
+    cloud: { secureConnectBundle: 'path/to/secure-connect-database_name.zip' },
+    credentials: { username: 'clientId', password: 'clientSecret' }
+  });
+----
+
+[arabic, start=3]
+. Run your Node.js script to connect to your {astra_db} database:
+
+[source, javascript]
+----
+node my_node.js_driver.js
+----
+
+If successful, the code builds, compiles, and connects to your Cassandra database.

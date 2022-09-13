@@ -1,0 +1,155 @@
+= Python legacy driver versions
+:slug: python-legacy-drivers
+:page-tag: driver,dev,astra-db,connect
+
+Connect to {astra_db} from Python using a previous version of the {company} Driver.
+Before proceeding please consider upgrading to the most current driver if possible.
+However, if you cannot upgrade, or are using a Framework that doesn't support {astra_db} secure connect, the following instructions will help you get connected.
+
+== Prerequisites
+
+* Ensure the Python driver is installed.
+For more, see https://docs.datastax.com/en/developer/python-driver/latest/installation/[{company} Python Driver Installation]. +
+* {empty}
+include::manage:partial$collect_legacy_driver_info.adoc[]
+* Collect the required information for xref:drivers/legacy-drivers#_prerequisites[Connecting with legacy drivers].
+
+== Procedure
+
+. Copy the certificate files from the {astra_db} secure connect bundle to `../secure-connect/`.
+
++
+This folder should contain the `ca.cert`, `cert`, and `key` files.
+
+. Replace the `<hostname>` with your {astra_db} database hostname.
+. Replace the `<port>` with your {astra_db} database port.
+. Replace `<username>` and `<password>` with the {astra_db} database _Client ID_ and _Client Secret_.
+
+[source, python]
+----
+from cassandra.cluster import Cluster
+from cassandra.auth import PlainTextAuthProvider
+from ssl import SSLContext, PROTOCOL_TLSv1, CERT_REQUIRED
+
+ssl_context = SSLContext(PROTOCOL_TLSv1)
+ssl_context.load_verify_locations('../secure-connect/ca.crt')
+ssl_context.verify_mode = CERT_REQUIRED
+ssl_context.load_cert_chain(
+    certfile='../secure-connect/cert',
+    keyfile='../secure-connect/key')
+
+
+auth_provider = PlainTextAuthProvider('<username>', '<password>')
+cluster = Cluster(['<hostname>'], port=<port>, ssl_context=ssl_context, auth_provider=auth_provider)
+session = cluster.connect()
+
+row = session.execute("select release_version from system.local").one()
+if row:
+  print(row[0])
+else:
+  print("An error occurred.")
+
+
+print(cluster.metadata.keyspaces)
+----
+
+== Example
+
+[source, python]
+----
+from cassandra.cluster import Cluster
+from cassandra.auth import PlainTextAuthProvider
+from ssl import SSLContext, PROTOCOL_TLSv1, CERT_REQUIRED
+
+ssl_context = SSLContext(PROTOCOL_TLSv1)
+ssl_context.load_verify_locations('../secure-connect/ca.crt')
+ssl_context.verify_mode = CERT_REQUIRED
+ssl_context.load_cert_chain(
+    certfile='../secure-connect/cert',
+    keyfile='../secure-connect/key')
+
+
+auth_provider = PlainTextAuthProvider('john.smith', 'jsP@ssw0rd')
+cluster = Cluster(['7bb9cd7a-e49d-49a6-aa3d-be4878f974ef-us-east1.db.astra.datastax.com'], port=31575, ssl_context=ssl_context, auth_provider=auth_provider)
+session = cluster.connect()
+
+row = session.execute("select release_version from system.local").one()
+if row:
+  print(row[0])
+else:
+  print("An error occurred.")
+
+
+print(cluster.metadata.keyspaces)
+----
+
+In the example above, the following variables are used:
+
+* `hostname` is `7bb9cd7a-e49d-49a6-aa3d-be4878f974ef-us-east1.db.astra.datastax.com`
+* `port` is `31575`
+* `username` is `john.smith`
+* `password` is `jsP@ssw0rd`
+
+== Flask CQLAlchemy framework
+
+Following the procedure above this code allows CQLAlchemy to utilize {astra_db}.
+
+[source, python]
+----
+import uuid
+from flask import Flask
+from flask_cqlalchemy import CQLAlchemy
+from ssl import SSLContext, PROTOCOL_TLS, CERT_REQUIRED
+from cassandra.auth import PlainTextAuthProvider
+
+
+auth_provider = PlainTextAuthProvider(username='<username>', password='<password>')
+ssl_context = SSLContext(PROTOCOL_TLSv1)
+ssl_context.load_verify_locations("../secure-connect/ca.crt")
+ssl_context.verify_mode = CERT_REQUIRED
+ssl_context.load_cert_chain(
+  certfile="../secure-connect/cert",
+  keyfile="secure-connect/key")
+
+app = Flask(__name__)
+app.config['CASSANDRA_HOSTS'] = ['<hostname>']
+app.config['CASSANDRA_SETUP_KWARGS'] = dict(ssl_context=ssl_context, port="<port>", auth_provider=auth_provider)
+app.config['CASSANDRA_KEYSPACE'] = "cqlengine"
+db = CQLAlchemy(app)
+
+
+class User(db.Model):
+    uid = db.columns.UUID(primary_key=True, default=uuid.uuid4)
+    username = db.columns.Text(required=False)
+----
+
+=== Example
+
+[source, python]
+----
+import uuid
+from flask import Flask
+from flask_cqlalchemy import CQLAlchemy
+from ssl import SSLContext, PROTOCOL_TLS, CERT_REQUIRED
+from cassandra.auth import PlainTextAuthProvider
+
+
+auth_provider = PlainTextAuthProvider(username='jane.smith', password='jsP@ssw0rd')
+ssl_context = SSLContext(PROTOCOL_TLSv1)
+ssl_context.load_verify_locations("../secure-connect/ca.crt")
+ssl_context.verify_mode = CERT_REQUIRED
+ssl_context.load_cert_chain(
+  certfile="../secure-connect/cert",
+  keyfile="secure-connect/key")
+
+app = Flask(__name__)
+app.config['CASSANDRA_HOSTS'] = ['7bb9cd7a-e49d-49a6-aa3d-be4878f974ef-us-east1.db.astra.datastax.com']
+app.config['CASSANDRA_SETUP_KWARGS'] = dict(ssl_context=ssl_context, port="31575", auth_provider=auth_provider)
+app.config['CASSANDRA_KEYSPACE'] = "cqlengine"
+db = CQLAlchemy(app)
+
+
+class User(db.Model):
+    uid = db.columns.UUID(primary_key=True, default=uuid.uuid4)
+    username = db.columns.Text(required=False)
+----

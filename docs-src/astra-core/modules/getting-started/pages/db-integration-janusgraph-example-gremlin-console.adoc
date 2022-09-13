@@ -1,0 +1,6 @@
+== Sample JanusGraph Gremlin console output
+
+[source, plaintext]
+----
+include::example$text/janusgraph-gremlin-console-output.txt[]
+----

@@ -1,0 +1,109 @@
+= CQL console
+:slug: connecting-to-astra-databases-using-cqlsh
+:page-tag: cql,dev,astra-db,connect
+
+The Cassandra Query Language SHell (CQLSH) is a command line shell for interacting with your database through Cassandra Query Language (CQL). This tool provides a useful interface for accessing the database and issuing CQL commands.
+
+== Embedded {astra_db} CQL shell
+Each {company} {astra_db} database includes an embedded CQL shell instance.
+In the {astra_db} console, navigate to your database and click the **CQL Console** tab to open a CQLSH instance that is connected to your database.
+Issue CQL commands directly to your {astra_db} database without navigating outside of your browser.
+
+[TIP]
+====
+To see the CQL console in a full browser window, use this URL format:
+```
+database_id-region.apps.astra.datastax.com/cqlsh
+```
+
+For example, `2f0c6j8b-9790-4276-a16c-0cd7b055344a-us-east1.apps.astra.datastax.com/cqlsh`
+====
+
+Once you open the CQL shell in Astra, you will automatically be signed in and connected to your database.
+
+=== Results
+You can now run https://docs.datastax.com/en/astra-cql/doc/cql/cqlQuickReference.html[CQL commands] in your embedded CQL shell.
+
+[NOTE]
+====
+Alternatively, you can connect to your {astra_db} database using the xref:connect:cql/connect-cqlsh.adoc#_standalone_cql_shell[standalone version of CQLSH].
+====
+
+== Standalone CQL shell
+
+Instead of using the native CQL shell that is included in {company} Enterprise (DSE), the standalone CQLSH client is a separate, lightweight tool you can use to interact with your database.
+
+[TIP]
+====
+Each {company} {astra_db} database includes an embedded CQL shell instance. In the {astra_db} console, navigate to your database and click the CQL Console tab to open a CQLSH instance that is connected to your database.
+====
+
+=== Prerequisites
+. link:https://downloads.datastax.com/#cqlsh[Download CQLSH, window="_blank"]. Choose the version for {astra_db}.
+. xref:manage:db/managing-db.adoc#_create_your_astra_db_database[Create an {astra_db} database].
+
+include::page$secure-connect-bundle.adoc[Secure connect bundle]
+
+include::ROOT:partial$tip_invite_users_to_join_org.adoc[]
+
+=== Procedure
+. Change to the directory where you downloaded the CQLSH tarball and then extract it:
+
+[source, shell, subs="attributes+"]
+----
+$ cd /<download_directory>
+$ tar -xvf cqlsh-astra-<date>-bin.tar.gz
+----
+
+* *date* - The date that the tarball was released, such as 20210304.
+
+[arabic, start=2]
+. From the directory where you extracted the CQLSH tarball, run the cqlsh script from the command line:
+
+[source, shell, subs="attributes+"]
+----
+$ cd /cqlsh-astra
+$ ./bin/cqlsh -u **clientID** -p **clientSecret** -b /path/to/secure-connect**database_name**.zip
+----
+
+Use the `-b` option to specify the location of the secure connect bundle that you downloaded for your database. Pass the Client Id and Client Secret for your database role using the `-u` and `-p` options. For more, see xref:manage:org/managing-org.adoc#_manage_application_tokens[Manage application tokens].
+
+* *username* - Client ID for the database role.
+* *password* - Client secret for the specified Client ID.
+* *database_name* - Name of the {astra_db} database to which you want to connect. Include the absolute path to the secure connect bundle for the database, such as /Users/myuser/Downloads/secure-connect-database123.zip.
+
+[NOTE]
+====
+*Configure the `cqlshrc` file*
+If you do not want to pass the secure connect bundle on the command line every time, set up the location in your `cqlshrc` file.
+
+In the `[authentication]` section of the `cqlshrc` file in `~/.cassandra`, include the _Client ID_ and _Client Secret_ from your xref:manage:org/managing-org.adoc#_manage_application_tokens[application token].
+Configure the `[connection]` section of the `cqlshrc` file in `~/.cassandra` to include the path to your xref:connect:secure-connect-bundle.adoc[secure connect bundle].
+
+[source, text]
+----
+[authentication]
+username = clientID
+password = clientSecret
+
+[connection]
+secure_connect_bundle = **/path/to/**secure-connect-**database_name**.zip
+----
+====
+
+=== Results
+You are connected directly to your database using CQLSH.
+
+[source, plaintext]
+----
+[cqlsh 6.8.0 | DSE 6.8.0.77 | CQL spec 3.4.5 | DSE protocol v2]
+Use HELP for help.
+username@cqlsh>
+----
+
+Switch to your `KEYSPACE`, where you can issue CQL commands to create tables, insert data, and manage database resources:
+
+[source, plaintext]
+----
+USE keyspace_name;
+----

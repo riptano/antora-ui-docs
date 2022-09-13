@@ -1,0 +1,158 @@
+== Connect to Google Cloud Private Service Connect with the DevOps API
+
+To better protect your database connection, you can connect to a private endpoint using the {astra_db} private endpoint.
+Private endpoints are available for only intra-region use.
+The region for your private endpoint in the Google Cloud Console and your {astra_db} database must match.
+
+include::ROOT:partial$note_serverless_only.adoc[]
+
+For pricing related to using private endpoints, see xref:manage:org/managing-org.adoc#_pricing_and_billing#private-endpoints[Pricing and billing].
+
+include::ROOT:partial$endpoint_perm.adoc[]
+
+For more, see link:https://cloud.google.com/blog/products/networking/introducing-private-service-connect[Google Cloud Private Service Connect].
+
+=== Prerequisites
+
+. xref:manage:db/managing-db.adoc#_create_your_astra_db_database[Create your {astra_db} database] using the {astra_db} console.
+. Ensure you have xref:manage:org/manage-permissions.adoc[permission] to manage private endpoints.
+. xref:manage:org/managing-org.adoc#_manage_application_tokens[Get your application token].
+. From your link:https://console.cloud.google.com/net-services/psc/[Google Cloud Console], get your *Project ID*. For example, `valiant-ocean-258751`.
+. Create a Google Cloud Console network, subnetwork, and IP address for your private endpoint. For more, see link:https://cloud.google.com/vpc/docs/using-vpc#creating_networks[Creating neworks].
+
+[NOTE]
+====
+To increase your security, xref:manage:devops/devops-api.adoc#devops-access-list[restrict public access] to your database using the access list.
+====
+
+[NOTE]
+====
+If you are using Postman for your API calls, ensure you use the `raw` option to enter the body of your API call.
+====
+
+=== Connect to your Google Cloud Private Service Connect endpoint
+. Enter the *Project ID* as your allowed principal for your private endpoints to {astra_db}:
+
++
+[tabs]
+====
+cURL command (/v2)::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/private_endpoint/curl_post_private_endpoint_gcp_principal.sh[]
+----
+
+include::ROOT:partial$datacenter-ordinal.adoc[]
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::manage:example$results/private_endpoint/devops_private_endpoint_gcp_principal.result[]
+----
+--
+====
+
+. Create the endpoint in your Google Cloud Console.
+.. In the Google Cloud Console, go to link:https://console.cloud.google.com/net-services/psc/[Private Service Connect].
+.. Select *Connect endpoint*.
+.. Select *Published service* as the *Target*.
+.. Enter the 'serviceName' from the DevOps API result as the *Target service*.
+.. Enter a name for the *Endpoint name*.
+.. Select your *Network* and *Subnetwork* for the endpoint.
+.. Select an *IP address* for the endpoint.
+.. Select *Add endpoint*.
+
++
+The status for the endpoint will show as *Accepted*. This does not mean that the endpoint is ready for use and must be accepted in the {astra_db} DevOps API.
+
+. Using the *PSC Connection ID* from your Google Cloud Console as your endpoint ID, accept your Google Cloud private endpoint connection:
+
++
+[tabs]
+====
+cURL command (/v2)::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/private_endpoint/curl_create_private_endpoint_connection_gcp.sh[]
+.sh[]
+----
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::manage:example$results/private_endpoint/devops_create_private_endpoint_connection_gcp.result[]
+----
+--
+====
+
++
+Your Google Private Service Connect menu will show the private endpoint.
+
+. Create a DNS entry for your private endpoint.
+// This allows you to alias your private endpoint with a DNS record to use as your hostname in the secure connect bundle.
+.. Download your secure connect bundle for the region of your choice. Get your latest xref:connect:secure-connect-bundle.adoc[secure connect bundle].
+.. Unzip the secure connect bundle.
+.. In `config.json`, copy the `host` key's value.
+.. In the Google Cloud Console, create a private zone to route traffic to your endpoint IP. Update the following domains to use REST and CQL:
++
+[tabs]
+====
+REST::
++
+--
+[source,shell, subs="attributes+"]
+----
+efe451fe-709e-4700-9185-5cf0fd3474a7-2-us-east-1.apps.astra.datastax.com
+----
+--
+
+CQL::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+efe451fe-709e-4700-9185-5cf0fd3474a7-2-us-east-1.db.astra.datastax.com
+----
+--
+====
++
+For more, see link:https://cloud.google.com/dns/zones#create-private-zone[Create a private zone].
+
+You can now connect to your private endpoint using your updated secure connect bundle. For more, see xref:connect:drivers/connect-drivers.adoc[Drivers for Astra].
+
+=== Remove a private endpoint
+
+. Delete a private endpoint from your {astra_db}:
+
++
+[tabs]
+====
+cURL command (/v2)::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/private_endpoint/curl_delete_private_endpoint.sh[]
+----
+--
+====
+
+. In the Google Cloud Console, go to link:https://console.cloud.google.com/net-services/psc/[Private Service Connect].
+. Select the endpoint you want to remove.
+. Select *Delete*.
+
+=== What's next?
+
+* link:https://cloud.google.com/vpc/docs/private-service-connect[Private Service Connect, window="_blank"]
+* link:_attachments/devopsv2.html#operation/Private-Endpoints[DevOps API reference, window="_blank"]
+* Learn how to xref:manage:db/manage-access-list.adoc[Manage access lists for public access, window="_blank"].

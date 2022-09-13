@@ -1,0 +1,6 @@
+* xref:index.adoc[Overview]
+** xref:release-notes.adoc[Release notes]
+** xref:astra-faq.adoc[{astra_db} FAQs]
+** xref:db-glossary.adoc[{astra_db} glossary]
+** xref:get-support.adoc[Get support]
+

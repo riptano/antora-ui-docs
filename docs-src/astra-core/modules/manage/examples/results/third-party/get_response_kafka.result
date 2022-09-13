@@ -1,0 +1,33 @@
+200 OK
+
+Example:
+
+{
+    "kafka": {
+      "bootstrap_servers": [
+         "kafka-0.yourdomain.com:9092"
+      ],
+      "topic": "astra_metrics_events",
+      "sasl_mechanism": "PLAIN",
+      "sasl_username": "kafkauser",
+      "sasl_password": "kafkapassword",
+      "security_protocol": "SASL_PLAINTEXT"
+    }
+}
+
+Or one of the following:
+
+400 Bad request.
+403 The user is forbidden to perform the operation.
+404 The specified resource was not found.
+500 A server error occurred.
+
+{
+  "errors": [
+    {
+      "description": "The name of the environment must be provided",
+      "internalCode": "a1012",
+      "internalTxId": "103B-A018-3898-0ABF"
+    }
+  ]
+}

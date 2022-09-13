@@ -1,0 +1,119 @@
+ifeval::["{evalproduct}" == "DB Classic"]
+= Azure VPC peering
+:slug: connect-with-azure-vpc-peering
+:page-tag: dev,astra-db,connect
+
+include::ROOT:partial$note_classic_only.adoc[]
+
+By creating a virtual private cloud (VPC), you can connect your Azure resources and {company} {astra_db} databases. VPC peering allows you to communicate across the VPCs.
+
+For more about VPC peering on {astra_db} databases hosted on Azure, see https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview[Virtual network peering].
+
+[NOTE]
+====
+VPC peering is available on only {classic_cap} C- and D-tier {astra_db} databases.
+====
+
+// include::ROOT:partial$warning-classic-vpc-access-list.adoc[]
+
+== Prerequisites
+
+* Create a virtual network peer in your Azure account.
+See https://docs.microsoft.com/en-us/azure/virtual-network/quick-create-cli[Create a virtual network using the Azure CLI].
+* Create your {astra_db} database.
+See xref:manage:db/managing-db.adoc#_create_your_astra_db_database[Creating your {astra_db} database].
+
+== Procedure
+
+=== Azure command line interface
+
+To establish a peering connection for Azure and grant an Enterprise Application managed by {astra_db} access to a peering connection, run these commands using the Azure command line interface.
+
+. Create a Service Principal in your Azure subscription for an existing {astra_db}-managed Enterprise Application:
++
+[source, plaintext]
+----
+- az ad sp create --id 6f77e2ba-39c1-499f-93e1-afe815384a8f
+----
++
+The client to create connections is always `6f77e2ba-39c1-499f-93e1-afe815384a8f`.
+
+. Create a `role.json` file that defines the necessary permissions that Service Principal will need to:
+
+ * Create a peering connection.
+ * Get the status of that connection.
+ * Delete the connection.
++
+[source, plaintext]
+----
+{
+    "Name": “<ROLE_NAME>“,
+    "IsCustom": true,
+    "Description": “<ROLE_DESCRIPTION>“,
+    "Actions": [
+        "Microsoft.Network/virtualNetworks/virtualNetworkPeerings/read",
+        "Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write",
+        "Microsoft.Network/virtualNetworks/virtualNetworkPeerings/delete",
+        "Microsoft.Network/virtualNetworks/peer/action"
+    ],
+    "AssignableScopes": [
+        "/subscriptions/<YOUR_SUBSCRIPTION>/resourceGroups/<YOUR_RESOURCE_GROUP>/providers/Microsoft.Network/virtualNetworks/<YOUR_VIRTUAL_NETWORK>"
+    ]
+}
+----
++
+Set the following variables in the `role.json` file:
+
+* `<ROLE_NAME>`: The name of the role defined in `role.json`.
+The role's name can be anything, but whatever must match the `<ROLE_NAME>` when assigning the role with the `az` command.
+* `<ROLE_DESCRIPTION>`: The description of the role defined in `role.json`.
+The description can also be anything.
+{astra_db} doesn't use this description.
+* `<YOUR_SUBSCRIPTION>`: The Azure subscription to which you will peer the {astra_db} cluster.
+* `<YOUR_RESOURCE_GROUP>`: The Resource Group to which you will peer the {astra_db} cluster.
+* `<YOUR_VIRTUAL_NETWORK>`: The Virtual Network to which you will peer the {astra_db} cluster.
+
+[arabic, start=3]
+. Using the definitions defined in the role.json file create a new role in your subscription:
++
+[source, plaintext]
+----
+- az role definition create --role-definition role.json
+----
+
+. Assign the role you created to the service principal created to your virtual network's scope:
+
+[source, plaintext]
+----
+- az role assignment create --role “<ROLE_NAME>” --assignee 6f77e2ba-39c1-499f-93e1-afe815384a8f --scope "/subscriptions/<YOUR_SUBSCRIPTION>/resourceGroups/<YOUR_RESOURCE_GROUP>/providers/Microsoft.Network/virtualNetworks/<YOUR_VIRTUAL_NETWORK>"
+----
+
+=== {astra_ui}
+
+. From your database *Overview*, select *Add Peering Connection*.
+. In *Add Peering Connection*, enter the tenant your subscription belongs to for the *Azure Tenant ID*.
+  - If you are unsure how to find your Tenant ID, please refer to this Azure documentaton. https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-how-to-find-tenant
+. For the *Azure Subscription ID*, enter `<YOUR_SUBSCRIPTION>` that matches the variable in the `role.json` file.
+. For the *Azure Resource Group Name*, enter `<YOUR_RESOURCE_GROUP>` that matches the variable in the `role.json` file.
+. For the *Azure Virtual Network Name*, enter `<YOUR_VIRTUAL_NETWORK>` that matches the variable in the `role.json` file.
+. Select *Initiate*.
+After you initiate peering, you will see a link to *Download secure connect bundle for internal VPC network*.
+. Download this internal secure connect bundle to connect to the {astra_db} database to ensure the connection gets routed through private IP addresses and not the open internet.
+
+[NOTE]
+====
+The internal secure connect bundle ensures the connection to the {astra_db} database is routed through private IP addresses and not the open internet.
+Using the internal secure connect bundle is the same as using the external secure connect bundle when trying to connect to the database.
+====
+
+[NOTE]
+====
+If you see `Conflict Error: RemotePeeringIsDisconnected` as the status for your peering connection, there is a previous {astra_db} peering connection in your Azure
+virtual network that is in a `Disconnected` state. Remove this peering connection so {astra_db} can initiate a successful peering request. To resolve the issue, follow
+these steps:
+
+. Delete the disconnected peering from your Azure virtual network
+. Delete the peering from your {astra_db} database
+. Create a new peering as described in this document
+====
+endif::[]

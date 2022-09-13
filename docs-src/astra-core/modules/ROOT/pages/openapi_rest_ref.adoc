@@ -1,0 +1,2931 @@
+= {company} {astra_db} Data API
+ad-astra@datastax.com
+1.0.0-oas3
+:toc: left
+:numbered:
+:toclevels: 3
+:source-highlighter: highlightjs
+:keywords: openapi, rest, {astra_db} Data API
+:specDir:
+:snippetDir:
+:generator-template: v1 2019-12-20
+:info-url: https://openapi-generator.tech
+:app-name: {astra_db} Data API
+
+[abstract]
+.Abstract
+Use this REST API to interact with your {astra_db} databases.</br> </br> To get started, create an authorization token to authenticate with your database. After connecting, you can interact with the following database objects: </br>- <b>Tables</b>: Create, update, and delete tables within a keyspace. </br>- <b>Columns</b>: Add, update, and delete columns in a table. </br>- <b>Rows</b>: Add, update, and delete rows in a table.
+
+
+// markup not found, no include::{specDir}intro.adoc[opts=optional]
+
+
+== Access
+
+* *HTTP Basic* Authentication _BasicAuth_
+
+
+
+
+
+== Endpoints
+
+
+[.Authorization]
+=== Authorization
+
+
+[.createToken]
+==== createToken
+
+`POST /api/rest/v1/auth`
+
+Create an auth token
+
+===== Description
+
+Generate an authorization token to authenticate with an {astra_db} database and submit queries.
+
+
+// markup not found, no include::{specDir}api/rest/v1/auth/POST/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| databaseId
+| UUID of your database from the {astra_db} URL. &lt;/br&gt; For example, &#x60;d341f349-e5db-46d2-9c90-bb9ebaa6f0fc&#x60;.
+| X
+| null
+|
+
+| region
+| Cloud region where your database lives. &lt;/br&gt; For example, &#x60;us-east-1&#x60;
+| X
+| null
+|
+
+|===
+
+===== Body Parameter
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| Credentials
+|  <<Credentials>>
+| X
+|
+|
+
+|===
+
+
+====== Header Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| X-Cassandra-Request-Id
+| Unique identifier (UUID) for the request. Use any valid UUID.
+| -
+| null
+|
+
+|===
+
+
+
+===== Return Type
+
+<<AuthTokenResponse>>
+
+
+===== Content Type
+
+* */*
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 201
+| Created
+|  <<AuthTokenResponse>>
+
+
+| 400
+| Bad Request
+|  <<Error>>
+
+
+| 401
+| Unauthorized
+|  <<Error>>
+
+
+| 500
+| Internal Server Error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}api/rest/v1/auth/POST/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}api/rest/v1/auth/POST/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :api/rest/v1/auth/POST/POST.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}api/rest/v1/auth/POST/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.Columns]
+=== Columns
+
+
+[.addColumn]
+==== addColumn
+
+`POST /api/rest/v1/keyspaces/{keyspaceName}/tables/{tableName}/columns`
+
+Add a column
+
+===== Description
+
+Add a single column to a table.
+
+
+// markup not found, no include::{specDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/columns/POST/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| databaseId
+| UUID of your database from the {astra_db} URL. &lt;/br&gt; For example, &#x60;d341f349-e5db-46d2-9c90-bb9ebaa6f0fc&#x60;.
+| X
+| null
+|
+
+| region
+| Cloud region where your database lives. &lt;/br&gt; For example, &#x60;us-east-1&#x60;
+| X
+| null
+|
+
+| keyspaceName
+| Name of the keyspace to use for the request.
+| X
+| null
+|
+
+| tableName
+| Name of the table to use for the request.
+| X
+| null
+|
+
+|===
+
+===== Body Parameter
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| ColumnDefinition
+|  <<ColumnDefinition>>
+| X
+|
+|
+
+|===
+
+
+====== Header Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| X-Cassandra-Token
+| The token returned from the authorization endpoint. Use this token in each request to the database.
+| X
+| null
+|
+
+| X-Cassandra-Request-Id
+| Unique identifier (UUID) for the request. Use any valid UUID.
+| -
+| null
+|
+
+|===
+
+
+
+===== Return Type
+
+<<ColumnsResponse>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 201
+| OK
+|  <<ColumnsResponse>>
+
+
+| 400
+| Bad request
+|  <<Error>>
+
+
+| 401
+| Unauthorized
+|  <<Error>>
+
+
+| 403
+| Forbidden
+|  <<Error>>
+
+
+| 409
+| Conflict
+|  <<Error>>
+
+
+| 500
+| Internal Server Error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/columns/POST/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/columns/POST/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :api/rest/v1/keyspaces/{keyspaceName}/tables/{tableName}/columns/POST/POST.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/columns/POST/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.deleteColumn]
+==== deleteColumn
+
+`DELETE /api/rest/v1/keyspaces/{keyspaceName}/tables/{tableName}/columns/{columnName}`
+
+Delete a column
+
+===== Description
+
+Delete a single column in a specific table.
+
+
+// markup not found, no include::{specDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/columns/\{columnName\}/DELETE/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| databaseId
+| UUID of your database from the {astra_db} URL. &lt;/br&gt; For example, &#x60;d341f349-e5db-46d2-9c90-bb9ebaa6f0fc&#x60;.
+| X
+| null
+|
+
+| region
+| Cloud region where your database lives. &lt;/br&gt; For example, &#x60;us-east-1&#x60;
+| X
+| null
+|
+
+| keyspaceName
+| Name of the keyspace to use for the request.
+| X
+| null
+|
+
+| tableName
+| Name of the table to use for the request.
+| X
+| null
+|
+
+| columnName
+| Name of the column to use for the request.
+| X
+| null
+|
+
+|===
+
+
+
+====== Header Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| X-Cassandra-Token
+| The token returned from the authorization endpoint. Use this token in each request to the database.
+| X
+| null
+|
+
+| X-Cassandra-Request-Id
+| Unique identifier (UUID) for the request. Use any valid UUID.
+| -
+| null
+|
+
+|===
+
+
+
+===== Return Type
+
+
+
+-
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 204
+| No Content
+|  <<>>
+
+
+| 400
+| Bad request
+|  <<Error>>
+
+
+| 401
+| Unauthorized
+|  <<Error>>
+
+
+| 403
+| Forbidden
+|  <<Error>>
+
+
+| 500
+| Internal Server Error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/columns/\{columnName\}/DELETE/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/columns/\{columnName\}/DELETE/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :api/rest/v1/keyspaces/{keyspaceName}/tables/{tableName}/columns/{columnName}/DELETE/DELETE.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/columns/\{columnName\}/DELETE/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.getColumn]
+==== getColumn
+
+`GET /api/rest/v1/keyspaces/{keyspaceName}/tables/{tableName}/columns/{columnName}`
+
+Retrieve a column
+
+===== Description
+
+Return a single column specification in a specific table.
+
+
+// markup not found, no include::{specDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/columns/\{columnName\}/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| databaseId
+| UUID of your database from the {astra_db} URL. &lt;/br&gt; For example, &#x60;d341f349-e5db-46d2-9c90-bb9ebaa6f0fc&#x60;.
+| X
+| null
+|
+
+| region
+| Cloud region where your database lives. &lt;/br&gt; For example, &#x60;us-east-1&#x60;
+| X
+| null
+|
+
+| keyspaceName
+| Name of the keyspace to use for the request.
+| X
+| null
+|
+
+| tableName
+| Name of the table to use for the request.
+| X
+| null
+|
+
+| columnName
+| Name of the column to use for the request.
+| X
+| null
+|
+
+|===
+
+
+
+====== Header Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| X-Cassandra-Token
+| The token returned from the authorization endpoint. Use this token in each request to the database.
+| X
+| null
+|
+
+| X-Cassandra-Request-Id
+| Unique identifier (UUID) for the request. Use any valid UUID.
+| -
+| null
+|
+
+|===
+
+
+
+===== Return Type
+
+
+
+-
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| OK
+|  <<>>
+
+
+| 400
+| Bad request
+|  <<Error>>
+
+
+| 401
+| Unauthorized
+|  <<Error>>
+
+
+| 403
+| Forbidden
+|  <<Error>>
+
+
+| 404
+| Not Found
+|  <<Error>>
+
+
+| 500
+| Internal Server Error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/columns/\{columnName\}/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/columns/\{columnName\}/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :api/rest/v1/keyspaces/{keyspaceName}/tables/{tableName}/columns/{columnName}/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/columns/\{columnName\}/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.getColumns]
+==== getColumns
+
+`GET /api/rest/v1/keyspaces/{keyspaceName}/tables/{tableName}/columns`
+
+Retrieve all columns
+
+===== Description
+
+Return all columns for a specified table.
+
+
+// markup not found, no include::{specDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/columns/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| databaseId
+| UUID of your database from the {astra_db} URL. &lt;/br&gt; For example, &#x60;d341f349-e5db-46d2-9c90-bb9ebaa6f0fc&#x60;.
+| X
+| null
+|
+
+| region
+| Cloud region where your database lives. &lt;/br&gt; For example, &#x60;us-east-1&#x60;
+| X
+| null
+|
+
+| keyspaceName
+| Name of the keyspace to use for the request.
+| X
+| null
+|
+
+| tableName
+| Name of the table to use for the request.
+| X
+| null
+|
+
+|===
+
+
+
+====== Header Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| X-Cassandra-Token
+| The token returned from the authorization endpoint. Use this token in each request to the database.
+| X
+| null
+|
+
+| X-Cassandra-Request-Id
+| Unique identifier (UUID) for the request. Use any valid UUID.
+| -
+| null
+|
+
+|===
+
+
+
+===== Return Type
+
+array[<<ColumnDefinition>>]
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| OK
+| List[<<ColumnDefinition>>]
+
+
+| 400
+| Bad request
+|  <<Error>>
+
+
+| 401
+| Unauthorized
+|  <<Error>>
+
+
+| 403
+| Forbidden
+|  <<Error>>
+
+
+| 500
+| Internal Server Error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/columns/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/columns/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :api/rest/v1/keyspaces/{keyspaceName}/tables/{tableName}/columns/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/columns/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.updateColumn]
+==== updateColumn
+
+`PUT /api/rest/v1/keyspaces/{keyspaceName}/tables/{tableName}/columns/{columnName}`
+
+Update a column
+
+===== Description
+
+Update a single column in a specific table.
+
+
+// markup not found, no include::{specDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/columns/\{columnName\}/PUT/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| databaseId
+| UUID of your database from the {astra_db} URL. &lt;/br&gt; For example, &#x60;d341f349-e5db-46d2-9c90-bb9ebaa6f0fc&#x60;.
+| X
+| null
+|
+
+| region
+| Cloud region where your database lives. &lt;/br&gt; For example, &#x60;us-east-1&#x60;
+| X
+| null
+|
+
+| keyspaceName
+| Name of the keyspace to use for the request.
+| X
+| null
+|
+
+| tableName
+| Name of the table to use for the request.
+| X
+| null
+|
+
+| columnName
+| Name of the column to use for the request.
+| X
+| null
+|
+
+|===
+
+===== Body Parameter
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| ColumnUpdate
+|  <<ColumnUpdate>>
+| X
+|
+|
+
+|===
+
+
+====== Header Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| X-Cassandra-Token
+| The token returned from the authorization endpoint. Use this token in each request to the database.
+| X
+| null
+|
+
+| X-Cassandra-Request-Id
+| Unique identifier (UUID) for the request. Use any valid UUID.
+| -
+| null
+|
+
+|===
+
+
+
+===== Return Type
+
+<<ColumnsResponse>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| OK
+|  <<ColumnsResponse>>
+
+
+| 400
+| Bad request
+|  <<Error>>
+
+
+| 401
+| Unauthorized
+|  <<Error>>
+
+
+| 403
+| Forbidden
+|  <<Error>>
+
+
+| 404
+| Not Found
+|  <<Error>>
+
+
+| 500
+| Internal Server Error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/columns/\{columnName\}/PUT/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/columns/\{columnName\}/PUT/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :api/rest/v1/keyspaces/{keyspaceName}/tables/{tableName}/columns/{columnName}/PUT/PUT.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/columns/\{columnName\}/PUT/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.Keyspaces]
+=== Keyspaces
+
+
+[.getKeyspaces]
+==== getKeyspaces
+
+`GET /api/rest/v1/keyspaces`
+
+Return all keyspaces
+
+===== Description
+
+Retrieve all available keyspaces in the specific database.
+
+
+// markup not found, no include::{specDir}api/rest/v1/keyspaces/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| databaseId
+| UUID of your database from the {astra_db} URL. &lt;/br&gt; For example, &#x60;d341f349-e5db-46d2-9c90-bb9ebaa6f0fc&#x60;.
+| X
+| null
+|
+
+| region
+| Cloud region where your database lives. &lt;/br&gt; For example, &#x60;us-east-1&#x60;
+| X
+| null
+|
+
+|===
+
+
+
+====== Header Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| X-Cassandra-Token
+| The token returned from the authorization endpoint. Use this token in each request to the database.
+| X
+| null
+|
+
+| X-Cassandra-Request-Id
+| Unique identifier (UUID) for the request. Use any valid UUID.
+| -
+| null
+|
+
+|===
+
+
+
+===== Return Type
+
+
+<<List>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| OK
+| List[<<string>>]
+
+
+| 400
+| Bad request
+|  <<Error>>
+
+
+| 401
+| Unauthorized
+|  <<Error>>
+
+
+| 403
+| Forbidden
+|  <<Error>>
+
+
+| 500
+| Internal Server Error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}api/rest/v1/keyspaces/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}api/rest/v1/keyspaces/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :api/rest/v1/keyspaces/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}api/rest/v1/keyspaces/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.Rows]
+=== Rows
+
+
+[.addRow]
+==== addRow
+
+`POST /api/rest/v1/keyspaces/{keyspaceName}/tables/{tableName}/rows`
+
+Add rows
+
+===== Description
+
+Add rows to a table in your database. If the new row has the same primary key as that of an existing row, the database processes it as an update to the existing row.
+
+
+// markup not found, no include::{specDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/rows/POST/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| databaseId
+| UUID of your database from the {astra_db} URL. &lt;/br&gt; For example, &#x60;d341f349-e5db-46d2-9c90-bb9ebaa6f0fc&#x60;.
+| X
+| null
+|
+
+| region
+| Cloud region where your database lives. &lt;/br&gt; For example, &#x60;us-east-1&#x60;
+| X
+| null
+|
+
+| keyspaceName
+| Name of the keyspace to use for the request.
+| X
+| null
+|
+
+| tableName
+| Name of the table to use for the request.
+| X
+| null
+|
+
+|===
+
+===== Body Parameter
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| RowAdd
+| Row object that needs to be added to the table <<RowAdd>>
+| X
+|
+|
+
+|===
+
+
+====== Header Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| X-Cassandra-Token
+| The token returned from the authorization endpoint. Use this token in each request to the database.
+| X
+| null
+|
+
+| X-Cassandra-Request-Id
+| Unique identifier (UUID) for the request. Use any valid UUID.
+| -
+| null
+|
+
+|===
+
+
+
+===== Return Type
+
+<<RowsResponse>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 201
+| Created
+|  <<RowsResponse>>
+
+
+| 400
+| Bad request
+|  <<Error>>
+
+
+| 401
+| Unauthorized
+|  <<Error>>
+
+
+| 403
+| Forbidden
+|  <<Error>>
+
+
+| 500
+| Internal Server Error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/rows/POST/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/rows/POST/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :api/rest/v1/keyspaces/{keyspaceName}/tables/{tableName}/rows/POST/POST.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/rows/POST/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.deleteRow]
+==== deleteRow
+
+`DELETE /api/rest/v1/keyspaces/{keyspaceName}/tables/{tableName}/rows/{primaryKey}`
+
+Delete rows
+
+===== Description
+
+Delete individual rows from a table.
+
+
+// markup not found, no include::{specDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/rows/\{primaryKey\}/DELETE/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| databaseId
+| UUID of your database from the {astra_db} URL. &lt;/br&gt; For example, &#x60;d341f349-e5db-46d2-9c90-bb9ebaa6f0fc&#x60;.
+| X
+| null
+|
+
+| region
+| Cloud region where your database lives. &lt;/br&gt; For example, &#x60;us-east-1&#x60;
+| X
+| null
+|
+
+| keyspaceName
+| Name of the keyspace to use for the request.
+| X
+| null
+|
+
+| tableName
+| Name of the table to use for the request.
+| X
+| null
+|
+
+| primaryKey
+| Value from the primary key column for the table. Define composite keys by separating values with semicolons (&#x60;val1;val2...&#x60;) in the order they were defined. &lt;/br&gt; For example, if the composite key was defined as &#x60;PRIMARY KEY(race_year, race_name)&#x60; then the primary key in the path would be &#x60;race_year;race_name&#x60;.
+| X
+| null
+|
+
+|===
+
+
+
+====== Header Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| X-Cassandra-Token
+| The token returned from the authorization endpoint. Use this token in each request to the database.
+| X
+| null
+|
+
+| X-Cassandra-Request-Id
+| Unique identifier (UUID) for the request. Use any valid UUID.
+| -
+| null
+|
+
+|===
+
+
+
+===== Return Type
+
+
+
+-
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 204
+| No Content
+|  <<>>
+
+
+| 400
+| Bad request
+|  <<Error>>
+
+
+| 401
+| Unauthorized
+|  <<Error>>
+
+
+| 403
+| Forbidden
+|  <<Error>>
+
+
+| 500
+| Internal Server Error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/rows/\{primaryKey\}/DELETE/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/rows/\{primaryKey\}/DELETE/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :api/rest/v1/keyspaces/{keyspaceName}/tables/{tableName}/rows/{primaryKey}/DELETE/DELETE.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/rows/\{primaryKey\}/DELETE/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.getRows]
+==== getRows
+
+`GET /api/rest/v1/keyspaces/{keyspaceName}/tables/{tableName}/rows/{primaryKey}`
+
+Retrieve rows
+
+===== Description
+
+Get rows from a table based on the primary key.
+
+
+// markup not found, no include::{specDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/rows/\{primaryKey\}/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| databaseId
+| UUID of your database from the {astra_db} URL. &lt;/br&gt; For example, &#x60;d341f349-e5db-46d2-9c90-bb9ebaa6f0fc&#x60;.
+| X
+| null
+|
+
+| region
+| Cloud region where your database lives. &lt;/br&gt; For example, &#x60;us-east-1&#x60;
+| X
+| null
+|
+
+| keyspaceName
+| Name of the keyspace to use for the request.
+| X
+| null
+|
+
+| tableName
+| Name of the table to use for the request.
+| X
+| null
+|
+
+| primaryKey
+| Value from the primary key column for the table. Define composite keys by separating values with semicolons (&#x60;val1;val2...&#x60;) in the order they were defined. &lt;/br&gt; For example, if the composite key was defined as &#x60;PRIMARY KEY(race_year, race_name)&#x60; then the primary key in the path would be &#x60;race_year;race_name&#x60;.
+| X
+| null
+|
+
+|===
+
+
+
+====== Header Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| X-Cassandra-Token
+| The token returned from the authorization endpoint. Use this token in each request to the database.
+| X
+| null
+|
+
+| X-Cassandra-Request-Id
+| Unique identifier (UUID) for the request. Use any valid UUID.
+| -
+| null
+|
+
+|===
+
+
+
+===== Return Type
+
+<<Rows>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| OK
+|  <<Rows>>
+
+
+| 400
+| Bad request
+|  <<Error>>
+
+
+| 401
+| Unauthorized
+|  <<Error>>
+
+
+| 403
+| Forbidden
+|  <<Error>>
+
+
+| 404
+| Not Found
+|  <<Error>>
+
+
+| 500
+| Internal Server Error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/rows/\{primaryKey\}/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/rows/\{primaryKey\}/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :api/rest/v1/keyspaces/{keyspaceName}/tables/{tableName}/rows/{primaryKey}/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/rows/\{primaryKey\}/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.query]
+==== query
+
+`POST /api/rest/v1/keyspaces/{keyspaceName}/tables/{tableName}/rows/query`
+
+Submit queries
+
+===== Description
+
+Submit queries to retrieve data from a table.
+
+
+// markup not found, no include::{specDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/rows/query/POST/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| databaseId
+| UUID of your database from the {astra_db} URL. &lt;/br&gt; For example, &#x60;d341f349-e5db-46d2-9c90-bb9ebaa6f0fc&#x60;.
+| X
+| null
+|
+
+| region
+| Cloud region where your database lives. &lt;/br&gt; For example, &#x60;us-east-1&#x60;
+| X
+| null
+|
+
+| keyspaceName
+| Name of the keyspace to use for the request.
+| X
+| null
+|
+
+| tableName
+| Name of the table to use for the request.
+| X
+| null
+|
+
+|===
+
+===== Body Parameter
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| Query
+|  <<Query>>
+| X
+|
+|
+
+|===
+
+
+====== Header Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| X-Cassandra-Token
+| The token returned from the authorization endpoint. Use this token in each request to the database.
+| X
+| null
+|
+
+| X-Cassandra-Request-Id
+| Unique identifier (UUID) for the request. Use any valid UUID.
+| -
+| null
+|
+
+|===
+
+
+
+===== Return Type
+
+<<Rows>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| OK
+|  <<Rows>>
+
+
+| 400
+| Bad request
+|  <<Error>>
+
+
+| 401
+| Unauthorized
+|  <<Error>>
+
+
+| 403
+| Forbidden
+|  <<Error>>
+
+
+| 500
+| Internal Server Error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/rows/query/POST/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/rows/query/POST/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :api/rest/v1/keyspaces/{keyspaceName}/tables/{tableName}/rows/query/POST/POST.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/rows/query/POST/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.updateRow]
+==== updateRow
+
+`PUT /api/rest/v1/keyspaces/{keyspaceName}/tables/{tableName}/rows/{primaryKey}`
+
+Update rows
+
+===== Description
+
+Update existing rows in a table.
+
+
+// markup not found, no include::{specDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/rows/\{primaryKey\}/PUT/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| databaseId
+| UUID of your database from the {astra_db} URL. &lt;/br&gt; For example, &#x60;d341f349-e5db-46d2-9c90-bb9ebaa6f0fc&#x60;.
+| X
+| null
+|
+
+| region
+| Cloud region where your database lives. &lt;/br&gt; For example, &#x60;us-east-1&#x60;
+| X
+| null
+|
+
+| keyspaceName
+| Name of the keyspace to use for the request.
+| X
+| null
+|
+
+| tableName
+| Name of the table to use for the request.
+| X
+| null
+|
+
+| primaryKey
+| Value from the primary key column for the table. Define composite keys by separating values with semicolons (&#x60;val1;val2...&#x60;) in the order they were defined. &lt;/br&gt; For example, if the composite key was defined as &#x60;PRIMARY KEY(race_year, race_name)&#x60; then the primary key in the path would be &#x60;race_year;race_name&#x60;.
+| X
+| null
+|
+
+|===
+
+===== Body Parameter
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| RowsUpdate
+| The result of the update command <<RowsUpdate>>
+| X
+|
+|
+
+|===
+
+
+====== Header Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| X-Cassandra-Token
+| The token returned from the authorization endpoint. Use this token in each request to the database.
+| X
+| null
+|
+
+| X-Cassandra-Request-Id
+| Unique identifier (UUID) for the request. Use any valid UUID.
+| -
+| null
+|
+
+|===
+
+
+
+===== Return Type
+
+<<RowsResponse>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| OK
+|  <<RowsResponse>>
+
+
+| 400
+| Bad request
+|  <<Error>>
+
+
+| 401
+| Unauthorized
+|  <<Error>>
+
+
+| 403
+| Forbidden
+|  <<Error>>
+
+
+| 500
+| Internal Server Error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/rows/\{primaryKey\}/PUT/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/rows/\{primaryKey\}/PUT/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :api/rest/v1/keyspaces/{keyspaceName}/tables/{tableName}/rows/{primaryKey}/PUT/PUT.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/rows/\{primaryKey\}/PUT/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.Tables]
+=== Tables
+
+
+[.addTable]
+==== addTable
+
+`POST /api/rest/v1/keyspaces/{keyspaceName}/tables`
+
+Add a table
+
+===== Description
+
+Add a table in a specific keyspace.
+
+
+// markup not found, no include::{specDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/POST/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| databaseId
+| UUID of your database from the {astra_db} URL. &lt;/br&gt; For example, &#x60;d341f349-e5db-46d2-9c90-bb9ebaa6f0fc&#x60;.
+| X
+| null
+|
+
+| region
+| Cloud region where your database lives. &lt;/br&gt; For example, &#x60;us-east-1&#x60;
+| X
+| null
+|
+
+| keyspaceName
+| Name of the keyspace to use for the request.
+| X
+| null
+|
+
+|===
+
+===== Body Parameter
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| TableAdd
+| Table object that needs to be added to the keyspace <<TableAdd>>
+| X
+|
+|
+
+|===
+
+
+====== Header Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| X-Cassandra-Token
+| The token returned from the authorization endpoint. Use this token in each request to the database.
+| X
+| null
+|
+
+| X-Cassandra-Request-Id
+| Unique identifier (UUID) for the request. Use any valid UUID.
+| -
+| null
+|
+
+|===
+
+
+
+===== Return Type
+
+<<TablesResponse>>
+
+
+===== Content Type
+
+* */*
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 201
+| Created
+|  <<TablesResponse>>
+
+
+| 400
+| Bad request
+|  <<Error>>
+
+
+| 401
+| Unauthorized
+|  <<Error>>
+
+
+| 403
+| Forbidden
+|  <<Error>>
+
+
+| 500
+| Internal Server Error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/POST/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/POST/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :api/rest/v1/keyspaces/{keyspaceName}/tables/POST/POST.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/POST/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.deleteTable]
+==== deleteTable
+
+`DELETE /api/rest/v1/keyspaces/{keyspaceName}/tables/{tableName}`
+
+Delete a table
+
+===== Description
+
+Delete a single table in the specified keyspace.
+
+
+// markup not found, no include::{specDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/DELETE/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| databaseId
+| UUID of your database from the {astra_db} URL. &lt;/br&gt; For example, &#x60;d341f349-e5db-46d2-9c90-bb9ebaa6f0fc&#x60;.
+| X
+| null
+|
+
+| region
+| Cloud region where your database lives. &lt;/br&gt; For example, &#x60;us-east-1&#x60;
+| X
+| null
+|
+
+| keyspaceName
+| Name of the keyspace to use for the request.
+| X
+| null
+|
+
+| tableName
+| Name of the table to use for the request.
+| X
+| null
+|
+
+|===
+
+
+
+====== Header Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| X-Cassandra-Token
+| The token returned from the authorization endpoint. Use this token in each request to the database.
+| X
+| null
+|
+
+| X-Cassandra-Request-Id
+| Unique identifier (UUID) for the request. Use any valid UUID.
+| -
+| null
+|
+
+|===
+
+
+
+===== Return Type
+
+
+
+-
+
+===== Content Type
+
+* */*
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 204
+| No Content
+|  <<>>
+
+
+| 400
+| Bad request
+|  <<Error>>
+
+
+| 401
+| Unauthorized
+|  <<Error>>
+
+
+| 403
+| Forbidden
+|  <<Error>>
+
+
+| 404
+| Not Found
+|  <<Error>>
+
+
+| 500
+| Internal Server Error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/DELETE/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/DELETE/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :api/rest/v1/keyspaces/{keyspaceName}/tables/{tableName}/DELETE/DELETE.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/DELETE/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.getTable]
+==== getTable
+
+`GET /api/rest/v1/keyspaces/{keyspaceName}/tables/{tableName}`
+
+Return a table
+
+===== Description
+
+Retrieve data for a single table in a specific keyspace.
+
+
+// markup not found, no include::{specDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| databaseId
+| UUID of your database from the {astra_db} URL. &lt;/br&gt; For example, &#x60;d341f349-e5db-46d2-9c90-bb9ebaa6f0fc&#x60;.
+| X
+| null
+|
+
+| region
+| Cloud region where your database lives. &lt;/br&gt; For example, &#x60;us-east-1&#x60;
+| X
+| null
+|
+
+| keyspaceName
+| Name of the keyspace to use for the request.
+| X
+| null
+|
+
+| tableName
+| Name of the table to use for the request.
+| X
+| null
+|
+
+|===
+
+
+
+====== Header Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| X-Cassandra-Token
+| The token returned from the authorization endpoint. Use this token in each request to the database.
+| X
+| null
+|
+
+| X-Cassandra-Request-Id
+| Unique identifier (UUID) for the request. Use any valid UUID.
+| -
+| null
+|
+
+|===
+
+
+
+===== Return Type
+
+<<Table>>
+
+
+===== Content Type
+
+* */*
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| OK
+|  <<Table>>
+
+
+| 400
+| Bad request
+|  <<Error>>
+
+
+| 401
+| Unauthorized
+|  <<Error>>
+
+
+| 403
+| Forbidden
+|  <<Error>>
+
+
+| 404
+| Not Found
+|  <<Error>>
+
+
+| 500
+| Internal Server Error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :api/rest/v1/keyspaces/{keyspaceName}/tables/{tableName}/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/\{tableName\}/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.getTables]
+==== getTables
+
+`GET /api/rest/v1/keyspaces/{keyspaceName}/tables`
+
+Return all tables
+
+===== Description
+
+Retrieve all tables in a specific keyspace.
+
+
+// markup not found, no include::{specDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| databaseId
+| UUID of your database from the {astra_db} URL. &lt;/br&gt; For example, &#x60;d341f349-e5db-46d2-9c90-bb9ebaa6f0fc&#x60;.
+| X
+| null
+|
+
+| region
+| Cloud region where your database lives. &lt;/br&gt; For example, &#x60;us-east-1&#x60;
+| X
+| null
+|
+
+| keyspaceName
+| Name of the keyspace to use for the request.
+| X
+| null
+|
+
+|===
+
+
+
+====== Header Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| X-Cassandra-Token
+| The token returned from the authorization endpoint. Use this token in each request to the database.
+| X
+| null
+|
+
+| X-Cassandra-Request-Id
+| Unique identifier (UUID) for the request. Use any valid UUID.
+| -
+| null
+|
+
+|===
+
+
+
+===== Return Type
+
+
+<<List>>
+
+
+===== Content Type
+
+* */*
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| OK
+| List[<<string>>]
+
+
+| 400
+| Bad request
+|  <<Error>>
+
+
+| 401
+| Unauthorized
+|  <<Error>>
+
+
+| 403
+| Forbidden
+|  <<Error>>
+
+
+| 500
+| Internal Server Error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :api/rest/v1/keyspaces/{keyspaceName}/tables/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}api/rest/v1/keyspaces/\{keyspaceName\}/tables/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[#models]
+== Models
+
+
+[#AuthTokenResponse]
+=== _AuthTokenResponse_
+
+
+
+[.fields-AuthTokenResponse]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| authToken
+|
+| String
+|
+|
+
+|===
+
+
+[#Changeset]
+=== _Changeset_
+
+
+
+[.fields-Changeset]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| column
+| X
+| String
+| Name of the column to update.
+|
+
+| value
+| X
+| anyOf&lt;string,number,integer,boolean&gt;
+| The value to update in the column for all matching rows.
+|
+
+|===
+
+
+[#ClusteringExpression]
+=== _ClusteringExpression_
+
+Order rows storage to make use of the on-disk sorting of columns. Specifying order can make query results more efficient.
+
+[.fields-ClusteringExpression]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| column
+| X
+| String
+|
+|
+
+| order
+| X
+| String
+|
+|  _Enum:_ ASC, DESC,
+
+|===
+
+
+[#Column]
+=== _Column_
+
+Defines a single column within a row that is being added to a table.
+
+[.fields-Column]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| name
+| X
+| String
+| Name of the column in the database.
+|
+
+| value
+| X
+| anyOf&lt;string,number,integer,boolean&gt;
+| The value to store in the column, which can be either a literal or collection.
+|
+
+|===
+
+
+[#ColumnDefinition]
+=== _ColumnDefinition_
+
+
+
+[.fields-ColumnDefinition]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| name
+| X
+| String
+| Name for the column, which must be unique.
+|
+
+| typeDefinition
+| X
+| String
+| The type of data allowed in the column.
+|  _Enum:_ ascii, text, varchar, tinyint, smallint, int, bigint, varint, decimal, float, double, date, DateRangeType, duration, time, timestamp, uuid, timeuuid, blob, boolean, counter, inet, PointType, LineStringType, PolygonType, frozen, list, map, set, tuple,
+
+| static
+|
+| Boolean
+| Denotes whether the column is shared by all rows of a partition.
+|
+
+|===
+
+
+[#ColumnUpdate]
+=== _ColumnUpdate_
+
+Changes the name of a primary key column and preserves the existing values.
+
+[.fields-ColumnUpdate]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| newName
+|
+| String
+| The new name of the column.
+|
+
+|===
+
+
+[#ColumnsResponse]
+=== _ColumnsResponse_
+
+
+
+[.fields-ColumnsResponse]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| success
+|
+| Boolean
+|
+|
+
+|===
+
+
+[#Credentials]
+=== _Credentials_
+
+User credentials for authenticating with your {astra_db} database.
+
+[.fields-Credentials]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| username
+| X
+| String
+| Client ID for your {astra_db} database.
+|
+
+| password
+| X
+| String
+| Client Secret for your {astra_db} database user.
+|
+
+|===
+
+
+[#Error]
+=== _Error_
+
+A description of an error state
+
+[.fields-Error]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| description
+|
+| String
+| A human readable description of the error state
+|
+
+| internalCode
+|
+| String
+| The internal number referencing the error state
+|
+
+|===
+
+
+[#Filter]
+=== _Filter_
+
+
+
+[.fields-Filter]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| columnName
+|
+| String
+| The column name to apply the filter to.
+|
+
+| operator
+|
+| String
+|
+|  _Enum:_ eq, notEq, gt, gte, lt, lte, in,
+
+| value
+|
+| List  of <<string>>
+| An array of values to use in the filter. The full array will only be used for the &#x60;in&#x60; operation, for all others only the first element will be considered.
+|
+
+|===
+
+
+[#PrimaryKey]
+=== _PrimaryKey_
+
+Defines a column list for the primary key. Can be either a single column, compound primary key, or composite partition key. Provide multiple columns for the partition key to define a composite partition key.
+
+[.fields-PrimaryKey]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| partitionKey
+| X
+| List  of <<string>>
+| Name of the column or columns that constitute the partition key.
+|
+
+| clusteringKey
+|
+| List  of <<string>>
+| Name of the column or columns that constitute the clustering key.
+|
+
+|===
+
+
+[#Query]
+=== _Query_
+
+
+
+[.fields-Query]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| columnNames
+|
+| List  of <<string>>
+| A list of column names to return in the result set. An empty array returns all columns.
+|
+
+| filters
+| X
+| List  of <<Filter>>
+| An array of filters to return results for, separated by &#x60;AND&#x60;. For example, &#x60;a &gt; 1 AND b !&#x3D; 1&#x60;.
+|
+
+| orderBy
+|
+| ClusteringExpression
+|
+|
+
+| pageState
+|
+| String
+| A string returned from previous query requests representing the paging state.
+|
+
+| pageSize
+|
+| Integer
+| The size of the page to return in the result set.
+|
+
+|===
+
+
+[#RowAdd]
+=== _RowAdd_
+
+
+
+[.fields-RowAdd]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| columns
+| X
+| List  of <<Column>>
+|
+|
+
+|===
+
+
+[#Rows]
+=== _Rows_
+
+
+
+[.fields-Rows]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| rows
+|
+| List  of <<object>>
+|
+|
+
+| _count
+|
+| Integer
+|
+|
+
+| pageState
+|
+| String
+| A string representing the paging state to be used on future paging requests.
+|
+
+|===
+
+
+[#RowsResponse]
+=== _RowsResponse_
+
+
+
+[.fields-RowsResponse]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| success
+|
+| Boolean
+|
+|
+
+| rowsModified
+|
+| Integer
+|
+|
+
+|===
+
+
+[#RowsUpdate]
+=== _RowsUpdate_
+
+
+
+[.fields-RowsUpdate]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| changeset
+| X
+| List  of <<Changeset>>
+| The values for the named parameters used in the setExpression field
+|
+
+|===
+
+
+[#Table]
+=== _Table_
+
+
+
+[.fields-Table]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| name
+|
+| String
+|
+|
+
+| keyspace
+|
+| String
+|
+|
+
+| columnDefinitions
+|
+| List  of <<ColumnDefinition>>
+|
+|
+
+| primaryKey
+|
+| PrimaryKey
+|
+|
+
+| tableOptions
+|
+| TableOptions
+|
+|
+
+|===
+
+
+[#TableAdd]
+=== _TableAdd_
+
+
+
+[.fields-TableAdd]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| name
+| X
+| String
+|
+|
+
+| ifNotExists
+|
+| Boolean
+| Determines whether to create a new table if a table with the same name exists. Attempting to create an existing table returns an error unless this option is true.
+|
+
+| columnDefinitions
+| X
+| List  of <<ColumnDefinition>>
+|
+|
+
+| primaryKey
+| X
+| PrimaryKey
+|
+|
+
+| tableOptions
+|
+| TableOptions
+|
+|
+
+|===
+
+
+[#TableOptions]
+=== _TableOptions_
+
+
+
+[.fields-TableOptions]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| defaultTimeToLive
+|
+| Integer
+| Defines the Time To Live (TTL), which determines the time period (in seconds) to expire data. If the value is &gt;0, TTL is enabled for the entire table and an expiration timestamp is added to each column. The maximum value is 630720000 (20 years). A new TTL timestamp is calculated each time the data is updated and the row is removed after the data expires.
+|
+
+| clusteringExpression
+|
+| List  of <<ClusteringExpression>>
+|
+|
+
+|===
+
+
+[#TablesResponse]
+=== _TablesResponse_
+
+
+
+[.fields-TablesResponse]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| success
+|
+| Boolean
+|
+|
+
+|===

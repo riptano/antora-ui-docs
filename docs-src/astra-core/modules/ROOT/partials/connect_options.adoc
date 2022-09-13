@@ -1,0 +1,18 @@
+[cols=2*,options=header]
+|===
+|Options
+|Description
+
+|I don't want to create or manage a https://docs.datastax.com/en/astra-cql/doc/cql/cql_using/cqlManage.html[schema]. Just let me get started.
+|Use schemaless JSON Documents with the xref:develop:dev-with-doc.adoc[Document API].
+
+|I want to start using my database now with APIs.
+|Use the xref:develop:dev-with-rest.adoc[REST API] or xref:develop:graphql.adoc[GraphQL API] to begin interacting with your database and self manage the https://docs.datastax.com/en/astra-cql/doc/cql/cql_using/cqlManage.html[schema].
+
+|I have an application and want to use the {company} drivers.
+|Initialize one of the xref:connect:drivers/connect-drivers.adoc[{company} drivers] to manage database connections for your application.
+
+|I know CQL and want to connect quickly to use my database.
+|Use the integrated CQL shell or the xref:connect:cql/connect-cqlsh.adoc#standalone-cql-shell[standalone CQLSH tool] to interact with your database using CQL.
+
+|===

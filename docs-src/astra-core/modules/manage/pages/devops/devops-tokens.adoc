@@ -1,0 +1,122 @@
+== Managing tokens
+
+Use the DevOps API to generate or revoke an application token for specific roles.
+
+You can use the DevOps API to perform the actions which are available to you through your xref:manage:org/manage-permissions.adoc[role permissions].
+
+The following roles can use the application token to use the DevOps API:
+
+* Organization Administrator
+* Database Administrator
+
+=== Prerequisites
+
+. Create an xref:manage:org/managing-org.adoc#manage-application-tokens[application token] to https://docs.datastax.com/en/astra/docs/_attachments/devopsv2.html[authenticate your service account] in the DevOps API.
+. Once you have authenticated your service account, you can create and revoke tokens the https://docs.datastax.com/en/astra/docs/_attachments/devopsv2.html[DevOps API].
+
+=== Generating a token for client
+
+. Get all clients within the organization:
++
+[tabs]
+====
+cURL command (/v2)::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/curl_get_clients.sh[]
+----
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::manage:example$results/devops_get_clients.result[]
+----
+--
+====
+
+. Create an application token for a specific client:
++
+[tabs]
+====
+cURL command (/v2)::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/curl_create_token.sh[]
+----
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::manage:example$results/devops_create_token.result[]
+----
+--
+====
+
+[TIP]
+====
+For the `roleId`, provide the relevant role's `id` UUID value from a prior `GET` query, as shown in
+xref:manage:devops/devops-roles.adoc#create-a-new-role[Getting existing roles in your organization]. 
+The API results will show the UUID for each role id.
+====
+
+Also refer to https://docs.datastax.com/en/astra/docs/_attachments/devopsv2.html#operation/generateTokenForClient[Generate token for client] in the DevOps API.
+
+=== Removing a token
+
+[WARNING]
+====
+When you remove a token, all users and roles assigned to that role will no longer have access.
+====
+
+. Get a list of the available client IDs and secrets for your organization:
++
+[tabs]
+====
+cURL command (/v2)::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/curl_get_clients.sh[]
+----
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::manage:example$results/devops_get_clients.result[]
+----
+--
+====
+
+. Remove a token for a specific client ID:
++
+[source,curl]
+----
+include::manage:example$devops/curl_delete_token.sh[]
+----
+
+. Get a list of the available client IDs and secrets for your organization to confirm it was removed:
++
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/curl_get_clients.sh[]
+----
+
+For more, see https://docs.datastax.com/en/astra/docs/_attachments/devopsv2.html#operation/deleteTokenForClient[Revoke a token] in the DevOps API.
+
+=== What's next?
+
+include::ROOT:partial$app_token_next_steps.adoc[]

@@ -1,0 +1,688 @@
+ifeval::["{evalproduct}" == "DB Serverless"]
+= Export metrics via DevOps API
+
+Enterprises depend on the ability to view database health metrics in centralized systems along with their other software metrics. The {astra_db} Metrics feature lets you forward {astra_db} database health metrics to an external third-party metrics system. We refer to the recipient of the exported metrics as the **destination** system.
+
+== Introduction
+
+The functionality provided by the {astra_db} Metrics feature is often referred to as:
+
+* Observability
+* External monitoring
+* Third-party metrics
+* Prometheus monitoring integration
+
+At this time, {astra_db} Metrics supports exporting health metrics from {astra_db} serverless databases to:
+
+* https://prometheus.io[Prometheus, window="_blank"]
+* Open-source https://kafka.apache.org[Apache Kafka&reg;, window="_blank"]
+* https://www.confluent.io/lp/apache-kafka/[Confluent Kafka&reg;, window="_blank"]
+* https://aws.amazon.com/cloudwatch/[Amazon CloudWatch, window="_blank"]
+
+You can also use https://grafana.com[Grafana, window="_blank"] or https://grafana.com/products/cloud/[Grafana Cloud, window="_blank"] to visualize the exported metrics.
+
+== Metrics API and UI options
+
+You can configure the export of {astra_db} metrics via the DevOps API (described in this topic), or via xref:manage:db/third-party-metrics-ui.adoc[{astra_ui}, window="_blank"].
+
+== Feature availability
+
+[TIP]
+====
+The {astra_db} Metrics feature:
+
+* Is available only for {astra_db} serverless databases.
+* Is available only on a https://www.datastax.com/products/datastax-astra/pricing[paid pricing plan, window="_blank"], such as Pay As You Go (PAYG) or Enterprise. 
+* Is not available on the {astra_db} Free plan.
+* Free plan users: click the **Chat icon** and ask the DataStax representative about options to upgrade your organization. 
+====
+
+== Benefits
+
+The {astra_db} Metrics feature allows you to take full control of forwarding {astra_db} database health metrics to your preferred observability system. The functionality is intended for developers, site reliability engineers (SREs), IT managers, and product owners.
+
+Ingesting database health metrics into your system gives you the ability to craft your own alerting actions and dashboards based on your service level objectives and retention requirements. While you can continue to view metrics displayed in {astra_ui} via each database's **Health** tab, forwarding metrics to a third-party app gives you a more complete view of all metrics being tracked, across all your products. 
+
+This enhanced capability can provide your team with broader insights into historical performance, issues, and areas for improvement.
+
+[NOTE]
+====
+The exported {astra_db} health metrics are **nearly real-time** when consumed externally. You can find the source-of-truth view of your metric values in the {astra_ui}'s **Health** dashboard.
+====
+
+== Prerequisites
+
+. If you haven't already, xref:manage:db/managing-db.adoc#_create_your_database.adoc[create a serverless database] using the {astra_ui}.
++
+Keep track of your `databaseId`. You'll specify it in the DevOps `POST` API call for `/v2/databases/{databaseId}/telemetry/metrics`. You can find the `databaseId` on the {astra_ui}'s dashboard.
++
+Example:
++
+image:database-id-dashboard.png[{astra_ui} dashboard shows database ID.]
+. Generate an application token so you can authenticate your account in the DevOps API.
++
+If you don't have a current token, see xref:manage:org/managing-org.adoc#_manage_application_tokens[Manage application tokens]. 
++
+Example:
++
+image:generate-token-3dots.png[Select Create New Token from database entry's 3 dots on Astra DB dashboard.]
++
+When using the DevOps API, pass in the auth token's value in the call's Header.
+. Ensure you have permission to use the DevOps v2 API for enabling third-party metrics. See <<#_roles_and_permissions>> in this topic.
+
+[NOTE]
+====
+You'll need an existing destination system to receive the forwarded {astra_db} metrics. Supported destinations are Prometheus, Apache Kafka, Confluent Kafka, Amazon CloudWatch, and Grafana / Grafana Cloud. 
+====
+
+== Pricing
+
+With an {astra_db} https://www.datastax.com/products/datastax-astra/pricing[PAYG or Enterprise plan,window="_blank"], there is no additional cost to using {astra_db} Metrics, outside of standard data transfer charges. Exporting third-party metrics is not available on the {astra_db} Free Tier.
+
+Metrics monitoring may incur costs at the destination system. Consult the destination system's documentation for its pricing information.
+
+== Roles and permissions
+
+The following {astra_db} roles can export third-party metrics:
+
+* Organization Administrator (recommended)
+* Database Administrator
+* Service Account Administrator
+* User Administrator
+
+The required `db-manage-thirdpartymetrics` permission is automatically assigned to those roles. 
+
+If you create a custom role in {astra_db}, be sure to assign `db-manage-thirdpartymetrics` permission to the custom role. 
+
+== Database health metrics forwarded by {astra_db}
+
+[NOTE]
+====
+Metrics are not alerts. Astra DB provides the ability to export metrics to an external destination system so that you can devise alerts based on the metrics' values. 
+
+Also, note that when you use the {astra_db} Metrics feature in conjunction with the Private Endpoint feature, the exported metrics traffic does not make use of the private endpoint connection. Metrics traffic flows over the public interfaces as it would without a Private Endpoint.
+====
+
+Here are the database health metrics forwarded by the {astra_db} Metrics feature:
+
+* `rate_limited_requests_total` - A counter, it's the number of operations that failed due to an {astra_db} rate limit. You can request that rate limits are increased for your Astra DB databases. Take a rate, such as 5 minutes (5m), and alert if the value is > 0.
+
+* `read_requests_failures_total` - A counter, it's the number of reads that failed. Cassandra drivers will retry failed operations, but significant failures can be problematic. Take a rate, such as 5m, and alert if the value is > 0. `Warn` alert on low amount. `High` alert on larger amounts; determine potentially as a percentage of read throughput.
+
+* `read_requests_timeouts_total` - Timeouts happen when operations against the database take longer than the server side timeout. Take a rate, such as 5m, and alert if the value is > 0. 
+
+* `read_requests_unavailables_total` - Occurs when the service is not available to complete a specific request. Take a rate, such as 5m, and alert if the value is > 0. 
+
+* `write_requests_failures_total` - A counter, it's the number of writes that failed. Cassandra drivers will retry failed operations, but significant failures can be problematic. Take a rate, such as 5m, and alert if the value is > 0. `Warn` alert on low amount. `High` alert on larger amounts; determine potentially as a percentage of read throughput.
+
+* `write_requests_timeouts_total` - Timeouts occur when operations take longer than the server side timeout. Take a rate, such as 5m, and compare with `write_requests_failures_total`.
+
+* `write_requests_unavailables_total` - Unavailable errors occur when the service is not available to service a particular request. Take a rate, such as 5m, and compare with `write_requests_failures_total`.
+
+* `range_requests_failures_total` -  A counter, it's the number of range reads that failed. Cassandra drivers retry failed operations, but significant failures can be problematic. Take a rate, such as 5m, and alert if the value is > 0. `Warn` alter on low amount. `High` alert on larger amounts; determine potentially as a percentage of read throughput.
+
+* `range_requests_timeouts_total` - Timeouts are a subset of total failures. Use this metric to understand if failures are due to timeouts. Take a rate, such as 5m, and compare with `range_requests_failures_total`.
+
+* `range_requests_unavailables_total` - Unavailable errors are a subset of total failures. Use this metric to understand if failures are due to timeouts. Take a rate, such as 5m, and compare with `range_requests_failures_total`.
+
+* `write_latency_seconds_count` - Take rate for write throughput. Alert based on your application Service Level Objective (business requirement).
+
+* `write_latency_seconds_bucket` -  Take percentiles write for latency. Alert based on your application Service Level Objective (business requirement).
+
+* `write_requests_mutation_size_bytes_bucket` - Take percentiles to see how big your writes are over time.
+
+* `read_latency_seconds_count` -  Take the rate for read throughput. Alert based on your application Service Level Objective (business requirement).
+
+* `read_latency_seconds_bucket` - Take percentiles read for latency. Alert based on your application Service Level Objective (business requirement).
+
+* `range_latency_seconds_count` -  Take the rate for range read throughput. Alert based on your application Service Level Objective (business requirement).
+
+* `range_latency_seconds_bucket` -  Take percentiles range read for latency. Alert based on your application Service Level Objective (business requirement).
+
+== Prometheus setup at the destination
+
+For information about setting up Prometheus itself as the destination of the forwarded {astra_db} database metrics, see the https://prometheus.io/docs/prometheus/latest/getting_started/[Prometheus Getting Started] documentation.
+
+[NOTE]
+====
+* Minimum version: Prometheus v2.25
+* Recommended versions: Prometheus v2.33+
+====
+
+[TIP]
+====
+For Prometheus, `remote-write-receiver` must be enabled in the destination app. For the steps, see:
+
+* https://prometheus.io/docs/prometheus/latest/feature_flags/#remote-write-receiver[Remote Write Receiver, window="_blank"].
+* https://prometheus.io/docs/prometheus/latest/storage/#remote-storage-integrations[Remote storage integrations, window="_blank"].
+* https://prometheus.io/docs/prometheus/latest/configuration/configuration/#remote_write[<remote_write>, window="_blank"] configuration details.
+====
+
+After completing those steps in your Prometheus environment, verify it by sending a `POST` request to the remote write endpoint. For an example test client, which also verifies that ingress is setup properly, see:
+
+https://github.com/m3dbx/prometheus_remote_client_golang
+
+`promremote` is a Prometheus remote write client written in Go.
+
+[NOTE]
+====
+For more information about Prometheus metric types, see https://prometheus.io/docs/concepts/metric_types/[this topic].
+====
+
+== Kafka setup at the destination
+
+For information about setting up Kafka as a destination of the forwarded {astra_db} database metrics, see:
+
+* https://kafka.apache.org/documentation/#uses_metrics[Kafka metrics overview, window="_blank"] and https://kafka.apache.org/documentation/#monitoring[Kafka Monitoring, window="_blank"] in the open-source Apache Kafka documentation.
+* https://developer.confluent.io/quickstart/kafka-on-confluent-cloud/[Confluent Cloud, window="_blank"] Kafka documentation.
+
+
+[#putmetricdata]
+== Amazon CloudWatch setup at the destination
+
+In AWS, the secret key user must have the `PutMetricData` action defined as the minimum required permission. For example, in AWS Identity and Access Management (IAM) define a policy such as the following, and attach that policy to the user account that will receive the {astra_db} exported metrics in CloudWatch.
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": "cloudwatch:PutMetricData",
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+For more, see:
+
+* https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/GettingSetup.html[Getting set up with Amazon CloudWatch, window="_blank"]
+* https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/permissions-reference-cw.html[Amazon CloudWatch permissions reference, window="_blank"]
+
+== Configure the POST payload
+
+Use the following `POST` to export metrics to an external system:
+
+```
+POST /v2/databases/{databaseId}/telemetry/metrics
+```
+
+The configuration payload (JSON) depends on which destination you'll use. Currently we support Prometheus `remote_write`, Kafka, and Amazon CloudWatch destinations.
+
+To ensure that metrics are enabled for your destination app, provide the relevant properties as described below. 
+
+[TIP]
+====
+Each `POST` **replaces** any existing configuration.
+====
+
+See the following sections for `curl` examples. If you prefer, use Postman with `raw` JSON in the body.
+
+In the `--header`, use `Bearer` and specify your token ID to authenticate with the DevOps v2 API.
+
+If you don't have a current token, see xref:manage:org/managing-org.adoc#_manage_application_tokens[Manage application tokens]. 
+
+Specify your database ID. 
+
+See the {astra_ui} Dashboard for its value. You can define a variable such as `$DB_ID`, set it to your databaseId value, and then use the variable in a `curl` command.
+
+In the request payload, specify the destination's `--data` properties. 
+
+=== {astra_db} Metrics configuration for Prometheus
+
+With a required top-level key of `prometheus_remote`, the POST payload:
+
+* `prometheus_remote`
+** `endpoint`
+** `auth_strategy`
+** `token`
+** `user`
+** `password`
+
+For `auth_strategy`, specify `basic` or `bearer`, depending on your Prometheus `remote_write` auth type.
+
+* If you specified `"auth_strategy": "bearer"`, provide your Prometheus token. Do not include `user` or `password` in the POST request payload.
+* If you specified `"auth_strategy": "basic"`, provide your Prometheus `user` and `password`. Do not include `token`.
+
+Example payloads:
+
+```json
+{
+    "prometheus_remote":  {
+        "endpoint": "https://prometheus.example.com/api/prom/push",
+        "auth_strategy" : "bearer", 
+        "token" : "lSAYp9oLtdAa9ajasoNNS999"
+    }
+}
+```
+
+Or: 
+
+```json
+{
+    "prometheus_remote":  {
+        "endpoint": "https://prometheus.example.com/api/prom/push",
+        "auth_strategy" : "basic", 
+        "password" : "myPromPassword", 
+        "user" : "myPromUsername"
+    }
+}
+```
+
+[IMPORTANT]
+====
+For Prometheus, `remote-write-receiver` must be enabled in the destination system. See:
+
+* https://prometheus.io/docs/prometheus/latest/feature_flags/#remote-write-receiver[Remote Write Receiver, window="_blank"].
+* https://prometheus.io/docs/prometheus/latest/storage/#remote-storage-integrations[Remote storage integrations, window="_blank"].
+* https://prometheus.io/docs/prometheus/latest/configuration/configuration/#remote_write[<remote_write>, window="_blank"] configuration details.
+====
+
+==== **POST metrics configuration examples (Prometheus)**
+
+[TIP]
+====
+In the curl examples, notice we added the `--include` option to specify that the POST output should include the HTTP response headers. These details can help with diagnostics if the POST returns an error or a null response.
+====
+
+[tabs]
+====
+cURL command::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/third-party/curl_post_prometheus.sh[]
+----
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::manage:example$results/third-party/post_response_prometheus.result[]
+----
+--
+====
+
+==== **Get metrics configuration examples (Prometheus)**
+
+[TIP]
+====
+In the curl examples, notice we added the `--include` option to specify that the GET output should include the HTTP response headers. These details can help with diagnostics if the GET returns an error or a null response.
+====
+
+Retrieve third-party metrics configuration for an {astra_db} database:
+
+[tabs]
+====
+cURL command::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/third-party/curl_get_prometheus.sh[]
+----
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::manage:example$results/third-party/get_response_prometheus.result[]
+----
+--
+====
+
+=== {astra_db} Metrics configuration for Kafka
+
+With a required top-level key of `kafka`, the POST payload's required properties are:
+
+* `bootstrap_servers`
+* `topic`
+* `sasl_mechanism`
+* `sasl_username`
+* `sasl_password`
+
+Example payload for Kafka:
+
+```json
+{
+  "kafka": {
+    "bootstrap_servers": [
+      "pkc-9999e.us-east-1.aws.confluent.cloud:9092"
+    ],
+    "topic": "astra_metrics_events",
+    "sasl_mechanism": "PLAIN",
+    "sasl_username": "9AAAAALPRC9AAAAA",
+    "sasl_password": "viAAr/geQxxacrAAmydHb7wz6DRu6mL9W9999juQcS1s++pECM99mnW+3Gs06xDd",
+    "security_protocol": "SASL_PLAINTEXT"
+  }
+}
+```
+
+
+[TIP]
+====
+The `security_protocol` property is an advanced option, and is not required. Most Kafka installations will not require this setting for {astra_db} Metrics to connect. Users of hosted Kafka on Confluent Cloud, though, may need to set 'SASL_SSL' in the `security_protocol` property. Valid options are:
+
+* `SASL_PLAINTEXT` - SASL authenticated, non-encrypted channel.
+* `SASL_SSL` - SASL authenticated, encrypted channel. Non-Authenticated options (`SSL` and `PLAINTEXT`) are not supported. 
+
+Be sure to specify the appropriate, related `sasl_mechanism` property. For Confluent Cloud, you may only be able to use `PLAIN`. See the https://docs.confluent.io/platform/current/security/security_tutorial.html#overview[Confluent Cloud security tutorial]. From the Confluent docs: "Confluent Cloud uses `SASL/PLAIN` (or `PLAIN`) over TLS v1.2 encryption for authentication because it offers broad client support while providing a good level of security. The usernames and passwords used in the SASL exchange are API keys and secrets that should be securely managed using a secrets store and rotated periodically."
+====
+
+
+==== **POST metrics configuration example (Kafka)**
+
+[TIP]
+====
+In the curl examples, notice we added the `--include` option to specify that the POST output should include the HTTP response headers. These details can help with diagnostics if the POST returns an error or a null response.
+====
+
+[tabs]
+====
+cURL command::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/third-party/curl_post_kafka.sh[]
+----
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::manage:example$results/third-party/post_response_kafka.result[]
+----
+--
+====
+
+==== **Get metrics configuration examples (Kafka)**
+
+[TIP]
+====
+In the curl examples, notice we added the `--include` option to specify that the GET output should include the HTTP response headers. These details can help with diagnostics if the GET returns an error or a null response.
+====
+
+Retrieve third-party metrics configuration for an {astra_db} database:
+
+[tabs]
+====
+cURL command::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/third-party/curl_get_kafka.sh[]
+----
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::manage:example$results/third-party/get_response_kafka.result[]
+----
+--
+====
+
+
+
+=== {astra_db} Metrics configuration for Amazon CloudWatch
+
+With a required top-level key of `aws`, the POST payload's required properties are:
+
+* `access_key`
+* `secret_key`
+* `region`
+
+Example payload for CloudWatch:
+
+```json
+{ 
+  "aws": { 
+    "access_key": "AKIAIOSFODNN7EXAMPLE", 
+    "secret_key": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY", 
+    "region": "us-east-1" 
+  } 
+}
+```
+
+You provide your AWS access keys so that AWS can verify your identity in programmatic calls. Your access keys consist of an access key ID (for example, `AKIAIOSFODNN7EXAMPLE`) and a secret access key (for example, `wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY`).
+
+In the `region` property, you can specify the same AWS region used by the {astra_db} serverless database from which you'll export metrics. However, you have the option of specifying a different AWS region; for example, you might use this option if your app is in another region and you want to see the metrics together. 
+
+[TIP]
+====
+Reminder: In AWS, the secret key user must have the `PutMetricData` action defined as the minimum required permission. See the AWS IAM link:#putmetricdata[configuration example] presented earlier in this topic.
+====
+
+==== **POST metrics configuration example (Amazon CloudWatch)**
+
+[TIP]
+====
+In the curl examples, notice we added the `--include` option to specify that the POST output should include the HTTP response headers. These details can help with diagnostics if the POST returns an error or a null response.
+====
+
+[tabs]
+====
+cURL command::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/third-party/curl_post_cloudwatch.sh[]
+----
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::manage:example$results/third-party/post_response_cloudwatch.result[]
+----
+--
+====
+
+==== **Get metrics configuration examples (CloudWatch)**
+
+[TIP]
+====
+In the curl examples, notice we added the `--include` option to specify that the GET output should include the HTTP response headers. These details can help with diagnostics if the GET returns an error or a null response.
+====
+
+Retrieve third-party metrics configuration for an {astra_db} database:
+
+[tabs]
+====
+cURL command::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/third-party/curl_get_cloudwatch.sh[]
+----
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::manage:example$results/third-party/get_response_cloudwatch.result[]
+----
+--
+====
+
+
+== Visualize exported {astra_db} metrics with Grafana Cloud
+
+This section explains how to configure https://grafana.com/products/cloud/[Grafana Cloud, window="_blank"] to consume Astra DB (serverless) health metrics. 
+
+[TIP]
+====
+Using Grafana Cloud is optional. You can choose your favorite tool to visualize the {astra_db} metrics that you exported to Kafka, Prometheus, or Amazon CloudWatch.
+====
+
+We'll use Prometheus as the destination system in the examples. You'll need a Grafana Cloud account. They offer a Free plan with 14-day retention. See https://grafana.com/pricing/[Grafana pricing, window="_blank"]. 
+
+=== Initial steps in Grafana Cloud
+
+The following initial steps occur before submitting the `POST /v2/telemetry/metrics` payload described previously in this topic. 
+
+. On login to Grafana Cloud, select **+ Connect data** from the home page. 
++
+image:grafana-welcome.png[Grafana Cloud Welcome page has + Connect data button.]
+. Select the **Custom Prometheus metrics** section that includes the Prometheus icon.
++
+image:grafana-custom-prom-metrics.png[Grafana Cloud Select Custom Prom metrics.]
+. You can accept the default selections, or make edits as needed. Provide a name to the API Key (such as **AstraDB_PS**) and click **Create API Key**. 
++
+image:grafana-create-api-key.png[Grafana Cloud Create API key option is shown.]
+. The config file is generated. Here's an example - your values will be different:
++
+```yaml
+cat << EOF > ./agent-config.yaml
+global:
+  scrape_interval: 60s
+
+scrape_configs:
+  - job_name: node
+    static_configs:
+    - targets: ['localhost:9100']
+
+remote_write:
+  - url: https://prometheus-prod-10-prod-us-central-0.grafana.net/api/prom/push
+    basic_auth:
+      username: 412XXX
+      password: eyJrIjoiMmE1ZTY4YWRhY2ZmNmZlMjllZmY3ZjczYWQ0NzRiZjNlNTE1NTVkMCIsIm4iOiJBc3RyYURCX1BTIiwiaWQiOjYzOTQXXX=
+EOF
+```
+
+=== DevOps config via Postman &amp; Grafana Cloud followup
+
+To configure and publish metrics from Astra DB using the DevOps API, follow these steps. We'll use Postman and have a xref:manage:devops/devops-tokens.adoc[bearer token] configured.
+
+To publish metrics, create a `POST` request in Postman:
+
+
+`\https://api.astra.datastax.com/v2/databases/{databaseId}/telemetry/metrics`
+
+In the **Body**, set the parameters to the values that you retrieved from Grafana Cloud. Example:
+
+```yaml
+{
+  "prometheus_remote": {
+    "endpoint": "https://prometheus-prod-10-prod-us-central-0.grafana.net/api/prom/push",
+    "auth_strategy": "basic",
+    "user": "412XXX",
+    "password": "eyJrIjoiMmE1ZTY4YWRhY2ZmNmZlMjllZmY3ZjczYWQ0NzRiZjNlNTE1NTVkMCIsIm4iOiJBc3RyYURCX1BTIiwiaWQiOjYzOTQXXX=
+  }
+}
+```
+
+The `POST` response should return a `202` on success.
+
+Now, **switch back to Grafana Cloud:**
+
+. Select the option to **Create a New Dashboard**.
++
+image:grafana-create-new-dashboard.png[Grafana Cloud create new dashboard]
+. Select **Add a new panel** and select the Data Source as `grafanacloud-<YourUserId>-prom`.  Example:
++
+image:grafana-cloud-userid-prom.png[Data source is selected as grafanacloud-<YourUserId>-prom.]
+. If configured correctly, you should see the Astra DB Metrics under the Metrics Browser in Grafana Cloud. Example:
++
+image:grafana-metrics-browser.png[Grafana Metrics Browser shows Astra DB metrics.]
+. Now you can select the metrics that you want to visualize in Grafana Cloud. The Dashboard panel displays the charts.
+
+=== Alternative approach: import from Astra DB Health to Grafana Cloud
+
+[TIP]
+====
+This alternative approach will explore an import option from Astra DB health to your Grafana Cloud instance. You will still need to complete the steps listed above:
+
+* Initial steps in Grafana Cloud
+* DevOps config via Postman &amp; Grafana Cloud followup
+
+Then continue with the steps below.
+====
+
+. Login to https://astra.datastax.com[{astra_ui}, window="_blank"]. 
+. Select the database you want to ultimately monitor in Grafana Cloud by first navigating to your database's Health tab.
+. Click on **DSE Cluster Condensed**. Example:
++
+image:astra-health-dse-cluster-condensed.png[Example shows Astra DB Health screen for DSE Cluster Condensed.]
+. Click the **Share** icon:
++
+image:astra-health-share-option.png[{astra_ui} Health Share]
+. Then select the **Export** tab:
++
+image:astra-health-share-export.png[{astra_ui} Health Export]
+. Click **View JSON** and then **Copy to Clipboard**:
++
+image:astra-health-json-copy-to-clipboard.png[{astra_ui} Health Copy to Clipboard]
+. Make the following edits to the copied JSON. 
++
+Replace **all** references to `coordinator_...{tenant= ... }` with `astra_coordinator` and remove the tenant references. For example, in the following expression:
++
+```json
+​​"expr": "histogram_quantile(.99, sum(rate(coordinator_write_requests_mutation_size_bytes_bucket{tenant='${__user.login}'}[$__rate_interval])) by (le))",
+```
++
+You would replace that expression with:
++
+```json
+​​"expr": "histogram_quantile(.99, sum(rate(astra_coordinator_write_requests_mutation_size_bytes_bucket{}[$__rate_interval])) by (le))",
+```
+. Now switch over to your Grafana Cloud instance. Click the **Create** option, and then click **Import** from the menu.
++
+image:grafana-create-import.png[Grafana Cloud Create Import option is selected.]
+. Upload or paste in your edited JSON.
++
+image:grafana-import-json-example.png[Grafana Cloud Import JSON shown.]
+. You can change the name. Example:
++
+image:grafana-cloud-import-json-change-name.png[Grafana Cloud Import JSON change name.]
+. Once imported, all your {astra_db} health charts will auto-populate in Grafana Cloud. Example:
++
+image:grafana-cloud-health-charts-displayed.png[Astra DB Health charts displayed in Grafana Cloud.] 
+
+Now you can use your own Grafana Cloud instance to monitor the {astra_db} database's health via its metrics.
+
+== What's next?
+
+See the following related topics.
+
+=== {astra_ui}
+
+* xref:manage:db/third-party-metrics-ui.adoc[Export metrics via {astra_ui}]
+
+=== DevOps v2 API reference
+
+In addition to this topic, see:
+
+* https://docs.datastax.com/en/astra/docs/_attachments/devopsv2.html#operation/configureTelemetry[Configure Astra Remote Telemetry Metrics - API reference, window=“_blank”]
+* https://docs.datastax.com/en/astra/docs/_attachments/devopsv2.html#operation/getTelemetryConfig[Retrieve Remote Telemetry Metrics configuration - API reference, window=“_blank”]
+
+=== Destination documentation
+
+* https://prometheus.io/docs/prometheus/latest/getting_started/[Getting Started, window="_blank"] with Prometheus
+* https://grafana.com/[Grafana, window="_blank"]
+* https://grafana.com/products/cloud/[Grafana Cloud, window="_blank"]
+* https://kafka.apache.org/documentation/#uses_metrics[Apache Kafka metrics overview, window="_blank"]
+* https://kafka.apache.org/documentation/#monitoring[Apache Kafka Monitoring, window="_blank"]
+* https://www.confluent.io/lp/apache-kafka/[Confluent Kafka&reg;, window="_blank"]
+// * https://www.datadoghq.com/[DataDog, window="_blank"]
+// * https://aws.amazon.com/cloudwatch/[Amazon CloudWatch, window="_blank"]
+endif::[]

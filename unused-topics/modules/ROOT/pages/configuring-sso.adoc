@@ -1,0 +1,189 @@
+= Configuring single sign-on
+
+
+include::partial$sso-overview.adoc[]
+
+
+== Key functions
+{company} {astra_db} integrates with your Security Assertion Markup Language (SAML)-capable identity providers (IdP) to manage the access to your organization and verify user permission.
+
+[NOTE]
+====
+Ensure you have been granted permission to {astra_db} from your IdP before testing the configuration or the test will fail.
+====
+
+The following workflow explains the SSO process:
+
+image::ROOT:sss_workflow_line.png[]
+
+== Just-in-Time provisioning
+
+JIT provisioning is a method of dynamically creating a user account for a user who does not already have an Astra account, but has been granted access to an Astra organization through an IdP. The first time the user logs on with SSO their account is automatically created and added to the Astra Organization associated with the SSO configuration, mitigating the need to use the manual Astra invitation feature. When first created, JIT provisioned accounts are given a default set of permissions. The organization administrator can adjust these permissions for each user as needed.
+
+JIT provisioning is automatically enabled with any organization with an active SSO configuration.
+
+The user must accept DataStax Terms and Conditions. The user is then redirected to their {astra_db} dashboard.
+
+////
+== Configuring SSO
+
+To configure single sign-on with your organization, select your identity provider (IdP) to get started: 
+
+* xref::sso-azure.adoc[Microsoft Azure AD]
+* xref::sso-okta.adoc[Okta]
+* xref::sso-onelogin.adoc[OneLogin]
+//* xref::sso-other.adoc[Other]
+
+After you configure and activate the IdP, you can log in and access {astra_db} through the IdP or {astra_db} log-in screen. If you log in through your IdP, you are authenticated by your IdP and redirected to your {astra_db} dashboard with your organization.
+////
+
+== SSO Login
+
+There are several ways to access your organization with SSO when the configuration is complete:
+
+* Starting from Astra
+. Sign in to your Astra account using your non-SSO Astra credentials. Your email address and IdP login must match. 
+. Switch to your SSO-enabled organization. To log in, Astra redirects you to your IdP. 
+. If prompted, enter your SSO credentials. When your IdP approves your credentials, you are automatically directed to the your organization's dashboard.
+
+* Starting from your IdP
+. Log in to your IdP and access the dashboard.
+. Select the Astra application; you are redirected to Astra. 
+. Astra determines if an account already exists with the email address entered for your login. 
+.. If so, you are logged into that existing account.
+.. If an existing account is not found, a new account is created automatically. 
+. If this is your first time accessing the Astra application with this account, a dialog box appears prompting you to accept the DataStax Terms and Conditions. Review the information and click *Accept*.
+
+image::ROOT:DS_TC.png[]
+
+Your organization dashboard appears on the next page. 
+
+//// 
+* Service provider-initiated access
+. An IdP administrator first needs to assign you access to the Astra organization through the IdP application associated with your organization. Astra is the service provider; sign in to your Astra DB account (this is not an SSO sign-in.)
+. Switch to an organization already configured with SSO. This action triggers an SSO authentication. 
+. Enter your SSO credentials. When your IdP approves your credentials and access, you are automatically directed to the organization's dashboard with the IdP application.
+
+* Access an organization directly from IdP with JIT provisioning
+. An IdP administrator first needs to assign you access to the Astra organization through the IdP application associated with your organization.
+. Login to your IdP application catalog and access Astra using the Astra DB  application. You will be transferred to Astra pre-authentication. 
+.. If you do not have an Astra account, your account information creates a new JIT provisioned account with you.
+. A dialog box appears prompting you to accept the DataStax Terms and Conditions; click *Accept*. Your dashboard appears on the next page. 
+.. If you have an Astra account, you are logged in to that existing account. 
+
+You are automatically directed to the organization's dashboard with the IdP application.
+
+image::ROOT:DS_TC.png[]
+
+* Access an organization directly from IdP: 
+. Login with your IdP access from your console using the Astra DB image::ROOT:astra-square.png[] icon or application.
+. Login with your SSO log in (username and password). Your dashboard appears on the next page. 
+
+//// 
+[NOTE]
+====
+Different vendors use different terminology with various fields with SSO. Use the following table with your reference.
+====
+
+[cols=4*,options=header]
+|===
+|DataStax/
+|Azure AD
+|Okta
+|OneLogin
+
+|SAML Assertion Consumer Service (ACS) URL
+|Reply URL
+|Single sign on URL
+|ACS (Consumer URL)
+
+|Audience URI
+|Identifier (Entity ID)
+|Audience URI (SP Entity ID)
+|Audience
+
+|Relay State
+|Relay State
+|Default Relay State
+|Relay State
+
+|Sign on URL
+|Login URL
+|Identity Provider Single Sign-On URL
+|SAML 2.0 Endpoint
+
+|Identity Provider Issuer
+|Azure AD Identifier
+|Identity Provider Issuer
+|Issuer URL
+
+|x.509 Certificate
+|SAML Signing Certificate
+|x.509 Certificate
+|x.509 Certificate
+
+|===
+
+== Transfer configuration from one device to another
+
+Life happens: we lose our phones, laptops get wet, and so on. Upon logging in with SSO for the first time, set up one or more additional authentication methods. Now anytime you access {astra_db} from an unrecognized device, you must confirm your identity using one of those authentication methods.
+
+=== Understanding multi-factor authentication
+
+Multi-factor Authentication (MFA) grants users access to the application after they provide two or more pieces of evidence to verify their identify. Using SSO to log in with an IdP is the first piece of evidence.
+
+Most additional factors are device-based. If you lose your device with MFA on it or cannot use the configured device to log in for any reason, contact DataStax Support to reset your additional factors.
+
+
+=== Accessing the device as a new user with JIT provisioning
+
+To access {astra_db} for the first time from your IdP:
+
+. Sign in to your IdP (MS Azure AD, Okta, or OneLogin) and select the Astra application.
+. {astra_db} prompts you to set up MFA.
+
++
+image::ROOT:configure_MFA.png[]
+
+. There are two additional factor options to consider for your configuration: Google Authenticator and Okta Verify. You can use either option (or both options) no matter how you set it up in the past. 
+.. Read the instructions on the screen and then scan the QR code. 
+.. If you add both options, you can choose either option any time you are required to provide additional factor at login.
+.. Use any time-based one-time (TOTP) authenticator with Google Authenticator. TOTP authenticators include Authy, LastPass, 1Password, and Microsoft Authenticator. Follow the instructions to scan the QR code with the application.  
+... The screen, *Account Already Exists*, can appear. Proceed and select *Add to Existing Account*. 
+
++
+image::ROOT:already_exists.png[]
+
+... An email verification is sent to your email address. Complete the instructions to confirm your address. 
+... New users are prompted to review and accept the Terms and Conditions before accessing the application. 
+... Enter the verification code and select *Verify*.
+
+[NOTE]
+====
+IF you have multiple devices, registering more than one ensures that you can still access the application even if you lose access to one of them.
+====
+
+.. Select *Finished* when complete.
+
+
+=== Accessing the application from a new device
+
+When accessing DataStax {astra_db} from any new or existing device, a prompt appears for you to prove your identity with an additional MFA you registered on your first visit. If you registered more than one, you can select one to use.
+
+. Sign on to your IdP.
+. When prompted, verify your identity with a push notification or a code you receive from the authenticator application. 
+
+You are now signed in to Astra and redirected to the dashboard for your organization.
+
+=== Accessing the application from an existing device
+
+Sign in to your IdP as usual. You are now automatically signed in to {astra_db} and do not need to sign in again unless you switch devices.
+
+////
+
+//== Options after activation
+
+//When SSO is active you, as the administrator, can see the description, status, date modified, and IdP name in a table. 
+
+//image::ROOT:sso_active_table.png[]
+////

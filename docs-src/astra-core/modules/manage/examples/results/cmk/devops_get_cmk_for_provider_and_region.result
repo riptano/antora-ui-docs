@@ -1,0 +1,23 @@
+When the key is found for the given provider and region, 
+the 200 OK response contains:
+
+{
+  "organization_id": "String - The ID of your organization",
+  "provider_id": "String - The ID of the provider account
+                   where DataStax stores your data buckets",
+  "provider": "String - aws or gcp"
+}
+
+If there are no keys setup for the organization's provider 
+and region combination, the 404 response contains:
+
+{
+  "description": "Could not find <provider> data in 
+                  region <region> for organization <orgID>."
+}
+
+Other potential response codes:
+
+400 Bad request.
+403 The user is forbidden to perform the operation.
+500 A server error occurred.

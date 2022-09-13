@@ -1,0 +1,171 @@
+= Building sample apps on Google Cloud
+:slug: gcp-sample-apps
+:page-tag: dev,astra-db,connect
+
+Use these simple, sample applications to get started with {company} {astra_db} on Google Cloud.
+
+++++
+<div id="sample-apps" class="container">
+  <div class="row">
+<div style="padding: 20px" class="col-md-4">
+    <img width="400" class="example-screenshot" src="https://monosnap.com/image/Fv0yPAznbeNJD3vYlQfztME6yogzFT">
+    <div class="example-meta">
+      <div class="example-name">
+        <a target="_blank" id="todo-astra-jamstack-netlify" href="https://github.com/{company}-Examples/todo-astra-jamstack-netlify">React.js, JAMStack, REST Todo List</a>
+      </div>
+      <div class="example-description">
+        Create a simple React Todo List using just front-end Javascript talking directly to {astra_db} REST API.
+      </div>
+      <br/>
+      <div class="example-time">
+        <i class="fa fa-clock-o" aria-hidden="true"></i> 10 minutes, Beginner
+      </div>
+      <div class="example-links">
+        Updated on July 8th, 2020
+      </div>
+    </div>
+  </div>
+
+  <div style="padding: 20px" class="col-md-4">
+    <img width="400" class="example-screenshot" src="https://monosnap.com/image/uPQ08h8exAXqn0d8C2GoT65SDwGT51">
+    <div class="example-meta">
+      <div class="example-name">
+        <a target="_blank" id="astra-gatsbyjs-starter" href="https://github.com/{company}-Examples/astra-gatsbyjs-starter">React.js, Gatsby.js, GraphQL Starter</a>
+      </div>
+      <div class="example-description">
+        Create a React.js, Gatsby application that reads data from {astra_db} using GraphQL.
+      </div>
+      <br/>
+      <div class="example-time">
+        <i class="fa fa-clock-o" aria-hidden="true"></i> 30 minutes, Beginner
+      </div>
+      <div class="example-links">
+        Updated on July 5th, 2020
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+  <div style="padding: 20px" class="col-md-4">
+    <img width="400" class="example-screenshot" src="https://monosnap.com/image/Fv0yPAznbeNJD3vYlQfztME6yogzFT">
+    <div class="example-meta">
+      <div class="example-name">
+        <a target="_blank" id="todo-astra-react-serverless" href="https://github.com/tjake/todo-astra-react-serverless">Node.js, React.js, Serverless Todo List</a>
+      </div>
+      <div class="example-description">
+        Create a Serverless React Todo list following AWS best practices including Lambda.
+      </div>
+      <br/>
+      <div class="example-time">
+        <i class="fa fa-clock-o" aria-hidden="true"></i> 30 minutes, Intermediate
+      </div>
+      <div class="example-links">
+        Updated on July 8th, 2020
+      </div>
+    </div>
+  </div>
+
+// ////Spring Data Cassandra REST API w/ Simple Next.js + Astra sample image
+</div>
+  <div class="row">
+  <div style="padding: 20px" class="col-md-4">
+    <img width="400" class="example-screenshot" src="https://monosnap.com/image/PQXQsYcisYTHwSzkOTBwkRQoD3HkGn">
+    <div class="example-meta">
+      <div class="example-name">
+        <a target="_blank" id="spring-data-starter" href="https://github.com/{company}-Examples/spring-data-starter">Spring Data Cassandra REST API</a>
+      </div>
+      <div class="example-description">
+        Use Spring Data Cassandra and {astra_db} to build a REST API for a backend service that interacts with products in orders.
+      </div>
+      <br/>
+      <div class="example-time">
+        <i class="fa fa-clock-o" aria-hidden="true"></i> 10 minutes, Beginner
+      </div>
+      <div class="example-links">
+        Updated on Aug 7th, 2020
+      </div>
+    </div>
+  </div>
+    <div style="padding: 20px" class="col-md-4">
+    <img width="400" class="example-screenshot" src="https://user-images.githubusercontent.com/3254549/89590110-ff682580-d7fb-11ea-8e3a-47e3b552fc19.png">
+    <div class="example-meta">
+      <div class="example-name">
+        <a target="_blank" id="astra-next.js-starter" href="https://github.com/{company}-Examples/astra-next.js-starter">Next.js/{astra_db} Starter</a>
+      </div>
+      <div class="example-description">
+        Create a React.js, Next.js application that reads data from {astra_db} using GraphQL.
+      </div>
+      <br/>
+      <div class="example-time">
+        <i class="fa fa-clock-o" aria-hidden="true"></i> 10 minutes, Beginner
+      </div>
+      <div class="example-links">
+        Updated on Aug 9th, 2020
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div style="padding: 20px" class="col-md-4">
+    <img width="400" class="example-screenshot" src="https://raw.githubusercontent.com/{company}-Examples/astra-tik-tok/master/screenshot.jpg">
+    <div class="example-meta">
+      <div class="example-name">
+        <a target="_blank" id="astra-tik-tok" href="https://github.com/{company}-Examples/astra-tik-tok/blob/master/README.md#running-astra-tik-tok">Tik Tok Clone</a>
+      </div>
+      <div class="example-description">
+        A video tutorial showing how to use the Create-React-App, Netlify, and {astra_db}'s Document API to create a simple Tik-Tok clone.
+      </div>
+      <br/>
+      <div class="example-time">
+        <i class="fa fa-clock-o" aria-hidden="true"></i> 50 minutes, Advanced
+      </div>
+      <div class="example-links">
+        Updated on Dec 10th, 2020
+      </div>
+    </div>
+  </div>
+    <div style="padding: 20px" class="col-md-4">
+    <img width="400" class="example-screenshot" src="https://raw.githubusercontent.com/{company}-Examples/battlestax/master/tutorial/battlestax.png">
+    <div class="example-meta">
+      <div class="example-name">
+        <a target="_blank" id="BattleStax Game" href="https://github.com/{company}-Examples/battlestax">BattleStax JAMStack Game</a>
+      </div>
+      <div class="example-description">
+
+BattleStax is a stateful JAMStack game that is wholesome fun for the entire crew. Deploy a scalable JAMStack app and use CI/CD to manage the application.
+      </div>
+      <br/>
+      <div class="example-time">
+        <i class="fa fa-clock-o" aria-hidden="true"></i> 50 minutes, Advanced
+      </div>
+      <div class="example-links">
+        Updated on Dec 10th, 2020
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+  <style>
+  .example-name a {
+    color: #3B84C1;
+    font-weight: 600;
+    text-decoration: none!important;
+    font-size: 16px;
+  }
+  .example-meta {
+    padding: 15px;
+  }
+</style>
+<script>
+  var apps = Array.from(document.getElementById('sample-apps').getElementsByTagName('a')).map(item => item.id);
+
+  apps.forEach(function(app) {
+    var link = document.getElementById(app);
+    window.analytics.trackLink(link, '{astra_db} - Sample App Gallery GitHub Link Clicked', {
+    app: app
+  });
+  });
+</script>
+++++

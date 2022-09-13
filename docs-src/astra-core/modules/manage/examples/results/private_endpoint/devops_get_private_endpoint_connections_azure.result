@@ -1,0 +1,24 @@
+{
+  "clusters": [
+    {
+      "databaseID": "string",
+      "datacenters": [
+        {
+        "serviceName": "test.a51y2a51-f9j4-4ad2-l863-67e5ac6g10m.westus2.azure.privatelinkservice",
+        "allowedPrincipals": [
+          "9cbbd094-fa31-490f-863d-897d01661681"
+        ],
+        "datacenterID": "string",
+        "endpoints": [
+          {
+            "endpointID": "/subscriptions/a51y2a51-f9j4-4ad2-l863-67e5ac6g10m/resourceGroups/lab-resourceGroups/providers/Microsoft.Network/privateEndpoints/dev-poc",
+            "description": "ecomm-team-billing-app",
+            "status": "Accepted",
+            "createdDateTime": "2009-11-10T23:00:00"
+          }
+          ]
+        }
+      ]
+    }
+  ]
+}

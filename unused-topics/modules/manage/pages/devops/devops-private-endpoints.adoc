@@ -1,0 +1,104 @@
+== Get private endpoints information with the DevOps API
+
+Use the DevOps API to create, remove, and manage private endpoints.
+
+You can use the DevOps API to perform the actions your xref:manage:org/manage-permissions.adoc[role permissions] allow.
+
+include::ROOT:partial$endpoint_perm.adoc[]
+
+=== Prerequisites
+
+Ensure you have xref:manage:org/manage-permissions.adoc[permission] to manage private endpoints.
+
+[NOTE]
+====
+To increase your security, consider xref:manage:devops/devops-api.adoc#devops-access-list[restricting public access] to your database using the access list.
+====
+
+=== Getting a list of private endpoint configurations
+
+. Check existing private endpoint configurations within your organization or database:
+
++
+[tabs]
+====
+cURL command (/v2): Get all private endpoints in organization::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/private_endpoint/curl_get_private_endpoints_org.sh[]
+----
+--
+
+cURL command (/v2): Get all private endpoints in database::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/private_endpoint/curl_get_private_endpoints_db.sh[]
+----
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::manage:example$results/private_endpoint/devops_get_private_endpoints_aws.result[]
+----
+--
+====
+
+
+=== Getting a list of private endpoint connections
+
+. Check existing private endpoint connections within your organization or database:
+
++
+[tabs]
+====
+cURL command (/v2): Get all private endpoint connections in organization::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/private_endpoint/curl_get_private_endpoint_connections_org.sh[]
+----
+--
+
+cURL command (/v2): Get all private endpoint connections in database::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/private_endpoint/curl_get_private_endpoint_connections_db.sh[]
+----
+--
+
+cURL command (/v2): Get all private endpoint connections in specified region::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/private_endpoint/curl_get_private_endpoint_connections_region.sh[[]
+----
+
+If the database is only in a single region, `datacenterID` is your `databaseID`.
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::manage:example$results/private_endpoint/devops_get_private_endpoint_connections_aws.result[]
+----
+--
+====
+
+=== What's next?
+
+Learn how to connect to xref:manage:devops/devops-aws-private-endpoints.adoc[AWS PrivateLink], xref:manage:devops/devops-azure-private-endpoints.adoc[Azure Private Link], or xref:manage:devops/devops-gcp-private-endpoints.adoc[GCP Private Service Connect].
+
+Explore link:_attachments/devopsv2.html#operation/Private-Endpoints[Private endpoints] in the DevOps API.

@@ -1,0 +1,4 @@
+[TIP]
+====
+Alternatively, xref:inviting-users-to-join-an-organization.adoc[have a teammate provide access to their Astra database].
+====

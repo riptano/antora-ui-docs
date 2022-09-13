@@ -1,0 +1,244 @@
+== Connecting to AWS PrivateLink
+
+To better protect your database connection, you can connect to a private endpoint using the {astra_db} private endpoint.
+Private endpoints are available for only intra-region use.
+The region for your private endpoint in the AWS console and your {astra_db} database must match.
+
+
+include::ROOT:partial$note_serverless_only.adoc[]
+
+For pricing related to using private endpoints, see xref:manage:org/managing-org.adoc#pricing-and-billing#private-endpoints[Pricing and billing].
+
+include::ROOT:partial$endpoint_perm.adoc[]
+
+For more about AWS PrivateLink, see link:https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-service.html[AWS PrivateLink].
+
+=== Prerequisites
+
+. xref:manage:db/managing-db.adoc#create-your-astra-db-database[Create your {astra_db} database] using {astra_ui}.
+. Ensure you have xref:manage:org/manage-permissions.adoc[permission] to manage private endpoints.
+. xref:manage:org/managing-org.adoc#manage-application-tokens[Get your application token].
+
+[IMPORTANT]
+====
+Only VPC owners can create resources such as VPC endpoints, subnets, route tables, and NACLs. Participants cannot view, modify, or delete resources that belong to other participants or the VPC owner. Thus a user cannot create resources, including a private endpoint, in a shared VPC that is owned by a different AWS account. To see which account owns your VPC, look at the Owner ID in the AWS Console. Example:
+
+image::ROOT:aws-vpc-owner-id-example.png[alt=Look at Owner ID in AWS Console,width=300]
+
+For more, see link:https://docs.aws.amazon.com/vpc/latest/userguide/vpc-sharing.html[Work with shared VPCs - Amazon Virtual Private Cloud].
+====
+
+[NOTE]
+====
+To increase your security, xref:manage:devops/devops-api.adoc#devops-access-list[restrict public access] to your database using the access list.
+====
+
+[NOTE]
+====
+If you are using Postman for your API calls, ensure you use the `raw` option to enter the body of your API call.
+====
+
+== Connect to your AWS PrivateLink endpoint
+. Get the allowed principal from your link:https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints-access.html#vpc-endpoint-policies-gateway[AWS account].
+.. In your AWS console on the *Identify and Access Management (IAM)* *Users* page, select your user name from the available users.
+.. Select the User ARN as your allowed principal. For example, `arn:aws:iam::123456789012:root`.
+. Enter the allowed principal for your private endpoints to {astra_db}:
+
++
+[tabs]
+====
+cURL command (/v2)::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/private_endpoint/curl_post_private_endpoint_aws_principal.sh[]
+----
+
+--
+include::ROOT:partial$datacenter-ordinal.adoc[]
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::manage:example$results/private_endpoint/devops_private_endpoint_aws_principal.result[]
+----
+--
+====
+
+. Use the `serviceName` to create an endpoint in your AWS Console.
++
+[tabs]
+====
+CLI::
++
+--
+Get a list of available services:
+[source, shell, subs="attributes+"]
+----
+aws ec2 describe-vpc-endpoint-services
+----
+
+Results:
+[source, shell, subs="attributes+"]
+----
+{
+    "VpcEndpoints": [
+        {
+            "VpcEndpointId": "vpce-08a979e28f97a9f7c",
+            "VpcEndpointType": "Interface",
+            "VpcId": "vpc-06e4ab6c6c3b23ae3",
+            "ServiceName": "com.amazonaws.us-east-2.monitoring",
+            "State": "available",
+            "PolicyDocument": "{\n  \"Statement\": [\n    {\n      \"Action\": \"*\", \n      \"Effect\": \"Allow\", \n      \"Principal\": \"*\", \n      \"Resource\": \"*\"\n    }\n  ]\n}",
+            "RouteTableIds": [],
+            "SubnetIds": [
+                "subnet-0931fc2fa5f1cbe44"
+            ],
+            "Groups": [
+                {
+                    "GroupId": "sg-06e1d57ab87d8f182",
+                    "GroupName": "default"
+                }
+            ],
+            "PrivateDnsEnabled": false,
+            "RequesterManaged": false,
+            "NetworkInterfaceIds": [
+                "eni-019b0bb3ede80ebfd"
+            ],
+            "DnsEntries": [
+                {
+                    "DnsName": "vpce-08a979e28f97a9f7c-4r5zme9n.monitoring.us-east-2.vpce.amazonaws.com",
+                    "HostedZoneId": "ZC8PG0KIFKBRI"
+                },
+                {
+                    "DnsName": "vpce-08a979e28f97a9f7c-4r5zme9n-us-east-2c.monitoring.us-east-2.vpce.amazonaws.com",
+                    "HostedZoneId": "ZC8PG0KIFKBRI"
+                }
+            ],
+            "CreationTimestamp": "2019-06-04T19:10:37.000Z",
+            "Tags": [],
+            "OwnerId": "123456789012"
+        }
+    ]
+----
+--
+
+AWS console::
++
+--
+In the https://console.aws.amazon.com/vpc/[Amazon VPC console] navigation pane, select *Endpoints* > *Create Endpoint*.
+The available `serviceNames` are listed in the *Service Name* section.
+--
+====
+
++
+The status for your private endpoint should show `pending acceptance`.
+
+. Accept your AWS private endpoint connection with your `serviceName`:
+
++
+[tabs]
+====
+cURL command (/v2)::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/private_endpoint/curl_create_private_endpoint_connection.sh[]
+----
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::manage:example$results/private_endpoint/devops_create_private_endpoint_connection_aws.result[]
+----
+--
+====
+
++
+Your AWS console will show that it is in the `available` state. For more, see link:https://docs.aws.amazon.com/vpc/latest/privatelink/accept-reject-endpoint-requests.html[Accept and reject endpoint connect requests].
+
+. Create a DNS entry for your private endpoint.
+// This allows you to alias your private endpoint with a DNS record to use as your hostname in the secure connect bundle.
+.. Download your secure connect bundle for the region of your choice. Get your latest xref:connect:secure-connect-bundle.adoc[secure connect bundle].
+.. Unzip the secure connect bundle.
+.. In `config.json`, copy the `host` key's value.
+.. In the AWS Console, create a CNAME record that points to the DNS name found in your VPC Endpoint details.
+.. In the AWS Console, create a private zone to route traffic to your virtual IP using Amazon Route 53. Update the following domains to use REST and CQL:
++
+[tabs]
+====
+REST::
++
+--
+[source,shell, subs="attributes+"]
+----
+efe451fe-709e-4700-9185-5cf0fd3474a7-2-us-east-1.apps.astra.datastax.com
+----
+--
+
+CQL::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+efe451fe-709e-4700-9185-5cf0fd3474a7-2-us-east-1.db.astra.datastax.com
+----
+--
+====
++
+For more, see link:https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-vpc-interface-endpoint.html[Configuring Amazon Route 53 to route traffic to an Amazon VPC interface endpoint].
+
+.. In the AWS Console, create a DNS entry for the key `host` value and map it to your virtual IP address.
+
+You can now connect to your private endpoint using your updated secure connect bundle. For more, see xref:connect:drivers/connect-drivers.adoc[Drivers for Astra].
+
+== Remove a private endpoint
+
+. Delete a private endpoint from your {astra_db}:
+
++
+[tabs]
+====
+cURL command (/v2)::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/private_endpoint/curl_delete_private_endpoint.sh[]
+----
+--
+====
+
+. Remove your connection from AWS PrivateLink:
++
+[tabs]
+====
+CLI::
++
+--
+[source,shell, subs="attributes+"]
+----
+aws ec2 delete-vpc-endpoint-service-configurations --service-ids <serviceId>
+----
+--
+
+AWS Console::
++
+--
+. In the xref:https://console.aws.amazon.com/vpc/[Amazon VPC console] navigation pane, select *Endpoint Services*.
+. For the service you want to delete, select *Actions* > *Delete*.
+. Select *Yes, Delete* to remove the connection.
+--
+====
+
+=== What's next?
+
+* link:https://aws.amazon.com/privatelink[AWS PrivateLink, window="_blank"]
+* https://docs.datastax.com/en/astra/docs/_attachments/devopsv2.html#operation/Private-Endpoints[DevOps API reference, window="_blank"]
+* Learn how to xref:manage:db/manage-access-list.adoc[Manage access lists for public access, window="_blank"].

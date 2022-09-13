@@ -1,0 +1,40 @@
+= View your databases
+:slug: viewing-database-summary
+
+View all databases in your organization, and select a database to view detailed information about the database.
+
+The *Dashboard* shows all of your databases within your organization, including databases you created and databases created by other team members.
+From here, you can select an individual database name to manage and connect those databases.
+
+Selecting a database in {company} {astra_db} provides access to detailed information about the database.
+You can view the keyspaces, size and location of the database, and the estimate cost per hour.
+
+// ==== Procedure
+. Open a browser, navigate to link:https://astra.datastax.com[{astra_db}, window="_blank"], and log in.
+. On the **Dashboard** page, select the database name to access the **Overview** page for your selected database.
++
+[NOTE]
+====
+You can only view connection details and xref:db/manage-monitoring.adoc[database management operations] for databases that you created.
+====
+
+. On the **Overview** tab, you can see several database details:
+
++
+ * Database Name
+ * Status
+ * Usage for current billing period
+ ** Read Requests
+ ** Write Requests
+ ** Storage Consumed
+ ** Data Transfer
+ * Compute Size [Only for {classic_cap} tier databases]
+ * Replication Factor [Only for {classic_cap} tier databases]
+ * Current Capacity [Only for {classic_cap} tier databases]
+ * Regions
+ ** Provider
+ ** Area
+ ** Region
+ ** Datacenter ID
+ ** Region Availability
+ * Keyspaces

@@ -1,0 +1,288 @@
+= Creating an Express Server for Better Botz
+:slug: creating-an-express-server-for-better-botz
+
+In the xref:building-applications-with-better-botz.adoc[last topic], we learned about Better Botz and their need for a new online ordering application.
+We created an Astra database, generated two tables, inserted some data, and learned how to retrieve data.
+
+Using that database, we're going to configure an Express backend server on Node.js.
+This server is the backbone of the React application that will become the online ordering and reporting platform for Better Botz.
+If that goal sounds ambitious, don't worry;
+we're going to guide you through each part of the process.
+
+[NOTE]
+====
+Experience with Node.js is helpful, but not required.
+====
+
+We'll install the DataStax Node.js driver, download the secure connect bundle for your Astra database, and then configure the driver to use that bundle when connecting to your Astra database.
+After establishing that connection, we can use the Node.js driver as our conduit for getting data in and out of the database.
+
+== Goal 1: Laying the Foundation
+
+Before you dive into developing the ordering application, lay the necessary groundwork.
+You'll install Node.js and the DataStax Node.js driver, and then download the secure connect bundle for your Astra database.
+
+First, download and install Node.js.
+Follow the instructions on the Node.js website for your preferred method of installing software:
+
+* https://nodejs.org/en/download/package-manager/[Use a package manager]
+* https://nodejs.org/en/download/[Download the source code or install using a prebuilt installer]
+
+. With Node.js installed, install the DataStax Node.js driver:
++
+[source, js]
+----
+$ npm install cassandra-driver
+----
+. Create a new directory for your Node.js application, and then enter that directory:
+[source, js]
+----
+$ mkdir betterbotzapp
+$ cd betterbotzapp
+----
+
+We'll be creating a set of files to work from.
+Choose one of the following options:
+
+* *Prebuilt:* Clone this https://github.com/riptano/better-botz-gui-at-glitch/tree/pollo-1[BetterBotz GitHub repository].
+This option provides all of the files you need with the main structure already in place.
+* *Manual:* Use https://expressjs.com/en/starter/generator.html[express generator] to create a skeleton Node.js application.
+With this option, you'll do more of the manual work to create files, folder structures, and source code.
+
+If you choose the prebuilt option, jump ahead to https://dev.to/betterbotz/creating-an-express-server-for-better-botz-4b00#goal-2-downloading-database-security-credentials[download your database credentials].
+For those of you who want to go the manual route, let's create a barebones project to work from.
+
+Install express-generator to quickly create a skeleton Node.js application for us to work with, and then run express:
+[source, js]
+----
+$ npm install -g express-generator
+$ express
+----
+
+When you run `express`, a skeleton project is created with the minimal files necessary for a basic Node.js application.
+Do a simple list to show the files that were created and familiarize yourself with the files we'll work with.
+
+----
+$ ls -l
+  |_app.js
+  |_bin
+  |_package.json
+  |_public
+  |_routes
+  |_views
+----
+
+With the project structure in place, you're ready to download the security credentials for your Astra database.
+
+== Goal 2: Downloading Database Security Credentials
+From your DataStax Astra database, download the secure connect bundle, which contains the security credentials for connecting to your database.
+
+. In a browser, log in to DataStax Astra.
+. From the Databases page, under Actions, click the ellipsis (...) for the database you want to connect to and select Connection details.
+. In the Connection Details window, click Download secure connect bundle to download the secure-connect-database_name.zip file.
+This file contains the security certificates and credentials for your database.
++
+[WARNING]
+====
+Do not share this secure connect bundle with anyone outside of your organization.
+Anyone with access to these credentials can potentially access your database.
+====
+. In your `betterbotzapp` directory, create a .data directory:
++
+[source, js]
+----
+$ cd betterbotzapp
+$ mkdir .data
+[source, js]
+----
+. Move the secure connect bundle that you downloaded to the .data directory you just created.
+Placing the bundle in this hidden directory allows you to better protect your database credentials and control access.
++
+[source, js]
+----
+$ cp ~/Downloads/secure-connect-database_name.zip ~/betterbotzapp/.data
+[source, js]
+----
+. Change the permissions on the .data directory so that only you have read/write access:
+```
+$ chmod 700 .data
+```
+
+== Goal 3: Connect the server to your database
+The next step is to ensure that your Express server can access the secure connect bundle for your database, and that the DataStax Node.js driver is configured correctly.
+
+. In your betterbotzapp project, navigate to the /routes directory, open the index.js file and add the following code.
+Replace the value for the path variable with the path to your secure connect bundle:
++
+[source, js]
+----
+const path = './.data/secure-connect-database_name.zip';
+const { Client } = require('cassandra-driver');
+const client = new Client({
+cloud: { secureConnectBundle: path },
+credentials: { username: process.env.ASTRAUSERNAME, password: process.env.ASTRAPASSWORD}
+});
+----
+. This code uses the credentials from the secure connect bundle in your `.data` directory to make a connection to your Astra database.
++
+[NOTE]
+====
+If you're using the files from the Better Botz GitHub repository, the remainder of your `index.js` file is preconfigured to obtain data from your database.
+Skip ahead to step 4 to install dependencies and start your server.
+====
+
+. In the `index.js` file, replace the main `router.get` function with the following code.
+. The first function gets the home page for your server and adds a Better Botz title.
+. The second function creates a data report with results from a request that you'll add in the next step.
+. The third function generates a direct data response of the JSON response using the API get call.
++
+[source, js]
+----
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Better Botz' });
+});
+router.get('/datareport', function (req, res) {
+  getMoreData().then(function(data){
+    res.render('datareport', { data } );
+  }).catch(function(filteredData){
+    res.send(filteredData);
+  })
+});
+router.get('/data', function (req, res) {
+  getMoreData().then(function(data){
+    res.send(data);
+  }).catch(function(filteredData){
+    res.send(filteredData);
+  })
+});
+----
+. Lastly, add the following code to the `index.js` file.
+This code sends a CQL `SELECT` statement to retrieve data from your `products_by_orders` table in the `betterbotz` keyspace.
++
+[source, js]
+----
+async function getMoreData(){
+const result = await client.execute('SELECT customer_name, address, description, price, prod_id, prod_name, sell_price FROM betterbotz.products_by_orders');
+return result.rows;
+}
+----
+. Save your `index.js` file, and then run the following command to install required dependencies and packages for Node.js:
+```
+$ npm install
+```
+
+Running this command downloads dependencies to your machine.
+The number of downloaded dependencies depends on other packages installed on your system.
+
+From your terminal, run the following command to set the ASTRAUSER and ASTRAPASSWORD variables and then start your Express server.
+Replace the variables with the *Client ID* and *Client Secret* from your xref:manage-tokens.adoc[application token].
+[source, js]
+----
+$ ASTRAUSER=clientId
+$ ASTRAPASSWORD=clientSecret
+$ node bin/www
+----
+
+Great!
+You won't notice anything in your terminal ... yet.
+Let's review results in a browser to ensure that the server is working, and then check back in the terminal.
+
+== Goal 4: Reviewing results
+Open a browser and navigate to http://localhost:3000/.
+You should see a page displaying Better Botz as the title, which verifies that your Express server is running with the included Jade templates.
+[NOTE]
+====
+If you cloned the Better Botz GitHub repository, your Jade template already contains the following lines.
+Skip ahead to step 3.
+====
+We're going to make some modifications to the layout.jade template, which lives in the /views directory of your `betterbotzapp` project.
+For those going the manual route, we'll add some code to update the Jade template, which affects the information displayed in the browser.
+
+. In your `betterbotzapp` project, navigate to the `/views` directory and open the `layout.jade` file.
+. Replace the body section with the following code:
++
+[source, js]
+----
+body
+    header
+      h1= title
+main
+      p
+        | Welcome to the #{title} site to help you build what you need for your Better Botz workforce!
+footer
+      | Powered by&nbsp;
+      a(href='https://astra.datastax.com') DataStax Astra
+      | !
+      | Lots of HTML turned into Jade with&nbsp;
+      a(href='https://html2jade.org/') html2jade
+      | . Built by all the robots at&nbsp;
+      a(href='https://twitter.com/betterbotz/') Better Botz
+      | !
+[source, js]
+----
+. In the `/templates` directory, create a `datareport.jade` file and add the following code:
++
+[source, js]
+----
+extends layout
+
+block content
+    h1 Customer Orders
+    ul
+        for order in data
+            li
+                div
+                    b Customer Name:
+                    =products_by_orders.customer_name
+                    div
+                        b Address:
+                        =products_by_orders.customer_address
+                    div
+                        b Description:
+                        =products_by_orders.description
+        else
+            li No orders currently.
+----
+
+. Save your changes to the `layout.jade` and `datareport.jade` files.
+. Use `Ctrl + C` to stop the server.
+Restart the server with your *Client ID* and *Client Secret* from your xref:manage-tokens.adoc[application tokens].
++
+[source, js]
+----
+$ ASTRAUSER=clientId
+ASTRAPASSWORD=clientSecret
+node bin/www
+----
+. Refresh your browser pointing to http://localhost:3000/.
+Your browser displays the changes, which include a new footer with links to the projects we're using to build our database, server, and HTML for the page.
+Great job!
+
+We know that our server is running and that we can actively make changes that are reflected in the browser.
+
+Let's revisit your terminal.
+After updating the footer in the `layout.jade` file and refreshing your browser, you should see a few GET calls:
+[source, js]
+----
+GET / 304 254.400 ms - -
+GET /stylesheets/style.css 304 1.893 ms - -
+----
+
+These calls indicate requests from your Express server to the browser endpoints for data.
+Each time that you refresh your browser, GET calls are sent to the database and updated in your terminal.
+
+Now, let's review two different endpoints to view data responses from those GET calls.
+
+. In a browser, navigate to http://localhost:3000/datareport.
+You'll see similar content to the main URL, except that the content displaying is a _direct data response_ of the JSON response that is using the API GET call.
+. Navigate to http://localhost:3000/data and you'll see ... a set of square brackets?
+That's correct!
+If you inspect the CQL statement that we added to the index.js file, you'll see that we're trying to retrieve data from the `products_by_orders` table:
+[source, js]
+----
+SELECT customer_name, customer_address, description, price, prod_id, prod_name, sell_price FROM betterbotz.products_by_orders
+----
+
+Your `products_by_orders` table is currently _empty_, which is why no data returns at the `/data` endpoint.
+In the next post, we'll add data to the `products_by_orders` table and create a new table to track which orders are shipping and which have already shipped.
+We can then check the `/data` endpoint and see data being returned to the browser.

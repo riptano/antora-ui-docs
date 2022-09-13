@@ -1,0 +1,161 @@
+= {company} C++ driver
+:slug: connecting-to-your-database-with-the-datastax-c-driver
+:page-tag: driver,dev,astra-db,connect
+
+include::partial$driver-intro.adoc[Driver information]
+
+== Prerequisites
+
+// * xref:connecting.adoc#_downloading_secure_connect_bundle[Download the secure connect bundle] to obtain connection credentials for your {astra_db} database.
+// * _Client ID_ and _Client Secret_ by creating your xref:manage:org/manage-tokens.adoc[application token] for your username and password.
+
+// include::partial$tip_invite_users_to_join_org.adoc[]
+
+* {company} C++ driver download links
++
+Download the {company} C++ driver and dependency packages for your platform using the links in the following table:
+
+[cols=2*,options=header]
+|===
+|Platform
+|Download links
+
+|CentOS 6
+|https://downloads.datastax.com/cpp-driver//centos/6/cassandra/[Driver] | https://downloads.datastax.com/cpp-driver//centos/6/dependencies/[Dependencies]
+
+|CentOS 7
+|https://downloads.datastax.com/cpp-driver//centos/7/cassandra/[Driver] | https://downloads.datastax.com/cpp-driver//centos/7/dependencies/[Dependencies]
+
+|Ubuntu 14.04
+|https://downloads.datastax.com/cpp-driver//ubuntu/14.04/cassandra/[Driver] | https://downloads.datastax.com/cpp-driver//ubuntu/14.04/dependencies/[Dependencies]
+
+|Ubuntu 16.04
+|https://downloads.datastax.com/cpp-driver//ubuntu/16.04/cassandra/[Driver] | https://downloads.datastax.com/cpp-driver//ubuntu/16.04/dependencies/[Dependencies]
+
+|Ubuntu 18.04
+|https://downloads.datastax.com/cpp-driver//ubuntu/18.04/cassandra/[Driver] | https://downloads.datastax.com/cpp-driver//ubuntu/18.04/dependencies/[Dependencies]
+
+|Windows
+|https://downloads.datastax.com/cpp-driver//windows/cassandra/[Driver] | https://downloads.datastax.com/cpp-driver//windows/dependencies/[Dependencies]
+
+|===
+
+
+* Other platforms should build the driver from the source code packages.
+
+* Using the packages you downloaded, follow the https://docs.datastax.com/en/developer/cpp-driver/latest/topics/installation/[installation instructions] for your platform to install the {company} C++ driver.
++
+include::partial$app_client_id_secret.adoc[]
+
+include::page$secure-connect-bundle.adoc[Secure connect bundle, leveloffset=+2]
+
+== Connecting C++ driver
+. Create a connect_database.c file in the main directory for your C{pp} project.
+```
+cd my_project
+touch connect_database.c
+```
+[arabic, start=2]
+. Copy the following connection code into the `connect_database.c` file.
+The `secure_connect_bundle` must include the absolute path to your Astra database credentials (`secure-connect-**database_name**.zip`).
+[NOTE]
+====
+The `cass_cluster_set_contact_points() and cass_cluster_set_ssl()` methods should not used in conjunction with the `cass_cluster_set_cloud_secure_connection_bundle()` method.
+====
+
+```
+#include <cassandra.h>
+#include <stdio.h>
+
+int main(int argc, char* argv[]) {
+     /* Setup and connect to cluster */
+     CassCluster* cluster = cass_cluster_new();
+     CassSession* session = cass_session_new();
+
+     /* Setup driver to connect to the cloud using the secure connection bundle */
+     const char* secure_connect_bundle = "/path/to/secure-connect-database_name.zip";
+     if (cass_cluster_set_cloud_secure_connection_bundle(cluster, secure_connect_bundle) != CASS_OK) {
+       fprintf(stderr, "Unable to configure cloud using the secure connection bundle: %s\n",
+               secure_connect_bundle);
+       return 1;
+     }
+
+     /* Set credentials provided when creating your database */
+     cass_cluster_set_credentials(cluster, "clientID", "clientSecret");
+
+     CassFuture* connect_future = cass_session_connect(session, cluster);
+
+     if (cass_future_error_code(connect_future) == CASS_OK) {
+       /* Use the session to run queries */
+     } else {
+       /* Handle error */
+     }
+
+     cass_future_free(connect_future);
+     cass_cluster_free(cluster);
+     cass_session_free(session);
+
+     return 0;
+   }
+```
+[arabic, start=3]
+. Build and link your application against the {company} C++ driver.
+* Linux or macOS
+[NOTE]
+====
+For static linking, use `cassandra_static.a`.
+====
+
+```
+cc connect-database.c -I/path/to/cassandra.h -L/path/to/cassandra.so -lcassandra
+```
+
+* Windows
+Include these libraries in your Microsoft Visual Studio project by adding them to the project’s properties under ``Configuration Properties/Linker/Input/Additional Dependencies``.
+
+[NOTE]
+====
+For static linking, use ``cassandra_static.lib``.
+====
+
+Link your application against ``cassandra.lib``.
+Your application will also require ``cassandra.dll` to be in your runtime path.
+
+[arabic, start=4]
+. After connecting to your database, use the following code to query your database.
+This code creates a `CassStatement` object to connect to your {astra_db} database, runs a CQL query, and prints the output to the console.
+```
+/* Build statement and execute query */
+const char_ query = "SELECT release_version FROM system.local";
+CassStatement* statement = cass_statement_new(query, 0);
+
+CassFuture* result_future = cass_session_execute(session, statement);
+
+if (cass_future_error_code(result_future) == CASS_OK) {
+  /* Retrieve result set and get the first row _/
+  const CassResult_ result = cass_future_get_result(result_future);
+  const CassRow* row = cass_result_first_row(result);
+
+  if (row) {
+    const CassValue* value = cass_row_get_column_by_name(row, "release_version");
+
+    const char* release_version;
+    size_t release_version_length;
+    cass_value_get_string(value, &release_version, &release_version_length);
+    printf("release_version: '%._s'\n", (int)release_version_length, release_version);
+  }
+
+    cass_result_free(result);
+  } else {
+    /_ Handle error _/
+    const char_ message;
+    size_t message_length;
+    cass_future_error_message(result_future, &message, &message_length);
+    fprintf(stderr, "Unable to run query: '%.*s'\n", (int)message_length, message);
+  }
+
+  cass_statement_free(statement);
+  cass_future_free(result_future);
+```
+
+include::page$drivers/migrate-cplusplus.adoc[Migrating your C++ driver, leveloffset=+2]

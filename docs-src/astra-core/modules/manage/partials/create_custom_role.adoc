@@ -1,0 +1,19 @@
+[NOTE]
+====
+You can also create custom roles using the xref:db-devops-roles.adoc[DevOps API].
+====
+
+. From any page in https://astra.datastax.com[{astra_db}], select the *Organizations* dropdown.
+. In the main dropdown, select the organization for which you want to add your custom role.
+. From your Organization page, select *Role Management*.
+. Select *Add Custom Role*.
+. Enter the name you want to use for your custom role. This name should help you easily identify when you want to assign this role to users.
+. Select the Organization, Keyspace, Table, and API permissions you want to assign to your custom role.
++
+[NOTE]
+====
+If you want users with this role to be able to see the {astra_db} user interface, make sure you select _Read User_ and _View DB_ permissions.
+====
++
+. If you want to apply your selected permissions to specific databases or keyspaces, toggle the switch to not apply the permissions to all databases in an organization. Then select the specific databases or keyspaces to which you want to apply the permissions.
+. Once you have selected your permissions, select *Create Role*.

@@ -1,0 +1,142 @@
+= Configure JanusGraph with {astra_db} as storage backend
+
+Use {company} {astra_db} as the storage backend for JanusGraph server.
+
+JanusGraph uses the Java driver to connect to Apache Cassandra&reg;. The Java driver supports the use of the secure connect bundle to connect to {astra_db}, but JanusGraph does not provide this functionality. Thus it's necessary to unpack the secure connect bundle and use its contents to configure JanusGraph.
+
+== Prerequisites
+
+This article assumes you have a running installation of JanusGraph server. These steps were written and tested on JanusGraph v0.6.0.
+
+You will also need to:
+
+. xref:manage:org/manage-tokens.adoc[Generate an application token] for your {astra_db}.
+. xref:connect:secure-connect-bundle.adoc[Download the secure connect bundle] for your {astra_db}.
+
+== Prepare your secure bundle
+
+. On the JanusGraph server, unpack your secure bundle.
++
+[tabs]
+====
+Example commands::
++
+--
+[source, shell, subs="attributes+"]
+----
+include::getting-started:example$bash/db-integration-janusgraph-01-unpack_secure_bundle.sh[]
+----
+--
++
+Example file listing::
++
+--
+[source, plaintext]
+----
+include::getting-started:example$text/db-integration-janusgraph-02-scb_file_listing.txt[]
+----
+--
+====
+
+. Extract your database metadata from the `config.json` file.
++
+[tabs]
+====
+Example `config.json`::
++
+--
+[source, plaintext]
+----
+include::getting-started:example$text/db-integration-janusgraph-03-config_json.txt[]
+----
+--
+====
+
+== Configure JanusGraph
+
+. On the JanusGraph server, modify the CQL storage configuration file `janusgraph-cql.properties`. Make the necessary changes using the example template below.
++
+[tabs]
+====
+Example commands::
++
+--
+[source, shell, subs="attributes+"]
+----
+include::getting-started:example$bash/db-integration-janusgraph-04-configure_cql_props.sh[]
+----
+--
++
+Example template::
++
+--
+[source, plaintext]
+----
+include::getting-started:example$text/db-integration-janusgraph-05-cql_props.txt[]
+----
+--
+====
++
+WARNING: The username to connect to Astra is literally the word "token". Do not set this value to your DB's client ID.
++
+IMPORTANT: The `ASTRA_APP_TOKEN` is from the token you generated in the **Prerequisites** section above.
+
+. Using the example values in the `config.json` above, the `conf/janusgraph-cql.properties` would contain:
++
+[tabs]
+====
+Example `config.json`::
++
+--
+[source, plaintext]
+----
+include::getting-started:example$text/db-integration-janusgraph-06-cql_props_complete.txt[]
+----
+--
+====
+
+== Final test
+
+. Start a Gremlin console.
++
+[tabs]
+====
+Command::
++
+--
+[source, shell, subs="attributes+"]
+----
+include::getting-started:example$bash/db-integration-janusgraph-07-gremlin.sh[]
+----
+--
+====
+
+. Load a graph using Astra as the storage backend with:
++
+[tabs]
+====
+Command::
++
+--
+[source, plaintext]
+----
+include::getting-started:example$text/db-integration-janusgraph-08-load_graph.txt[]
+----
+--
+====
++
+Note that it is normal to see some warnings on the Gremlin console. See xref:db-integration-janusgraph-example-gremlin-console.adoc[this file] with a sample output for comparison of what to expect.
+
+. In the {astra_db} CQL Console, check that the JanusGraph tables were successfully created:
++
+[tabs]
+====
+Example::
++
+--
+[source, plaintext]
+----
+include::getting-started:example$text/db-integration-janusgraph-09-cql_desc_tables.txt[]
+----
+--
+====

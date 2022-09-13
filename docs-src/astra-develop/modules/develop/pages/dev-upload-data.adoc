@@ -1,0 +1,13 @@
+= Upload data to your database
+:slug: uploading-data-to-your-database
+
+After connecting to your database, you'll want to upload data to build and test your applications.
+Use {company} Bulk Loader (dsbulk) and the {company} Apache Kafka Connector to upload data to your {astra_db} database.
+
+include::manage:page$upload/astra-data-loader.adoc[{astra_db} Data Loader]
+
+include::manage:page$upload/loading-and-unloading-data-with-datastax-bulk-loader.adoc[{company} Bulk Loader]
+
+include::manage:page$upload/streaming-data-with-the-datastax-apache-kafka-connector.adoc[{company} Apache Kafka Connector]
+
+include::manage:page$upload/test-loading-data-with-nosqlbench.adoc[Test loading data with NoSqlBench]

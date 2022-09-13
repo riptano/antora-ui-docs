@@ -1,0 +1,319 @@
+= Using Glitch and the Astra Data API
+:slug: using-glitch-and-the-astra-data-api
+
+In the last post, we configured an Express backend server on Node.js, and then connected to our Astra database using the DataStax Node.js driver.
+We retrieved data from our `products_by_orders` table, only to realize that it's empty.
+Fear not!
+We're going to remedy that situation in this post and also start using Glitch to expedite development of our ordering application for Better Botz.
+
+== Goal 1: Configure Glitch with your secure connect bundle
+If you don't already have a Glitch account, head over to Glitch and create an account.
+After you create an account, open this https://glitch.com/~better-botz-glitchy-fluffy-barnacle[Better Botz project].
+
+. In Glitch, open the Better Botz project.
+. Select **Remix to Edit** in the upper right to make a copy of the project.
+When you remix a project on Glitch, you're creating a copy of an existing project that you can edit.
+Think of it like forking a GitHub repository.
+. In your remixed project, drag or upload the secure connect bundle for your DataStax Astra database.
+
+The secure connect bundle is added to your assets, but we need it in a safe location.
+Therefore, we'll move it to a hidden directory.
+
+. In your remixed project, in the project navigator to the left, click `New File`.
+. Enter .data and then click `Add This File`.
+The new `.data` directory will not display in your project navigator, but is created as a hidden directory.
+. At the bottom of your project navigator, click Tools > Terminal to open the terminal for your project.
+. In the Glitch terminal for your project, change to your `.data` directory.
++
+[source]
+----
+cd ~/.data
+----
+. In your project navigator, choose your assets folder, right-click your secure connect bundle, and copy the URL of that file.
+. In the Glitch terminal, in the .data directory, use wget to download your secure connect bundle:
++
+[source]
+----
+wget secure-connect-bundle-url
+----
+
+. Replace `secure-connect-bundle-url` with the URL for your secure connect bundle that you copied in the previous step.
+. Choose your assets folder, select your secure connect bundle, and delete it.
+. Rename your secure connect bundle to secure-connect.zip.
+```
+mv secure-connect-bundle-name secure-connect.zip
+```
+
+Your secure connect bundle is now accessible in Glitch.
+Great job!
+Going through the extra work of putting your database credentials in a hidden directory is tedious, but ensures that your secure connect bundle is secure.
+
+== Goal 2: Adding order data
+If you recall from the last post, we retrieved data from our `products_by_orders` table, only to discover that it was empty.
+To process customer orders, we need order data!
+
+In previous posts, we created tables and inserted data using the xref:connecting-to-astra-databases-using-cqlsh.adoc[Cassandra Query Language SHell (CQLSH)].
+This practice is perfectly acceptable, but we're not CQL experts and would rather use a more programmatic tool.
+Let's use the link:_attachments/restv2.html[Astra REST API] instead.
+
+=== Creating an authorization token
+
+The xref:getting-started-with-datastax-astra.adoc[Astra REST API Getting Started tutorial] illustrates the steps required to connect to and interact with your Astra database.
+Following those instructions, we'll use cURL commands in this example.
+Use this cURL command as you work through the following steps to create an authorization token.
+[TIP]
+====
+If you want to issue commands from your application, choose the [API endpoint](https://astra.readme.io/reference) you want to work with, select your preferred language, and enter the required data for the endpoint.
+The example automatically updates with the values you enter, making it easy to copy and paste into your IDE.
+====
+
+[source, curl]
+----
+curl —- request POST  —- url https://{databaseid}-{region}.apps.astra.datastax.com/api/rest/v1/auth \
+  -— header ‘accept: */*’ \
+  -— header ‘content-type: application/json’ \
+  -— header ‘x-cassandra-request-id: {unique-UUID}’ \
+  -— data ‘{“username”:”{database-user}”,”password”:”{database-password}”}’
+----
+
+. In a browser, log in to DataStax Astra.
+. Select the database you want to connect to.
+ * In the Astra URL, copy the databaseid of your database, which is the last UUID in the path:
+\https://astra.datastax.com/org/`{org-Id}`/database/`{databaseid}`
+
+ * Select the database you want to connect to and copy the region where your database lives.
+For example, `us-east1`.
+ * Copy the username and password you entered when creating your database.
+. In the cURL example you copied previously, replace these values with the values for your database:
+ * `{databaseid}` with the UUID of your database, copied from the Astra URL.
+ * `{region}` with the region where your database is located, as listed on the Database Details page in Astra.
+For example, us-east1.
+ * `{unique-UUID}` with a randomly-generated UUID that is unique for the authorization request.
+ * `{database-user}` is the username entered when you created your database.
+ * `{database-password}` is the password for the specified username.
+. From the command line, run the entire cURL command with the values for your database.
+An authorization token is returned:
++
+[source]
+----
+{“authToken”: “37396a44-dcb8–4740-a97f-79f0dba47973”}
+----
+. Copy the value of the authorization token, which you'll include when making requests to your database, such as creating tables, adding rows, or modifying columns.
+In this example, the authorization token value is `37396a44-dcb8–4740-a97f-79f0dba47973`.
+
+== Inserting data in your products_by_orders table
+Now that you have an authorization token, use it to connect to your Astra database and submit queries.
+You pass this token with each query to ensure a secure connection to your Astra database.
+Before we can insert data, there's something missing from our table structure that we discovered when reviewing the order data.
+Each order has a quantity, but our `products_by_orders` table doesn't have a column for that data.
+
+We'll use the https://astra.readme.io/reference#addcolumn-1[add column] endpoint of the DataStax Astra API to add a quantity column.
+
+. Copy the following request, which you use to add a quantity column to the `products_by_orders` table in your `betterbotz` keyspace.
++
+[source]
+----
+curl —- request POST
+  -— url https://{databaseid}-{region}.apps.astra.datastax.com/api/rest/v1/keyspaces/{keyspace_name}/tables/products_by_orders/columns
+  -— header ‘accept: application/json’
+  -— header ‘content-type: application/json’
+  -— header ‘x-cassandra-request-id: {unique-UUID}’
+  -— header ‘x-cassandra-token: {auth-token}’
+  -— data ‘{“static”:false,”name”:”quantity”,”typeDefinition”:”int”}’
+----
+. Replace the following values with the values for your database:
+ * Replace `{databaseid}` with the UUID of your database, copied from the Astra URL.
+ * Replace `{region}` with the region where your database is located, as listed on the Database Details page in Astra.
+For example, `us-east1`.
+ * Modify `keyspace_name` to match the name of your keyspace, which is `betterbotz` if you followed the previous blog entries.
+ * Enter a `{unique-UUID}` for the request and the `{auth-token}` you created earlier.
+. Run the cURL call to add a quantity column to your `products_by_orders` table in the keyspace that you specified.
+If the call is successful, a message returns indicating:
++
+[source]
+----
+{“success”:true}
+----
+Now that our table columns are updated, we'll use the update rows endpoint to add data to our `products_by_orders` table.
+Copy the following cURL command and replace the same variables as in the previous steps.
++
+[source]
+----
+curl —- request PUT
+  -— url https://databaseid-region.apps.astra.datastax.com/api/rest/v1/keyspaces/keyspaceName/tables/tableName/rows/Otto%20Octavius
+  -— header ‘accept: application/json’
+  -— header ‘content-type: application/json’
+  -— header ‘x-cassandra-request-id: X-Cassandra-Request-Id’
+  -— header ‘x-cassandra-token: X-Cassandra-Token’
+  --— data ‘{“changeset”:[{“column”:”id”,”value”:”e65063a7-fba3–41ba-84bb-740a01cacf5e”},{“column”:”address”,”value”:”2475 Shadow Ln. Stow, Ohio(OH), 44224"},{“column”:”prod_id”,”value”:”31047029–2175–43ce-9fdd-b3d568b19bb0"},{“column”:”prod_name”,”value”:”Heavy Lift Arms”},{“column”:”description”,”value”:”Heavy lift arms capable of lifting 1,250 lbs of weight per arm. Sold as a set.”},{“column”:”price”,”value”:4199.99},{“column”:”quantity”,”value”:5},{“column”:”sell_price”,”value”:21000.96}]}’
+----
+
+In the `--data` option of the call, we'll use the `changeset` parameter to define the data that we want to update in the `products_by_orders` table.
+The previous example adds a single row to the `products_by_orders` table.
+
+Notice that `Otto%20Octavius` is used in the `--url` option, but `customer_name` is not included in the changeset.
+That's because `customer_name` is the primary key, which identifies the location and order of stored data.
+The first column declared in the primary key definition is the partition key, which we'll get to in the next section when creating a shipping table.
+
+== Adding more rows
+. Copy the `changeset` parameter for each of the following examples and replace the `changeset` defined by the `--data` option of the call.
+. Replace the primary key in the the `--url` option to use the value indicated before the example.
+. Run the cURL command with the updated data.
+For example, here's an updated `changeset` parameter for a customer named Desmond Blackwell.
+
+Because `customer_name` is the primary key, the `--url` changes to:
+[source]
+----
+https://databaseid-region.apps.astra.datastax.com/api/rest/v1/keyspaces/keyspaceName/tables/tableName/rows/Desmond%20Blackwell
+----
+
+Primary key = *Desmond%20Blackwell*
+[source]
+----
+‘{“changeset”:[{“column”:”id”,”value”:”e5a768fc-ffdd-49e9-a179-b491e024088a”},{“column”:”address”,”value”:”91 Dogwood Dr. Bridgeport, Connecticut (CT) 06606"},{“column”:”prod_id”,”value”:”31047029–2175–43ce-9fdd-b3d568b19bb8"},{“column”:”prod_name”,”value”:”Precision Torso”},{“column”:”description”,”value”:”Robot torso built to handle precision jobs with extra stability and accuracy reinforcement.”},{“column”:”price”,”value”:8199.99},{“column”:”quantity”,”value”:3},{“column”:”sell_price”,”value”:24599.97}]}’
+----
+
+Use the following examples to make additional update row calls by modifying the primary key, replacing the changeset, and running the cURL command again.
+
+Primary key = *Loretta%20Stillwell*
+[source]
+----
+‘{“changeset”:[{“column”:”id”,”value”:”fae7c26c-7bc4–41e0–9e9f-63905cc38944"},{“column”:”address”,”value”:”1314 Lindwood Dr. Carter Lake, Iowa (IA) 51510"},{“column”:”prod_id”,”value”:”31047029–2175–43ce-9fdd-b3d568b19bb7"},{“column”:”prod_name”,”value”:”Medium Strength Torso”},{“column”:”description”,”value”:”Robot body to handle general jobs.”},{“column”:”price”,”value”:1999.99},{“column”:”quantity”,”value”:2},{“column”:”sell_price”,”value”:3999.98}]}’
+----
+
+Primary key = *Matt%20Williamson*
+[source]
+----
+‘{“changeset”:[{“column”:”id”,”value”:”02668188–7b74–4ac6-bb4b-273b14bbda7e”},{“column”:”address”,”value”:”15900 Wilcox Ln. Marion, Michigan (MI) 49665"},{“column”:”prod_id”,”value”:”31047029–2175–43ce-9fdd-b3d568b19bb6"},{“column”:”prod_name”,”value”:”High Strength Torso”},{“column”:”description”,”value”:”Robot body with reinforced plate to handle heavy workload and weight during jobs.”},{“column”:”price”,”value”:2999.99},{“column”:”quantity”,”value”:6},{“column”:”sell_price”,”value”:13199.94}]}’
+----
+
+Primary key = *Jayashree%20Marshall*
+[source]
+----
+‘{“changeset”:[{“column”:”id”,”value”:”295c362d-2eaf-43c0-bd68–63efc2cd1767"}{“column”:”address”,”value”:”107 Trulson St. Oakland, Nebraska (NE), 68045"},{“column”:”prod_id”,”value”:”31047029–2175–43ce-9fdd-b3d568b19bb5"},{“column”:”prod_name”,”value”:”Basic Task CPU”},{“column”:”description”,”value”:”Head processor unit for robot with basic process tasks.”},{“column”:”price”,”value”:899.99},{“column”:”quantity”,”value”:5},{“column”:”sell_price”,”value”:4499.95}]}’
+----
+
+Primary key = *Evelyn%20Davis*
+[source]
+----
+‘{“changeset”:[{“column”:”id”,”value”:”5305ff90-e838–46ea-860f-69e831d28146"},{“column”:”address”,”value”:”36 Jasmine Ln. Valley Stream, New York(NY), 11581"},{“column”:”prod_id”,”value”:”31047029–2175–43ce-9fdd-b3d568b19bb4"},{“column”:”prod_name”,”value”:”High Process AI CPU”},{“column”:”description”,”value”:”Head processor unit for robot with basic process tasks.”},{“column”:”price”,”value”:2199.99},{“column”:”quantity”,”value”:12},{“column”:”sell_price”,”value”:26399.88}]}’
+----
+
+Primary key = *Wyatt%20Devonshire*
+[source]
+----
+‘{“changeset”:[{“column”:”id”,”value”:”bccaed73-e7fb-4f16–8799–206e08905161"},{“column”:”address”,”value”:”2770 Raymond St. Forest Grove, Oregon(OR), 97116"},{“column”:”prod_id”,”value”:”31047029–2175–43ce-9fdd-b3d568b19bb3"},{“column”:”prod_name”,”value”:”Drill Arms”},{“column”:”description”,”value”:”Arms for drilling into surface material. Sold as a set. Does not include drill bits.”},{“column”:”price”,”value”:2199.99},{“column”:”quantity”,”value”:3},{“column”:”sell_price”,”value”:6599.97}]}’
+----
+
+Primary key = *Lavender%20Chesterfield*
+[source]
+----
+‘{“changeset”:[{“column”:”id”,”value”:”ccc5bc2d-d166–471b-ad44–68be45663545"},{“column”:”address”,”value”:”250 Holmes Blvd #1A Gretna, Louisiana(LA), 70056"},{“column”:”prod_id”,”value”:”31047029–2175–43ce-9fdd-b3d568b19bb1"},{“column”:”prod_name”,”value”:”Precision Action Arms”},{“column”:”description”,”value”:”Arms for precision activities in manufacturing or repair. Sold as a set.”},{“column”:”price”,”value”:12199.99},{“column”:”quantity”,”value”:1},{“column”:”sell_price”,”value”:12199.99}]}’
+----
+
+Primary key = *Darius%20Smith*
+[source]
+----
+‘{“changeset”:[{“column”:”id”,”value”:”3c371be4–203c-497f-a1eb-79769d3526a8"},{“column”:”address”,”value”:”199 State U Rd. Macks Creek, Missouri (MO), 65786"},{“column”:”prod_id”,”value”:”31047029–2175–43ce-9fdd-b3d568b19bb2"},{“column”:”prod_name”,”value”:”Medium Lift Arms”},{“column”:”description”,”value”:”Medium lift arms capable of lifting 850 lbs of weight per arm. Sold as a set.”},{“column”:”price”,”value”:3199.99},{“column”:”quantity”,”value”:1},{“column”:”sell_price”,”value”:3199.99}]}’
+----
+
+== Goal 3: Tracking orders being shipped
+As orders propagate through the system, we'll need to track ones that are shipping so that customers can easily check their order status.
+To that end, we'll use the `Add a table`
+// need to fix this when the link is available
+endpoint to create a shipping table in your Astra database.
+
+Copy the following request, which you use to create a shipping table in your `betterbotz` keyspace.
+In the following example, `shipping` is the table name (see the last line).
+The table columns are defined by columnDefinitions, such as `id`, `prod_id`, `cust_id`, and `address_id`.
+
+Remember the primary key we used earlier when updating the `products_by_orders` table?
+We also mentioned a partition key (`partitionKey`), which is a special column that defines the outermost grouping of data, similar to a schema in a relational database.
+For the shipping table, our partition key uses two columns: `prod_name` and `customer_name`.
+[source]
+----
+curl --request POST \
+  --url https://{databaseid}-{region}.apps.astra.datastax.com/api/rest/v1/keyspaces/{keyspace_name}/tables \
+  --header 'accept: */*' \
+  --header 'content-type: application/json' \
+  --header 'x-cassandra-request-id: {unique-UUID}' \
+  --header 'x-cassandra-token: {auth-token}' \
+  --data '{"ifNotExists":true,"columnDefinitions":[
+  {"static":false,"name":"id","typeDefinition":"uuid"},
+  {"static":false,"name":"prod_id","typeDefinition":"uuid"},
+  {"static":false,"name":"cust_id","typeDefinition":"uuid"},
+  {"static":false,"name":"address_id","typeDefinition":"uuid"},
+  {"static":false,"name":"prod_name","typeDefinition":"text"},
+  {"static":false,"name":"customer_name","typeDefinition":"text"},
+  {"static":false,"name":"street","typeDefinition":"text"},
+  {"static":false,"name":"city","typeDefinition":"text"},
+  {"static":false,"name":"state","typeDefinition":"text"},
+  {"static":false,"name":"country","typeDefinition":"text"},
+  {"static":false,"name":"code","typeDefinition":"text"}],
+  "primaryKey":{"partitionKey":["prod_name","customer_name"]},
+  "tableOptions":{"defaultTimeToLive":0},"name":"shipping"}'
+[source]
+----
+
+. Replace the following values with the values for your database:
+ * Replace `{databaseid}` with the UUID of your database, copied from the Astra URL.
+ * Replace `{region}` with the region where your database is located, as listed on the Database Details page in Astra.
+For example, `us-east1`.
+ * Modify `keyspace_name` to match the name of your keyspace, which is `betterbotz` if you followed the previous blog entries.
+ * Enter a `{unique-UUID}` for the request and the `{auth-token}` you created earlier.
+ * In the `--data` option of the call, we'll define the table columns using the columnDefinitions parameter.
+. Run the cURL call to create a `shipping` table in the keyspace that you specified.
+If the call is successful, a message returns indicating: `{“success”:true}` Let's use the https://astra.readme.io/reference#gettable-1[get table] endpoint to retrieve the table you just created.
+Replace the same variables as in previous steps, and then replace `{tableName}` with the name of your table, which is `shipping`.
++
+[source]
+----
+curl -— request GET \
+  -— url https://{databaseid}-{region}.apps.astra.datastax.com/api/rest/v1/keyspaces/{keyspaceName}/tables/{tableName} \
+  -— header ‘accept: application/json’ \
+  -— header ‘x-cassandra-request-id: {unique-UUID}’ \
+  -— header ‘x-cassandra-token: {auth-token}’
+----
+
+Running this cURL command with the variables you entered returns data for your shipping table, but it's not exactly human readable.
+You can add a pipe character and `json_pp` at the end of your cURL command to provide a formatted JSON response, but customers need an easier way to access this shipping data.
+[source]
+----
+{“name”:”shipping”,”keyspace”:”betterbotz”,”columnDefinitions”:[{“Name”:”customer_name”,”TypeDefinition”:”text”},{“Name”:”id”,”TypeDefinition”:”uuid”},{“Name”:”prod_name”,”TypeDefinition”:”text”},{“Name”:”city”,”TypeDefinition”:”text”},{“Name”:”cust_id”,”TypeDefinition”:”uuid”},{“Name”:”country”,”TypeDefinition”:”text”},{“Name”:”prod_id”,”TypeDefinition”:”uuid”},{“Name”:”state”,”TypeDefinition”:”text”},{“Name”:”street”,”TypeDefinition”:”text”},{“Name”:”address_id”,”TypeDefinition”:”uuid”},{“Name”:”code”,”TypeDefinition”:”text”}],”primaryKey”:{“PartitionKey”:[“prod_name”],”clusteringKey”:[“customer_name”]},”tableOptions”:{“DefaultTimeToLive”:null,”clusteringExpression”:[{“Column”:”customer_name”,”Order”:”asc”}]}}
+----
+
+What about your application in Glitch?
+Glad you asked!
+Now that there's data in your `products_by_orders` table, you can actually see it being returned by your application.
+Open your Glitch project and complete the following steps:
+. Edit the `sample-run.sh` script to include your Astra database username and password.
+[source, shell, subs="attributes+"]
+----
+ASTRAUSER=username
+ASTRAPASSWORD=password
+----
+
+. Click *Tools > Terminal* to open a terminal connected to your project.
+. In the terminal, from your home directory (~), run the `./sample-run.sh` script to start the server using your Astra credentials:
++
+[source]
+----
+cd ~ &&
+./sample-run.sh
+----
+. With the server running, open a browser and navigate to the following paths to view examples of data retrieval.
+In each URL, change your-project-name to the name of your Glitch project:
+ * This URL verifies that the Express server is running with the included Jade templates.
+`\https://your-project-name.glitch.me/`
+ * The `/data` endpoint includes the raw data that is a direct response of the JSON response that is retrieved using the API GET call.
+`\https://your-project-name.me/data`
+ * The `/datareport` endpoint is a response that includes the data results generated from the Jade template.
+As configured, customer orders will display at this endpoint:
+`\https://your-project-name.glitch.me/datareport`
+
+Your data is being returned at the `/data` endpoint, and is formatted in a human-readable form at the `/datareport` endpoint.
+
+You did it!
+This step is a huge milestone achievement for building an online ordering system for Better Botz.
+
+image::ROOT:screenshot/8e3fef7-betterbotz3.png[]

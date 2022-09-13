@@ -1,0 +1,59 @@
+= Katacoda scenarios
+:slug: katacoda-scenarios-to-get-started-with-astra
+:page-tag: getting-started,astra-db
+
+Katacoda scenarios can help guide you through various ways to use {company} {astra_db}.
+
+== Using the REST API
+If you are using the
+// link:_attachments/restv2.html[{astra_db} REST API]
+{astra_db} REST API, link:https://katacoda.com/datastax/courses/astra-core-course/astra-rest-api[this scenario, window="_blank"] will walk you through the following parts:
+
+* Setting up environment variables
+* Creating a table with the REST API
+* Adding a row to your table with the REST API
+* Retrieving rows using the REST API
+
+[#img-katacoda-rest]
+.Using the {astra_db} REST API service
+[link=https://katacoda.com/datastax/courses/astra-core-course/astra-rest-api, window="_blank"]
+image::https://www.katacoda.com/images/apple-touch-icon-152x152.png[Katacoda Icon]
+
+== Using the GraphQL API
+If you are using the xref:ROOT:dev-with-graphql-api.adoc[{astra_db} GraphQL API], link:https://katacoda.com/datastax/courses/astra-core-course/astra-graphql-api[this scenario, window="_blank"] will walk you through the following parts:
+
+* Getting a token
+* Inserting a record with cURL
+* Querying a record using GraphQL and JavaScript
+* Adding a record with GraphQL and JavaScript
+
+[#img-katacoda-graphql]
+.Using the {astra_db} GraphQL API
+[link=https://katacoda.com/datastax/courses/astra-core-course/astra-graphql-api, window="_blank"]
+image::https://www.katacoda.com/images/apple-touch-icon-152x152.png[Katacoda Icon]
+
+== Connecting with CQL shell
+If you are using the xref:connect:cql/connect-cqlsh.adoc[CQL shell], link:https://katacoda.com/datastax/courses/astra-access/astra-cqlsh[this scenario, window="_blank"] will walk you through the following parts:
+
+* Installing and configuring the CQL shell
+* Creating a table
+* Inserting data
+* Querying data
+
+[#img-katacoda-cqlsh]
+.Connecting to {astra_db} with CQL Shell
+[link=https://katacoda.com/datastax/courses/astra-access/astra-cqlsh, window="_blank"]
+image::https://www.katacoda.com/images/apple-touch-icon-152x152.png[Katacoda Icon]
+
+== Connecting with CQL shell using Docker
+If you are using the xref:connect:cql/connect-cqlsh.adoc[CQL shell] using Docker, link:https://katacoda.com/datastax/courses/astra-access/astra-cqlsh-docker[this scenario, window="_blank"] will walk you through the following parts:
+
+* Creating a CQL shell container
+* Creating a table
+* Inserting data
+* Querying data
+
+[#img-katacoda-cqlsh-docker]
+.Connecting to {astra_db} with CQL Shell using Docker
+[link=https://katacoda.com/datastax/courses/astra-access/astra-cqlsh-docker, window="_blank"]
+image::https://www.katacoda.com/images/apple-touch-icon-152x152.png[Katacoda Icon]

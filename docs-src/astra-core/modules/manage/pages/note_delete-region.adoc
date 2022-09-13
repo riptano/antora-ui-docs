@@ -1,0 +1,4 @@
+[NOTE]
+====
+The information displayed on the *Connect* page for your database is region specific.
+====

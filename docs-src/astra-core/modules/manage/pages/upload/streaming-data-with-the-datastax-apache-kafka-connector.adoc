@@ -1,0 +1,73 @@
+== {company} Apache Kafka Connector
+:slug: streaming-data-with-the-datastax-apache-kafka-connector
+
+Deploy the {company} Apache Kafka™ Connector to stream records from an Apache Kafka topic to your {company} {astra_db} database.
+
+The {company} Apache Kafka Connector download package includes a sample JSON properties file (`dse-sink-distributed.json.sample`).
+Use the sample file as a reference when configuring your deployment.
+The `dse-sink-distributed.json.sample` file is located in the `conf` directory of the {company} Apache Kafka Connector distribution package.
+
+=== Prerequisites
+
+* https://docs.datastax.com/en/kafka/doc/kafka/install/kafkaInstall.html[Download and install] the {company} Apache Kafka Connector.
+* Configure the distributed worker configuration file `connect-distributed.properties` to fit your needs.
+Use https://github.com/datastax/kafka-examples/blob/master/producers/src/main/java/json/connect-distributed-json.properties[this example] from {company} as a starting point.
+Specify the converter for the `key.converter` and `value.converter` properties that matches the form of your Kafka data.
+See https://docs.confluent.io/current/connect/userguide.html#configuring-converters[Configuring converters] in the Confluent documentation for more information on these properties.
+
+=== Procedure
+
+. From the directory where you installed Apache Kafka, start the distributed worker:
+
+[source, shell, subs="attributes+"]
+----
+bin/connect-distributed.sh config/connect-distributed.properties
+----
+
+The worker startup process outputs a large number of informational messages.
+The following message displays after the process completes: `[2019-10-13 19:49:25,385] INFO Finished starting connectors and tasks (org.apache.kafka.connect.runtime.distributed.DistributedHerder:852)`
+. Configure the JSON configuration file (such as dse-sink.json) to use the {astra_db} xref:connect:secure-connect-bundle.adoc[secure connect bundle].
+
+[source, plaintext]
+----
+{ "name": "dse-sink",     "config":
+  { "connector.class": "com.datastax.kafkaconnector.DseSinkConnector",
+    "cloud.secureConnectBundle": "/path/to/secure-connect-database-name.zip",
+    "auth.username": "clientId",
+    "auth.password": "clientSecret" ...
+  }
+}
+----
+
+* *name*: Unique name for the connector. Default: `dse-sink`
+* *connector.class*: {company} connector Java class provided in the `kafka-connect-dse-N.N.N.jar`. Default: `com.datastax.kafkaconnector.DseSinkConnector`
+* *cloud.secureConnectBundle*: The full path to the secure connect bundle for your {astra_db} database (`secure-connect-**database_name**.zip`).
+
+Download the secure connect bundle from {astra_ui}.
+If this option is specified, you must also include the auth.username and auth.password for the database user.
+
+* *auth.username*: {astra_db} database username
+
+[NOTE]
+====
+When authorization is enabled, the {company} connector login role must have a minimum of `modify` privileges on tables receiving data from the {company} Apache Kafka® Connector.
+====
+
+* **auth.password**: {astra_db} database password for the specified username
+
+[arabic, start=2]
+. Register the connector configuration with the distributed worker:
+
+[source, shell, subs="attributes+"]
+----
+curl -X POST -H "Content-Type: application/json" -d @dse-sink.json "http://ip:port/connectors"
+----
+
+*ip* and *port* are the IP address and port number of the Kafka worker.
+Use the same port as the `rest.port` parameter set in `connect-distributed.properties`.
+The default port is 8083.
+
+[NOTE]
+====
+You configured the `dse-sink.json` or `dse-sink.properties` file when installing the {company} Apache Kafka Connector.
+====

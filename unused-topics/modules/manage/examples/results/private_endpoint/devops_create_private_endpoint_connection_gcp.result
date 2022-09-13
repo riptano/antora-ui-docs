@@ -1,0 +1,19 @@
+{
+  "datacenters": [
+    {
+      "serviceName": "projects/<projectID>/regions/<regionName>/serviceAttachments/<serviceAttachmentName>",
+      "allowedPrincipals": [
+        "valiant-ocean-258751"
+      ],
+      "datacenterID": "string",
+      "endpoints": [
+        {
+          "endpointID": "2755639674399101",
+          "description": "project-desc-dev-app",
+          "status": "Accepted",
+          "createdDateTime": "2021-04-10T23:00:00"
+        }
+      ]
+    }
+  ]
+}

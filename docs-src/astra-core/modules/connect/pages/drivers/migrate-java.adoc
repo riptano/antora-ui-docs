@@ -1,0 +1,129 @@
+= Migrating Java driver
+:slug: migrating-your-datastax-java-driver-to-connect-with-astra-databases
+:page-tag: driver,dev,astra-db,connect
+
+Complete the following procedure to migrate your existing {company} Java driver to a version capable of connecting to {astra_db} databases created using {company} {astra_db}.
+
+. In your existing DSE Java driver code, update dependencies to include the DSE Java driver version that can connect to {astra_db} databases.
+
+== {company} Java driver for Apache Cassandra 4.x
+
+[source, java]
+----
+<dependency>
+  <groupId>com.datastax.oss</groupId>
+  <artifactId>java-driver-core</artifactId>
+  <!--Use the latest version from https://search.maven.org/artifact/com.datastax.oss/java-driver-core -->
+  <version>4.14.1</version>
+</dependency>
+----
+
+== {company} Java driver for Apache Cassandra 3.x
+
+[source, java]
+----
+<dependency>
+  <groupId>com.datastax.cassandra</groupId>
+  <artifactId>cassandra-driver-core</artifactId>
+  <!--Use the latest version from https://search.maven.org/artifact/com.datastax.cassandra/cassandra-driver-core -->
+  <version>3.11.2</version>
+</dependency>
+----
+
+== DSE Java 2.x
+
+[source, java]
+----
+<dependency>
+  <groupId>com.datastax.dse</groupId>
+  <artifactId>dse-java-driver-core</artifactId>
+  <!--Use the latest version from https://search.maven.org/artifact/com.datastax.dse/dse-java-driver-core -->
+  <version>2.4.0</version>
+</dependency>
+----
+
+== DSE Java 1.x
+
+[source, java]
+----
+<dependency>
+  <groupId>com.datastax.dse</groupId>
+  <artifactId>dse-java-driver-core</artifactId>
+  <!-- Use the latest 1.x version from https://search.maven.org/artifact/com.datastax.dse/dse-java-driver-core -->
+  <version>1.9.0</version>
+</dependency>
+----
+
+[arabic, start=2]
+. *Optional:* To use DSE QueryBuilder, which is a utility used to generate CQL queries programmatically, add the following dependency to your `pom.xml` file:
+
+[source, xml]
+----
+<dependency>
+  <groupId>com.datastax.dse</groupId>
+  <artifactId>dse-java-driver-query-builder</artifactId>
+  <!-- Use the latest 4.x version from https://search.maven.org/artifact/com.datastax.oss/java-driver-query-builder -->
+  <version>4.14.1</version>
+</dependency>
+----
+
+[arabic, start=3]
+. Modify the connection code to use the {astra_db} API.
+In the `CqlSession` or `Session` objects (`DseCluster` or `DseSession` objects for DSE), include the path to the secure connect bundle for your Cassandra database (`secure-connect-**database_name**.zip`) in the `withCloudSecureConnectBundle()` method, as shown in the following example.
+
+[source, java]
+----
+CqlSession session = CqlSession.builder()
+  .withCloudSecureConnectBundle("/path/to/secure-connect-database_name.zip")
+  .withAuthCredentials("clientId","clientSecret")
+  .withKeyspace("keyspace_name")
+  .build())",       "language": "text",       "name": "{company} Java driver for Apache Cassandra 4.x
+----
+
+== {company} Java driver for Apache Cassandra 3.x
+
+[source, java]
+----
+Session session = Cluster.builder()
+  .withCloudSecureConnectBundle("/path/to/secure-connect-database_name.zip")
+  .withAuthProvider(new PlainTextAuthProvider("clientId", "clientSecret"))
+  .build()
+  .connect("keyspace_name"))
+----
+
+== Java 2.x
+
+[source, java]
+----
+DseSession session = DseSession.builder()
+  .withCloudSecureConnectBundle("/path/to/secure-connect-database_name.zip")
+  .withAuthCredentials("clientId", "clientSecret")
+  .withKeyspace("keyspace_name")
+  .build();
+----
+
+== Java 1.x
+
+[source, java]
+----
+DseCluster cluster = DseCluster.builder()
+  .withCloudSecureConnectBundle("/path/to/secure-connect-database_name.zip")
+  .withCredentials("clientId", "clientSecret")
+  .build();
+DseSession session = cluster.connect("keyspace_name");
+----
+
+[NOTE]
+====
+If converting from using the open source Cassandra Java driver to the DSE Java driver, ensure that you change `Session` to `DseSession`.
+====
+
+[arabic, start=4]
+. Build the project to test the connection.
+
+[source, java]
+----
+mvn clean compile exec:java -Dexec.mainClass=YourJavaDriver.java
+----
+
+If successful, the code builds, compiles, and connects to your Cassandra database.

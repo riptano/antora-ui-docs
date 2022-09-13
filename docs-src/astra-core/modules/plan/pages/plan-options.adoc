@@ -1,0 +1,72 @@
+== {astra_db} plan options
+:page-tag: plan,planning,astra-db
+
+ifeval::["{evalproduct}" == "DB Serverless"]
+=== Serverless databases
+
+{company} {astra_db} offers a serverless database, which is an elastic cloud-native database that scales with your workload. You can scale your compute and storage capabilities independently, allowing you to focus on developing your application and less on your infrastructure costs.
+
+Astra DB offers three plans: Free, Pay As You Go, and Enterprise (annual commitment). Each plan is billed according to the {astra_db} pricing, which is based on the Read and Write requests, data storage, and data transfer. For more, see https://www.datastax.com/products/datastax-astra/pricing[DataStax Astra DB Pricing].
+
+==== Limitations
+
+Serverless databases do not support materialized views or VPC peering. Serverless does offer xref:connect:private_endpoints/connect-private-endpoints.adoc[private endpoints]. For additional guardrails and limits, see xref:plan:planning.adoc#_astra_db_database_guardrails_and_limits[Guardrails and limits].
+endif::[]
+
+ifeval::["{evalproduct}" == "DB Classic"]
+=== Classic database options
+
+include::ROOT:partial$note_classic_only.adoc[]
+
+[IMPORTANT]
+====
+Classic databases can no longer be created through {astra_ui}. We recommend migrating your database to our current serverless option, which could save you money and allow you to manage your compute and storage capabilities separately.
+====
+
+////
+==== Dev and Test with Shared Resources
+
+Dev and Test databases offer an entry point for developers. Only select AWS and Google Cloud regions are available for the Dev and Test databases. Dev and Test databases do not support VPC peering or multi-region databases.
+
+|===
+|*Plan*|*Description*
+
+|A5|3 vCPU, 12GB DRAM, 10GB total usable storage
+|A10|6 vCPU, 24GB DRAM, 20GB total usable storage
+|A20|12 vCPU, 48GB DRAM, 40GB total usable storage
+|A40|24 vCPU, 96GB DRAM, 80GB total usable storage
+|===
+////
+
+==== Production Workloads with Dedicated Resources
+
+VPC peering and multi-region databases are available on Production Workload databases.
+|===
+|*Plan*|*Description*
+
+|C10|12 vCPU, 48GB DRAM, 500GB total usable storage
+|C20|24 vCPU, 96GB DRAM, 500GB total usable storage
+|C40|48 vCPU, 192GB DRAM, 500GB total usable storage
+// |C40i|48 vCPU, 192GB DRAM, 500GB total usable storage, 16,000 IOPS
+|===
+
+==== High-Density Production Workloads with Dedicated Resources
+
+High-Density Production Workload databases offer greater disk capacity and performance than other service tiers. VPC peering and multi-region databases are available on High-Density Product Workload databases.
+|===
+|*Plan*|*Description*
+|D10|12 vCPU, 48GB DRAM, 1500GB total usable storage
+|D20|24 vCPU, 96GB DRAM, 1500GB total usable storage
+|D40|48 vCPU, 192GB DRAM, 1500GB total usable storage
+|===
+
+==== Astra DSE Edition Workloads
+
+Databases with the advanced functionality of DSE Search and DSE Graph Worloads available on Production Workload databases.
+|===
+|*Plan*|*Description*
+|E60|48 vCPU, 366GB DRAM, 2TB total usable storage
+|E120|96 vCPU, 732GB DRAM, 2TB total usable storage
+|===
+
+endif::[]

@@ -1,0 +1,15 @@
+= Terminate your database with Astra Service Broker
+:slug: terminate-database-with-service-broker
+
+To terminate a database, deprovision the database:
+
+[source, shell, subs="attributes+"]
+----
+svcat deprovision <db_name>
+----
+
+
+[source, shell, subs="attributes+"]
+----
+kubectl delete serviceinstance <db_name>
+----

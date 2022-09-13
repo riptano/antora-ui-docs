@@ -1,0 +1,295 @@
+= {astra_db} FAQs
+:slug: datastax-astra-faq
+
+Frequently asked questions about {company} {astra_db}.
+
+// == {astra_db} FAQs
+//
+=== What tools does {astra_db} include?
+
+* *Stargate APIs:* The Stargate APIs are available as the https://docs.datastax.com/en/astra/docs/api.html[{astra_db} APIs]. Create an xref:manage:org/managing-org.adoc#_manage_application_tokens[application token] and begin interacting with your database.
+* *CQLSH:* Each {astra_db} database includes an integrated CQL shell for interactive Cassandra Query Language (CQL) commands.
+Use CQLSH to create tables, insert data, and modify data in your keyspace.
+* *{astra_db} Data Loader*: From the console, use xref:manage:upload/astra-data-loader.adoc[Data Loader] to load the following into your {astra_db} database:
+** CSV data
+** Example datasets
+** Extracted DynamoDB data that resides in an Amazon S3 bucket
+* *{company} Bulk Loader:* Use {company} Bulk Loader (dsbulk) to xref:manage:upload/loading-and-unloading-data-with-datastax-bulk-loader.adoc[load and unload] data into your {astra_db} database.
+You can load data from a variety of sources and unload data from DSE database for transfer, use, or storage of data.
+* *Metrics dashboards:* Use the integrated metrics dashboards to xref:manage:db/managing-db.adoc#_view_health_and_metrics[view health metrics] that include information regarding latency and throughput to the database.
+These metrics provide insights into the performance of the database and how workloads are distributed.
+
+=== How is {astra_db} different from DSE?
+
+While you can run {company} Enterprise (DSE) both on premises and in the cloud, {astra_db} allows you to create databases in minutes, with reduced complexity, fewer operational concerns, and an approachable entry point for developing your applications.
+{astra_db} is a true database-as-a-service (DBaaS) offering that provides simplified cluster management with flexible pricing.
+Also, DSE includes Advanced Workloads (DSE Search, Analytics, and Graph), which are not available in {astra_db}. Read https://www.datastax.com/resources/whitepaper/astra-serverless[this whitepaper] for an in-depth understanding of the cloud-native architecture of Astra DB.
+
+=== Which version of Apache Cassandra™ is compatible with {astra_db}?
+
+Apache Cassandra version 3.11 is compatible with {astra_db} databases.
+
+=== Which cloud vendors does {astra_db} support?
+
+{astra_db} supports creating databases on Amazon Web Services (AWS), Google Cloud, and Microsoft Azure.
+
+=== How do I connect to {astra_db} databases?
+
+include::partial$connect_options.adoc[]
+
+=== Which {company} drivers work with {astra_db}?
+
+Each of the supported DSE and Apache Cassandra drivers is compatible.
+Choose the {company} driver for your preferred language and configure it to connect to your {astra_db} database.
+See xref:connect:drivers/connect-drivers.adoc[Connecting to {astra_db} databases using {company} drivers].
+
+=== How do I manage billing for {astra_db}?
+
+{astra_db} handles billing through an integration with Stripe, and displays all related billing information on the *Billing Summary* page.
+Enter a credit card number and associated billing information to begin creating {astra_db} databases.
+See xref:manage:org/managing-org.adoc#_pricing_and_billing#billing[Billing] for more information.
+
+=== What happens when my credit runs out?
+
+A prompt appears for your credit card information when your credit limit is running low. You also receive this notification by email and in the {astra_db} console.
+
+If you run out of credits, the database temporarily pauses until you add a credit card to re-start the database. If you are on a free plan, you can wait until the next month for the $25 credits to refresh.
+
+Unused credits do not rollover. View your credit balance in the Dashboard:
+
+image::credit_dashboard1.png[Credit dashboard]
+
+=== Where do I find the Database ID and Organization ID?
+
+While logged in to Astra, view the URL:
+
+`astra.datastax.com/*{organization_id}*`
+
+Navigate to your database dashboard:
+
+`astra.datastax.com/org/{organization_id}/database/*{database_id}*`
+
+=== How do I navigate to a CQL shell?
+
+Select your current database on the left panel. Navigate to the CQL console tab.
+
+image::cql_shell.png[CQL shell]
+
+Here, you can run CQL commands. These are a few to test out
+
+* `Use <keyspace_name>;` navigates to your keyspace
+* `Desc tables;` describes the tables within your current keyspaces
+* `Select * from <table_name> limit 10;` selects all columns from table, 10 rows
+
+=== I am trying to create a keyspace in the CQL shell, and I am running into an error. How do I fix this?
+
+Keyspaces need to be created in the {astra_db} console. Navigate to the *Dashboard overview* and select *Add Keyspace*.
+
+image::add_keyspace.png[Add keyspace]
+
+=== How do I delete a keyspace?
+
+We do not allow users to delete the last keyspace to avoid accidental deletion of data. This is the error you will run into in the CQL shell:
+
+[source, shell, subs="attributes+"]
+----
+token@cqlsh> drop keyspace test_db;
+Unauthorized: Error from server: code=2100 [Unauthorized] message="Missing correct permission on test_db."
+----
+
+To avoid any storage costs associated with the keyspace, you can drop tables from the keyspace by running:
+
+[source, shell, subs="attributes+"]
+----
+drop table <keyspace_name>
+----
+
+=== Should I use materialized views or Storage Attached Indexing?
+
+Materialized views are not available yet on Astra Serverless.
+
+Storage Attached Indexing is a great feature of our Astra Serverless! Storage-Attached Indexing (SAI) is a highly-scalable, globally-distributed index for Apache Cassandra® that is available for DataStax Astra and DataStax Enterprise (DSE) databases.
+
+Explore this deep dive on https://docs.datastax.com/en/storage-attached-index/6.8/sai/saiAbout.html[Storage Attached Indexing].
+
+=== How can I fix a “Missing Correct Permission Error”?
+
+A permission error occurs for two reasons.
+
+The first reason would be that Astra places certain limitations on the user with xref:planning.adoc#_astra_db_database_guardrails_and_limits[{astra_db} database guardrails and limits].
+
+The second reason is that you don't have the appropriate permissions on your account. Learn more information about xref:manage:org/managing-org.adoc#_manage_user_permissions[user permissions].
+
+[source, shell, subs="attributes+"]
+----
+token@cqlsh> select * from test_db.data
+Unauthorized: Error from server: code=2100 [Unauthorized] message="No SELECT permission on <table test_db.data>"
+----
+
+=== I created my table in the {astra_db} console. Now, when I run a select statement I get an error. What do I do?
+
+This is the error: `Invalid Request: Error from server: code=2200 [Invalid query] message="table {table_name} does not exist"`
+
+When you upload a table through the {astra_db} console, any table name, keyspace name, or column name with case-sensitive characters can be accessed by using double quotes.
+
+For example, see the select statement below:
+
+[source, shell, subs="attributes+"]
+----
+token@cqlsh:test> desc tables;
+token@cqlsh:test> select * from "Case_Sensitive";
+----
+
+=== I need help with the Workshop Project. Where do I go for help?
+
+Check the YouTube description for the Workshop you attended. Use the Discord group or the YouTube comments to ask questions live.
+
+Additional links:
+
+Discord: https://discord.com/invite/pPjPcZN[https://discord.com/invite/datastax] +
+Community Forum: https://community.datastax.com/index.html[https://community.datastax.com/] +
+Backup Stream: https://www.twitch.tv/datastaxdevs[https://www.twitch.tv/datastaxdevs] +
+Event Alerts: https://docs.google.com/forms/d/e/1FAIpQLSfEtzzVauuFpFJWUiepYndqchBpNsaOwm6raPJDsMt9nTvMbw/viewform[https://bit.ly/cassandra-workshop]
+
+=== Where can I find {astra_db} project tutorials?
+
+You can find sample projects in our Sample App Gallery located on the left hand side of your Astra dashboard or the https://github.com/DataStax-Examples[Github Repository].
+
+image::sample_app.png[Sample App Gallery]
+
+Additionally, you can follow along to video tutorials on our DataStax Developers YouTube page: https://www.youtube.com/c/DataStaxDevs[https://www.youtube.com/c/DataStaxDevs]
+
+=== How do I open a support ticket?
+
+In the left hand side of the Astra console, select *Get support*.
+
+A slide out tab for Health Center will appear on the right hand side of the screen. In the bottom right hand corner, select *Create request*.
+
+Select *Submit Ticket* in the top right corner.
+
+For more, see xref:get-support.adoc[].
+
+=== Can I change the keyspace name?
+
+No, you cannot alter the keyspace name. You can create an entire new keyspace with a different name.
+
+=== What if my CSV file is too large for the Data Loader?
+
+If the file is over 40 MB, you can upload data with our DSBulk Loader.
+For more, see how to get started with xref:gs-dsbulk.adoc[DSBulk Loader].
+
+=== Can I use `cfstats` or `nodetool`?
+
+No, Astra is a zero-operations database-as-a-service (DBaaS) offering. Some operational Cassandra tools are not relevant. We offer access to a limited set of database metrics. You can view them in the *Health* tab in the {astra_db} console.
+
+image::dashboard.png[Dashboard]
+
+For more, see the xref:planning.adoc#_astra_db_database_guardrails_and_limits#_limited_access_to_administrative_tools[{astra_db} database guardrails and limits].
+
+=== Can I use strict security settings, such as an ad blocker, with {astra_db}?
+
+If you are using strict security settings in your web browser, you might not see everything in the {astra_db} console, such as messages and certainly functionalities that simplify your experience.
+
+=== Where can I find help?
+
+Use this documentation to get answers about what your database is capable of, or for guided information like connecting to your databases.
+
+Practice using the {astra_db} database with our xref:getting-started.adoc[examples].
+
+To send us feedback or get additional help, use the chat feature in the {astra_db} console.
+
+== {serverless_cap} database FAQs
+
+=== Which cloud regions are currently available for {serverless} databases?
+
+{astra_db} supports single-region and multi-region deployments. The xref:ROOT:planning.adoc#_database_regions#serverless-regions[available {serverless} regions] vary based on the selected cloud provider and more are added over time.
+Within a region, data is replicated across three availability zones to ensure high availability.
+
+[TIP]
+====
+To discuss region needs, use the chat icon in the {astra_db} console to talk with {company} for guidance.
+====
+
+=== Is VPC peering possible for {serverless} databases?
+
+VPC peering is not supported for {serverless} databases at this time. xref:connect:private_endpoints/connect-private-endpoints.adoc[Private endpoints] are available for AWS.
+
+=== How is pricing calculated for {serverless} databases?
+
+Pricing for DataStax Astra serverless databases is based on units of measure, cloud provider, and region. See xref:manage:org/managing-org.adoc#_pricing_and_billing[Pricing] for more information.
+
+=== How do I create a token?
+
+. Select your *Organization settings*.
+. Navigate to *Token management*.
+. Select a role.
+. Create a token.
+
+For more, see xref:manage:org/managing-org.adoc#_manage_application_tokens[Managing application tokens].
+
+=== How do I know which role to choose for my token?
+
+Default and xref:manage:org/manage-custom-roles.adoc[custom roles] allow admins to manage unique permissions for users based on your organization and database requirements.
+
+For more, see xref:manage:org/manage-permissions.adoc[User permissions].
+
+=== Where can I find the _Client ID_, _Client Secret_, and _Token_?
+
+After generating a token, you can find the _Client ID_, _Client Secret_, and _Token_.
+
+[IMPORTANT]
+====
+You can download the CSV only when you generate the token. Make sure to download the CSV and save it. Store these credentials in a secure location.
+====
+
+image::token.png[Token]
+
+=== What values do I pass to username and password when connecting to Astra Drivers?
+
+If it is suggested to pass the username and password in the connect documents, use the _Client ID_ for the username and the _Client Secret_ for the password:
+
+[source, shell, subs="attributes+"]
+----
+credentials: {
+     username: "<CLIENT ID>",
+     password: "<CLIENT SECRET>",
+   }
+----
+
+=== Can I restore my data if my database is suspended?
+
+Yes, your data will be restored when your database becomes active again. If your database is suspended, you must add a credit card or wait for your credits to be renewed before your database will be active again.
+
+=== Which ports are used by {Serverless} databases?
+
+If you need to make firewall exceptions, the following ports are used by Astra services:
+
+* APIs such as REST and GraphQL, and the {astra_db} Health dashboard: 443
+* CQL: 29042
+* Metadata service: 29080
+
+== {classic_cap} database FAQs
+
+=== Which cloud regions are currently available for {classic} databases?
+
+{astra_db} supports single-region and multi-region deployments. The xref:ROOT:planning.adoc#_database_regions#classic-regions[available {classic} regions] vary based on the selected cloud provider and more are added over time.
+Within a region, data is replicated across three availability zones to ensure high availability.
+
+[TIP]
+====
+To discuss region needs, use the chat icon in the {astra_db} console to talk with {company} for guidance.
+====
+
+=== Is VPC peering possible for {classic} databases?
+
+xref:connect:private_endpoints/connect-vpc-peering.adoc#_aws_vpc_peering[VPC peering] is available on only Classic C- and D-tier {astra_db} databases. For more, see xref:connect:private_endpoints/connect-vpc-peering.adoc#_aws_vpc_peering[AWS VPC peering], xref:connect:private_endpoints/connect-vpc-peering.adoc#_gcp_vpc_peering[GCP VPC peering], and xref:connect:private_endpoints/connect-vpc-peering.adoc#_azure_vpc_peering[Azure].
+
+=== How is pricing calculated for classic databases?
+
+Pricing for DataStax Astra classic databases is based on plan, units of measure, cloud provider, and region. See xref:manage:org/managing-org.adoc#_pricing_and_billing[Pricing] for more information.
+
+=== What is the range of ports available for classic databases?
+
+The port range is 29000-32767.
+
+APIs such as REST and GraphQL, and the {astra_db} Health dashboard: 443.

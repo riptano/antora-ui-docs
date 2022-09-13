@@ -1,0 +1,196 @@
+= Developing with the {astra_db} GraphQL API
+
+== Overview
+{company} {astra_db} uses the Stargate GraphQL API to easily modify and query your table data using
+GraphQL types, queries, and mutations.
+
+The Stargate GraphQL API has two modes, one developed from native GraphQL schema principles,
+and one developed with the Cassandra Query Language (CQL) in mind.
+To distinguish these two modes, the rest of the documentation will refer to the
+modes as `Schema-first` and `CQL-first`.
+
+include::partial$cql-first-desc.adoc[]
+
+include::partial$graphql-first-desc.adoc[]
+
+include::partial$compare-orientations.adoc[]
+
+
+//For every table in your keyspace, a series of GraphQL objects are generated, along
+//with queries and mutations for searching and modifying the table data.
+
+[NOTE]
+====
+If you haven't already, create a database using link:https://astra.datastax.com/[{astra_db}, window="_blank"].
+====
+
+We'll show you you how to:
+
+// . xref:generating-authorization-token.adoc[Generate an authorization token]
+. xref:manage:org/manage-tokens.adoc[Get an application token]
+. _Optional_ Creating a user-defined type (UDT)
+xref:creating-a-udt-in-your-keyspace-graphql-first.adoc[(schema-first)]
+xref:creating-an-index-for-a-table-graphql.adoc[(cql-first)]
+. _Optional_ Deleting a user-defined type (UDT)
+xref:develop:api-graphql/graphql-dropping-schema.adoc[(cql-first)] +++*+++
+. Creating objects types
+xref:creating-object-types-graphql-first.adoc[(schema-first)]
+. Creating table schema
+xref:creating-an-index-for-a-table-graphql.adoc[(cql-first)]
+. Deleting table schema
+xref:develop:api-graphql/graphql-dropping-schema.adoc[(cql-first)] +++*+++
+. _Optional_ Creating indexes
+xref:creating-indexes-graphql-first.adoc[(schema-first)]
+xref:creating-indexes-graphql.adoc[(cql-first)]
+. _Optional_ Deleting indexes xref:develop:api-graphql/graphql-dropping-schema.adoc[(cql-first)] +++*+++
+. Deploying schema
+xref:deploying-schema-graphql-first.adoc[(schema-first)]
+. Undeploying schema
+xref:undeploying-schema-graphql-first.adoc[(schema-first)]
+. Inserting data
+xref:adding-data-graphql-first.adoc[(schema-first)]
+xref:develop:api-graphql/graphql-adding-rows.adoc[(cql-first)]
+. Retrieving data
+xref:retrieving-data-graphql-first.adoc[(schema-first)]
+xref:develop:api-graphql/graphql-retrieving-rows.adoc[(cql-first)]
+. Updating data
+xref:updating-data-graphql-first.adoc[(schema-first)]
+xref:develop:api-graphql/graphql-updating-rows.adoc[(cql-first)]
+. Deleting data
+xref:deleting-data-graphql-first.adoc[(schema-first)]
+xref:develop:api-graphql/graphql-deleting-rows.adoc[(cql-first)]
+
++++*+++ Note that CQL-first deletes schema manually, whereas Schema-first overwrites
+schema with a new schema deployment.
+
+== About the GraphQL API endpoints
+
+There are three {astra_db} GraphQL API endpoints, one for creating schema in CQL-first,
+one for deploying schema in the Schema-first, and the third for querying a keyspace.
+The URLS are:
+
+Schema::
+`https://$ASTRA_CLUSTER_ID-$ASTRA_REGION.apps.astra.datastax.com/api/graphql-schema`
+Admin::
+`https://$ASTRA_CLUSTER_ID-$ASTRA_REGION.apps.astra.datastax.com/api/graphql-admin`
+Querying::
+`https://$ASTRA_CLUSTER_ID-$ASTRA_REGION.apps.astra.datastax.com/api/graphql/{keyspace_name}`
+
+The schema endpoint is used to create or alter CQL schema in the CQL-first GraphQL
+using direct schema manipulation.
+The admin endpoint is used to deploy GraphQL schema in the Schema-first GraphQL
+which will indirectly modify underlying CQL schema.
+The querying endpoint is constructed in the same manner for both Schema-first and CQL-first.
+
+Each request must have a valid xref:manage:org/managing-org.adoc#_manage_application_tokens[application token].
+Each request can also have an optional unique request id.
+The request id is recommended in a production environment and can be useful in troubleshooting issues.
+
+[TIP]
+====
+**Generating UUIDs**
+Consider using a tool like this https://www.uuidgenerator.net/[online UUID generator, window="_blank"]
+to quickly create a random UUID to pass with your requests if you are submitting
+the queries manually using a tool like cURL.
+====
+
+include::partial$GQLNaming.adoc[]
+
+== Mapping {astra_db} tables to GraphQL fields and types in CQL-first
+
+The {astra_db} GraphQL API generates fields and types for each table in your database.
+For example, for an {astra_db} table named `book` the following fields and types
+are generated.
+
+[source, plaintext,subs="attributes+"]
+----
+include::develop:example$graphql/generatedApi.graphql[]
+----
+
+=== Generated query types in CQL-first
+
+The following query types are generated:
+
+* `book()`: Query book values by equality. If no value argument is
+provided, then the first hundred (default pagesize) values are returned.
+* `bookFilter`: Query book values by filtering the result with additional operators.
+For example `gt` (greater than), `lt` (less than), `in` (in a list of values).
+The `book()` equality style query is preferable if your queries don't require
+non-equality operators.
+
+=== Generated mutation types in CQL-first
+
+The following mutations are generated:
+
+Several mutations are created that you can use to insert, update, or delete books.
+Some important facts about these mutations are:
+
+* `insertbook()` is an **upsert** operation if a book with the same information
+exist, unless the `ifNotExists` is set to true.
+* `updatebook()` is also an **upsert** operation, and will create a new book if
+it doesn't exist, unless `ifNotExists` is set to true.
+* `deletebook()` will delete a book.
+* Using the `ifNotExists` or `ifCondition` options affects the performance of
+operations because of the compare-and-set execution path in Cassandra. Under
+the hood these operations are using a feature in Cassandra called lightweight
+transactions (LWTs).
+
+As more tables are added to your keyspace, additional fields are added to the
+query and mutation types to handle queries and mutations for the new tables.
+
+include::partial$graphql-first-directives.adoc[]
+
+== Using the GraphQL Playground
+
+The easiest way to get started with GraphQL uses the built-in GraphQL playground.
+In {astra_db}, go to the Connect tab for your database, choose GraphQL under the
+`Connect using an API` and you'll see instructions for accessing the playground.
+The GraphQL playground launches the url
+`https://$ASTRA_CLUSTER_ID-$ASTRA_REGION.apps.astra.datastax.com/api/playground`
+in your browser.
+
+Add your xref:manage:org/managing-org.adoc#_manage_application_tokens[application token] to the HTTP HEADERS
+section at the lower lefthand corner of the GraphQL Playground window:
+
+{"x-cassandra-token":"$AUTH_TOKEN"}
+
+Once in the playground, you can create new schema and interact with the
+GraphQL APIs. The server paths are structured to provide access to creating and
+querying schema, as well as querying and modifying Cassandra data:
+
+* `/graphql-schema`
+** An API for exploring and creating schema, or Data Definition Language (DDL).
+For example, {astra_db} has queries to create, modify, or drop tables,
+such as `createTable`, or `dropTable`.
+* `/graphql/<keyspace>`
+** An API for querying and modifying your tables using GraphQL fields.
+
+// tag::UsingPostman[]
+== Using Postman
+
+If you prefer, you can use Postman as a client interface for exploring the GraphQL API
+(https://www.postman.com/downloads/[download here, window="_blank"]).
+We've provided a
+https://raw.githubusercontent.com/stargate/docs/master/modules/developers-guide/examples/json/Stargate_GraphQL_API_library_Astra.postman_collection.json[Stargate GraphQL API Postman {astra_db} Collection]
+that you can import in Postman to play with the examples shown in this walkthrough.
+// end::UsingPostman[]
+
+We'll start the playground with `/graphql-schema` to create some schema.
+
+include::develop:page$dev-postman.adoc[Using Postman as a tooling resource]
+
+include::manage:page$org/manage-tokens.adoc[Get an application token]
+
+include::develop:page$api-graphql/graphql-creating-udt.adoc[Creating a user-defined type (UDT)]
+
+include::develop:page$api-graphql/graphql-creating-table.adoc[Creating table schema]
+
+include::develop:page$api-graphql/graphql-dropping-schema.adoc[Dropping user-defined types (UDTs), tables or columns using GraphQL]
+
+include::develop:page$api-graphql/graphql-adding-rows.adoc[Adding rows to your table]
+
+include::develop:page$api-graphql/graphql-retrieving-rows.adoc[Retrieving rows from your table]
+
+include::develop:page$api-graphql/graphql-updating-rows.adoc[Updating rows in your table]
+
+include::develop:page$api-graphql/graphql-deleting-rows.adoc[Deleting rows in your table]

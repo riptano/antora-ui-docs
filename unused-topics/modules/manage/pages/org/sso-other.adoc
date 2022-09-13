@@ -1,0 +1,95 @@
+= Configuring single sign-on for the other IdP
+
+include::partial$sso-overview.adoc[]
+
+== Prerequisites
+To manage SAML SSO settings, you must have the Organization Administrator role.
+
+== Adding identity provider
+
+. From any page from https://astra.datastax.com[{astra_db}], select the *Organizations* dropdown. Select the organization for which you want to configure your SSO.
+. Go to the dashboard and select *Organization Settings*. Select *Security Settings*.
++
+If this is your first time configuring SSO, no identity providers (IdP) will be listed for your organization.
+. Select *Add Identity Provider*.
+. Select *Other* as your IdP and add the name of the unlisted IdP in the empty field.
++
+The following fields display information you need to provide your IdP:
+
+** SAML Assertion Consumer (ACS) URL (also called "Single Sign On URL")
+** Audiene URI (also called "SP Indentity ID")
+** Relay State (also called "Default Relay State")
+
+   image::ROOT:other_linkIdP.png[]
+
+     [NOTE]
+     ===
+     Without a known IdP, a link to obtain information from an IdP cannot be listed. You must locate this infomation and complete the following fields.
+     ===
+
+* Information to receive FROM your IdP (click the information from your Identity Provider to learn what information you need for the following fields)
+** Description
+** Login URL (also be called "SAML Endpoint")
+** Azure AD Identifier (also called "Entity ID" or "Identifier")
+** SAML Signing Certificate
+
+   image::ROOT:other_obtainIdP.png[]
+
+. After confirming all the information is correct, scroll down and select *Test Configuration*.
++
+A new tab opens in the browser window housing your IdP log-in screens and flow. When you complete the login, the window closes.
++
+The Test Configuration is deemed successful when a confirmation icon appears beside the *Test Configuration* button.
++
+[IMPORTANT]
+====
+If the test was unsuccessful, review the SSO settings in {astra_db} and your IdP console. If still unsuccessful, contact https://houston.datastax.com/hc/requests/new[DataStax support].
+====
+
+. Select *Activate SSO* when your test configuration is successful. A message appears confirming the SSO is now active for your selected organization.
+
+== Disabling your configuration
+
+You can suspend any active configuration from your organization. The *Disable* option deactivates your active configuration.
+
+[WARNING]
+====
+If you disable your SSO configuration, users can access your organization without SSO authentication.
+====
+
+. Select the ellipsis (...) next to your active configuration. Select *Disable*.
+. A dialog box appears to confirm you want to disable this configuration. Type "disable" and select *Disable SSO Configuration*.
+
+image::ROOT:sso_disableactive.png[]
+
+// == Deleting your configuration
+
+//The *Delete* option displays a dialog box with the consequences of deleting the now active SSO configuration.
+
+//. Click the ellipsis (...) next to the row of the configuration you want to delete. Select *Delete*.
+//. A dialog box appears to confirm you want to delete this configuration. Type "delete"  and select *Delete SSO Authentication*. Selecting this option removes the row from the table. This option is permanent.
+
+//image::ROOT:sso_deleteactive.png[]
+
+== Using identity provider drafts
+
+To complete your configuration later, select *Esc* in your configuration to save the current information as a draft. All drafts and the active configuration appear on the table of the *Single Sign-on (SSO)* page.
+
+image::ROOT:sso_drafts.png[]
+
+. Select the ellipsis (…).
+. Select either *Edit* or *Delete*:
++
+* *Edit* returns to the *Configure SSO* page to continue editing the draft and complete the SSO configuration.
+* *Delete* removes the row from the table and is permanent. This choice displays a dialog box. To delete the draft, type "delete" and select *Delete SSO Authentication*.
+
+[NOTE]
+====
+An organization can have have multiple configuration drafts, but only one active configuration.
+====
+
+image::ROOT:sso_draftactive.png[]
+
+== What's next?
+
+As needed, xref:user-permissions.adoc[Update user permissions] from the default JIT provision role.

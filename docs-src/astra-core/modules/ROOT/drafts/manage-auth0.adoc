@@ -1,0 +1,2 @@
+= Manage your Auth0 integration
+:slug: manage-auth0

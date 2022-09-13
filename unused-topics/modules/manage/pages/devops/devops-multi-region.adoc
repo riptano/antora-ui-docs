@@ -1,0 +1,154 @@
+== Managing multiple regions
+
+Use the DevOps API to add or remove regions for your database.
+
+The following roles use the application token to execute DevOps API queries:
+
+* Organization Administrator
+* Database Administrator
+
+=== Prerequisites
+
+. Create an xref:manage:org/managing-org.adoc#_manage_application_tokens[application token] to link:_attachments/devopsv2.html[authenticate your service account] in the DevOps API.
+. Once you have authenticated your service account, you can add and removes regions in the link:_attachments/devopsv2.html[DevOps API].
+
+=== Adding a region to your database
+
+include::ROOT:partial$note_multi-region-prereq.adoc[]
+
+. Check existing regions for your database:
++
+[tabs]
+====
+cURL command (/v2)::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/curl_get_regions.sh[]
+----
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::manage:example$results/devops_get_regions.result[]
+----
+--
+====
+
+. Add a new region to your database:
++
+[tabs]
+====
+cURL command (/v2)::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/curl_create_region.sh[]
+----
+--
+====
+
+. Confirm your region was added to the database:
++
+[tabs]
+====
+cURL command (/v2)::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/curl_get_regions.sh[]
+----
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::manage:example$results/devops_get_regions2.result[]
+----
+--
+====
+
+For more, see link:_attachments/devopsv2.html#operation/inviteUserToOrganization[Invite a user to an organization] in the DevOps API.
+
+== Delete a region from your database
+
+include::ROOT:partial$note_delete-region.adoc[]
+
+[CAUTION]
+====
+Removing a region is not reversible. Proceed with caution.
+====
+
+. Check existing regions for your database:
++
+[tabs]
+====
+cURL command (/v2)::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/curl_get_regions.sh[]
+----
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::manage:example$results/devops_get_regions2.result[]
+----
+--
+====
+
+. Delete a region from your database:
++
+[tabs]
+====
+cURL command (/v2)::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/curl_delete_region.sh[]
+----
+--
+====
+
+. Confirm your region was removed from your database:
++
+[tabs]
+====
+cURL command (/v2)::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/curl_get_regions.sh[]
+----
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::manage:example$results/devops_get_regions.result[]
+----
+--
+====
+
+For more, see link:_attachments/devopsv2.html#operation/removeUserFromOrganization[Remove or uninvite a user from an organization] in the DevOps API.
+
+=== What's next?
+
+Learn more about using xref:manage:db/managing-db.adoc#_using_multiple_regions[multiple regions].

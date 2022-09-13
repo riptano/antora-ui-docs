@@ -1,0 +1,67 @@
+= Connect DBSchema with {astra_db} using Simba JDBC Driver
+
+You can connect your {company} {astra_db} to DBSchema using the Simba JDBC Driver for Apache Cassandra(R).
+Follow these steps to set up the connection so you can run queries.
+
+== Prerequisites
+
+. Download the link:https://downloads.datastax.com/#odbc-jdbc-drivers[{company} JDBC Driver].
+
+== Establish the connection
+
+. Open link:https://dbschema.com/[DBSchema^].
+. Select **Connect to the Database**.
+. Select **Start**.
++
+image:ROOT:dbschema-start.png[]
+
+. In the **Choose your database** menu, select **Cassandra**.
+. Select **Next**.
++
+image:ROOT:dbschema-cass-sel.png[]
+
+. Select **JDBC Driver** edit option.
++
+image:ROOT:dbschema-connection-d.png[]
+
+. In the **JDBC Driver Manager**, select **New**.
+. In the **Add RDBMS** window, enter `Astra` and select **OK**.
++
+image:ROOT:dbschema-driver-manager.png[]
+
+. Select **OK** in the confirmation message.
++
+image:ROOT:dbschema-connection.png[]
+
+. Upload the Simba JDBC Driver.
+. Select **Open**.
++
+image:ROOT:dbschema-simba-driver.png[]
+
+. Once you upload the Simba JDBC Driver, you will see `Astra` in the **Choose your Database** window. Select **Next**.
++
+image:ROOT:dbschema-astra.png[]
+
+
+. In the **Astra Connection Dialog**, add `JDBC URL` as `jdbc:cassandra://;AuthMech=<2>;UID=token;PWD=<ApplicationToken>;SecureConnectionBundlePath=<PATH TO YOUR SECURE CONNECT BUNDLE>;TunableConsistency=<6>` with the following variables:
+
+* *AuthMech:* Specifies whether the driver connects to a Cassandra or {astra_db} database and whether the driver authenticates the connection.
+* *ApplicationToken:* Generated from {astra_db} console. See xref:manage:org/manage-tokens.adoc[Manage application tokens].
+* *SecureConnectionBundlePath:* Path to where your downloaded Secure Connect Bundle is located. See xref:connect:connecting.adoc#_downloading_secure_connect_bundle[Get secure connect bundle].
+* *TunableConsistency:* Specifies Cassandra replica or the number of Cassandra replicas that must process a query for the query to be considered successful.
+
+. Select **Connect**.
++
+image:ROOT:dbschema-url.png[]
+
+. In the **Select Schemas/Catalogs**, select the keyspace to which you want to connect.
+. Select **OK**.
++
+image:ROOT:dbschema-connetion-established.png[]
+
+== What's next?
+
+Now that your connection is working, you can create tables, introspect your keyspaces, view your data in the DBSchema GUI, and more.
+
+To learn more about DBSchema, see link:https://dbschema.com/tutorials.html[Quick start with DBSchema].
+

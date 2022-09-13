@@ -1,0 +1,5 @@
+You can now use your token to connect to the {astra_db} APIs. See more about the available APIs:
+
+* xref:document-api.adoc[Document API]
+* xref:getting-started-with-datastax-astra.adoc[REST API]
+* xref:using-the-astra-graphql-api.adoc[GraphQL API]

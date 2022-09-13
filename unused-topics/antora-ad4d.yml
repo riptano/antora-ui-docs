@@ -1,0 +1,8 @@
+name: astra-ad4d
+title: DataStax Astra DB for DSE Documentation
+version: ~
+
+nav:
+- modules/ROOT/nav.adoc
+- modules/graph/gnav.adoc
+- modules/search/snav.adoc

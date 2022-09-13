@@ -1,0 +1,23 @@
+= Manage custom roles
+:slug: manage-custom-user-roles
+
+Within *Role Management*, you can see the permissions for a specific role by hovering over the number in the *Permissions* column of the table. This will show the permissions granted to the role.
+
+image::ROOT:Roles.png[]
+
+If the default roles don't meet your requirements, you can use custom roles that meet your organizational needs.
+
+== Create custom role
+
+include::ROOT:partial$create_custom_role.adoc[]
+
+To see your custom roles, select *Role Management* within your Organization. You can now xref:manage:org/managing-org.adoc#_invite_users_to_an_organization[invite users] using your new custom role.
+
+== Edit user roles
+
+. From your Organization page, select *Role Management*.
+. Select *Edit Role* from the overflow menu for the custom role you want to update.
+. When editing the role, you can edit the name, permissions, database, and keyspace.
+. Once you have updated your permissions, select *Edit Role*.
+
+Your updated custom role will show up in *Role Management* within your Organization.

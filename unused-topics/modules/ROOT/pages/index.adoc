@@ -1,0 +1,15 @@
+= What is {astra_db}?
+:slug: what-is-datastax-astra
+
+https://astra.datastax.com[{company} {astra_db}] provides the ability to develop and deploy data-driven applications with a cloud-native service, without the hassles of database and infrastructure administration.
+
+By automating tuning and configuration, {astra_db} radically simplifies database and streaming operations.
+{astra_db} database guardrails and limits help enforce best practices by defining parameters for operations, such as table number and column size limits, ensuring the database operates with consistent performance and maintains cluster health.
+
+Check out link:https://www.youtube.com/playlist?list=PL2g2h-wyI4SpWK1G3UaxXhzZc6aUFXbvL[these videos] to learn more about {astra_db}!
+
+For more information about {astra_db}, see xref:astra-faq.adoc[{astra_db} FAQs].
+
+== {astra_stream}
+
+For documentation about {astra_stream}, see https://docs.datastax.com/en/astra-streaming/docs/[{astra_stream}].

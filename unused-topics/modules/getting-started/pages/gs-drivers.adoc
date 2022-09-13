@@ -1,0 +1,1069 @@
+= Getting Started with the drivers on {astra_db}
+:page-tag: getting-started,dev,astra-db
+
+A demo CRUD application using the {company} Drivers and {company} {astra_db}
+
+== Objectives
+* Demonstrate how to perform basic CRUD operations with the unified {company} Drivers.
+* Enable users to get up and running quickly with the drivers.
+* Connect a driver in the language of your choice to https://astra.datastax.com[{astra_db}].
+
+Walk through a demo application performing basic CRUD operations using the {company} drivers to connect to {astra_db}.
+The demo application will first insert a row of user data, select that same row back out, update the row, and finally delete the row.
+
+If you want to skip the exercise and run the application with the complete code, go directly to the <<Full Solution>>.
+
+To get the most of out your experience with the drivers, refer to https://docs.datastax.com/en/devapp/doc/devapp/driversBestPractices.html[Best practices for DataStax drivers].
+
+== Install the Driver
+{company} provides drivers for multiple programming languages.
+There are common features across all the drivers with similar capabilities.
+
+[WARNING]
+====
+**Before you start, install your driver of choice locally**
+For more in-depth guidance on installing the drivers and connecting to {astra_db}, see xref:connect:drivers/connect-drivers.adoc[Connecting to {astra_db} databases using {company} drivers.]
+====
+
+Download and install your driver of choice:
+
+
+[tabs]
+====
+Java::
++
+--
+[source,java]
+----
+<!--If using Maven, add the following dependencies to your pom.xml file-->
+<dependency>
+  <groupId>com.datastax.oss</groupId>
+  <artifactId>java-driver-core</artifactId>
+  <version>4.8.0</version>
+</dependency>
+----
+--
+
+Python::
++
+--
+[source,python]
+----
+# We highly recommend the use of a virtual env
+pip install cassandra-driver
+----
+--
+
+Node.js::
++
+--
+[source,js]
+----
+npm install cassandra-driver
+----
+--
+
+C#::
++
+--
+[source,cs]
+----
+dotnet add package CassandraCSharpDriver -v 3.15.0
+----
+--
+====
+
+[TIP]
+====
+**Using Gradle with the Java driver**
+If you prefer to use Gradle for your project with the Java Driver, please see the https://docs.datastax.com/en/developer/java-driver/latest/manual/core/integration/#gradle[Minimal Project Structure] for Gradle documentation.
+====
+
+== Add the necessary import statements
+Import the necessary classes or modules to use the driver API for this tutorial.
+Add these lines to the top of your application code:
+
+
+[tabs]
+====
+Java::
++
+--
+[source,java]
+----
+import com.datastax.oss.driver.api.core.CqlSession;
+import com.datastax.oss.driver.api.core.cql.*;
+import java.nio.file.Paths;
+----
+--
+
+Python::
++
+--
+[source,python]
+----
+from cassandra.cluster import Cluster
+from cassandra.auth import PlainTextAuthProvider
+----
+--
+
+Node.js::
++
+--
+[source,js]
+----
+const cassandra = require('cassandra-driver');
+----
+--
+
+C#::
++
+--
+[source,cs]
+----
+using Cassandra;
+using System.Linq;
+using System;
+----
+--
+====
+
+== Connect to your {astra_db} cluster
+Create a cluster object and session object to connect to your running {astra_db} instance.
+
+Learn more about https://docs.datastax.com/en/devapp/doc/devapp/connectCloud.html#Driverconfiguration[Connecting to {astra_db}: Driver Configuration].
+
+You will need to provide:
+
+* the path to your xref:connect:secure-connect-bundle.adoc[secure connect bundle]
+* your Client ID
+* your Client Secret
+* the name of the keyspace you want to connect to
+
+[IMPORTANT]
+====
+Get your _Client ID_ and _Client Secret_ by creating your xref:manage:org/managing-org.adoc#_manage_application_tokens[application token] for your username and password.
+====
+
+In this tutorial, use the default keyspace you created with your first {astra_db} instance.
+In the code examples the keyspace name is `demo`.
+
+
+[tabs]
+====
+Java::
++
+--
+[source,java]
+----
+// add to your main() method
+try (CqlSession cqlSession = CqlSession.builder()
+    // make sure you change the path to the secure connect bundle below
+    .withCloudSecureConnectBundle(Paths.get("/path/to/secure-connect-database_name.zip"))
+    .withAuthCredentials("clientId","clientSecret")
+    .withKeyspace("demo")
+    .build())
+----
+--
+
+Python::
++
+--
+[source,python]
+----
+cloud_config= {
+        'secure_connect_bundle': '/path/to/secure-connect-database_name.zip'
+}
+auth_provider = PlainTextAuthProvider('clientId', 'clientSecret')
+cluster = Cluster(cloud=cloud_config, auth_provider=auth_provider)
+session = cluster.connect('demo')
+----
+--
+
+Node.js::
++
+--
+[source,js]
+----
+const client = new cassandra.Client({
+  cloud: { secureConnectBundle: 'path/to/secure-connect-DATABASE_NAME.zip' },
+  credentials: { username: 'clientId', password: 'clientSecret' }
+  keyspace: 'demo'
+});
+----
+--
+
+C#::
++
+--
+[source,cs]
+----
+Cluster.Builder()
+      .WithCloudSecureConnectionBundle(@"C:\path\to\secure-connect-database_name.zip")
+      .WithCredentials("clientId", "clientSecret")
+      .Build();
+ISession session = cluster.Connect("demo");
+----
+--
+====
+
+== Create a Users table
+A keyspace is a collection of tables.
+Add code to create the `users` table.
+If you are familiar with SQL, the notation will look familiar to you.
+
+[source, sql]
+----
+sql CREATE TABLE demo.users ( lastname text PRIMARY KEY, age int, city text, email text, firstname text);
+----
+
+Execute a simple statement against the database that will create the `users` table.
+Be sure to change the name of the keyspace to the one you are using.
+
+
+[tabs]
+====
+Java::
++
+--
+[source,java]
+----
+cqlSession.execute("CREATE TABLE IF NOT EXISTS demo.users ("
+                  + " lastname text PRIMARY KEY,"
+                  + " age int,"
+                  + " city text,"
+                  + " email text," +
+                    " firstname text)");
+----
+--
+
+Python::
++
+--
+[source,python]
+----
+session.execute(
+        """
+        CREATE TABLE IF NOT EXISTS demo.users (
+            lastname text PRIMARY KEY,
+            age int,
+            city text,
+            email text,
+            firstname text);
+        """
+        )
+----
+--
+
+Node.js::
++
+--
+[source,js]
+----
+function createTable(){
+    const query = "CREATE TABLE IF NOT EXISTS demo.users \
+    (lastname text PRIMARY KEY, age int, city text, email text, firstname text);";
+    return client.execute(query);
+  })
+----
+--
+
+C#::
++
+--
+[source,cs]
+----
+var statement = new SimpleStatement("CREATE TABLE IF NOT EXISTS demo.users ("
+                                    + " lastname text PRIMARY KEY,"
+                                    + " age int,"
+                                    + " city text,"
+                                    + " email text," +
+                                    " firstname text)");
+
+session.Execute(statement);
+----
+--
+====
+
+== Insert a user
+Now add some simple CRUD operations to interact with your table.
+Create a method or function to insert one user into the table.
+In this example, we use positional placeholders in our statement and add values separately.
+The values are assigned based on the position of placeholders.
+One advantage of placeholders is that they avoid injection attacks if the values are dynamic.
+
+
+[tabs]
+====
+Java::
++
+--
+[source,java]
+----
+private static void setUser(CqlSession cqlSession, String lastname, int age,
+String city, String email, String firstname) {
+
+    //TO DO: execute SimpleStatement that inserts one user into the table
+    cqlSession.execute(
+            SimpleStatement.builder( "INSERT INTO users (lastname, age, city, email, firstname) "
+                                  +  "VALUES (?,?,?,?,?)")
+            .addPositionalValues(lastname, age, city, email, firstname)
+            .build());
+}
+----
+--
+
+Python::
++
+--
+[source,python]
+----
+def set_user(session, lastname, age, city, email, firstname):
+     # TO DO: execute SimpleStatement that inserts one user into the table
+    session.execute("INSERT INTO users (lastname, age, city, email, firstname) VALUES (%s,%s,%s,%s,%s)", [lastname, age, city, email, firstname])
+----
+--
+
+Node.js::
++
+--
+[source,js]
+----
+function insertUser(lastname, age, city, email, firstname) {
+  // TO DO: execute a simple statement that inserts one user into the table
+  const insert = 'INSERT INTO users (lastname, age, city, email, firstname) VALUES (?,?,?,?,?)';
+  const params = [ lastname, age, city, email, firstname ];
+  return client.execute(insert, params);
+}
+----
+--
+
+C#::
++
+--
+[source,cs]
+----
+private static void SetUser(ISession session, String lastname, int age, String city, String email, String firstname)
+{
+
+    //TO DO: execute SimpleStatement that inserts one user into the table
+    var statement = new SimpleStatement("INSERT INTO users (lastname, age, city, email, firstname) VALUES (?,?,?,?,?)", lastname, age, city, email, firstname);
+
+    session.Execute(statement);
+
+}
+----
+--
+====
+
+== Select the user
+Select the user you inserted in the previous step.
+
+This select query uses named placeholders, an alternative to the positional placeholders used in the insert statement.
+Using named placeholders has a few advantages over positional placeholders:
+
+* It is easier to read.
+If the values come from some other part of your code, it looks cleaner than doing the concatenation yourself.
+* You don't need to translate the values to their string representation.
+The driver will send them alongside the query, in their serialized binary form.
+
+Whether you use positional or named placeholders, the number of values must match the number of placeholders in the query string and their types must match the database schema.
+
+
+[tabs]
+====
+Java::
++
+--
+[source,java]
+----
+private static void getUser(CqlSession session, String lastname) {
+
+    //TO DO: execute SimpleStatement that retrieves one user from the table
+    //TO DO: print firstname and age of user
+    ResultSet rs = session.execute(
+    SimpleStatement.builder("SELECT * FROM users WHERE lastname=:n")
+            .addPositionalValue(lastname)
+            .build());
+
+    Row row = rs.one();
+    System.out.format("%s %d\n", row.getString("firstname"), row.getInt("age"));
+}
+----
+--
+
+Python::
++
+--
+[source,python]
+----
+def get_user(session, lastname):
+    # TO DO: execute SimpleStatement that retrieves one user from the table
+    # TO DO: print firstname and age of user
+    result = session.execute("SELECT * FROM users WHERE lastname = %(lastname)s", [lastname]).one()
+    print result.firstname, result.age
+----
+--
+
+Node.js::
++
+--
+[source,js]
+----
+function selectUser(lastname) {
+  // TO DO: execute a simple statement that retrieves one user from the table
+  const select = 'SELECT firstname, age FROM users WHERE lastname = :lastname';
+  const params = [ lastname ] ;
+  return client.execute(select, params);
+}
+----
+--
+
+C#::
++
+--
+[source,cs]
+----
+private static void GetUser(ISession session, String lastname){
+
+      //TO DO: execute SimpleStatement that retrieves one user from the table
+      //TO DO: print firstname and age of user
+      var statement = new SimpleStatement("SELECT * FROM users WHERE lastname = :lastname", lastname);
+
+      var result = session.Execute(statement).First();
+      Console.WriteLine("{0} {1}", result["firstname"], result["age"]);
+
+}
+----
+--
+====
+
+== Update the user's age
+Prepared statements are a good idea if you have to execute the same query more than once.
+You have to prepare the statement only once, but you can bind values and execute it multiple times.
+
+=== Why should you use prepared statements?
+
+* They are faster than just using strings, especially if you are executing the same query over and over.
+* They are parsed once server-side and cached so they can be used again without resending the entire query each time it is executed.
+* They are used for repeated queries in production applications, so using them wherever a repeated query is used is a good habit to learn.
+* They are more secure because they prevent CQL injection attacks. By using prepared statements, you force the user input to be handled as the content of a parameter and not as a part of the statement itself.
+
+
+[tabs]
+====
+Java::
++
+--
+[source,java]
+----
+private static void updateUser(CqlSession session, int age, String lastname) {
+
+    //TO DO: execute a BoundStatement that updates the age of one user
+    PreparedStatement prepared = session.prepare(
+            "UPDATE users SET age =?  WHERE lastname =?");
+
+    BoundStatement bound = prepared.bind(age, lastname);
+
+    session.execute(bound);
+
+}
+----
+--
+
+Python::
++
+--
+[source,python]
+----
+def update_user(session, new_age, lastname):
+    prepared = session.prepare("UPDATE users SET age = ? WHERE lastname = ?")
+    session.execute(prepared, [new_age, lastname])
+----
+--
+
+Node.js::
++
+--
+[source,js]
+----
+function updateUser(age, lastname) {
+  // TO DO: execute a prepared statement that updates the age of one user
+  const update = 'UPDATE users SET age = ? WHERE lastname = ?';
+  return client.execute(update, [ age, lastname ], { prepare : true } )
+}
+----
+--
+
+C#::
++
+--
+[source,cs]
+----
+private static void UpdateUser(ISession session, int age, String lastname) {
+
+    //TO DO: execute PreparedStatement that updates the age of one user
+    PreparedStatement prepared = session.Prepare("UPDATE users SET age =? WHERE lastname = ?");
+    BoundStatement bound = prepared.Bind(age, lastname);
+    session.Execute(bound);
+}
+----
+--
+====
+
+== Delete a user
+Like the previous step, you should consider the performance and security of your data and use a prepared statement for your query.
+
+Check out https://docs.datastax.com/en/devapp/doc/devapp/driversBestPractices.html[Best Practices for {company} drivers] for more information on using prepared statements with each of the drivers.
+
+
+[tabs]
+====
+Java::
++
+--
+[source,java]
+----
+private static void deleteUser(CqlSession session, String lastname) {
+
+   //TO DO: execute BoundStatement that deletes one user from the table
+      PreparedStatement prepared = session.prepare(
+           "DELETE FROM users WHERE lastname=?");
+      BoundStatement bound = prepared.bind(lastname);
+      session.execute(bound);
+
+}
+----
+--
+
+Python::
++
+--
+[source,python]
+----
+def delete_user(session, lastname):
+    prepared = session.prepare("DELETE FROM users WHERE lastname = ?")
+    session.execute(prepared, [lastname])
+----
+--
+
+Node.js::
++
+--
+[source,js]
+----
+function deleteUser(lastname) {
+  // TO DO: execute a prepared that deletes one user from the table
+  const remove = 'DELETE FROM users WHERE lastname = ?';
+  const params = [ lastname ];
+  return client.execute(remove, params, { prepare: true })
+}
+----
+--
+
+C#::
++
+--
+[source,cs]
+----
+private static void DeleteUser(ISession session, String lastname) {
+
+    PreparedStatement prepared = session.Prepare("DELETE FROM users WHERE lastname = ?");
+    BoundStatement bound = prepared.Bind(lastname);
+    session.Execute(bound);
+}
+----
+--
+====
+
+== Call the functions and run the program
+Provide inputs for the various CRUD operations outlined in the functions that were just created and run the demo application.
+
+
+[tabs]
+====
+Java::
++
+--
+[source,java]
+----
+public static void main(String[] args) {
+
+  try (CqlSession session = CqlSession.builder()
+       // make sure you change the path to the secure connect bundle below
+       .withCloudSecureConnectBundle(Paths.get("/path/to/secure-connect-database_name.zip"))
+       .withAuthCredentials("clientId","clientSecret")
+       .withKeyspace("demo")
+       .build()) {
+
+    session.execute("CREATE TABLE IF NOT EXISTS demo.users ("
+                    + " lastname text PRIMARY KEY,"
+                    + " age int,"
+                    + " city text,"
+                    + " email text,"
+                    + " firstname text)");
+
+    setUser(session, "Jones", 35, "Austin", "bob@example.com", "Bob");
+
+    getUser(session, "Jones");
+
+    updateUser(session, 36, "Jones");
+
+    getUser(session, "Jones");
+
+    deleteUser(session, "Jones");
+
+  }
+}
+----
+--
+
+Python::
++
+--
+[source,python]
+----
+def main():
+
+    cloud_config= {
+        'secure_connect_bundle': '/path/to/secure-connect-database_name.zip'
+    }
+    auth_provider = PlainTextAuthProvider('clientId', 'clientSecret')
+    cluster = Cluster(cloud=cloud_config, auth_provider=auth_provider)
+    session = cluster.connect('demo')
+
+    session.execute(
+        """
+        CREATE TABLE IF NOT EXISTS demo.users (
+            lastname text PRIMARY KEY,
+            age int,
+            city text,
+            email text,
+            firstname text);
+        """
+        )
+
+    lastname = "Jones"
+    age = 35
+    city = "Austin"
+    email = "bob@example.com"
+    firstname = "Bob"
+    new_age = 36
+
+    set_user(session, lastname, age, city, email, firstname)
+
+    get_user(session, lastname)
+
+    update_user(session, new_age, lastname)
+
+    get_user(session, lastname)
+
+    delete_user(session, lastname)
+
+if __name__ == "__main__":
+    main()
+----
+--
+
+Node.js::
++
+--
+[source,js]
+----
+async function example() {
+  await client.connect();
+  await insertUser('Jones', 35, 'Austin', 'bob@example.com', 'Bob');
+  const rs1 = await selectUser('Jones');
+  const user1 = rs1.first();
+  if (user1) {
+    console.log("name = %s, age = %d", user1.firstname, user1.age);
+  } else {
+    console.log("No results");
+  }
+  await updateUser(36, 'Jones');
+  const rs2 = await selectUser('Jones');
+  const user2 = rs2.first();
+  if (user2) {
+    console.log("name = %s, age = %d", user2.firstname, user2.age);
+  } else {
+    console.log("No results");
+  }
+  await deleteUser('Jones');
+
+  await client.shutdown();
+}
+
+example();
+----
+--
+
+C#::
++
+--
+[source,cs]
+----
+static void Main(string[] args)
+        {
+
+            Cluster cluster = Cluster.Builder()
+                                    .WithCloudSecureConnectionBundle(@"C:\path\to\secure-connect-database_name.zip")
+                                    .WithCredentials("clientId", "clientSecret")
+                                    .Build();
+
+            ISession session = cluster.Connect("demo");
+
+            var statement = new SimpleStatement("CREATE TABLE IF NOT EXISTS demo.users ("
+                                    + " lastname text PRIMARY KEY,"
+                                    + " age int,"
+                                    + " city text,"
+                                    + " email text," +
+                                    " firstname text)");
+
+            session.Execute(statement);
+
+            SetUser(session, "Jones", 35, "Austin", "bob@example.com", "Bob");
+
+            GetUser(session, "Jones");
+
+            UpdateUser(session, 36, "Jones");
+
+            GetUser(session, "Jones");
+
+            DeleteUser(session, "Jones");
+
+            cluster.Dispose();
+
+        }
+----
+--
+====
+
+== Full Solution
+
+
+[tabs]
+====
+Java::
++
+--
+[source,java]
+----
+import com.datastax.oss.driver.api.core.CqlSession;
+import com.datastax.oss.driver.api.core.cql.*;
+
+import java.nio.file.Paths;
+
+public class GettingStartedComplete {
+
+    public static void main(String[] args) {
+
+        try (CqlSession session = CqlSession.builder()
+                // make sure you change the path to the secure connect bundle below
+                .withCloudSecureConnectBundle(Paths.get("/path/to/secure-connect-database_name.zip"))
+                .withAuthCredentials("clientId","clientSecret")
+                .withKeyspace("demo")
+                .build()) {
+
+            session.execute("CREATE TABLE IF NOT EXISTS demo.users ("
+                    + " lastname text PRIMARY KEY,"
+                    + " age int,"
+                    + " city text,"
+                    + " email text,"
+                    + " firstname text)");
+
+            setUser(session, "Jones", 35, "Austin", "bob@example.com", "Bob");
+
+            getUser(session, "Jones");
+
+            updateUser(session, 36, "Jones");
+
+            getUser(session, "Jones");
+
+            deleteUser(session, "Jones");
+
+        }
+    }
+
+    private static void setUser(CqlSession cqlSession, String lastname, int age, String city, String email, String firstname) {
+
+        //TO DO: execute SimpleStatement that inserts one user into the table
+        cqlSession.execute(
+                SimpleStatement.builder( "INSERT INTO users (lastname, age, city, email, firstname) "
+                        +  "VALUES (?,?,?,?,?)")
+                        .addPositionalValues(lastname, age, city, email, firstname)
+                        .build());
+    }
+
+    private static void getUser(CqlSession session, String lastname) {
+
+        //TO DO: execute SimpleStatement that retrieves one user from the table
+        //TO DO: print firstname and age of user
+        ResultSet rs = session.execute(
+                SimpleStatement.builder("SELECT * FROM users WHERE lastname=:n")
+                        .addPositionalValue(lastname)
+                        .build());
+
+        Row row = rs.one();
+        System.out.format("%s %d\n", row.getString("firstname"), row.getInt("age"));
+    }
+
+
+    private static void updateUser(CqlSession session, int age, String lastname) {
+
+        //TO DO: execute a BoundStatement that updates the age of one user
+        PreparedStatement prepared = session.prepare(
+                "UPDATE users SET age =?  WHERE lastname =?");
+
+        BoundStatement bound = prepared.bind(age, lastname);
+
+        session.execute(bound);
+
+    }
+
+    private static void deleteUser(CqlSession session, String lastname) {
+
+        //TO DO: execute BoundStatement that deletes one user from the table
+        PreparedStatement prepared = session.prepare(
+                "DELETE FROM users WHERE lastname=?");
+        BoundStatement bound = prepared.bind(lastname);
+        session.execute(bound);
+
+    }
+
+}
+----
+--
+
+Python::
++
+--
+[source,python]
+----
+from cassandra.cluster import Cluster
+from cassandra.auth import PlainTextAuthProvider
+
+def set_user(session, lastname, age, city, email, firstname):
+     # TO DO: execute SimpleStatement that inserts one user into the table
+    session.execute("INSERT INTO users (lastname, age, city, email, firstname) VALUES (%s,%s,%s,%s,%s)", [lastname, age, city, email, firstname])
+
+def get_user(session, lastname):
+    # TO DO: execute SimpleStatement that retrieves one user from the table
+    # TO DO: print firstname and age of user
+    result = session.execute("SELECT * FROM users WHERE lastname = %(surname)s", {'surname':lastname}).one()
+    print result.firstname, result.age
+
+def update_user(session, new_age, lastname):
+    # TO DO: execute a BoundStatement that updates the age of one user
+    prepared = session.prepare("UPDATE users SET age = ? WHERE lastname = ?")
+    session.execute(prepared, [new_age, lastname])
+
+def delete_user(session, lastname):
+    # TO DO: execute a BoundStatement that updates the age of one user
+    prepared = session.prepare("DELETE FROM users WHERE lastname = ?")
+    session.execute(prepared, [lastname])
+
+def main():
+
+    cloud_config= {
+        'secure_connect_bundle': '/path/to/secure-connect-database_name.zip'
+    }
+    auth_provider = PlainTextAuthProvider('clientId', 'clientSecret')
+    cluster = Cluster(cloud=cloud_config, auth_provider=auth_provider)
+    session = cluster.connect('demo')
+
+    session.execute(
+        """
+        CREATE TABLE IF NOT EXISTS demo.users (
+            lastname text PRIMARY KEY,
+            age int,
+            city text,
+            email text,
+            firstname text);
+        """
+        )
+
+    lastname = "Jones"
+    age = 35
+    city = "Austin"
+    email = "bob@example.com"
+    firstname = "Bob"
+    new_age = 36
+
+    set_user(session, lastname, age, city, email, firstname)
+
+    get_user(session, lastname)
+
+    update_user(session, new_age, lastname)
+
+    get_user(session, lastname)
+
+    delete_user(session, lastname)
+
+if __name__ == "__main__":
+    main()
+----
+--
+
+Node.js::
++
+--
+[source,js]
+----
+const cassandra = require('cassandra-driver');
+
+const client = new cassandra.Client({
+  cloud: { secureConnectBundle: 'path/to/secure-connect-DATABASE_NAME.zip' },
+  credentials: { username: 'clientId', password: 'clientSecret' }
+  keyspace: 'demo'
+});
+
+function createTable(){
+    const query = "CREATE TABLE IF NOT EXISTS demo.users (lastname text PRIMARY KEY, age int, city text, email text, firstname text);";
+    return client.execute(query);
+}
+
+function insertUser(lastname, age, city, email, firstname) {
+  // TO DO: execute a simple statement that inserts one user into the table
+  const insert = 'INSERT INTO users (lastname, age, city, email, firstname) VALUES (?,?,?,?,?)';
+  const params = [ lastname, age, city, email, firstname ];
+  return client.execute(insert, params, { prepare : true });
+}
+
+function selectUser(lastname) {
+  // TO DO: execute a prepared statement that retrieves one user from the table
+  const select = 'SELECT firstname, age FROM users WHERE lastname = :lastname';
+  const params = [ lastname ] ;
+  return client.execute(select, params, { prepare : true });
+}
+
+function updateUser(age, lastname) {
+  // TO DO: execute a prepared statement that updates the age of one user
+  const update = 'UPDATE users SET age = ? WHERE lastname = ?';
+  return client.execute(update, [ age, lastname ], { prepare : true } )
+}
+
+function deleteUser(lastname) {
+  // TO DO: execute a prepared that deletes one user from the table
+  const remove = 'DELETE FROM users WHERE lastname = ?';
+  const params = [ lastname ];
+  return client.execute(remove, params, { prepare: true })
+}
+
+async function example() {
+  await client.connect();
+  await createTable();
+  await insertUser('Jones', 35, 'Austin', 'bob@example.com', 'Bob');
+  const rs1 = await selectUser('Jones');
+  const user1 = rs1.first();
+  if (user1) {
+    console.log("name = %s, age = %d", user1.firstname, user1.age);
+  } else {
+    console.log("No results");
+  }
+  await updateUser(36, 'Jones');
+  const rs2 = await selectUser('Jones');
+  const user2 = rs2.first();
+  if (user2) {
+    console.log("name = %s, age = %d", user2.firstname, user2.age);
+  } else {
+    console.log("No results");
+  }
+  await deleteUser('Jones');
+
+  await client.shutdown();
+}
+
+example();
+----
+--
+
+C#::
++
+--
+[source,cs]
+----
+using Cassandra;
+using System.Linq;
+using System;
+
+namespace QuickStart
+{
+    class AstraConnect
+    {
+        static void Main(string[] args)
+        {
+
+            Cluster cluster = Cluster.Builder()
+                                    .WithCloudSecureConnectionBundle(@"C:\path\to\secure-connect-database_name.zip")
+                                    .WithCredentials("clientId", "clientSecret")
+                                    .Build();
+
+            ISession session = cluster.Connect("demo");
+
+            var statement = new SimpleStatement("CREATE TABLE IF NOT EXISTS demo.users ("
+                                    + " lastname text PRIMARY KEY,"
+                                    + " age int,"
+                                    + " city text,"
+                                    + " email text," +
+                                    " firstname text)");
+
+            session.Execute(statement);
+
+            SetUser(session, "Jones", 35, "Austin", "bob@example.com", "Bob");
+
+            GetUser(session, "Jones");
+
+            UpdateUser(session, 36, "Jones");
+
+            GetUser(session, "Jones");
+
+            DeleteUser(session, "Jones");
+
+            cluster.Dispose();
+
+        }
+
+        private static void SetUser(ISession session, String lastname, int age, String city, String email, String firstname)
+        {
+
+            //TO DO: execute SimpleStatement that inserts one user into the table
+            var statement = new SimpleStatement("INSERT INTO users (lastname, age, city, email, firstname) VALUES (?,?,?,?,?)", lastname, age, city, email, firstname);
+
+            session.Execute(statement);
+
+        }
+
+        private static void GetUser(ISession session, String lastname)
+        {
+
+            //TO DO: execute SimpleStatement that retrieves one user from the table
+            //TO DO: print firstname and age of user
+            var statement = new SimpleStatement("SELECT * FROM users WHERE lastname = :lastname", lastname);
+
+            var result = session.Execute(statement).First();
+            Console.WriteLine("{0} {1}", result["firstname"], result["age"]);
+
+        }
+
+        private static void UpdateUser(ISession session, int age, String lastname)
+        {
+
+            //TO DO: execute PreparedStatement that updates the age of one user
+            PreparedStatement prepared = session.Prepare("UPDATE users SET age =? WHERE lastname = ?");
+            BoundStatement bound = prepared.Bind(age, lastname);
+            session.Execute(bound);
+        }
+
+        private static void DeleteUser(ISession session, String lastname)
+        {
+
+            PreparedStatement prepared = session.Prepare("DELETE FROM users WHERE lastname = ?");
+            BoundStatement bound = prepared.Bind(lastname);
+            session.Execute(bound);
+        }
+
+    }
+}
+----
+--
+====

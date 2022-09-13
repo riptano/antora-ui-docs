@@ -1,0 +1,11 @@
+= Create your database
+:slug: creating-your-astra-database
+
+Complete the following steps to create and launch your {company} {astra_db} database.
+
+include::ROOT:partial$create_db.adoc[]
+
+== Results
+
+You are redirected to your *Organization Dashboard*. The new database and status is shown under *Databases*.
+You will receive an email when your database creation is complete. Select the database name to manage or connect with your new database.

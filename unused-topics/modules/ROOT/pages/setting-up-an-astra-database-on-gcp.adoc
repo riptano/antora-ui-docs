@@ -1,0 +1,50 @@
+= Setting up an {astra_db} database on Google Cloud
+:slug: setting-up-an-astra-database-on-google-cloud
+
+[arabic, start=1]
+. Navigate to the https://console.cloud.google.com/marketplace/product/endpoints/prod.cloud.datastax.com[{astra_db} for Google Cloud landing page]:
+
+image::91092366-c1953a80-e60c-11ea-9228-e7fcf204303f.png[Google Cloud landing page]
+
+[arabic, start=2]
+. If you haven't done so already, create a Google Cloud https://console.cloud.google.com/billing/linkedaccount[billing account here].
+Once you've created a billing account, click **PURCHASE**: 
+
+image::91092716-4a13db00-e60d-11ea-8f7c-b82eef3120ce.png[Click PURCHASE]
+
+[arabic, start=3]
+. Scroll down the page, and select the Free Plan: 
+
+image::91092831-73346b80-e60d-11ea-9abd-e2840312582d.png[Free plan]
+
+[arabic, start=4]
+. Then accept the terms and click **SUBSCRIBE**: 
+
+image::91092903-8810ff00-e60d-11ea-877d-bc11388759e1.png[Accept terms, click SUBSCRIBE]
+
+[arabic, start=5]
+. Navigate back to the https://console.cloud.google.com/marketplace/product/endpoints/prod.cloud.datastax.com[product details page], then click **ENABLE**: 
+
+image::91223854-194ba880-e6d6-11ea-8cf9-3529fc79cbdc.png[On Product Details page, click ENABLE]
+
+[arabic, start=6]
+. Review the terms, then click **AGREE**: 
+
+image::91223956-3b452b00-e6d6-11ea-8206-0a2142df9839.png[Review terms, and if you agree, click AGREE]
+
+[arabic, start=7]
+. Create your first {astra_db} database by clicking **CREATE DATABASE**: 
+
+image::91224034-54e67280-e6d6-11ea-961f-73b929717817.png[CREATE DATABASE]
+
+[arabic, start=8]
+. Set your database name, keyspace name, region, username and password, then click **CREATE**: 
+
+image::91224114-77788b80-e6d6-11ea-99f2-c9249a319d6f.png[Setup resources and when ready, click CREATE]
+
+[arabic, start=9]
+. Once your database has finished initializing, click **LAUNCH DATASTAX CONSOLE**: 
+
+image::91226614-21a5e280-e6da-11ea-8bfd-bff2d2812bf5.png[LAUNCH DATASTAX CONSOLE]
+
+Congrats! You've created an {astra_db} database. Now select a sample app to run on the {astra_docs_base_url}/gcp-sample-apps.html[{astra_db} for Google Gloud sample app gallery].

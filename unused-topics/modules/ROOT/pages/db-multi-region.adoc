@@ -1,0 +1,191 @@
+= Using multiple regions
+
+You can replicate data to multiple regions to maintain data availability for multi-region application architectures. Configuring multiple regions can also satisfy data locality requirements with the added value of cost savings.
+
+Because multiple regions will increase your billing, see xref:manage:org/managing-org.adoc#_pricing_and_billing[Pricing and billing] for more details.
+
+== Video introduction
+
+See this short video introduction to the {astra_db} multi-region implementation:
+
+video::UMkX41Y0yZE[youtube,width=640,height=480]
+
+== Eventual consistency model and multi-region updates
+
+Apache Cassandra&reg; and {company} {astra_db} follow the eventual consistency model. As a result, data written to one datacenter/region may not be immediately accessible in other datacenters/regions in the same database cluster. The time span is normally **within a few minutes** to fully replicate the data. However, it could take longer, and possibly span one or more days. There are several contributing factors to the latter scenario, such as the workload volume, the number of regions, the process that runs data repair operations, and network resources.
+
+For more, see the <<_astra_db_serverless_multi_region_faq>> in this topic.
+
+== {serverless_cap} databases
+
+include::partial$note_multi-region_billing.adoc[]
+
+include::partial$note_region.adoc[]
+
+[TIP]
+====
+Lightweight Transactions (LWTs) are **not supported** in multi-region {astra_db} {serverless_cap} databases. {serverless_cap} only supports **serial consistency** on the local datacenter, in a single region.
+====
+
+=== Add a new region to your database
+
+. From you database Dashboard, select *Add Region*.
++
+image::ROOT:db-multiregion1.png[]
+
+. Select your desired region from the dropdown menu of available.
++
+You can review your selected region and its cost below the dropdown menu.
++
+[NOTE]
+====
+You can add only a single region at one time.
+====
++
+image::ROOT:db-multiregion2.png[]
+
+. Select *Add Region* to add the region to your database.
+
+After you add the new region, your new region will show up in the list of regions on your database Dashboard.
+Your existing region status will change to `Maintenance`, but will still be available for operations.
+
+image::ROOT:db-multiregion3.png[]
+
+[NOTE]
+====
+The information displayed on the *Connect* page for your database is region specific.
+====
+
+=== Delete a region from your database
+
+include::partial$note_delete-region.adoc[]
+
+[CAUTION]
+====
+Removing a region is not reversible. Proceed with caution.
+====
+
+. From you database Dashboard, select the overflow menu for the database you want to delete.
+. Select *Delete*.
++
+image::ROOT:db-multiregion5.png[]
+
+. Type "delete" in the text bar.
++
+image::ROOT:db-multiregion6.png[]
+
+. Select *Delete* to delete your region.
++
+image::ROOT:db-multiregion7.png[]
+
+=== Limitations
+
+* Lightweight Transactions (LWTs) work for only a single-region datacenter. 
+* As emphasized above, LWTs are **not supported** in multi-region {astra_db} {serverless_cap} databases. {serverless_cap} only supports **serial consistency** on the local datacenter, in a single region. 
+* If you original region is disconnected, schema changes are suspended and repairs do not run.
+If any regions are disconnected, the writes to those regions will not be forwarded.
+* **While** adding a new region, you cannot drop a table or keyspace, and you cannot truncate a table.
+* If any region is not online, you cannot truncate a table.
+
+== Data sovereignty
+
+{astra_db} serverless replicates all data in the database to all of a database's regions. By contrast, multiple keyspaces in Apache Cassandra(R) and DataStax Enterprise (DSE) allow a database to replicate some tables to a subset of regions. To achieve the same behavior as Cassandra or DSE, create a separate AstraDB instance that adheres to the necessary region restrictions. The database client will need to add a separate connection for the additional database and send queries to the appropriate connection depending on the table being queried.   
+
+== {classic_cap} databases
+
+include::partial$note_region.adoc[]
+
+=== Adding a region to your {classic} database
+
+. Open a browser, navigate to link:https://astra.datastax.com[DataStax Astra, window="_blank"], and log in.
+
+[arabic,start=2]
+. On the *Dashboard* page, select the database name to access the **Overview** page for your selected database.
+
+[arabic,start=3]
+. Select **Add Region**.
+
+[arabic,start=4]
+. Select the region you want to add from the **Add Region** menu.
+
+[arabic,start=5]
+. Select **Add**.
+
+[arabic,start=6]
+. Confirm you want to add the region by selecting **Confirm**.
+
+You'll see a screen confirming the new datacenter region is being added.
+Once you add a region, a maintenance period starts that might take up to 30 minutes.
+Your database will have limited availability during this window.
+Some actions, such as viewing database connection details, might be unavailable until maintenance is finished.
+
+=== Removing a region from your database
+
+[arabic,start=1]
+. Open a browser, navigate to link:https://astra.datastax.com[DataStax Astra, window="_blank"], and log in.
+
+[arabic,start=2]
+. On the *Dashboard* page, select the database name to access the **Overview** page for your selected database.
+
+[arabic,start=3]
+. Select **Remove Region** from the overflow menu for the region you want to remove.
+
+[arabic,start=4]
+. Enter your datacenter id, which is provided in the prompt.
+
+[arabic,start=5]
+. Select **Remove region**.
+
+[CAUTION]
+====
+Removing a region is not reversible. Proceed with caution.
+====
+
+You'll see a screen confirming the datacenter location will be removed.
+Once you remove a location, a maintenance period starts that might take up to 30 minutes.
+Your database will have limited availability during this window.
+Some actions, such as viewing database connection details, might be unavailable until maintenance is finished.
+
+== Astra DB Serverless multi-region FAQ
+
+=== While creating an {astra_db} database, can I select multiple regions?
+
+No. The workflow is to create a database with a selected region; then once the launched database reaches an `Active` status, you may add a region.
+
+=== How many regions can I add?
+
+The only limitation is the number of regions that are available in Astra DB. See xref:planning.adoc#_database_regions[Database Regions] for the list of supported regions.
+
+=== How many datacenters/regions can I add or remove at a time?
+
+The current implementation allows one addition or removal at a time.
+
+=== How quickly are updates applied to all datacenters/regions in the same database cluster?
+
+It depends on several factors. As noted above, Apache Cassandra&reg; and {company} {astra_db} follow the eventual consistency model. As a result, data written to one datacenter/region may not be immediately accessible in other datacenters/regions in the same database cluster. The time span is normally **within a few minutes** to fully replicate the data. However, it could take longer, and possibly span one or more days. There are several contributing factors to the latter scenario, such as the workload volume, the number of regions, the process that runs data repair operations, and network resources.
+
+=== Can I remove a datacenter/region that I no longer need?
+
+Yes, this ability is supported with {astra_db} Serverless. Exception: you cannot remove the original region selected when you created the Astra DB database. The original region can be deleted after all other regions are deleted by using the xref:terminating-databases.adoc[Terminate database] operation.
+
+=== Will I lose data when I remove a datacenter/region?
+
+No. All data in the datacenter is replicated prior to being decommissioned.
+
+=== Can I park a datacenter/region?
+
+No. The best option, in this case, is to remove the datacenter/region.
+
+=== Can I specify replication rules by keyspace?
+
+By default, replication is applied at the database level. With {astra_db} Serverless, there is no upfront database setup costs, so the replication goal may be addressed by separating workloads by database, without an impact on costs.
+
+=== Is the Access List configuration by datacenter/region?
+
+The Access List configuration applies at the database level.
+
+=== How are backups managed?
+
+* Backups are taken on the region in which the database was first created. 
+* The restore process follows this workflow: restore to the original datacenter, and then add the other regions. 
+* For help with restore, please contact https://www.datastax.com/services/support[DataStax Support].

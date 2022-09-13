@@ -1,0 +1,276 @@
+== Managing roles
+
+Use the DevOps API to create, modify, and delete roles for your organization.
+
+You can use the DevOps API to perform the actions your xref:manage:org/manage-permissions.adoc[role permissions] allow.
+
+The following roles use the application token to execute DevOps API queries:
+
+* Organization Administrator
+* Database Administrator
+
+=== Prerequisites
+
+. Create an xref:manage:org/managing-org.adoc#manage-application-tokens[application token] to https://docs.datastax.com/en/astra/docs/_attachments/devopsv2.html[authenticate your service account] in the DevOps API.
+. Once you have authenticated your service account, you can create, update, and delete roles in the https://docs.datastax.com/en/astra/docs/_attachments/devopsv2.html[DevOps API].
+
+=== Creating a new role
+
+. Submit a GET query to check existing roles within the organization to ensure you don't duplicate roles:
++
+[tabs]
+====
+cURL command (/v2)::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/curl_get_all_roles.sh[]
+----
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::manage:example$results/devops_get_roles.result[]
+----
+--
+====
+
+. Create a new role for your organization:
++
+[tabs]
+====
+cURL command (/v2)::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/curl_create_role.sh[]
+----
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::manage:example$results/devops_create_role.result[]
+----
+--
+====
++
+[NOTE]
+====
+If a role with the same name already exists, you'll get an error when trying to create the new role: `"unable to create role"`.
+====
++
+You can assign actions to the following resources to determine the available permissions for the custom role you create:
++
+[cols=3*,options=header]
+|===
+|Group of permissions
+|Resource assignment options
+|Applicable actions
+
+|For organization permissions (`org-`)
+a| * `drn:astra:org:<organizationId>`
+a| * `org-audits-read`
+* `org-billing-read`
+* `org-billing-write`
+* `org-external-auth-read`
+* `org-external-auth-write`
+* `org-notification-write`
+* `org-read`
+* `org-role-delete`
+* `org-role-read`
+* `org-role-write`
+* `org-token-read`
+* `org-token-write`
+* `org-user-read`
+* `org-user-write`
+* `org-write`
+* `accesslist-read`
+* `accesslist-write`
+
+|For database permissions (`org-db`)
+a| * `drn:astra:org:<organizationId>:db:*`
+* `drn:astra:org:<organizationId>:db:<databaseId>`
+a| * `db-cql`
+* `db-graphql`
+* `db-rest`
+* `org-db-addpeering`
+* `org-db-create`
+* `org-db-expand`
+* `org-db-managemigratorproxy`
+* `org-db-passwordreset`
+* `org-db-suspend`
+* `org-db-terminate`
+* `org-db-view`
+
+
+|For keyspace permissions (`db-keyspace`)
+a| * `drn:astra:org:<organizationId>:db:*:keyspace:*`
+* `drn:astra:org:<organizationId>:db:<databaseId>:keyspace:*`
+* `drn:astra:org:<organizationId>:db:<databaseId>:keyspace:<keyspaceName>`
+a| * `db-all-keyspace-create`
+* `db-all-keyspace-describe`
+* `db-keyspace-alter`
+* `db-keyspace-authorize`
+* `db-keyspace-create`
+* `db-keyspace-describe`
+* `db-keyspace-drop`
+* `db-keyspace-grant`
+* `db-keyspace-modify`
+
+|For table permissions (`db-table`)
+a| * `drn:astra:org:<organizationId>:db:*:keyspace:*:table:*`
+* `drn:astra:org:<organizationId>:db:<databaseId>:keyspace:*:table:*`
+* `drn:astra:org:<organizationId>:db:<databaseId>:keyspace:<keyspaceName>:table:*`
+a| * `db-table-alter`
+* `db-table-authorize`
+* `db-table-create`
+* `db-table-describe`
+* `db-table-drop`
+* `db-table-grant`
+* `db-table-modify`
+* `db-table-select`
+
+|===
+
++
+[NOTE]
+====
+If you grant access to a specified keyspace, the following permissions are allowed:
+
+* All actions for database access (`org-db` or `db` actions) are granted for the entire database, even if access is granted to only a single keyspace in the database.
+* Keyspace-specific access is granted for all `db-keyspace` actions.
+* Table-specific access is granted for all tables belonging to the specified keyspace.
+====
++
+For example, if you wanted to create a custom role that allows the users to use the REST and GraphQL APIs and also allow the role to modify tables, use the following call:
++
+[source,shell, subs="attributes+"]
+----
+curl --request POST \
+  --url 'https://api.astra.datastax.com/v2/organizations/roles' \
+  --header 'Accept: application/json' \
+  --header 'Authorization: Bearer <application_token>' \
+  --data '{
+  	"name":"apiRole",
+  	"policy": {
+  	  "description": "Access to REST and GraphQL APIs, modify tables",
+  	  "resources": ["drn:astra:org:<organizationId>", "drn:astra:org:<organizationId>:db:<databaseId>:keyspace:<keyspaceName>:table:*"],
+  	  "actions": ["db-graphql", "db-rest", "db-table-modify"],
+  	  "effect": "allow"}
+    }'
+----
+
++
+By using the `*`, the role will be able to modify all tables within the specified keyspace. If you want to grant the modify permission to a specified table, include the `<tableName>` in the resource.
+
+. Confirm role was created with the necessary permissions:
++
+[tabs]
+====
+cURL command (/v2)::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/curl_get_role.sh[]
+----
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::manage:example$results/devops_get_role.result[]
+----
+--
+====
+
+For more, see https://docs.datastax.com/en/astra/docs/_attachments/devopsv2.html#operation/addOrganizationRole[Create a role in an organization] in the DevOps API.
+
+=== Updating a role
+
+. If you need to make changes to the permissions for an existing role, you can change the `policy`:
+
++
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/curl_update_role.sh[]
+----
+
+. Confirm role was created with the necessary permissions:
+
++
+[tabs]
+====
+cURL command (/v2)::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/curl_get_role.sh[]
+----
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::manage:example$results/devops_update_role.result[]
+----
+--
+====
+
+For more, see https://docs.datastax.com/en/astra/docs/_attachments/devopsv2.html#operation/updateRole[Update a role within an organization] in the DevOps API.
+
+=== Deleting a custom role
+
+[WARNING]
+====
+When you delete a custom role, all users and tokens assigned to that role will no longer have access.
+====
+
+. Delete a custom role to revoke access based on that role:
++
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/curl_delete_role.sh[]
+----
+
+. Confirm role no longer exists:
++
+[tabs]
+====
+cURL command (/v2)::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/curl_get_role.sh[]
+----
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+"unable to get role for organization"
+----
+--
+====
+
+For more, see https://docs.datastax.com/en/astra/docs/_attachments/devopsv2.html#operation/deleteOrganizationRole[Delete a role by ID] in the DevOps API.
+
+=== What's next?
+
+Learn how to xref:manage:devops/devops-api.adoc#devops-tokens[manage tokens using the DevOps API].

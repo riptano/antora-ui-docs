@@ -1,0 +1,87 @@
+= Security FAQs
+:slug: security-faqs
+
+DataStax Astra security features frequently asked questions.
+
+Questions and answers about Astra security are provided in these categories:
+
+* <<General>>
+* <<Encryption>>
+* <<Authentication and authorization>>
+
+// * [Auditing](doc:security-faqs#auditing)
+
+== General
+=== What communication protocols are used?
+All communication occurs over TCP sockets and can be secured by using the standard Java Security SSL/TLS implementation in the JVM.
+Additional application specific protocols like gossip and the CQL Binary Protocol rely on these sockets for transport.
+
+== Encryption
+=== How are encryption keys secured and managed?
+Each DataStax Astra database provides a secure private endpoint, which requires mutual-TLS authentication.
+Users have access to only databases in their Organization.
+Neither the Virtual Machines (VMs) nor the storage are accessible by anyone outside of the Organization that the Astra database is linked to aside from DataStax Support.
+
+All data in transit is encrypted until it moves into the secured network, and all database volumes are encrypted.
+
+=== Can the client-to-node encryption be configured as a two-way SSL?
+
+Yes, although the client certificate DN is not used as a database user principal.
+Client-to-node encryption protects in-flight data from client machines to a database cluster using SSL (Secure Sockets Layer) and establishes a secure channel between the client and the coordinator node.
+
+== Authentication and authorization
+=== How are user permissions managed?
+The default user can create and delete other roles and grant or revoke permissions.
+
+////
+=== How are user groups supported?
+DSE supports role management based on LDAP group membership. Configure an LDAP scheme with group lookup, set the Role Management mode option to LDAP, and create roles that match the group names and then assign permissions.
+[NOTE]
+====
+For efficiency, DataStax recommends using the memberof search method for group lookup; however DataStax also supports directory search."
+====
+////
+
+=== How are user-action permissions supported?
+DSE supports standard object permission management to assign roles specific permissions at the table and row level.
+Permissions to access all keyspaces, a named keyspace, a table, function, or MBean can be granted to a role.
+
+=== What authentication mechanisms are supported?
+
+* *Internal*: Connections provide credentials for a role that has an internally stored password.
+No additional configuration is required.
+// * *LDAP*: Connections provide LDAP credentials. DSE passes the credentials for verification to LDAP.
+* *Kerberos*: Connections provide a Kerberos ticket.
+DSE is configured as a Service Principal and passes the tickets to KDS for verification.
+
+////
+=== What LDAP servers are supported?
+Microsoft Active Directory, OpenLDAP, and Oracle Directory Server Enterprise Edition.
+////
+
+=== Can access be restricted using IP whitelisting and blacklisting?
+
+In general, arbitrary client programs do not access the database.
+Database access by the general user population is controlled at the application layer.
+Application node to database node access should be controlled by using conventional firewall mechanisms, such as Linux iptables.
+However, database administrators are an exception to allow connections from DBA hosts.
+
+=== What granularity of access to specific elements of data is supported?
+
+Authorization is granted or revoked at the row level for data.
+
+=== What is the difference between RBAC and RLAC?
+
+Role-based access control (RBAC) refers to authorization to any database resource.
+Row-level access control (RLAC) refers to the feature that allows permissions to be granted/revoked on rows within a table by filtering a text-based partition column.
+{astra_db} does not support RLAC.
+
+=== What is the port range for the secure connect bundle?
+
+The port range for your secure connect bundle is 30000-32767.
+
+// == Auditing
+// === Which user actions and events are logged?
+// When you configure audit logging, you can include or exclude categories of database activity such as querying or DML.
+// === Where are audit logs stored and who has access?
+// Audit logs can be written to either file system log files using logback, or to a database table. Audit events stored in database tables can be secured like any other database table using RBAC. File-based audit logs are stored per-node and can be secured with standard Linux file system permissions.

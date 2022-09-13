@@ -1,0 +1,49 @@
+= Get support for {astra_db}
+
+This topic explains how to get support for your {company} {astra_db} database.
+
+== Check the status of {astra_db}
+
+Refer to https://status.astra.datastax.com/[DataStax Astra DB Status page] to review all statuses including any major disruptions that impact the Astra system as a whole.
+
+== Subscribe to updates
+
+Stay up-to-date by subscribing to the {astra_db} System.
+
+. Open https://status.astra.datastax.com
+. Click **SUBSCRIBE TO UPDATES**. Select an option to receive the updates:
+
+ * Email: Get email notifications whenever {astra_db} creates, updates or resolves an incident
+ * Phone: Get text message notifications whenever {astra_db} creates or resolves an incident
+ * Slack: Get incident updates and maintenance status messages in Slack
+ * Webhook: Get webhook notifications whenever {astra_db} creates an incident, updates an incident, resolves an incident or changes a component status
+. Add the appropriate information for your selection. Click **Subscribe** for your selection.
+
+
+[NOTE]
+====
+To receive Email/text messages, make sure the necessary settings are enabled. Text message subscriptions are only enabled for {astra_db} paid plans. You cannot configure these messages until you activate your database with a paid plan.
+====
+
+Optionally, click **View historical uptime** to see the number of incidents for a given month.
+
+== Submit a support ticket
+We want to provide as much support as possible. There are situations that are new and require our attention. Is the database functioning properly? Are you receiving an unrecognizable error? If an alert or incident is identified, submit a Support Ticket to inform us.
+The Support Ticket allows us to not only learn about the new situation, but devise a plan for future users (if this happens again).
+
+. Open {astra_db} and click **Help Center**. The Help Center panel opens with various links.
+. Click **Submit a Ticket**.
+. Required fields are marked with an asterisk.
+. Add any attachment necessary to help describe your situation.
+. When you are finished, click **Submit**.
+
+
+== When to escalate a support ticket
+Some situations are more critical than others and require direct attention. Examples of these situations include:
+
+* A complete loss of service or you cannot continue with regular operations for an unknown reason
+* Production systems have crashed
+* Production system that is suspended indefinitely
+
+For these situations set the **Priority** to **Urgent**.
+If you prefer to speak with us, click **Live Chat**. We are ready to help. To help us better understand the issue, you can add an attachment such as a GIF file.

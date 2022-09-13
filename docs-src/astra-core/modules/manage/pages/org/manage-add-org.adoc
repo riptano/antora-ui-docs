@@ -1,0 +1,8 @@
+= Add organizations in {astra_db}
+:slug: adding-organizations-in-datastax-astra
+
+Creating multiple organizations in {company} {astra_db} is useful for segmenting groups of users and creating various  environments.
+
+// == Procedure
+
+include::ROOT:partial$add_organization.adoc[]

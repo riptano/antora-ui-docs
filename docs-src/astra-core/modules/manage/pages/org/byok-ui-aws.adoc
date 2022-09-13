@@ -1,0 +1,163 @@
+ifeval::["{evalproduct}" == "DB Serverless"]
+== BYOK AWS with {astra_ui}
+
+Encryption is a widely accepted mechanism to secure data against breaches. By default, {company} {astra_db} encrypts data, and cloud providers such as AWS offer encryption solutions. However, you may want to further limit data access, because cloud providers have access to the keys and ultimately to the data. 
+
+To address this security concern, {astra_db} allows you to associate a *Customer Managed Key* (one per region) that you defined in the AWS Key Management Service (KMS) with a *Customer Key* that you create in {astra_db}.
+
+In this topic, we'll use these terms:
+
+* Bring Your Own Key (BYOK) refers to the overall capability.
+* *Customer Managed Key* (CMK) refers to a particular key type in the AWS Key Management Service (KMS).
+* *Customer Key* refers to the corresponding key association in Astra DB. 
+
+[TIP]
+====
+This BYOK feature:
+
+* Is available for serverless {astra_db} databases with these cloud providers:
+** AWS - supported via {astra_ui} (this topic), and xref:manage:devops/devops-aws-cmk.adoc[BYOK AWS with DevOps API].
+** Google Cloud - supported via xref:manage:org/byok-ui-gcp.adoc[BYOK GCP with Astra DB console], and xref:manage:devops/devops-gcp-cmek.adoc[BYOK GCP with DevOps API].
+* Is not available in the {astra_db} Free Tier.
+* Free Tier users: instead of submitting a Support ticket, click the **Chat icon** in {astra_ui}'s lower-right corner. Ask the DataStax onboarding representative about options to upgrade your organization and use BYOK. 
+====
+
+
+=== Introduction
+
+Data encryption is defined as a process that transforms data into an encoded format. Once encoded, the data is incomprehensible without being decrypted. Data encryption is essential for organizations in all industries because it protects data from unauthorized access. When thinking of data encryption, two main scenarios are often considered:
+
+* *Data at rest*
++
+Encrypting data while it is stored in the file storage in use.
+
+* *Data in transit*
++
+Encrypting data while it travels through private or public networks.
+
+BYOK allows customers to manage encryption for *data at rest*. 
+
+=== Benefits
+
+BYOK allows you to take full control of the encryption keys when storing data in the cloud. AWS KMS provides protection against data breaches by alerting you when tampering occurs. In KMS, you can configure specific policies to adhere to compliance guidelines, such as auditing, key rotation, and access. 
+
+Setting up a corresponding Customer Key for an AWS-based {astra_db} database enables the separation of:
+
+* The encrypted lock
+* The key that encrypts/decrypts data
+
+This separation of lock and key is considered a best practice to secure data via encryption.
+
+After setting up a Customer Managed Key (CMK) in your AWS account's Key Management Service, use {astra_ui}, or the {company} DevOps API, to associate an existing AWS CMK with a Customer Key in {astra_db}. 
+
+In {astra_ui}, under **Organization Settings**, see the **Key Encryption** section of **Security Settings**. 
+
+In addition to the console UI, BYOK provides three {company} DevOps API calls that allow you to programmatically:
+
+* Create a new association between a CMK (created in AWS KMS) and your {astra_db} data, in a specific region.
+* List all Customer Keys that are associated with protecting the AWS-based {astra_db} data for your organization.
+* List a specific Customer Key for an organization, based on the specified cloud provider (`aws`) &amp; region combination. 
+
+[NOTE]
+====
+Please contact https://www.datastax.com/services/support[DataStax Support] if you need to delete Customer Keys from your {astra_db} organization. If you agree, the DataStax Support team may perform the key deletion on your behalf. Once a registered association with an AWS KMS Customer Managed Key is deleted from your Astra DB organization, the *default* data encryption provided by {astra_db} is used.
+====
+
+=== Prerequisites
+
+. xref:manage:db/manage-create.adoc[Create your {astra_db} database] using {astra_ui}. In the case of this BYOK feature, create an AWS-based database, and choose one of the available regions to start.
+. Set up a Customer Managed Key (one per region, as needed) in the AWS KMS.
+. Ensure you have the required <<_roles_and_permissions,Roles and permissions>>.
+. Ensure that you know your {astra_db} organization ID. When you log into the Astra DB console, your organization ID is in the generated URL. For example, in the URL \https://astra.datastax.com/org/a99999c7-b934-436c-9999-9999999a3b5d/manage, the organization ID is `a99999c7-b934-436c-9999-9999999a3b5d`.
+
+=== Multi-region support
+
+include::partial$byok-multi-regions-note.adoc[]
+
+
+=== Pricing
+
+There is no additional cost to using BYOK with {astra_db}. As noted previously, BYOK is not available in the {astra_db} Free Tier.
+
+Customer Managed Keys in AWS may incur a monthly fee, and a fee for use in excess of the AWS free tier. The fees are counted against the AWS KMS quotas for your AWS account. For details, see:
+
+* link:https://aws.amazon.com/kms/pricing/[AWS Key Management Service Pricing] 
+* link:https://docs.aws.amazon.com/kms/latest/developerguide/limits.html[Quotas]
+
+[roles_and_permissions]
+=== Roles and permissions
+
+The following {astra_db} roles can manage Customer Keys.
+
+* Organization Administrator
+* Database Administrator
+
+To manage Customer Keys, your {astra_db} account must have these permissions enabled.
+
+* org-cmk-read
+* org-cmk-write
+
+[aws_kms_console]
+=== AWS KMS console
+
+include::partial$byok_aws_kms_console.adoc[]
+
+=== Astra DB console's Security Settings &amp; Key Encryption 
+
+**Reminder:** By default, {astra_db} encrypts data. The BYOK feature enhances data security by allowing you to instead associate a Customer Key in {astra_db} with a Customer Managed Key (CMK) that you defined via a cloud provider, such as in the AWS Key Management Service (KMS). 
+
+=== Adding a new Customer Key
+
+Having completed the steps in AWS KMS to set up a CMK, and granted DataStax access to your S3 buckets, follow these steps in {astra_ui} to add a new Customer Key:
+
+. From your **Organization** name near {astra_ui}'s upper-left corner, click **Organization Settings**, and navigate to **Security Settings**.
+. On **Security Settings**, if your account includes the necessary permissions and roles, notice **Key Encryption**, a Premium feature.
++
+image::byok-security-settings-key-encryption.png[Astra DB console's Security Settings and Key Encryption UI]
+. In **Key Encryption**, click **Add Keys**.
+. In **Add your Keys**:
+.. Set Amazon Web Services as the cloud provider type.
+.. Select the **same region** used by your AWS KMS Customer Managed Key and the {astra_db} database that will have its data encrypted.
+.. Paste in the Amazon Resource Name (ARN) value that you copied from the AWS KMS console, as outlined in the <<_aws_kms_console,AWS KMS console>> section above.
+.. Click **Add Key**.
+// .. When the associated AWS KMS CMK has been validated, 
+// {astra_db} displays the details in **Confirm Keys**. Example:
+// +
+// image:byok-confirm-keys.png[Astra DB console's Confirm Keys UI]
+. When you're ready, click **Done**. 
+
+=== Customer Key status indicators
+
+After completing the steps above, existing and subsequently created {astra_db} databases in the organization -- that have the same **provider + region combination** --  are encrypted via the cloud provider's Customer Managed Key (CMK) in the storage buckets. 
+
+On the **Overview** tab of the **Dashboard, see the indicators for resources secured by a Customer Key:
+
+* On **Security Settings** > **Key Encryption**
+* On the **Overview** tab of the **Dashboard**
+
+Here's an example on **Key Encryption** with status indicators:
+
+image:byok-key-status.png[Astra DB key status in Key Encryption UI]
+
+* **In-Use** means a database in your organization is actively using the Customer Key.
+* **Available** status indicates a Customer Key has been added for your organization, but no {astra_db} database with that Provider and Region combination is using the key.
+
+Here's an example with the **key icon** for the current database, indicating a Customer Key is used to protect its data:
+
+image:byok-db-details-key-icon.png[Astra DB database details has Customer Key icon]
+
+**Region Details** also has a status indicator for any Customer Keys.
+
+// Note that DELETE is not available in this release.
+
+=== What's next?
+
+Related topics:
+
+* xref:manage:org/byok.adoc[Bring Your Own Key]
+* xref:manage:org/byok-ui-gcp.adoc[BYOK GCP with {astra_ui}]
+* xref:manage:devops/devops-gcp-cmek.adoc[BYOK GCP with DevOps API]
+// * xref:manage:org/byok-ui-aws.adoc[BYOK AWS with {astra_ui}]
+* xref:manage:devops/devops-aws-cmk.adoc[BYOK AWS with DevOps API]
+* https://docs.datastax.com/en/astra/docs/_attachments/devopsv2.html#tag/Customer-Keys[Customer Keys API reference, window="_blank"]
+endif::[]

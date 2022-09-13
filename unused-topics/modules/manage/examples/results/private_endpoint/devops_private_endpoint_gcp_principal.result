@@ -1,0 +1,6 @@
+{
+  "serviceName": "projects/<projectID>/regions/<regionName>/serviceAttachments/<serviceAttachmentName>",
+  "allowedPrincipals": [
+    "valiant-ocean-258751"
+  ]
+}

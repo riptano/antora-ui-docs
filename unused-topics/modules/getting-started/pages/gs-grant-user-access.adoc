@@ -1,0 +1,42 @@
+= Getting started: Grant a user access
+:page-tag: getting-started,admin,astra-db
+
+This quick start will help you grant access to a user for your link:https://astra.datastax.com[{company} {astra_db}, window="_blank"] database with ease.
+
+Here are the basic steps:
+
+. link:https://astra.datastax.com/register[Create your {astra_db} account., window="_blank"]
+. Create your organization.
+. *Optional:* Create a custom role with unique permissions.
+. Assign a role to a user.
+. Generate an application token.
+
+include::partial$note_classic_dbs.adoc[]
+
+== Create your organization
+
+include::partial$add_organization.adoc[]
+
+== Optional: Create a custom role with unique permissions
+
+[NOTE]
+====
+You don't have to create custom roles to assign permissions to users. Custom permissions allow you to grant specific permissions to specific databases and keyspaces. For more, see xref:manage:org/manage-custom-roles.adoc[Manage custom user roles] and xref:manage:org/manage-permissions.adoc[User permissions].
+====
+
+include::partial$create_custom_role.adoc[]
+
+== Assign a role to a user
+
+include::partial$assign_role.adoc[]
+
+== Generate an application token
+
+include::partial$create_app_token.adoc[]
+
+== What's next?
+
+include::partial$app_token_next_steps.adoc[]
+* xref:manage:devops/devops-api.adoc[DevOps API]
+
+include::partial$note_clientid_connections.adoc[]

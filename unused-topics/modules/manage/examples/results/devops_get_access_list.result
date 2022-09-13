@@ -1,0 +1,17 @@
+[
+  {
+    "organizationId": "303a3598-0905-4b5d-9db2-4bf2f9790973",
+    "databaseId": "8fbcfe1d-56fa-4ed0-9aff-f57029feef1b",
+    "addresses": [
+      {
+        "address": "137.187.23.0/24",
+        "enabled": true,
+        "description": "This address allows the database connections from the production environment.",
+        "lastUpdateDateTime": "2021-01-21T17:32:28Z"
+      }
+    ],
+    "configurations": {
+      "accessListEnabled": true
+    }
+  }
+]

@@ -1,0 +1,47 @@
+= Resizing your {classic} database
+:slug: resizing-databases
+
+Scale databases up or down based on your needs. You may need to increase or decrease the capacity of your {company} {astra_db} database.
+If a database is growing quickly or exceeding capacity, add another capacity unit (CU) to expand the storage and capabilities of the database.
+
+include::ROOT:partial$note_classic_only.adoc[]
+
+You can increase your database by a maximum of three CUs.
+Multiple resize operations are required to add more CUs beyond the maximum number.
+
+Consider the following conditions when resizing databases:
+
+* You must be the owner of a database to resize it.
+* Databases can only be increased in size to add more CUs.
+* Databases running on the Developer tier cannot be resized.
+* You cannot modify the compute size of existing databases.
+
+== Procedure
+
+. Open a browser, navigate to https://astra.datastax.com/[{astra_db}], and log in.
+. From the *Dashboard* page, select the overflow menu for the database you want to resize and select *Expand CUs*.
+. In the *Expand CUs* window, modify the number of CUs for your database.
++
+The total amount of storage and estimated cost changes dynamically based on the number of CUs entered.
++
+[IMPORTANT]
+====
+You cannot increase your cluster by more than 3 CUs at a time.
+If you need to increase your cluster by more than 3 CUs, increase them in intervals of 3 CUs at a time until you reach the total CUs you need for your database.
+The maximum is 20 CUs for your database.
+
+You cannot decrease your cluster.
+If you need to decrease your cluster, contact {support_url}[{company} Support, window="_blank"].
+====
+
+. Select *Expand* to begin resizing the database.
+
+. Confirm you want to expand your database to your specified size by selecting *Yes*.
+
+== Results
+
+You will receive a confirmation that you database is scheduled for expansion.
+Your database remains active while resizing, but you will have limited administrative functions.
+Your database status changes to *Resizing* until the resizing is complete.
+
+You will receive an email when your database is successfully resized, along with a link to the database.

@@ -1,0 +1,221 @@
+ifeval::["{evalproduct}" == "DB Serverless"]
+= Using Custom DNS on an external system
+
+Currently when you create a database, DataStax automatically sets up a Domain Name System (DNS) record so that applications can connect to the database. This DNS record is used in the Secure Connect Bundle (SCB) and plays a part in the cryptography ensuring both parties are communicating to the intended target.
+
+As an Astra administrator setting up a private endpoint, you must create a local version of the astra.datastax.com domain to override the name resolution to the public IP address advertised by DataStax. 
+
+Now, you can set up your custom DNS with a private endpoint and use your DNS entry to send traffic to the private endpoint.
+
+[NOTE]
+====
+Custom DNS is available for only Azure.
+====
+
+== Benefits
+
+This option works with an Astra database with a private endpoint. You can have a DNS name for the database in a DNS zone that belongs to your organization. This option allows you to have complete control over said zone and its resolution. It also ensures you do not have to create and manage a local astra.datastax.com zone.
+
+////
+== Configuration steps
+Astra supports the ability to connect to your Astra databases utilizing your cloud provider's private endpoint functionality to enable secure connectivity across VPCs. The Custom Domain feature allows you to configure the private endpoint with a DNS name in your own domain. Use the high level steps to configure a private endpoint with a custom domain:
+
+. Configure your Astra Organization with the custom domains you wish to use in the Organization
+. Configure a private endpoint for use with Astra (https://docs.datastax.com/en/astra-serverless/docs/connect/private_endpoints/connect-private-endpoints.html[See Connecting Private Endpoints])
+. Configure your DNS server to point the Astra provided endpoint DNS name in your custom domain to the appropriate IP address
+////
+
+== Prerequisites 
+
+Configure an application token to interact with the Astra APIs. For more, see xref:manage:org/managing-org.adoc#_manage_application_tokens[Manage application tokens].
+
+== Configure your Astra Organization with the custom domains
+
+=== Retrieve list of existing custom domains
+
+To retrieve the list of custom domains, send a `GET` request to `https://api.astra.datastax.com/v2/organizations/customDomains`
+
+[tabs]
+====
+cURL command (/v2)::
++
+--
+[source,shell, subs="attributes+"]
+----
+curl --location --request GET 'https://api.astra.datastax.com/v2/organizations/customDomains' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer AstraCS:sewJsOOhcZxggKQoTxAsYZNd:b2f3k5a585d127deaa01812a6ce575af3eb8bd14d832380ed09e87853746b704' \
+--data-raw '[
+  "string"
+]'
+----
+--
+
+Results::
++
+--
+[source,plaintext, subs="attributes+"]
+[
+  "likeness.com",
+  "happy.com"
+]
+--
+====
+
+
+The endpoint returns the list of custom domain names. If no domains are configured, the endpoint returns an empty response.
+
+//[IMPORTANT]
+//==== 
+//You are still assigned as the host in the astra.datastax.com zone which resolves the internet facing IP. You can xref:manage:db/manage-access-list.adoc[block all public internet traffic] so the database is accessible through only private endpoints. You do not have to create a copy of the astra.datastax.com DNS zone when using custom domains. Instead, you create a DNS entry in your desired domain.
+//====
+
+=== Modify the list of custom domains
+
+To modify the list of custom domains, send a `POST` request to `https://api.astra.datastax.com/v2/organizations/customDomains`
+
+[WARNING]
+====
+The custom domain list is a "desired state" list. Adding, removing, or changing domains requires that you send the complete list of desired domains. For example, if you have a list of domains, then send only a single domain, you will unconfigure the previous domains.
+====
+
+[tabs]
+====
+cURL command (/v2)::
++
+--
+[source,shell, subs="attributes+"]
+----
+curl --location --request POST 'https://api.astra.datastax.com/v2/organizations/customDomains' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer AstraCS:sewJsOOhcZxggKQoTxAsYZNd:b2f3k5a585d127deaa01812a6ce575af3eb8bd14d832380ed09e87853746b704' \
+--data-raw '[
+    "likeness.com",
+    "happy.com",
+    "dataslice.com"
+]'
+----
+--
+
+====
+
+If there are no errors, the request is complete. You can retrieve the list of configured domains to verify the configuration is in place.
+
+[IMPORTANT]
+==== 
+You are still assigned a host name in the astra.datastax.com zone which resolves the internet facing IP. You can xref:manage:db/manage-access-list.adoc[block all public internet traffic] so that the database is only accessible through private endpoints. You do not have to create a copy of the astra.datastax.com DNS zone when using custom domains. Instead you create a DNS entry in your desired domain.
+====
+
+=== Retrieve modified list of custom domains
+
+To retrieve the list of custom domains, send a `GET` request to `https://api.astra.datastax.com/v2/organizations/customDomains`
+
+[tabs]
+====
+cURL command (/v2)::
++
+--
+[source,shell, subs="attributes+"]
+----
+curl --location --request GET 'https://api.astra.datastax.com/v2/organizations/customDomains' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer AstraCS:sewJsOOhcZxggKQoTxAsYZNd:b2f3k5a585d127deaa01812a6ce575af3eb8bd14d832380ed09e87853746b704' \
+--data-raw '[
+  "string"
+]'
+----
+--
+
+Results::
++
+--
+[source,plaintext, subs="attributes+"]
+[
+  "dataslice.com",
+  "likeness.com",
+  "happy.com"
+]
+--
+====
+
+
+The endpoint returns the list of custom domain names.
+
+== Retrieve the Secure Connect Bundle for a custom domain
+
+=== About downloading SCB
+
+** Custom domains must be configured before private endpoints for the private endpoint to be associated with the custom domains. Private endpoints created before the custom domain configuration will not have custom domains applied to them.
+** Private endpoints must be created and properly configured before you can download an SCB. 
+** With a configured private endpoint for the database after the custom domain is added, you can download the SCB for custom domains.
+
+=== Obtain SCB for a database in an organization
+
+This example returns the SCBs for Astra and all added custom domains for your organization. 
+
+[tabs]
+====
+cURL command (/v2)::
++
+--
+[source,shell, subs="attributes+"]
+----
+GET https://api.astra.datastax.com/v2/databases/:databaseID/secureBundleURL?all=true
+
+curl --location --request POST 'https://api.test.cloud.datastax.com//v2/databases/<database_ID>/secureBundleURL?all=true' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer AstraCS:sewJsOOhcZxggKQoTxAsYZNd:b2f3k5a585d127deaa01812a6ce575af3eb8bd14d832380ed09e87853746b704''
+----
+--
+
+Results::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+{
+  "downloadURL": "nifty.cloud.datastax.com:9092",
+  "downloadURLInternal": "internal-nifty.cloud.datastax.com:9092",
+  "downloadURLMigrationProxy": "proxy-nifty.cloud.datastax.com:9092",
+  "downloadURLMigrationProxyInternal": "proxy-nifty.cloud.datastax.com:9092",
+  "datcenterID": "dde308f5-a8b0-474d-afd6-81e5689e3e25-1",
+  "region": "us-east-1",
+  "cloudProvider": "AWS",
+  "customDomainBundles": [
+    {
+      "domain": "example.domain.com",
+      "cqlFQDN": "dde308f5-a8b0-474d-afd6-81e5689e3e25-us-east-1.db.example.domain.com",
+      "apiFQDN": "dde308f5-a8b0-474d-afd6-81e5689e3e25-us-east-1.apps.example.domain.com",
+      "dashboardFQDN": "dde308f5-a8b0-474d-afd6-81e5689e3e25-us-east-1.dashboard.example.domain.com",
+      "downloadURL": "nifty.cloud.datastax.com:9092"
+    }
+    {
+      "domain": "example.domain2.com",
+      "cqlFQDN": "dde308f5-a8b0-474d-afd6-81e5689e3e25-us-east-1.db.example.domain2.com",
+      "apiFQDN": "dde308f5-a8b0-474d-afd6-81e5689e3e25-us-east-1.apps.example.domain2.com",
+      "dashboardFQDN": "dde308f5-a8b0-474d-afd6-81e5689e3e25-us-east-1.dashboard.example.domain2.com",
+      "downloadURL": "nifty.cloud.datastax.com:9092"
+    }
+  ]
+}
+----
+--
+====
+
+In the stanza for the appropriate database ID, the `customDomainBundles` section of the response will contain a sub-stanza for each custom domain in which there will be a `downloadURL` parameter for the respective Secure Connect Bundle.
+
+See the https://docs.datastax.com/en/astra-serverless/docs/_attachments/devopsv2.html#tag/Database-Operations/operation/generateSecureBundleURL[secureBundleURL API reference] docs for additional details.
+
+
+== Create a DNS entry for your private endpoint
+
+You can alias your private endpoint with a DNS record to use as your hostname in the Astra DB secure connect bundle. To configure your Azure endpoint, see xref:connect:private_endpoints/azure-private-endpoints.adoc#_create_a_dns_entry_for_your_private_endpoint[Azure Private Link].
+
+////
+You can alias your private endpoint with a DNS record to use as your hostname in the Astra DB secure connect bundle. To configure your specific endpoint, see the instructions for your cloud provider: 
+
+* xref:connect:private_endpoints/aws-private-endpoints.adoc#_create_a_dns_entry_for_your_private_endpoint[AWS]
+* xref:connect:private_endpoints/azure-private-endpoints.adoc#_create_a_dns_entry_for_your_private_endpoint[Azure]
+* xref:connect:private_endpoints/gcp-private-endpoints.adoc#_create_a_dns_entry_for_your_private_endpoint[GCP]
+////
+endif::[]

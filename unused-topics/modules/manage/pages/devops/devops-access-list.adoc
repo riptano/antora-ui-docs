@@ -1,0 +1,310 @@
+== Managing access list
+
+Use the DevOps API to add and remove addresses for your database access list. You can also enable and disable your access list.
+
+You can use the DevOps API to perform the actions your xref:manage:org/manage-permissions.adoc[role permissions] allow.
+
+The following roles use the application token to execute DevOps API queries:
+
+* Organization Administrator
+* Database Administrator
+
+include::ROOT:partial$note-classic-access-list.adoc[]
+
+=== Prerequisites
+
+. Create an xref:manage:org/managing-org.adoc#_manage_application_tokens[application token] to link:_attachments/devopsv2.html[authenticate your service account] in the DevOps API.
+. Once you have authenticated your service account, you can add and remove IP addresses and CIDRs for your access list in the link:_attachments/devopsv2.html[DevOps API].
+. You must have your xref:manage:db/manage-access-list.adoc[access list] on to be able to manage your access list via the DevOps API.
+
+=== Adding addresses to your database access list
+
+. Check existing access lists within your organization or database to see which addresses are already on your access list(s):
++
+[NOTE]
+====
+Access lists are configured for each database within an organization. You must add each address to every database access list for which you want the address to have access.
+====
++
+[tabs]
+====
+cURL command (/v2): Get all access lists in organization::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/curl_get_all_access_lists.sh[]
+----
+--
+
+cURL command (/v2): Get access list in database::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/curl_get_access_list.sh[]
+----
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::manage:example$results/devops_get_access_list.result[]
+----
+--
+====
++
+For more, see link:_attachments/devopsv2.html#operation/GetAllAccessListsForOrganization[Get all access lists for an organization] and link:_attachments/devopsv2.html#operation/GetAccessListForDatabase[Get access list for a database] in the DevOps API.
+
+. Get a template for your access list:
++
+[tabs]
+====
+cURL command (/v2)::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/curl_get_access_list_template.sh[]
+----
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::manage:example$results/devops_get_access_list.result[]
+----
+--
+====
+
++
+For more, see link:_attachments/devopsv2.html#operation/GetAccessListTemplate[Get template of access list] in the DevOps API.
+
+. Complete your access list to submit.
+. Add your access list addresses:
+
++
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/curl_post_add_addresses.sh[]
+----
+
++
+For more, see link:_attachments/devopsv2.html#operation/AddAddressesToAccessListForDatabase[Add addresses to access list for a database] in the DevOps API.
+
+. Confirm the new addresses have been added to your access list:
++
+[tabs]
+====
+cURL command (/v2)::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/curl_get_access_list.sh[]
+----
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::manage:example$results/devops_get_access_list_new_address.result[]
+----
+--
+====
+
+== Replacing your existing access list
+
+. Check existing access lists within your organization or database to see which addresses are already on your access list:
++
+[tabs]
+====
+cURL command (/v2): Get all access lists in organization::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/curl_get_all_access_lists.sh[]
+----
+--
+
+cURL command (/v2): Get access list in database::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/curl_get_access_list.sh[]
+----
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::manage:example$results/devops_get_access_list.result[]
+----
+--
+====
++
+For more, see link:_attachments/devopsv2.html#operation/GetAllAccessListsForOrganization[Get all access lists for an organization] and link:_attachments/devopsv2.html#operation/GetAccessListForDatabase[Get access list for a database] in the DevOps API.
+
+. Submit your revised access list:
++
+[tabs]
+====
+cURL command (/v2): Replace access list::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/curl_put_replace_access_list.sh[]
+----
+--
+
+cURL command (/v2): Update access list::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/curl_patch_update_access_list.sh[]
+----
+--
+====
+
++
+For more, see link:_attachments/devopsv2.html#operation/UpsertAccessListForDatabase[Replace access list for your database] and link:_attachments/devopsv2.html#operation/UpdateAccessListForDatabase[Update existing fields in access list for database] in the DevOps API.
+
+. Confirm the new addresses have been added to your access list:
+
++
+[tabs]
+====
+cURL command (/v2)::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/curl_get_access_list.sh[]
+----
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::manage:example$results/devops_get_access_list_new_address.result[]
+----
+--
+====
+
+=== Deleting address or access lists
+
+[WARNING]
+====
+If you do not specify which addresses to delete, the entire access list is deleted.
+
+When the entire access list is deleted, public access is no longer restricted.
+====
+
+. Check existing access lists within your organization or database to see which addresses are already on your access list:
++
+[tabs]
+====
+cURL command (/v2): Get all access lists in organization::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/curl_get_all_access_lists.sh[]
+----
+--
+
+cURL command (/v2): Get access list in database::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/curl_get_access_list.sh[]
+----
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::manage:example$results/devops_get_access_list_new_address.result[]
+----
+--
+====
++
+
+. Delete an address from your access list:
+
++
+[tabs]
+====
+cURL command (/v2): Delete addresses from access list::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/curl_delete_address.sh[]
+----
+--
+
+cURL command (/v2): Delete entire access list::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/curl_delete_access_list.sh[]
+----
+--
+====
+
+. Confirm the address no longer exists:
++
+[tabs]
+====
+cURL command (/v2): Get all access lists in organization::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/curl_get_all_access_lists.sh[]
+----
+--
+
+cURL command (/v2): Get access list in database::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/curl_get_access_list.sh[]
+----
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::manage:example$results/devops_get_access_list.result[]
+----
+--
+====
+
+For more, see link:_attachments/devopsv2.html#operation/DeleteAddressesOrAccessListForDatabase[Delete addresses or access list for database] in the DevOps API.
+
+=== What's next?
+
+Explore the link:_attachments/devopsv2.html[DevOps API].

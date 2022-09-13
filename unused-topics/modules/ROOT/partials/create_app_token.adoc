@@ -1,0 +1,19 @@
+[NOTE]
+====
+You can also create an application token using the xref:manage:devops/devops-api.adoc#devops-tokens[DevOps API].
+====
+
+. From any page in https://astra.datastax.com[{astra_db}], select the *Organizations* dropdown.
++
+image::ROOT:OrgSelection.png[alt="Organization Selection",width=300]
++
+. In the main dropdown, select *Organization Settings*.
+. From your Organization page, select *Token Management*.
+. Select the role you want to attach to your token. The permissions for your selected role will be displayed.
+. Select *Generate Token*. {astra_db} will generate your token and display the _Client ID_, _Client Secret_, and _Token_.
+. Download your _Client ID_, _Client Secret_, and _Token_.
+
+[IMPORTANT]
+====
+After you navigate away from the page, you won't be able to download your _Client ID_, _Client Secret_, and _Token_ again.
+====

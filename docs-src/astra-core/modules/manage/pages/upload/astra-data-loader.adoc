@@ -1,0 +1,84 @@
+== Use Data Loader in {astra_ui}
+:slug: astra-data-loader
+
+{astra_db} conveniently has its own data loader built in to the user interface.
+Use the {astra_db} Data Loader to load your own data into your database or try one of our sample datasets.
+
+. From your {astra_db} *Dashboard*, select *Load Data* for the database where you want to load data.
+
++
+image::ROOT:dataloader-dashboard.png[Astra DB console dashboard with Load Data action shown.]
+
++
+The {astra_db} Data Loader launches.
+
++
+image::ROOT:dataloader-createscreen.png[Astra DB Data Loader screen with three options displayed.]
+
+. *Load your data* using one of the options:
+
++
+* *Option 1:* Upload your own dataset.
++
+Drag and drop your own .csv file into the Astra DB Data Loader.
++
+[TIP]
+====
+CSV files must be less than 40 MB. You will see a status bar to show how much data has uploaded. Ensure the column names in your `.csv` do not include spaces. Underscores are accepted. For example, `ShoeSize`, `ShirtColor`, `Shoe_Size`, and `Shirt_Color` are accepted column names.
+====
+
+* *Option 2:* Load an example dataset.
++
+Select one of the two examples given to use as a sample dataset.
+
+* *Option 3:* Load data from an Amazon S3 bucket that contains exported DynamoDB data.
++
+First, export your DynamoDB data to S3 as described https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataExport.Requesting.html[here]. Then in AWS console, grant read access to the following ARN: `arn:aws:iam::445559476293:role/astra-loader`. Your bucket policy should use:
++
+[source,json]
+----
+{ "Statement": [ { "Action": [ "s3:ListBucket", "s3:GetBucketLocation" ], "Principal": { "AWS": "arn:aws:iam::445559476293:role/astra-loader" }, "Effect": "Allow", "Resource": "arn:aws:s3:::YOUR_BUCKET_NAME" }, { "Effect": "Allow", "Principal": { "AWS": "arn:aws:iam::445559476293:role/astra-loader" }, "Action": [ "s3:GetObject" ], "Resource": "arn:aws:s3:::YOUR_BUCKET_NAME/*" } ] }
+----
++
+This bucket policy allows Astra DB automation to pull data from your identified shared S3 bucket, and load the data into Astra DB. You can remove the permission after the data load finishes.
++
+In the Option 3 prompts, enter your S3 `Bucket name`, and enter the `Key` value. To find the Key, navigate in AWS console to the S3 subdirectory that contains your exported DynamoDB data. Look for the Key on its Properties tab. Here's a sample screen with the Key shown near the lower-left corner:
++
+image::ROOT:dataloader-s3-dynamodb-key.png[S3 Properties with Key value for exported DynamoDB data file.]
+
+. Once you configure your option, select *Next*.
+. Give your table for this dataset a name.
+
++
+Your dataset will be included in the *Data Preview and Types*.
+
++
+image::ROOT:dataloader-config.png[]
+
+
+. Select the data type for each column.
+
++
+[NOTE]
+====
+The {astra_db} Data Loader automatically selects data types for your dataset. If needed, you can change this to your own selection.
+====
+
+. Select your partition key and clustering column for your data.
+
++
+image::ROOT:dataloader-keyscluster.png[]
+
+. Select *Next*.
+. Select your database from the dropdown menu.
+. Select your keyspace from the available keyspaces.
+
++
+image::ROOT:dataloader-loadtotarget.png[]
+
+. Select *Next*.
+
+You will see a confirmation that your data is being imported. Within a few minutes, your dataset will begin uploading to your database.
+
+You will receive an email when the job has started and when the dataset has been loaded.
+Then you can interact with your data by https://docs.datastax.com/en/astra/docs/connecting-to-database.html[connecting to your database].

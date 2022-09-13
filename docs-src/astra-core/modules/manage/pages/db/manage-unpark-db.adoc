@@ -1,0 +1,38 @@
+ifeval::["{evalproduct}" == "DB Classic"]
+= Unpark databases
+:slug: unparking-databases
+:page-tag: admin,manage,astra-db,unpark
+
+Unpark a database to place it into an active state and use the database again.
+
+////
+include::partial$note_classic_only.adoc[]
+////
+[IMPORTANT]
+====
+This information applies only to existing Classic customers.
+
+Effective May 6th, 2022, this feature was deprecated for all new customers. Please contact DataStax support if you have any questions.
+====
+
+== Procedure
+
+. Open a browser, navigate to https://astra.datastax.com/[{company} {astra_db}], and log in.
+. From the *Dashboard* page, select *Unpark* for the database you want to unpark.
+. To unpark the database, select **Unpark Database**.
+
+== Results
+
+The status of the database changes to **Unparking** until the database is parked;
+the status then changes to **Active**.
+
+[IMPORTANT]
+====
+You cannot make changes to your database while the status is **Unparking**.
+====
+
+You will receive an email when your database is successfully unparked, along with a link to the database.
+
+The database remains *Active* until you park it again.
+The only cost incurred while the database is parked is storage cost from your selected cloud provider.
+endif::[]

@@ -1,0 +1,8 @@
+[TIP]
+====
+The BYOK feature is supported in multi-region {astra_db} environments; however, each region is encrypted using its own key. Keys cannot be shared across regions. For a given organization:
+
+* if you have an {astra_db} database that spans multiple regions, 
+* and if you've defined a Customer Managed Key in AWS or Google Cloud, 
+* create a Customer Key in each (provider + region) combination. 
+====

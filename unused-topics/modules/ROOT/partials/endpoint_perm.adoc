@@ -1,0 +1,6 @@
+The following roles can manage private endpoints:
+
+* Organization Administrator
+* Database Administrator
+
+Alternatively, you can use a custom role with permissions to manage private endpoints.

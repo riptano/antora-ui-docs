@@ -1,0 +1,148 @@
+== Connect to Azure Private Link with the DevOps API
+
+To better protect your database connection, you can connect to a private endpoint using the {astra_db} private endpoint.
+
+include::ROOT:partial$note_serverless_only.adoc[]
+
+For pricing related to using private endpoints, see xref:manage:org/manage-billing.adoc#private-endpoints[Pricing and billing].
+
+include::ROOT:partial$endpoint_perm.adoc[]
+
+=== Prerequisites
+. link:https://docs.microsoft.com/en-us/azure/private-link/create-private-endpoint-portal[Create your Azure private endpoint].
+. link:https://docs.microsoft.com/en-us/azure/private-link/disable-private-endpoint-network-policy[Disable network policies].
+. Ensure you have permission to manage private endpoints.
+
+[NOTE]
+====
+To increase your security, consider xref:manage:devops/devops-api.adoc#devops-access-list[restricting public access] to your database using the access list.
+====
+
+=== Connect to your Azure Private Link endpoint
+
+. Get the allowed principal from your Azure account. This is your *Subscription ID*.
+
+. Enter your *Subscription ID* as the allowed principal for your private endpoints to {astra_db}:
+
++
+[tabs]
+====
+cURL command (/v2)::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/private_endpoint/curl_post_private_endpoint_azure_principal.sh[]
+----
+
+include::ROOT:partial$datacenter-ordinal.adoc[]
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::manage:example$results/private_endpoint/devops_private_endpoint_azure_principal.result[]
+----
+--
+====
+
+. In your Azure *Private endpoints*, select *Add*.
+.. Select your *Subscription* and then your *Resource group* for your project.
+.. Enter your private endpoint name.
+.. Select the region for your private endpoint. This region should match your {astra_db} region.
+.. Select *Next: Resource*.
+.. Select *Connect to an Azure resource by resource ID or alias* as your *Connection method*.
+.. Enter your `serviceName` as your *Resource ID or alias*.
+.. Select *Next: Configuration*.
+.. Select your *Virtual network* and *Subnet* from the menus.
+.. Select *Review + create* and then select *Create* to finish creating your private endpoint.
+
++
+For more, see link:https://docs.microsoft.com/en-us/azure/private-link/create-private-endpoint-portal[Create a Private Endpoint using the Azure portal]. Alternatively, you can link:https://docs.microsoft.com/en-us/azure/private-link/create-private-endpoint-cli[create a private endpoint using Azure CLI].
+
+. Connect your Azure private endpoint connection:
+
++
+[NOTE]
+====
+Your `endpointId` is the Resource ID for your private link endpoint, which is available in your Azure console by selecting *JSON View* for your private link endpoint.
+For example, `/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/privateEndpoints/$ENDPOINT_NAME`.
+====
+
++
+[tabs]
+====
+cURL command (/v2)::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/private_endpoint/curl_create_private_endpoint_connection_azure.sh[]
+----
+--
+
+Result::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+include::manage:example$results/private_endpoint/devops_create_private_endpoint_connection_azure.result[]
+----
+--
+====
+
+. Create a DNS entry for your private endpoint.
+// This allows you to alias your private endpoint with a DNS record to as use your hostname in the secure connect bundle.
+For more, see:
++
+* link:https://docs.microsoft.com/en-us/azure/dns/private-dns-overview[What is Azure Private DNS?]
+* link:https://docs.microsoft.com/en-us/azure/dns/private-dns-getstarted-portal[Quickstart: Create an Azure private DNS zone using the Azure portal].
+
+Your Azure portal will show that it is in the `approved` state.
+
+=== Remove a private endpoint
+
+. Delete a private endpoint from your {astra_db}:
+
++
+[tabs]
+====
+cURL command (/v2)::
++
+--
+[source,shell, subs="attributes+"]
+----
+include::manage:example$devops/private_endpoint/curl_delete_private_endpoint.sh[]
+----
+--
+====
+
+. Remove your connection from your Azure portal:
++
+[tabs]
+====
+Azure console::
++
+--
+. In the link:https://portal.azure.com[Azure VPC console], select *Private Link Center* > *Private endpoints*.
+. Select the checkbox beside the private endpoint you want to remove.
+. Select *Remove*.
+--
+
+CLI::
++
+--
+[source,shell, subs="attributes+"]
+----
+Remove-AzPrivateEndpointConnection -Name myPrivateEndpointConnection1 -ResourceGroupName myResourceGroup -ServiceName myPrivateLinkServiceName
+----
+--
+====
+
+=== What's next?
+
+* link:https://docs.microsoft.com/en-us/azure/private-link/[Azure Private Link documentation, window="_blank"]
+* https://docs.datastax.com/en/astra/docs/_attachments/devopsv2.html#operation/Private-Endpoints[DevOps API reference, window="_blank"]
+* Learn how to xref:manage:db/manage-access-list.adoc[Manage access lists for public access, window="_blank"].

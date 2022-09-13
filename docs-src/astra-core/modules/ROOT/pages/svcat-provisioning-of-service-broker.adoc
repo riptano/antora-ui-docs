@@ -1,0 +1,73 @@
+= Using svcat to provision an {astra_db} Database
+:slug: svcat-provisioning-of-service-broker
+
+The link:https://www.openservicebrokerapi.org/[Open Service Broker API, window="_blank"] provides a standard RESTful interface for provisioning services from a provided catalog, such as {astra_db} databases.
+
+[IMPORTANT]
+====
+The {astra_db} Service Broker supports only Kubernetes v1.13 and later.
+====
+
+== Prerequisites
+
+* A running Kubernetes cluster you can access via command line
+* https://helm.sh/docs/intro/install/[Helm package manager] for Kubernetes
+* https://svc-cat.io/docs/install/#installing-the-service-catalog-cli[Service Catalog command-line interface]
+* https://astra.datastax.com[{company} {astra_db}] account with xref:manage:org/managing-org.adoc#_authenticating_classic_databases[service account credentials]
+* xref:install-service-catalog.adoc[Install Service Catalog]
+
+== Provision your database using `svcat`
+
+[source, shell, subs="attributes+"]
+----
+svcat provision <db_name> \
+ --class astra-database \
+ --plan <plan_option> \
+ --params-json \
+ '{
+   "cloud_provider": "<cloud_provider>",
+   "region": "<region>",
+   "capacity_units": 1,
+   "keyspace": "<keyspace_name>"
+}'
+----
+
+You will see the following results:
+
+[source, plaintext]
+----
+Name:       <db_name>
+  Namespace:   default
+  Status:
+  Class:
+  Plan:
+
+Parameters:
+  capacity_units: 1
+  cloud_provider: <cloud_provider>
+  keyspace: <keyspace_name>
+  region: <region>
+----
+
+== Check your instance status
+
+The service catalog handles the provisioning and communication with {astra_db}.
+After a few minutes, check the instance status:
+
+[source, shell, subs="attributes+"]
+----
+svcat get instances
+----
+
+You will see the following results:
+
+[source, plaintext]
+----
+NAME  NAMESPACE   CLASS   PLAN   STATUS
++-------+-----------+-------+------+--------+
+<db_name>   default                   Ready
+----
+
+== Try it out
+
+Get your xref:connect:secure-connect-bundle.adoc[secure connect bundle] from the *Connect* page for your {astra_db} database. Use this information to configure the driver. You can see this example in the link:https://github.com/spring-petclinic/spring-petclinic-reactive/tree/master/k8s[Spring Reactive Pet Clinic sample app, window="_blank"].

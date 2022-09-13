@@ -1,0 +1,6 @@
+[IMPORTANT]
+====
+*Private preview feature*
+
+This Change Data Capture (CDC) feature is available only in a *private preview* for {astra_db} databases. Also, CDC is not available in the {astra_db} Free Tier. CDC is provided according to your Astra agreement and is considered a part of the No-Fee License. This feature is not intended for production use, has not been certified for production workloads, and might contain bugs and other functional issues. Using CDC inherently uses {astra_stream} and you may incur {astra_stream} costs as a result of configuring CDC. There is no guarantee that a preview feature will ever become generally available. If you are interested in participating in the private preview, contact us at mailto:Astra-PM@datastax.com[Astra-PM@datastax.com,CDC private preview,I am interested in the CDC private preview.]. 
+====

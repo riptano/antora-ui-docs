@@ -1,0 +1,9 @@
+= Invite users to an organization
+:slug: inviting-users-to-join-an-organization
+
+Invite users to join your organization and provide them with access based on the selected role.
+
+// == Procedure
+
+include::ROOT:partial$/assign_role.adoc[]
+//include::ROOT:partial$add_organization.adoc[]

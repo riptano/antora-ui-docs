@@ -1,0 +1,11 @@
+The following {astra_db} roles can manage Customer Keys.
+
+* Organization Administrator
+* Database Administrator
+
+If you are an authorized participant in the private preview, to view and manage Customer Keys, your {astra_db} account must have these permissions enabled.
+
+* org-cmk-read
+* org-cmk-write
+
+For the BYOK private preview, your DataStax representative will also send you the AWS `arn:aws:iam::<storage-account-id>:role/creator` value where your encrypted data will be stored in an Amazon S3 bucket for your region. For questions, please contact us at mailto:Astra-PM@datastax.com[Astra DB Product Management].

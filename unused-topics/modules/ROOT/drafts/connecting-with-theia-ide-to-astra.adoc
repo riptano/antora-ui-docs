@@ -1,0 +1,31 @@
+= Connect with Theia IDE to Astra
+:slug: connecting-with-theia-ide-to-astra
+
+== Procedure
+
+. Download xref:connect:secure-connect-bundle.adoc[your secure connect bundle].
+
+[arabic, start=2]
+. Push your secure connect bundle to your GitHub repo for the code you are using.
+
+[WARNING]
+====
+Do not unzip your secure connect bundle.
+====
+
+[arabic, start=3]
+. Pass the path to your connection string as you install your DataStax driver via the integrated CLI using the xref:connect:drivers/connect-drivers.adoc[instructions for your driver].
+
+[NOTE]
+====
+If you are using the Python driver, you must use the latest driver. Previous version do not work with Ubuntu 20.04.
+====
+
+[arabic, start=4]
+. Import or add your GitHub repository to the IDE.
+
+[arabic, start=5]
+. Make any code modifications you want in the IDE.
+
+[arabic, start=6]
+. Execute the code in the integrated CLI.

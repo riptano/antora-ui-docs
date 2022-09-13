@@ -1,0 +1,12 @@
+/
+  path/
+    to/
+      scb/
+        ca.crt
+        cert
+        cert.pfx
+        config.json
+        cqlshrc
+        identity.jks
+        key
+        trustStore.jks

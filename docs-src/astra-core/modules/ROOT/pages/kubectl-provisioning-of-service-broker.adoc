@@ -1,0 +1,73 @@
+= Using kubetcl to provision an {astra_db}Database
+:slug: kubectl-provisioning-of-service-broker
+
+The link:https://www.openservicebrokerapi.org/[Open Service Broker API, window="_blank"] provides a standard RESTful interface for provisioning services from a provided catalog, such as {astra_db}databases.
+
+[IMPORTANT]
+====
+The Astra Service Broker supports only Kubernetes v1.13 and later.
+====
+
+== Prerequisites
+
+* Running Kubernetes cluster you can access via command line
+* https://helm.sh/docs/intro/install/[Helm package manager, window="_blank"] for Kubernetes
+* https://svc-cat.io/docs/install/#installing-the-service-catalog-cli[Service Catalog command-line interface, window="_blank"]
+* https://astra.datastax.com[{company} {astra_db}, window="_blank"] account with xref:manage:org/managing-org.adoc#_authenticating_classic_databases[service account credentials]
+* xref:install-service-catalog.adoc[Install Service Catalog]
+
+== Provision your database using kubectl
+
+. Create a file called `astra.yaml` to describe the type of instance you need:
++
+[source, plaintext]
+----
+apiVersion: servicecatalog.k8s.io/v1beta1
+kind: ServiceInstance
+metadata:
+  name: <db_name>
+  namespace: default
+spec:
+  parameters:
+    capacity_units: 1
+    cloud_provider: <cloud_provider>
+    keyspace: <keyspace_name>
+    region: <region>
+  serviceClassExternalName: astra-database
+  servicePlanExternalName: <plan_option>
+----
+
+. Apply the `astra.yaml` file to provision your database:
+
+[source, shell, subs="attributes+"]
+----
+kubectl apply -f astra.yaml
+----
+
+[IMPORTANT]
+====
+The time required to provision a database depends on the selected plan. It can take several minutes to provision your database.
+====
+
+== Check your instance status
+
+The service catalog handles the provisioning and communication with Astra.
+After a few minutes, check the instance status:
+
+[source, shell, subs="attributes+"]
+----
+kubectl get serviceinstances <db_name>
+----
+
+You will see the following results:
+
+[source, plaintext]
+----
+NAME    CLASS                                               PLAN                                STATUS   AGE
+<db_name>   ServiceClass/26b3fbe6-0c18-5140-8ac6-87d03b5b4148   1c9bb5ac-6609-5af5-a747-ecf1d093cc7f   Ready    3m20s
+----
+
+== Try it out
+
+Get your xref:connect:secure-connect-bundle.adoc[secure connect bundle] from the *Connect* page for your {astra_db}database. This is the information you need to configure the driver.
+You can see this example in the https://github.com/spring-petclinic/spring-petclinic-reactive/tree/master/k8s[Spring Reactive Pet Clinic sample app, window="_blank"].

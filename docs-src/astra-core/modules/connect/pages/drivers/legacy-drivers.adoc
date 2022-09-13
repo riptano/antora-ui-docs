@@ -1,0 +1,35 @@
+= Connect with legacy drivers
+:slug: connecting-with-legacy-drivers
+:page-tag: driver,dev,astra-db,connect
+
+If the driver you are using doesn’t support the {company} {astra_db} secure connect bundle and you are unable to upgrade, you can still connect to {astra_db} with additional steps. To connect, collect connection information from the secure connect bundle and set up the required SSL context for your driver to speak with {astra_db}.
+
+== Prerequisites
+
+include::page$secure-connect-bundle.adoc[Secure connect bundle, leveloffset=+2]
+
+== Collect {astra_db} connection information
+
+. From the secure connect bundle, collect the SSL related files:
+
+* ca.cert
+* cert
+* key
+
+. From the `cqlshrc` file, collect the port.
+[IMPORTANT]
+====
+Use only the port from `cqlshrc`.
+Other ports found in the secure connect bundle will not allow you to connect with this method.
+====
+
+[arabic, start=3]
+. From the `config.json` file, grab the hostname.
+
+include::page$drivers/legacy-java.adoc[Legacy Java driver, leveloffset=+2]
+
+include::page$drivers/legacy-php.adoc[Legacy PHP driver, leveloffset=+2]
+
+include::page$drivers/legacy-python.adoc[Legacy Python driver, leveloffset=+2]
+
+include::page$drivers/legacy-ruby.adoc[Legacy Ruby driver, leveloffset=+2]

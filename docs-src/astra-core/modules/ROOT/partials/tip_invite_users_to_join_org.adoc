@@ -1,0 +1,5 @@
+
+[TIP]
+====
+Alternatively, xref:manage:org/manage-invite-users.adoc[have a teammate provide access to their Astra database].
+====

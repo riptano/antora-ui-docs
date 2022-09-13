@@ -1,0 +1,87 @@
+= Ruby legacy drivers
+:slug: ruby-legacy-drivers
+:page-tag: driver,dev,astra-db,connect
+
+This example can be used to attach to {company} {astra_db} from Ruby using the {company} Driver.
+Before proceeding you might also consider using the REST, GraphQL or Document APIs to connect to {astra_db} without the need for a custom driver.
+
+== Prerequisites
+
+* Ensure the Ruby driver is installed.
+For more, see https://docs.datastax.com/en/developer/ruby-driver/3.2/[{company} Ruby Driver for Apache Cassandra].
+* Collect the required information for xref:drivers/legacy-drivers#_prerequisites[Connecting with legacy drivers].
+
+== Procedure
+
+. Copy the certificate files from the {astra_db} secure connect bundle to `/etc/ssl/certs/astra-secure-connect`.
+This folder should contain the `ca.cert`, `cert`, and `key` files.
+
+[arabic, start=2]
+. Replace the `<hostname>` with your {astra_db} database hostname.
+
+[arabic, start=3]
+. Replace the `<port>` with your {astra_db} database port.
+
+[arabic, start=4]
+. Replace `<username>` and `<password>` with the {astra_db} database _Client ID_ and _Client Secret_.
+
+[source, ruby]
+----
+require 'cassandra'
+
+cluster = Cassandra.cluster(
+            username: '<username>',
+            password: '<password>',
+            hosts: ['<hostname>'],
+            port: <port>,
+            server_cert: '/etc/ssl/certs/astra-secure-connect/ca.cert',
+            client_cert: '/etc/ssl/certs/astra-secure-connect/cert',
+            private_key: '/etc/ssl/certs/astra-secure-connect/key'
+)
+
+keyspace = 'system_schema'
+session  = cluster.connect(keyspace) # create session, optionally scoped to a keyspace, to execute queries
+
+future = session.execute_async('SELECT keyspace_name, table_name FROM tables') # fully asynchronous api
+future.on_success do |rows|
+  rows.each do |row|
+    puts "The keyspace #{row['keyspace_name']} has a table #{row['table_name']}"
+  end
+end
+future.join
+----
+
+== Example
+
+[source, ruby]
+----
+require 'cassandra'
+
+cluster = Cassandra.cluster(
+            username: 'john.smith',
+            password: 'jsP@ssw0rd',
+            hosts: ['602c8f3c-ea96-41b0-a7c1-6c6c5bdd1f34-us-east1.db.astra.datastax.com'],
+            port: 31575,
+            server_cert: '/etc/ssl/certs/astra-secure-connect/ca.cert',
+            client_cert: '/etc/ssl/certs/astra-secure-connect/cert',
+            private_key: '/etc/ssl/certs/astra-secure-connect/key'
+)
+
+keyspace = 'system_schema'
+session  = cluster.connect(keyspace) # create session, optionally scoped to a keyspace, to execute queries
+
+future = session.execute_async('SELECT keyspace_name, table_name FROM tables') # fully asynchronous api
+future.on_success do |rows|
+  rows.each do |row|
+    puts "The keyspace #{row['keyspace_name']} has a table #{row['table_name']}"
+  end
+end
+future.join
+----
+
+In the example above, the following variables are used:
+
+* `hostname` is `602c8f3c-ea96-41b0-a7c1-6c6c5bdd1f34-us-east1.db.astra.datastax.com`
+* `port` is `31575`
+* `username` is `john.smith`
+* `password` is `jsP@ssw0rd`

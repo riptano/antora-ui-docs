@@ -1,0 +1,312 @@
+= About your {astra_db} database
+:slug: about-your-astra-database
+
+Welcome! Let's cover some basics and review how you can get connected.
+
+Your paid database starts the following specifications:
+
+* A single region
+* A single keyspace
+* Storage based on your xref:manage:org/managing-org.adoc#_plan_selection[selected plan]
+* Capacity for up to 200 tables
+* Replication factor of three to provide optimal uptime and data integrity
+
+To better understand your database capabilities, review the xref:planning.adoc#_astra_db_database_guardrails_and_limits[{astra_db} database guardrails and limits].
+
+include::plan:page$plan-options.adoc[{astra_db} plan options]
+
+include::plan:page$regions.adoc[Database regions]
+
+== How do you want to connect?
+
+include::partial$connect_options.adoc[]
+
+== {astra_db} database guardrails and limits
+
+{company} {astra_db} includes guardrails and sets limits to ensure good practices, foster availability, and promote optimal configurations for your databases.
+//// 
+{astra_db} offers a $25.00 free credit per month, allowing you to create an {astra_db} database for free.
+Create a database with just a few clicks and start developing within minutes.
+
+[NOTE]
+====
+Each plan includes a $25.00 free credit per month. The $25 credit is good for approximately 30 million reads, 5 million writes, and 40GB of storage per month on a {serverless} database.
+====
+////
+
+=== Limited access to administrative tools
+
+Because {astra_db} hides the complexities of database management to help you focus on developing applications, {astra_db} is not compatible with {company} Enterprise (DSE) administrative tools, such as `nodetool` and `dsetool`.
+
+Use the {company} {astra_db} console to xref:manage:db/managing-db.adoc#_monitor_your_databases[get statistics and view database and health metrics].
+{astra_db} does not support access to the database using the Java Management Extensions (JMX) tools, like JConsole.
+
+=== Simplified security without compromise
+
+{astra_db} provides a secure cloud-based database without dramatically changing the way you currently access your internal database:
+
+* New user management flows avoid the need for superusers and global keyspace administration in CQL.
+* Endpoints are secured using mutual authentication, either with mutual-TLS or secure tokens issued to the client.
+* TLS provides a secure transport layer you can trust, ensuring that in-flight data is protected.
+* Data at rest is protected by encrypted volumes.
+
+Additionally, {astra_db} incorporates xref:manage:org/manage-permissions.adoc[role-based access control (RBAC)].
+
+See xref:secure:security-guidelines.adoc[Security guidelines] for more information about how {astra_db} implements security.
+
+
+=== Replication within regions
+
+Each {astra_db} database uses replication across three availability zones within the launched region to promote uptime and ensure data integrity.
+
+=== {serverless_cap} database limits
+
+The following limits are set for {serverless} databases created using {astra_db}.
+These limits ensure good practices, foster availability, and promote optimal configurations for your database.
+
+==== Databases
+
+There is a limit of 5 databases per xref:manage:org/managing-org#_add_organizations_in_astra_db[organization]. If you need to increase the number of databases for your organization, {support_url}[contact {company} Support, window="_blank"].
+
+==== Columns
+
+[cols=3*,options=header]
+|===
+|Parameter
+|Limit
+|Notes
+
+|Size of values in a single column
+|10 MB
+|Hard limit.
+
+|Number of columns per table
+|75
+|Hard limit.
+
+|===
+
+==== Tables
+
+[cols=3*,options=header]
+|===
+|Parameter
+|Limit
+|Notes
+
+|Number of tables per database
+|200
+|A warning is issued when the database exceeds 100 tables.
+
+|Table properties
+|Fixed
+|All table properties are fixed except for https://docs.datastax.com/en/astra-cql/doc/cql/cql_using/useExpire.html[Expiring data with time-to-live].
+
+|===
+
+Secondary indexes and materialized views are not available for serverless databases. Our team is working to offer materialized views for serverless databases soon.
+
+==== Workloads
+
+Astra workloads are limited to 4096 ops/sec by default. If you see a "Rate limit reached" error in your application and want your limit raised, please {support_url}[open a support ticket, window="_blank"].
+
+==== Storage-Attached Indexing (SAI) limits
+
+The maximum number of SAI indexes on a table is 10. There can be no more than 50 SAI indexes in a single database.
+
+[#backup-restore]
+==== Automated backup and restore
+
+{serverless_cap} databases created using {astra_db} are automatically backed up once an hour.
+Snapshots are stored for 20 days, providing a range of options for which you can restore your database, if necessary.
+
+For databases with multiple datacenters in various regions, backup is managed for only the original datacenter selected when creating your database.
+Restoring from backup removes all other datacenters, restoring to the primary datacenter, and adding the other datacenters with a restored version of the primary datacenter.
+
+[IMPORTANT]
+====
+If the database was terminated, all data is destroyed and is unrecoverable.
+====
+
+If data is accidentally deleted or corrupted, contact {support_url}[{company} Support, window="_blank"] to restore data from one of the available snapshots. This window ensures that the data to restore exists as a saved snapshot.
+
+When restoring data, {support_url}[{company} Support, window="_blank"] allows you to restore data on the same cluster if the table is dropped, and data is restored in the same cluster using the specified backup.
+
+=== Classic database limits
+
+The following limits are set for {classic} databases created using {astra_db}.
+These limits ensure good practices, foster availability, and promote optimal configurations for your database.
+
+==== Columns
+
+[cols=3*,options=header]
+|===
+|Parameter
+|Limit
+|Notes
+
+|Size of values in a single column
+|5 MB
+|Hard limit.
+
+|Number of columns per table
+|50
+|Hard limit.
+
+|===
+
+==== Tables
+
+[cols=3*,options=header]
+|===
+|Parameter
+|Limit
+|Notes
+
+|Number of tables per database
+|200
+|A warning is issued when the database exceeds 100 tables.
+
+|Table properties
+|Fixed
+|All table properties are fixed except for https://docs.datastax.com/en/astra-cql/doc/cql/cql_using/useExpire.html[Expiring data with time-to-live].
+
+|Secondary index
+|1
+|For {classic} databases, limit is per table.
+
+|Materialized view
+|2
+|Limit is per table. A warning is issued if the materialized view will create large partitions.
+
+|===
+
+==== Workloads
+
+{astra_db} workloads for Classic databases do not have a rate limit. If you see a "Rate limit reached" error in your application, please {support_url}[open a support ticket, window="_blank"].
+
+==== Storage-Attached Indexing (SAI) limits
+
+The maximum number of SAI indexes on a table is 10. There can be no more than 100 SAI indexes in a single database.
+
+==== Automated backup and restore
+
+{classic_cap} databases created using {astra_db} are automatically backed up every four hours.
+The latest six snapshots are stored, providing flexibility in which point in time you can restore to, if necessary.
+
+[IMPORTANT]
+====
+If the database was terminated, all data is destroyed and is unrecoverable.
+====
+If data is accidentally deleted or corrupted, contact {support_url}[{company} Support] within 12 hours to restore data from one of the available snapshots. This window ensures that the data to restore exists as a saved snapshot.
+
+When restoring data, {support_url}[{company} Support] allows you to restore data on the same cluster if the table is dropped, and data is restored in the same cluster using the specified backup.
+
+=== Cassandra Query Language (CQL)
+
+[NOTE]
+====
+At this time, user-defined functions (UDFs) and user-defined aggregate functions (UDAs) are not enabled.
+====
+
+[cols=3*,options=header]
+|===
+|Parameter
+|Limit
+|Notes
+
+|Consistency level
+|Fixed
+|Supported consistency levels:
+ Reads: Any https://docs.datastax.com/en/dse/6.8/dse-arch/datastax_enterprise/dbInternals/dbIntConfigConsistency.html[supported consistency level] is permitted
+ Writes: LOCAL_QUORUM and LOCAL_SERIAL
+
+|Compaction strategy
+|Fixed
+|UnifiedCompactionStrategy is a more efficient compaction strategy that combines ideas from STCS (SizeTieredCompactionStrategy), LCS (LeveledCompactionStrategy), and TWCS (TimeWindowCompactionStrategy) along with token range sharding. This all-inclusive compaction strategy works well for all use cases.
+
+|Lists
+|Fixed
+|Cannot `UPDATE`, `INSERT`, or `DELETE` a list value by index because {astra_db} does not allow list operations which perform a read-before-write.
+
+|Page size
+|Fixed
+|The proper page size is configured automatically.
+
+|Large partition
+|Warning
+|A warning is issued if reading or compacting a partition that exceeds 100 MB.
+
+|===
+
+=== CQL commands
+
+The following CQL commands are not supported in {astra_db}:
+
+* ALTER KEYSPACE
+* ALTER SEARCH INDEX CONFIG
+* ALTER KEYSPACE
+* ALTER SEARCH INDEX CONFIG
+* ALTER SEARCH INDEX SCHEMA
+* COMMIT SEARCH INDEX
+* CREATE KEYSPACE
+* CREATE SEARCH INDEX
+* CREATE TRIGGER
+* CREATE FUNCTION
+* DESCRIBE FUNCTION
+* DROP FUNCTION
+* DROP KEYSPACE
+* DROP SEARCH INDEX CONFIG
+* DROP TRIGGER
+* LIST PERMISSIONS
+* REBUILD SEARCH INDEX
+* RELOAD SEARCH INDEX
+* RESTRICT
+* RESTRICT ROWS
+* UNRESTRICT
+* UNRESTRICT ROWS
+
+For supported CQL commands, see the link:https://docs.datastax.com/en/astra-cql/doc/cql/cqlQuickReference.html[{astra_db} CQL quick reference].
+
+=== cassandra.yaml
+
+If you are an experienced Cassandra or {company} Enterprise user, you are likely familiar with editing the `cassandra.yaml` file.
+For {astra_db}, the `cassandra.yaml` file cannot be configured.
+
+The following limits are included in {astra_db}:
+
+[source, plaintext]
+----
+// for read requests
+        page_size_failure_threshold_in_kb =  512
+        in_select_cartesian_product_failure_threshold =  25
+        partition_keys_in_select_failure_threshold = 20
+        tombstone_warn_threshold = 1000
+        tombstone_failure_threshold = 100000
+
+// for write requests
+        batch_size_warn_threshold_in_kb = 5
+        batch_size_fail_threshold_in_kb = 50
+        unlogged_batch_across_partitions_warn_threshold = 10
+        user_timestamps_enabled = true
+        column_value_size_failure_threshold_in_kb = 5 * 1024L
+        read_before_write_list_operations_enabled = false
+        max_mutation_size_in_kb = 16384
+
+// for schema
+        fields_per_udt_failure_threshold = 30 (Classic) or 60 (Serverless)
+        collection_size_warn_threshold_in_kb =  5 * 1024L
+        items_per_collection_warn_threshold =  20
+        columns_per_table_failure_threshold = 50
+        secondary_index_per_table_failure_threshold = 1
+        tables_warn_threshold = 100
+        tables_failure_threshold = 200
+
+// for node status
+        disk_usage_percentage_warn_threshold =  70
+        disk_usage_percentage_failure_threshold =  80
+        partition_size_warn_threshold_in_mb =  100
+
+// SAI Table Failure threshold
+        sai_indexes_per_table_failure_threshold = 10
+----

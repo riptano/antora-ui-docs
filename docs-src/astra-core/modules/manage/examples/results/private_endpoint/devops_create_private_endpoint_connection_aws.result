@@ -1,0 +1,19 @@
+{
+  "datacenters": [
+    {
+      "serviceName": "com.amazonaws.vpce.us-east-1.vpce-svc-1148ea04af491da11",
+      "allowedPrincipals": [
+        "arn:aws:iam::123456789012:role/admin"
+      ],
+      "datacenterID": "string",
+      "endpoints": [
+        {
+          "endpointID": "vpce-svc-1148ea04af491da11",
+          "description": "project-desc-dev-app",
+          "status": "Accepted",
+          "createdDateTime": "2021-04-10T23:00:00"
+        }
+      ]
+    }
+  ]
+}

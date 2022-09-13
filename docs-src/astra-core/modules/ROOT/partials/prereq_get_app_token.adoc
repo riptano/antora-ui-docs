@@ -1,0 +1,1 @@
+. xref:manage:org/managing-org.adoc#_manage_application_tokens[Get your application token].

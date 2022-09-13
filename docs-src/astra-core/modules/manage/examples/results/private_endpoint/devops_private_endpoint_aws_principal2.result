@@ -1,0 +1,6 @@
+{
+  "serviceName": "com.amazonaws.vpce.us-east-1.vpce-svc-1148ea04af491da11",
+  "allowedPrincipals": [
+    "arn:aws:iam::210987654321:role/admin"
+  ]
+}

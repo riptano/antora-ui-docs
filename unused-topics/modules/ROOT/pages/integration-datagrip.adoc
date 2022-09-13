@@ -1,0 +1,49 @@
+= Connect DataGrip with {astra_db} using Simba JDBC Driver
+
+You can connect your {company} {astra_db} to Datagrip using the Simba JDBC Driver for Apache Cassandra(R).
+Follow these steps to set up the connection so you can run queries.
+
+== Import IDE Settings
+
+. Download the link:https://downloads.datastax.com/#odbc-jdbc-drivers[{company} JDBC Driver].
+. Unzip the driver download.
++
+[NOTE]
+====
+By default, your file will be stored in your downloads directory. If you want to store your JDBC jar elsewhere, change the path under driver files to match the new file path.
+====
+
+. Download link:https://datastax-21b7c7df5342.intercom-attachments-7.com/i/o/232268459/929cbfa881f4423cceb8b3b2/settings.zip[settings.zip].
++
+[CAUTION]
+====
+If you are already a DataGrip user, back up your existing settings because the download `settings.zip` might override your existing settings.
+====
+
+. Import the `settings.zip` into DataGrip by selecting *File* → *Manage IDE Settings* → *Import Settings* in DataGrip.
+. From the directory menu, select the `settings.zip` file from the directory where it is stored.
+. Select *Import and Restart*.
++
+You will see a new database connection type called Astra:
+  image:ROOT:simba_driver.png[Simba Cassandra JDBC 4.2 driver shown.]
+
+. Go to the *Advanced Settings* to confirm the VM home path is set to `Default`.
+  image:ROOT:DriverThing.png[VM home path is set to a value named Default.]
+
+== Establish the connection
+
+When you create your connection, the URL will look like this:
+`jdbc:cassandra://;AuthMech=<2>;UID=token;PWD=<ApplicationToken>;SecureConnectionBundlePath=<PATH TO YOUR SECURE CONNECT BUNDLE>;TunableConsistency=<6>`
+
+image:ROOT:url.png[URL in the screenshot shows the format described in the previous sentence.]
+
+* *AuthMech:* Specifies whether the driver connects to a Cassandra or {astra_db} database and whether the driver authenticates the connection.
+* *ApplicationToken:* Generated from {astra_db} console. See xref:manage:org/managing-org.adoc#_manage_application_tokens[Manage application tokens].
+* *SecureConnectionBundlePath:* Path to where your downloaded Secure Connect Bundle is located. See xref:connect:secure-connect-bundle.adoc[Get secure connect bundle].
+* *TunableConsistency:* Specifies Cassandra replica or the number of Cassandra replicas that must process a query for the query to be considered successful.
+
+== What's next?
+
+Now that your connection is working, you can create tables, introspect your keyspaces, view your data in the DataGrip table explorer, and more.
+
+To learn more about DataGrip, see link:https://www.jetbrains.com/help/datagrip/quick-start-with-datagrip.html[Quick start with DataGrip].

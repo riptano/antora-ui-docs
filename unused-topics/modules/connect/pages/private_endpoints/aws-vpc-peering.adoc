@@ -1,0 +1,69 @@
+= AWS VPC peering
+:slug: using-aws-vpc-peering
+:page-tag: dev,astra-db,connect
+
+By creating a virtual private cloud (VPC), you can connect your AWS resources and {company} {astra_db} databases. VPC peering allows you to communicate across the VPCs.
+
+For more about VPC peering on {astra_db} databases hosted on AWS, see https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html[What is VPC peering?].
+
+[NOTE]
+====
+VPC peering is available on only Classic C- and D-tier {astra_db} databases.
+====
+
+// include::partial$warning-classic-vpc-access-list.adoc[]
+
+== Prerequisites
+
+* Create a VPC in your AWS account. See https://docs.aws.amazon.com/vpc/latest/userguide/get-started-ipv6.html#get-started-ipv6-vpc[Create the VPC].
+* Create your {astra_db} database. See xref:manage:db/managing-db.adoc#_create_your_astra_db_database[Creating your {astra_db} database].
+
+== Adding the peering connection
+
+. From your database **Overview**, select **Add Peering Connection**.
+. In **Add Peering Connection**, enter your **Account ID** from **My Account** within your https://console.aws.amazon.com/vpc/[AWS Console] without any dashes.
+. Enter the **VPC ID** you want to use from your list of VPCs in your **AWS VPC dashboard**.
+. Enter the **VPC CIDR** (classless inter-domain routing) block for your AWS VPC.
+If desired, whitelist the CIDR block by selecting the option.
++
+[NOTE]
+====
+The CIDR block cannot overlap your {astra_db} VPC CIDR block.
+====
+
+. Select the receiving **Application VPC Region**.
++
+[NOTE]
+====
+To reduce latency, {company} recommends selecting a geographically close region for the {astra_db} database and your AWS VPC.
+====
+
+. Select **Initiate**.
+
+== Accepting the peering request
+
+. Accept the peering connection:
++
+[source, plaintext]
+----
+aws ec2 accept-vpc-peering-connection --vpc-peering-connection-id ASTRA_CONNECTION_ID --region AWS_REGION
+----
+
+See link:https://docs.aws.amazon.com/vpc/latest/peering/create-vpc-peering-connection.html#accept-vpc-peering-connection[Accepting a VPC peering connection, window="_blank"].
+
+
+. Get the `REQUESTER_VPC_CIDR_BLOCK`:
++
+[source, plaintext]
+----
+aws ec2 describe-vpc-peering-connections --vpc-peering-connection-ids "$PEERING_CONNECTION_ID" --region "$REGION" | jq -r ".VpcPeeringConnections[].RequesterVpcInfo.CidrBlock"
+----
+. Add the route in route table with sender's CIDR and peering connection ID:
++
+[source, plaintext]
+----
+aws ec2 create-route --route-table-id AWS_ROUTE_TABLE_ID --destination-cidr-block REQUESTER_VPC_CIDR_BLOCK --vpc-peering-connection-id CONNECTION_ID --region AWS_VPC_REGION
+----
+
+See link:https://docs.aws.amazon.com/vpc/latest/peering/vpc-peering-routing.html[Updating your Route tables for a VPC peering connection, window="_blank"].
+. Once you've created a VPC peering connection, xref:connect:secure-connect-bundle.adoc[download the secure connect bundle] for internal VPC network to connect to your database.

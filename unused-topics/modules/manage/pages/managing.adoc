@@ -1,0 +1,7 @@
+= Administering your database
+
+As an administrator, you can manage your database and organization. For more, see these topics:
+
+* xref:org/managing-org.adoc[Managing your databases]
+* xref:db/managing-db.adoc[Managing your databases]
+* xref:devops/devops-api.adoc[Managing with DevOps API]

@@ -1,0 +1,16 @@
+= gRPC Rust Client
+
+include::page$api-grpc/rust/rust-setup.adoc[leveloffset=+1]
+
+include::page$api-grpc/rust/rust-connecting.adoc[leveloffset=+1]
+
+include::page$api-grpc/rust/rust-querying.adoc[leveloffset=+1]
+
+include::page$api-grpc/rust/rust-processing.adoc[leveloffset=+1]
+
+include::page$api-grpc/rust/rust-full.adoc[leveloffset=+1]
+
+include::page$api-grpc/rust/rust-developing.adoc[leveloffset=+1]
+
+The Stargate gRPC Rust Client repository is located at
+https://github.com/stargate/stargate-grpc-rust-client[https://github.com/stargate/stargate-grpc-rust-client].

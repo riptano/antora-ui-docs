@@ -1,0 +1,25 @@
+= Connecting to your {astra_db} database
+:keywords:
+ifeval::["{evalproduct}" == "DB Serverless"]
+== Serverless database private endpoints
+To better protect your database connection, you can xref:private_endpoints/connect-private-endpoints.adoc[connect to a private endpoint] using the DataStax Astra DB private endpoint. Private endpoints available on only serverless databases.
+endif::[]
+
+ifeval::["{evalproduct}" == "DB Classic"]
+== Classic database VPC peering
+For classic databases, you can create a virtual private cloud (VPC) and xref:private_endpoints/connect-vpc-peering.adoc[connect your VPC resources] and DataStax Astra DB databases. VPC peering allows you to communicate across the VPCs.
+endif::[]
+
+== CQL shell
+The xref:cql/connect-cqlsh.adoc[Cassandra Query Language SHell (CQLSH)] is a command line shell for interacting with your database through Cassandra Query Language (CQL). This tool provides a useful interface for accessing the database and issuing CQL commands.
+
+== Drivers
+You can also choose one of the following {company} drivers to connect to your {company} {astra_db} database. Choose the {company} driver for your preferred programming language.
+
+* xref:connect:drivers/connect-cplusplus.adoc[Connecting C++ driver]
+* xref:connect:drivers/connect-csharp.adoc[Connecting C# driver]
+* xref:connect:drivers/connect-java.adoc[Connecting Java driver]
+* xref:connect:drivers/connect-nodejs.adoc[Connecting Node.js driver]
+* xref:connect:drivers/connect-python.adoc[Connecting Python driver]
+
+include::connect:page$secure-connect-bundle.adoc[leveloffset=+1]

@@ -1,0 +1,117 @@
+= Connect Strapi with {astra_db} using a hook
+
+Strapi is an open-source headless CMS that gives developers the freedom to choose their favorite tools and frameworks and allows editors to manage and distribute their content using their application's admin panel.
+Based on a plugin system, its admin panel and API are extensible.
+Every part is customizable to match any use case.
+Strapi also has a built-in user system to manage what the administrators and end users can access.
+
+== Prerequisite
+Install link:https://nodejs.org/en/[`node` (14.17.3 version)].
+
+== Procedure
+
+. Install Strapi locally:
++
+[source, shell, subs="attributes+"]
+----
+npx create-strapi-app my-project
+----
++
+You can view your Strapi project as it is hosted locally at link:http://localhost:1337/admin[http://localhost:1337/admin].
+
+. Install the Strapi hook:
++
+[source, shell, subs="attributes+"]
+----
+npm i strapi-hook-astra
+----
+
+. Activate the hook by adding the following to ``./config/hook.js` of the sample Strapi Project:
+
++
+[source, plaintext]
+----
+module.exports = {
+    settings: {
+        astra: {
+            enabled: true,
+            token: 'REPLACE_ME',
+            databaseId: 'REPLACE_ME',
+            databaseRegion: 'REPLACE_ME',
+            keyspace: 'REPLACE_ME',
+            collection: 'REPLACE_ME'
+        },
+    }
+};
+----
++
+ * `token`: Generate a xref:manage:org/managing-org.adoc#_manage_application_tokens[token from {astra_db}].
+ * `databaseId`: Enter your Astra DB database ID from your database URL.
+ * `databaseRegion`: Enter your Astra DB database region
+ * `keyspace`: Enter your Astra DB keyspace name.
+ * `collection`: Enter your Astra DB collection name.
+
+. Create a document:
++
+[source, shell, subs="attributes+"]
+----
+strapi.services.astra.create(document);
+----
++
+[cols="1,1,1,1"]
+|===
+|Parameter |Type | Explanation | Values
+
+|document
+|json
+|Create a document
+|var dataString = '{ "name": "John", "last_name": "Doe" }'
+|===
+
+. Get document by ID:
++
+[source, shell, subs="attributes+"]
+----
+strapi.services.astra.getById(documentId);
+----
++
+[cols="1,1,1,1"]
+|===
+|Parameter |Type | Explanation | Values
+
+|documentId
+|string
+|Get document by documentId
+|var documentId = "your_document_id"
+|===
+
+. Get document by path:
++
+[source, shell, subs="attributes+"]
+----
+strapi.services.astra.getByPath();
+----
+
+. Search a collection:
++
+[source, shell, subs="attributes+"]
+----
+strapi.services.astra.searchCollection(query,pagesize);
+----
++
+[cols="1,1,1,1"]
+|===
+|Parameter |Type | Explanation | Values
+
+|query
+|string
+|Search collection via query
+|var query = {"name": { "$eq": "John" }}
+
+|pagesize
+|int
+|Number of documents to fetch
+|int page_size = 3
+|===
+
+For more, see the link:https://strapi.io/documentation/developer-docs/latest/getting-started/introduction.html[Strapi documentation].

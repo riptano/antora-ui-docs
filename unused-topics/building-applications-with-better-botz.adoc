@@ -1,0 +1,199 @@
+= Building applications with Better Botz
+:slug: building-applications-with-better-botz
+
+Learn how to build an app with DataStax’s Astra database. See all of the posts in this Better Botz series to start using Astra now.
+
+image::ROOT:65a450e-BETTER-BOTZ-LOGO.jpg[]
+
+== Introducing Better Botz
+Better Botz believes that robots can help improve the health, prosperity, and wellbeing of human beings across the world.
+The company seeks to build Better Botz for a better future!
+
+For example, a personal care robot can help disabled or elderly people retrieve objects, carry groceries, navigate their home and community, and complete essential daily tasks.
+Business-oriented robots can be built for tunneling or mining applications, surveying dangerous areas, completing minor surgery, or traversing great distances without tiring.
+
+Better Botz supports learning and teaching through hands-on interactions, so they sell kits to build your robot using predefined blueprints.
+Alternatively, you can purchase individual components to customize your robot for various applications.
+Pretty cool, right?
+
+== The Growth Problem
+Business is booming, and Better Botz needs a simple application to replace their online ordering platform for accepting orders.
+Customers can either purchase a robot kit or individual components to build their own robot.
+The problem is, Better Botz is so focused on designing and building robots that they don't have time to build the ordering application.
+Here's where you come in!
+
+Better Botz is looking for a savvy software developer (that's you) to design and build an online ordering application to provide users with a seamless shopping and checkout experience.
+In this initial post, we'll review the available data, create a database to store the data, and generate two tables that are crucial to solving this problem.
+
+With each subsequent post, we'll dig deeper into different data sets and expand our application, integrating different technologies as we go.
+
+== The Data
+Initially, we'll be focusing on three tables: `products`, `orders by customer`, and `products by orders`.
+Products can either be individual parts (arms/legs, torso, head, etc.) or complete robot kits.
+The two orders tables list products that our customers want to purchase.
+
+Before creating the tables, we need somewhere to put them.
+We need a database that is lightweight, performant, and scalable to expand with our application.
+The DataStax Astra database checks all of those boxes that we can use for while building your application.
+
+== Goal 1: Create a DataStax Astra database
+Create a [Datastax Astra}(datastax.astra.com) database:
+
+. On the database login page, select Register.
+. Check your email for a message containing the link to verify your account.
+. Follow the prompts to create a database:
+ * Choose the pay as you go tier as the Compute Size.
+ * Select a region where you want to create the database.
+ * Enter the database details, ensuring that you enter `betterbotz` as the keyspace name.
+Your keyspace is like a bucket for your tables.
+After your database is created, you're ready to create some tables!
+
+== Goal 2: Create tables in your database
+Because your database runs on Apache Cassandra, we'll be using the Cassandra Query Language (CQL) to create tables.
+If you've worked with relational databases like MySQL and Postgres, CQL is similar to SQL.
+The main difference is that Apache Cassandra databases are non-relational, so they use different concepts to store and retrieve data.
+
+The CQLSH prompt displays:
++
+[source, sql]
+----
+Connected to caas-cluster at caas-cluster-caas-dc-service:9042.
+[cqlsh 6.8.0 | DSE 6.8.4.145 | CQL spec 3.4.5 | DSE protocol v2] Use HELP for help.
+dbuser@cqlsh>
+----
+
+. At the CQLSH prompt, copy and paste the following CQL statements.
+[NOTE]
+====
+If you named your keyspace something other than `betterbotz` when creating your database, change `betterbotz` in the following `USE` statement to match your keyspace name, such as `USE mykeyspace`.
+This statement switches to your keyspace before running the `CREATE TABLE` statements.
+====
+
+[source, sql]
+----
+USE betterbotz;
+CREATE TABLE IF NOT EXISTS products (   product_id uuid,   product_name text,   description text,   price decimal,   created timestamp,   PRIMARY KEY (product_id) );
+CREATE TABLE IF NOT EXISTS orders_by_customer (   customer_id uuid,   customer_name text,   customer_address text,   order_id uuid,   product_id uuid,   product_name text,   description text,   price decimal,   sell_price decimal,   PRIMARY KEY((customer_id),order_id) );
+CREATE TABLE IF NOT EXISTS products_by_orders (   order_id uuid,   product_id uuid,   product_unit int,   product_name text,   product_price decimal,   customer_name text static,   description text static,   total_price decimal,   sell_price decimal,   PRIMARY KEY((order_id),product_id) );
+----
+
+These statements create three tables in your keyspace:
+
+* The first statement creates a `products` table with several fields that define an individual product.
+* The second table creates an `orders_by_customer` table that includes things like customer ID, customer name, product ID, product name, sell price, and other elements of an order.
+* The third table creates a `products_by_orders` table that includes the order, product, and customer information, including the number of units purchased and total sale.
+
+== Goal 3: Insert some data in your tables
+
+With your tables in place, it's time to insert some data.
+
+In the CQLSH prompt for your database, copy and paste the following `INSERT` statements to insert data into the products table.
+Remember that if you named your keyspace something other than `betterbotz`, you'll need to change the `betterbotz` keyspace name in the following `USE` statement.
+
+[source, sql]
+----
+USE betterbotz;
+//
+// This first set of INSERTS adds data to the Better Botz products table:
+//
+INSERT INTO betterbotz.products ( product_id, product_name, description, price, created ) VALUES ( 31047029-2175-43ce-9fdd-b3d568b19bb0, 'Heavy Lift Arms', 'Heavy lift arms capable of lifting 1,250lbs of weight per arm.
+Sold as a set.', 4199.99, '2020-01-10 09:48:31.020+0040' ) IF NOT EXISTS;
+
+INSERT INTO betterbotz.products ( product_id, product_name, description, price, created ) VALUES ( 31047029-2175-43ce-9fdd-b3d568b19bb1, 'Precisions Action Arms', 'Arms for precision activities in manufacturing or repair.
+Sold as a set.', 12199.99, '2020-01-10 09:28:31.020+0040' ) IF NOT EXISTS;
+
+INSERT INTO betterbotz.products ( product_id, product_name, description, price, created ) VALUES ( 31047029-2175-43ce-9fdd-b3d568b19bb2, 'Medium Lift Arms', 'Medium lift arms capable of lifting 850lbs of weight per arm.
+Sold as a set.', 3199.99, '2020-01-10 09:23:31.020+0040' ) IF NOT EXISTS;
+
+INSERT INTO betterbotz.products ( product_id, product_name, description, price, created ) VALUES ( 31047029-2175-43ce-9fdd-b3d568b19bb3, 'Drill Arms', 'Arms for drilling into surface material.
+Sold as a set.
+Does not include drill bits.', 2199.99, '2020-01-10 09:12:31.020+0040') IF NOT EXISTS;
+
+INSERT INTO betterbotz.products ( product_id, product_name, description, price, created ) VALUES ( 31047029-2175-43ce-9fdd-b3d568b19bb4, 'High Process AI CPU', 'Head processor unit for robot, has heavy AI Job Process Capabilties.', 2199.99,'2020-01-10 18:48:31.020+0040') IF NOT EXISTS;
+
+INSERT INTO betterbotz.products ( product_id, product_name, description, price, created ) VALUES ( 31047029-2175-43ce-9fdd-b3d568b19bb5, 'Basic Task CPU', 'Head processor unit for robot setup for basic process tasks.', 899.99, '2020-01-10 18:48:31.020+0040') IF NOT EXISTS;
+
+INSERT INTO betterbotz.products ( product_id, product_name, description, price, created ) VALUES ( 31047029-2175-43ce-9fdd-b3d568b19bb6, 'High Strength Torso', 'Robot body with reinforced plate to handle heavy workload and weight during jobs.', 2199.99, '2020-01-10 18:48:31.020+0040') IF NOT EXISTS;
+
+INSERT INTO betterbotz.products ( product_id, product_name, description, price, created ) VALUES ( 31047029-2175-43ce-9fdd-b3d568b19bb7, 'Medium Strength Torso', 'Robot body to handle general jobs.', 1999.99, '2020-01-10 18:48:31.020+0040') IF NOT EXISTS;
+
+INSERT INTO betterbotz.products ( product_id, product_name, description, price, created ) VALUES ( 31047029-2175-43ce-9fdd-b3d568b19bb8, 'Precisions Torso', 'Robot torso built to handle precision jobs with extra stability and accuracy reinforcement.', 8199.99, '2020-01-10 18:48:31.020+0040') IF NOT EXISTS;
+//
+// Now add data to the Better Botz orders_by_customer table:
+//
+INSERT INTO betterbotz.orders_by_customer ( customer_id, customer_name, customer_address, order_id, product_id, product_name, description, price, sell_price) VALUES ( 3c523288-c397-47a3-b53f-d1ea31479189, 'Janice Evernathy', '229 East Rye Road 03870', eae166d4-5818-4413-99c1-6a8acee538de, 31047029-2175-43ce-9fdd-b3d568b19bb0, 'Heavy Lift Arms', 'Ordering some heavy lift arms for my construction bot - need 2.', 4199.99, 4000.00);
+
+INSERT INTO betterbotz.orders_by_customer ( customer_id, customer_name, customer_address, order_id, product_id, product_name, description, price, sell_price) VALUES ( 3c523288-c397-47a3-b53f-d1ea31479189, 'Janice Evernathy', '229 East Rye Road 03870', c8187f0b-cd87-429d-8f78-90d60ee1e97b, 31047029-2175-43ce-9fdd-b3d568b19bb2, 'Medium Lift Arms', 'Ordering medium lift arms for construction bot.', 3199.99, 2800.00);
+
+INSERT INTO betterbotz.orders_by_customer ( customer_id, customer_name, customer_address, order_id, product_id, product_name, description, price, sell_price) VALUES ( 59735a9d-18fc-45f8-b1ad-aec03a5b20e6, 'Michael Pasi', '10032 Broomfield Way 80020', d584e2d9-f23f-40d6-b706-ffc7ffd150d9, 31047029-2175-43ce-9fdd-b3d568b19bb8, 'Precisions Torso', 'Rush order for two Precisions Torso parts.', 8199.99, 7500.00);
+
+INSERT INTO betterbotz.orders_by_customer ( customer_id, customer_name, customer_address, order_id, product_id, product_name, description, price, sell_price) VALUES ( 59735a9d-18fc-45f8-b1ad-aec03a5b20e6, 'Michael Pasi', '10032 Broomfield Way 80020', 6783967f-e14f-4cfc-8d2d-53d989a28cea, 31047029-2175-43ce-9fdd-b3d568b19bb3, 'Drill Arms', 'Ordering drill arms for delivery by 30-Sept.', 2199.99, 2000.00);
+
+INSERT INTO betterbotz.orders_by_customer ( customer_id, customer_name, customer_address, order_id, product_id, product_name, description, price, sell_price) VALUES ( 78c325af-754e-4764-ad52-da3e2b3301c1, 'Tomas Schwarz', '760 Sunnyvale Expressway 94088', fbef4936-f056-43eb-8028-8c460f7ea0f0, 31047029-2175-43ce-9fdd-b3d568b19bb6, 'High Strength Torso', 'Ordering high-strength torso part expedite.', 2199.99, 2100.00);
+
+INSERT INTO betterbotz.orders_by_customer ( customer_id, customer_name, customer_address, order_id, product_id, product_name, description, price, sell_price) VALUES ( 78c325af-754e-4764-ad52-da3e2b3301c1, 'Tomas Schwarz', '760 Sunnyvale Expressway 94088', f5448bdb-86e8-43a7-8d43-219bc6c0d56f, 31047029-2175-43ce-9fdd-b3d568b19bb2, 'Medium Lift Arms', 'Need your medium lift arms part thanks guys.', 3199.99, 2900.00);
+//
+Now add data to the products_by_orders table:
+//
+INSERT INTO betterbotz.products_by_orders ( order_id, product_id, product_unit, product_name, product_price, customer_name, description, total_price, sell_price) VALUES ( eae166d4-5818-4413-99c1-6a8acee538de, 31047029-2175-43ce-9fdd-b3d568b19bb0, 2, 'Heavy Lift Arms', 2199.99, 'Janice Evernathy', 'Heavy lift arms capable of lifting 1,250lbs of weight per arm.
+Sold as a set.', 8399.98, 8000.00);
+
+INSERT INTO betterbotz.products_by_orders ( order_id, product_id, product_unit, product_name, product_price, customer_name, description, total_price, sell_price) VALUES ( c8187f0b-cd87-429d-8f78-90d60ee1e97b, 31047029-2175-43ce-9fdd-b3d568b19bb2, 1, 'Medium Lift Arms', 3199.99, 'Janice Evernathy', 'Medium lift arms capable of lifting 850lbs of weight per arm.
+Sold as a set.', 3199.99, 3000.00);
+
+INSERT INTO betterbotz.products_by_orders ( order_id, product_id, product_unit, product_name, product_price, customer_name, description, total_price, sell_price) VALUES ( d584e2d9-f23f-40d6-b706-ffc7ffd150d9, 31047029-2175-43ce-9fdd-b3d568b19bb8, 2, 'Precision Torso', 8199.99, 'Michael Pasi', 'Robot torso built to handle precision jobs with extra stability and accuracy reinforcement.', 16399.98, 15000.00);
+
+INSERT INTO betterbotz.products_by_orders ( order_id, product_id, product_unit, product_name, product_price, customer_name, description, total_price, sell_price) VALUES ( 6783967f-e14f-4cfc-8d2d-53d989a28cea, 31047029-2175-43ce-9fdd-b3d568b19bb3, 1, 'Drill Arms', 2199.99, 'Michael Pasi', 'Arms for drilling into surface material.
+Sold as a set.
+Does not include drill bits.', 2199.99, 2000.00);
+
+INSERT INTO betterbotz.products_by_orders ( order_id, product_id, product_unit, product_name, product_price, customer_name, description, total_price, sell_price) VALUES ( fbef4936-f056-43eb-8028-8c460f7ea0f0, 31047029-2175-43ce-9fdd-b3d568b19bb6, 1, 'High Strength Torso', 2199.99, 'Tomas Schwarz', 'Robot body with reinforced plate to handle heavy workload and weight during jobs.', 2199.99, 2100.00);
+
+INSERT INTO betterbotz.products_by_orders ( order_id, product_id, product_unit, product_name, product_price, customer_name, description, total_price, sell_price) VALUES ( f5448bdb-86e8-43a7-8d43-219bc6c0d56f, 31047029-2175-43ce-9fdd-b3d568b19bb2, 1, 'Medium Lift Arms', 3199.99, 'Tomas Schwarz', 'Medium lift arms capable of lifting 850lbs of weight per arm.
+Sold as a set.', 3199.99, 2900.00);
+----
+
+Your tables now have some data that we can work with, so let's check it out!
+
+== Goal 4: Retrieve data from your database
+Let's view all of the available products in your products table so that we know what the data looks like.
+Run the following SELECT statement to view the name, description, and price of all products in the products table:
+[source, sql]
+----
+SELECT product_name, description, price FROM betterbotz.products ;
+----
+
+The results are formatted neatly, and show the name of each product, a description, and the price.
+This result is a good start, but as our product table grows, we don't want to return the entire result set every time and have to sift through the results.
+
+image::ROOT:31862d2-betterbotz2.png[]
+
+We expand our query to say, "Get the name, description, and price from my products table, WHERE the name matches a specific criteria":
+
+[source, cql]
+----
+SELECT product_name, description, price FROM betterbotz.products WHERE product_name = 'Heavy Lift Arms';
+----
+
+There it is!
+We returned only the record that we wanted instead of a complete list of every product in the table.
+Knowing how to ask for the data that you want to retrieve is crucial, because what good is a database if you can't easily get what you need?
+
+image::ROOT:a9292c8-betterbotz3.png[]
+
+Of course, this sample uses a very small amount of data.
+When you work with high-volume Astra databases, you'll want to define indexes that quickly filter large data sets.
+For this type of environment, Astra provides with a feature called Storage-Attached Indexing.
+See xref:using-storage-attached-indexing-sai.adoc[Using Storage-Attached Indexing], which continues with the Better Botz sample.
+
+== Recap
+In this first post, you learned about Better Botz and the problem they need your help solving.
+To lay the foundation for your online ordering application, you created a database in the cloud, created two tables, inserted data into those tables, and learned how to retrieve data that you want to view.
+That's a great start!
+
+In the next post, we'll create a sample website built with Node.js that also uses Express.
+We'll add more data to your existing cloud database and learn about Node.js as we continue to build the Better Botz online ordering application.
+
+== Disclaimer
+_Better Botz is a fictitious company used for creating tutorials and examples.
+The authors of the Better Botz blog posts are employed by DataStax, and our goal is to write informative, tutorial-driven posts to help developers learn and develop skills._

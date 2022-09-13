@@ -1,0 +1,18 @@
+name: docs
+title: DataStax Astra DB for DSE Documentation
+version: ~
+start_page: index.adoc
+
+nav:
+- modules/ROOT/nav.adoc
+- modules/getting-started/nav.adoc
+- modules/plan/nav.adoc
+- modules/secure/nav.adoc
+- modules/manage/nav.adoc
+- modules/connect/nav.adoc
+- modules/develop/dnav.adoc
+- modules/develop/uploadnav.adoc
+- modules/quickstart/nav.adoc
+- modules/ROOT/apinav.adoc
+- modules/graph/gnav.adoc
+- modules/search/snav.adoc

@@ -1,0 +1,333 @@
+= Storage-Attached Indexing (SAI)
+:slug: using-storage-attached-indexing-sai
+
+Use Storage-Attached Indexing (SAI) to create one or more indexes on {company} {astra_db} database tables. For cloud applications with high-volume data, SAI indexes make data writes and query retrieval faster. For more, see the https://docs.datastax.com/en/storage-attached-index/6.8/sai/saiTOC.html[SAI guide, window="_blank"].
+
+In the xref:connect:cql/connect-cqlsh.adoc[CQL Console], login and add SAI indexes on existing tables.
+Follow the examples below to create SAI indexes on the `products`, `orders_by_customer`, and `products_by_orders` tables of the Better Botz sample app.
+To learn more about SAI, see https://www.datastax.com/dev/cassandra-indexing[Indexing in Cassandra with Storage Attached Indexes (SAI), window="_blank"].
+To make it easier for you, some of these steps are repeated here.
+
+== Katacoda scenario
+If you prefer to use Katacoda to learn how to use SAI, follow link:https://katacoda.com/datastax/scenarios/sai-astra[the scenario] through the link below:
+[#img-katacoda-rest]
+.Using Storage-Attached Indexing (SAI) on {astra_db}
+[link=https://katacoda.com/datastax/scenarios/sai-astra, window="_blank"]
+image::https://www.katacoda.com/images/apple-touch-icon-152x152.png[Katacoda Icon]
+
+== Prerequisite
+
+xref:manage:db/managing-db.adoc#_create_your_astra_db_database[Create a database] using link:https://astra.datastax.com[{astra_db}].
+
+[IMPORTANT]
+====
+If you named your keyspace something other than `betterbotz`, change `betterbotz` in the `USE` statements below to match your keyspace name, such as `USE mykeyspace`.
+====
+
+== Procedure
+
+. Open a browser, navigate to link:https://astra.datastax.com[{astra_db}, window="_blank"], and log in.
+. From the *Databases* page, select the *CQL Console* tab to open the CQL shell (CQLSH).
+. Enter the username and password you set when you created the database.
+. At the CQLSH prompt, enter the keyspace name.
+```
+USE betterbotz;
+```
+
+[arabic, start=5]
+. If you used a prior version of Better Botz that created the `products` and `orders` tables, remove these tables:
+```
+DROP TABLE products;
+DROP TABLE orders;
+```
+
+We'll create enhanced versions in the next step.
+[arabic, start=6]
+. Copy the following CQL statements and paste them at the CQLSH prompt:
+
+```
+USE betterbotz;
+
+CREATE TABLE IF NOT EXISTS products (   product_id uuid,   product_name text,   description text,   price decimal,   created timestamp,   PRIMARY KEY (product_id) );
+CREATE TABLE IF NOT EXISTS orders_by_customer (   customer_id uuid,   customer_name text,   customer_address text,   order_id uuid,   product_id uuid,   product_name text,   description text,   price decimal,   sell_price decimal,   PRIMARY KEY((customer_id),order_id) );
+CREATE TABLE IF NOT EXISTS products_by_orders (   order_id uuid,   product_id uuid,   product_unit int,   product_name text,   product_price decimal,   customer_name text static,   description text static,   total_price decimal,   sell_price decimal,   PRIMARY KEY((order_id),product_id) );
+```
+[arabic, start=7]
+. Create Storage-Attached Indexing (SAI) indexes on columns in the tables.
+
+It is not necessary to define indexes on each table's primary key.
+
+You cannot index a partition key when there is only one column comprising that key.
+However, if you have tables with composite partition keys (two or more columns setting the partition criteria), in each SAI index you can specify one of the columns that comprise the composite partition key.
+See https://docs.datastax.com/en/storage-attached-index/6.8/sai/saiUsing.html[Examine column index and query rules, window="_blank"].
+
+```
+USE betterbotz;
+
+CREATE CUSTOM INDEX products_product_name_idx ON products (product_name) USING 'StorageAttachedIndex' WITH OPTIONS = {'normalize': 'true', 'case_sensitive': 'false'};
+
+CREATE CUSTOM INDEX products_created_idx ON products (created) USING 'StorageAttachedIndex';
+
+CREATE CUSTOM INDEX products_prices_idx ON products (price) USING 'StorageAttachedIndex';
+
+CREATE CUSTOM INDEX orders_by_customer_address_idx ON orders_by_customer (customer_address) USING 'StorageAttachedIndex';
+
+CREATE CUSTOM INDEX orders_by_customer_product_id_idx ON orders_by_customer (product_id) USING 'StorageAttachedIndex';
+
+CREATE CUSTOM INDEX orders_by_customer_product_name_idx ON orders_by_customer (product_name) USING 'StorageAttachedIndex' WITH OPTIONS = {'case_sensitive': 'false'};
+
+CREATE CUSTOM INDEX orders_by_customer_customer_name_idx ON orders_by_customer (customer_name) USING 'StorageAttachedIndex' WITH OPTIONS = {'normalize': 'true', 'case_sensitive': 'false'};
+
+CREATE CUSTOM INDEX products_by_orders_product_name_idx ON products_by_orders (product_name) USING 'StorageAttachedIndex' WITH OPTIONS = {'normalize': 'true', 'case_sensitive': 'false'};
+
+CREATE CUSTOM INDEX products_by_orders_customer_name_idx ON products_by_orders (customer_name) USING 'StorageAttachedIndex' WITH OPTIONS = {'normalize': 'true', 'case_sensitive': 'false'};
+
+CREATE CUSTOM INDEX products_by_orders_product_unit_idx ON products_by_orders (product_unit) USING 'StorageAttachedIndex';
+
+CREATE CUSTOM INDEX products_by_orders_product_price_idx ON products_by_orders (product_price) USING 'StorageAttachedIndex';
+
+CREATE CUSTOM INDEX products_by_orders_sell_price_idx ON products_by_orders (sell_price) USING 'StorageAttachedIndex';
+
+CREATE CUSTOM INDEX products_by_orders_total_price_idx ON products_by_orders (total_price) USING 'StorageAttachedIndex';
+```
+[arabic, start=8]
+. Load data in the Better Botz tables.
+In the CQLSH prompt for your database, copy and paste the following `INSERT` statements to insert data into the tables.
+```
+// Add data to the products table:
+
+USE betterbotz;
+
+INSERT INTO products ( product_id, product_name, description, price, created ) VALUES ( 31047029-2175-43ce-9fdd-b3d568b19bb0, 'Heavy Lift Arms', 'Heavy lift arms capable of lifting 1,250lbs of weight per arm.
+Sold as a set.', 4199.99, '2020-01-10 09:48:31.020+0040' ) IF NOT EXISTS;
+
+INSERT INTO products ( product_id, product_name, description, price, created ) VALUES ( 31047029-2175-43ce-9fdd-b3d568b19bb1, 'Precisions Action Arms', 'Arms for precision activities in manufacturing or repair.
+Sold as a set.', 12199.99, '2020-01-10 09:28:31.020+0040' ) IF NOT EXISTS;
+
+INSERT INTO products ( product_id, product_name, description, price, created ) VALUES ( 31047029-2175-43ce-9fdd-b3d568b19bb2, 'Medium Lift Arms', 'Medium lift arms capable of lifting 850lbs of weight per arm.
+Sold as a set.', 3199.99, '2020-01-10 09:23:31.020+0040' ) IF NOT EXISTS;
+
+INSERT INTO products ( product_id, product_name, description, price, created ) VALUES ( 31047029-2175-43ce-9fdd-b3d568b19bb3, 'Drill Arms', 'Arms for drilling into surface material.
+Sold as a set.
+Does not include drill bits.', 2199.99, '2020-01-10 09:12:31.020+0040') IF NOT EXISTS;
+
+INSERT INTO products ( product_id, product_name, description, price, created ) VALUES ( 31047029-2175-43ce-9fdd-b3d568b19bb4, 'High Process AI CPU', 'Head processor unit for robot, has heavy AI Job Process Capabilties.', 2199.99,'2020-01-10 18:48:31.020+0040') IF NOT EXISTS;
+
+INSERT INTO products ( product_id, product_name, description, price, created ) VALUES ( 31047029-2175-43ce-9fdd-b3d568b19bb5, 'Basic Task CPU', 'Head processor unit for robot setup for basic process tasks.', 899.99, '2020-01-10 18:48:31.020+0040') IF NOT EXISTS;
+
+INSERT INTO products ( product_id, product_name, description, price, created ) VALUES ( 31047029-2175-43ce-9fdd-b3d568b19bb6, 'High Strength Torso', 'Robot body with reinforced plate to handle heavy workload and weight during jobs.', 2199.99, '2020-01-10 18:48:31.020+0040') IF NOT EXISTS;
+
+INSERT INTO products ( product_id, product_name, description, price, created ) VALUES ( 31047029-2175-43ce-9fdd-b3d568b19bb7, 'Medium Strength Torso', 'Robot body to handle general jobs.', 1999.99, '2020-01-10 18:48:31.020+0040') IF NOT EXISTS;
+
+INSERT INTO products ( product_id, product_name, description, price, created ) VALUES ( 31047029-2175-43ce-9fdd-b3d568b19bb8, 'Precisions Torso', 'Robot torso built to handle precision jobs with extra stability and accuracy reinforcement.', 8199.99, '2020-01-10 18:48:31.020+0040') IF NOT EXISTS;
+
+// Add data to the orders_by_customer table:
+
+INSERT INTO orders_by_customer ( customer_id, customer_name, customer_address, order_id, product_id, product_name, description, price, sell_price) VALUES ( 3c523288-c397-47a3-b53f-d1ea31479189, 'Janice Evernathy', '229 East Rye Road 03870', eae166d4-5818-4413-99c1-6a8acee538de, 31047029-2175-43ce-9fdd-b3d568b19bb0, 'Heavy Lift Arms', 'Ordering some heavy lift arms for my construction bot - need 2.', 4199.99, 4000.00);
+
+INSERT INTO orders_by_customer ( customer_id, customer_name, customer_address, order_id, product_id, product_name, description, price, sell_price) VALUES ( 3c523288-c397-47a3-b53f-d1ea31479189, 'Janice Evernathy', '229 East Rye Road 03870', c8187f0b-cd87-429d-8f78-90d60ee1e97b, 31047029-2175-43ce-9fdd-b3d568b19bb2, 'Medium Lift Arms', 'Ordering medium lift arms for construction bot.', 3199.99, 2800.00);
+
+INSERT INTO orders_by_customer ( customer_id, customer_name, customer_address, order_id, product_id, product_name, description, price, sell_price) VALUES ( 59735a9d-18fc-45f8-b1ad-aec03a5b20e6, 'Michael Pasi', '10032 Broomfield Way 80020', d584e2d9-f23f-40d6-b706-ffc7ffd150d9, 31047029-2175-43ce-9fdd-b3d568b19bb8, 'Precisions Torso', 'Rush order for two Precisions Torso parts.', 8199.99, 7500.00);
+
+INSERT INTO orders_by_customer ( customer_id, customer_name, customer_address, order_id, product_id, product_name, description, price, sell_price) VALUES ( 59735a9d-18fc-45f8-b1ad-aec03a5b20e6, 'Michael Pasi', '10032 Broomfield Way 80020', 6783967f-e14f-4cfc-8d2d-53d989a28cea, 31047029-2175-43ce-9fdd-b3d568b19bb3, 'Drill Arms', 'Ordering drill arms for delivery by 30-Sept.', 2199.99, 2000.00);
+
+INSERT INTO orders_by_customer ( customer_id, customer_name, customer_address, order_id, product_id, product_name, description, price, sell_price) VALUES ( 78c325af-754e-4764-ad52-da3e2b3301c1, 'Tomas Schwarz', '760 Sunnyvale Expressway 94088', fbef4936-f056-43eb-8028-8c460f7ea0f0, 31047029-2175-43ce-9fdd-b3d568b19bb6, 'High Strength Torso', 'Ordering high-strength torso part expedite.', 2199.99, 2100.00);
+
+INSERT INTO orders_by_customer ( customer_id, customer_name, customer_address, order_id, product_id, product_name, description, price, sell_price) VALUES ( 78c325af-754e-4764-ad52-da3e2b3301c1, 'Tomas Schwarz', '760 Sunnyvale Expressway 94088', f5448bdb-86e8-43a7-8d43-219bc6c0d56f, 31047029-2175-43ce-9fdd-b3d568b19bb2, 'Medium Lift Arms', 'Need your medium lift arms part thanks guys.', 3199.99, 2900.00);
+
+// Add data to the products_by_orders table:
+
+INSERT INTO products_by_orders ( order_id, product_id, product_unit, product_name, product_price, customer_name, description, total_price, sell_price) VALUES ( eae166d4-5818-4413-99c1-6a8acee538de, 31047029-2175-43ce-9fdd-b3d568b19bb0, 2, 'Heavy Lift Arms', 2199.99, 'Janice Evernathy', 'Heavy lift arms capable of lifting 1,250lbs of weight per arm.
+Sold as a set.', 8399.98, 8000.00);
+
+INSERT INTO products_by_orders ( order_id, product_id, product_unit, product_name, product_price, customer_name, description, total_price, sell_price) VALUES ( c8187f0b-cd87-429d-8f78-90d60ee1e97b, 31047029-2175-43ce-9fdd-b3d568b19bb2, 1, 'Medium Lift Arms', 3199.99, 'Janice Evernathy', 'Medium lift arms capable of lifting 850lbs of weight per arm.
+Sold as a set.', 3199.99, 3000.00);
+
+INSERT INTO products_by_orders ( order_id, product_id, product_unit, product_name, product_price, customer_name, description, total_price, sell_price) VALUES ( d584e2d9-f23f-40d6-b706-ffc7ffd150d9, 31047029-2175-43ce-9fdd-b3d568b19bb8, 2, 'Precision Torso', 8199.99, 'Michael Pasi', 'Robot torso built to handle precision jobs with extra stability and accuracy reinforcement.', 16399.98, 15000.00);
+
+INSERT INTO products_by_orders ( order_id, product_id, product_unit, product_name, product_price, customer_name, description, total_price, sell_price) VALUES ( 6783967f-e14f-4cfc-8d2d-53d989a28cea, 31047029-2175-43ce-9fdd-b3d568b19bb3, 1, 'Drill Arms', 2199.99, 'Michael Pasi', 'Arms for drilling into surface material.
+Sold as a set.
+Does not include drill bits.', 2199.99, 2000.00);
+
+INSERT INTO products_by_orders ( order_id, product_id, product_unit, product_name, product_price, customer_name, description, total_price, sell_price) VALUES ( fbef4936-f056-43eb-8028-8c460f7ea0f0, 31047029-2175-43ce-9fdd-b3d568b19bb6, 1, 'High Strength Torso', 2199.99, 'Tomas Schwarz', 'Robot body with reinforced plate to handle heavy workload and weight during jobs.', 2199.99, 2100.00);
+
+INSERT INTO products_by_orders ( order_id, product_id, product_unit, product_name, product_price, customer_name, description, total_price, sell_price) VALUES ( f5448bdb-86e8-43a7-8d43-219bc6c0d56f, 31047029-2175-43ce-9fdd-b3d568b19bb2, 1, 'Medium Lift Arms', 3199.99, 'Tomas Schwarz', 'Medium lift arms capable of lifting 850lbs of weight per arm.
+Sold as a set.', 3199.99, 2900.00);
+```
+
+*This is an extremely small amount of data!* The point of this topic is to show the mechanics of the SAI index creation process.
+
+Your Better Botz tables now have SAI-indexed data.
+Let's check it out!
+
+== Query the indexed tables
+Enter some queries that specify the SAI-indexed columns, and observe the results.
+You'll need to scroll down to see all the examples.
+
+```
+USE betterbotz;
+
+SELECT * FROM products WHERE price > 2000.00 AND price <= 4000.00;
+```
+
+```
+ product_id                           | created                         | description                                                                          | price   | product_name
+--------------------------------------+---------------------------------+--------------------------------------------------------------------------------------+---------+---------------------
+31047029-2175-43ce-9fdd-b3d568b19bb3 | 2020-01-10 08:32:31.020000+0000 | Arms for drilling into surface material.
+Sold as a set.
+Does not include drill bits.
+| 2199.99 |          Drill Arms  31047029-2175-43ce-9fdd-b3d568b19bb6 | 2020-01-10 18:08:31.020000+0000 |    Robot body with reinforced plate to handle heavy workload and weight during jobs.
+| 2199.99 | High Strength Torso  31047029-2175-43ce-9fdd-b3d568b19bb2 | 2020-01-10 08:43:31.020000+0000 |         Medium lift arms capable of lifting 850lbs of weight per arm.
+Sold as a set.
+| 3199.99 |    Medium Lift Arms  31047029-2175-43ce-9fdd-b3d568b19bb4 | 2020-01-10 18:08:31.020000+0000 |                 Head processor unit for robot, has heavy AI Job Process Capabilties.
+| 2199.99 | High Process AI CPU
+
+(4 rows)
+```
+
+```
+SELECT * FROM products WHERE created >= '2020-01-10 09:12:31.020+0040' AND created <= '2020-01-10 18:48:31.020+0040';
+```
+
+```
+ product_id                           | created                         | description                                                                                 | price    | product_name
+--------------------------------------+---------------------------------+---------------------------------------------------------------------------------------------+----------+------------------------
+31047029-2175-43ce-9fdd-b3d568b19bb1 | 2020-01-10 08:48:31.020000+0000 |                    Arms for precision activities in manufacturing or repair.
+Sold as a set.
+| 12199.99 | Precisions Action Arms  31047029-2175-43ce-9fdd-b3d568b19bb3 | 2020-01-10 08:32:31.020000+0000 |        Arms for drilling into surface material.
+Sold as a set.
+Does not include drill bits.
+|  2199.99 |             Drill Arms  31047029-2175-43ce-9fdd-b3d568b19bb6 | 2020-01-10 18:08:31.020000+0000 |           Robot body with reinforced plate to handle heavy workload and weight during jobs.
+|  2199.99 |    High Strength Torso  31047029-2175-43ce-9fdd-b3d568b19bb0 | 2020-01-10 09:08:31.020000+0000 |               Heavy lift arms capable of lifting 1,250lbs of weight per arm.
+Sold as a set.
+|  4199.99 |        Heavy Lift Arms  31047029-2175-43ce-9fdd-b3d568b19bb8 | 2020-01-10 18:08:31.020000+0000 | Robot torso built to handle precision jobs with extra stability and accuracy reinforcement.
+|  8199.99 |       Precisions Torso  31047029-2175-43ce-9fdd-b3d568b19bb2 | 2020-01-10 08:43:31.020000+0000 |                Medium lift arms capable of lifting 850lbs of weight per arm.
+Sold as a set.
+|  3199.99 |       Medium Lift Arms  31047029-2175-43ce-9fdd-b3d568b19bb4 | 2020-01-10 18:08:31.020000+0000 |                        Head processor unit for robot, has heavy AI Job Process Capabilties.
+|  2199.99 |    High Process AI CPU  31047029-2175-43ce-9fdd-b3d568b19bb7 | 2020-01-10 18:08:31.020000+0000 |                                                          Robot body to handle general jobs.
+|  1999.99 |  Medium Strength Torso  31047029-2175-43ce-9fdd-b3d568b19bb5 | 2020-01-10 18:08:31.020000+0000 |                                Head processor unit for robot setup for basic process tasks.
+|   899.99 |         Basic Task CPU
+
+(9 rows)
+```
+
+```
+SELECT * FROM orders_by_customer WHERE customer_name = 'janice EvernAthy';
+```
+
+```
+ customer_id                          | order_id                             | customer_address        | customer_name    | description                                                     | price   | product_id                       | product_name     | sell_price
+--------------------------------------+--------------------------------------+-------------------------+------------------+-----------------------------------------------------------------+---------+--------------------------------------+------------------+------------
+3c523288-c397-47a3-b53f-d1ea31479189 | c8187f0b-cd87-429d-8f78-90d60ee1e97b | 229 East Rye Road 03870 | Janice Evernathy |                 Ordering medium lift arms for construction bot.
+| 3199.99 | 31047029-2175-43ce-9fdd-b3d568b19bb2 | Medium Lift Arms |    2800.00  3c523288-c397-47a3-b53f-d1ea31479189 | eae166d4-5818-4413-99c1-6a8acee538de | 229 East Rye Road 03870 | Janice Evernathy | Ordering some heavy lift arms for my construction bot - need 2.
+| 4199.99 | 31047029-2175-43ce-9fdd-b3d568b19bb0 |  Heavy Lift Arms |    4000.00
+
+(2 rows)
+```
+
+```
+SELECT * FROM orders_by_customer WHERE customer_address = '760 Sunnyvale Expressway 94088';
+```
+
+```
+ customer_id                          | order_id                             | customer_address               | customer_name | description                                  | price   | product_id        | product_name        | sell_price
+--------------------------------------+--------------------------------------+--------------------------------+---------------+----------------------------------------------+---------+--------------------------------------+---------------------+------------
+78c325af-754e-4764-ad52-da3e2b3301c1 | f5448bdb-86e8-43a7-8d43-219bc6c0d56f | 760 Sunnyvale Expressway 94088 | Tomas Schwarz | Need your medium lift arms part thanks guys.
+| 3199.99 | 31047029-2175-43ce-9fdd-b3d568b19bb2 |    Medium Lift Arms |    2900.00  78c325af-754e-4764-ad52-da3e2b3301c1 | fbef4936-f056-43eb-8028-8c460f7ea0f0 | 760 Sunnyvale Expressway 94088 | Tomas Schwarz |  Ordering high-strength torso part expedite.
+| 2199.99 | 31047029-2175-43ce-9fdd-b3d568b19bb6 | High Strength Torso |    2100.00
+
+(2 rows)
+```
+
+```
+SELECT * FROM orders_by_customer WHERE product_id = 31047029-2175-43ce-9fdd-b3d568b19bb3;
+```
+
+```
+ customer_id                          | order_id                             | customer_address           | customer_name | description                                  | price   | product_id    | product_name | sell_price
+--------------------------------------+--------------------------------------+----------------------------+---------------+----------------------------------------------+---------+--------------------------------------+--------------+------------
+59735a9d-18fc-45f8-b1ad-aec03a5b20e6 | 6783967f-e14f-4cfc-8d2d-53d989a28cea | 10032 Broomfield Way 80020 |  Michael Pasi | Ordering drill arms for delivery by 30-Sept.
+| 2199.99 | 31047029-2175-43ce-9fdd-b3d568b19bb3 |   Drill Arms |    2000.00
+```
+
+```
+SELECT * FROM products_by_orders WHERE product_name = 'Medium Lift Arms';
+```
+
+```
+ order_id                             | product_id                           | customer_name    | description                                                                  | product_name     | product_price | product_unit | sell_price | total_price
+--------------------------------------+--------------------------------------+------------------+------------------------------------------------------------------------------+------------------+---------------+--------------+------------+-------------
+c8187f0b-cd87-429d-8f78-90d60ee1e97b | 31047029-2175-43ce-9fdd-b3d568b19bb2 | Janice Evernathy | Medium lift arms capable of lifting 850lbs of weight per arm.
+Sold as a set.
+| Medium Lift Arms |       3199.99 |         1 |    3000.00 |     3199.99  f5448bdb-86e8-43a7-8d43-219bc6c0d56f | 31047029-2175-43ce-9fdd-b3d568b19bb2 |    Tomas Schwarz | Medium lift arms capable of lifting 850lbs of weight per arm.
+Sold as a set.
+| Medium Lift Arms |       3199.99 |         1 |    2900.00 |     3199.99
+
+(2 rows)
+```
+
+```
+SELECT * FROM products_by_orders WHERE product_unit > 1;
+```
+
+```
+ order_id                             | product_id                           | customer_name    | description                                                                                 | product_name    | product_price | product_unit | sell_price | total_price
+--------------------------------------+--------------------------------------+------------------+---------------------------------------------------------------------------------------------+-----------------+---------------+--------------+------------+-------------
+eae166d4-5818-4413-99c1-6a8acee538de | 31047029-2175-43ce-9fdd-b3d568b19bb0 | Janice Evernathy |               Heavy lift arms capable of lifting 1,250lbs of weight per arm.
+Sold as a set.
+| Heavy Lift Arms |  2199.99 |            2 |    8000.00 |     8399.98  d584e2d9-f23f-40d6-b706-ffc7ffd150d9 | 31047029-2175-43ce-9fdd-b3d568b19bb8 |     Michael Pasi | Robot torso built to handle precision jobs with extra stability and accuracy reinforcement.
+| Precision Torso |  8199.99 |            2 |   15000.00 |    16399.98
+
+(2 rows)
+```
+
+```
+SELECT * FROM products_by_orders WHERE product_unit > 1 AND product_name = 'Precision Torso';
+```
+
+```
+ order_id                             | product_id                           | customer_name | description                                                                                 | product_name    | product_price | product_unit | sell_price | total_price
+--------------------------------------+--------------------------------------+---------------+---------------------------------------------------------------------------------------------+-----------------+---------------+--------------+------------+-------------
+d584e2d9-f23f-40d6-b706-ffc7ffd150d9 | 31047029-2175-43ce-9fdd-b3d568b19bb8 |  Michael Pasi | Robot torso built to handle precision jobs with extra stability and accuracy reinforcement.
+| Precision Torso |       8199.99 |            2 |   15000.00 |    16399.98
+
+(1 rows)
+```
+
+```
+SELECT * FROM products_by_orders WHERE sell_price >= 2000 AND sell_price <= 4000;
+```
+
+```
+ order_id                             | product_id                           | customer_name    | description                                                                          | product_name        | product_price | product_unit | sell_price | total_price
+--------------------------------------+--------------------------------------+------------------+--------------------------------------------------------------------------------------+---------------------+---------------+--------------+------------+-------------
+fbef4936-f056-43eb-8028-8c460f7ea0f0 | 31047029-2175-43ce-9fdd-b3d568b19bb6 |    Tomas Schwarz |    Robot body with reinforced plate to handle heavy workload and weight during jobs.
+| High Strength Torso |       2199.99 |            1 |    2100.00 |     2199.99  c8187f0b-cd87-429d-8f78-90d60ee1e97b | 31047029-2175-43ce-9fdd-b3d568b19bb2 | Janice Evernathy |         Medium lift arms capable of lifting 850lbs of weight per arm.
+Sold as a set.
+|    Medium Lift Arms |       3199.99 |            1 |    3000.00 |     3199.99  6783967f-e14f-4cfc-8d2d-53d989a28cea | 31047029-2175-43ce-9fdd-b3d568b19bb3 |     Michael Pasi | Arms for drilling into surface material.
+Sold as a set.
+Does not include drill bits.
+|          Drill Arms |       2199.99 |            1 |    2000.00 |     2199.99  f5448bdb-86e8-43a7-8d43-219bc6c0d56f | 31047029-2175-43ce-9fdd-b3d568b19bb2 |    Tomas Schwarz |         Medium lift arms capable of lifting 850lbs of weight per arm.
+Sold as a set.
+|    Medium Lift Arms |       3199.99 |            1 |    2900.00 |     3199.99
+
+(4 rows)
+```
+
+```
+SELECT * FROM products_by_orders WHERE total_price < 3000 AND product_name = 'High Strength Torso';
+```
+
+```
+ order_id                             | product_id                           | customer_name | description                                                                       | product_name        | product_price | product_unit | sell_price | total_price
+--------------------------------------+--------------------------------------+---------------+-----------------------------------------------------------------------------------+---------------------+---------------+--------------+------------+-------------
+fbef4936-f056-43eb-8028-8c460f7ea0f0 | 31047029-2175-43ce-9fdd-b3d568b19bb6 | Tomas Schwarz | Robot body with reinforced plate to handle heavy workload and weight during jobs.
+| High Strength Torso |       2199.99 |            1 |    2100.00 |     2199.99
+
+(1 rows)
+```
+
+== Results
+Your Better Botz database now has SAI indexes defined!
+For high-volume data, SAI indexes make data writes and query retrieval faster.
+For more, see the link:https://docs.datastax.com/en/storage-attached-index/6.8/sai/saiTOC.html[SAI guide, window="_blank"].

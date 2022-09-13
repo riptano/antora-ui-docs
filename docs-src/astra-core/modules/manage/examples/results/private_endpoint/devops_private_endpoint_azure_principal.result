@@ -1,0 +1,6 @@
+{
+  "serviceName": "test.a51y2a51-f9j4-4ad2-l863-67e5ac6g10m.westus2.azure.privatelinkservice",
+  "allowedPrincipals": [
+    "9cbbd094-fa31-490f-863d-897d01661681"
+  ]
+}

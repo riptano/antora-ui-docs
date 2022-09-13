@@ -1,0 +1,17 @@
+== Classic databases: VPC peering
+:page-tag: dev,astra-db,connect
+
+By creating a virtual private cloud (VPC), you can connect your VPC resources and {company} {astra_db} databases. VPC peering allows you to communicate across the VPCs.
+
+[NOTE]
+====
+VPC peering is available on only Classic C- and D-tier {astra_db} databases.
+====
+
+VPC peering is available for all cloud providers available on {astra_db}:
+
+* xref:using-aws-vpc-peering.adoc[Connect using AWS VPC peering]
+* xref:using-gcp-vpc-peering.adoc[Connect using Google Cloud VPC peering]
+* xref:connect-with-azure-vpc-peering.adoc[Connect using Azure VPC peering]
+
+// include::partial$warning-classic-vpc-access-list.adoc[]

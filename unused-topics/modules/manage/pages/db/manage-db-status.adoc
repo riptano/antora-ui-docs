@@ -1,0 +1,54 @@
+= Database statuses
+
+Your database can exist in a range of statuses. These statuses vary based on the actions you take within your database.
+
+To see the system status of Astra, see https://status.astra.datastax.com/.
+
+To see the status of a specific database, view your database *Dashboard*.
+
+== All databases
+
+=== Active
+Your database is available and ready to use.
+
+=== Initializing
+You've made your database selections. It should be ready for you to use soon.
+
+=== Terminating
+You have terminated your database, which means your database and all of the data on your database will be removed. Your database is no longer available.
+
+=== Terminated
+Your database is terminated, which means your database and all of the data on your database will be removed. Your database is no longer available.
+
+=== Error
+Something is wrong with your database. Contact {support_url}[DataStax Support, window="_blank"].
+
+=== Maintenance
+When a database is moving into standby or restarting from standby, your database will display that it is in the *Maintenance* status.
+
+== Hibernated
+When an {astra_db} database on the *Free* plan has been unused for more than 23 hours, it will automatically enter the *Hibernated* status.
+
+[NOTE]
+====
+It may take a few minutes for your hibernated {astra_db} database to resume (return to *Active* status).
+====
+
+[TIP]
+====
+Database hibernation only occurs on the *Free* plan. *Hibernated* does not occur on the {astra_db} paid plans. To avoid *Hibernated*, and to take full advantage of additional {astra_db} functionality, upgrade from the *Free* plan to a *Pay As You Go* plan, or to an *Enterprise* plan. For details, see link:https://docs.datastax.com/en/astra/docs/pricing-and-billing.html[Pricing and billing] and the {astra_db} link:https://www.datastax.com/products/datastax-astra/pricing[pricing calculators].
+====
+
+== Classic databases
+
+=== Parking
+You parked your database. It is in the process of being parked and cannot be used again until you unpark your database.
+
+=== Parked
+You parked your database. It is unavailable and cannot be used again until you unpark your database.
+
+=== Unparking
+You unparked your database. It is unavailable until it is fully unparked and *Active* again.
+
+=== Resizing
+You resized your database to change your capacity. Your database has limited functionality while it is resized.

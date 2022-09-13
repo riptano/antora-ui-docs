@@ -1,0 +1,6 @@
+token@cqlsh> USE graphks;
+token@cqlsh:graphks> DESCRIBE TABLES;
+ 
+edgestore_lock_  graphindex_lock_         janusgraph_ids   
+txlog            systemlog                graphindex       
+edgestore        system_properties_lock_  system_properties

@@ -1,0 +1,29 @@
+= Drivers for Astra
+:slug: connecting-to-astra-databases-using-datastax-drivers
+
+Use one of the following {company} drivers to connect to your {company} {astra_db} database. Choose the {company} driver for your preferred programming language.
+
+* xref:connect:drivers/connect-cplusplus.adoc[Connecting C++ driver]
+* xref:connect:drivers/connect-csharp.adoc[Connecting C# driver]
+* xref:connect:drivers/connect-java.adoc[Connecting Java driver]
+* xref:connect:drivers/connect-nodejs.adoc[Connecting Node.js driver]
+* xref:connect:drivers/connect-python.adoc[Connecting Python driver]
+
+Before using the {company} drivers, review the https://docs.datastax.com/en/devapp/doc/devapp/driversBestPractices.html[Best practices for {company} drivers] to understand the rules and recommendations for improving performance and minimizing resource utilization in applications that use {company} drivers.
+
+[TIP]
+====
+{company} recommends using the unified {company} drivers.
+See this https://www.datastax.com/blog/2020/01/better-drivers-for-cassandra[blog post] for more information.
+You can also use the {company} Enterprise (DSE) drivers, which exposes the same API for connecting to Cassandra databases.
+====
+
+== CQL-Proxy
+
+DataStax CQL Proxy simplifies connecting to {astra_db} without having to change your Cassandra driver, driver version, and/or framework (springdata, lagom, akka-persistence-cassandra, quarkus, etc.). This new open source tool securely forwards your application's CQL traffic to an appropriate database service. CQL Proxy auto-discovers and auto-configures communication with Astra DB.
+
+If you are using a driver for an unsupported language or an driver for an unsupported language, consider using https://www.datastax.com/blog/easily-connect-apache-cassandra-workloads-to-datastaxs-serverless-dbaas-with-our-cql-proxy[CQL-proxy]. The cql-proxy sidecar enables unsupported CQL drivers to work with DataStax Astra.
+
+
+== Already have a {company} driver?
+xref:migrating-datastax-drivers-to-connect-to-astra-databases.adoc[Migrate your existing {company} driver] to connect to an {astra_db} database.

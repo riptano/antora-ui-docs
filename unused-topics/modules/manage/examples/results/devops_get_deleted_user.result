@@ -1,0 +1,13 @@
+{
+	"OrgID":"dccb8c32-cc2a-4bea-bd95-47ab8eb20510",
+	"ID":"b125f9ab-675e-4bc7-9306-5e50a05b7c56",
+	"Name":"newRoleName",
+	"Policy":"{
+		\"description\":\"keyspaces\",
+		\"resources\":[\"drn:astra:org:dccb8c32-cc2a-4bea-bd95-47ab8eb20510\"],
+		\"actions\":[\"db-all-keyspace-create\",\"db-all-keyspace-describe\"],
+		\"effect\":\"allow\"
+		}",
+	"LastUpdateDateTime":"",
+	"LastUpdateUserID":"wsbCtHyXCfuSHkiKbYWHsYZa"
+}

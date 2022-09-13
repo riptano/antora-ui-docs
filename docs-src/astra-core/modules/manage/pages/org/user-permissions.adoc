@@ -1,0 +1,999 @@
+= User permissions
+:slug: user-permissions
+
+Default and xref:manage:org/manage-custom-roles.adoc[custom roles] allow admins to manage unique permissions for users based on your organization and database requirements.
+
+You can manage roles using the xref:getting-started:gs-grant-user-access.adoc[{company} {astra_db} user interface] or the xref:manage:devops/devops-roles.adoc[DevOps API].
+
+== Which default roles are available?
+
+=== Default Operational Roles
+
+The default roles address four types of operational users and three levels of access. 
+
+
+This matrix show how the four types of operational users with each of the three levels of access:
+|===
+||*User*|*API User*|*User Service Account*|*API Service Account*
+
+|*Admin*|Administrator User|API Administrator User|Administrator Svc Acct|API Administrator Svc Acct
+|*Read Only*|RO User|API RO User|RO Svc Acct|API RO Svc Acct
+|*Read/Write*|R/W User|API R/W User|R/W Svc Acct|API R/W Svc Acct
+|===
+
+Service Account Roles are limited from listing users and databases. API Roles limit CQL access.
+
+
+
+=== Default Special Roles
+In addition to the operational roles, four special default roles exist:
+
+* **Organization Administrator:** Super User
+* **Database Administrator:** Full access to CRUD organizations and databases
+* **UI View Only:** Read only access to view organizations and databases
+* **Billing Admin:** Billing only access
+
+=== Operational Roles Detail
+
+==== User Roles
+
+
+|===
+|*Role name*|*Console name*|*DevOps API Parameters*
+
+|Admin User|
+Create All Keyspace, +
+Describe All Keyspaces, +
+Access GraphQL API, +
+Access CQL, +
+Alter Keyspace, +
+Authorize Keyspace, +
+Create Keyspace, +
+Describe Keyspace, +
+Drop Keyspace, +
+Grant Keyspace, +
+Modify Keyspace, +
+Manage Private Endpoint, +
+Manage Region, +
+(n/a), +
+Access REST, +
+Alter Table, +
+Authorize Table, +
+Create Table, +
+Describe Table, +
+Drop Table, +
+Grant Table, +
+Modify Table, +
+Select Table, +
+Read Billing, +
+Write Billing, +
+Add Peering, +
+Create DB, +
+Expand DB, +
+Manage Migrator Proxy, +
+Reset Password, +
+Suspend DB, +
+Terminate DB, +
+View DB, +
+Read Organization, +
+Read User, +
+Write User
+|
+db-all-keyspace-create, +
+db-all-keyspace-describe, +
+db-graphql, +
+db-cql, +
+db-keyspace-alter, +
+db-keyspace-authorize, +
+db-keyspace-create, +
+db-keyspace-describe, +
+db-keyspace-drop, +
+db-keyspace-grant, +
+db-keyspace-modify, +
+db-manage-privateendpoint, +
+db-manage-region, +
+db-manage-thirdpartymetrics, +
+db-rest, +
+db-table-alter, +
+db-table-authorize, +
+db-table-create, +
+db-table-describe, +
+db-table-drop, +
+db-table-grant, +
+db-table-modify, +
+db-table-select, +
+org-billing-read, +
+org-billing-write, +
+org-db-addpeering, +
+org-db-create, +
+org-db-expand, +
+org-db-managemigratorproxy, +
+org-db-passwordreset, +
+org-db-suspend, +
+org-db-terminate, +
+org-db-view, +
+org-read, +
+org-user-read, +
+org-user-write
+
+|RO User|
+Read IP Access List, +
+Describe All Keyspaces, +
+Access GraphQL API, +
+Access CQL, +
+Describe Keyspace, +
+Access REST, +
+Describe Table, +
+Select Table, +
+View DB, +
+Read User
+|accesslist-read, +
+db-all-keyspace-describe, +
+db-graphql, +
+db-cql, +
+db-keyspace-describe, +
+db-rest, +
+db-table-describe, +
+db-table-select, +
+org-db-view, +
+org-user-read
+
+|R/W User|
+Read IP Access List, +
+Describe All Keyspaces, +
+Access GraphQL API, +
+Access CQL, +
+Describe Keyspace, +
+Access REST, +
+Describe Table, +
+Modify Table, +
+Select Table, +
+View DB, +
+Read User
+|
+accesslist-read, +
+db-all-keyspace-describe, +
+db-graphql, +
+db-cql, +
+db-keyspace-describe, +
+db-rest, +
+db-table-describe, +
+db-table-modify, +
+db-table-select, +
+org-db-view, +
+org-user-read
+|===
+
+
+==== API User Roles
+
+
+|===
+|*Role name*|*Console name*|*DevOps API Parameters*
+
+|API Admin User|
+Read IP Access List, +
+Create All Keyspace, +
+Describe All Keyspaces, +
+Access GraphQL API, +
+Alter Keyspace, +
+Authorize Keyspace, +
+Create Keyspace, +
+Describe Keyspace, +
+Drop Keyspace, +
+Grant Keyspace, +
+Modify Keyspace, +
+Manage Private Endpoint, +
+Manage Region, +
+(n/a), +
+Access REST, +
+Alter Table, +
+Authorize Table, +
+Create Table, +
+Describe Table, +
+Drop Table, +
+Grant Table, +
+Modify Table, +
+Select Table, +
+Read Billing, +
+Write Billing, +
+Add Peering, +
+Create DB, +
+Expand DB, +
+Manage Migrator Proxy, +
+Reset Password, +
+Suspend DB, +
+Terminate DB, +
+View DB, +
+Read User, +
+Write User
+|
+accesslist-read, +
+db-all-keyspace-create, +
+db-all-keyspace-describe, +
+db-graphql, +
+db-keyspace-alter, +
+db-keyspace-authorize, +
+db-keyspace-create, +
+db-keyspace-describe, +
+db-keyspace-drop, +
+db-keyspace-grant, +
+db-keyspace-modify, +
+db-manage-privateendpoint, +
+db-manage-region, +
+db-manage-thirdpartymetrics, +
+db-rest, +
+db-table-alter, +
+db-table-authorize, +
+db-table-create, +
+db-table-describe, +
+db-table-drop, +
+db-table-grant, +
+db-table-modify, +
+db-table-select, +
+org-billing-read, +
+org-billing-write, +
+org-db-addpeering, +
+org-db-create, +
+org-db-expand, +
+org-db-managemigratorproxy, +
+org-db-passwordreset, +
+org-db-suspend, +
+org-db-terminate, +
+org-db-view, +
+org-user-read, +
+org-user-write
+
+|API RO User|
+Read IP Access List, +
+Describe All Keyspaces, +
+Access GraphQL API, +
+Describe Keyspace, +
+Access REST, +
+Describe Table, +
+Select Table, +
+View DB, +
+Read User
+|
+accesslist-read, +
+db-all-keyspace-describe, +
+db-graphql, +
+db-keyspace-describe, +
+db-rest, +
+db-table-describe, +
+db-table-select, +
+org-db-view, +
+org-user-read
+
+|API R/W User|
+Read IP Access List, +
+Describe All Keyspaces, +
+Access GraphQL API, +
+Describe Keyspace, +
+Access REST, +
+Describe Table, +
+Modify Table, +
+Select Table, +
+View DB, +
+Read User
+|
+accesslist-read, +
+db-all-keyspace-describe, +
+db-graphql, +
+db-keyspace-describe, +
+db-rest, +
+db-table-describe, +
+db-table-modify, +
+db-table-select, +
+org-db-view, +
+org-user-read
+|===
+
+==== User Service Account Roles
+
+
+|===
+|*Role name*|*Console name*|*DevOps API Parameters*
+
+|Admin Svc Acct|
+Create All Keyspace, +
+Describe All Keyspaces, +
+Access GraphQL API, +
+Access CQL, +
+Alter Keyspace, +
+Authorize Keyspace, +
+Create Keyspace, +
+Describe Keyspace, +
+Drop Keyspace, +
+Grant Keyspace, +
+Modify Keyspace, +
+Manage Private Endpoint, +
+Manage Region, +
+Access REST, +
+Alter Table, +
+Authorize Table, +
+Create Table, +
+Describe Table, +
+Drop Table, +
+Grant Table, +
+Modify Table, +
+Select Table, +
+Read Billing, +
+Write Billing, +
+Add Peering, +
+Create DB, +
+Expand DB, +
+Manage Migrator Proxy, +
+Reset Password, +
+Suspend DB, +
+Terminate DB, +
+View DB, +
+Read User, +
+Write User
+|
+db-all-keyspace-create, +
+db-all-keyspace-describe, +
+db-graphql, +
+db-cql, +
+db-keyspace-alter, +
+db-keyspace-authorize, +
+db-keyspace-create, +
+db-keyspace-describe, +
+db-keyspace-drop, +
+db-keyspace-grant, +
+db-keyspace-modify, +
+db-manage-privateendpoint, +
+db-manage-region, +
+db-rest, +
+db-table-alter, +
+db-table-authorize, +
+db-table-create, +
+db-table-describe, +
+db-table-drop, +
+db-table-grant, +
+db-table-modify, +
+db-table-select, +
+org-billing-read, +
+org-billing-write, +
+org-db-addpeering, +
+org-db-create, +
+org-db-expand, +
+org-db-managemigratorproxy, +
+org-db-passwordreset, +
+org-db-suspend, +
+org-db-terminate, +
+org-db-view, +
+org-user-read, +
+org-user-write
+
+|RO Svc Acct|
+Read IP Access List, +
+Describe All Keyspaces, +
+Access GraphQL API, +
+Access CQL, +
+Describe Keyspace, +
+Access REST, +
+Describe Table, +
+Select Table
+|
+accesslist-read, +
+db-all-keyspace-describe, +
+db-graphql, +
+db-cql, +
+db-keyspace-describe, +
+db-rest, +
+db-table-describe, +
+db-table-select
+
+|R/W Svc Acct|
+Read IP Access List, +
+Describe All Keyspaces, +
+Access GraphQL API, +
+Access CQL, +
+Describe Keyspace, +
+Access REST, +
+Describe Table, +
+Modify Table, +
+Select Table
+|
+accesslist-read, +
+db-all-keyspace-describe, +
+db-graphql, +
+db-cql, +
+db-keyspace-describe, +
+db-rest, +
+db-table-describe, +
+db-table-modify, +
+db-table-select
+|===
+
+==== API Service Account Roles
+
+
+|===
+|*Role name*|*Console name*|*DevOps API Parameters*
+
+|API Admin Svc Acct|
+Create All Keyspace, +
+Describe All Keyspaces, +
+Access GraphQL API, +
+Access CQL, +
+Alter Keyspace, +
+Authorize Keyspace, +
+Create Keyspace, +
+Describe Keyspace, +
+Drop Keyspace, +
+Grant Keyspace, +
+Modify Keyspace, +
+Manage Private Endpoint, +
+Manage Region, +
+(n/a), +
+Access REST, +
+Alter Table, +
+Authorize Table, +
+Create Table, +
+Describe Table, +
+Drop Table, +
+Grant Table, +
+Modify Table, +
+Select Table, +
+Read Billing, +
+Write Billing, +
+Add Peering, +
+Create DB, +
+Expand DB, +
+Manage Migrator Proxy, +
+Reset Password, +
+Suspend DB, +
+Terminate DB, +
+View DB, +
+Read User, +
+Write User
+|
+db-all-keyspace-create, +
+db-all-keyspace-describe, +
+db-graphql, +
+db-cql, +
+db-keyspace-alter, +
+db-keyspace-authorize, +
+db-keyspace-create, +
+db-keyspace-describe, +
+db-keyspace-drop, +
+db-keyspace-grant, +
+db-keyspace-modify, +
+db-manage-privateendpoint, +
+db-manage-region, +
+db-manage-thirdpartymetrics, +
+db-rest, +
+db-table-alter, +
+db-table-authorize, +
+db-table-create, +
+db-table-describe, +
+db-table-drop, +
+db-table-grant, +
+db-table-modify, +
+db-table-select, +
+org-billing-read, +
+org-billing-write, +
+org-db-addpeering, +
+org-db-create, +
+org-db-expand, +
+org-db-managemigratorproxy, +
+org-db-passwordreset, +
+org-db-suspend, +
+org-db-terminate, +
+org-db-view, +
+org-user-read, +
+org-user-write
+
+|API RO Svc Acct|
+Read IP Access List, +
+Describe All Keyspaces, +
+Access GraphQL API, +
+Describe Keyspace, +
+Access REST, +
+Describe Table, +
+Select Table
+|
+accesslist-read, +
+db-all-keyspace-describe, +
+db-graphql, +
+db-keyspace-describe, +
+db-rest, +
+db-table-describe, +
+db-table-select
+
+|API R/W Svc Acct|
+Read IP Access List, +
+Describe All Keyspaces, +
+Access GraphQL API, +
+Describe Keyspace, +
+Access REST, +
+Describe Table, +
+Modify Table, +
+Select Table
+|
+accesslist-read, +
+db-all-keyspace-describe, +
+db-graphql, +
+db-keyspace-describe, +
+db-rest, +
+db-table-describe, +
+db-table-modify, +
+db-table-select
+|===
+
+
+=== Special Roles Detail
+
+==== Billing Admin
+
+
+The Billing Admin role provides only access to view the billing information for {astra_db} services. This role has no management capabilities nor access to data.
+
+|===
+|*Console name*|*DevOps API Parameters*
+
+|
+Read Billing, +
+Write Billing, +
+View DB, +
+Read User
+|
+org-billing-read, +
+org-billing-write, +
+org-db-view, +
+org-user-read
+|===
+
+==== Database Administrator
+
+The Database Administrator role is designed to effectively manage organizations and the databases using CRUD. This role does not have the ability to view billing, mange role-based access control (RBAC), or manage users. 
+
+|===
+|*Console name*|*DevOps API Parameters*
+
+|
+Read IP Access List, +
+Write IP Access List, +
+Create All Keyspace, +
+Describe All Keyspaces, +
+Access GraphQL API, +
+Access CQL, +
+Alter Keyspace, +
+Authorize Keyspace, +
+Create Keyspace, +
+Describe Keyspace, +
+Drop Keyspace, +
+Grant Keyspace, +
+Modify Keyspace, +
+Manage Private Endpoint, +
+Manage Region, +
+(n/a), +
+Access REST, +
+Alter Table, +
+Authorize Table, +
+Create Table, +
+Describe Table, +
+Drop Table, +
+Grant Table, +
+Modify Table, +
+Select Table, +
+Add Peering, +
+Create DB, +
+Expand DB, +
+Manage Migrator Proxy, +
+Reset Password, +
+Suspend DB, +
+Terminate DB, +
+View DB, +
+Read Token, +
+Write Token, +
+Read User
+|
+accesslist-read, +
+accesslist-write, +
+db-all-keyspace-create, +
+db-all-keyspace-describe, +
+db-graphql, +
+db-cql, +
+db-keyspace-alter, +
+db-keyspace-authorize, +
+db-keyspace-create, +
+db-keyspace-describe, +
+db-keyspace-drop, +
+db-keyspace-grant, +
+db-keyspace-modify, +
+db-manage-privateendpoint, +
+db-manage-region, +
+db-manage-thirdpartymetrics, +
+db-rest, +
+db-table-alter, +
+db-table-authorize, +
+db-table-create, +
+db-table-describe, +
+db-table-drop, +
+db-table-grant, +
+db-table-modify, +
+db-table-select, +
+org-db-addpeering, +
+org-db-create, +
+org-db-expand, +
+org-db-managemigratorproxy, +
+org-db-passwordreset, +
+org-db-suspend, +
+org-db-terminate, +
+org-db-view, +
+org-token-read, +
+org-token-write, +
+org-user-read
+|===
+
+==== Organization Administrator
+
+The Organization Administrator role is the most permissive default role.
+
+|===
+|*Console name*|*DevOps API Parameters*
+
+|
+Read IP Access List, +
+Write IP Access List, +
+Create All Keyspace, +
+Describe All Keyspaces, +
+Access GraphQL API, +
+Access CQL, +
+Alter Keyspace, +
+Authorize Keyspace, +
+Create Keyspace, +
+Describe Keyspace, +
+Drop Keyspace, +
+Grant Keyspace, +
+Modify Keyspace, +
+Manage Private Endpoint, +
+Manage Region, +
+(n/a), +
+Access REST, +
+Alter Table, +
+Authorize Table, +
+Create Table, +
+Describe Table, +
+Drop Table, +
+Grant Table, +
+Modify Table, +
+Select Table, +
+Read Audits, +
+Read Billing, +
+Write Billing, +
+Add Peering, +
+Create DB, +
+Expand DB, +
+Manage Migrator Proxy, +
+Reset Password, +
+Suspend DB, +
+Terminate DB, +
+View DB, +
+Read External Auth, +
+Write External Auth, +
+Notification Write, +
+Read Organization, +
+Delete Custom Role, +
+Read Custom Role, +
+Write Custom Role, +
+Read Token, +
+Write Token, +
+Read User, +
+Write User, +
+Write Organization
+|
+accesslist-read, +
+accesslist-write, +
+db-all-keyspace-create, +
+db-all-keyspace-describe, +
+db-graphql, +
+db-cql, +
+db-keyspace-alter, +
+db-keyspace-authorize, +
+db-keyspace-create, +
+db-keyspace-describe, +
+db-keyspace-drop, +
+db-keyspace-grant, +
+db-keyspace-modify, +
+db-manage-privateendpoint, +
+db-manage-region, +
+db-manage-thirdpartymetrics, +
+db-rest, +
+db-table-alter, +
+db-table-authorize, +
+db-table-create, +
+db-table-describe, +
+db-table-drop, +
+db-table-grant, +
+db-table-modify, +
+db-table-select, +
+org-audits-read, +
+org-billing-read, +
+org-billing-write, +
+org-db-addpeering, +
+org-db-create, +
+org-db-expand, +
+org-db-managemigratorproxy, +
+org-db-passwordreset, +
+org-db-suspend, +
+org-db-terminate, +
+org-db-view, +
+org-external-auth-read, +
+org-external-auth-write, +
+org-notification-write, +
+org-read, +
+org-role-delete, +
+org-role-read, +
+org-role-write, +
+org-token-read, +
+org-token-write, +
+org-user-read, +
+org-user-write, +
+org-write
+|===
+
+==== UI View Only
+
+The UI View Only role is a highly limited role that is only able to list users, databases, and access lists.
+
+|===
+|*Console name*|*DevOps API Parameters*
+
+|
+Read IP Access List, +
+View DB, +
+Read User
+|
+accesslist-read, +
+org-db-view, +
+org-user-read
+|===
+
+
+== Custom permissions
+The tables below contain detailed descriptions of each of the permissions available in {astra_db} and can be used to get more detail on the permissions assigned to the roles above.
+
+=== Organization permissions
+
+[cols=3*,options=header]
+|===
+|Console name
+|Description
+|DevOps API parameter
+
+|View DB
+|See a database in a list of databases or {astra_ui}.
+|org-db-view
+
+|Create DB
+|Create a database using the DevOps API or {astra_ui}.
+|org-db-create
+
+|Terminate DB
+|Permanently delete a database and all of of its data using the DevOps API or {astra_ui}.
+|org-db-terminate
+
+|Expand DB
+|*{classic_cap} only:* Resize a database using the DevOps API or {astra_ui} to add more capacity units.
+|org-db-expand
+
+|Reset Password
+|Reset the password for a classic database.
+|org-db-passwordreset
+
+|Manage Migrator Proxy
+|Add and remove the migrator proxy from a db.
+|org-db-managemigratorproxy
+
+|Read Audits
+|Enables read and download audits.
+|org-audits-read
+
+|Write Billing
+|Enables links and ability to add or edit billing payment info.
+|org-billing-write
+
+|Write IP Access List
+|Create or modify an access list using the DevOps API or {astra_ui}.
+|accesslist-write
+
+|Manage Region
+|Add, create, or remove a region using the DevOps API or {astra_ui}.
+|db-manage-region
+
+|Write User
+|Add, create, or remove a user using the DevOps API or {astra_ui}.
+|org-user-write
+
+|Write Organization
+|Create new organizations or delete an existing organization. Hides manage org and org settings.
+|org-write
+
+|Write Custom Role
+|Create custom role.
+|org-role-write
+
+|Write External Auth
+|Update security settings related to external auth providers.
+|org-external-auth-write
+
+|Write Token
+|Create application token.
+|org-token-write
+
+|Read Billing
+|Enables links and access to billing details page.
+|org-billing-read
+
+|Read IP Access List
+|Enables links and access to acess list page.
+|accesslist-read
+
+|Read User
+|Access to viewing users of an organization.
+|org-user-read
+
+|Read Organization
+|View organization in {astra_ui}.
+|org-read
+
+|Read Custom Role
+|See a custom role and its associated permissions.
+|org-role-read
+
+|Read External Auth
+|See security settings related to external authentication providers.
+|org-external-auth-read
+
+|Read Token
+|Read token details.
+|org-token-read
+
+|Delete Custom Role
+|Delete of custom role.
+|org-role-delete
+
+|Add Peering
+|Create of VPC peering connection.
+|org-db-addpeering
+
+|Notification Write
+|Enable or disable notifications in organization notification settings.
+|org-notification-write
+
+|Suspend DB
+|Park/unpark classic databases and suspend/unsuspend serverless databases.
+|org-db-suspend
+
+
+|===
+
+=== Keyspace permissions
+
+[cols=3*,options=header]
+|===
+|Console name
+|Description
+|DevOps API parameter
+
+|Alter Keyspace
+|Make changes to a specified keyspace.
+|db-keyspace-alter
+
+|Describe Keyspace
+|Get a list of tables within a specified keyspace.
+|db-keyspace-describe
+
+|Modify Keyspace
+|Access or modify a keyspace.
+|db-keyspace-modify
+
+|Authorize Keyspace
+|Give access to specified keyspace.
+|db-keyspace-authorize
+
+|Drop Keyspace
+|Remove keyspace. Available in only {astra_ui}.
+|db-keyspace-drop
+
+|Create Keyspace
+|Create keyspace. Available in only {astra_ui}.
+|db-keyspace-create
+
+|Grant Keyspace
+|Grant specific permissions for specified keyspace.
+|db-keyspace-grant
+
+|===
+
+=== API access permissions
+
+[cols=3*,options=header]
+|===
+|Console name
+|Description
+|DevOps API parameter
+
+|Access GraphQL API
+|Connect to database via GraphQL API.
+|db-graphql
+
+|Access REST
+|Connect to database via REST API.
+|db-rest
+
+|Access CQL
+|Connect to database via CQL.
+|db-cql
+
+|===
+== Which role should I assign a user?
+
+[cols=2*,options=header]
+|===
+|Database Access Method
+|Roles
+
+|Astra User Interface access
+a| * Organization Administrator
+* Database Administrator
+* Billing Administrator
+* UI View Only
+* Developer Administrator
+* Developer Read/Write
+* Developer Read Only
+* Administrator Service Account
+* Read/Write Service Account
+* Read Only Service Account
+
+|GraphQL, REST, and Document API access based on database access permissions
+a| * Organization Administrator
+* Database Administrator
+* Billing Administrator
+* UI View Only
+* Administrator User
+* Read/Write User
+* Read Only User
+* Administrator Service Account
+* Read/Write Service Account
+* Read Only Service Account
+* API Administrator User
+* API Read/Write User
+* API Read Only User
+* API Administrator Service Account
+* API Read/Write Service Account
+* API Read Only Service Account
+
+|Data Loader access based on database access permissions
+a| * Administrator User
+* Read/Write User
+* Read Only User
+* Administrator Service Account
+* Read/Write Service Account
+* Read Only Service Account
+
+|dsbulk access based on database access permissions
+a| * Read/Write Service Account
+* Read Only Service Account
+
+|DevOps API access based on database access permissions
+a| * Organization Administrator
+* Database Administrator
+
+|Drivers based on database access permissions
+a| * Administrator User
+* Read/Write User
+* Read Only User
+* Administrator Service Account
+* Read/Write Service Account
+* Read Only Service Account
+
+|Manage access list for IP addresses and CIDR
+a| * Organization Administrator
+* Database Administrator
+
+|===

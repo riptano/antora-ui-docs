@@ -1,0 +1,8 @@
+= Getting started with {company} {astra_db}
+
+Check out the resources available to build a xref:sample-apps.adoc[sample app] or use xref:integrations.adoc[integrations]. 
+Or jump in to xref:getting-started:gs-drivers.adoc[get started with the drivers on {astra_db}].
+
+And these videos are a great way to start:
+
+video::k5b5TiafAAM[youtube, list=PL2g2h-wyI4SpWK1G3UaxXhzZc6aUFXbvL]

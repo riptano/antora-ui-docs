@@ -1,0 +1,72 @@
+= Migrating C++ driver
+:page-tag: driver,dev,astra-db,connect
+
+Complete the following procedure to migrate your existing {company} C++ driver to a version that is capable of connecting to Astra databases created using {company} {astra_db}.
+
+. In your existing {company} C++ driver code, modify the connection code to use the {astra_db} API.
++
+[NOTE]
+====
+Both the {company} C++ driver for Apache Cassandra and the {company} Enterprise (DSE) C++ driver use the same code to connect and query your Astra database.
+When using the DSE C++ driver, use the header `#include <dse.h>`.
+====
++
+The `secure_connect_bundle` must include the absolute path to your Astra database credentials (`+secure-connect-**database_name**.zip+`).
++
+[source,c++]
+----
+cass_cluster_set_credentials(cluster, "clientId", "clientSecret");
+
+  CassFuture* connect_future = cass_session_connect(session, cluster);
+  if (cass_future_error_code(connect_future) == CASS_OK) {
+    * Use the session to run queries _
+    }
+  else {
+    _ Handle error *
+  }
+----
+
+. Build and link your application against the {company} C++ driver.
++
+* *Linux or macOS*
++
+[NOTE]
+====
+For static linking, use `cassandra_static.a` or `dse_static.a`.
+====
++
+[tabs]
+====
+{company} C++ driver for Apache Cassandra::
++
+--
+[source,c++]
+----
+cc connect-database.c -I/path/to/cassandra.h -L/path/to/cassandra.so -lcassandra
+----
+--
+DSE C++ driver::
++
+--
+[source,c++]
+----
+cc connect-database.c -I/path/to/dse.h -L/path/to/dse.so -ldse
+----
+--
+====
++
+* **Windows**
+Include these libraries in your Microsoft Visual Studio project by adding them to the project’s properties under ]``Configuration Properties/Linker/Input/Additional Dependencies``.
++
+[NOTE]
+====
+For static linking, use ``cassandra_static.lib`` or ``dse_static.lib``pass:c[.
+====
+
+_{company} C++ driver for Apache Cassandra_
+Link your application against ``cassandra.lib``.
+Your application will also require ``cassandra.dll` to be in your runtime path.
+
+_DSE C++ driver_
+Link your application against `dse.lib`.
+Your application will also require `dse.dll` to be in your runtime path.

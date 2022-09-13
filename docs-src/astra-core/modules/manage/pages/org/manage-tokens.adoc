@@ -1,0 +1,33 @@
+= Manage application tokens
+:slug: manage-application-tokens
+
+Application tokens allow you to connect to your database from your application using the Document, REST, and GraphQL APIs for {company} {astra_db}. +
+As of 4 March 2021, your {astra_db} username and password will not work for your database. You will need to use an application token to connect to your database.
+
+== Create application token
+
+include::ROOT:partial$create_app_token.adoc[]
+
+include::ROOT:partial$app_token_next_steps.adoc[]
+
+include::ROOT:partial$note_clientid_connections.adoc[]
+
+== Set environment variables
+
+In your command-line interface associated with your environment, paste the following environment variables copied for your {astra_db} database:
+
+[source, shell, subs="attributes+"]
+----
+export ASTRA_DB_ID=<database_id>
+export ASTRA_DB_REGION=<database_region>
+export ASTRA_DB_KEYSPACE=<keyspace_name>
+export ASTRA_DB_APPLICATION_TOKEN=<app_token>
+----
+
+== Delete application token
+
+If you need to limit access to your database, you can delete an application token.
+
+. Select the overflow menu for the application token you want to delete.
+. Select *Delete* to delete that application token.
+. If necessary, generate a new application token for the same user role.

@@ -1,0 +1,127 @@
+= Using multiple regions
+
+You can replicate data to multiple regions for high availability scenarios to ensure active-active applications failover models.
+Multiple regions also ensure application data availability for locality purposes with the added value of cost savings.
+
+Because multiple regions will increase your billing, see xref:manage:org/manage-billing.adoc[Pricing and billing] for more details.
+
+== {serverless_cap} databases
+
+include::ROOT:partial$note_region.adoc[]
+
+=== Add a new region to your database
+
+. From you database Dashboard, select *Add Region*.
++
+image::ROOT:db-multiregion1.png[]
+
+. Select your desired region from the dropdown menu of available.
++
+You can review your selected region and its cost below the dropdown menu.
++
+[NOTE]
+====
+You can add only a single region at one time.
+====
++
+image::ROOT:db-multiregion2.png[]
+
+. Select *Add Region* to add the region to your database.
+
+After you add the new region, your new region will show up in the list of regions on your database Dashboard.
+Your existing region status will change to `Maintenance`, but will still be available for operations.
+
+image::ROOT:db-multiregion3.png[]
+
+[NOTE]
+====
+The information displayed on the *Connect* page for your database is region specific.
+====
+
+=== Delete a region from your database
+
+include::ROOT:partial$note_delete-region.adoc[]
+
+[CAUTION]
+====
+Removing a region is not reversible. Proceed with caution.
+====
+
+. From you database Dashboard, select the overflow menu for the database you want to delete.
+. Select *Delete*.
++
+image::ROOT:db-multiregion5.png[]
+
+. Type "delete" in the text bar.
++
+image::ROOT:db-multiregion6.png[]
+
+. Select *Delete* to delete your region.
++
+image::ROOT:db-multiregion7.png[]
+
+=== Limitations
+Lightweight transactions work for only a single-region datacenter.
+
+If you original region is disconnected, schema changes are suspended and repairs do not run.
+If any regions are disconnected, the writes to those regions will not be forwarded.
+
+While adding a new region, you cannot drop a table or keyspace and you cannot truncate a table.
+
+If any region is not online, you cannot truncate a table.
+
+[[classic-databases]]
+== {classic_cap} databases
+
+include::ROOT:partial$note_region.adoc[]
+
+=== Adding a region to your {classic} database
+
+. Open a browser, navigate to link:https://astra.datastax.com[DataStax Astra, window="_blank"], and log in.
+
+[arabic,start=2]
+. On the *Dashboard* page, select the database name to access the **Overview** page for your selected database.
+
+[arabic,start=3]
+. Select **Add Region**.
+
+[arabic,start=4]
+. Select the region you want to add from the **Add Region** menu.
+
+[arabic,start=5]
+. Select **Add**.
+
+[arabic,start=6]
+. Confirm you want to add the region by selecting **Confirm**.
+
+You'll see a screen confirming the new datacenter region is being added.
+Once you add a region, a maintenance period starts that might take up to 30 minutes.
+Your database will have limited availability during this window.
+Some actions, such as viewing database connection details, might be unavailable until maintenance is finished.
+
+=== Removing a region from your database
+
+[arabic,start=1]
+. Open a browser, navigate to link:https://astra.datastax.com[DataStax Astra, window="_blank"], and log in.
+
+[arabic,start=2]
+. On the *Dashboard* page, select the database name to access the **Overview** page for your selected database.
+
+[arabic,start=3]
+. Select **Remove Region** from the overflow menu for the region you want to remove.
+
+[arabic,start=4]
+. Enter your datacenter id, which is provided in the prompt.
+
+[arabic,start=5]
+. Select **Remove region**.
+
+[CAUTION]
+====
+Removing a region is not reversible. Proceed with caution.
+====
+
+You'll see a screen confirming the datacenter location will be removed.
+Once you remove a location, a maintenance period starts that might take up to 30 minutes.
+Your database will have limited availability during this window.
+Some actions, such as viewing database connection details, might be unavailable until maintenance is finished.

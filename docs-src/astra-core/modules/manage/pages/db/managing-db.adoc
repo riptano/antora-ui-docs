@@ -1,0 +1,28 @@
+= Managing your {astra_db} database
+:page-tag: manage,astra-db
+
+As a database administrator, you can manage your database. This includes the following tasks:
+
+include::page$db/manage-create.adoc[Create your database, leveloffset=+1]
+
+include::page$db/manage-db-summary.adoc[View your databases, leveloffset=+1]
+
+include::page$db/manage-db-status.adoc[Database statuses, leveloffset=+1]
+
+include::page$db/manage-monitoring.adoc[Monitor your databases, leveloffset=+1]
+
+include::page$db/third-party-metrics.adoc[Export metrics to third party, leveloffset=+1]
+
+include::page$db/manage-access-list.adoc[Manage access list for public endpoints, leveloffset=+1]
+
+include::page$db/manage-keyspaces.adoc[Manage multiple keyspaces, leveloffset=+1]
+
+include::page$db/manage-multi-region.adoc[Using multiple regions, leveloffset=+1]
+
+include::page$db/manage-terminate-db.adoc[Terminating your database, leveloffset=+1]
+
+include::page$db/manage-resize-db.adoc[Resizing your {classic} database, leveloffset=+1]
+
+include::page$db/manage-park-db.adoc[Parking your {classic} database, leveloffset=+1]
+
+include::page$db/manage-unpark-db.adoc[Unparking your {classic} database, leveloffset=+1]

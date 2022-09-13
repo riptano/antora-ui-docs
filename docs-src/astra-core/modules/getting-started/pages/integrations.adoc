@@ -1,0 +1,97 @@
+= Use integrations with Astra DB
+
+Expand how you interact with your {company} {astra_db} database by exploring these integration articles. Also see these related topics:
+
+* https://docs.datastax.com/en/astra-serverless/docs/getting-started/integration-datagrip.html[Connect with DataGrip]
+* https://docs.datastax.com/en/astra-serverless/docs/getting-started/integration-dbschema.html[Connect with DBSchema]
+* https://docs.datastax.com/en/astra-serverless/docs/getting-started/integration-janusgraph.html[Connect with JanusGraph]
+* https://docs.datastax.com/en/astra-serverless/docs/getting-started/integration-strapi.html[Connect with Strapi]
+
+== Track Schema Changes with Liquibase
+
+You can use Liquibase with Cassandra&reg; on {astra_db}. 
+
+https://docs.liquibase.com/workflows/database-setup-tutorials/cassandra-astra.html[Learn how, window="_blank"] in this Liquibase article.
+
+image::ROOT:Using+Liquibase+with+Cassandra+on+DataStax+Astra++Liquibase+Docs+2020-12-15+10-42-34.png["Liquibase sample partial screen,500]
+
+50 minutes, Operator Tools | Updated on Dec 15th, 2020 | Robert Reeves, Liquibase
+
+== Knowi BI Reporting and Analysis
+
+You can use Knowi to connect to {astra_db}, analyze, and visualize data. 
+
+https://www.knowi.com/blog/datastax-astra-analytics-tutorial/[Learn how, window="_blank"] in this Knowi article.
+
+image::ROOT:Knowi-DataStax-Astra-Tutorial.png["knowi BI sample screen",500]
+
+30 minutes, BI/ML Reporting Tools | Updated on Dec 15th, 2020 | Patrick Bacon, Knowi
+
+
+== Connecting to Astra DB from DataGrip via JDBC
+
+This integration example shows a simple way to use Intellij's DataGrip with {astra_db}.  
+
+https://www.sestevez.com/astra-datagrip/[Learn how, window="_blank"] in this blog post by Sebastian Estevez. 
+
+image::https://www.sestevez.com/content/images/2020/07/image.png["DataGrip sample screen",500]
+
+5 minutes, Developer Tools | Updated on Dec 10th, 2020 | Sebastian Estevez, Datastax
+
+
+== Using Databricks Community Edition with Astra DB
+
+You can use Databricks Community Edition (DCE), or Azure Databricks, to load data from an CSV file and save it into an Astra DB table. Then read data from an Astra DB table and process it in DCE. 
+
+https://github.com/yabinmeng/dseutilities/tree/master/documents/tutorial/datastax.astra/databricks_conn[Learn how, window="_blank"] in this GitHub article by Yabin Meng.
+
+image::https://github.com/yabinmeng/dseutilities/raw/master/documents/tutorial/datastax.astra/databricks_conn/resources/screenshots/notebook_cell1.png[DCE sample screen,500]
+
+30 minutes, Data Movement | Updated on Dec 10th, 2020 | Yabin Meng, DataStax
+
+
+== Migrate Cassandra Cluster using Databricks Spark
+
+You can use Databricks Spark to load data from a stand-alone Apache Cassandra cluster into an {astra_db} database.
+
+https://ds-steven-matison.github.io/nosqlbench/astra/[Learn how, window="_blank"] in this GitHub article by Steven Matison. 
+
+image::https://github.com/yabinmeng/dseutilities/raw/master/documents/tutorial/datastax.astra/dse_to_astra/resources/screenshots/cassandra.catalog.png[Cassandra catalog sample diagram, 500]
+
+50 minutes, Migration | Updated on Dec 10th, 2020 | Steven Matison, Datastax
+
+
+
+== Use Nosqlbench with Astra DB
+
+You can  NoSQLBench to test loading data to {astra_db}.
+
+https://ds-steven-matison.github.io/nosqlbench/astra/[Learn how, window="_blank"] in this GitHub article by Steven Matison.
+
+image::NoSqlBench++Astra++Data+Architect+2020-12-10+12-12-25.png[NoSQLbench sample screen,500] 
+
+20 minutes, Data Movement & Performance | Updated on July 20th, 2020 | Steven Matison, DataStax
+
+
+
+== Astra Service Broker with Kubernetes
+
+Walk through setting up and using the Astra Service Broker with Kubernetes. 
+
+https://ds-steven-matison.github.io/astra/service/broker/[Learn how, window="_blank"] in this GitHub article by Steven Matison. 
+
+image::Astra+Service+Broker++Data+Architect+2020-12-10+11-35-08.png[Servicebroker sample screen,500]
+
+30 minutes, Cloud Composition | Updated on Dec 10th, 2020 | Steven Matison, DataStax
+
+
+
+== Stream Kafka Source to Astra DB
+
+Use DataStax Apache Kafka&trade; Connector to stream records from a Kafka topic to your Astra DB database.
+
+https://docs.datastax.com/en/kafka/doc/index.html[Learn how, window="_blank"] in this DataStax topic. 
+
+image::https://pbs.twimg.com/profile_images/781633389577195521/kazUJooF_400x400.jpg[Kafka logo,100]
+
+50 minutes, Intermediate | Updated on Dec 10th, 2020 | Docs Team, DataStax

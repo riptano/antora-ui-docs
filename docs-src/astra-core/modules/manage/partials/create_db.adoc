@@ -1,0 +1,46 @@
+== Procedure
+
+. In your https://astra.datastax.com/[{astra_db}] dashboard, select *Create Database*.
+
++
+[NOTE]
+If you need more options, contact {company} Support.
++
+////
+. If you are creating a database with a pay as you go or an annual commitment plan, enter your payment method to continue.
+If you are creating a free plan, you do not have to enter a credit card. You can get started for free with your $25 credit. You can enter a payment method later to move to a pay as you go plan or annual commitment plan if needed.
+////
+
+. Enter your basic details:
++
+** *Database Name:* Name your database something meaningful. The database name cannot be altered after the database is created. Use only alphanumeric characters; there is no character limit.
+** *Keyspace Name:* Name your keyspace to reflect your data model. You cannot name your keyspace “dse” or “system”. Use only alphanumeric characters and no more than 48 total characters.
++
+. Select your cloud provider and then the region where you want to launch your database from the region menu, which reflects the available regions based on your selected cloud provider. 
+
++
+[NOTE]
+Regions with the lock symbol require payment. When selecting a region with a lock, you have to option to upgrade to a Pay-as-you-go-plan. If you select a region without a lock, you are still on the Free plan.
+
++
+image:ROOT:locked_regions.png[.,600,500]
+
++
+[NOTE]
+You can preview the costs for the database based on read and write requests, storage, and data transfer.
++
+. Select *Create Database*. The *Database Created!* page appears. 
+
++
+image:manage:database_created.png[]
+
+.. Click *Download Token Details* to download tokens generated for you. You can also click the clipboard in the *Your Token* box to copy these tokens.
+.. Click *Get Instructions* for quick explanations on how to complete certain tasks and links for more information.
+
++
+image:ROOT:getting_started.png[.,500,400]
+
++
+.. Click *X* at the top right of the screen to return to your {astra_db} dashboard.
+
+. You will see a screen highlighting your selected plan. Select *Continue*.

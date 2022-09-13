@@ -1,0 +1,58 @@
+= Managing permissions
+:slug: managing-permissions
+
+Using Cassandra Query Language (CQL) shell, manage the permissions for your user roles.
+
+. Open the CQL Shell Console.
+. To grant additional permissions, create a role for the users using CQL:
++
+[source]
+----
+datastax@cqlsh> CREATE ROLE user_role1 WITH LOGIN = true AND PASSWORD = 'role_password';
+datastax@cqlsh> CREATE ROLE user_role2 WITH LOGIN = true AND PASSWORD = 'role_password';
+datastax@cqlsh> CREATE ROLE user_role3 WITH LOGIN = true AND PASSWORD = 'role_password';
+----
+For more about available permissions, see link:https://docs.datastax.com/en/astra-cql/doc/cql/cql_reference/cql_commands/cqlGrant.html[CQL GRANT, window="_blank"].
+Grant permissions for the roles on specified keyspaces using CQL:
++
+[source]
+----
+datastax@cqlsh> GRANT DESCRIBE, SELECT ON KEYSPACE keyspace_name TO user_role1;
+datastax@cqlsh> GRANT UPDATE ON KEYSPACE keyspace_name TO user_role2;
+datastax@cqlsh> GRANT CREATE ON ALL TABLES IN KEYSPACE keyspace_name TO user_role3;
+----
+. Switch to `user_role1`:
++
+[source]
+----
+datastax@cqlsh> LOGIN user_role1;
+Password: role_password
+----
+
+. Assuming the keyspace and table exist with records, `user_role1` can run CQL commands for which the role has permission using CQL:
++
+[source]
+----
+user_role1@cqlsh> SELECT * FROM keyspace_name.table_name;
+----
+The requested information is returned:
++
+[source]
+----
+ a | b
+ 1 | '1' (1 rows)
+----
+
+. Assuming the keyspace and table exist with records, `user_role1` can run CQL commands for which the role has permission using CQL:
++
+[source]
+----
+*user_role1*@cqlsh> INSERT INTO keyspace_name.table_name(a , b) VALUES (1,'1');
+----
+
+An error message is returned because the role doesn't have adequate permissions:
+
+[source]
+----
+Unauthorized: Error from server: code=2100 [Unauthorized] message="User user_role1 has no UPDATE permission on <table *keyspace_name*.*table_name*> or any of its parents"
+----

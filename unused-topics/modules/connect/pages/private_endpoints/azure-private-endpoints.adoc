@@ -1,0 +1,173 @@
+= Connect to Azure Private Endpoints via {astra_db} console
+
+To better protect your database connection, you can connect to a private endpoint using the {astra_db} console.
+
+For details about using API calls instead, see xref:manage:devops/devops-azure-private-endpoints.adoc[Connect to Azure Private Link with the DevOps API, window="_blank"].
+
+[IMPORTANT]
+====
+This information applies to only serverless databases.
+====
+
+For pricing related to using private endpoints, see xref:manage:org/managing-org.adoc#private-endpoints[Pricing and billing, window="_blank"].
+
+include::ROOT:partial$endpoint_perm.adoc[]
+
+For more about Azure Private Endpoints, see link:https://docs.microsoft.com/en-us/azure/private-link/private-endpoint-overview[What is Azure Private Endpoint?, window="_blank"].
+
+== Prerequisites
+
+. Access to your existing Azure subscription and account.
+. xref:manage:db/managing-db.adoc#_create_your_database[Create your {astra_db} database] using the {astra_db} console.
+. Ensure you have xref:manage:org/managing-org.adoc#_manage_user_permissions[permission] to manage private endpoints.
+
+[NOTE]
+====
+To increase your security, xref:manage:db/manage-access-list.adoc[restrict public access] to your database using the access list.
+====
+
+== Creating and referencing endpoint values between Microsoft Azure portal and {astra_db} console
+
+Setting up the connection between Azure portal and {astra_db} private endpoints involves a few steps in both venues.
+
+=== Let's start in {astra_db} console
+
+. On your organization's {astra_db} dashboard, click the link for your active, Azure-based database.
+. Navigate to your database's **Settings** tab, and notice the **Private Endpoints** section. At this point, no endpoints have been linked. Example:
++
+image::astra-db-settings-tab-private-endpoints-azure2.png[{astra_db} console Settings tab with Private Endpoints section for Azure pre-configuration]
++
+. Click **Configure Region** and enter your Azure account's Subscription ID. You can get the Subscription ID from your account in the Azure portal. In your account on the link:https://portal.azure.com[Azure portal], under Azure Services, click the **Subscriptions** icon. Copy the displayed Subscription ID.
+. After entering the Azure Subscription ID, click **Configure Region**.
+. {astra_db} console displays an updated Private Endpoints section, including a generated **Service Name**.
+. Click **Add Endpoint**.
+. On **Add Private Endpoint**, copy the generated **Service Name**.
+
+Notice at this point in the example, we have a generated Service Name, but do not yet have an ID from Azure's private endpoint to paste into the **Endpoint ID** field:
+
+image:astra-db-add-private-endpoint-no-endpoint-id-yet.png[{astra_db} Add Private Endpoint form with no Endpoint ID yet]
+
+[TIP]
+====
+In {astra_db} console, keep the **Add Private Endpoint** dialog open. We'll return here with an **Endpoint ID** after creating it in Azure portal.
+====
+
+=== Switch over to Azure portal
+
+. After authenticating into Azure portal, navigate to **Create a resource**.
+. Navigate to **Private Endpoint**.
++
+image::azure-create-resource-private-endpoint.png[Azure Create a resource private endpoint with Create button]
++
+. Click **Create**.
+. On **Basics**:
+.. Select your Subscription.
+.. Specify an existing Resource group or create a new one.
+.. Give a name to your private endpoint instance.
+.. Specify the region. Note that {astra_db} with Azure can perform **cross-region** connectivity, or both may use the same region for intra-region connectivity.)
++
+image::azure-create-private-endpoint-basics.png[Azure Create Private Endpoint basics example]
++
+. On **Resource**:
+.. Select an option such as `Connect to an Azure resource by resource ID or alias`.
+.. Paste into **Resource ID or alias** the **Service Name** value that you copied from {astra_db} console.
+.. Optionally add request message text.
++
+Example:
++
+image::azure-create-private-endpoint-resource.png[Azure Create Private Endpoint resource example]
++
+. On **Configuration**:
+.. Choose a Virtual network
+.. Choose a Subnet
++
+Example with defaults:
++
+image::azure-create-private-endpoint-configuration.png[Azure Create Private Endpoint configuration example]
++
+. On **Tags**, optionally enter name/value pairs to categorize resources and subsequently view consolidate billing.  Example:
++
+image::azure-create-private-endpoint-tags.png[Azure Create Private Endpoint tags example]
++
+. On **Review and create**, check the settings you've entered. Example:
++
+image::azure-create-private-endpoint-review.png[Azure Create Private Endpoint review and create example]
++
+If the values are acceptable, click **Create**.
++
+. Once validated, Azure portal displays a summary page for the added private endpoint. **Copy** the generated endpoint's **Resource ID**, which you'll later paste into the Add Private Endpoint dialog in {astra_db} console. To get the Resource ID:
+.. Click **Go to resource** and navigate to the **Properties** page for the private endpoint; copy the Resource ID to your clipboard.
+.. Or download the `deployment.json` file provided by Azure portal -- on your created private endpoint's page -- and look for the **primaryResourceId** value. Format example:
++
+`/subscriptions/<your alphanumeric values here>/resourcegroups/astra-db-azure-private-endpoint-test-westus/providers/Microsoft.Network/privateEndpoints/myPrivateEndpoint`
+
+=== Return to {astra_db} console
+
+Back in {astra_db} console, return to the **Add Private Endpoint** dialog that's available from your databases's Settings.
+
+. In the Endpoint ID form field, paste in the copied **Resource ID** value. Also enter a brief description for your {astra_db} / Azure endpoint.
+. Click **Add Endpoint**.
++
+{astra_db} displays the result. Example:
++
+image::astra-db-settings-private-endpoint-added-azure.png[{astra_db} Settings Private Endpoint connection completed]
+
+Your private endpoint is defined. However, notice the warning message if you have not taken further action in your {astra_db} Settings.
+
+[IMPORTANT]
+====
+You’ve set up a private endpoint for this database, but access to your database is still open to the public. Learn how to xref:manage:db/manage-access-list.adoc[Manage access lists for public access] by using the **IP Access List** options in {astra_db} console **Settings**. You can enable the Restrict public access toggle, and you can manage endpoints with one or more access lists.
+====
+
+== Create a DNS entry for your private endpoint
+
+You can alias your private endpoint with a DNS record to use as your hostname in the {astra_db} xref:connecting.adoc#_downloading_secure_connect_bundle[secure connect bundle]. Here are the steps:
+
+. Download your secure connect bundle for the region of your choice. Get your latest xref:connecting.adoc#_downloading_secure_connect_bundle[secure connect bundle].
+. Unzip the secure connect bundle.
+. In `config.json`, copy the `host` key's value.
+. In Azure portal, for your private endpoint, create a DNS entry for the key `host` value and map it to your virtual IP address. Update the domains to use REST and CQL. Examples:
++
+[tabs]
+====
+REST::
++
+--
+[source,shell, subs="attributes+"]
+----
+efe451fe-709e-4700-9185-5cf0fd3474a7-2-us-east-1.apps.astra.datastax.com
+----
+--
+
+CQL::
++
+--
+[source,plaintext, subs="attributes+"]
+----
+efe451fe-709e-4700-9185-5cf0fd3474a7-2-us-east-1.db.astra.datastax.com
+----
+--
+====
++
+For detailed steps, see link:https://docs.microsoft.com/en-us/azure/dns/private-dns-getstarted-portal[Quickstart: Create an Azure private DNS zone using the Azure portal].
+
+Once those steps are completed, you can connect to your private endpoint using your updated secure connect bundle. For more, see xref:ROOT:connecting-to-astra-databases-using-datastax-drivers.adoc[Drivers for Astra DB].
+
+== Remove a private endpoint
+
+In Azure portal:
+
+. In link:https://portal.azure.com[Azure portal], navigate to your private endpoint resource.
+. Click the **Delete** icon.
+
+In {astra_db} console:
+
+. Go to the **Settings** tab for your database.
+. Choose the endpoint you want to remove.
+. Click **Delete**.
+
+== What's next?
+
+* Refer to related topics for other cloud providers that are linked from xref:connect:private_endpoints/connect-private-endpoints.adoc[Connect via a private endpoint].
+* Learn how to xref:manage:db/manage-access-list.adoc[Manage access lists for public access, window="_blank"].
+* For more about Azure Private Endpoints, see link:https://docs.microsoft.com/en-us/azure/private-link/private-endpoint-overview[What is Azure Private Endpoint?].

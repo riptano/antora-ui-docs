@@ -1,0 +1,118 @@
+= Use integrations
+:slug: integrations
+
+Expand how you interact with your {company} {astra_db} database using these integrations .
+
+[#img-1-liquibase-use]
+.A Liquibase integration
+image::ROOT:Using+Liquibase+with+Cassandra+on+DataStax+Astra++Liquibase+Docs+2020-12-15+10-42-34.png["monosnap liquibase",scaledwidth=80%]
+
+== link:https://docs.liquibase.com/workflows/database-setup-tutorials/cassandra-astra.html[Track Schema Changes with Liquibase]
+
+Use Liquibase to track Apache Cassandra ad Astra schema changes over time.
+
+50 minutes, Operator Tools | Updated on Dec 15th, 2020 | Robert Reeves, Liquibase
+//end 1
+
+
+//2 Knowi BI Reporting and Analysis
+//Use Knowi to connect to Astra DB
+//https://github.com/tjake/todo-astra-react-serverless
+[#img-2-knowi]
+.A Knowi BI Reporting and Analysis integration
+image::ROOT:Knowi-DataStax-Astra-Tutorial.png["monosnap knowi bi",scaledwidth=50%]
+
+== link:https://www.knowi.com/blog/datastax-astra-analytics-tutorial/[Knowi BI Reporting and Analysis]
+
+Use Knowi to connect to Astra DB, analyze, and visualize data.
+
+30 minutes, BI/ML Reporting Tools | Updated on Dec 15th, 2020 | Patrick Bacon, Knowi
+//end 2
+
+
+//3 Connecting to Astra from DataGrip via JDBC
+//Use Intellij DataGrip with Astra
+[#img-3-DataGrip]
+.A way to use Intellij DataGrip
+image::https://www.sestevez.com/content/images/2020/07/image.png["datagrip",scaledwidth=50%]
+== link:https://www.sestevez.com/astra-datagrip/[Connecting to Astra from DataGrip via JDBC]
+
+A very simple way to use Intellij's DataGrip with Astra
+
+5 minutes, Developer Tools | Updated on Dec 10th, 2020 | Sebastian Estevez, Datastax
+//end 3
+
+
+
+//4 Using Databricks Community Edition with Astra
+//Using Databricks Community Edition with Astra
+[#img-4-Databricks]
+.Learn how to use Databricks Community Edition (DCE)
+// image address - https://github.com/yabinmeng/dseutilities/raw/master/documents/tutorial/datastax.astra/databricks_conn/resources/screenshots/notebook_cell1.png
+
+image::https://github.com/yabinmeng/dseutilities/raw/master/documents/tutorial/datastax.astra/databricks_conn/resources/screenshots/notebook_cell1.png[Image screenshot4 DCE,scaledwidth=50%]
+
+== link:https://github.com/yabinmeng/dseutilities/tree/master/documents/tutorial/datastax.astra/databricks_conn[Using Databricks Community Edition with Astra]
+
+Learn how to use Databricks Community Edition (DCE) (or Azure Databricks) to load data from an CSV file and save it into an Astra table; read data from an Astra table and process it in DCE.
+
+30 minutes, Data Movement | Updated on Dec 10th, 2020 | Yabin Meng, DataStax
+//end 4
+
+
+
+//5 Migrate C* Cluster using Databricks Spark
+//Use Databricks Spark to load data from a stand-alone Apache C*
+[#img-5-db-sparks]
+.Migrate C* Cluster using Databricks Spark
+image::https://github.com/yabinmeng/dseutilities/raw/master/documents/tutorial/datastax.astra/dse_to_astra/resources/screenshots/cassandra.catalog.png[Image screenshot cassandra cluster,scaledwidth=50%]
+
+== link:https://ds-steven-matison.github.io/nosqlbench/astra/[Migrate C* Cluster using Databricks Spark]
+
+Learn how to use Databricks Spark to load data from a stand-alone Apache Cassandra (C*) cluster into a DataStax Atra database.
+
+50 minutes, Migration | Updated on Dec 10th, 2020 | Yabin Meng, Datastax
+//end 5
+
+//6 Use Nosqlbench with Astra
+//use NoSQLBench to test loading data to Astra.
+[#img-6-NoSQLBench]
+.Use Nosqlbench with Astra
+image::NoSqlBench++Astra++Data+Architect+2020-12-10+12-12-25.png[Image screenshot6 NoSQLbench,scaledwidth=50%]
+
+== link:https://ds-steven-matison.github.io/nosqlbench/astra/[Use Nosqlbench with Astra]
+
+Learn to use NoSQLBench to test loading data to Astra.
+
+20 minutes, Data Movement & Performance | Updated on July 20th, 2020 | Steven Matison, DataStax
+//end 6
+
+
+//7 Astra Service Broker with Kubernetes
+//Use Astra Service Broker with Kubernetes
+[#img-7-Kubernetes]
+.Use Astra Service Broker with Kubernetes
+[link=https://monosnap.com/file/f1pJWF04sVkI94zkSVc9bFCk1QOnsk, window="_blank"]
+image::Astra+Service+Broker++Data+Architect+2020-12-10+11-35-08.png[Image screenshot7 Servicebroker,scaledwidth=50%]
+
+== link:https://ds-steven-matison.github.io/astra/service/broker/[Astra Service Broker with Kubernetes]
+
+Walk through setting up and using the Astra Service Broker with Kubernetes
+
+30 minutes, Cloud Composition | Updated on Dec 10th, 2020 | Steven Matison, DataStax
+//end 7
+
+
+//8 Kafka Source with Astra
+//use NoSQLBench to test loading data to Astra.
+[#img-8-NoSQLBench]
+.Use Nosqlbench with Astra
+//[link=https://ds-steven-matison.github.io/nosqlbench/astra/, window="_blank"]
+image::https://pbs.twimg.com/profile_images/781633389577195521/kazUJooF_400x400.jpg[Image screenshot8 Kafkasource,scaledwidth=50%]
+
+== link:https://docs.datastax.com/en/astra/docs/streaming-data-with-the-datastax-apache-kafka-connector.html[Kafka Source with Astra]
+
+Using the DataStax Apache Kafka™ Connector to stream records from an Apache Kafka topic to your Astra DB database.
+
+50 minutes, Intermediate | Updated on Dec 10th, 2020 | Docs Team, DataStax
+//end 8

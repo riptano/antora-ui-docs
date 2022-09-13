@@ -1,0 +1,12 @@
+= Bring Your Own Key
+
+Encryption is a widely accepted mechanism to secure data against breaches. By default, {company} {astra_db} encrypts data, and cloud providers such as AWS and Google Cloud offer encryption solutions. However, you may want to further limit data access, because cloud providers have access to the keys and ultimately to the data. 
+
+To address this security concern, DataStax Astra DB allows you to associate a Customer Managed Key (one per region) that you defined in the cloud provider's Key Management Service with a Customer Key that you create in Astra DB. 
+
+We call this organization-scoped {astra_db} feature Bring Your Own Key (BYOK).
+
+// * xref:byok-ui-aws.adoc[BYOK AWS with Astra DB console]
+* xref:db-devops-aws-cmk.adoc[BYOK AWS with DevOps API]
+* xref:db-devops-gcp-cmek.adoc[BYOK GCP with DevOps API]
+* link:_attachments/devopsv2.html#tag/Customer-Keys[Customer Keys API reference, window="_blank"]

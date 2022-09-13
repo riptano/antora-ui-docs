@@ -1,0 +1,3281 @@
+openapi: '3.0.0'
+info:
+  description: >-
+    Use this REST API to perform lifecycle actions for DataStax Astra databases.</br> </br>
+    To get started, create an authorization token to authenticate with your
+    database using the /v2/authenticateServiceAccount endpoint using a service account for your organization. You can then create,
+    terminate, resize, park, and unpark databases using the DevOps API.
+  version: 2.3.0
+  title: Astra DevOps API
+  contact:
+    email: ad-astra@datastax.com
+security:
+  - BearerAuth:
+      - org-db-create
+      - org-db-terminate
+      - org-db-view
+      - org-db-expand
+      - org-db-suspend
+      - org-db-addpeering
+      - org-db-readpeering
+      - db-keyspace-create
+      - db-cql
+      - accesslist-write
+      - accesslist-read
+      - db-manage-privateendpoint
+      - db-manage-telemetry
+tags:
+  - name: Database Operations
+    description: The DevOps APIs are for interacting with Astra databases and all aspects of their lifecycle
+  - name: Authentication
+    description: auth endpoint for service account authentication to get token used for all other database operations via the api
+  - name: Roles
+    description: The DevOps Roles APIs are for interacting with roles within your Astra organization
+  - name: Users
+    description: The DevOps Users APIs are for interacting with users within your Astra organization
+  - name: Token
+    description: The DevOps Token APIs allow creation and deletion of client secrets
+  - name: Access List
+    description: The DevOps Access List APIs allow creation and deletion of access lists
+  - name: Private Link
+    description: The DevOps Private Link APIs allow managing of private link endpoints
+  - name: VPC Peering
+    description: The DevOps VPC Peering APIs allow managing of VPC peering for Astra classic databases
+  - name: Customer Keys
+    description: Create and view Customer Keys for your Astra DB organization    
+  - name: Regions
+    description: Regions and availability per user and organization     
+paths:
+  /v2/authenticateServiceAccount:
+    post:
+      security: []
+      tags:
+        - Authentication
+      summary: Create a token to use the Astra DevOps API endpoints
+      description: Creates a new token for the service account
+      operationId: AuthenticateServiceAccountToken
+      requestBody:
+        description: The service account to create a token for.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceAccountTokenInput'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceAccountTokenResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /v2/databases:
+    get:
+      tags:
+        - Database Operations
+      summary: Returns a list of databases
+      description: Get a list of databases visible to the user
+      security:
+        - BearerAuth: [org-db-view]
+      operationId: listDatabases
+      parameters:
+        - in: query
+          name: include
+          description: Allows filtering so that databases in listed states are returned
+          required: false
+          schema:
+            type: string
+            enum: [nonterminated, all, active, pending, preparing, prepared, initializing, parked, parking, unparking, terminating, terminated, resizing, error, maintenance, suspended, suspending]
+            default: nonterminated
+        - in: query
+          name: provider
+          description: Allows filtering so that databases from a given provider are returned
+          required: false
+          schema:
+            type: string
+            enum: [ALL, GCP, AWS, AZURE]
+            default: ALL
+        - in: query
+          name: starting_after
+          schema:
+            type: string
+          required: false
+          description: Optional parameter for pagination purposes. Used as this value for starting retrieving a specific page of results
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 25
+            minimum: 1
+            maximum: 100
+          required: false
+          description: Optional parameter for pagination purposes. Specify the number of items for one page of data
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Database'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+    post:
+      tags:
+        - Database Operations
+      summary: Create a new database
+      description: Takes a user provided databaseInfo and returns the uuid for a new database
+      security:
+        - BearerAuth: [org-db-create]
+      operationId: createDatabase
+      requestBody:
+        description: Definition of new database
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DatabaseInfoCreate'
+      responses:
+        '201':
+          description: created
+          headers:
+            Location:
+              schema:
+                type: string
+                description: Database UUID
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /v2/databases/{databaseID}:
+    get:
+      tags:
+        - Database Operations
+      summary: Finds database by ID
+      description: Returns specified database
+      security:
+        - BearerAuth: [org-db-view]
+      operationId: getDatabase
+      parameters:
+        - $ref: '#/components/parameters/DatabaseIdParam'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Database'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /v2/databases/{databaseID}/keyspaces/{keyspaceName}:
+    post:
+      tags:
+        - Database Operations
+      summary: Adds keyspace into database
+      description: Adds the specified keyspace to the database
+      security:
+        - BearerAuth: [db-keyspace-create]
+      operationId: addKeyspace
+      parameters:
+        - $ref: '#/components/parameters/DatabaseIdParam'
+        - $ref: '#/components/parameters/KeyspaceNameParam'
+      responses:
+        '201':
+          description: created
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /v2/databases/{databaseID}/secureBundleURL:
+    post:
+      summary: Obtain zip for connecting to the database
+      description: 'Returns a temporary URL to download a zip file with certificates for connecting to the database. The URL expires after five minutes.<p>There are two types of the secure bundle URL:
+        <ul><li><b>Internal</b> - Use with VPC peering connections to use private networking and avoid public internet for communication.</li>
+        <li><b>External</b> - Use with any connection where the public internet is sufficient for communication between the application and the Astra database with MTLS.</li></ul>
+        Both types support MTLS for communication via the driver.</p>'
+      security:
+        - BearerAuth: [db-cql]
+      operationId: generateSecureBundleURL
+      tags:
+        - Database Operations
+      parameters:
+        - $ref: '#/components/parameters/DatabaseIdParam'
+        - $ref: '#/components/parameters/AllDatacentersParam'
+      responses:
+        '200':
+          description: Credentials provides a link to download cluster secure-connect-*.zip file
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/CredsURL'
+                  - $ref: '#/components/schemas/CredsURLList'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /v2/databases/{databaseID}/telemetry/metrics:
+    post:
+      summary: Configure Astra Remote Telemetry
+      description: 'Enables metrics exporting to an external system. Note: updates replace any existing config.'
+      security:
+        - BearerAuth: [ telemetry ]
+      operationId: configureTelemetry
+      parameters:
+        - $ref: '#/components/parameters/DatabaseIdParam'
+      tags:
+        - Database Operations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              anyOf:
+                - $ref: '#/components/schemas/KafkaTelemetryRequest'
+                - $ref: '#/components/schemas/RemotePrometheusTelemetryRequest'
+                - $ref: '#/components/schemas/CloudWatchTelemetryRequest' 
+      responses:
+        '202':
+          $ref: '#/components/responses/Accepted'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+    get:
+      summary: Retrieve Remote Telemetry configuration
+      description: Get the current Telemetry configuration for the database
+      operationId: getTelemetryConfig
+      tags:
+        - Database Operations
+      parameters:
+        - $ref: '#/components/parameters/DatabaseIdParam'
+      responses:
+        '200':
+          description: The current stored Remote Telemetry configuration for this database
+          content:
+            application/json:
+              schema:
+                # Odd but the request structure is the same as what we return
+                anyOf:
+                  - $ref: '#/components/schemas/KafkaTelemetryRequest'
+                  - $ref: '#/components/schemas/RemotePrometheusTelemetryRequest'
+                  - $ref: '#/components/schemas/CloudWatchTelemetryRequest'                   
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /v2/databases/{databaseID}/terminate:
+    post:
+      summary: Terminates a database
+      description: Terminates a database
+      security:
+        - BearerAuth: [org-db-terminate]
+      operationId: terminateDatabase
+      tags:
+        - Database Operations
+      parameters:
+        - $ref: '#/components/parameters/DatabaseIdParam'
+        - in: query
+          name: preparedStateOnly
+          description: For internal use only.  Used to safely terminate prepared databases.
+          required: false
+          schema:
+            type: boolean
+            default: false
+      responses:
+        '202':
+          $ref: '#/components/responses/Accepted'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /v2/databases/{databaseID}/park:
+    post:
+      summary: Parks a database
+      description: Parks a database
+      security:
+        - BearerAuth: [org-db-suspend]
+      operationId: parkDatabase
+      tags:
+        - Database Operations
+      parameters:
+        - $ref: '#/components/parameters/DatabaseIdParam'
+      responses:
+        '202':
+          $ref: '#/components/responses/Accepted'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /v2/databases/{databaseID}/suspend:
+    post:
+      summary: Suspends a database
+      description: Suspends a database
+      security:
+        - BearerAuth: [org-db-suspend]
+      operationId: suspendDatabase
+      tags:
+        - Database Operations
+      parameters:
+        - $ref: '#/components/parameters/DatabaseIdParam'
+        - in: query
+          name: freeConsumed
+          description: Represents, from 0 to 100, the free credits percentage consumed.
+          required: false
+          schema:
+            type: integer
+            default: -1
+      responses:
+        '202':
+          $ref: '#/components/responses/Accepted'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /v2/databases/{databaseID}/unpark:
+    post:
+      summary: Unparks a database
+      description: Unparks a database
+      security:
+        - BearerAuth: [org-db-suspend]
+      operationId: unparkDatabase
+      tags:
+        - Database Operations
+      parameters:
+        - $ref: '#/components/parameters/DatabaseIdParam'
+      responses:
+        '202':
+          $ref: '#/components/responses/Accepted'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /v2/databases/{databaseID}/resize:
+    post:
+      summary: Resizes a database
+      description: Resizes a database. Total number of capacity units desired should be specified. Reducing a size of a database is not supported at this time.
+      security:
+        - BearerAuth: [org-db-expand]
+      operationId: resizeDatabase
+      tags:
+        - Database Operations
+      parameters:
+        - $ref: '#/components/parameters/DatabaseIdParam'
+      requestBody:
+        description: Map containing capacityUnits key with a value greater than the current number of capacity units (max increment of 3 additional capacity units)
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CapacityUnits'
+      responses:
+        '202':
+          $ref: '#/components/responses/Accepted'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /v2/databases/{databaseID}/datacenters:
+    get:
+      summary: List all database datacenters
+      description: Returns the list of configured ACTIVE datacenters for the given database, if you want to get the TERMINATED along with ACTIVE send query param all=true
+      operationId: listDatacenters
+      tags:
+        - Database Operations
+      parameters:
+        - $ref: '#/components/parameters/DatabaseIdParam'
+        - in: query
+          name: all
+          description: Allows retrieving datacenters in TERMINATED state along with ACTIVE ones
+          required: false
+          schema:
+            type: boolean
+            default: false
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Datacenter'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+    post:
+      summary: Adds datacenters
+      description: Adds the list of datacenters. Only AWS cloud provider is allowed at this point.
+      operationId: addDatacenters
+      tags:
+        - Database Operations
+      parameters:
+        - $ref: '#/components/parameters/DatabaseIdParam'
+      requestBody:
+        description: Map containing capacityUnits key with a value greater than the current number of capacity units (max increment of 3 additional capacity units)
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Datacenter'
+      responses:
+        '201':
+          $ref: '#/components/responses/Accepted'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /v2/databases/{databaseID}/datacenters/{datacenterID}/terminate:
+    post:
+      summary: Terminates a datacenter
+      description: Terminates a datacenter
+      operationId: terminateDatacenter
+      tags:
+        - Database Operations
+      parameters:
+        - $ref: '#/components/parameters/DatabaseIdParam'
+        - $ref: '#/components/parameters/DatacenterIdParam'
+      responses:
+        '202':
+          $ref: '#/components/responses/Accepted'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /v2/databases/{databaseID}/resetPassword:
+    post:
+      summary: Resets Password
+      description: Sets a database password to the one specified in POST body
+      security:
+        - BearerAuth: [org-db-create]
+      operationId: resetPassword
+      tags:
+        - Database Operations
+      parameters:
+        - $ref: '#/components/parameters/DatabaseIdParam'
+      requestBody:
+        description: Map containing username and password. The specified password will be updated for the specified database user
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserPassword'
+      responses:
+        '202':
+          $ref: '#/components/responses/Accepted'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /v2/availableRegions:
+    get:
+      tags:
+        - Regions
+      summary: Returns supported regions and availability for a given user / org
+      description: Returns all supported tier, cloud, region, count, and capacitity combinations
+      security:
+        - BearerAuth: [org-db-create]
+      operationId: listAvailableRegions
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AvailableRegionCombination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /v2/regions/serverless:
+    get:
+      tags:
+        - Regions
+      summary: Returns the list of available regions for serverless
+      description: Returns all region, cloud, name, zone and classification info available in serverless
+      security:
+        - BearerAuth: [org-db-create]
+      operationId: listServerlessRegions
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ServerlessRegion'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /v2/organizations/roles:
+    get:
+      tags:
+        - "Roles"
+      summary: "Get all roles for an organization"
+      operationId: "getOrganizationRoles"
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Roles'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    post:
+      tags:
+        - "Roles"
+      summary: "Create a role in an organization"
+      operationId: "addOrganizationRole"
+      requestBody:
+        description: "The model for create role body"
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRoleRequest'
+      responses:
+        '201':
+          description: "Created"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Role'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /v2/organizations/roles/{roleID}:
+    get:
+      tags:
+        - "Roles"
+      summary: "Get a role for an organization"
+      description: "Retrieve the details for a role for a given organization"
+      operationId: "getOrganizationRole"
+      parameters:
+        - $ref: '#/components/parameters/RoleIdParam'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Role'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    put:
+      tags:
+        - "Roles"
+      summary: "Update a role within an organization"
+      description: "Update a role within an organization"
+      operationId: "updateRole"
+      parameters:
+        - $ref: '#/components/parameters/RoleIdParam'
+      requestBody:
+        description: "The model for update role body"
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateRoleRequest'
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    delete:
+      tags:
+        - "Roles"
+      summary: "Delete a role by ID"
+      operationId: "deleteOrganizationRole"
+      parameters:
+        - $ref: '#/components/parameters/RoleIdParam'
+      responses:
+        '204':
+          $ref: '#/components/responses/NoContent'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /v2/organizations/users:
+    put:
+      tags:
+        - "Users"
+      summary: "Invite a user to an organization"
+      description: "Invite a user to an organization or resend an invitation with new invitation details, such as an updated expiration"
+      operationId: "inviteUserToOrganization"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserInvite'
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    get:
+      tags:
+        - "Users"
+      summary: "Get an organization's users"
+      operationId: "getOrganizationUsers"
+      responses:
+        '200':
+          description: List of users for the current org
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationUsers'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /v2/organizations/users/{userID}:
+    get:
+      tags:
+        - "Users"
+      summary: "Get an organization's user"
+      operationId: "getOrganizationUser"
+      parameters:
+        - $ref: '#/components/parameters/UserIdParam'
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    delete:
+      tags:
+        - "Users"
+      summary: "Remove or uninvite a user from an organization"
+      operationId: "removeUserFromOrganization"
+      parameters:
+        - $ref: '#/components/parameters/UserIdParam'
+      responses:
+        '204':
+          $ref: '#/components/responses/NoContent'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /v2/organizations/users/{userID}/roles:
+    put:
+      tags:
+        - "Users"
+      summary: "Update organization roles for a user"
+      operationId: "UpdateRolesForUserInOrganization"
+      parameters:
+        - $ref: '#/components/parameters/UserIdParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoleInviteRequest'
+      responses:
+        '204':
+          $ref: '#/components/responses/NoContent'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /v2/organizations/private-link:
+    get:
+      tags:
+        - Private Link
+      summary: Gets info about all private link connections for a specific org
+      description: Gets info about all private link connections for a specific org
+      operationId: ListPrivateLinksForOrg
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrivateLinkOrgOutput'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        409:
+          $ref: '#/components/responses/Conflict'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /v2/organizations/clusters/{clusterID}/private-link:
+    get:
+      tags:
+        - Private Link
+      summary: Gets info about all private link connections for a specific cluster
+      description: Gets info about all private link connections for a cluster
+      operationId: ListPrivateLinksForCluster
+      parameters:
+        - name: clusterID
+          in: path
+          description: Database ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrivateLinkClusterOutput'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        409:
+          $ref: '#/components/responses/Conflict'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /v2/organizations/clusters/{clusterID}/datacenters/{datacenterID}/private-link:
+    get:
+      tags:
+        - Private Link
+      summary: Gets info about private link in a datacenter
+      description: Gets info about a private link connection in a specific datacenter
+      operationId: GetPrivateLinksForDatacenter
+      parameters:
+        - name: clusterID
+          in: path
+          description: Database ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: datacenterID
+          in: path
+          description: Database ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrivateLinkDatacenterOutput'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        409:
+          $ref: '#/components/responses/Conflict'
+        500:
+          $ref: '#/components/responses/ServerError'
+    post:
+      tags:
+        - Private Link
+      summary: Add an allowed principal to the private link service
+      description: Configure private link by providing the allowed principal to connect with
+      operationId: AddAllowedPrincipalToService
+      parameters:
+        - name: clusterID
+          in: path
+          description: Database ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: datacenterID
+          in: path
+          description: Database ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        description: The model for adding a private link allowed principal
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/PrivateLinkCreateConfigInput'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrivateLinkCreateConfigOutput'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        409:
+          $ref: '#/components/responses/Conflict'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /v2/organizations/clusters/{clusterID}/datacenters/{datacenterID}/allowed-principals:
+    post:
+      tags:
+        - Private Link
+      summary: Add an allowed principal to the private link service
+      description: Configure private link by providing the allowed principal to connect with
+      operationId: AddAllowedPrincipal
+      parameters:
+        - name: clusterID
+          in: path
+          description: Cluster ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: datacenterID
+          in: path
+          description: Datacenter ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        description: The model for adding a private link allowed principal
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/PrivateLinkCreateConfigInput'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrivateLinkCreateConfigOutput'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        409:
+          $ref: '#/components/responses/Conflict'
+        500:
+          $ref: '#/components/responses/ServerError'
+    delete:
+      tags:
+        - Private Link
+      summary: Remove an allowed principal from the private link service
+      description: Remove an allowed principal from the private link service
+      operationId: RemoveAllowedPrincipalFromService
+      parameters:
+        - name: clusterID
+          in: path
+          description: Cluster ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: datacenterID
+          in: path
+          description: Datacenter ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        description: The model for removing a private link allowed principal
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/PrivateLinkDeleteConfigInput'
+      responses:
+        204:
+          description: No Content
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /v2/organizations/clusters/{clusterID}/datacenters/{datacenterID}/endpoints:
+    post:
+      tags:
+        - Private Link
+      summary: Accept an endpoint to the private link service
+      description: Complete Private Link connection by providing your endpoint
+      operationId: AcceptEndpointToService
+      parameters:
+        - name: clusterID
+          in: path
+          description: Database ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: datacenterID
+          in: path
+          description: Database ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        description: The model for an AWS Private Link connection creation request
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/PrivateLinkCreateEndpointInput'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrivateLinkEndpoint'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        409:
+          $ref: '#/components/responses/Conflict'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /v2/organizations/clusters/{clusterID}/datacenters/{datacenterID}/endpoints/{endpointID}:
+    get:
+      tags:
+        - Private Link
+      summary: Gets info about a private link endpoint
+      description: Gets info about a private link endpoint
+      operationId: GetPrivateLinkEndpoint
+      parameters:
+        - name: clusterID
+          in: path
+          description: Cluster ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: datacenterID
+          in: path
+          description: Datacenter ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: endpointID
+          in: path
+          description: Endpoint ID
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrivateLinkEndpoint'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        409:
+          $ref: '#/components/responses/Conflict'
+        500:
+          $ref: '#/components/responses/ServerError'
+    put:
+      tags:
+        - Private Link
+      summary: Update the description for a private link endpoint
+      description: Update the description for a private link endpoint
+      operationId: UpdateEndpointDescription
+      parameters:
+        - name: clusterID
+          in: path
+          description: Cluster ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: datacenterID
+          in: path
+          description: Datacenter ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: endpointID
+          in: path
+          description: Endpoint ID
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: The model for updating the description for an endpoint
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/PrivateLinkUpdateEndpointInput'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrivateLinkEndpoint'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        409:
+          $ref: '#/components/responses/Conflict'
+        500:
+          $ref: '#/components/responses/ServerError'
+    delete:
+      tags:
+        - Private Link
+      summary: Reject an endpoint from the private link service
+      description: Reject an endpoint from the private link service
+      operationId: RejectEndpoint
+      parameters:
+        - name: clusterID
+          in: path
+          description: Cluster ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: datacenterID
+          in: path
+          description: Datacenter ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: endpointID
+          in: path
+          description: Endpoint ID
+          required: true
+          schema:
+            type: string
+      responses:
+        204:
+          description: No Content
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /v2/organizations/customDomains:
+    get:
+      tags:
+        - Private Link
+      summary: Return the list of custom domains used by an organization for access via one or more private links.
+      description: Returns a list of custom domains used by an organization. The list contains those user defined domain names or domain name prefixes that are used as suffixes when accessing the databases in the various datacenters via private links.
+      operationId: getCustomDomains
+      responses:
+        '200':
+          description: success fetching the current list of custom domains.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+    post:
+      tags:
+        - Private Link
+      summary: Define a new set of custom domains for usage with private links.
+      description: Sets a set of custom domains used by an organization. The input list should contain those user defined domain names or domain name prefixes that will be used as suffixes when accessing the databases in the various datacenters via private links.
+      operationId: setCustomDomains
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+      responses:
+        '202':
+          description: successful operation
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /v2/access-lists:
+    get:
+      tags:
+        - "Access List"
+      summary: "Get all access lists for an organization"
+      security:
+        - BearerAuth: [accesslist-read]
+      operationId: "GetAllAccessListsForOrganization"
+      responses:
+        '200':
+          description: Access lists for an organization
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AccessListResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /v2/databases/{databaseID}/access-list:
+    get:
+      tags:
+        - "Access List"
+      summary: "Get the access list for a database"
+      security:
+        - BearerAuth: [accesslist-read]
+      operationId: "GetAccessListForDatabase"
+      parameters:
+        - $ref: '#/components/parameters/DatabaseIdParam'
+      responses:
+        '200':
+          description: Access list for a database
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessListResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    put:
+      tags:
+        - "Access List"
+      summary: "Upsert the access list for a database. This endpoint replaces the entire access list with what is present in the request body."
+      security:
+        - BearerAuth: [accesslist-write]
+      operationId: "UpsertAccessListForDatabase"
+      parameters:
+        - $ref: '#/components/parameters/DatabaseIdParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccessListRequest'
+      responses:
+        '204':
+          $ref: '#/components/responses/NoContent'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    post:
+      tags:
+        - "Access List"
+      summary: "Add addresses to the access list for a database"
+      security:
+        - BearerAuth: [accesslist-write]
+      operationId: "AddAddressesToAccessListForDatabase"
+      parameters:
+        - $ref: '#/components/parameters/DatabaseIdParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/AddressRequest'
+      responses:
+        '204':
+          $ref: '#/components/responses/NoContent'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    patch:
+      tags:
+        - "Access List"
+      summary: "Update the access list for a database. This endpoint updates existing fields in the access list if they exist"
+      security:
+        - BearerAuth: [accesslist-write]
+      operationId: "UpdateAccessListForDatabase"
+      parameters:
+        - $ref: '#/components/parameters/DatabaseIdParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccessListRequest'
+      responses:
+        '204':
+          $ref: '#/components/responses/NoContent'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    delete:
+      tags:
+        - "Access List"
+      summary: >-
+        Delete a list of addresses or the access list for a database. If the addresses
+        query parameter is not present it will delete the entire access list. If the
+        addresses query parameter is present it will delete only the given addresses
+        from the access list
+      security:
+        - BearerAuth: [accesslist-write]
+      operationId: "DeleteAddressesOrAccessListForDatabase"
+      parameters:
+        - $ref: '#/components/parameters/DatabaseIdParam'
+        - $ref: '#/components/parameters/AddressesQueryParam'
+      responses:
+        '204':
+          $ref: '#/components/responses/NoContent'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /v2/access-list/validate:
+    post:
+      tags:
+        - "Access List"
+      summary: "Validate the structure of an access list"
+      operationId: "ValidateAccessList"
+      responses:
+        '200':
+          description: Access lists for an organization
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationResponse'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /v2/access-list/template:
+    post:
+      tags:
+        - "Access List"
+      summary: "Get a template of an access list"
+      operationId: "GetAccessListTemplate"
+      responses:
+        '200':
+          description: Access lists for an organization
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessListRequest'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /v2/clientIdSecrets:
+    get:
+      tags:
+        - Token
+      summary: "Get a list of clients for an org"
+      operationId: "getClientsForOrg"
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ClientRoleList'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    post:
+      tags:
+        - Token
+      summary: "generateTokenForClient"
+      operationId: "generateTokenForClient"
+      requestBody:
+        description: "The model for generating token for client"
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateTokenBody'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/GenerateTokenResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /v2/clientIdSecrets/{clientId}:
+    delete:
+      tags:
+        - Token
+      summary: "Revokes a token"
+      operationId: "deleteTokenForClient"
+      parameters:
+        - $ref: '#/components/parameters/ClientIdParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/Ok'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /v2/currentOrg:
+    get:
+      tags:
+        - "Organizations"
+      summary: "Get the current organization from the passed token"
+      description: "Retrieve the details for the organization in the provided token"
+      operationId: "getCurrentOrganization"
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Organization'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /v2/kms:
+    post:
+      tags:
+        - Customer Keys
+      summary: "Creates a new Customer Key for an organization"
+      description: "Private Preview - A service to create a new Customer Key registration for an organization."
+      operationId: "CreateKey"
+      requestBody:
+        description: "KMS details that need to be created."
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExternalKMS'
+      responses:
+        200:
+          description: "OK"
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    get:
+      tags:
+        - Customer Keys
+      summary: "Retrieves all keys in an organization"
+      description: "Private Preview - A service to retrieve the existing Customer Keys of an organization."
+      operationId: "ListKeys"
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAllCustomerKeys'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /v2/kms/provider/{provider}/region/{region}:
+    get:
+      tags:
+        - Customer Keys
+      summary: "Retrieves a Customer Key in an organization"
+      description: "Private Preview - Retrieves a Customer Key in an organization for a given cloud-provider & region combination."
+      operationId: "GetKey"
+      parameters:
+        - in: path
+          name: "provider"
+          description: "The name of the provider, such as: aws."
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: "region"
+          description: "The region in which the key exists."
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetParticularCustomerKey'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+#   delete:
+#       tags:
+#         - Customer Keys
+#        summary: "Deletes a Customer Master Key"
+#        description: "A service to delete a Customer master key in an organization"
+#        operationId: "DeleteKey"
+#        parameters:
+#          - in: path
+#            name: "provider"
+#            description: "Provider in which the key exists"
+#            schema:
+#              type: string
+#            required: true
+#          - in: path
+#            name: "region"
+#            description: "Region in which the key exists"
+#            required: true
+#            schema:
+#              type: string
+#        responses:
+#          204:
+#            description: "No Content"
+#          '400':
+#            $ref: '#/components/responses/BadRequest'
+#          '403':
+#            $ref: '#/components/responses/Forbidden'
+#          '404':
+#            $ref: '#/components/responses/NotFound'
+#          '500':
+#            $ref: '#/components/responses/ServerError'
+
+  /v2/kms/provider/{provider}/region/{region}/accounts:
+      get:
+        tags:
+          - Customer Keys
+        summary: "Retrieves an array of Cloud provider accounts"
+        description: "Retrieves an array of Cloud provider accounts for a given cloud-provider & region combination to which customers need to grant their KMS keys access to."
+        operationId: "GetCloudAccounts"
+        parameters:
+          - in: path
+            name: "provider"
+            description: "The name of the provider, such as: aws."
+            required: true
+            schema:
+              type: string
+          - in: path
+            name: "region"
+            description: "The region in which the key exists."
+            required: true
+            schema:
+              type: string
+        responses:
+          '200':
+            description: OK
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/GetCloudProviderAccounts'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '500':
+            $ref: '#/components/responses/ServerError'
+  /v2/peering/provider/{provider}/database/{databaseID}:
+    get:
+      tags:
+        - VPC Peering
+      summary: "Retrieves VPC peering connection information for an Astra database in a given cloud provider"
+      description: "Retrieves VPC peering connection details (if any exist) for Astra database"
+      operationId: "GetVPCPeeringConnectionDetails"
+      security:
+        - BearerAuth: [org-db-readpeering, org-db-addpeering]
+      parameters:
+        - in: path
+          name: "provider"
+          description: "The name of the provider, such as 'aws', 'azure' or 'gcp'"
+          required: true
+          schema:
+            type: string
+            enum: [aws, azure, gcp]
+        - in: path
+          name: "databaseID"
+          description: "The ID for the database"
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VPCConnection'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    post:
+      tags:
+        - VPC Peering
+      summary: Creates a VPC peering connection
+      description: Creates a VPC peering connection between an Astra database's VPC and the VPC provided
+      operationId: "CreateVPCPeeringConnection"
+      security:
+        - BearerAuth: [org-db-addpeering]
+      parameters:
+        - in: path
+          name: "provider"
+          description: "The name of the provider, such as 'aws', 'azure' or 'gcp'"
+          required: true
+          schema:
+            type: string
+            enum: [aws, azure, gcp]
+        - in: path
+          name: "databaseID"
+          description: "The ID for the database"
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/AzureVPC'
+                - $ref: '#/components/schemas/AmazonVPC'
+                - $ref: '#/components/schemas/GoogleVPC'
+
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VPCConnection'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    delete:
+      tags:
+        - VPC Peering
+      summary: "Deletes an existing VPC peering connection"
+      description: "Deletes a VPC peering connection for an Astra database on the given cloud provider"
+      operationId: "DeleteVPCPeeringConnection"
+      security:
+        - BearerAuth: [org-db-addpeering]
+      parameters:
+        - in: path
+          name: "provider"
+          description: "The name of the provider, such as 'aws', 'azure' or 'gcp'"
+          required: true
+          schema:
+            type: string
+            enum: [aws, azure, gcp]
+        - in: path
+          name: "databaseID"
+          description: "The ID for the database"
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          $ref: '#/components/responses/NoContent'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      
+servers:
+  - url: https://api.astra.datastax.com/
+components:
+  parameters:
+    DatabaseIdParam:
+      in: path
+      name: databaseID
+      required: true
+      description: String representation of the database ID
+      schema:
+        type: string
+    DatacenterIdParam:
+      in: path
+      name: datacenterID
+      required: true
+      description: String representation of the datacenter ID
+      schema:
+        type: string
+    TagNameParam:
+      in: path
+      name: tagName
+      required: true
+      description: Name of database tag
+      schema:
+        type: string
+    KeyspaceNameParam:
+      in: path
+      name: keyspaceName
+      required: true
+      description: Name of database keyspace
+      schema:
+        type: string
+    ClientIdParam:
+      in: path
+      name: clientId
+      required: true
+      schema:
+        type: string
+      description: clientID to revoke token for
+    RoleIdParam:
+      in: path
+      name: roleID
+      required: true
+      schema:
+        type: string
+      description: id for the role
+    UserIdParam:
+      in: path
+      name: userID
+      required: true
+      schema:
+        type: string
+      description: id for the user
+    AddressesQueryParam:
+      in: query
+      name: addresses
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+      description: Array of addresses
+    AllDatacentersParam:
+      in: query
+      name: all
+      required: false
+      schema:
+        type: boolean
+        default: false
+      description: Optional parameter to obtain secure-connect-*.zip for multiple Datacenters
+  schemas:
+    UserInvite:
+      type: "object"
+      description: "The userInvite model"
+      required:
+        - "email"
+        - "orgID"
+        - "roles"
+      properties:
+        email:
+          type: "string"
+          description: "The email of the user being invited"
+        orgID:
+          type: "string"
+          description: "The unique system generated identifier of the organization"
+        roles:
+          type: "array"
+          items:
+            type: "string"
+    OrganizationUsers:
+      type: "object"
+      required:
+        - orgID
+        - orgName
+        - users
+      properties:
+        orgID:
+          type: "string"
+        orgName:
+          type: "string"
+        users:
+          type: "array"
+          description: "an array of users in the organization"
+          items:
+            $ref: '#/components/schemas/UserResponse'
+    UserResponse:
+      type: "object"
+      required:
+        - userID
+      properties:
+        userID:
+          type: "string"
+          example: "3476f3bb-10df-4d2f-ac2b-f05c65676724"
+        email:
+          type: "string"
+          example: "joe@datastax.com"
+        status:
+          type: "string"
+          description: "The status of a user within an organization either active or invited"
+          example: "active"
+        roles:
+          type: "array"
+          description: "an array of roles the user belongs to for an organization"
+          items:
+            $ref: '#/components/schemas/Role'
+    ServiceAccountTokenResponse:
+      type: object
+      properties:
+        token:
+          type: string
+          description: JWT that will be used as Authorization header on all requests requiring authentication.
+          example: Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDA...
+    ServiceAccountTokenInput:
+      type: object
+      required:
+        - clientName
+        - clientId
+        - clientSecret
+      properties:
+        clientName:
+          type: string
+          description: The organization name in a more human readable format
+          example: Binford Tools
+        clientId:
+          type: string
+          description: The unique identifier for the client for authentication
+          example: binford
+        clientSecret:
+          type: string
+          description: The UUID client secret for the service account from
+            the create service account response in the user interface
+          format: uuid
+          example: '00b03a37-209c-462a-971b-be35ab3321de'
+    StatusEnum:
+      type: string
+      enum: [ACTIVE, PENDING, PREPARING, PREPARED, INITIALIZING, PARKED, PARKING, UNPARKING, TERMINATED, TERMINATING, RESIZING, ERROR, MAINTENANCE, SUSPENDED, UNKNOWN]
+      example: ACTIVE
+    Database:
+      type: object
+      description: Database contains the key information about a database
+      required:
+        - id
+        - orgId
+        - ownerId
+        - info
+        - status
+      properties:
+        id:
+          type: string
+          example: '1234-5678-91011121-3141'
+        orgId:
+          type: string
+          example: 'organizations/7142-1283-54249566-3707'
+        ownerId:
+          type: string
+          example: 'users/8243-2404-85664728-0889'
+        info:
+          $ref: '#/components/schemas/DatabaseInfo'
+        creationTime:
+          type: string
+          description: CreationTime in ISO RFC3339 format
+          example: "2012-11-01T22:08:41+00:00"
+        terminationTime:
+          type: string
+          description: TerminationTime in ISO RFC3339 format
+          example: "2019-11-01T22:08:41+00:00"
+        status:
+          $ref: '#/components/schemas/StatusEnum'
+        storage:
+          $ref: '#/components/schemas/Storage'
+        availableActions:
+          type: array
+          items:
+            type: string
+            enum: [park, unpark, resize, resetPassword, addKeyspace, addDatacenters, terminateDatacenter, getCreds, terminate, removeKeyspace, addTable, removeMigrationProxy, launchMigrationProxy]
+            example: park, terminate
+        message:
+          type: string
+          description: Message to the customer about the cluster
+          example: Auto parked due to inactivity
+        studioUrl:
+          type: string
+          example: "http://path-to-studio:port"
+        grafanaUrl:
+          type: string
+          example: "http://path-to-grafana:port"
+        cqlshUrl:
+          type: string
+          example: "http://path-to-cqlsh:port/cqlsh"
+        graphqlUrl:
+          type: string
+          example: "http://path-to-graqphl:port/api/graphql"
+        dataEndpointUrl:
+          type: string
+          example: "http://path-to-dataendpoint:port/api/rest"
+    Datacenter:
+      type: object
+      description: Datacenter is the definition of a cassandra datacenter
+      required:
+        - tier
+        - cloudProvider
+        - region
+        - status
+      properties:
+        id:
+          type: string
+          example: 1234-5678-91011121-3141-1
+        name:
+          type: string
+          example: dc-1234-5678-91011121-3141
+        tier:
+          type: string
+          example: Developer
+        status:
+          type: string
+          example: ACTIVE
+        cloudProvider:
+          type: string
+          example: GCP
+        region:
+          type: string
+          example: us-east1
+        regionZone:
+          type: string
+          example: na
+          enum: [emea, apac, na, sa]
+        regionClassification:
+          type: string
+          example: standard
+          enum: [standard, premium, premium_plus]
+        capacityUnits:
+          type: integer
+          example: 1
+          description: CapacityUnits is the amount of space available (horizontal scaling) for the database
+        studioUrl:
+          type: string
+          example: "http://path-to-studio:port"
+        grafanaUrl:
+          type: string
+          example: "http://path-to-grafana:port"
+        cqlshUrl:
+          type: string
+          example: "http://path-to-cqlsh:port/cqlsh"
+        graphqlUrl:
+          type: string
+          example: "http://path-to-graqphl:port/api/graphql"
+        dataEndpointUrl:
+          type: string
+          example: "http://path-to-dataendpoint:port/api/rest"
+        secureBundleUrl:
+          type: string
+          example: "http://s3-signed-bundle-url"
+        secureBundleInternalUrl:
+          type: string
+          example: "http://s3-signed-internal-bundle-url"
+        secureBundleMigrationProxyUrl:
+          type: string
+          example: "http://s3-signed-proxy-bundle-url"
+        secureBundleMigrationProxyInternalUrl:
+          type: string
+          example: "http://s3-signed-proxy-internal-bundle-url"
+    DatabaseInfoCreate:
+      type: object
+      required:
+        - name
+        - keyspace
+        - cloudProvider
+        - tier
+        - capacityUnits
+        - region
+        - user
+        - password
+      description: DatabaseInfo is the user-provided information describing a database
+      properties:
+        name:
+          type: string
+          example: mySplendidDatabase
+          description: Name of the database--user friendly identifier
+        keyspace:
+          type: string
+          example: myKeyspace
+          description: Keyspace name in database
+        cloudProvider:
+          type: string
+          example: AWS
+          enum:
+            - AWS
+            - GCP
+            - AZURE
+          description: CloudProvider where the database lives
+        tier:
+          type: string
+          example: developer
+          enum:
+            - developer
+            - A5
+            - A10
+            - A20
+            - A40
+            - C10
+            - C20
+            - C40
+            - D10
+            - D20
+            - D40
+          description: Tier defines the compute power (vertical scaling) for the database, developer gcp is the free tier.
+        capacityUnits:
+          type: integer
+          example: 1
+          minimum: 1
+          maximum: 100
+          description: CapacityUnits is the amount of space available (horizontal scaling) for the database. For free tier the max CU's is 1, and 100 for CXX/DXX the max is 12 on startup.
+        region:
+          type: string
+          example: us-west-2
+          description: Region refers to the cloud region.
+        user:
+          type: string
+          example: db_admin
+          description: User is the user to access the database
+        password:
+          type: string
+          example: "*****"
+          description: Password for the user to access the database
+    DatabaseInfo:
+      type: object
+      description: DatabaseInfo is the user-provided information describing a database
+      properties:
+        name:
+          type: string
+          example: mySplendidDatabase
+          description: Name of the database--user friendly identifier
+        keyspace:
+          type: string
+          example: myKeyspace
+          description: Keyspace name in database
+        cloudProvider:
+          type: string
+          example: AWS
+          enum:
+            - AWS
+            - GCP
+            - AZURE
+          description: CloudProvider where the database lives
+        tier:
+          type: string
+          example: developer
+          enum:
+            - developer
+            - A5
+            - A10
+            - A20
+            - A40
+            - C10
+            - C20
+            - C40
+            - D10
+            - D20
+            - D40
+          description: Tier defines the compute power (vertical scaling) for the database
+        capacityUnits:
+          type: integer
+          example: 1
+          minimum: 1
+          maximum: 100
+          description: CapacityUnits is the amount of space available (horizontal scaling) for the database. For free tier the max CU's is 1, and 12 for C10 the max is 12 on startup.
+        region:
+          type: string
+          example: us-west-2
+          description: Region refers to the cloud region.
+        user:
+          type: string
+          example: db_admin
+          description: User is the user to access the database
+        password:
+          type: string
+          example: "*****"
+          description: Password for the user to access the database
+        additionalKeyspaces:
+          type: array
+          maximum: 1
+          items:
+            type: string
+            example: additionalKeyspace
+          description: Additional keyspaces names in database
+    CloudWatchTelemetryRequest:
+      description: Telemetry Config Block for AWS CloudWatch
+      type: object
+      required:
+        - access_key
+        - secret_key
+        - region
+      properties:
+        access_key:
+          type: string
+          description: AWS access key
+        secret:
+          type: string
+          description: AWS secret
+        region:
+          type: string
+          description: AWS region for CloudWatch
+          example: us-east-1           
+    RemotePrometheusTelemetryRequest:
+      description: Telemetry Config for Prometheus Remote Write
+      type: object
+      properties:
+        prometheus_remote:
+          $ref: '#/components/schemas/RemotePrometheusTelemetryRequestBlock'
+      required:
+        - prometheus_remote
+    RemotePrometheusTelemetryRequestBlock:
+      description: Telemetry Config for Prometheus Remote Write
+      oneOf:
+        - $ref: '#/components/schemas/RemotePrometheusBasicAuthTelemetryRequest'
+        - $ref: '#/components/schemas/RemotePrometheusBearerAuthTelemetryRequest'
+      discriminator:
+        propertyName: auth_strategy
+        mapping:
+          basic: '#/components/schemas/RemotePrometheusBasicAuthTelemetryRequest'
+          bearer: '#/components/schemas/RemotePrometheusBearerAuthTelemetryRequest'
+    RemotePrometheusAuthRequest:
+      description: The base object for a Prometheus Remote Write object
+      type: object
+      required:
+        - endpoint
+        - auth_strategy
+      properties:
+        endpoint:
+          type: string
+          example: https://prometheus.example.com/api/prom/push
+          description: full HTTP or HTTPS adddress and path for prometheus endpoint
+        auth_strategy:
+          type: string
+          enum:
+            - basic
+            - bearer
+          description: >
+            The authentication strategy used by your Prometheus setup.
+              * `basic` - Basic Authentication (Username & Password)
+              * `bearer` - Bearer Token Authentication
+    RemotePrometheusBasicAuthTelemetryRequest:
+      allOf:
+        - $ref: "#/components/schemas/RemotePrometheusAuthRequest"
+        - type: object
+          description: Telemetry Config for Prometheus Remote Write with Basic Authentication
+          required:
+            - user
+            - password
+          properties:
+            user:
+              type: string
+              example: promuser
+              description: Username for Prometheus Remote Write Authentication
+            password:
+              type: string
+              format: password
+              example: prompassword
+              description: Password for Prometheus Remote Write Authentication
+    RemotePrometheusBearerAuthTelemetryRequest:
+      allOf:
+        - $ref: "#/components/schemas/RemotePrometheusAuthRequest"
+        - type: object
+          description: Telemetry Config for Prometheus Remote Write with Bearer Token
+          required:
+            - token
+          properties:
+            token:
+              type: string
+              format: password
+              example:  AstraTelemetry123
+              description: Bearer Token for Prometheus Remote Write Authentication
+    KafkaBootstrapServer:
+      description: A Hostname and Port combination for a Kafka Bootstrap Server
+      type: string
+      example: kafka-0.yourdomain.com:9092
+    KafkaTelemetryRequest:
+      description: Telemetry Config for Kafka
+      type: object
+      properties:
+        kafka:
+          $ref: '#/components/schemas/KafkaTelemetryRequestBlock'
+      required:
+        - kafka
+    KafkaTelemetryRequestBlock:
+      description: Telemetry Config Block for Kafka servers
+      type: object
+      required:
+        - bootstrap_servers
+        - topic
+        - sasl_mechanism
+        - sasl_username
+        - sasl_password
+      properties:
+        bootstrap_servers:
+          type: array
+          items:
+            $ref: '#/components/schemas/KafkaBootstrapServer'
+        topic:
+          type: string
+          example: astra_metrics_events
+          description: Kafka topic to write metrics to; user must create this topic on their server(s)
+        sasl_mechanism:
+          type: string
+          enum:
+            - GSSAPI
+            - PLAIN
+            - SCRAM-SHA-256
+            - SCRAM-SHA-512
+          description: Kafka SASL mechanism
+        sasl_username:
+          type: string
+          example: kafkauser
+          description: Username for Kafka Authentication
+        sasl_password:
+          type: string
+          example: kafkapassword
+          description: Password for Kafka Authentication
+        security_protocol:
+          type: string
+          enum:
+            - SASL_PLAINTEXT
+            - SASL_SSL
+          description: >
+            NOTE: This is an advanced option, which most users will not need to set. Most Kafka installations
+            will not require this setting for us to connect.
+            Users of hosted Kafka on Confluent Cloud may need to set 'SASL_SSL'.
+            Valid Options:
+              * `SASL_PLAINTEXT` - SASL Authenticated, non-encrypted channel
+              * `SASL_SSL` - SASL Authenticated, encrypted channel
+            ! Non-Authenticated options (i.e., `SSL` and `PLAINTEXT`) are not supported.
+    CredsURL:
+      description: CredsURL from which the creds zip may be downloaded
+      type: object
+      required:
+        - downloadURL
+      properties:
+        downloadURL:
+          type: string
+          example: nifty.cloud.datastax.com:9092
+          description: DownloadURL is only valid for about 5 minutes
+        downloadURLInternal:
+          type: string
+          example: internal-nifty.cloud.datastax.com:9092
+          description: Internal DownloadURL is only valid for about 5 minutes
+        downloadURLMigrationProxy:
+          type: string
+          example: proxy-nifty.cloud.datastax.com:9092
+          description: Migration Proxy DownloadURL is only valid for about 5 minutes
+        downloadURLMigrationProxyInternal:
+          type: string
+          example: proxy-nifty.cloud.datastax.com:9092
+          description: Internal Migration Proxy DownloadURL is only valid for about 5 minutes
+        datcenterID:
+          type: string
+          example: dde308f5-a8b0-474d-afd6-81e5689e3e25
+        region:
+          type: string
+          example: us-east-1
+        cloudProvider:
+          type: string
+          example: AWS
+        customDomainBundles:
+          type: array
+          items:
+            type: object
+            properties:
+              domain:
+                type: string
+                example: example.domain.com
+              cqlFQDN:
+                type: string
+                example: dde308f5-a8b0-474d-afd6-81e5689e3e25-us-east-1.db.example.domain.com
+              apiFQDN:
+                type: string
+                example: dde308f5-a8b0-474d-afd6-81e5689e3e25-us-east-1.apps.example.domain.com
+              dashboardFQDN:
+                type: string
+                example: dde308f5-a8b0-474d-afd6-81e5689e3e25-us-east-1.dashboard.example.domain.com
+              downloadURL:
+                type: string
+                example: nifty.cloud.datastax.com:9092
+
+    CredsURLList:
+      type: "array"
+      description: "an array of credsURL"
+      items:
+        $ref: '#/components/schemas/CredsURL'
+    UserPassword:
+      description: UserPassword specifies a username and new password. The specified password will be updated for the specified database user
+      type: object
+      properties:
+        username:
+          type: string
+          example: dbusername
+        password:
+          type: string
+          example: MyNewSecur3Passw0rd
+          description: New password (min 6 characters)
+    MigrationProxyConfiguration:
+      description: Configuration of the migration proxy and mappings of astra node to a customer node currently in use
+      type: object
+      required:
+        - originUsername
+        - originPassword
+        - mappings
+      properties:
+        originUsername:
+          type: string
+          example: cassandraUsername
+          description: origin cassandra username
+        originPassword:
+          type: string
+          example: cassandraPassword
+          description: origin cassandra password
+        mappings:
+          type: array
+          items:
+            $ref: '#/components/schemas/MigrationProxyMapping'
+    MigrationProxyMapping:
+      description: A mapping of astra node to a customer node currently in use
+      type: object
+      required:
+        - originIP
+        - originPort
+        - rack
+        - rackNodeOrdinal
+      properties:
+        originIP:
+          type: string
+          example: 172.18.19.20
+          description: ip on which the node currently in use is accessible
+        originPort:
+          type: integer
+          example: 9042
+          description: port on which the node currently in use is accessible
+        rack:
+          type: integer
+          example: 2
+          description: the number of the rack, usually 0, 1, or 2
+        rackNodeOrdinal:
+          type: integer
+          example: 1
+          description: The number of the node in a given rack, starting with 0
+    CapacityUnits:
+      description: CapacityUnits is used to horizontally scale a database.
+      type: object
+      properties:
+        capacityUnits:
+          type: integer
+          minimum: 1
+          maximum: 100
+          example: 4
+          description: CapacityUnits can be increased by a max of three additional capacity units per operation. Reducing capacity units is not supported at this time
+    Storage:
+      description: Storage contains the information about how much storage space a cluster has available
+      type: object
+      required:
+        - nodeCount
+        - replicationFactor
+        - totalStorage
+      properties:
+        nodeCount:
+          type: integer
+          example: 6
+          description: NodeCount for the cluster
+        replicationFactor:
+          type: integer
+          example: 3
+          description: ReplicationFactor is the number of nodes storing a piece of data
+        totalStorage:
+          type: integer
+          example: 800
+          description: TotalStorage of the cluster in GB
+        usedStorage:
+          type: integer
+          example: 348
+          description: UsedStorage in GB
+    RegionCombination:
+      type: object
+      description: RegionCombination defines a Tier, cloud provider, region combination
+      required:
+        - tier
+        - cloudProvider
+        - region
+        - cost
+      properties:
+        tier:
+          type: string
+          example: Free
+        cloudProvider:
+          type: string
+          example: GCP
+        region:
+          type: string
+          example: us-east1
+        cost:
+          $ref: "#/components/schemas/Costs"
+    AvailableRegionCombination:
+      type: object
+      description: AvailableRegionCombination defines a Tier, cloud provider, region combination
+      required:
+        - tier
+        - cloudProvider
+        - region
+        - cost
+        - databaseCountUsed
+        - databaseCountLimit
+        - capacityUnitsUsed
+        - capacityUnitsLimit
+        - defaultStoragePerCapacityUnitGb
+      properties:
+        tier:
+          type: string
+          example: Free
+        cloudProvider:
+          type: string
+          example: GCP
+        region:
+          type: string
+          example: us-east1
+        cost:
+          $ref: "#/components/schemas/Costs"
+        databaseCountUsed:
+          type: integer
+          example: 0
+        databaseCountLimit:
+          type: integer
+          example: 1
+        capacityUnitsUsed:
+          type: integer
+          example: 0
+        capacityUnitsLimit:
+          type: integer
+          example: 30
+        defaultStoragePerCapacityUnitGb:
+          type: integer
+          example: 500
+    ServerlessRegion:
+      type: object
+      description: Serverless region information
+      required:
+        - cloudProvider
+        - name
+        - displayName
+        - zone
+        - classification
+        - enabled
+        - reservedForQualifiedUsers
+      properties:
+        cloudProvider:
+          type: string
+          example: aws
+        name:
+          type: string
+          example: us-west-2
+        displayName:
+          type: string
+          example: US West (Oregon)
+        zone:
+          type: string
+          example: na
+        classification:
+          type: string
+          example: standard
+        enabled:
+          type: boolean
+          example: true
+        reservedForQualifiedUsers:
+          type: boolean
+          example: true
+    Costs:
+      properties:
+        costPerMinCents:
+          type: number
+          format: double
+          example: 0
+        costPerHourCents:
+          type: number
+          format: double
+          example: 0
+        costPerDayCents:
+          type: number
+          format: double
+          example: 0
+        costPerMonthCents:
+          type: number
+          format: double
+          example: 0
+        costPerMinParkedCents:
+          type: number
+          format: double
+          example: 0
+        costPerHourParkedCents:
+          type: number
+          format: double
+          example: 0
+        costPerDayParkedCents:
+          type: number
+          format: double
+          example: 0
+        costPerMonthParkedCents:
+          type: number
+          format: double
+          example: 0
+    Errors:
+      description: Errors is a collection of individual Error objects
+      type: object
+      required:
+        - errors
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    Error:
+      description: ModelError information that is returned to users
+      type: object
+      required:
+        - id
+        - message
+      properties:
+        ID:
+          type: integer
+          example: 123
+          description: API specific error code
+        message:
+          type: string
+          example: Something is broken
+          description: User-friendly description of error
+    Role:
+      type: "object"
+      description: "Details of a user role and its policy details"
+      properties:
+        id:
+          type: "string"
+          description: "The unique system generated identifier of the role."
+        name:
+          type: "string"
+          description: "The name of the role."
+        policy:
+          $ref: '#/components/schemas/Policy'
+        last_update_datetime:
+          type: "string"
+          description: "The date and time of the last update on the role."
+          format: "date-time"
+        last_update_userid:
+          type: "string"
+          description: "The userID of the user who last updated the role."
+    Policy:
+      type: object
+      description: "A policy for a role in Astra."
+      required:
+        - description
+        - actions
+        - effect
+        - resources
+      properties:
+        description:
+          description: "A description of this policy"
+          type: string
+        resources:
+          type: array
+          description: "The resources this policy can manipulate."
+          items:
+            type: string
+            example: "drn:astra:org:__ORG_ID__"
+        actions:
+          type: array
+          description: "The actions this policy can take. Example Actions: 'org-billing-write' 'db-keyspace-create'"
+          items:
+            type: string
+            enum:
+              [   "db-all-keyspace-create",
+                  "db-all-keyspace-describe",
+                  "db-cql",
+                  "db-graphql",
+                  "db-keyspace-alter",
+                  "db-keyspace-authorize",
+                  "db-keyspace-create",
+                  "db-keyspace-describe",
+                  "db-keyspace-drop",
+                  "db-keyspace-grant",
+                  "db-keyspace-modify",
+                  "db-rest",
+                  "db-table-alter",
+                  "db-table-authorize",
+                  "db-table-create",
+                  "db-table-describe",
+                  "db-table-drop",
+                  "db-table-grant",
+                  "db-table-modify",
+                  "db-table-select",
+                  "db-manage-thirdpartymetrics",
+                  "org-audits-read",
+                  "org-billing-read",
+                  "org-billing-write",
+                  "org-db-addpeering",
+                  "org-db-create",
+                  "org-db-expand",
+                  "org-db-passwordreset",
+                  "org-db-suspend",
+                  "org-db-terminate",
+                  "org-db-view",
+                  "org-external-auth-read",
+                  "org-external-auth-write",
+                  "org-notification-write",
+                  "org-read",
+                  "org-role-delete",
+                  "org-role-read",
+                  "org-role-write",
+                  "org-token-read",
+                  "org-token-write",
+                  "org-user-read",
+                  "org-user-write",
+                  "org-write" ]
+        effect:
+          type: string
+          description: "Effect this policy will have on the provided resource"
+          enum: ["allow"]
+    Organization:
+      type: object
+      description: "An organization"
+      required:
+        - id
+      properties:
+        id:
+          type: string
+          description: "The organization UUID"
+          example: "d04d1eb2-6a52-483e-ab16-faaad3d077a9"
+    Roles:
+      type: "array"
+      description: "an array of roles"
+      items:
+        $ref: '#/components/schemas/Role'
+    CreateRoleRequest:
+      type: "object"
+      description: "The createRole model"
+      required:
+        - name
+        - policy
+      properties:
+        name:
+          type: "string"
+        policy:
+          $ref: '#/components/schemas/Policy'
+    UpdateRoleRequest:
+      type: "object"
+      description: "The updateRole model"
+      required:
+        - name
+        - policy
+      properties:
+        name:
+          type: "string"
+        policy:
+          $ref: '#/components/schemas/Policy'
+    RoleInviteRequest:
+      type: "object"
+      description: "The roleInvite model"
+      required:
+        - roles
+      properties:
+        roles:
+          type: "array"
+          items:
+            type: string
+    #TODO
+    PrivateLinkOrgOutput:
+      type: "object"
+      properties:
+        clusters:
+          type: array
+          description: List of endpoints for a cluster
+          items:
+            $ref: '#/components/schemas/PrivateLinkClusterOutput'
+    PrivateLinkClusterOutput:
+      type: object
+      properties:
+        clusterID:
+          type: string
+          description: Cluster ID for all private links connected to the cluster's datacenters
+        datacenters:
+          type: array
+          description: List of endpoints for a datacenter
+          items:
+            $ref: '#/components/schemas/PrivateLinkDatacenterOutput'
+    PrivateLinkDatacenterOutput:
+      type: object
+      properties:
+        serviceName:
+          $ref: '#/components/schemas/ServiceName'
+        allowedPrincipals:
+          $ref: '#/components/schemas/AllowedPrincipals'
+        datacenterID:
+          type: string
+          description: Datacenter ID for the private link endpoint
+        endpoints:
+          type: array
+          description: List of endpoints associated with the given org-cluster-dc combo
+          items:
+            $ref: '#/components/schemas/PrivateLinkEndpoint'
+    PrivateLinkEndpoint:
+      type: object
+      properties:
+        endpointID:
+          type: string
+          description: Endpoint ID of the user side private link
+          example: 'vpce-svc-1148ea04af491da11'
+        description:
+          type: string
+          description: User defined description of the endpoint
+          example: ecomm-team-billing-app
+        linkID:
+          type: string
+          description: Link ID for the private link service and endpoint connection
+          example: '126845687'
+        status:
+          type: string
+          description: The current status of the connection
+          example: Accepted
+          enum:
+            - Accepted
+            - Rejected
+        createdDateTime:
+          type: string
+          description: The datetime that the private link connection was created
+          example: '2009-11-10T23:00:00'
+    ServiceName:
+      type: string
+      description: The given endpoint service for the user to connect to
+      example: "com.amazonaws.vpce.us-east-1.vpce-svc-1148ea04af491da11"
+    AllowedPrincipals:
+      type: array
+      description: List of principals to do action for private link
+      example: ['arn:aws:iam::123456789012:role/admin']
+      items:
+        type: string
+    PrivateLinkCreateConfigInput:
+      type: object
+      properties:
+        allowedPrincipals:
+          $ref: '#/components/schemas/AllowedPrincipals'
+    PrivateLinkDeleteConfigInput:
+      type: object
+      properties:
+        allowedPrincipal:
+          type: string
+          description: The allowed-principal
+          example: "arn:aws:iam::123456789012:role/admin"
+    PrivateLinkCreateConfigOutput:
+      type: object
+      properties:
+        serviceName:
+          $ref: '#/components/schemas/ServiceName'
+        allowedPrincipals:
+          $ref: '#/components/schemas/AllowedPrincipals'
+    PrivateLinkCreateEndpointInput:
+      type: object
+      properties:
+        endpointID:
+          type: string
+          description: The user's endpoint created in their cloud provider account
+          example: "vpce-svc-1148ea04af8675309"
+        description:
+          type: string
+          description: The human readable description of the endpoint
+          example: ecomm-team-billing-app-prod
+    PrivateLinkUpdateEndpointInput:
+      type: object
+      properties:
+        description:
+          type: string
+          description: User defined description of the endpoint
+          example: ecomm-team-billing-app
+    AccessListRequest:
+      type: "object"
+      description: "The model used to build an access list"
+      properties:
+        addresses:
+          type: array
+          description: A listing of the allowed addresses
+          items:
+            $ref: '#/components/schemas/AddressRequest'
+        configurations:
+          $ref: '#/components/schemas/AccessListConfigurations'
+    AccessListResponse:
+      type: "object"
+      description: "The response for a requested access list"
+      properties:
+        organizationId:
+          type: string
+          description: The unique identifier of the organization
+          format: uuid
+          example: 303a3598-0905-4b5d-9db2-4bf2f9790973
+        databaseId:
+          type: string
+          description: The unique identifier of the database
+          format: uuid
+          example: 8fbcfe1d-56fa-4ed0-9aff-f57029feef1b
+        addresses:
+          type: array
+          description: A listing of the allowed addresses
+          items:
+            $ref: '#/components/schemas/AddressResponse'
+        configurations:
+          $ref: '#/components/schemas/AccessListConfigurations'
+    AddressRequest:
+      type: object
+      description: "The model used to build an address for an access list"
+      required:
+        - address
+        - enabled
+        - description
+      properties:
+        address:
+          pattern: ^([0-9]{1,3}\.){3}[0-9]{1,3}(\/([0-9]|[1-2][0-9]|3[0-2]))?$
+          type: string
+          description: The address (ip address and subnet mask in CIDR notation) of the
+            address to allow
+          example: 137.187.23.0/24
+        enabled:
+          type: boolean
+          description: The indication if the access address is enabled or not
+          example: true
+        description:
+          type: string
+          description: Description of this addresses use
+          example: "This address allows the database connections from the prod environment"
+    AddressResponse:
+      type: object
+      description: "The response for a requested address in an access list"
+      properties:
+        address:
+          pattern: ^([0-9]{1,3}\.){3}[0-9]{1,3}(\/([0-9]|[1-2][0-9]|3[0-2]))?$
+          type: string
+          description: The address (ip address and subnet mask in CIDR notation) of the
+            address to allow
+          example: 137.187.23.0/24
+        enabled:
+          type: boolean
+          description: The indication if the access address is enabled or not
+          example: true
+        description:
+          type: string
+          description: Description of this addresses use
+          example: "This address allows the database connections from the prod environment"
+        lastUpdateDateTime:
+          type: string
+          description: The last update date/time for the access list
+          format: date-time
+          example: "2021-01-21T17:32:28Z"
+    AccessListConfigurations:
+      required:
+        - accessListEnabled
+      type: object
+      properties:
+        accessListEnabled:
+          type: boolean
+    ValidationResponse:
+      type: object
+      properties:
+        valid:
+          type: boolean
+        validationFailures:
+          type: array
+          items:
+            type: string
+      description: The response for validation checks
+    GenerateTokenBody:
+      type: "object"
+      description: "The post body to generate a token"
+      required:
+        - "roles"
+      properties:
+        roles:
+          type: "array"
+          description: "The roles for which the token will be generated"
+          items:
+            type: "string"
+            example: "write"
+    ClientRoleList:
+      type: "object"
+      description: "The response for a requested token"
+      properties:
+        clients:
+          type: "array"
+          description: "a list of clientId and associated soles"
+          items:
+            $ref: '#/components/schemas/ClientRole'
+    ClientRole:
+      type: "object"
+      description: "An individual clientID and associated roles"
+      properties:
+        clientId:
+          type: "string"
+          description: "the clientID"
+          example: "IFmJlTkNvptFzTDEQpQIEJud"
+        roles:
+          type: "array"
+          items:
+            type: "string"
+            description: "Role associated with the client."
+    GenerateTokenResponse:
+      type: "object"
+      description: "The response for a requested token"
+      required:
+        - "clientId"
+        - "secret"
+        - "orgId"
+        - "roles"
+      properties:
+        clientId:
+          type: "string"
+          description: "The id of the client (uuid)"
+          format: 'string'
+        secret:
+          type: "string"
+          description: "The secret token"
+          format: "string"
+        orgId:
+          type: "string"
+          description: "the UUID of the organization"
+          example: "uuid"
+        roles:
+          type: "array"
+          description: "The roles for which the token will be generated"
+          items:
+            type: "string"
+            example: "write"
+        token:
+          type: "string"
+          description: "AstraCS:clientId:hex(sha256(secret))"
+          example: "uuid"
+    ExternalKMS:
+      type: "object"
+      properties:
+        orgId:
+          type: "string"
+          format: "uuid"
+          description: "The unique identifier for the organization."
+          example: "368600f6-a1e7-42f1-8266-2960de5313f3"
+        aws:
+          $ref: '#/components/schemas/AWS-KMS'
+        gcp:
+          $ref: '#/components/schemas/GCP-KMS'
+    AWS-KMS:
+      type: "object"
+      properties:
+        keyID:
+          type: "string"
+          description: "The unique identifier of the customer-key."
+        region:
+          type: "string"
+          description: "The region in which the master key exists."
+    GCP-KMS:
+      type: "object"
+      properties:
+        keyID:
+          type: "string"
+          description: "The KMS key version resource id for encryption operations."
+        region:
+          type: "string"
+          description: "The region in which the key exists."
+    GetAllCustomerKeys:
+      type: array
+      description: "List of Customer Keys in an organization"
+      items:
+        $ref: '#/components/schemas/ExternalKMSResponse'
+    ExternalKMSResponse:
+      type: "object"
+      properties:
+        OrganizationID:
+          type: "string"
+        CloudProvider:
+          type: "string"
+        KeyID:
+          type: "string"
+        Region:
+          type: "string"
+    GetParticularCustomerKey:
+      type: "object"
+      description: "Retrieves a Customer Key for the specified provider and region combination"
+      properties:
+        orgId:
+          type: string
+          example: ccd0aa59-facd-4a42-b27f-49dba057833d
+        aws:
+          type: object
+          properties:
+            keyID:
+              type: string
+              example: arn:aws:kms:us-east-1:111111111:key/aabbbb-a00f-4c38-9e92-b46ff1ed181d
+            region:
+              type: string
+              example: us-east-1
+    GetCloudProviderAccounts:
+      type: array
+      description: "List of Cloud provider accounts in an organization for a cloud-provider & region combination"
+      items:
+        $ref: '#/components/schemas/CloudProviderAccountDetails'
+    CloudProviderAccountDetails:
+      type: object
+      properties:
+        organization_id:
+          type: string
+        provider_id:
+          type: string
+        provider:
+          type: string
+    VPCConnection:
+      description: A VPC peering connection with an Astra database
+      type: object
+      required:
+        - connectionId
+        - status
+        - currentVpc
+        - otherVpc
+      properties:
+        connectionId:
+          type: string
+          description: A unique identifier for the peering connection
+        status:
+          type: string
+          description: The current status of the connection
+        currentVpc:
+          description: Details about the VPC where the Astra database is running
+          $ref: '#/components/schemas/VPC'
+        otherVpc:
+          description: Details about the VPC peered to the Astra database's VPC
+          $ref: '#/components/schemas/VPC'
+    VPC:
+      description: Details about a virtual private cloud
+      type: object
+      required:
+        - provider
+        - account
+        - vpcId
+        - cidrBlock
+      properties:
+        provider:
+          type: string
+          example: aws
+          description: Cloud provider the VPC is hosted on
+        account:
+          type: string
+          description: Account (AWS), Project (GCP) or Subscription (Azure) the VPC belongs to
+        vpcId:
+          type: string
+          description: The VPC's unique identifier
+        cidrBlock:
+          type: string
+          description: The CIDR block available for this VPC
+          pattern: ^([0-9]{1,3}\.){3}[0-9]{1,3}(\/([0-9]|[1-2][0-9]|3[0-2]))?$
+          example: 137.187.23.0/24
+    AzureVPC:
+      description: Details about an Azure virtual private cloud
+      type: object
+      required:
+        - tenantId
+        - subscriptionId
+        - resourceGroupName
+        - virtualNetworkName
+      properties:
+        tenantId:
+          type: string
+          description: ID of the Azure tenant the subscription resides in
+        subscriptionId:
+          type: string
+          description: ID of the subscription the resource group and virtual network reside in
+        resourceGroupName:
+          type: string
+          description: Name of the Resource Group the virtual network resides in
+        virtualNetworkName:
+          type: string
+          description: Name of the Virtual Network the peering is connecting to
+    AmazonVPC:
+      description: Details about an AWS virtual private cloud
+      type: object
+      required:
+        - accountId
+        - vpcId
+        - region
+        - cidrBlock
+      properties:
+        accountId:
+          type: string
+          description: ID of the AWS account the VPC belongs to
+          pattern: ^\d{12}$
+          example: 123456780000
+        vpcId:
+          type: string
+          description: Unique identifier for the VPC
+          pattern: ^(vpc-)([a-z0-9]{8}|[a-z0-9]{17})$
+          example: vpc-00001111aa332244c
+        region:
+          type: string
+          description: AWS region the VPC resides in
+        cidrBlock:
+          type: string
+          description: The CIDR block available for this VPC
+          pattern: ^([0-9]{1,3}\.){3}[0-9]{1,3}(\/([0-9]|[1-2][0-9]|3[0-2]))?$
+          example: 137.187.23.0/24
+    GoogleVPC:
+      description: Details about a GCP virtual private cloud
+      type: object
+      required:
+        - projectId
+        - vpcNetworkName
+      properties:
+        projectId:
+          type: string
+          description: ID of the GPC project the VPC belongs to
+        vpcNetworkName:
+          type: string
+          description: Unique identifier for the VPC
+
+  responses:
+    # 200
+    Ok:
+      description: The request completed successfully
+    # 201
+    Created:
+      description: The request completed successfully and created an object
+    # 202
+    Accepted:
+      description: The request was accepted
+    # 204
+    NoContent:
+      description: The request succeeded and no content is returned in response body
+    # 400
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Errors'
+    # 401
+    Unauthorized:
+      description: The user is unauthorized to perform the operation
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Errors'
+    # 403
+    Forbidden:
+      description: The user is forbidden to perform the operation
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Errors'
+    # 404
+    NotFound:
+      description: The specified database was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Errors'
+    # 409
+    Conflict:
+      description: The database is not in a valid state to perform the operation
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Errors'
+    # 422
+    UnprocessableEntity:
+      description: The structured data in the request could not be parsed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Errors'
+    # 5XX
+    ServerError:
+      description: A server error occurred
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Errors'
+  securitySchemes:
+    BearerAuth:
+      description: >-
+        An Application token must be passed in header in order to access the API. 
+        https://docs.datastax.com/en/astra-serverless/docs/manage/org/managing-org.html#_manage_application_tokens 
+      type: http
+      scheme: bearer

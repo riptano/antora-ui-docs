@@ -1,0 +1,234 @@
+= {astra_db} release notes
+:slug: release-notes
+
+{company} {astra_db} release notes provide information about new and improved features, known and resolved issues, and bug fixes.
+
+== 21 July 2022
+
+You can xref:connect:custom-domains.adoc[set up your custom DNS] with a private endpoint for Azure and use your DNS entry to send traffic to the private endpoint.
+
+== 24 May 2022
+
+Launched a public beta of {astra_db} Plugin for HashiCorp Vault. This open-source project adds robust **token lifecycle management** features for {astra_db}. For details, see the link:https://github.com/datastax/vault-plugin-secrets-datastax-astra/blob/main/docs/index.md[documentation, window="_blank"] in the plugin's GitHub repo. Also see this link:https://youtu.be/_NUK6-omsyA[introductory video, window="_blank"] on the DataStax Developers YouTube channel.
+
+== 18 May 2022
+
+The {astra_db} Documentation is now organized by major user goals, including xref:plan:planning.adoc[Planning, window="_blank"], xref:secure:securing.adoc[Securing, window="_blank"], xref:manage:managing.adoc[Managing, window="_blank"], xref:connect:connecting.adoc[Connecting, window="_blank"], and xref:develop:developing.adoc[Developing, window="_blank"].
+
+== 16 May 2022
+
+The {astra_db} Metrics feature allows you to forward {astra_db} database health metrics to an external third-party metrics system. See xref:manage:db/third-party-metrics.adoc[Export {astra_db} metrics to a third party, window="_blank"] for details about:
+
+* DevOps v2 API functionality.
+* Support for https://prometheus.io/[Prometheus, window="_blank"] as a destination system.
+* Steps to visualize the exported {astra_db} database health metrics in https://grafana.com/[Grafana, window="_blank"] or https://grafana.com/products/cloud/[Grafana Cloud, window="_blank"].
+
+== 04 May 2022
+
+Support in {astra_db} for additional supported regions, including `ap-southeast-2` (Singapore), `ap-northeast-1` (Tokyo), and `eu-west-2` (London) for {astra_db} Classic databases on AWS. For the full list, see xref:plan:regions.adoc[Database regions]. In link:https://astra.datastax.com[{astra_ui}, window="_blank"], when you create an {astra_db} database or click **Add Region** for an existing database, you'll also see the supported regions list for each combination of {astra_db} database type (Serverless or Classic) and cloud provider.
+
+== 28 April 2022
+
+In the per-organization **Security Settings** UI provided by {astra_ui}, added support for Google Cloud based {astra_db} databases. Allows you to associate a Customer Key in {astra_ui} with an existing Customer Managed Encryption Key (CMEK) defined in Google Cloud console. For the full set of Bring Your Own Key topics, see:
+
+* xref:manage:org/byok-ui-gcp.adoc[BYOK GCP with {astra_ui}, window="_blank"] (new)
+* xref:manage:org/byok-ui-aws.adoc[BYOK AWS with {astra_ui}, window="_blank"]
+* xref:manage:devops/devops-aws-cmk.adoc[BYOK AWS with DevOps API, window="_blank"]
+* xref:manage:devops/devops-gcp-cmek.adoc[BYOK GCP with DevOps API, window="_blank"]
+
+== 18 April 2022
+
+For AWS-based {astra_db} databases, added per-organization **Security Settings** in {astra_ui}. Allows you to associate a Customer Key in the xref:manage:org/byok-ui-aws.adoc[{astra_ui}, window="_blank"] with an existing Customer Managed Key defined in AWS Key Management Service. The new UI enhances the Bring Your Own Key (BYOK) feature already present via the {astra_db} DevOps API for xref:manage:devops/devops-aws-cmk.adoc[AWS, window="_blank"] and xref:manage:devops/devops-gcp-cmek.adoc[GCP, window="_blank"].
+
+== 07 April 2022
+
+Launched a **Private Preview** of the {astra_db} Metrics feature. See xref:manage:db/third-party-metrics.adoc[Export {astra_db} metrics to a third party, window="_blank"].
+
+== 24 March 2022
+xref:connect:astream-cdc.adoc[CDC for {astra_db}, window="_blank"] is now available. CDC for {astra_db} automatically captures changes in real time, de-duplicates the changes, and streams the clean set of changed data into {astra_stream} where it can be processed by client applications or sent to downstream systems.
+
+== 23 February 2022
+
+Astra DB serverless support for xref:plan:regions.adoc[new regions]:
+
+* Google Cloud: West Europe2 (`europe-west2`) in London
+* Azure:
+** Canada Central (`canadacentral`) in Toronto
+** US East (`eastus`) in Virginia
+
+== 14 February 2022
+You can now xref:manage:org/managing-org.adoc#removing-a-payment-method[remove a payment method, window="_blank"] from the pay as you go plan on {astra_db}.
+
+== 08 February 2022
+You can xref:manage:org/configuring-sso.adoc[configure single sign-on (SSO), window="_blank"] to manage access to various applications. SSO allows for a seamless sign-on experience, and gives centralized and streamlined access control to security operations teams. Once configured, this security enhancement means that during a user's next login attempt on link:https://astra.datastax.com[DataStax Astra, window="_blank"], the user is prompted to enter their company SSO credentials. If the credentials are valid, the authenticated user is logged into their DataStax Astra organization automatically.
+
+== 01 February 2022
+New {astra_db} pricing went into effect on 01-Feb-2022. See the introductory information on xref:manage:org/managing-org.adoc#pricing-and-billing[Pricing and billing, window="_blank"] in the {astra_db} documentation, and specific details in the link:https://www.datastax.com/products/datastax-astra/pricing[Astra DB Pricing, window="_blank"] calculators.
+
+== 31 January 2022
+The Bring Your Own Key (BYOK) feature is now Generally Available (GA) for AWS-based {astra_db} databases. Contact DataStax Support to have a representative enable BYOK for your organization. See xref:manage:devops/devops-aws-cmk.adoc[Bring Your Own Key for AWS, window="_blank"], and the DevOps `/v2/kms` link:https://docs.datastax.com/en/astra/docs/_attachments/devopsv2.html#tag/Customer-Keys[Customer Keys, window="_blank"] API reference.
+
+== 11 January 2022
+Participants in a *private preview* can use the Bring Your Own Key (BYOK) feature with their AWS-based {astra_db} databases. See xref:manage:devops/devops-aws-cmk.adoc[Bring Your Own Key for AWS, window="_blank"].
+
+== 07 January 2022
+You can now load data into your {astra_db} database from an Amazon S3 bucket that contains exported DynamoDB data in the xref:develop:dev-upload-data.adoc#astra-db-data-loader[{astra_db} Data Loader, window="_blank"].
+
+== 06 January 2022
+Added support for serverless Azure `centralindia` (Central India, Pune) region. For more, see xref:plan:regions.adoc[Database regions, window="_blank"].
+
+== 09 November 2021
+You can now define private endpoints for Azure, AWS, and Google Cloud in {astra_ui} in addition to DevOps API calls that enable the same configurations. See your database's *Dashboard > Settings* tab. See xref:connect:private_endpoints/connect-private-endpoints.adoc[Connect via a private endpoint].
+
+== 14 September 2021
+You can now create multiple datacenters across xref:manage:db/managing-db.adoc#using-multiple-regions[regions] for serverless databases.
+
+== 02 September 2021
+* xref:connect:private_endpoints/connect-private-endpoints.adoc[Private endpoints] are available through the xref:manage:devops/devops-gcp-private-endpoints.adoc[DevOps API for Google Cloud].
+* Added support for serverless AWS `us-east-2` region. For more, see xref:plan:regions.adoc[Database regions].
+
+== 12 August 2021
+xref:connect:private_endpoints/connect-private-endpoints.adoc[Private endpoints] are available through the xref:manage:devops/devops-azure-private-endpoints.adoc[DevOps API for Azure].
+
+== 29 July 2021
+Added support for serverless Google Cloud `us-east-4` region. For more, see xref:plan:regions.adoc[Database regions].
+
+== 21 July 2021
+xref:connect:private_endpoints/connect-private-endpoints.adoc[Private endpoints] are available through the xref:manage:devops/devops-aws-private-endpoints.adoc[DevOps API for AWS].
+
+== 16 June 2021
+xref:manage:devops/devops-api.adoc#devops-access-list[Access lists] are available to restrict public access to your serverless database.
+
+== 11 June 2021
+Added support for serverless Azure `southcentralus` region. For more, see xref:plan:regions.adoc[Database regions].
+
+== 24 May 2021
+xref:plan:planning.adoc#backup-restore[Backup and restore] is now available on {serverless} databases.
+
+== 14 May 2021
+* For {serverless} databases, increased:
+** Size of values in a single column to 10 MB
+** Maximum number of columns per table to 75
+** Maximum number of SAI indexes to 50 per table or database
+* New tutorial for connecting to xref:getting-started:integration-datagrip.adoc[DataGrip].
+* Added support for {serverless} Azure `northeurope` (Ireland) region.
+
+== 03 May 2021
+You can now manage your xref:manage:devops/devops-api.adoc#devops-roles[roles] and xref:manage:devops/devops-api.adoc#devops-tokens[tokens] with the xref:manage:devops/devops-api.adoc[DevOps API].
+
+== 15 April 2021
+* Moved xref:manage:org/managing-org.adoc#manage-application-tokens[*Token Management*] under your *Organization Settings*.
+* Added getting started guides for xref:getting-started:gs-grant-user-access.adoc[granting a user access] and xref:getting-started:gs-load-data.adoc[loading and retrieving data in your database] to the {astra_db} documentation.
+* {serverless_cap} databases are now available on Azure. Added support for AWS `us-west-2` and GCP `us-west-1` regions. For more, see xref:plan:regions.adoc[Database regions].
+* {serverless_cap} databases now support https://docs.datastax.com/en/astra-cql/doc/cql/cql_using/useBatchTOC.html[logged batches].
+
+== 04 March 2021
+{astra_db} now offers a {serverless} database that is available on multiple cloud providers.
+For more, see xref:manage:org/managing-org.adoc#plan-selection[{astra_db} plan options].
+
+Other improvements:
+
+* You can now manage your user permissions with xref:manage:org/manage-permissions.adoc[Identity and Access Management] and xref:manage:org/manage-custom-roles.adoc[custom roles].
+* xref:manage:org/managing-org.adoc#manage-application-tokens[Application tokens] simplify connecting to your database with the available xref:api.adoc[APIs].
+
+Additional changes:
+
+* Free and {serverless} (beta) databases were migrated to pay as you go plans with a $25 credit that renews each month.
+* {classic_cap} tiers can no longer be created in {astra_ui}. We recommend migrating your database to our current {serverless} option, which could save you money and allow you to manage your compute and storage capabilities separately. {support_url}[Talk to us, window="_blank"] to start your migration.
+* Studio is no longer included in {astra_db}.
+* {astra_db} workloads are limited to 4096 ops/s/coordinator by default. If you see a "Rate limit reached" error in your application and want your limit raised, please {support_url}[open a support ticket, window="_blank"].
+* Each element of a call to the Document API counts as a read or write, which can increase the number of reads and writes and affect your xref:manage:org/managing-org.adoc#pricing-and-billing[pricing]. For example, 5,000 write requests/s with 11 fields means 55,000 op/s.
+
+== 29 January 2021
+{astra_db} meets link:https://en.wikipedia.org/wiki/System_and_Organization_Controls#Levels[SOC 2 Type II] security audit compliance.
+
+== 09 December 2020
+
+* https://stargate.io/[Stargate] endpoints are available in all {astra_db} databases created 9 December 2020 or later and in free {astra_db} databases created 7 October 2020 or later.
+For more, see the Stargate link:_attachments/restv2.html[REST API] and schemaless link:_attachments/docv2.html[Document API].
+* New xref:develop:dev-upload-data.adoc#astra-db-data-loader[{astra_db} Data Loader] simplifies how you can get data into your {astra_db} database.
+
+== 15 October 2020
+
+* New xref:manage:org/managing-org.adoc#plan-selection[{astra_db} plan options] are available to provide you with options that allow you to weigh the costs and database capabilities for your {astra_db} database.
+* You can now add xref:manage:db/managing-db.adoc#using-multiple-regions[multiple regions] to your {classic} database.
+
+== 29 September 2020
+We've improved our user interface to make {astra_db} easier for you. Check out your databases and our new resources in https://astra.datastax.com[{astra_db}].
+
+image::ROOT:50da5ef-newAstraUI.png[Revised {astra_db} UI]
+
+== 18 September 2020
+Use VPC peering to access your database on xref:connect:private_endpoints/connect-vpc-peering.adoc#azure-vpc-peering[Azure] and xref:connect:private_endpoints/connect-vpc-peering.adoc#gcp-vpc-peering[GCP].
+This feature is available for C- and D-tier {classic} databases.
+
+== 28 August 2020
+
+You can now xref:manage:db/managing-db.adoc#create-your-astra-db-database[create your {astra_db} database] with Microsoft Azure as your cloud provider.
+
+image::ROOT:33040d8-Screen_Shot_2020-08-28_at_2.11.20_PM.png[]
+
+Improvement: Added C-20, C-40, D-10, D-20, and D-40 database tiers. For more, see xref:manage:org/managing-org.adoc#plan-selection[Service tier options].
+
+== 31 July 2020
+
+DevOps API simplifies creating and managing {astra_db} databases  To start using the DevOps API, xref:manage:org/managing-org.adoc#authenticating-classic-databases[create a service account] for your organization.
+Use the service account secret to authenticate your service account and use the DevOps API.
+
+Also, the xref:index.adoc[{astra_db} product documentation] and the xref:api.adoc[{astra_db} API references] are now hosted together at {astra_docs_base_url}[{astra_docs_base_url}].
+
+== 17 July 2020
+
+Use VPC peering to access your database on AWS clusters xref:connect:private_endpoints/connect-vpc-peering.adoc#aws-vpc-peering[VPC peering] is available to access your {astra_db} database from the AWS Console.
+This feature is available for only C10 databases on AWS.
+
+Also, you can submit questions or feedback directly in {astra_ui} using our new *Chat* feature.
+
+image::ROOT:IntercomIcon.png[Use the new Chat feature in {astra_db}.]
+
+== 10 July 2020
+*Manage Organizations* is now listed under your databases menu. From the *Manage Organizations* screen, you can *View Billing* and *View Users* under the Action menu.
+
+== 26 June 2020
+New features:
+
+Documentation help pane provides useful documentation links When you select *Get Help* a pane opens that provides links to helpful documentation for using your {astra_db} database.
+
+Improvements:
+
+* Check the status of {astra_db} databases at https://status.astra.datastax.com.
+* Redesigned the database page to make information easier to read and access.
+* Added a footer to the user interface that provides important links and contact information.
+* The database cluster ID is now included in the *Cluster Details* on the *Database Details* page.
+
+== 12 May 2020 (GA)
+
+The Generally Available (GA) release of {astra_db} includes these enhancements:
+
+* Enabled billing for C10 tier.
+* Reduced how long it takes to provision a cluster.
+* When an organization is created, roles can now be assigned for administrator, read/write, read, and service account.
+Groups can now be created with the associated role, except for the service account.
+* Added link:_attachments/restv2.html[REST API] to connect to database.
+* Users can now use their Google or GitHub logins to access the {astra_db} database.
+* Added GraphQL to simplify queries without Cassandra Query Language (CQL).
+* Meets SOC2 Type I security audit compliance.
+
+== 27 February 2020 (Beta)
+{astra_db} brought the Cassandra Query Language SHell (CQLSH) even closer to you by integrating it directly in the console. Navigate to your database, select the *CQL Console* tab, and issue CQL commands to interact with your database.
+
+== 24 January 2020 (Beta)
+The standalone version of CQLSH was released for connecting to {astra_db} databases.
+What does that mean for you? It means connecting to an {astra_db} database from your laptop without requiring {company} Enterprise (DSE). Previously, you used native CQLSH included in DSE. Now, you can download CQLSH, download the secure connect bundle for your {astra_db} database, and connect with a single command.
+
+== 07 January 2020 (Beta)
+The Free tier was released for {astra_db}, allowing you to create an {astra_db} database with 10 GB for free.
+Create a database with just a few clicks and start developing within minutes, no credit card required.
+[TIP]
+====
+You can have only one active database on the Free tier.
+====
+
+The open Beta release of {astra_db} brings the ability to develop and deploy data-driven applications with a cloud-native service, built on the best distribution of Apache Cassandra™, without the hassles of database and infrastructure administration.
+
+Instead of listing the features included in this release, learn about what {astra_db} is, and then get started with creating your own database. If you have questions, review the xref:astra-faq.adoc[FAQ] for answers.

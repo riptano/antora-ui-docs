@@ -1,0 +1,15 @@
+{
+"OrgID":"dacb3c32-cc2a-4bea-bd95-47ab8eb20410”,
+"OrgName":"DataStax”,
+"Users”:[
+	{"UserID":"388def78-0040-4dge-b235-d67806929c8f”,
+	"Email":"john.smith@datastax.com”,
+	"Status":"active”,
+	"Roles”:[{"ID":"704fc2af-9c11-4c57-b9e5-5667b8889b3e”, "Name":"Admin User”}]
+	},
+	{"UserID":"d8bb706b-95a0-499b-aadc-5a43b4f9042d”,
+	"Email":"jane.doe@datastax.com”,
+	"Status":"active”,
+	"Roles”:[{"ID":"21ef3576-0197-415a-b167-d510af12ecf0”,"Name":"Organization Administrator”}]
+	}]
+}

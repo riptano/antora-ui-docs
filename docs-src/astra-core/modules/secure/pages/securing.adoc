@@ -1,0 +1,25 @@
+= Securing {astra_db}
+:page-tag: security,admin,astra-db
+
+Because security is a priority for all modern cloud applications, {company} has implemented several protocols to ensure security remains a priority.
+
+{company} {astra_db} is secured by default, including encryption over the wire and at rest. {company} {astra_db} classic instances are SOC2 Type2-compliant, and {company} {astra_db} serverless certification is in progress.
+
+For details on {astra_db} security, check out the link:https://www.datastax.com/resources/whitepaper/astra-security[{astra_db} Security Whitepaper].
+
+The following sections discuss security policies that are specific to {astra_db}.
+To view security protocols implemented across {company}, see link:https://www.datastax.com/products/datastax-enterprise/security-assurance[Security assurance, window="_blank"] on the {company} website.
+
+
+include::page$secure-default-permissions.adoc[Default user permissions, leveloffset=+1]
+
+include::page$security-guidelines.adoc[Security guidelines]
+
+include::page$secure-change-password.adoc[Change your login password, leveloffset=+1]
+
+include::page$secure-reset-password.adoc[Reset your password, leveloffset=+1]
+
+include::page$secure-highlights.adoc[Security highlights, leveloffset=+1]
+
+include::page$astra-plugin-hashi-vault.adoc[Astra DB Plugin for HashiCorp Vault]
+

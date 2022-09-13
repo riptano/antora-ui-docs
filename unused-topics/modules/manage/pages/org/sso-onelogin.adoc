@@ -1,0 +1,133 @@
+= Configuring single sign-on for OneLogin
+
+include::partial$sso-overview.adoc[]
+
+== Prerequisites
+To manage SSO settings, you must have the *Read External Auth* and the *Write External Auth* permissions. These permissions are included in the Organization Administrator role.
+
+Ensure you map the following attributes in your IdP. They are required for Astra to identify your account and JIT provision new accounts.
+
+* email - Must be in email format and map to an attribute which matches the users Astra account ID (or desired account ID for JIT provisioning)
+* firstName -  The user's first name/given name
+* lastName - The user's last name/surname
+
+image::ROOT:Okta_attributes1.png[]
+
+== Adding identity provider
+
+. From any page from https://astra.datastax.com[{astra_db}], select the *Organizations* dropdown. Select the organization for which you want to configure your SSO.
+. Go to the dashboard and select *Organization Settings*. Select *Security Settings*.
++
+If this is your first time configuring SSO, no identity providers (IdP) will be listed for your organization.
+. Select *Add Identity Provider*.
+. Select *OneLogin* as your IdP.
++
+The following fields display information you need to provide to your IdP:
+
+** ACS (Consumer) URL, also called "Single Sign On URL"
+** Audience, also called "SP Entity ID"
+** Relay State, also called "Default Relay State"
+
++
+image::ROOT:onelogin_linkIdP.png[]
+
+. Enter the provided *ACS (Consumer) URL*, *Audience*, and *Relay State* to your OneLogin account.
+For more, see the https://developers.onelogin.com/saml/app-catalog[OneLogin Catalog].
+
+. From OneLogin, get your *SAML 2.0 Endpoint*, *Issuer URL*, and *x.509 Certificate*.
+For more, see the https://developers.onelogin.com/saml/app-catalog[OneLogin Catalog].
+
+. Enter your *Description*, *SAML 2.0 Endpoint*, *Issuer URL*, and *x.509 Certificate* for OneLogin into your {astra_db} SSO configuration.
+
++
+image::ROOT:onelogin_obtain_a.png[]
+
+. After confirming all the information is correct, scroll down and select *Test Configuration*.
++
+A new tab opens in the browser window housing your IdP log-in screens and flow. When you complete the login, the window closes.
++
+The Test Configuration is deemed successful when a confirmation icon appears beside the *Test Configuration* button.
++
+[IMPORTANT]
+====
+If the test was unsuccessful, review the SSO settings in {astra_db} and your IdP console. If still unsuccessful, contact https://houston.datastax.com/hc/requests/new[DataStax support].
+====
+
+. Select *Activate SSO* when your test configuration is successful. A message appears confirming the SSO is now active for your selected organization.
+
+== Disabling your configuration
+
+You can suspend any active configuration from your organization. The *Disable* option deactivates your active configuration.
+
+[WARNING]
+====
+If you disable your SSO configuration, users can access your organization without SSO authentication.
+====
+
+. Select the ellipsis (...) next to your active configuration. Select *Disable*.
+. A dialog box appears to confirm you want to disable this configuration. Type "disable" and select *Disable SSO Configuration*.
+
+image::ROOT:sso_disableactive.png[]
+
+// == Deleting your configuration
+
+//The *Delete* option displays a dialog box with the consequences of deleting the now active SSO configuration.
+
+//. Click the ellipsis (...) next to the row of the configuration you want to delete. Select *Delete*.
+//. A dialog box appears to confirm you want to delete this configuration. Type "delete"  and select *Delete SSO Authentication*. Selecting this option removes the row from the table. This option is permanent.
+
+//image::ROOT:sso_deleteactive.png[]
+
+== Using identity provider drafts
+
+To complete your configuration later, select *Esc* in your configuration to save the current information as a draft. All drafts and the active configuration appear on the table of the *Single Sign-on (SSO)* page.
+
+image::ROOT:sso_drafts.png[]
+
+. Select the ellipsis (…).
+. Select either *Edit* or *Delete*:
++
+* *Edit* returns to the *Configure SSO* page to continue editing the draft and complete the SSO configuration.
+* *Delete* removes the row from the table and is permanent. This choice displays a dialog box. To delete the draft, type "delete" and select *Delete SSO Authentication*.
+
+[NOTE]
+====
+An organization can have have multiple configuration drafts, but only one active configuration.
+====
+
+image::ROOT:sso_draftactive.png[]
+
+
+=== Downloading the Astra Logo
+
+
+. Open your organization dashboard and go to *Organization Settings*.
+. Select *Security Settings*. Scroll down to the Single Sign-on (SSO) box and click *Add Identity Provider*. Successfully complete the IdP configuration. 
+. Go to *Advanced Settings* and click *Download Astra Logo*.
+
++
+image::ROOT:download_astralogo.png[]
+
+[NOTE]
+====
+You can only add the logo during configuration. When you successfully complete configuration, you are not able to return to the logo.
+====
+
+=== Adding the Astra Logo
+
+. Open OneLogin and select *OpenId Connect (OIDC)*. This action opens your portal.
+
++
+image::ROOT:onelg_OIDC.png[]
+
+. Select the rectangle or square logo option. Read the screen ratios to determine the best one for you.
+
++
+image::ROOT:onelg_logo.png[]
+
+
+. Click *Save*. 
+
+== What's next?
+
+As needed, xref:user-permissions.adoc[Update user permissions] from the default JIT provision role.

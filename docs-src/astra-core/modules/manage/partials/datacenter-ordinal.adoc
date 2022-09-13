@@ -1,0 +1,1 @@
+To confirm your datacenter ID, see your database *Dashboard* or use the DevOps API to https://docs.datastax.com/en/astra/docs/_attachments/devopsv2.html#operation/listDatacenters[get all datacenter IDs] within your database.

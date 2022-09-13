@@ -1,0 +1,4 @@
+[WARNING]
+====
+If you are using a xref:vpc-peering.adoc[VPC peering] connection on your classic database, you must add the CIDR of your VPC connection to your xref:db-add-access-list.adoc[access list] to ensure your application isn't disconnected.
+====

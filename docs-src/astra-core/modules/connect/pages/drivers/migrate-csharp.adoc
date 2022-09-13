@@ -1,0 +1,67 @@
+= Migrating C# driver
+:slug: migrating-the-c-driver-to-connect-with-astra-databases
+:page-tag: driver,dev,astra-db,connect
+
+Complete the following procedure to migrate your existing {company} C# driver to a version that is capable of connecting to Astra databases created using {company} {astra_db}.
+
+. Add the dependencies for the C# driver to your project.
+
++
+[tabs]
+====
+{company} C# driver for Apache Cassandra::
++
+--
+[source,cs]
+----
+dotnet add package CassandraCSharpDriver -v 3.15.0
+----
+--
+DSE C# driver::
++
+--
+[source,cs]
+----
+dotnet add package Dse -v 3.15.0
+----
+--
+====
+
+. In your existing {company} C# driver code, modify the connection code to use the {astra_db} API.
++
+[NOTE]
+====
+Include the absolute path to the secure connect bundle for your Cassandra database (`secure-connect-database_name.zip`) in the `WithCloudSecureConnectionBundle` method call, and your credentials in the `WithCredentials` method call, as shown in the following examples.
+====
++
+[tabs]
+====
+{company} C# driver for Apache Cassandra::
++
+--
+[source,cs]
+----
+var session =
+  Cluster.Builder()
+      .WithCloudSecureConnectionBundle(@"C:\path\to\secure-connect-database_name.zip")
+        .WithCredentials("clientId", "clientSecret")
+        .Build()
+        .Connect();
+----
+--
+DSE C# driver::
++
+--
+[source,cs]
+----
+var session =
+  DseCluster.Builder()
+      .WithCloudSecureConnectionBundle(@"C:\path\to\secure-connect-database_name.zip")
+        .WithCredentials("clientId", "clientSecret")
+        .Build()
+        .Connect();
+----
+--
+====
+
+. Run your application.

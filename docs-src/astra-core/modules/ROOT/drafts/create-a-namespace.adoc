@@ -1,0 +1,79 @@
+= Create a namespace
+:slug: create-a-namespace
+:updatedAt: 2020-11-30T21:27:09.692Z
+
+[CAUTION]
+====
+*DO NOT PUBLISH*
+THIS IS NOT SUPPORTED IN ASTRA
+====
+
+To use the Document API, you must create the namespace as a container that will store collections, which in turn store documents.
+Documents can themselves hold multiple documents.
+Multiple collections are contained in a namespace, but a collection cannot be contained in multiple namespaces.
+
+Only namespaces need to specifically created.
+Collections are specified when a document is inserted.
+A optional setting, replicas, defines the number of data replicas the database will store for the namespace.
+If no replica is defined, then for a namespace in a single datacenter cluster, the default is 1, and for a multiple-datacenter cluster, the default is 3 for each datacenter.
+
+== Simple namespace
+Send a POST request to `/v2/schemas/namespaces`.
+In this example we use `myworld` for the name
+
+```
+curl --request POST \
+   --url https://${ASTRA_CLUSTER_ID}-${ASTRA_CLUSTER_REGION}.apps.astra.datastax.com/api/document/v2/schemas/namespaces \
+   --header 'X-Cassandra-Token: $ASTRA_AUTHORIZATION_TOKEN' \
+   --header 'Content-Type: application/json' \
+   --data '{"name": "myworld"}'
+```
+
+The authorization token and the content type are passed with --header.
+The token must be identified as X-Cassandra-Token so that cluster recognizes the token and its value.
+The specified name and replicas for the namespace are passed as JSON data using --data.
+
+////
+== Namespace for multiple datacenters
+For a multi-region cluster, a namespace is defined datacenters. Send a POST request to /v2/schemas/namespaces. In this example we use `myworld-dcs` for the name, the regions are dc1 and dc2, where dc1 defaults to 3 replicas and dc2 is set to 5 replicas.
+
+curl --location --request POST \
+  --url https://${ASTRA_CLUSTER_ID}-${ASTRA_CLUSTER_REGION}.apps.astra.datastax.com/api/document/v2/schemas/namespaces \
+  --header "X-Cassandra-Token: $ASTRA_AUTHORIZATION_TOKEN" \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "name": "myworld-dcs",
+    "datacenters": [ {"name": "dc1"}, {"name": "dc2"} ]
+}'
+////
+
+== Check namespace existence
+To check if a namespaces exist, execute a Document API query with cURL to find all the namespaces:
+
+```
+curl --request GET \
+  --url https://${ASTRA_CLUSTER_ID}-${ASTRA_CLUSTER_REGION}.apps.astra.datastax.com/api/rest/v2/schemas/namespaces \
+  --header "X-Cassandra-Token: $ASTRA_AUTHORIZATION_TOKEN" \
+  --header 'Content-Type: application/json'
+```
+
+returns:
+
+```
+{"data":[{"name":"system_distributed"},{"name":"system"},
+{"name":"data_endpoint_auth"},{"name":"system_schema"},{"name":"myworld"},
+{"name":"stargate_system"},{"name":"system_auth"},{"name":"system_traces"}]}
+```
+
+To get a particular namespace, specify the namespace in the URL:
+```
+curl --location --request GET \
+--url https://${ASTRA_CLUSTER_ID}-${ASTRA_CLUSTER_REGION}.apps.astra.datastax.com/api/document/v2/schemas/namespaces/myworld \
+--header "X-Cassandra-Token: $ASTRA_AUTHORIZATION_TOKEN" \
+--header 'Content-Type: application/json'
+```
+
+returns:
+```
+{"data":{"name":"myworld"}}
+```
