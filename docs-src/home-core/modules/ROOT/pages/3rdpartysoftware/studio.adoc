@@ -1,5 +1,0 @@
-= DataStax Studio 6.8.x Third-party Software
-
-xref:3rdpartysoftware/studio680.adoc[DataStax Studio 6.8.0]
- 
-Third-party software licensed for DataStax Studio 6.8.0.
