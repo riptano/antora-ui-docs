@@ -22,6 +22,7 @@ content:
 
 ui:
   bundle:
+    # To test a specific UI release, you can use: url: https://github.com/riptano/antora-ui-docs/releases/download/<tag-name>/ui-bundle.zip
     url: https://github.com/riptano/antora-ui-docs/releases/latest/download/ui-bundle.zip
     snapshot: true
   # Uncomment the "supplemental_files" line below ONLY IF you're trying to
