@@ -1576,3 +1576,11 @@ li.nav-item.is-current-page.is-active:has(li):has(li):before {
 .dark-mode li.nav-item[data-depth="2"]:hover a {
     color: #fff;
 }
+
+.source-toolbox .copy-toast::after {
+    right: 6px;
+}
+
+.source-toolbox .copy-toast {
+    left: -14px;
+}
