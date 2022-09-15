@@ -6,16 +6,6 @@
     --announcement-height: 48px;
 }
 
-.doc .source-toolbox .copy-button {
-    flex-direction: row!important;
-}
-
-.source-toolbox .copy-toast {
-    position: absolute!important;
-    right: 0;
-    top: 1em;
-}
-
 @font-face {
     font-family: 'Material Icons';
     font-style: normal;
@@ -1091,10 +1081,6 @@ label.switch_label:after {
     color: var(--white);
 }
 
-.dark-mode .nav-item.is-current-page a {
-    color: var(--color-interface-night-300);
-}
-
 .dark-mode .nav-item.is-current-page::before {
     background: var(--color-interface-night-300);
     border: 2px solid var(--color-interface-night-300);
@@ -1379,27 +1365,11 @@ label.switch_label:after {
 
 /* DARK MODE LISTS */
 
-.dark-mode .nav-item[data-depth="1"].toggler:hover,
-.dark-mode .nav-item[data-depth="2"].toggler:hover,
-.dark-mode .nav-item[data-depth="3"].toggler:hover,
-.dark-mode .nav-item[data-depth="4"].toggler:hover {
-    color: #000;
-    background-color: #f6f8fa;
-}
-
 .dark-mode .nav-item[data-depth="1"].toggler>.nav-text:hover,
 .dark-mode .nav-item[data-depth="2"].toggler>.nav-text:hover,
 .dark-mode .nav-item[data-depth="3"].toggler>.nav-text:hover,
 .dark-mode .nav-item[data-depth="4"].toggler>.nav-text:hover {
     background-color: transparent;
-}
-
-.dark-mode .nav-item[data-depth="1"]:hover,
-.dark-mode .nav-item[data-depth="2"]:hover,
-.dark-mode .nav-item[data-depth="3"]:hover,
-.dark-mode .nav-item[data-depth="4"]:hover {
-    color: #000;
-    background-color: #f6f8fa;
 }
 
 .dark-mode .nav-item[data-depth="1"].toggler.is-active:hover,
@@ -1414,10 +1384,6 @@ label.switch_label:after {
 .nav-item[data-depth="3"].toggler.is-active:hover,
 .nav-item[data-depth="4"].toggler.is-active:hover {
     background-color: transparent;
-}
-
-.dark-mode .nav-item.is-current-page a:hover {
-    color: black;
 }
 
 .dark-mode li.nav-item.toggler.is-active[data-depth="2"] .nav-text {
@@ -1547,20 +1513,22 @@ code::before {
     background-size: 49%;
 }
 
-li.nav-item.is-current-path.is-active li.nav-item[data-depth="2"] {
+li.nav-item.is-current-path.is-active li.nav-item[data-depth="2"]:has(li[data-depth="3"]) {
     padding: 0;
 }
 
-li.nav-item.is-current-path.is-active li.nav-item[data-depth="2"] a {
-    margin: 8px 32px;
+li.nav-item.is-current-path.is-active li.nav-item[data-depth="2"]:has(li[data-depth="3"]) a.nav-link {
+    padding: 8px 62px;
 }
 
-li.nav-item.is-current-page.is-active li.nav-item[data-depth="2"] {
+li.nav-item[data-depth="3"] {
     padding: 0;
 }
 
-li.nav-item.is-current-page.is-active li.nav-item[data-depth="2"] a {
-    margin: 8px 32px;
+li.nav-item[data-depth="3"] a.nav-link {
+    padding-right: 32px!important;
+    padding-left: 64px!important;
+    margin: 0 0 0 32px!important;
 }
 
 li.nav-item.is-current-page.is-active:has(li):has(li) {
@@ -1572,89 +1540,39 @@ li.nav-item.is-current-page.is-active:has(li):has(li):before {
     border: none;
 }
 
-li.nav-item.is-current-page.is-active:has(li.toggler):hover {
-    color: #6a7086;
-}
-
-li.nav-item.toggler[data-depth="2"]:hover a {
-    color: #6a7086;
-}
-
-li.nav-item[data-depth="3"] {
-    padding: 2px 18px;
-}
-
-li.nav-item.is-current-path.is-active li.nav-item[data-depth="2"] li.nav-item[data-depth="3"] a {
-    padding: 8px 15px 8px 32px;
-}
-
-li.nav-item.is-current-path.is-active li.nav-item[data-depth="2"] a.nav-link {
-    padding: 20px 32px;
-}
-
-li.nav-item.is-current-path.is-active li.nav-item[data-depth="2"]:has(li[data-depth="3"]) a {
-    padding: 8px 32px;
-}
-
-.nav-item.is-current-page.is-active>a,
-.nav-item.is-current-page.is-active>button {
-    color: #6a7086;
-}
-
-.dark-mode .nav-item.is-current-page.is-active>a,
-.dark-mode .nav-item.is-current-page.is-active>button {
-    color: #a6b1c2;
-}
-
-li.nav-item.is-active.is-current-path[data-depth="1"] a:hover {
-    color: #6a7086;
-}
-
-.dark-mode li.nav-item.is-current-path.is-active li.nav-item[data-depth="2"] li.nav-item[data-depth="3"]:hover a {
-    color: black!important;
-}
-
-.dark-mode li.nav-item.is-current-path.is-active li.nav-item[data-depth="2"] li.nav-item[data-depth="3"] a {
+.dark-mode .nav-item.is-current-page a {
     color: white;
 }
 
-.dark-mode .nav-item[data-depth="3"]:hover a {
-    color: black;
+.dark-mode .nav-item[data-depth="1"]:hover,
+.dark-mode .nav-item[data-depth="2"]:hover,
+.dark-mode .nav-item[data-depth="3"]:hover,
+.dark-mode .nav-item[data-depth="4"]:hover {
+    background-color: #2e394e;
 }
 
-.dark-mode .nav-item[data-depth="2"].toggler.is-active:hover a {
-    color: white;
+.dark-mode .nav-item a:hover,
+.dark-mode .nav-item button:hover,
+.dark-mode .nav-item span:hover,
+.dark-mode li.nav-item.toggler[data-depth="1"]:hover .nav-text,
+.dark-mode li.nav-item.toggler[data-depth="1"]:hover button {
+    color: #fff;
 }
 
-.dark-mode li.nav-item.toggler[data-depth="2"]:hover a {
-    color: black;
+.dark-mode .nav-item[data-depth="1"].toggler:hover,
+.dark-mode .nav-item[data-depth="2"].toggler:hover,
+.dark-mode .nav-item[data-depth="3"].toggler:hover,
+.dark-mode .nav-item[data-depth="4"].toggler:hover {
+    color: #fff;
+    background-color: #2e394e;
 }
 
-.dark-mode li.nav-item.toggler[data-depth="2"]:has(li[data-depth="3"]) {
-    background-color: transparent;
+.dark-mode .nav-item.is-current-page a:hover {
+    color: #fff;
 }
 
-.dark-mode li.nav-item.toggler[data-depth="2"]:has(li[data-depth="3"])::before {
-    background-color: transparent;
-    border: 0;
-}
-
-.dark-mode li.nav-item.toggler[data-depth="1"]:has(li[data-depth="2"]):has(li[data-depth="3"]) a {
-    color: white;
-}
-
-.dark-mode li.nav-item.toggler[data-depth="1"]:has(li[data-depth="2"]):has(li[data-depth="3"]):hover a {
-    color: black;
-}
-
-.dark-mode li.nav-item.toggler.is-active[data-depth="1"]:has(li[data-depth="2"]):has(li[data-depth="3"]):hover a {
-    color: white;
-}
-
-.dark-mode li.nav-item.is-current-path.is-active li.nav-item[data-depth="2"]:hover span a {
-    color: black;
-}
-
-.navbar-burger {
-    height: 20px!important;
+.dark-mode .nav-item[data-depth="1"].toggler:hover button,
+.dark-mode li.nav-item.toggler.is-active[data-depth="2"]:hover .nav-text,
+.dark-mode li.nav-item[data-depth="2"]:hover a {
+    color: #fff;
 }

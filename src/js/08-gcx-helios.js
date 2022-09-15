@@ -1,5 +1,4 @@
 /*Dark theme verification*/
-var theme = window.localStorage.getItem('theme')
 
 function isMobile () {
   // eslint-disable-next-line no-undef
@@ -8,11 +7,13 @@ function isMobile () {
   else if (localStorage.mobile) return true
   // eslint-disable-next-line max-len
   var mobile = ['iphone', 'ipad', 'android', 'blackberry', 'nokia', 'opera mini', 'windows mobile', 'windows phone', 'iemobile']
-  for (var i in mobile) if (navigator.userAgent.toLowerCase().indexOf(mobile[i].toLowerCase()) > 0) return true
+  for (var i in mobile) { if (navigator.userAgent.toLowerCase().indexOf(mobile[i].toLowerCase()) > 0) return true }
   return false
 }
 
 window.addEventListener('DOMContentLoaded', (event) => {
+  var theme = window.localStorage.getItem('theme')
+
   var path = window.location.pathname
   var page = path.split('/').pop()
   var name = page.replace('.html', '')
@@ -20,9 +21,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const sidebar = document.querySelector('.sidebar')
   const col = document.getElementById('collapse')
   var checkbox = document.getElementById('switch')
-  var root = document.getElementsByTagName('html')[0]
   if (theme) {
-    root.classList.add('dark-mode')
     checkbox.checked = true
   } else {
     checkbox.checked = false
@@ -46,19 +45,19 @@ window.addEventListener('DOMContentLoaded', (event) => {
     //No es un clic en el sidebar
     //if (!event.target.matches('li[data-depth="1"]') && !event.target.matches('.switch')) return;
     /*    if (event.target.closest('li.nav-item.toggler')) {
-              console.log(event.target)
-              event.target.closest('li.nav-item.toggler').classList.toggle('is-active')
-            }
-            /*if ((event.target.matches('span.nav-text') ||
-                        event.target.matches('button.nav-item-toggle')) &&
-                    (event.target.offsetParent.matches('li[data-depth="1"]') ||
-                        event.target.offsetParent.matches('li[data-depth="0"]'))) {
-                    event.target.offsetParent.classList.toggle('is-active');
-                }
-                if (event.target.matches('li[data-depth="1"]') ||
-                    event.target.matches('li[data-depth="0"]')) {
-                    event.target.classList.toggle('is-active');
-                }*/
+                      console.log(event.target)
+                      event.target.closest('li.nav-item.toggler').classList.toggle('is-active')
+                    }
+                    /*if ((event.target.matches('span.nav-text') ||
+                                event.target.matches('button.nav-item-toggle')) &&
+                            (event.target.offsetParent.matches('li[data-depth="1"]') ||
+                                event.target.offsetParent.matches('li[data-depth="0"]'))) {
+                            event.target.offsetParent.classList.toggle('is-active');
+                        }
+                        if (event.target.matches('li[data-depth="1"]') ||
+                            event.target.matches('li[data-depth="0"]')) {
+                            event.target.classList.toggle('is-active');
+                        }*/
     if (event.target.matches('.switch')) {
       var root = document.getElementsByTagName('html')[0]
       if (event.target.checked) {
