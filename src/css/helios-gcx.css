@@ -1513,6 +1513,15 @@ code::before {
     background-size: 49%;
 }
 
+
+li.nav-item.is-active li.nav-item[data-depth="2"]:has(li[data-depth="3"]) {
+    padding: 0;
+}
+
+li.nav-item.is-active li.nav-item[data-depth="2"]:has(li[data-depth="3"]) a.nav-link {
+    padding: 8px 62px;
+}
+
 li.nav-item.is-current-path.is-active li.nav-item[data-depth="2"]:has(li[data-depth="3"]) {
     padding: 0;
 }
