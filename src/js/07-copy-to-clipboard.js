@@ -44,7 +44,7 @@
       toolbox.appendChild(copy)
     }
     pre.appendChild(toolbox)
-    if (copy) copy.addEventListener('click', writeToClipboard.bind(copy, code))
+    if (copy) img.addEventListener('click', writeToClipboard.bind(copy, code))
   })
 
   function extractCommands (text) {

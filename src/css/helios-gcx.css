@@ -253,6 +253,11 @@ ul#ds_sites_list li a:active {
     color: #3b4260!important;
 }
 
+.doc .admonitionblock.caution a {
+    color: #3b4260!important;
+    text-decoration: underline;
+}
+
 .doc .admonitionblock.tip tr {
     display: block;
     background: #F0F8F4;
@@ -270,6 +275,11 @@ ul#ds_sites_list li a:active {
 
 .doc .admonitionblock.tip .title {
     color: #008040!important;
+}
+
+.doc .admonitionblock.tip a {
+    color: #008040!important;
+    text-decoration: underline;
 }
 
 .doc .admonitionblock.warning tr {
@@ -291,6 +301,11 @@ ul#ds_sites_list li a:active {
     color: #916707!important;
 }
 
+.doc .admonitionblock.warning a {
+    color: #916707!important;
+    text-decoration: underline;
+}
+
 .doc .admonitionblock.important tr {
     display: block;
     background: #FEF1F1;
@@ -310,6 +325,11 @@ ul#ds_sites_list li a:active {
     color: #D52424!important;
 }
 
+.doc .admonitionblock.important a {
+    color: #D52424!important;
+    text-decoration: underline;
+}
+
 .doc .admonitionblock.note tr {
     display: block;
     background: #F3F8FF;
@@ -327,6 +347,11 @@ ul#ds_sites_list li a:active {
 
 .doc .admonitionblock.note .title {
     color: #1E71D4!important;
+}
+
+.doc .admonitionblock.note a {
+    color: #1E71D4!important;
+    text-decoration: underline;
 }
 
 .doc .exampleblock>.content {
