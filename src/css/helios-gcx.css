@@ -62,14 +62,14 @@
 }
 
 .nav-container {
-    width: 294px;
+    width: 314px;
     box-shadow: 2px 0px 0px var(--nav-border-color);
     transition: 150ms ease-in-out
 }
 
 @media screen and (min-width:769px) {
     .nav-container {
-        width: 294px;
+        width: 314px;
     }
 }
 
@@ -115,20 +115,20 @@ li.nav-item.toggler.is-active:hover {
     color: black;
 }
 
-.nav-item.is-current-page {
-    background-color: #f6f8fa;
-}
 
-.nav-item.is-current-page::before {
-    content: '';
-    border: 2px solid var(--blue);
+.nav-item.is-current-page>a:before{
+    content: "";
+    border: 2px solid #007bff;
     top: 0;
-    background: var(--blue);
+    background: #007bff;
     left: 0;
     position: absolute;
     height: 100%;
 }
 
+.nav-item.is-current-page>a{
+    background-color: #f6f8fa;
+}
 .get-started {
     padding-right: 15px;
 }
@@ -664,13 +664,6 @@ a.ds_buttons_button:hover {
     margin: 8px 0;
 }
 
-li.nav-item[data-depth='2'] {
-    padding: 0 32px;
-}
-
-li.nav-item[data-depth='3'] {
-    padding: 0 32px 0 48px;
-}
 
 gcx-schema-sample-app-gallery {
     --gcx-sample-appgallery-h4-font-size: 14px;
@@ -838,6 +831,7 @@ a.nav-link {
     display: block;
     padding: 8px 32px;
     margin: 0;
+    position: relative;
 }
 
 .nav-item .nav-text a {
@@ -1106,16 +1100,20 @@ label.switch_label:after {
     color: var(--white);
 }
 
-.dark-mode .nav-item.is-current-page::before {
-    background: var(--color-interface-night-300);
+
+.dark-mode .nav-item.is-current-page>a:before{
+    content: "";
     border: 2px solid var(--color-interface-night-300);
+    top: 0;
+    background: var(--color-interface-night-300);
+    left: 0;
+    position: absolute;
+    height: 100%;
 }
 
-.dark-mode .nav-item.is-current-page {
+.dark-mode .nav-item.is-current-page>a{
     background-color: var(--color-interface-night-800);
 }
-
-
 /* Dark mode: Toolbar*/
 
 .dark-mode .toolbar {
@@ -1415,18 +1413,6 @@ label.switch_label:after {
     color: #fff;
 }
 
-li.nav-item.toggler.is-active[data-depth="2"]:hover .nav-text {
-    color: #000;
-}
-
-li.nav-item[data-depth="2"]:hover a {
-    color: #000;
-}
-
-.nav-item[data-depth="1"].toggler:hover button {
-    color: #000;
-}
-
 .dark-mode .nav-item[data-depth="1"].toggler:hover button {
     color: #fff;
 }
@@ -1454,10 +1440,6 @@ li.nav-item[data-depth="2"]:hover a {
 .nav-item[data-depth="3"].toggler:hover,
 .nav-item[data-depth="4"].toggler:hover {
     background-color: #f6f8fa;
-}
-
-.nav-item[data-depth="1"].toggler:hover span {
-    color: #000;
 }
 
 .nav-item[data-depth="1"].toggler.is-active:hover span {
@@ -1538,42 +1520,51 @@ code::before {
     background-size: 49%;
 }
 
-
-li.nav-item.is-active li.nav-item[data-depth="2"]:has(li[data-depth="3"]) {
-    padding: 0;
+/*New Nav Style - Firefox working*/
+.dark-mode .nav-item.toggler>a:hover, .dark-mode .nav-item a:hover{
+    background: #2e394e;
 }
 
-li.nav-item.is-active li.nav-item[data-depth="2"]:has(li[data-depth="3"]) a.nav-link {
+.nav-item.toggler>a:hover, .nav-item a:hover{
+    background: #f6f8fa;
+}
+
+.nav-item.is-current-page[data-depth="1"]:not(.toggler)>a::before, .nav-item.is-current-page[data-depth="2"]:not(.toggler)>a::before {
+    height: 100%;
+}
+
+.nav-item.is-active[data-depth="1"] li[data-depth="2"]>a.nav-link {
     padding: 8px 62px;
 }
 
-li.nav-item.is-current-path.is-active li.nav-item[data-depth="2"]:has(li[data-depth="3"]) {
-    padding: 0;
+.nav-item.is-active[data-depth="2"] li[data-depth="3"]>a.nav-link {
+    padding: 8px 0 8px 90px;
 }
 
-li.nav-item.is-current-path.is-active li.nav-item[data-depth="2"]:has(li[data-depth="3"]) a.nav-link {
+.nav-item.is-current-page[data-depth="2"]>a.nav-link {
+    padding: 8px 62px;
+}
+.nav-item.is-current-path[data-depth="2"]>a.nav-link {
     padding: 8px 62px;
 }
 
-li.nav-item[data-depth="3"] {
+.nav-item.is-current-page[data-depth="3"]>a.nav-link {
+    padding: 8px 85px;
+}
+.nav-item.is-current-path[data-depth="3"]>a.nav-link {
+    padding: 8px 85px;
+}
+.nav-item.is-current-page[data-depth="1"], .nav-item.is-current-page[data-depth="2"], .nav-item.is-current-page[data-depth="3"] {
     padding: 0;
 }
 
-li.nav-item[data-depth="3"] a.nav-link {
-    padding-right: 32px!important;
-    padding-left: 64px!important;
-    margin: 0 0 0 32px!important;
+.nav-item.is-current-path[data-depth="1"], .nav-item.is-current-path[data-depth="2"], .nav-item.is-current-path[data-depth="3"] {
+    padding: 0;
 }
-
-li.nav-item.is-current-page.is-active:has(li):has(li) {
-    background: transparent;
+.nav-item.is-active[data-depth="3"] li[data-depth="4"]>a.nav-link {
+    padding: 8px 16px 8px 120px;
 }
-
-li.nav-item.is-current-page.is-active:has(li):has(li):before {
-    background: transparent;
-    border: none;
-}
-
+/*End new styles - firefox working*/
 .dark-mode .nav-item.is-current-page a {
     color: white;
 }

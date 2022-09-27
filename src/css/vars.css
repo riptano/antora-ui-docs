@@ -78,9 +78,9 @@
     --body-line-height: 1.15;
     --body-font-color: var(--color-near-black);
     /*--body-font-family: "Nunito Sans", "Work Sans", sans-serif;*/
-    --body-font-family: "Roboto", "Work Sans", sans-serif;
+    --body-font-family: 'Roboto', sans-serif;
     --body-font-weight-bold: 600;
-    --monospace-font-family: "Roboto Mono", monospace;
+    --monospace-font-family: 'Roboto Mono', monospace;
     --monospace-font-weight-bold: 500;
     /* base */
     --body-background: var(--color-white);
