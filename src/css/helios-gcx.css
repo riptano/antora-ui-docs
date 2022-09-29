@@ -210,9 +210,15 @@ ul#ds_sites_list li a:active {
     position: unset;
     background: var(--navbar-background);
     z-index: 4;
-    height: 80px;
+    height: 35px;
     padding-left: 0;
     padding-right: 0;
+}
+
+@media screen and (min-width:1024px) {
+    .navbar{
+        height: 80px;
+    }
 }
 
 .toolbar {
@@ -1100,6 +1106,23 @@ label.switch_label:after {
     color: var(--white);
 }
 
+.dark-mode .nav-item.toggler>button:hover{
+    z-index: -1;
+}
+
+.dark-mode .nav-item.toggler>button:hover::before{
+    content: "";
+    z-index: -1;
+}
+
+.nav-item.toggler>button:hover{
+    z-index: -1;
+}
+
+.nav-item.toggler>button:hover::before{
+    content: "";
+    z-index: -1;
+}
 
 .dark-mode .nav-item.is-current-page>a:before{
     content: "";
@@ -1608,4 +1631,27 @@ code::before {
 
 .source-toolbox .copy-toast {
     left: -14px;
+}
+
+/* Navbar margin fix */
+
+.nav-panel-menu::-webkit-scrollbar {
+    display: none;
+}
+
+.navbar-burger {
+    height: 34px;
+}
+
+/* Navbar burger icon resize */
+.navbar-burger span:nth-child(2){
+    margin-top: 1px;
+}
+
+.navbar-burger span:nth-child(3){
+    margin-top: 8px;
+}
+
+.navbar-burger span{
+    width: 20px;
 }
