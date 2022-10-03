@@ -1106,24 +1106,6 @@ label.switch_label:after {
     color: var(--white);
 }
 
-.dark-mode .nav-item.toggler>button:hover{
-    z-index: -1;
-}
-
-.dark-mode .nav-item.toggler>button:hover::before{
-    content: "";
-    z-index: -1;
-}
-
-.nav-item.toggler>button:hover{
-    z-index: -1;
-}
-
-.nav-item.toggler>button:hover::before{
-    content: "";
-    z-index: -1;
-}
-
 .dark-mode .nav-item.is-current-page>a:before{
     content: "";
     border: 2px solid var(--color-interface-night-300);
@@ -1454,9 +1436,10 @@ label.switch_label:after {
 
 /* LIGHT MODE LISTS */
 
-.nav-item[data-depth="1"].toggler.is-active:hover button {
+/* .nav-item[data-depth="1"].toggler.is-active:hover button {
     color: #6a7086;
-}
+    background: #f6f8fa;
+} */
 
 .nav-item[data-depth="1"].toggler:hover,
 .nav-item[data-depth="2"].toggler:hover,

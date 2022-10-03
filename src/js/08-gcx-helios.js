@@ -81,3 +81,22 @@ document.querySelector('#collapse').addEventListener('click', function (event) {
     }
   }
 })
+
+document.querySelectorAll(`li.nav-item.toggler[data-depth="1"]>.nav-item-toggle,
+li.nav-item.toggler[data-depth="2"]>.nav-item-toggle,
+li.nav-item.toggler[data-depth="3"]>.nav-item-toggle,
+li.nav-item.toggler[data-depth="4"]>.nav-item-toggle`).forEach(function (btn) {
+  btn.addEventListener('mouseover', (event) => {
+    var theme = document.querySelector('html').classList.contains('dark-mode')
+    if (theme) {
+      btn.previousElementSibling.style.backgroundColor = '#2e394e'
+    } else {
+      btn.previousElementSibling.style.backgroundColor = '#f6f8fa'
+      btn.previousElementSibling.style.color = '#21293a'
+    }
+  })
+  btn.addEventListener('mouseout', (event) => {
+    btn.previousElementSibling.style.backgroundColor = ''
+    btn.previousElementSibling.style.color = ''
+  })
+})
