@@ -19,7 +19,7 @@ endif::[]
 // Project URLs:
 :url-project: https://github.com/riptano/antora-ui-docs
 :url-site: https://docs.datastax.com
-:url-preview: https://gitlab.com/antora/antora-ui-default
+//:url-preview: https://gitlab.com/antora/antora-ui-default
 // External URLs:
 :url-antora: https://antora.org
 :url-antora-docs: https://docs.antora.org
@@ -168,7 +168,7 @@ Now that you have the prerequisites installed, you can fetch and build the UI pr
 
 === Clone and initialize the UI project
 
-Clone the default UI project using git:
+Clone the UI project using git:
 
 [subs=attributes+]
 ----
@@ -176,7 +176,7 @@ git clone {url-project} &&
  cd "`basename $_`"
 ----
 
-The example above clones Antora's default UI project and then switches to the project folder on your filesystem.
+The example above clones the UI project and then switches to the project folder on your filesystem.
 Stay in this project folder when executing all subsequent commands.
 
 Use npm to install the project's dependencies inside the project.
@@ -202,7 +202,7 @@ yarn
 
 === Preview the UI
 
-The default UI project is configured to preview offline.
+This UI project is configured to preview offline.
 The files in the [.path]_preview-src/_ folder provide the sample content that allow you to see the UI in action.
 In this folder, you'll primarily find pages written in AsciiDoc.
 These pages provide a representative sample and kitchen sink of content from the real site.
