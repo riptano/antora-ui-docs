@@ -45,7 +45,7 @@ toc::[]
 This project is used to develop and distribute the UI for the {url-site}[DataStax documentation site].
 
 The UI bundle this project produces is intended to be used with {url-antora}[Antora].
-The UI bundle contains the HTML templates (layouts, partials, and helpers), CSS, JavaScript, fonts, and (site-wide) images.
+The UI bundle contains the HTML templates (layouts, partials, and helpers), CSS, JavaScript, fonts, and _site-wide_ images.
 As such, it provides both the visual theme and user interactions for the documentation site.
 
 The base code for this project is supplied by the {url-antora-default-ui}[Antora Default UI], with DataStax-specific components templated over the top.
