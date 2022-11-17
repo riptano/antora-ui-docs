@@ -191,6 +191,27 @@ If you have the preview running, and you want to bundle without causing the prev
 
 The UI bundle will again be available at [.path]_build/ui-bundle.zip_.
 
+=== Add the Helios GCX to your bundle
+
+To add Helios GCX to your bundle, run your gulp bundle as you always do, this will generate your ui-bundle.zip.
+
+ $ gulp bundle
+
+Next, go to /gcx folder
+ 
+ $ cd ./gcx
+
+Install the node dependencies for this folder
+ 
+ $ npm install
+
+Now, you can run gulp bundle on the /gcx folder
+
+ $ gulp bundle
+
+Once the process is finished, you will see a /build folder inside the /gcx directory, there, you will found a new ui-bundle.zip
+This ui-bundle is the one you should run with the sandbox to test it
+
 ==== Source Maps
 
 The build consolidates all the CSS and client-side JavaScript into combined files, [.path]_site.css_ and [.path]_site.js_, respectively, in order to reduce the size of the bundle.
