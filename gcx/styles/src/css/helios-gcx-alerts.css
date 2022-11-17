@@ -1,0 +1,133 @@
+/* Alerts */
+
+.doc .admonitionblock td.content {
+    background: transparent;
+}
+
+.doc .admonitionblock tr {
+    display: block;
+}
+
+.doc .admonitionblock.caution tr {
+    display: block;
+    background: #d8ddf2;
+    border: 2px solid #3b4260;
+    border-radius: 6px;
+}
+
+.doc .admonitionblock.caution td.content {
+    color: #3b4260;
+}
+
+.doc .admonitionblock.caution .title {
+    color: #3b4260!important;
+}
+
+.doc .admonitionblock.caution a {
+    color: #3b4260!important;
+    text-decoration: underline;
+}
+
+.doc .admonitionblock.tip tr {
+    display: block;
+    background: #F0F8F4;
+    border: 2px solid #008040;
+    border-radius: 6px;
+}
+
+.doc .admonitionblock.tip td.content {
+    color: #008040;
+}
+
+.doc .admonitionblock.tip .icon {
+    color: #008040;
+}
+
+.doc .admonitionblock.tip .title {
+    color: #008040!important;
+}
+
+.doc .admonitionblock.tip a {
+    color: #008040!important;
+    text-decoration: underline;
+}
+
+.doc .admonitionblock.warning tr {
+    display: block;
+    background: #F9F6F0;
+    border: 2px solid #916707;
+    border-radius: 6px;
+}
+
+.doc .admonitionblock.warning td.content {
+    color: #916707;
+}
+
+.doc .admonitionblock.warning .icon {
+    color: #916707;
+}
+
+.doc .admonitionblock.warning .title {
+    color: #916707!important;
+}
+
+.doc .admonitionblock.warning a {
+    color: #916707!important;
+    text-decoration: underline;
+}
+
+.doc .admonitionblock.important tr {
+    display: block;
+    background: #FEF1F1;
+    border: 2px solid #D52424;
+    border-radius: 6px;
+}
+
+.doc .admonitionblock.important td.content {
+    color: #D52424;
+}
+
+.doc .admonitionblock.important .icon {
+    color: #D52424;
+}
+
+.doc .admonitionblock.important .title {
+    color: #D52424!important;
+}
+
+.doc .admonitionblock.important a {
+    color: #D52424!important;
+    text-decoration: underline;
+}
+
+.doc .admonitionblock.note tr {
+    display: block;
+    background: #F3F8FF;
+    border: 2px solid #1E71D4;
+    border-radius: 6px;
+}
+
+.doc .admonitionblock.note td.content {
+    color: #1E71D4;
+}
+
+.doc .admonitionblock.note .icon {
+    color: #1E71D4;
+}
+
+.doc .admonitionblock.note .title {
+    color: #1E71D4!important;
+}
+
+.doc .admonitionblock.note a {
+    color: #1E71D4!important;
+    text-decoration: underline;
+}
+
+.doc .exampleblock>.content {
+    border-width: 1.5px;
+}
+
+.doc .admonitionblock .icon i::after {
+    color: white;
+}

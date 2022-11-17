@@ -1,0 +1,25 @@
+@use "sass:map";
+
+$font-weights: (
+  regular: 400,
+  medium: 500,
+  bold: 700,
+);
+$font-sizes: (
+  300: 12px,
+  400: 14px,
+  500: 16px,
+  600: 20px,
+  700: 24px,
+  800: 28px,
+  900: 34px,
+  1000: 40px,
+  1100: 48px,
+);
+
+@mixin text($size, $weight) {
+  font-size: map.get($font-sizes, $size);
+  font-weight: map.get($font-weights, $weight);
+  font-style: normal;
+  letter-spacing: normal;
+}

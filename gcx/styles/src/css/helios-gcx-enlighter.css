@@ -1,0 +1,84 @@
+/* Right Block - Code */
+
+.enlighter-default {
+    font-family: 'Roboto Mono', monospace!important;
+    margin: 0!important;
+    overflow: scroll!important;
+    -ms-overflow-style: none;
+    /* for Internet Explorer, Edge */
+    scrollbar-width: none;
+}
+
+.enlighter-t-bootstrap4 .enlighter-m0 {
+    color: #8A3FFC!important;
+}
+
+.enlighter-t-bootstrap4 .enlighter-m3 {
+    color: #8A3FFC!important;
+}
+
+.enlighter-t-bootstrap4 .enlighter-k0 {
+    color: #007D79!important;
+}
+
+.enlighter-t-bootstrap4 .enlighter-text {
+    color: #3C4961!important;
+}
+
+.enlighter-t-bootstrap4 .enlighter-s0 {
+    color: #0072C3!important;
+}
+
+.enlighter-t-bootstrap4 .enlighter-n1 {
+    color: #BA4E00!important;
+}
+
+/* Dark Mode - Code Block */
+
+.dark-mode .enlighter-t-bootstrap4 {
+    background-color: #3C4961!important;
+}
+
+.dark-mode .enlighter-t-bootstrap4 .enlighter-text {
+    color: #ffffff!important;
+}
+
+.dark-mode .enlighter-t-bootstrap4 .enlighter-m0 {
+    color: #BE95FF!important;
+}
+
+.dark-mode .enlighter-t-bootstrap4 .enlighter-m3 {
+    color: #BE95FF!important;
+}
+
+.dark-mode .enlighter-t-bootstrap4 .enlighter-k0 {
+    color: #08BDBA!important;
+}
+
+.dark-mode .enlighter-t-bootstrap4 .enlighter-s0 {
+    color: #33B1FF!important;
+}
+
+.dark-mode .enlighter-t-bootstrap4 .enlighter-k1 {
+    color: #3797f0!important;
+}
+
+.enlighter-default .dark-mode .enlighter-t-bootstrap4 .enlighter-n1 {
+    color: #FF832B!important;
+}
+
+.dark-mode .enlighter-t-bootstrap4 .enlighter-k5 {
+    color: var(--white);
+}
+
+.dark-mode .doc .sect1.active {
+    background-color: var(--color-interface-night-800);
+}
+
+.dark-mode .enlighter-t-bootstrap4 div.enlighter>div.enlighter-special {
+    background-color: var(--color-interface-night-800);
+}
+
+.dark-mode .enlighter-t-bootstrap4 .enlighter-k10 {
+    color: var(--white)!important;
+}

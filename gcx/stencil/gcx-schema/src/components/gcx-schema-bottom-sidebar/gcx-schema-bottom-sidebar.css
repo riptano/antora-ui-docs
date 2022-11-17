@@ -1,0 +1,79 @@
+:host {
+    display: block;
+    --gcx-sidebar-h4-color: #3C4961;
+    --gcx-sidebar-h4-display: block;
+    --gcx-sidebar-h4-padding: 8px 32px;
+    --gcx-sidebar-li-color: #3C4961;
+    --gcx-sidebar-li-dark-color: #3C4961;
+    --gcx-sidebar-li-padding: 8px 40px;
+    --gcx-sidebar-li-font-size: 2em;
+    --gcx-sidebar-li-display: block;
+}
+
+.other-resources {
+    align-items: flex-start;
+}
+
+.other-resources h4 {
+    padding: var(--gcx-sidebar-h4-padding);
+    margin: 0;
+    display: var(--gcx-sidebar-h4-display);
+    color: var(--gcx-sidebar-h4-color);
+}
+
+.other-resources ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+i.material-icons {
+    font-size: var(--gcx-sidebar-li-font-size);
+    color: var(--gcx-sidebar-li-color);
+    display: inline-block;
+    padding-right: 10px;
+    vertical-align: middle;
+}
+
+.other-resources li a {
+    color: var(--gcx-sidebar-li-color);
+    text-decoration-line: underline;
+}
+
+.other-resources li a span {
+    display: var(--gcx-sidebar-li-display);
+}
+
+li.nav-item:hover * {
+    background-color: #f6f8fa;
+    color: var(--gcx-sidebar-li-dark-color);
+}
+
+a.nav-link {
+    display: block;
+    padding: var(--gcx-sidebar-li-padding);
+    margin: 0;
+}
+
+
+/* Material UI Google Icons */
+
+@font-face {
+    font-family: "Material Icons";
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/materialicons/v134/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2) format("woff2");
+}
+
+.material-icons {
+    font-family: "Material Icons";
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    white-space: nowrap;
+    word-wrap: normal;
+    -webkit-font-smoothing: antialiased;
+}

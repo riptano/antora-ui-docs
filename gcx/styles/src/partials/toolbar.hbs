@@ -1,0 +1,15 @@
+<div class="toolbar" role="navigation">
+{{> nav-toggle}}
+{{> breadcrumbs}}
+{{> page-versions}}
+
+  {{#with page.editUrl}}
+  <div class="edit-this-page"><a href="{{this}}">Edit this Page</a></div>
+  {{/with}}
+  {{!-- LLP: 02.14.2022 The following is from stargate/antori-ui-docs, if we choose to implement CI --}}
+  {{!-- {{#if (and page.fileUri (not env.CI))}}
+  <div class="edit-this-page">B<a href="{{page.fileUri}}">Edit this Page</a></div>
+  {{else if (and page.editUrl (or env.FORCE_SHOW_EDIT_PAGE_LINK (not page.origin.private)))}}
+  <div class="edit-this-page">C<a href="{{page.editUrl}}">Edit this Page</a></div>
+  {{/if}} --}} 
+</div>

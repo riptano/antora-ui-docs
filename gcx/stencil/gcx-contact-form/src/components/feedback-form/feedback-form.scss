@@ -1,0 +1,32 @@
+@use '@material/switch/styles';
+@use './common';
+@use './button';
+@use './textfield';
+@use './card';
+@import './helios-dark.css';
+@import './helios-light.css';
+@import './helios-shared.css';
+@import './mdc-theme.css';
+.feedback-wrapper {
+    margin: var(--spacing-space01h) var(--spacing-space01h);
+    padding: var(--spacing-space01h);
+    border-radius: var(--size-border-radius-6);
+    font-size: var(--size-font-2);
+}
+
+.feedback-wrapper h2 {
+    color: var(--color-fill-primary);
+    margin: 0 !important;
+    padding: 0 !important;
+    margin-bottom: var(--spacing-space01h);
+}
+
+.feedback-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.feedback-form .row {
+    margin-bottom: var(--spacing-space01h);
+}

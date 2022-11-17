@@ -1,5 +1,4 @@
-;
-(function () {
+;(function () {
   'use strict'
 
   var SECT_CLASS_RX = /^sect(\d)$/
@@ -136,18 +135,7 @@
   }
 
   function trapEvent (e) {
-    toggleByListElement(e)
     e.stopPropagation()
-  }
-
-  function toggleByListElement (event) {
-    if (!(event.target.matches('button') ||
-                event.target.matches('path') ||
-                event.target.matches('svg')) &&
-            event.target.closest('li.nav-item.toggler')) {
-      console.log(event.target)
-      event.target.closest('li.nav-item.toggler').classList.toggle('is-active')
-    }
   }
 
   function scrollItemToMidpoint (panel, el) {

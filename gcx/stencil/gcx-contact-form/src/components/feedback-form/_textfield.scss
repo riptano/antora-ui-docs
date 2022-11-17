@@ -1,0 +1,101 @@
+@use './typography';
+@use '@material/textfield';
+@use '@material/textfield/helper-text';
+@include textfield.core-styles;
+@include helper-text.helper-text-core-styles;
+.helios-text-field {
+    @include helper-text.helper-text-validation-color(var(--color-text-failure));
+    @include textfield.ink-color(var(--color-text-primary));
+    @include textfield.placeholder-color(var(--color-text-disabled));
+    @include textfield.caret-color(var(--color-text-primary));
+    @include textfield.prefix-color(var(--color-text-secondary));
+    @include helper-text.helper-text-color(var(--color-text-secondary));
+    @include textfield.suffix-color(var(--color-text-secondary));
+    @include textfield.disabled-ink-color(var(--color-text-disabled));
+    @include textfield.disabled-placeholder-color(var(--color-text-disabled));
+    @include textfield.disabled-prefix-color(var(--color-text-disabled));
+    @include textfield.disabled-suffix-color(var(--color-text-disabled));
+    @include helper-text.disabled-helper-text-color(var(--color-text-disabled));
+    display: block;
+    padding: 0;
+    overflow: unset;
+    will-change: unset;
+    .mdc-text-field__input {
+        @include typography.text(500, regular);
+        padding: 0 12px;
+        &:not(textarea) {
+            height: 40px;
+        }
+    }
+    .mdc-text-field__icon {
+        margin: 0;
+        padding: 0;
+        &:not(.mdc-text-field--disabled) {
+            color: var(--color-text-secondary);
+        }
+    }
+    .mdc-text-field__icon--leading {
+        padding-left: 12px;
+    }
+    .mdc-text-field__icon--trailing {
+        padding-right: 12px;
+    }
+    &.mdc-text-field--focused {
+        .helios-text-field-outline {
+            border-color: transparent;
+            outline: 2px solid var(--color-border-focus);
+            outline-offset: -1px;
+        }
+    }
+    &.mdc-text-field--disabled {
+        .helios-text-field-outline {
+            background: var(--color-fill-disabled);
+            border-color: var(--color-border-disabled);
+            &:hover {
+                border-color: var(--color-border-disabled);
+            }
+        }
+        .helios-text-field-label {
+            color: var(--color-text-disabled);
+        }
+    }
+    &.mdc-text-field--invalid {
+        .helios-text-field-outline {
+            border-color: transparent;
+            outline: 2px solid var(--color-border-failure);
+            outline-offset: -1px;
+        }
+        .helios-text-field-label {
+            color: var(--color-text-failure);
+        }
+    }
+    &.mdc-text-field--textarea {
+        .mdc-text-field__input {
+            padding: 8px 12px;
+            &.resizable {
+                resize: vertical;
+            }
+        }
+    }
+}
+
+.helios-text-field-outline {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--color-border-primary);
+    border-radius: 4px;
+    &:hover {
+        border-color: var(--color-border-hover);
+    }
+}
+
+.helios-text-field-label {
+    @include typography.text(300, bold);
+    display: block;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-spaceh);
+}
+
+.helios-text-field-helper-text {
+    @include typography.text(300, regular);
+}

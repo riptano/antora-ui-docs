@@ -1,0 +1,55 @@
+:host {
+    display: block;
+    --gcx-app-gallery-p-color: #5C6A85;
+    --gcx-app-appgallery-h4-color: #20293A;
+    --gcx-sample-appgallery-card-padding: 16px 24px;
+    --gcx-sample-appgallery-card-background: #F6F8FA;
+    --gcx-sample-appgallery-card-border: 2px solid #A6B1C2;
+    --gcx-sample-appgallery-h4-font-size: 20px;
+    --gcx-sample-appgallery-p-font-size: 1em;
+    --gcx-sample-appgallery-h4-font-weight: 500;
+    --gcx-app-gallery-name-display: block;
+    --gcx-app-gallery-icon-font-size: 24px;
+}
+
+.name {
+    display: var(--gcx-app-gallery-name-display);
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: var(--gcx-sample-appgallery-card-padding);
+    background: var(--gcx-sample-appgallery-card-background);
+    border: var(--gcx-sample-appgallery-card-border);
+    border-radius: 6px;
+    margin: 16px;
+    cursor: pointer;
+}
+
+.card h4 {
+    color: var(--gcx-app-appgallery-h4-color);
+    font-weight: var(--gcx-sample-appgallery-h4-font-weight);
+    font-size: var(--gcx-sample-appgallery-h4-font-size);
+    line-height: 150%;
+}
+
+h4,
+p {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.card p {
+    color: var(--gcx-app-gallery-p-color);
+    font-size: var(--gcx-app-gallery-p-font-size);
+}
+
+.icon {
+    margin-right: 24px;
+    font-weight: 700;
+    font-size: var(--gcx-app-gallery-icon-font-size);
+    line-height: 24px;
+}
