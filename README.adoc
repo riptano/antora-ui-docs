@@ -209,7 +209,7 @@ Now, you can run gulp bundle on the /gcx folder
 
  $ gulp bundle
 
-Once the process is finished, you will see a /build folder inside the /gcx directory, there, you will found a new ui-bundle.zip.
+Once the process is finished, you will see a /build folder inside the /gcx directory, there, you will find a new ui-bundle.zip.
 
 This ui-bundle is the one you should run with the sandbox to test it
 
