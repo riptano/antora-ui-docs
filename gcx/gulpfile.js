@@ -116,4 +116,14 @@ const zipBundle = () => {
     .pipe(dest('build/'));
 }
 
-exports.bundle = series(cleanTempBuild,unzipBundle,cleanImg,cleanHBLayouts,cleanBuild,cleanCSS,bundleCSS,bundleHeliosCSS, parallel(bundleStencil), bundleJShelpers, mergeJS, cleanHighlight, bundleHB, bundleImg, zipBundle, cleanTempBuild);
+const cleanHeliosBuild = () => {
+    return src(['build/css',
+    'build/helpers',
+    'build/img',
+    'build/js',
+    'build/layouts',
+    'build/partials'],{read:false,allowEmpty:true})
+    .pipe(clean());
+}
+
+exports.bundle = series(cleanTempBuild,unzipBundle,cleanImg,cleanHBLayouts,cleanBuild,cleanCSS,bundleCSS,bundleHeliosCSS, parallel(bundleStencil), bundleJShelpers, mergeJS, cleanHighlight, bundleHB, bundleImg, zipBundle, cleanTempBuild, cleanHeliosBuild);

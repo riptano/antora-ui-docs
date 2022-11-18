@@ -4,7 +4,8 @@
   "description": "helios-gcx bundler",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bundle": "cd ../ && gulp bundle && cd ./gcx && gulp bundle"
   },
   "author": "",
   "license": "ISC",
