@@ -250,13 +250,18 @@ To include Helios GCX to the Antora bundle, you can build it following these ste
 
 Install the Node dependencies from the `./gcx` folder:
 
-$ cd ./gcx
-
-$ npm install
+[source,shell]
+----
+cd ./gcx
+npm install
+----
 
 Once it finished, you can run on this folder:
 
-$ npm run bundle
+[source,shell]
+----
+npm run bundle
+----
 
 This script will run both Antora and Helios bundlers, the final build you can find it on `./gcx/build` as `ui-bundle.zip`
 
