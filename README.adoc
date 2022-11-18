@@ -244,6 +244,15 @@ If any errors are reported by lint, you'll need to fix them.
 When the command completes successfully, the UI bundle will be available at [.path]_build/ui-bundle.zip_.
 You can point Antora at this bundle using the `--ui-bundle-url` command-line option.
 
+If you have the preview running, and you want to bundle without causing the preview to be clobbered, use:
+
+[source,shell]
+----
+gulp bundle:pack
+----
+
+The UI bundle will again be available at [.path]_build/ui-bundle.zip_.
+
 === Package for use with Antora adding Helios GCX
 
 To include Helios GCX to the Antora bundle, you can build it following these steps:
@@ -264,15 +273,6 @@ npm run bundle
 ----
 
 This script will run both Antora and Helios bundlers, the final build you can find it on `./gcx/build` as `ui-bundle.zip`
-
-If you have the preview running, and you want to bundle without causing the preview to be clobbered, use:
-
-[source,shell]
-----
-gulp bundle:pack
-----
-
-The UI bundle will again be available at [.path]_build/ui-bundle.zip_.
 
 ==== Source maps
 
