@@ -34,7 +34,7 @@ ui:
 
 asciidoc:
   attributes:
-    source-highlighter: highlightjs
+    source-highlighter: prism
     page-pagination: ''
     sectanchors: ''
     sectlinks: ''

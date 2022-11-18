@@ -1,7 +1,7 @@
 = What is {astra_db}?
 :slug: what-is-datastax-astra
 
-{company} {astra_db} is a {serverless_special} multi-cloud native DBaaS built on Apache Cassandra&reg;. 
+{company} {astra_db} is a {serverless_special} multi-cloud native DBaaS built on Apache Cassandra&reg;.
 
 Start today with a $300/year free credit. You can use the https://astra.datastax.com[{astra_ui}, window="_blank"] and APIs to greatly simplify cloud-native Cassandra application development. {astra_db} reduces deployment time from weeks to minutes, and delivers a combination of {serverless_special} pay-as-you-go pricing with the freedom and agility of multi-cloud and open-source software. All that functionality is yours without the hassles of complex database and infrastructure administration.
 
@@ -12,7 +12,7 @@ Start today with a $300/year free credit. You can use the https://astra.datastax
 In addition to this {astra_db} documentation, be sure to check out our new https://awesome-astra.github.io/docs/[Awesome-Astra, window="_blank"] site. It includes developer-focused tutorials and learning materials to help you quickly build great applications. Awesome-Astra also provides a rich set of external tools to connect your apps to Astra DB data, and "Try It!" features within the product's API docs. Get a jump on your learning and start coding today!
 ====
 
-To learn more about {astra_db}, we recommend watching the https://www.youtube.com/playlist?list=PL2g2h-wyI4SpWK1G3UaxXhzZc6aUFXbvL[Astra DB videos, window="_blank"] on the DataStax Developers YouTube channel. Our developers introduce you to the most frequently used {astra_db} features. 
+To learn more about {astra_db}, we recommend watching the https://www.youtube.com/playlist?list=PL2g2h-wyI4SpWK1G3UaxXhzZc6aUFXbvL[Astra DB videos, window="_blank"] on the DataStax Developers YouTube channel. Our developers introduce you to the most frequently used {astra_db} features.
 
 For introductory information about {astra_db}, start in our xref:astra-faq.adoc[{astra_db} FAQs, window="_blank"].
 
@@ -31,3 +31,32 @@ ifeval::["{evalproduct}" == "DB Classic"]
 
 If you're a user of {astra_db} Serverless, switch over to the https://docs.datastax.com/en/astra-serverless/docs[documentation, window="_blank"] written specifically for it.
 endif::[]
+
+== Test code block
+
+[source,javascript]
+----
+const { Client } = require("cassandra-driver");
+async function run() {
+   const client = new Client({
+      cloud: {
+      secureConnectBundle: "<<PATH/TO/>>secure-connect-test3.zip",
+      },
+      credentials: {
+      username: "<<CLIENT ID>>",
+      password: "<<CLIENT SECRET>>",
+      },
+   });
+
+   await client.connect();
+
+   // Execute a query
+   const rs = await client.execute("SELECT * FROM system.local");
+   console.log(`Your cluster returned ${rs.rowLength} row(s)`);
+
+   await client.shutdown();
+}
+
+// Run the async function
+run();
+----
