@@ -70,18 +70,23 @@
     --color-prism-dark-background: #0a0a0a;
     --color-prism-light-border: #ced0d2;
     --color-prism-dark-border: #494a4d;
-    --color-prism-light-classname: #212529;
-    --color-prism-dark-classname: var(--color-white);
-    --color-prism-comment: #999999;
-    --color-prism-light-number: #ba4e00;
-    --color-prism-dark-number: #de7326;
-    --color-prism-light-string: #0072C3;
-    --color-prism-dark-string: #33b1ff;
-    --color-prism-light-function: #8A3FFC;
-    --color-prism-dark-function: #be95ff;
-    --color-prism-light-tag: #007D79;
-    --color-prism-dark-tag: #08bdba;
+    --color-prism-light-font: #212529;
+    --color-prism-dark-font: var(--color-white);
+    --color-prism-grey: #999999;
+    --color-prism-light-orange: #BA4E00;
+    --color-prism-dark-orange: #FF832B;
+    --color-prism-light-blue: #0072C3;
+    --color-prism-dark-blue: #33B1FF;
+    --color-prism-light-purple: #8A3FFC;
+    --color-prism-dark-purple: #BE95FF;
+    --color-prism-light-teal: #007D79;
+    --color-prism-dark-teal: #08BDBA;
     --color-prism-regex: #e90;
+    --color-prism-light-failure: #D52424;
+    --color-prism-dark-failure: #ED8686;
+    --color-prism-light-secondary: #5C6A85;
+    --color-prism-dark-secondary: #A6B1C2;
+    
     /* fonts */
     --rem-base: 18;
     /* used to compute rem value from desired pixel value (e.g., calc(18 / var(--rem-base) * 1rem) = 18px) */

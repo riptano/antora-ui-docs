@@ -273,12 +273,6 @@ feedback-stars {
     padding: 1rem 0.1rem 0.1rem 0.1rem!important;
 }
 
-.dark-mode .doc pre.highlight,
-.dark-mode .doc pre:not(.highlight) {
-    box-shadow: inset 0 0 1.75px #c9cef6;
-    /* background: #2e394e; */
-}
-
 .copy-icon {
     background-image: url(../img/octicons-16.svg#view-clippy);
     background-size: contain;
@@ -319,12 +313,6 @@ code::before {
 
 .dark-mode .helios-card {
     background-color: var(--color-interface-night-900);
-}
-
-.dark-mode .doc pre:not(.highlight),
-.dark-mode .doc pre.highlight code {
-    /* background: var(--color-interface-night-800); */
-    box-shadow: inset 0 0 1.75px var(--color-interface-night-800);
 }
 
 .dark-mode .doc .exampleblock>.content {
