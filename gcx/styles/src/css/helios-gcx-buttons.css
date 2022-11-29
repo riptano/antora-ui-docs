@@ -1,0 +1,63 @@
+.nav-item.toggler>button {
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 7px;
+    right: 0;
+    width: 22px;
+    height: 22px;
+}
+
+[data-depth="2"] .nav-item.toggler>button {
+    top: 7px;
+}
+
+.dark-mode .nav-item[data-depth="1"].toggler:hover button {
+    color: #fff;
+}
+
+.nav-item[data-depth="1"].toggler.is-active>button:hover,
+.nav-item[data-depth="2"].toggler.is-active>.button:hover,
+.nav-item[data-depth="3"].toggler.is-active>button:hover,
+.nav-item[data-depth="4"].toggler.is-active>button:hover {
+    color: #6a7086;
+}
+
+/* Navbar buttons */
+.ds_buttons_button {
+    color: #FFF;
+    font-weight: 500;
+    line-height: 1.22;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    padding: 8px 12px;
+    width: 135px;
+    height: 40px;
+    background: var(--blue);
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/*Button in Header*/
+
+a.ds_buttons_button {
+    margin: 0 8px;
+    width: 74px;
+}
+
+.ds_buttons_button:hover {
+    background: #7BB3F7;
+}
+
+a.ds_buttons_button:hover {
+    color: var(--white)!important;
+    text-decoration: none!important;
+}
+
+.get-started {
+    padding-right: 15px;
+}

@@ -19,15 +19,6 @@
     color: #3b4260;
 }
 
-.doc .admonitionblock.caution .title {
-    color: #3b4260!important;
-}
-
-.doc .admonitionblock.caution a {
-    color: #3b4260!important;
-    text-decoration: underline;
-}
-
 .doc .admonitionblock.tip tr {
     display: block;
     background: #F0F8F4;
@@ -37,19 +28,6 @@
 
 .doc .admonitionblock.tip td.content {
     color: #008040;
-}
-
-.doc .admonitionblock.tip .icon {
-    color: #008040;
-}
-
-.doc .admonitionblock.tip .title {
-    color: #008040!important;
-}
-
-.doc .admonitionblock.tip a {
-    color: #008040!important;
-    text-decoration: underline;
 }
 
 .doc .admonitionblock.warning tr {
@@ -63,19 +41,6 @@
     color: #916707;
 }
 
-.doc .admonitionblock.warning .icon {
-    color: #916707;
-}
-
-.doc .admonitionblock.warning .title {
-    color: #916707!important;
-}
-
-.doc .admonitionblock.warning a {
-    color: #916707!important;
-    text-decoration: underline;
-}
-
 .doc .admonitionblock.important tr {
     display: block;
     background: #FEF1F1;
@@ -85,19 +50,6 @@
 
 .doc .admonitionblock.important td.content {
     color: #D52424;
-}
-
-.doc .admonitionblock.important .icon {
-    color: #D52424;
-}
-
-.doc .admonitionblock.important .title {
-    color: #D52424!important;
-}
-
-.doc .admonitionblock.important a {
-    color: #D52424!important;
-    text-decoration: underline;
 }
 
 .doc .admonitionblock.note tr {
@@ -111,23 +63,6 @@
     color: #1E71D4;
 }
 
-.doc .admonitionblock.note .icon {
-    color: #1E71D4;
-}
-
-.doc .admonitionblock.note .title {
-    color: #1E71D4!important;
-}
-
-.doc .admonitionblock.note a {
-    color: #1E71D4!important;
-    text-decoration: underline;
-}
-
 .doc .exampleblock>.content {
     border-width: 1.5px;
-}
-
-.doc .admonitionblock .icon i::after {
-    color: white;
 }

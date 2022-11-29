@@ -100,3 +100,23 @@ schema#gcx-schema {
 gcx-full .full-articles {
     margin-left: 1px;
 }
+
+feedback-stars {
+    --spacing-space01h: 16px;
+}
+
+.feedback-wrapper {
+    --spacing-space01h: 16px;
+}
+
+.dark-mode feedback-form {
+    --color-text-primary: #FFF;
+}
+
+.dark-mode .helios-card {
+    background-color: var(--color-interface-night-900);
+}
+
+.dark-mode .helios-text-field-label {
+    color: var(--white);
+}

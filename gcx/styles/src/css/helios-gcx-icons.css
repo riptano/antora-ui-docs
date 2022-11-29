@@ -1,0 +1,36 @@
+.doc .admonitionblock.tip .icon {
+    color: #008040;
+}
+
+.doc .admonitionblock.warning .icon {
+    color: #916707;
+}
+
+.doc .admonitionblock.important .icon {
+    color: #D52424;
+}
+
+.doc .admonitionblock.note .icon {
+    color: #1E71D4;
+}
+
+.doc .admonitionblock .icon i::after {
+    color: white;
+}
+
+.copy-icon {
+    background-image: url(../img/octicons-16.svg#view-clippy);
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+}
+
+.dark-mode .copy-icon {
+    background-image: url(../img/octicons-16-white.svg#view-clippy);
+}
+
+/* Footer icons container */
+.bottom-icons a:hover {
+    opacity: 0.8;
+}

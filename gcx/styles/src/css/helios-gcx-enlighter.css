@@ -1,4 +1,9 @@
-/* Right Block - Code */
+/*Scroll for Code block */
+
+.enlighter-default::-webkit-scrollbar {
+    display: none;
+    /* for Chrome, Safari, and Opera */
+}
 
 .enlighter-default {
     font-family: 'Roboto Mono', monospace!important;

@@ -1,5 +1,4 @@
-/* HEADER AND NAVBAR STYLES: Also includes buttons and
-   search bar */
+/* HEADER AND NAVBAR STYLES */
 
 .header {
     padding: 18px 32px;
@@ -11,10 +10,6 @@
 .dark-mode .header,
 .dark-mode .navbar {
     background-color: var(--color-interface-night-800);
-}
-
-.navbar-brand img {
-    height: 40px;
 }
 
 .navbar-menu {
@@ -185,24 +180,7 @@ input.switch:checked+.slider:before {
     transform: translateX(30px);
 }
 
-/* Navbar buttons */
-.ds_buttons_button {
-    color: #FFF;
-    font-weight: 500;
-    line-height: 1.22;
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-    padding: 8px 12px;
-    width: 135px;
-    height: 40px;
-    background: var(--blue);
-    border-radius: 6px;
-    cursor: pointer;
-}
+
 
 @media screen and (min-width:1024px) {
     .navbar{
@@ -210,11 +188,7 @@ input.switch:checked+.slider:before {
     }
 }
 
-.get-started {
-    padding-right: 15px;
-}
-
-
+/* Navbar menu list */
 ul#ds_sites_list {
     list-style-type: none;
     font-size: 16px;
@@ -224,6 +198,8 @@ ul#ds_sites_list {
     margin: 0;
     padding: 0;
 }
+
+/* Navbar menu list items */
 
 ul#ds_sites_list li {
     display: inline;
@@ -240,52 +216,4 @@ ul#ds_sites_list li a:visited {
 
 ul#ds_sites_list li a:active {
     color: #FFF;
-}
-
-/*Button in Header*/
-
-a.ds_buttons_button {
-    margin: 0 8px;
-    width: 74px;
-}
-
-.ds_buttons_button:hover {
-    background: #7BB3F7;
-}
-
-a.ds_buttons_button:hover {
-    color: var(--white)!important;
-    text-decoration: none!important;
-}
-
-
-/*Search input*/
-
-.ds-search-input-icon {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    background: var(--white);
-    border: 1px solid #A6B1C2;
-    border-radius: 6px;
-    padding: 14px;
-    width: 320px;
-    height: 40px;
-}
-
-.ds-search-input-icon input,
-.ds-search-input-icon input:focus,
-.ds-search-input-icon input:focus-visible {
-    border: none;
-    outline: none;
-}
-
-.ds-search-input-icon input {
-    padding-left: 10px;
-}
-
-.ds-search-input-icon input::placeholder {
-    font-size: 16px;
-    line-height: 24px;
-    color: #A6B1C2;
 }

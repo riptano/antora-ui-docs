@@ -1,0 +1,95 @@
+.doc .admonitionblock .title,
+.doc .exampleblock .title,
+.doc .imageblock .title,
+.doc .literalblock .title,
+.doc .listingblock .title,
+.doc .openblock .title,
+.doc .tableblock caption {
+    color: var(--heading-font-color);
+}
+
+.dark-mode .doc .admonitionblock .title,
+.dark-mode .doc .exampleblock .title,
+.dark-mode .doc .imageblock .title,
+.dark-mode .doc .literalblock .title,
+.dark-mode .doc .listingblock .title,
+.dark-mode .doc .openblock .title,
+.dark-mode .doc .tableblock caption {
+    color: var(--body-background);
+}
+
+.doc .sidebarblock>.content>.title {
+    text-align: left;
+}
+
+/* Dark mode: Titles*/
+
+.dark-mode .doc h1,
+.dark-mode .doc h2,
+.dark-mode .doc h3,
+.dark-mode .doc h4,
+.dark-mode .doc h5,
+.dark-mode .doc h6 {
+    color: var(--white);
+}
+
+.doc .admonitionblock.caution .title {
+    color: #3b4260!important;
+}
+
+.doc .admonitionblock.tip .title {
+    color: #008040!important;
+}
+
+.doc .admonitionblock.warning .title {
+    color: #916707!important;
+}
+
+.doc .admonitionblock.important .title {
+    color: #D52424!important;
+}
+
+.doc .admonitionblock.note .title {
+    color: #1E71D4!important;
+}
+
+.dark-mode .doc h2:not(.discrete) {
+    border-bottom: 1px solid #2E394E;
+}
+
+.dark-mode .doc .sidebarblock>.content>.title {
+    color: var(--white);
+}
+
+
+.dark-mode .toc .toc-menu h3 {
+    color: var(--color-blue-gray-2);
+}
+
+.doc h2:not(.discrete) {
+    font-size: 21px;
+    font-weight: 700;
+    padding: 0;
+    margin: 0;
+    padding-bottom: 12px!important;
+    cursor: pointer;
+}
+
+.doc .sect1.active h2:after {
+    content: url(../img/small-arrow-right.svg);
+    margin: 0 10px;
+    float: right;
+    text-decoration: none;
+}
+
+.sidebar.small-container .main-content .title {
+    display: none;
+}
+
+.dark-mode .nav-menu h3.title {
+    color: var(--white);
+}
+
+.nav-menu h3.title {
+    padding: 8px 32px!important;
+}

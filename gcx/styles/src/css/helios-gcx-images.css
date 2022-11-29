@@ -1,0 +1,16 @@
+.navbar-brand img {
+    height: 40px;
+}
+
+.doc .imageblock {
+    grid-row-start: 1;
+    align-items: start;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+@media only screen and (max-width: 600px) {
+    .navbar-brand img {
+        height: 30px;
+    }
+}

@@ -1,7 +1,6 @@
 const { src, dest, series, parallel } = require('gulp');
 const concat = require('gulp-concat');
 var clean = require('gulp-clean');
-const rename = require('gulp-rename');
 const zip = require('gulp-zip');
 const unzip = require('gulp-unzip');
 
@@ -61,12 +60,6 @@ const bundleStencil = () => {
     .pipe(dest('build/'));
 }
 
-const renameHighlight = () => {
-    return src('styles/build/js/vendor/highlight.bundle.js')
-    .pipe(rename("highlight.js"))
-    .pipe(dest('build/js/vendor'))
-}
-
 const cleanHighlight = () => {
     return src('build/js/vendor/highlight.bundle.js')
     .pipe(clean({force:true}))
@@ -84,14 +77,7 @@ const bundleCSS = () =>
 
 const bundleHeliosCSS = () =>
     src(['styles/build/css/siteTemp.css',
-    'styles/src/css/**/helios-gcx-alerts.css',
-    'styles/src/css/**/helios-gcx-base.css',
-    'styles/src/css/**/helios-gcx-content.css',
-    'styles/src/css/**/helios-gcx-enlighter.css',
-    'styles/src/css/**/helios-gcx-footer.css',
-    'styles/src/css/**/helios-gcx-header.css',
-    'styles/src/css/**/helios-gcx-sidebar.css',
-    'styles/src/css/**/helios-gcx-styles.css'])
+    'styles/src/css/helios-gcx-*.css'])
     .pipe(concat('site.css'))
     .pipe(dest('build/css'));
 

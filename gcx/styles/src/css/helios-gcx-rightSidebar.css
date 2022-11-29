@@ -1,0 +1,14 @@
+[data-template="landing"] .toc.sidebar {
+    display: none;
+}
+
+/*Dark Mode Aside Menu*/
+
+.dark-mode .toc .toc-menu a {
+    color: var(--white);
+    border-left: 2px solid var(--color-sidebar);
+}
+
+.dark-mode .toc .toc-menu a:hover {
+    color: #c8cbd3;
+}
