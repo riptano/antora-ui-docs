@@ -143,12 +143,10 @@ pre[class*=language-] {
     color: var(--color-prism-dark-orange)
 }
 
-.token.class-name,
 .token.regex {
     color: var(--color-prism-light-blue)
 }
 
-.dark-mode .token.class-name,
 .dark-mode .token.regex {
     color: var(--color-prism-dark-blue)
 }
