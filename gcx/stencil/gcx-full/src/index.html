@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Stencil Component Starter</title>
+    <script type="module" src="/build/two-columns.esm.js"></script>
+    <script nomodule src="/build/two-columns.js"></script>
+
+    <script src="/lib/enlighterjs.min.js"></script>
+    <link rel="stylesheet" href="/lib/enlighterjs.min.css" />
+
+    <script type="module" src="/build/gcx-contact-form/gcx-contact-form.esm.js"></script>
+    <script nomodule src="/build/gcx-contact-form/gcx-contact-form.js"></script>
+    <style>
+        .navbar {
+            background: #191919;
+            color: #fff;
+            font-size: 0.88889rem;
+            height: 3.5rem;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 4;
+        }
+    </style>
+</head>
+
+<body>
+    <script id="antora-main-block" type="text/html">
+        <main class="article">
+            <div class="toolbar" role="navigation">
+                <button class="nav-toggle"></button>
+                <nav class="breadcrumbs" aria-label="breadcrumbs"></nav>
+                <div class="edit-this-page">
+                    <a href="file:///Users/eilovares/Documents/Antora/datastak/modules/ROOT/pages/index.adoc">Edit this Page</a
+            >
+          </div>
+        </div>
+        <div class="content">
+          <!--<aside class="toc sidebar" data-title="Contents" data-levels="2">
+<div class="toc-menu"></div>
+</aside>
+-->
+          <article class="doc">
+            <h1 class="page">Proof of concept connecting to SQL using Java</h1>
+            <div class="sect1 gcx-hook-connect='15-26'">
+              <h2 id="_step_1_connect_to_db">
+                <a class="anchor" href="#_step_1_connect_to_db"></a>Step 1: Connect to DB
+                    </h2>
+                    <div class="sectionbody">
+                        <div class="paragraph">
+                            <p>
+                                Donec posuere, libero non convallis scelerisque, eros quam efficitur velit, et accumsan metus ex pharetra ex. Integer gravida tincidunt pulvinar. Donec posuere, libero non convallis scelerisque, eros quam efficitur velit, et accumsan metus ex pharetra
+                                ex. Integer gravida tincidunt pulvinar. Donec posuere, libero non convallis scelerisque, eros quam efficitur velit, et accumsan metus ex pharetra ex. Integer gravida tincidunt pulvinar. Donec posuere, libero non convallis
+                                scelerisque, eros quam efficitur velit, et accumsan metus ex pharetra ex. Integer gravida tincidunt pulvinar. Donec posuere, libero non convallis scelerisque, eros quam efficitur velit, et accumsan metus ex pharetra ex.
+                                Integer gravida tincidunt pulvinar.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="sect1 gcx-hook-connect='27-50'">
+                    <h2 id="_step_2_create_db">
+                        <a class="anchor" href="#_step_2_create_db"></a>Step 2: Create DB
+                    </h2>
+                    <div class="sectionbody">
+                        <div class="paragraph">
+                            <p>
+                                Proin non nisl quis nisl vulputate molestie in sed nisl. Sed et turpis at mi dictum rhoncus. Nunc sollicitudin quam sit amet lacus congue fermentum. Vivamus dapibus tortor laoreet faucibus pulvinar. Donec condimentum vitae sem nec tristique. Fusce fermentum
+                                congue ultricies. Cras in enim at orci vestibulum gravida. Nulla efficitur, neque in interdum blandit, urna ante vehicula nibh, in vestibulum risus massa vitae orci. Nunc quis nunc ex. Nunc tempus nisl ut cursus sagittis.
+                                Quisque rhoncus vulputate odio nec fringilla. Sed eu orci ultrices, luctus velit at, vehicula nunc. Vivamus sed faucibus diam. Ut nulla leo, finibus eget vestibulum bibendum, malesuada porta odio. Sed tincidunt ultricies
+                                Proin non nisl quis nisl vulputate molestie in sed nisl. Donec augue sapien, rutrum nec volutpat vel, vulputate commodo nisi. Maecenas quis nibh dictum, facilisis eros in, mattis mauris. Donec posuere, libero non convallis
+                                scelerisque, eros quam efficitur velit, et accumsan metus ex pharetra ex. Integer gravida tincidunt pulvinar. Suspendisse vitae tempus leo. Pellentesque accumsan maximus sapien, id blandit lorem malesuada eu. Nullam quis
+                                vehicula risus.Sed et turpis at mi dictum rhoncus. Nunc sollicitudin quam sit amet lacus congue fermentum. Vivamus dapibus tortor laoreet faucibus pulvinar. Donec condimentum vitae sem nec tristique. Fusce fermentum congue
+                                ultricies. Cras in enim at orci vestibulum gravida. Nulla efficitur, neque in interdum blandit, urna ante vehicula nibh, in vestibulum risus massa vitae orci. Nunc quis nunc ex. Nunc tempus nisl ut cursus sagittis. Quisque
+                                rhoncus vulputate odio nec fringilla. Sed eu orci ultrices, luctus velit at, vehicula nunc. Vivamus sed faucibus diam. Ut nulla leo, finibus eget vestibulum bibendum, malesuada porta odio. Sed tincidunt ultricies egestas.
+                                egestas.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="sect1 gcx-hook-connect='52-75'">
+                    <h2 id="_step_3_insert_data">
+                        <a class="anchor" href="#_step_3_insert_data"></a>Step 3: Insert data
+                    </h2>
+                    <div class="sectionbody">
+                        <div class="paragraph">
+                            <p>
+                                Proin non nisl quis nisl vulputate molestie in sed nisl. Sed et turpis at mi dictum rhoncus. Nunc sollicitudin quam sit amet lacus congue fermentum. Vivamus dapibus tortor laoreet faucibus pulvinar. Donec condimentum vitae sem nec tristique. Fusce fermentum
+                                congue ultricies. Cras in enim at orci vestibulum gravida. Nulla efficitur, neque in interdum blandit, urna ante vehicula nibh, in vestibulum risus massa vitae orci. Nunc quis nunc ex. Nunc tempus nisl ut cursus sagittis.
+                                Quisque rhoncus vulputate odio nec fringilla. Sed eu orci ultrices, luctus velit at, vehicula nunc. Vivamus sed faucibus diam. Ut nulla leo, finibus eget vestibulum bibendum, malesuada porta odio. Sed tincidunt ultricies
+                                Proin non nisl quis nisl vulputate molestie in sed nisl. Donec augue sapien, rutrum nec volutpat vel, vulputate commodo nisi. Maecenas quis nibh dictum, facilisis eros in, mattis mauris. Donec posuere, libero non convallis
+                                scelerisque, eros quam efficitur velit, et accumsan metus ex pharetra ex. Integer gravida tincidunt pulvinar. Suspendisse vitae tempus leo. Pellentesque accumsan maximus sapien, id blandit lorem malesuada eu. Nullam quis
+                                vehicula risus.Sed et turpis at mi dictum rhoncus. Nunc sollicitudin quam sit amet lacus congue fermentum. Vivamus dapibus tortor laoreet faucibus pulvinar. Donec condimentum vitae sem nec tristique. Fusce fermentum congue
+                                ultricies. Cras in enim at orci vestibulum gravida. Nulla efficitur, neque in interdum blandit, urna ante vehicula nibh, in vestibulum risus massa vitae orci. Nunc quis nunc ex. Nunc tempus nisl ut cursus sagittis. Quisque
+                                rhoncus vulputate odio nec fringilla. Sed eu orci ultrices, luctus velit at, vehicula nunc. Vivamus sed faucibus diam. Ut nulla leo, finibus eget vestibulum bibendum, malesuada porta odio. Sed tincidunt ultricies egestas.
+                                egestas.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="sect1 gcx-hook-connect='77-108'">
+                    <h2 id="_step_4_select_data">
+                        <a class="anchor" href="#_step_4_select_data"></a>Step 4: Select data
+                    </h2>
+                    <div class="sectionbody">
+                        <div class="paragraph">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec augue sapien, rutrum nec volutpat vel, vulputate commodo nisi. Maecenas quis nibh dictum, facilisis eros in, mattis mauris. Donec posuere, libero non convallis scelerisque, eros quam efficitur
+                                velit, et accumsan metus ex pharetra ex. Integer gravida tincidunt pulvinar. Suspendisse vitae tempus leo. Pellentesque accumsan maximus sapien, id blandit lProin non nisl quis nisl vulputate molestie in sed nisl. Donec
+                                augue sapien, rutrum nec volutpat vel, vulputate commodo nisi. Maecenas quis nibh dictum, facilisis eros in, mattis mauris. Donec posuere, libero non convallis scelerisque, eros quam efficitur velit, et accumsan metus ex
+                                pharetra ex. Integer gravida tincidunt pulvinar. Suspendisse vitae tempus leo. Pellentesque accumsan maximus sapien, id blandit lorem malesuada eu. Nullam quis vehicula risus.Sed et turpis at mi dictum rhoncus. Nunc sollicitudin
+                                quam sit amet lacus congue fermentum. Vivamus dapibus tortor laoreet faucibus pulvinar. Donec condimentum vitae sem nec tristique. Fusce fermentum congue ultricies. Cras in enim at orci vestibulum gravida. Nulla efficitur,
+                                neque in interdum blandit, urna ante vehicula nibh, in vestibulum risus massa vitae orci. Nunc quis nunc ex. Nunc tempus nisl ut cursus sagittis. Quisque rhoncus vulputate odio nec fringilla. Sed eu orci ultrices, luctus
+                                velit at, vehicula nunc. Vivamus sed faucibus diam. Ut nulla leo, finibus eget vestibulum bibendum, malesuada porta odio. Sed tincidunt ultricies egestas.orem malesuada eu. Nullam quis vehicula risus.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="sect1 gcx-hook-connect='110-145'">
+                    <h2 id="_step_5_update_data">
+                        <a class="anchor" href="#_step_5_update_data"></a>Step 5: Update data
+                    </h2>
+                    <div class="sectionbody">
+                        <div class="paragraph">
+                            <p>
+                                Integer molestie luctus ante, non ultrices ligula. Suspendisse venenatis, purus ultricies pellentesque fermentum, felis ante sodales nisi, venenatis pellentesque tellus dolor ac orci. Morbi nibh lectus, finibus eget condimentum quis, sodales vitae sem.
+                                Nam cursus nec lorem a euismod. Phasellus varius convallis sollicitudin. Maecenas elementum dapibus sem quis tempus. Curabitur tristique dui quis leo Proin non nisl quis nisl vulputate molestie in sed nisl. Donec augue
+                                sapien, rutrum nec volutpat vel, vulputate commodo nisi. Maecenas quis nibh dictum, facilisis eros in, mattis mauris. Donec posuere, libero non convallis scelerisque, eros quam efficitur velit, et accumsan metus ex pharetra
+                                ex. Integer gravida tincidunt pulvinar. Suspendisse vitae tempus leo. Pellentesque accumsan maximus sapien, id blandit lorem malesuada eu. Nullam quis vehicula risus.Sed et turpis at mi dictum rhoncus. Nunc sollicitudin
+                                quam sit amet lacus congue fermentum. Vivamus dapibus tortor laoreet faucibus pulvinar. Donec condimentum vitae sem nec tristique. Fusce fermentum congue ultricies. Cras in enim at orci vestibulum gravida. Nulla efficitur,
+                                neque in interdum blandit, urna ante vehicula nibh, in vestibulum risus massa vitae orci. Nunc quis nunc ex. Nunc tempus nisl ut cursus sagittis. Quisque rhoncus vulputate odio nec fringilla. Sed eu orci ultrices, luctus
+                                velit at, vehicula nunc. Vivamus sed faucibus diam. Ut nulla leo, finibus eget vestibulum bibendum, malesuada porta odio. Sed tincidunt ultricies egestas. placerat suscipit. Aliquam urna mi, faucibus non tincidunt a, finibus
+                                et lorem. Vestibulum non libero dolor.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="sect1 gcx-hook-connect='147-182'">
+                    <h2 id="_step_6_delete_data">
+                        <a class="anchor" href="#_step_6_delete_data"></a>Step 6: Delete data
+                    </h2>
+                    <div class="sectionbody">
+                        <div class="paragraph">
+                            <p>
+                                Fusce facilisis id ligula eu sagittis. Nullam vehicula posuere cursus. Duis euismod elit lacinia dignissim maximus. Cras finibus eu diam lobortis dignissim. Etiam nulla lectus, faucibus eu ligula scelerisque, ornare tincidunt magna. Nullam efficitur ligula
+                                vel nisi convallis scelerisque. Nunc sollicitudin, nisi in sodales consequat, elit urna commodo nunc, sit amet fermentum dui libero id massa. Nunc dignissim, risus non rhoncus egestas, erat orci venenatis risus, non cursus
+                                nisi nulla eget odio. Nunc gravida vestibulum maximus. Integer iaculis erat quis tortor pretium sollicitudin. In ac libero fermentum, scelerisque rProin non nisl quis nisl vulputate molestie in sed nisl. Donec augue sapien,
+                                rutrum nec volutpat vel, vulputate commodo nisi. Maecenas quis nibh dictum, facilisis eros in, mattis mauris. Donec posuere, libero non convallis scelerisque, eros quam efficitur velit, et accumsan metus ex pharetra ex.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="listingblock gcx-code-connect">
+                    <div class="content">
+                        <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import java.sql.*;
+
+public class SQLiteJDBC
+{
+public static void main( String args[] )
+{
+connectDB();
+createDB();
+insertDB();
+selectDB();
+//updateDB();
+//deleteDB();
+}
+
+public static void connectDB()
+{
+Connection c = null;
+try {
+Class.forName("org.sqlite.JDBC");
+c = DriverManager.getConnection("jdbc:sqlite:myBlog.sqlite");
+} catch ( Exception e ) {
+System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+System.exit(0);
+}
+System.out.println("Opened database successfully");
+}
+public static void createDB()
+{
+Connection c = null;
+Statement stmt = null;
+try {
+Class.forName("org.sqlite.JDBC");
+c = DriverManager.getConnection("jdbc:sqlite:myBlog.sqlite");
+System.out.println("Opened database successfully");
+
+stmt = c.createStatement();
+String sql = "CREATE TABLE web_blog " +
+             "(ID INTEGER PRIMARY KEY autoincrement," +
+             " NAME           CHAR(50)    NOT NULL, " +
+             " message        TEXT     NOT NULL, " +
+             " date_added     datetime)";
+stmt.executeUpdate(sql);
+stmt.close();
+c.close();
+} catch ( Exception e ) {
+System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+System.exit(0);
+}
+System.out.println("Table created successfully");
+}
+
+public static void insertDB()
+{
+Connection c = null;
+Statement stmt = null;
+try {
+Class.forName("org.sqlite.JDBC");
+c = DriverManager.getConnection("jdbc:sqlite:myBlog.sqlite");
+c.setAutoCommit(false);
+System.out.println("Opened database successfully");
+
+stmt = c.createStatement();
+String sql = "INSERT INTO web_blog (NAME,message,date_added) " +
+             "VALUES ('Ken', 'Hello every one!!!', datetime())," +
+             " ('Jim', 'whats up!!!',datetime());";
+stmt.executeUpdate(sql);
+stmt.close();
+c.commit();
+c.close();
+} catch ( Exception e ) {
+System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+System.exit(0);
+}
+System.out.println("Records created successfully");
+}
+
+public static void selectDB()
+{
+Connection c = null;
+Statement stmt = null;
+try {
+Class.forName("org.sqlite.JDBC");
+c = DriverManager.getConnection("jdbc:sqlite:myBlog.sqlite");
+c.setAutoCommit(false);
+System.out.println("Opened database successfully");
+
+stmt = c.createStatement();
+ResultSet rs = stmt.executeQuery( "SELECT * FROM web_blog;" );
+while ( rs.next() ) {
+   int id = rs.getInt("id");
+   String  name = rs.getString("name");
+   String  message = rs.getString("message");
+   String date_added = rs.getString("date_added");
+   System.out.println( "ID : " + id );
+   System.out.println( "Name : " + name );
+   System.out.println( "Message : " + message );
+   System.out.println( "Date Added : " + date_added );
+   System.out.println();
+}
+rs.close();
+stmt.close();
+c.close();
+} catch ( Exception e ) {
+System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+System.exit(0);
+}
+System.out.println("Operation done successfully");
+}
+
+public static void updateDB()
+{
+Connection c = null;
+Statement stmt = null;
+try {
+Class.forName("org.sqlite.JDBC");
+c = DriverManager.getConnection("jdbc:sqlite:myBlog.sqlite");
+c.setAutoCommit(false);
+System.out.println("Opened database successfully");
+
+stmt = c.createStatement();
+String sql = "UPDATE web_blog set message = 'This is updated by updateDB()' where ID=1;";
+stmt.executeUpdate(sql);
+c.commit();
+
+ResultSet rs = stmt.executeQuery( "SELECT * FROM web_blog;" );
+while ( rs.next() ) {
+int id = rs.getInt("id");
+String  name = rs.getString("name");
+String  message = rs.getString("message");
+String date_added = rs.getString("date_added");
+System.out.println( "ID : " + id );
+System.out.println( "Name : " + name );
+System.out.println( "Message : " + message );
+System.out.println( "Date Added : " + date_added );
+System.out.println();
+}
+rs.close();
+stmt.close();
+c.close();
+} catch ( Exception e ) {
+System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+System.exit(0);
+}
+System.out.println("Operation done successfully");
+}
+
+public static void deleteDB()
+{
+Connection c = null;
+Statement stmt = null;
+try {
+Class.forName("org.sqlite.JDBC");
+c = DriverManager.getConnection("jdbc:sqlite:myBlog.sqlite");
+c.setAutoCommit(false);
+System.out.println("Opened database successfully");
+
+stmt = c.createStatement();
+String sql = "DELETE from web_blog where ID=1;";
+stmt.executeUpdate(sql);
+c.commit();
+
+ResultSet rs = stmt.executeQuery( "SELECT * FROM web_blog;" );
+while ( rs.next() ) {
+   int id = rs.getInt("id");
+   String  name = rs.getString("name");
+   String  message = rs.getString("message");
+   String date_added = rs.getString("date_added");
+   System.out.println( "ID : " + id );
+   System.out.println( "Name : " + name );
+   System.out.println( "Message : " + message );
+   System.out.println( "Date Added : " + date_added );
+   System.out.println();
+}
+rs.close();
+stmt.close();
+c.close();
+} catch ( Exception e ) {
+System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+System.exit(0);
+}
+System.out.println("Operation done successfully");
+}
+}</code></pre>
+                    </div>
+                </div>
+                </article>
+            </div>
+        </main>
+        <schema id="gcx-schema" type="text/html">
+            { "settings": [{ "lang": "en", "top_title": { "active": true, "title": "DataStax News: Astra Streaming now GA with new built_in support for Kafka and RabbitMQ. Read the press release." }, "sample_app_gallery": { "active": true, "title": "Sample App Gallery",
+            "icon": "🚀", "content": "Looking to get up and running? Get Started with a sample app!", "link": "https://www.datastax.com/dev" }, "bottom_sidebar": { "active": true, "title": "Other Resources", "list_item": [{ "item": "Documentation", "icon":
+            "menu_book", "link": "http://www.google.com" }, { "item": "Give Feedback", "icon": "chat", "link": "http://www.amazon.com" }, { "item": "Get Support", "icon": "support", "link": "http://www.github.com" } ] } }, { "lang": "es", "top_title":
+            { "active": true, "title": "DataStax News: Astra Streaming now GA with new built_in support for Kafka and RabbitMQ. Read the press release." }, "sample_app_gallery": { "active": true, "title": "Sample App Gallery", "icon": "🚀", "content":
+            "Looking to get up and running? Get Started with a sample app!", "link": "www.google.com" }, "bottom_sidebar": { "active": true, "title": "Other Resources", "list_item": [{ "item": "Documentation", "icon": "menu_book", "link": "http://www.google.com"
+            }, { "item": "Give Feedback", "icon": "chat", "link": "http://www.amazon.com" }, { "item": "Get Support", "icon": "support", "link": "http://www.github.com" } ] } } ] }
+        </schema>
+    </script>
+    <gcx-full template-script="antora-main-block"></gcx-full>
+
+    <pre>
+        loadCode(main: HTMLElement) {
+            const codeBlock = main.querySelector("[class*='gcx-code-']");
+            const code = codeBlock.querySelector(":scope > div > pre > code");
+        
+            this.codeElement = {
+              html: code.innerHTML,
+            };
+            codeBlock.innerHTML = "";
+          }
+        
+    </pre>
+</body>
+
+</html>

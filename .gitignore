@@ -1,11 +1,4 @@
-node_modules
-public
-.vscode
-build
-.DS_Store
-*~
+build/
+node_modules/
+public/
 
-.stylelintrc
-gulpfile.js
-package-lock.json
-package.json

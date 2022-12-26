@@ -1,0 +1,37 @@
+.dark-mode .doc h1 a,
+.dark-mode .doc h2 a,
+.dark-mode .doc h3 a,
+.dark-mode .doc h4 a,
+.dark-mode .doc h5 a,
+.dark-mode .doc h6 a {
+    color: var(--white);
+}
+
+.dark-mode .doc .sidebarblock>.content>.title a {
+    color: var(--white);
+}
+
+.doc .admonitionblock.caution a {
+    color: #3b4260!important;
+    text-decoration: underline;
+}
+
+.doc .admonitionblock.tip a {
+    color: #008040!important;
+    text-decoration: underline;
+}
+
+.doc .admonitionblock.warning a {
+    color: #916707!important;
+    text-decoration: underline;
+}
+
+.doc .admonitionblock.important a {
+    color: #D52424!important;
+    text-decoration: underline;
+}
+
+.doc .admonitionblock.note a {
+    color: #1E71D4!important;
+    text-decoration: underline;
+}

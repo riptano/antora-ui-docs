@@ -1,0 +1,143 @@
+.wh_footer {
+    text-align: left;
+    padding: 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    color: #FFFfff;
+    background: none #1f2438;
+    padding-top: 32px;
+}
+
+.container-fluid {
+    margin: 0 6%;
+}
+
+@media only screen and (max-width: 1601px) {
+    .container-fluid {
+        margin: 0 32px;
+    }
+}
+
+.wh_footer a {
+    color: #CCE2F1;
+}
+
+.bottom-icons {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.bottom-icons a {
+    color: #FFF;
+    text-decoration: none;
+    padding-left: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.bottom-icons a:visited,
+.bottom-icons a:hover {
+    text-decoration: none;
+    color: #FFF;
+}
+
+.bottom-icons a:before {
+    background-color: transparent;
+}
+
+.bottom-icons a:hover {
+    text-decoration: underline;
+}
+
+.contact-us {
+    color: #FFF;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #FFF;
+    border-bottom: 1px solid #FFF;
+    padding: 15px 0;
+}
+
+.contact-us a,
+.contact-us a:visited {
+    text-decoration: none;
+    color: #FFF;
+}
+
+.contact-us a:hover {
+    text-decoration: underline;
+    color: #FFF;
+}
+
+.copyright-line {
+    margin-top: 1rem;
+}
+
+.copyright-line a,
+.copyright-line a:visited,
+.copyright-line a:hover {
+    color: #FFF;
+}
+
+.copyright-line a:before {
+    background-color: #FFF;
+}
+
+.pdf,
+.zip {
+    font-size: 14px;
+    padding-left: 14px;
+}
+
+
+/* Footer icons ------------------------------------------------------------ */
+
+.ds-bottom-logo-img {
+    content: url('../img/ds-logo-white.svg');
+    width: 150px;
+    height: auto;
+}
+
+@media only screen and (max-width: 480px) {
+    .ds-bottom-logo-img {
+        display: none;
+    }
+}
+
+a.facebook-icon:before {
+    content: url('../img/facebook.svg');
+    width: 32px;
+    height: 32px;
+}
+
+a.twitter-icon:before {
+    content: url('../img/twitter.svg');
+    width: 32px;
+    height: 32px;
+}
+
+a.git-icon:before {
+    content: url('../img/github.svg');
+    width: 32px;
+    height: 32px;
+}
+
+a.medium-icon:before {
+    content: url('../img/medium.svg');
+    width: 32px;
+    height: 32px;
+}
+
+a.linkedin-icon:before {
+    content: url('../img/linkedin.svg');
+    width: 32px;
+    height: 32px;
+}
+
+a.twitch-icon:before {
+    content: url('../img/twitch.svg');
+    width: 32px;
+    height: 32px;
+}

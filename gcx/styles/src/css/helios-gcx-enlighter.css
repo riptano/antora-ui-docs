@@ -1,0 +1,115 @@
+div.enlighter {
+    margin-top: 35px!important;
+}
+/*Scroll for Code block */
+
+.enlighter-default::-webkit-scrollbar {
+    display: none;
+    /* for Chrome, Safari, and Opera */
+}
+
+.enlighter-default {
+    font-family: 'Roboto Mono', monospace!important;
+    margin: 0!important;
+    overflow: scroll!important;
+    -ms-overflow-style: none;
+    /* for Internet Explorer, Edge */
+    scrollbar-width: none;
+    border-radius: .375em;
+    border: 2px solid var(--color-prism-light-border);
+}
+
+.dark-mode .enlighter-default {
+    border: 2px solid var(--color-prism-dark-border);
+}
+
+.enlighter-t-bootstrap4 .enlighter-m0,
+.enlighter-t-bootstrap4 .enlighter-m3,
+.enlighter-t-bootstrap4 .enlighter-k0,
+.enlighter-t-bootstrap4 .enlighter-k1,
+.enlighter-t-bootstrap4 .enlighter-k3,
+.enlighter-t-bootstrap4 .enlighter-k9,
+.enlighter-t-bootstrap4 .enlighter-e0,
+.enlighter-t-bootstrap4 .enlighter-e1,
+.enlighter-t-bootstrap4 .enlighter-e3 {
+    color: var(--color-prism-light-purple)!important;
+}
+
+.enlighter-t-bootstrap4 .enlighter-g1 {
+    color: var(--color-prism-light-teal)!important;
+}
+
+.enlighter-t-bootstrap4 .enlighter-text {
+    color: #3C4961!important;
+}
+
+.enlighter-t-bootstrap4 .enlighter-s0,
+.enlighter-t-bootstrap4 .enlighter-s1,
+.enlighter-t-bootstrap4 .enlighter-s2,
+.enlighter-t-bootstrap4 .enlighter-s3,
+.enlighter-t-bootstrap4 .enlighter-s4,
+.enlighter-t-bootstrap4 .enlighter-s5,
+.enlighter-t-bootstrap4 .enlighter-n1 {
+    color: var(--color-prism-light-orange)!important;
+}
+
+
+/* Dark Mode - Code Block */
+
+.dark-mode .enlighter-t-bootstrap4 {
+    background-color: var(--color-prism-dark-background)!important;
+}
+
+.dark-mode .enlighter-t-bootstrap4.enlighter-hover div.enlighter>div:hover{
+    background-color: var(--color-very-dark-gray)!important;
+}
+
+.dark-mode .enlighter-t-bootstrap4 .enlighter-text {
+    color: #ffffff!important;
+}
+
+.dark-mode .enlighter-t-bootstrap4 .enlighter-m0,
+.dark-mode .enlighter-t-bootstrap4 .enlighter-m3,
+.dark-mode .enlighter-t-bootstrap4 .enlighter-k0,
+.dark-mode .enlighter-t-bootstrap4 .enlighter-k1,
+.dark-mode .enlighter-t-bootstrap4 .enlighter-k3,
+.dark-mode .enlighter-t-bootstrap4 .enlighter-k9,
+.dark-mode .enlighter-t-bootstrap4 .enlighter-e0,
+.dark-mode .enlighter-t-bootstrap4 .enlighter-e1,
+.dark-mode .enlighter-t-bootstrap4 .enlighter-e3 {
+    color: var(--color-prism-dark-purple)!important;
+}
+
+.dark-mode .enlighter-t-bootstrap4 .enlighter-g1 {
+    color: var(--color-prism-dark-teal)!important;
+}
+
+.dark-mode .enlighter-t-bootstrap4 .enlighter-s0,
+.dark-mode .enlighter-t-bootstrap4 .enlighter-s1,
+.dark-mode .enlighter-t-bootstrap4 .enlighter-s2,
+.dark-mode .enlighter-t-bootstrap4 .enlighter-s3,
+.dark-mode .enlighter-t-bootstrap4 .enlighter-s4,
+.dark-mode .enlighter-t-bootstrap4 .enlighter-s5,
+.dark-mode .enlighter-t-bootstrap4 .enlighter-n1 {
+    color: var(--color-prism-dark-orange)!important;
+}
+
+.enlighter-default .dark-mode .enlighter-t-bootstrap4 .enlighter-n1 {
+    color: #FF832B!important;
+}
+
+.dark-mode .enlighter-t-bootstrap4 .enlighter-k5 {
+    color: var(--white);
+}
+
+.dark-mode .doc .sect1.active {
+    background-color: var(--color-interface-night-800);
+}
+
+.dark-mode .enlighter-t-bootstrap4 div.enlighter>div.enlighter-special {
+    background-color: var(--color-jet-70);
+}
+
+.dark-mode .enlighter-t-bootstrap4 .enlighter-k10 {
+    color: var(--white)!important;
+}

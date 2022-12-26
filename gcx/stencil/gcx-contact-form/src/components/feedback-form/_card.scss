@@ -1,0 +1,16 @@
+@use "@material/card";
+@include card.core-styles;
+
+.helios-card {
+  background-color: var(--component-card-root-background);
+  border-radius: var(--component-card-root-border-radius);
+  &:not(.mdc-card--outlined) {
+    box-shadow: var(--component-card-root-box-shadow);
+  }
+  &.mdc-card--outlined {
+    box-shadow: var(--component-card-root-border);
+  }
+  .mdc-card__content {
+    padding: var(--spacing-space01);
+  }
+}

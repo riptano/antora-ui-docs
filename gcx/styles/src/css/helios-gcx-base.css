@@ -1,0 +1,7 @@
+/* autoprefixer: off */
+
+:root {
+    --nav-background: #FFF;
+    --navbar-height: 0;
+    --announcement-height: 48px;
+}

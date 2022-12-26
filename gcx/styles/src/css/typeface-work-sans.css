@@ -1,0 +1,43 @@
+/* @font-face {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 400;
+    src: local("Roboto Regular"), local("Roboto-Regular"), url(../font/roboto-latin-400.woff2) format("woff2"), url(../font/roboto-latin-400.woff) format("woff")
+}
+
+@font-face {
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: 400;
+    src: local("Roboto Italic"), local("Roboto-Italic"), url(../font/roboto-latin-400italic.woff2) format("woff2"), url(../font/roboto-latin-400italic.woff) format("woff")
+}
+
+@font-face {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    src: local("Roboto Medium"), local("Roboto-Medium"), url(../font/roboto-latin-500.woff2) format("woff2"), url(../font/roboto-latin-500.woff) format("woff")
+}
+
+@font-face {
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: 500;
+    src: local("Roboto Medium Italic"), local("Roboto-MediumItalic"), url(../font/roboto-latin-500italic.woff2) format("woff2"), url(../font/roboto-latin-500italic.woff) format("woff")
+}
+
+@font-face {
+    font-family: Roboto Mono;
+    font-style: normal;
+    font-weight: 400;
+    src: local("Roboto Mono"), local("RobotoMono-Regular"), url(../font/roboto-mono-latin-400.woff2) format("woff2"), url(../font/roboto-mono-latin-400.woff) format("woff")
+}
+
+@font-face {
+    font-family: Roboto Mono;
+    font-style: normal;
+    font-weight: 500;
+    src: local("Roboto Mono Medium"), local("RobotoMono-Medium"), url(../font/roboto-mono-latin-500.woff2) format("woff2"), url(../font/roboto-mono-latin-500.woff) format("woff")
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&family=Roboto:ital,wght@0,400;0,500;1,400;1,500&display=swap');
