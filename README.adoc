@@ -179,7 +179,7 @@ git clone {url-project} &&
 The example above clones the UI project and then switches to the project folder on your filesystem.
 Stay in this project folder when executing all subsequent commands.
 
-If you will test a UI bundle updates from a PR that is not yet merged to `main`, checkout the branch. Example:
+If you are testing UI bundle changes from a PR that is not yet merged to `main`, checkout the branch. Example:
 
 [source,shell]
 ----
