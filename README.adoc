@@ -179,6 +179,13 @@ git clone {url-project} &&
 The example above clones the UI project and then switches to the project folder on your filesystem.
 Stay in this project folder when executing all subsequent commands.
 
+If you are testing UI bundle changes from a PR that is not yet merged to `main`, checkout the branch. Example:
+
+[source,shell]
+----
+git checkout feature/new-helios-base
+----
+
 Use npm to install the project's dependencies inside the project.
 In your terminal, execute the following command:
 
@@ -207,7 +214,21 @@ The files in the [.path]_preview-src/_ folder provide the sample content that al
 In this folder, you'll primarily find pages written in AsciiDoc.
 These pages provide a representative sample and kitchen sink of content from the real site.
 
-To build the UI and preview it in a local web server, run the `preview` command:
+If you are testing UI bundle changes from a PR that is not yet merged to `main`, and if you haven't already, remember to checkout the branch. Example:
+
+[source,shell]
+----
+git checkout feature/new-helios-base
+----
+
+Run the `npm install` command again.
+
+[source,shell]
+----
+npm install
+----
+
+Now, to build the UI and preview it in a local web server, run the `preview` command:
 
 [source,shell]
 ----
