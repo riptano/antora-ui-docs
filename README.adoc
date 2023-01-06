@@ -340,7 +340,7 @@ gulp bundle
 .. Title the release with the same name as the tag.
 (The release title and the tag name should always be the same, as it makes releases easier to identify.)
 .. (Optional) Add a description for the release that highlights the functional changes that have been added since the last release.
-.. Attach the UI bundle, located in [.path]_build/ui-bundle.zip_`, as a release asset.
+.. Attach the UI bundle, located in [.path]_gcx/build/ui-bundle.zip_`, as a release asset.
 .. Check the box labeled *This is a pre-release* if you don't want the release to be generally available.
 +
 Selecting this option is helpful if you want to publish a new UI bundle for testing purposes (production builds of the DataStax documentation are only configured to consume the latest _non-pre-release_ UI bundle).
