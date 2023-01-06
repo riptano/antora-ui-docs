@@ -1,0 +1,121 @@
+gcx-full {
+    width: 100%;
+    position: relative;
+}
+
+gcx-full-code {
+    -ms-overflow-style: none;
+    /* for Internet Explorer, Edge */
+    scrollbar-width: none;
+    /* for Firefox */
+    overflow-y: scroll;
+    flex: 0 1 50%;
+    min-width: auto;
+    right: 1.05px;
+    height: calc(100vh - 1px)!important;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+}
+
+gcx-schema-topbar {
+    --gcx-topbar-padding: 14px 0;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.dark-mode gcx-schema-sample-app-gallery {
+    --gcx-app-appgallery-h4-color: #fff;
+    --gcx-app-gallery-p-color: #A6B1C2;
+    --gcx-sample-appgallery-card-background: #20293A;
+    --gcx-sample-appgallery-card-border: 2px solid #2E394E;
+}
+
+.dark-mode .small-container gcx-schema-sample-app-gallery {
+    --gcx-sample-appgallery-card-border: 0;
+}
+
+/* Dark mode: Top Bar*/
+
+.dark-mode gcx-schema-topbar {
+    --gcx-topbar-bgcolor: var(--color-blue-gray-4);
+    ;
+}
+
+/* Dark mode: Bottom Sidebar*/
+
+.dark-mode gcx-schema-bottom-sidebar {
+    --gcx-sidebar-h4-color: #fff;
+    --gcx-sidebar-li-color: #fff;
+}
+
+gcx-schema-sample-app-gallery {
+    --gcx-sample-appgallery-h4-font-size: 14px;
+    --gcx-app-gallery-p-font-size: 14px;
+    --gcx-sample-appgallery-h4-font-weight: 700;
+    padding-top: 36px;
+    padding-bottom: 76px;
+}
+
+gcx-schema-bottom-sidebar {
+    --gcx-sidebar-li-font-size: 16px;
+    --gcx-sidebar-li-display: inline-flex;
+    --gcx-sidebar-li-padding: 8px 32px;
+}
+
+.small-container gcx-schema-sample-app-gallery {
+    --gcx-sample-appgallery-card-padding: 0;
+    --gcx-sample-appgallery-card-background: transparent;
+    --gcx-sample-appgallery-card-border: 0;
+    --gcx-app-gallery-name-display: none;
+    --gcx-app-gallery-icon-font-size: 20px;
+    padding-bottom: 0;
+}
+
+.small-container gcx-schema-bottom-sidebar {
+    --gcx-sidebar-h4-display: none;
+    --gcx-sidebar-li-padding: 10px 16px;
+    --gcx-sidebar-li-display: none;
+    --gcx-sidebar-li-font-size: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+    gcx-schema-topbar {
+        --gcx-topbar-padding: 10px 0;
+        font-size: 12px;
+    }
+}
+
+gcx-full-code::-webkit-scrollbar {
+    display: none;
+    /* for Chrome, Safari, and Opera */
+}
+
+schema#gcx-schema {
+    display: none;
+}
+
+gcx-full .full-articles {
+    margin-left: 1px;
+}
+
+feedback-stars {
+    --spacing-space01h: 16px;
+}
+
+.feedback-wrapper {
+    --spacing-space01h: 16px;
+}
+
+.dark-mode feedback-form {
+    --color-text-primary: #FFF;
+}
+
+.dark-mode .helios-card {
+    background-color: var(--color-interface-night-900);
+}
+
+.dark-mode .helios-text-field-label {
+    color: var(--white);
+}

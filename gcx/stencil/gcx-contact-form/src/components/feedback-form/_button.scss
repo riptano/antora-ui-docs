@@ -1,0 +1,96 @@
+@use "./typography";
+@use "@material/button";
+@use "@material/button/styles";
+@use "sass:map";
+
+$intents: (
+  "failure": (
+    subtle: var(--color-fill-failure),
+    color: var(--foundation-red-500),
+    hover: var(--foundation-red-700),
+  ),
+  "caution": (
+    subtle: var(--color-fill-caution),
+    color: var(--foundation-yellow-500),
+    hover: var(--foundation-yellow-700),
+  ),
+  "success": (
+    subtle: var(--color-fill-success),
+    color: var(--foundation-green-500),
+    hover: var(--foundation-green-700),
+  ),
+);
+
+.helios-button {
+  @include button.shape-radius(6px);
+  @include button.height(40px);
+  @include button.horizontal-padding(var(--spacing-space01h));
+  --mdc-typography-button-font-size: 16px;
+  --mdc-typography-button-font-weight: 500;
+  --mdc-typography-button-text-transform: none;
+  --mdc-typography-button-letter-spacing: normal;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 1px;
+  }
+
+  &.small {
+    @include button.height(26px);
+    @include button.horizontal-padding(var(--spacing-space01));
+    --mdc-typography-button-font-size: 12px;
+    --mdc-typography-button-font-weight: 700;
+  }
+
+  &:not(.subtle, .text, :disabled) {
+    background-color: var(--foundation-blue-500);
+    color: var(--foundation-white);
+    &:hover {
+      background-color: var(--foundation-blue-700);
+    }
+  }
+  &.subtle {
+    background-color: var(--color-background-secondary);
+    --mdc-theme-primary: var(--color-fill-primary);
+  }
+  &:disabled {
+    background-color: var(--color-background-secondary);
+    color: var(--color-text-disabled);
+    &.text {
+      background-color: unset;
+    }
+  }
+  &.text {
+    --mdc-theme-primary: var(--color-fill-primary);
+  }
+  &.text:hover,
+  &.subtle:hover {
+    color: var(--foundation-blue-700);
+  }
+
+  @each $intent, $style in $intents {
+    &.#{$intent} {
+      &:not(.subtle, .text, :disabled) {
+        background-color: map.get($style, color);
+        color: var(--foundation-white);
+        &:hover {
+          background-color: map.get($style, hover);
+        }
+      }
+      &.subtle {
+        background-color: var(--color-background-secondary);
+        --mdc-theme-primary: #{map.get($style, subtle)};
+      }
+      &.text {
+        --mdc-theme-primary: #{map.get($style, subtle)};
+      }
+      &.text:hover,
+      &.subtle:hover {
+        color: map.get($style, hover);
+      }
+    }
+  }
+}

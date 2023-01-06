@@ -1,0 +1,71 @@
+{
+    "settings": [{
+            "lang": "en",
+            "top_title": {
+                "active": true,
+                "title": "DataStax News: Astra Streaming now GA with new built_in support for Kafka and RabbitMQ. Read the press release."
+            },
+            "sample_app_gallery": {
+                "active": true,
+                "title": "Sample App Gallery",
+                "icon": "🚀",
+                "content": "Looking to get up and running? Get Started with a sample app!",
+                "link": "www.google.com"
+            },
+            "bottom_sidebar": {
+                "active": true,
+                "title": "Other Resources",
+                "list_item": [{
+                        "item": "Documentation",
+                        "icon": "menu_book",
+                        "link": "www.google.com"
+                    },
+                    {
+                        "item": "Give Feedback",
+                        "icon": "chat",
+                        "link": "www.amazon.com"
+                    },
+                    {
+                        "item": "Get Support",
+                        "icon": "support",
+                        "link": "www.github.com"
+                    }
+                ]
+            }
+        },
+        {
+            "lang": "es",
+            "top_title": {
+                "active": true,
+                "title": "DataStax News: Astra Streaming now GA with new built_in support for Kafka and RabbitMQ. Read the press release."
+            },
+            "sample_app_gallery": {
+                "active": true,
+                "title": "Sample App Gallery",
+                "icon": "🚀",
+                "content": "Looking to get up and running? Get Started with a sample app!",
+                "link": "www.google.com"
+            },
+            "bottom_sidebar": {
+                "active": true,
+                "title": "Other Resources",
+                "list_item": [{
+                        "item": "Documentation",
+                        "icon": "menu_book",
+                        "link": "www.google.com"
+                    },
+                    {
+                        "item": "Give Feedback",
+                        "icon": "chat",
+                        "link": "www.amazon.com"
+                    },
+                    {
+                        "item": "Get Support",
+                        "icon": "support",
+                        "link": "www.github.com"
+                    }
+                ]
+            }
+        }
+    ]
+}

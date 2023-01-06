@@ -1,0 +1,479 @@
+/*Navigation Sidebar*/
+.nav-menu>.nav-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.nav-menu {
+    padding: 0.5rem 0;
+}
+
+.nav-container {
+    width: 314px;
+    box-shadow: 2px 0px 0px var(--nav-border-color);
+    transition: 150ms ease-in-out
+}
+
+@media screen and (min-width:769px) {
+    .nav-container {
+        width: 314px;
+    }
+}
+
+.nav-item.toggler .nav-item .nav-text {
+    display: block;
+}
+
+a.nav-link {
+    display: block;
+    padding: 8px 32px;
+    margin: 0;
+    position: relative;
+}
+
+.nav-item .nav-text a {
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-item a,
+.nav-item span,
+.nav-item.toggler>span {
+    font-size: 14px;
+}
+
+/*lists*/
+
+.nav-item.toggler[data-depth="1"] {
+    z-index: 1;
+}
+
+.nav-item.toggler[data-depth="1"] .nav-text {
+    position: relative;
+}
+
+
+.nav-list.toggler,
+.nav-item[data-depth='0'] {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.nav-item {
+    /*padding: 8px 32px;
+    margin: 0;*/
+    position: relative;
+}
+
+li.nav-item.toggler.is-active:hover {
+    background-color: #FFF;
+}
+
+.nav-item[data-depth='1']:hover,
+.nav-item[data-depth='2']:hover,
+.nav-item[data-depth='3']:hover,
+.nav-item[data-depth='4']:hover {
+    background-color: #f6f8fa;
+}
+
+.nav-item[data-depth='1'].toggler:hover,
+.nav-item[data-depth='2'].toggler:hover,
+.nav-item[data-depth='3'].toggler:hover,
+.nav-item[data-depth='4'].toggler:hover {
+    background: none;
+}
+
+.nav-item[data-depth='1'].toggler>.nav-text:hover,
+.nav-item[data-depth='2'].toggler>.nav-text:hover,
+.nav-item[data-depth='3'].toggler>.nav-text:hover,
+.nav-item[data-depth='4'].toggler>.nav-text:hover {
+    background-color: #f6f8fa;
+}
+
+.nav-item a:hover {
+    text-decoration: none !important;
+    color: black;
+}
+
+.nav-item.is-current-page>a:before{
+    content: "";
+    border: 2px solid #007bff;
+    top: 0;
+    background: #007bff;
+    left: 0;
+    position: absolute;
+    height: 100%;
+}
+
+.nav-item.is-current-page>a{
+    background-color: #f6f8fa;
+}
+
+.nav-item.toggler {
+    padding: 0;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.nav-item.toggler .nav-text {
+    padding: 8px 32px;
+}
+
+.nav-item.toggler .nav-list {
+    margin: 8px 0;
+}
+
+/* Collapsible Sidebar */
+
+.sidebar.small-container {
+    width: 55px;
+    box-shadow: 2px 0px 0px var(--nav-border-color);
+}
+
+.small-container .small-nav-list {
+    display: block!important;
+}
+
+.small-nav-list {
+    transition: 150ms ease-in-out;
+    display: none;
+    margin-top: 20rem;
+}
+
+.small-nav-list a.nav-link {
+    padding: 0 10px;
+}
+
+.sidebar.small-container .main-content .nav-list {
+    display: none;
+}
+
+.main-content {
+    width: 100%;
+}
+
+.navbar-end-custom {
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.small-container .navbar-end-custom {
+    justify-content: center;
+}
+
+.collapse[type=checkbox] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+    margin-top: -10px;
+}
+
+label.collapse_label {
+    cursor: pointer;
+    text-indent: -65px;
+    width: 50px;
+    height: 30px;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+label.collapse_label:after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 20px;
+    height: 20px;
+    transition: 0.3s;
+}
+
+.collapse[type="checkbox"]+label {
+    background-image: url(../img/open.svg);
+    background-repeat: no-repeat;
+    height: 25px;
+    width: 25px;
+    display: inline-block;
+    transition: width 150ms ease-in-out;
+    z-index: 1;
+}
+
+.collapse[type="checkbox"]:checked+label {
+    background-image: url(../img/closed.svg);
+    background-repeat: no-repeat;
+    height: 25px;
+    width: 15px;
+    transition: width 150ms ease-in-out;
+    display: inline-block;
+}
+
+.dark-mode .collapse[type="checkbox"]+label {
+    background-image: url(../img/open-white.svg);
+}
+
+.dark-mode .collapse[type="checkbox"]:checked+label {
+    background-image: url(../img/close-white.svg);
+}
+
+/* Navbar margin fix */
+
+.nav-panel-menu::-webkit-scrollbar {
+    display: none;
+}
+
+.navbar-burger {
+    height: 34px;
+}
+
+/* Navbar burger icon resize */
+.navbar-burger span:nth-child(2){
+    margin-top: 1px;
+}
+
+.navbar-burger span:nth-child(3){
+    margin-top: 8px;
+}
+
+.navbar-burger span{
+    width: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+    .nav-toggle.is-active {
+        position: absolute;
+        z-index: 99999;
+        top: 10px;
+        left: 15px;
+    }
+    .nav-container.is-active {
+        width: 100%;
+        height: 100%;
+    }
+    .collapse[type=checkbox]+label {
+        display: none;
+    }
+    .nav,
+    .nav-container {
+        background: white;
+        z-index: 9999;
+    }
+    .dark-mode .nav,
+    .dark-mode .nav-container {
+        background: #20293a;
+        z-index: 9999;
+    }
+}
+
+.dark-mode .nav-toggle {
+    background: url(../img/menu-white.svg) no-repeat 50% 47.5%;
+    background-size: 49%;
+}
+
+.dark-mode .nav-toggle.is-active {
+    background: url(../img/back-white.svg) no-repeat 50% 47.5%;
+    background-size: 49%;
+}
+
+/*New Nav Style - Firefox working*/
+.dark-mode .nav-item.toggler>a:hover, .dark-mode .nav-item a:hover{
+    background: #2e394e;
+}
+
+.nav-item.toggler>a:hover, .nav-item a:hover{
+    background: #f6f8fa;
+}
+
+.nav-item.is-current-page[data-depth="1"]:not(.toggler)>a::before, .nav-item.is-current-page[data-depth="2"]:not(.toggler)>a::before {
+    height: 100%;
+}
+
+.nav-item.is-active[data-depth="1"] li[data-depth="2"]>a.nav-link {
+    padding: 8px 62px;
+}
+
+.nav-item.is-active[data-depth="2"] li[data-depth="3"]>a.nav-link {
+    padding: 8px 0 8px 90px;
+}
+
+.nav-item.is-current-page[data-depth="2"]>a.nav-link {
+    padding: 8px 62px;
+}
+.nav-item.is-current-path[data-depth="2"]>a.nav-link {
+    padding: 8px 62px;
+}
+
+.nav-item.is-current-page[data-depth="3"]>a.nav-link {
+    padding: 8px 85px;
+}
+.nav-item.is-current-path[data-depth="3"]>a.nav-link {
+    padding: 8px 85px;
+}
+.nav-item.is-current-page[data-depth="1"], .nav-item.is-current-page[data-depth="2"], .nav-item.is-current-page[data-depth="3"] {
+    padding: 0;
+}
+
+.nav-item.is-current-path[data-depth="1"], .nav-item.is-current-path[data-depth="2"], .nav-item.is-current-path[data-depth="3"] {
+    padding: 0;
+}
+.nav-item.is-active[data-depth="3"] li[data-depth="4"]>a.nav-link {
+    padding: 8px 16px 8px 120px;
+}
+
+.nav-item[data-depth="1"].toggler.is-active:hover,
+.nav-item[data-depth="2"].toggler.is-active:hover,
+.nav-item[data-depth="3"].toggler.is-active:hover,
+.nav-item[data-depth="4"].toggler.is-active:hover {
+    background-color: transparent;
+}
+/*End new styles - firefox working*/
+.dark-mode .nav-item.is-current-page a {
+    color: white;
+}
+
+.dark-mode .nav-item[data-depth="1"]:hover,
+.dark-mode .nav-item[data-depth="2"]:hover,
+.dark-mode .nav-item[data-depth="3"]:hover,
+.dark-mode .nav-item[data-depth="4"]:hover {
+    background-color: #2e394e;
+}
+
+.dark-mode .nav-item[data-depth="1"].toggler:hover,
+.dark-mode .nav-item[data-depth="2"].toggler:hover,
+.dark-mode .nav-item[data-depth="3"].toggler:hover,
+.dark-mode .nav-item[data-depth="4"].toggler:hover {
+    color: #fff;
+    background-color: #2e394e;
+}
+
+.dark-mode .nav-item.is-current-page a:hover {
+    color: #fff;
+}
+
+.dark-mode .nav-item[data-depth="1"].toggler:hover button,
+.dark-mode li.nav-item.toggler.is-active[data-depth="2"]:hover .nav-text,
+.dark-mode li.nav-item[data-depth="2"]:hover a {
+    color: #fff;
+}
+
+/* Dark mode: Navigation*/
+
+.dark-mode .nav {
+    background: var(--color-interface-night-900);
+    box-shadow: 2px 0px 0px #2e394e;
+}
+
+.dark-mode .nav-container {
+    box-shadow: 2px 0px 0px #2E394E;
+}
+
+.dark-mode li.nav-item.toggler.is-active:hover {
+    background: var(--color-interface-night-900);
+}
+
+
+.dark-mode .nav-item span,
+.dark-mode .nav-item a,
+.dark-mode .nav-item button {
+    color: var(--white);
+}
+
+.dark-mode .nav-item span:hover,
+.dark-mode .nav-item a:hover,
+.dark-mode .nav-item button:hover {
+    color: var(--color-black);
+}
+
+.dark-mode .nav-item a:hover,
+.dark-mode .nav-item button:hover,
+.dark-mode .nav-item span:hover,
+.dark-mode li.nav-item.toggler[data-depth="1"]:hover .nav-text,
+.dark-mode li.nav-item.toggler[data-depth="1"]:hover button {
+    color: #fff;
+}
+
+
+.dark-mode li.nav-item.toggler.is-active[data-depth="1"] .nav-text {
+    color: var(--white);
+}
+
+.dark-mode li.nav-item.toggler.is-active[data-depth="1"] .nav-item-toggle {
+    color: var(--white);
+}
+
+.dark-mode li.nav-item.toggler.is-active[data-depth="1"]:hover .nav-text {
+    color: var(--white);
+}
+
+.dark-mode li.nav-item.toggler.is-active[data-depth="1"]:hover .nav-item-toggle {
+    color: var(--white);
+}
+
+.dark-mode .nav-item.is-current-page>a:before{
+    content: "";
+    border: 2px solid var(--color-interface-night-300);
+    top: 0;
+    background: var(--color-interface-night-300);
+    left: 0;
+    position: absolute;
+    height: 100%;
+}
+
+.dark-mode .nav-item.is-current-page>a{
+    background-color: var(--color-interface-night-800);
+}
+
+/* DARK MODE LISTS */
+
+.dark-mode .nav-item[data-depth="1"].toggler>.nav-text:hover,
+.dark-mode .nav-item[data-depth="2"].toggler>.nav-text:hover,
+.dark-mode .nav-item[data-depth="3"].toggler>.nav-text:hover,
+.dark-mode .nav-item[data-depth="4"].toggler>.nav-text:hover {
+    background-color: transparent;
+}
+
+.dark-mode .nav-item[data-depth="1"].toggler.is-active:hover,
+.dark-mode .nav-item[data-depth="2"].toggler.is-active:hover,
+.dark-mode .nav-item[data-depth="3"].toggler.is-active:hover,
+.dark-mode .nav-item[data-depth="4"].toggler.is-active:hover {
+    background-color: #20293a;
+}
+
+
+.dark-mode li.nav-item.toggler.is-active[data-depth="2"] .nav-text {
+    color: #fff;
+}
+
+
+/* LIGHT MODE LISTS */
+
+/* .nav-item[data-depth="1"].toggler.is-active:hover button {
+    color: #6a7086;
+    background: #f6f8fa;
+} */
+
+.nav-item[data-depth="1"].toggler:hover,
+.nav-item[data-depth="2"].toggler:hover,
+.nav-item[data-depth="3"].toggler:hover,
+.nav-item[data-depth="4"].toggler:hover {
+    background-color: #f6f8fa;
+}
+
+.nav-item[data-depth="1"].toggler.is-active:hover span {
+    color: #6a7086;
+}
+
+.nav-item[data-depth="1"].toggler.is-active>.nav-text:hover,
+.nav-item[data-depth="2"].toggler.is-active>.nav-text:hover,
+.nav-item[data-depth="3"].toggler.is-active>.nav-text:hover,
+.nav-item[data-depth="4"].toggler.is-active>.nav-text:hover {
+    background-color: transparent;
+    color: #6a7086;
+}
+

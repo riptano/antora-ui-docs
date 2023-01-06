@@ -274,6 +274,27 @@ gulp bundle:pack
 
 The UI bundle will again be available at [.path]_build/ui-bundle.zip_.
 
+=== Package for use with Antora adding Helios GCX
+
+To include Helios GCX to the Antora bundle, you can build it following these steps:
+
+Install the Node dependencies from the `./gcx` folder:
+
+[source,shell]
+----
+cd ./gcx
+npm install
+----
+
+Once it finished, you can run on this folder:
+
+[source,shell]
+----
+npm run bundle
+----
+
+This script will run both Antora and Helios bundlers, the final build you can find it on `./gcx/build` as `ui-bundle.zip`
+
 ==== Source maps
 
 The build consolidates all the CSS and client-side JavaScript into combined files, [.path]_site.css_ and [.path]_site.js_, respectively, in order to reduce the size of the bundle.

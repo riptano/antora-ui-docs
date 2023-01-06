@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Stencil Component Starter</title>
+    <script type="module" src="/build/gcx-schema.esm.js"></script>
+    <script nomodule src="/build/gcx-schema.js"></script>
+
+    <style>
+        /* Material UI Google Icons */
+        
+        schema#gcx-schema {
+            display: none;
+        }
+        
+        @font-face {
+            font-family: "Material Icons";
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://fonts.gstatic.com/s/materialicons/v134/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2) format("woff2");
+        }
+        
+        .material-icons {
+            font-family: "Material Icons";
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            white-space: nowrap;
+            word-wrap: normal;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>prueba</h1>
+    <gcx-schema-topbar></gcx-schema-topbar>
+    <br />
+    <br />
+    <br />
+    <gcx-schema-sample-app-gallery></gcx-schema-sample-app-gallery>
+    <gcx-schema-bottom-sidebar></gcx-schema-bottom-sidebar>
+
+    <script async>
+        let schema = {
+            settings: [{
+                lang: "en",
+                top_title: {
+                    active: true,
+                    title: "DataStax News: Astra Streaming now GA with new built_in support for Kafka and RabbitMQ. Read the press release.",
+                },
+                sample_app_gallery: {
+                    active: true,
+                    title: "Sample App Gallery",
+                    icon: "🚀",
+                    content: "Looking to get up and running? Get Started with a sample app!",
+                    link: "https://www.datastax.com/dev",
+                },
+                bottom_sidebar: {
+                    active: true,
+                    title: "Other Resources",
+                    list_item: [{
+                        item: "Documentation",
+                        icon: "menu_book",
+                        link: "http://www.google.com",
+                    }, {
+                        item: "Give Feedback",
+                        icon: "menu_book",
+                        link: "http://www.amazon.com",
+                    }, {
+                        item: "Get Support",
+                        icon: "menu_book",
+                        link: "http://www.github.com",
+                    }, ],
+                },
+            }, {
+                lang: "es",
+                top_title: {
+                    active: true,
+                    title: "DataStax News: Astra Streaming now GA with new built_in support for Kafka and RabbitMQ. Read the press release.",
+                },
+                sample_app_gallery: {
+                    active: true,
+                    title: "Sample App Gallery",
+                    icon: "🚀",
+                    content: "Looking to getup and running? Get Started with a sample app!",
+                    link: "www.google.com",
+                },
+                bottom_sidebar: {
+                    active: true,
+                    title: "Other Resources",
+                    list_item: [{
+                        item: "Documentation",
+                        icon: "menu_book",
+                        link: "http://www.google.com",
+                    }, {
+                        item: "Give Feedback",
+                        icon: "chat",
+                        link: "http://www.amazon.com",
+                    }, {
+                        item: "Get Support",
+                        icon: "support",
+                        link: "http://www.github.com",
+                    }, ],
+                },
+            }, ],
+        };
+        if (schema !== null) {
+            const topbar = document.querySelector("gcx-schema-topbar");
+            const sidebar = document.querySelector("gcx-schema-bottom-sidebar");
+            const sampleApp = document.querySelector(
+                "gcx-schema-sample-app-gallery"
+            );
+            topbar.uri = schema;
+            sidebar.uri = schema;
+            sampleApp.uri = schema;
+        }
+    </script>
+</body>
+
+</html>

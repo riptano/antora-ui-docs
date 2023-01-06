@@ -1,0 +1,158 @@
+/* Dark mode: Body*/
+
+.dark-mode body {
+    background-color: var(--color-interface-night-900);
+}
+
+/* breadcrumbs */
+
+.breadcrumbs li {
+    color: #74767B;
+}
+
+.dark-mode .breadcrumbs li {
+    color: var(--color-interface-night-300);
+}
+
+
+
+[data-template="landing"] .doc {
+    --doc-max-width--desktop: calc(1280 / var(--rem-base) * 1rem);
+}
+
+.toolbar {
+    position: unset;
+    top: unset;
+}
+
+/* Dark mode: Toolbar*/
+
+.dark-mode .toolbar {
+    color: var(--white);
+    background-color: var(--color-interface-night-900);
+}
+
+.nav.pagination {
+    margin-bottom: 20px;
+}
+
+@media screen and (min-width: 1024px) {
+    .doc {
+        --doc-max-width--desktop: calc(1028 / var(--rem-base) * 1rem);
+    }
+}
+
+
+.full-articles {
+    flex: 0 1 50%;
+    z-index: 999;
+}
+
+.full-articles .doc {
+    margin: 0 0 0 2em;
+    -ms-overflow-style: none;
+    /* for Internet Explorer, Edge */
+    scrollbar-width: none;
+    /* for Firefox */
+    overflow-y: scroll;
+    padding: 0;
+    height: 100%!important;
+}
+
+/*Landing*/
+
+[data-template=landing] .doc {
+    max-width: calc(1280 / 18 * 1rem);
+}
+
+.landing-row {
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+}
+
+@media screen and (min-width:769px) {
+    .landing-row {
+        flex-direction: row;
+    }
+}
+
+.full-articles .doc::-webkit-scrollbar {
+    display: none;
+    /* for Chrome, Safari, and Opera */
+}
+
+.doc .sect1 {
+    margin-top: 1rem!important;
+    padding: 20px 0 20px 20px;
+    border-width: 1px 0px 1px 1px;
+    border-style: solid;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-color: white;
+}
+
+.dark-mode .doc .sect1 {
+    border-color: #20293a;
+}
+
+.dark-mode .anchor {
+    color: white;
+}
+
+.doc .sect1 .paragraph {
+    padding: 0 1rem;
+}
+
+.doc .sect1.active {
+    background-color: #eceef0;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-width: 1px 0px 1px 1px;
+    border-style: solid;
+    border-color: var(--section-divider-color);
+}
+
+/*Card Styles*/
+
+
+.doc .content {
+    display: grid;
+}
+
+.doc p {
+    font-size: 16px;
+    text-align: left;
+}
+
+.doc .sidebarblock {
+    margin: 24px 0 0;
+    padding: 24px;
+    box-shadow: 0px 6px 8px rgb(32 41 58 / 8%), 0px 4px 10px rgb(32 41 58 / 8%), 0px 3px 12px rgb(32 41 58 / 12%);
+    border-radius: 6px;
+    width: 100%;
+}
+
+.dark-mode .doc {
+    color: var(--color-interface-night-300);
+}
+
+.dark-mode .doc .sidebarblock {
+    background: var(--color-interface-night-800);
+}
+
+.dark-mode .doc .exampleblock>.content {
+    background: var(--color-interface-night-800);
+}
+
+/* CARDS WIDTH */
+
+@media screen and (min-width: 1024px) {
+    .doc {
+        flex: auto;
+        font-size: calc(17 / 18 * 1rem);
+        margin: 0 2rem;
+        max-width: calc(828 / 18 * 1rem);
+        min-width: 0;
+    }
+}
