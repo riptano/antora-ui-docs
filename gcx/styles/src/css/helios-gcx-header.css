@@ -2,14 +2,14 @@
 
 .header {
     padding: 18px 32px;
-    background-color: var(--navbar-background);
+    background-color: var(--color-black);
 }
 
 /* Dark mode: Header*/
 
 .dark-mode .header,
 .dark-mode .navbar {
-    background-color: var(--color-interface-night-800);
+    background-color: var(--color-black);
 }
 
 .navbar-menu {
@@ -42,7 +42,7 @@
     justify-content: space-between;
     top: unset;
     position: unset;
-    background: var(--navbar-background);
+    background: var(--color-black);
     z-index: 4;
     height: 35px;
     padding-left: 0;
