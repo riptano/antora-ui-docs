@@ -99,16 +99,16 @@ li.nav-item.toggler.is-active:hover {
 
 .nav-item.is-current-page>a:before{
     content: "";
-    border: 2px solid #007bff;
+    border: 2px solid var(--color-purple);
     top: 0;
-    background: #007bff;
+    background: var(--color-purple);
     left: 0;
     position: absolute;
     height: 100%;
 }
 
 .nav-item.is-current-page>a{
-    background-color: #f6f8fa;
+    background-color: var(--color-purple-secondary-light);
 }
 
 .nav-item.toggler {
@@ -266,7 +266,7 @@ label.collapse_label:after {
     }
     .dark-mode .nav,
     .dark-mode .nav-container {
-        background: #20293a;
+        background: var(--color-purple-background);
         z-index: 9999;
     }
 }
@@ -283,11 +283,11 @@ label.collapse_label:after {
 
 /*New Nav Style - Firefox working*/
 .dark-mode .nav-item.toggler>a:hover, .dark-mode .nav-item a:hover{
-    background: #2e394e;
+    background: var(--color-purple-secondary-dark);
 }
 
 .nav-item.toggler>a:hover, .nav-item a:hover{
-    background: #f6f8fa;
+    background: var(--color-purple-secondary-light);
 }
 
 .nav-item.is-current-page[data-depth="1"]:not(.toggler)>a::before, .nav-item.is-current-page[data-depth="2"]:not(.toggler)>a::before {
@@ -349,7 +349,7 @@ label.collapse_label:after {
 .dark-mode .nav-item[data-depth="3"].toggler:hover,
 .dark-mode .nav-item[data-depth="4"].toggler:hover {
     color: #fff;
-    background-color: #2e394e;
+    background-color: var(--color-purple-secondary-dark);
 }
 
 .dark-mode .nav-item.is-current-page a:hover {
@@ -365,16 +365,16 @@ label.collapse_label:after {
 /* Dark mode: Navigation*/
 
 .dark-mode .nav {
-    background: var(--color-interface-night-900);
-    box-shadow: 2px 0px 0px #2e394e;
+    background: var(--color-purple-background);
+    box-shadow: 2px 0px 0px var(--color-purple-secondary-dark);
 }
 
 .dark-mode .nav-container {
-    box-shadow: 2px 0px 0px #2E394E;
+    box-shadow: 2px 0px 0px var(--color-purple-secondary-dark);
 }
 
 .dark-mode li.nav-item.toggler.is-active:hover {
-    background: var(--color-interface-night-900);
+    background: var(--color-purple-background);
 }
 
 
@@ -417,16 +417,16 @@ label.collapse_label:after {
 
 .dark-mode .nav-item.is-current-page>a:before{
     content: "";
-    border: 2px solid var(--color-interface-night-300);
+    border: 2px solid var(--color-purple-secondary-darker);
     top: 0;
-    background: var(--color-interface-night-300);
+    background: var(--color-purple-secondary-darker);
     left: 0;
     position: absolute;
     height: 100%;
 }
 
 .dark-mode .nav-item.is-current-page>a{
-    background-color: var(--color-interface-night-800);
+    background-color: var(--color-purple-secondary-dark);
 }
 
 /* DARK MODE LISTS */
@@ -442,7 +442,7 @@ label.collapse_label:after {
 .dark-mode .nav-item[data-depth="2"].toggler.is-active:hover,
 .dark-mode .nav-item[data-depth="3"].toggler.is-active:hover,
 .dark-mode .nav-item[data-depth="4"].toggler.is-active:hover {
-    background-color: #20293a;
+    background-color: var(--color-purple-background);
 }
 
 

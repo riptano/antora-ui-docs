@@ -531,7 +531,7 @@ gcx-full .full-articles {
 }
 
 .dark-mode .doc .sect1 {
-    border-color: #20293a;
+    border-color: var(--color-purple-background);
 }
 
 .dark-mode .anchor {
@@ -1054,7 +1054,7 @@ label.switch_label:after {
 /* Dark mode: Navigation*/
 
 .dark-mode .nav {
-    background: var(--color-interface-night-900);
+    background: var(--color-purple-background);
     box-shadow: 2px 0px 0px #2e394e;
 }
 
@@ -1063,7 +1063,7 @@ label.switch_label:after {
 }
 
 .dark-mode li.nav-item.toggler.is-active:hover {
-    background: var(--color-interface-night-900);
+    background: var(--color-purple-background);
 }
 
 .dark-mode .nav-menu h3.title {
@@ -1123,7 +1123,7 @@ label.switch_label:after {
 
 .dark-mode .toolbar {
     color: var(--white);
-    background-color: var(--color-interface-night-900);
+    background-color: var(--color-purple-background);
 }
 
 .dark-mode .breadcrumbs li {
@@ -1134,7 +1134,7 @@ label.switch_label:after {
 /* Dark mode: Body*/
 
 .dark-mode body {
-    background-color: var(--color-interface-night-900);
+    background-color: var(--color-purple-background);
 }
 
 
@@ -1201,7 +1201,7 @@ label.switch_label:after {
 }
 
 .dark-mode .helios-card {
-    background-color: var(--color-interface-night-900);
+    background-color: var(--color-purple-background);
 }
 
 .dark-mode .doc pre:not(.highlight),

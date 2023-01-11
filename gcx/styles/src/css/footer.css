@@ -95,9 +95,17 @@
 /* Footer icons ------------------------------------------------------------ */
 
 .ds-bottom-logo-img {
+    position: relative;
+    top: 21%;
     content: url('../img/ds-logo-white.svg');
     width: 150px;
     height: auto;
+}
+
+@media only screen and (max-width: 647px) {
+    .ds-bottom-logo-img {
+        top: 30%;
+    }
 }
 
 @media only screen and (max-width: 480px) {

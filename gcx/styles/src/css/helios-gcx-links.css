@@ -1,3 +1,20 @@
+.doc a {
+    color: var(--color-purple-links);
+    text-decoration: underline;
+}
+
+.doc a:hover {
+    color: var(--color-purple-links);
+}
+
+.doc a.link {
+    color: var(--color-black);
+}
+
+.dark-mode .doc a {
+    color: var(--color-dark-mode-links);
+}
+
 .dark-mode .doc h1 a,
 .dark-mode .doc h2 a,
 .dark-mode .doc h3 a,

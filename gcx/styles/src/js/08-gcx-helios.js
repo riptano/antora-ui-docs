@@ -89,10 +89,10 @@ li.nav-item.toggler[data-depth="4"]>.nav-item-toggle`).forEach(function (btn) {
   btn.addEventListener('mouseover', (event) => {
     var theme = document.querySelector('html').classList.contains('dark-mode')
     if (theme) {
-      btn.previousElementSibling.style.backgroundColor = '#2e394e'
+      btn.previousElementSibling.style.backgroundColor = 'var(--color-purple-secondary-dark)'
     } else {
-      btn.previousElementSibling.style.backgroundColor = '#f6f8fa'
-      btn.previousElementSibling.style.color = '#21293a'
+      btn.previousElementSibling.style.backgroundColor = 'var(--color-purple-secondary-light)'
+      btn.previousElementSibling.style.color = 'var(--color-interface-night-900)'
     }
   })
   btn.addEventListener('mouseout', (event) => {

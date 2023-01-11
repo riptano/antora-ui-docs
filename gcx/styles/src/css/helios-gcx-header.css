@@ -155,7 +155,7 @@
 /* Not Checked */
 
 input.switch+.slider svg:nth-of-type(1) path {
-    fill: var(--blue);
+    fill: var(--color-purple);
 }
 
 input.switch+.slider svg:nth-of-type(2) path {
@@ -170,7 +170,7 @@ input.switch:checked+.slider svg:nth-of-type(1) path {
 }
 
 input.switch:checked+.slider svg:nth-of-type(2) path {
-    fill: var(--blue);
+    fill: var(--color-purple);
 }
 
 input.switch:checked+.slider:before {

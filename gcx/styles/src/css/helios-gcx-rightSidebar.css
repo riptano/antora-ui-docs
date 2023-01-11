@@ -2,6 +2,19 @@
     display: none;
 }
 
+.toc .toc-menu a:hover{
+    color: var(--color-purple-links);
+}
+
+.dark-mode .toc .toc-menu a:hover{
+    color: var(--color-dark-mode-links);
+}
+
+
+.toc-menu {
+    color: var(--color-black);
+}
+
 /*Dark Mode Aside Menu*/
 
 .dark-mode .toc .toc-menu a {

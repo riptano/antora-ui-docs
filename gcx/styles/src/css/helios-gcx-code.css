@@ -51,7 +51,7 @@ code::before {
 }
 
 .dark-mode .mdc-card--outlined {
-    border: 2px solid #2E394E;
+    border: 2px solid var(--color-purple-secondary-dark);
 }
 
 .helios-card.mdc-card--outlined {

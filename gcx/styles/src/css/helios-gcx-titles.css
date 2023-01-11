@@ -54,7 +54,7 @@
 }
 
 .dark-mode .doc h2:not(.discrete) {
-    border-bottom: 1px solid #2E394E;
+    border-bottom: 1px solid var(--color-purple-secondary-dark);
 }
 
 .dark-mode .doc .sidebarblock>.content>.title {
@@ -63,7 +63,7 @@
 
 
 .dark-mode .toc .toc-menu h3 {
-    color: var(--color-blue-gray-2);
+    color: var(--color-purple-secondary-darker);
 }
 
 .doc h2:not(.discrete) {

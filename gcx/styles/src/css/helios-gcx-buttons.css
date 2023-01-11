@@ -37,7 +37,7 @@
     padding: 8px 12px;
     width: 135px;
     height: 40px;
-    background: var(--blue);
+    background: var(--color-purple);
     border-radius: 6px;
     cursor: pointer;
 }
@@ -50,7 +50,7 @@ a.ds_buttons_button {
 }
 
 .ds_buttons_button:hover {
-    background: #7BB3F7;
+    background: var(--color-purple-100);
 }
 
 a.ds_buttons_button:hover {
