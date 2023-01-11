@@ -25,8 +25,26 @@
     text-decoration: none;
 }
 
-.dark-mode .doc .sidebarblock>.content>.title a {
+.doc h1 a,
+.doc h2 a,
+.doc h3 a,
+.doc h4 a,
+.doc h5 a,
+.doc h6 a {
     color: var(--white);
+    text-decoration: none;
+}
+
+.dark-mode .doc .sidebarblock>.content>.title a {
+    color: var(--black);
+}
+
+.dark-mode .sidebarblock a.xref.page{
+    color: var(--black);
+}
+
+.dark-mode .sidebarblock a{
+    color: var(--black)!important;
 }
 
 .doc .admonitionblock.caution a {

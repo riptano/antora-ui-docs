@@ -58,8 +58,8 @@
     border-bottom: 1px solid var(--color-purple-secondary-dark);
 }
 
-.dark-mode .doc .sidebarblock>.content>.title {
-    color: var(--white);
+.dark-mode .doc .sidebarblock>.content>.title{
+    color: var(--black);
 }
 
 

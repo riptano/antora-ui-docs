@@ -1215,11 +1215,11 @@ label.switch_label:after {
 }
 
 .dark-mode .doc .sidebarblock>.content>.title {
-    color: var(--white);
+    color: var(--black);
 }
 
 .dark-mode .doc .sidebarblock>.content>.title a {
-    color: var(--white);
+    color: var(--black);
 }
 
 

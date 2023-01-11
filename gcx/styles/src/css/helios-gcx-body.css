@@ -160,6 +160,7 @@
 .doc h5 a,
 .doc h6 a {
     color: var(--color-black);
+    text-decoration: none!important;
 };
 
 .dark-mode .doc h1,
