@@ -22,6 +22,7 @@
 .dark-mode .doc h5 a,
 .dark-mode .doc h6 a {
     color: var(--white);
+    text-decoration: none;
 }
 
 .dark-mode .doc .sidebarblock>.content>.title a {

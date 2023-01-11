@@ -31,6 +31,7 @@
 .dark-mode .doc h5,
 .dark-mode .doc h6 {
     color: var(--white);
+    text-decoration: none;
 }
 
 .doc .admonitionblock.caution .title {

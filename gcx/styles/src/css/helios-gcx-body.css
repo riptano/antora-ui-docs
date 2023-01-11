@@ -42,6 +42,9 @@
     }
 }
 
+.dark-mode .landing-card .content {
+    color: var(--color-black)
+}
 
 .full-articles {
     flex: 0 1 50%;
@@ -175,6 +178,7 @@
 .dark-mode .doc h5 a,
 .dark-mode .doc h6 a {
     color: var(--color-white);
+    text-decoration: none;
 };
 
 .dark-mode .doc .sidebarblock {
