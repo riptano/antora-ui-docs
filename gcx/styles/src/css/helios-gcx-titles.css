@@ -31,6 +31,7 @@
 .dark-mode .doc h5,
 .dark-mode .doc h6 {
     color: var(--white);
+    text-decoration: none;
 }
 
 .doc .admonitionblock.caution .title {
@@ -54,16 +55,16 @@
 }
 
 .dark-mode .doc h2:not(.discrete) {
-    border-bottom: 1px solid #2E394E;
+    border-bottom: 1px solid var(--color-purple-secondary-dark);
 }
 
-.dark-mode .doc .sidebarblock>.content>.title {
-    color: var(--white);
+.dark-mode .doc .sidebarblock>.content>.title{
+    color: var(--black);
 }
 
 
 .dark-mode .toc .toc-menu h3 {
-    color: var(--color-blue-gray-2);
+    color: var(--color-purple-secondary-darker);
 }
 
 .doc h2:not(.discrete) {

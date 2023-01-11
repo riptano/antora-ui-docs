@@ -114,7 +114,7 @@ html.is-clipped--nav {
 }
 
 .nav-menu h3.title {
-    color: var(--nav-heading-font-color);
+    color: var(--color-black);
     font-size: inherit;
     font-weight: var(--body-font-weight-bold);
     margin: 0;
@@ -156,7 +156,7 @@ html.is-clipped--nav {
 .nav-item.is-current-page>button,
 .nav-item.toggler>span:hover,
 .nav-item.is-current-page>span {
-    color: #20293A;
+    color: var(--color-black);
 }
 
 .nav-item span,

@@ -1,7 +1,7 @@
 /* Dark mode: Body*/
 
 .dark-mode body {
-    background-color: var(--color-interface-night-900);
+    background-color: var(--color-purple-background);
 }
 
 /* breadcrumbs */
@@ -11,7 +11,7 @@
 }
 
 .dark-mode .breadcrumbs li {
-    color: var(--color-interface-night-300);
+    color: var(--color-purple-secondary-darker);
 }
 
 
@@ -29,7 +29,7 @@
 
 .dark-mode .toolbar {
     color: var(--white);
-    background-color: var(--color-interface-night-900);
+    background-color: var(--color-purple-background);
 }
 
 .nav.pagination {
@@ -42,6 +42,9 @@
     }
 }
 
+.dark-mode .landing-card .content {
+    color: var(--color-black)
+}
 
 .full-articles {
     flex: 0 1 50%;
@@ -93,7 +96,7 @@
 }
 
 .dark-mode .doc .sect1 {
-    border-color: #20293a;
+    border-color: var(--color-purple-background);
 }
 
 .dark-mode .anchor {
@@ -133,9 +136,51 @@
     width: 100%;
 }
 
-.dark-mode .doc {
-    color: var(--color-interface-night-300);
+.doc {
+    color: var(--color-black);
 }
+
+.dark-mode .doc {
+    color: var(--color-white);
+}
+
+.doc h1,
+.doc h2,
+.doc h3,
+.doc h4,
+.doc h5,
+.doc h6 {
+    color: var(--color-black);
+};
+
+.doc h1 a,
+.doc h2 a,
+.doc h3 a,
+.doc h4 a,
+.doc h5 a,
+.doc h6 a {
+    color: var(--color-black);
+    text-decoration: none!important;
+};
+
+.dark-mode .doc h1,
+.dark-mode .doc h2,
+.dark-mode .doc h3,
+.dark-mode .doc h4,
+.dark-mode .doc h5,
+.dark-mode .doc h6 {
+    color: var(--color-white);
+};
+
+.dark-mode .doc h1 a,
+.dark-mode .doc h2 a,
+.dark-mode .doc h3 a,
+.dark-mode .doc h4 a,
+.dark-mode .doc h5 a,
+.dark-mode .doc h6 a {
+    color: var(--color-white);
+    text-decoration: none;
+};
 
 .dark-mode .doc .sidebarblock {
     background: var(--color-interface-night-800);

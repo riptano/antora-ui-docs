@@ -113,7 +113,7 @@ feedback-stars {
 }
 
 .dark-mode .helios-card {
-    background-color: var(--color-interface-night-900);
+    background-color: var(--color-purple-background);
 }
 
 .dark-mode .helios-text-field-label {

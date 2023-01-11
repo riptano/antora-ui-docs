@@ -1,3 +1,20 @@
+.doc a {
+    color: var(--color-purple-links);
+    text-decoration: underline;
+}
+
+.doc a:hover {
+    color: var(--color-purple-links);
+}
+
+.doc a.link {
+    color: var(--color-black);
+}
+
+.dark-mode .doc a {
+    color: var(--color-dark-mode-links);
+}
+
 .dark-mode .doc h1 a,
 .dark-mode .doc h2 a,
 .dark-mode .doc h3 a,
@@ -5,10 +22,29 @@
 .dark-mode .doc h5 a,
 .dark-mode .doc h6 a {
     color: var(--white);
+    text-decoration: none;
+}
+
+.doc h1 a,
+.doc h2 a,
+.doc h3 a,
+.doc h4 a,
+.doc h5 a,
+.doc h6 a {
+    color: var(--white);
+    text-decoration: none;
 }
 
 .dark-mode .doc .sidebarblock>.content>.title a {
-    color: var(--white);
+    color: var(--black);
+}
+
+.dark-mode .sidebarblock a.xref.page{
+    color: var(--black);
+}
+
+.dark-mode .sidebarblock a{
+    color: var(--black)!important;
 }
 
 .doc .admonitionblock.caution a {

@@ -86,6 +86,14 @@
     --color-prism-dark-failure: #ED8686;
     --color-prism-light-secondary: #5C6A85;
     --color-prism-dark-secondary: #A6B1C2;
+    --color-purple: #6B1C96;
+    --color-purple-100: #8027b1;
+    --color-purple-links: var(--color-black);
+    --color-purple-background: #271734;
+    --color-dark-mode-links: var(--color-white);
+    --color-purple-secondary-light: #F2F6F7 ;
+    --color-purple-secondary-dark: #65596E;
+    --color-purple-secondary-darker: #9982a3;
     
     /* fonts */
     --rem-base: 18;
