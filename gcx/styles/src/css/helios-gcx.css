@@ -539,7 +539,7 @@ gcx-full .full-articles {
 }
 
 .doc .sect1 .paragraph {
-    padding: 0 1rem;
+    padding: 0 0rem;
 }
 
 .doc .sect1.active {

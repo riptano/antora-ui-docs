@@ -1,18 +1,33 @@
-.doc .admonitionblock.tip .icon {
-    color: #008040;
+.doc .admonitionblock .icon {
+    padding: 0 1.5rem;;
 }
 
-.doc .admonitionblock.warning .icon {
-    color: #916707;
+.doc .admonitionblock.tip .icon,
+.doc .admonitionblock.note .icon {
+    color: var(--color-green-700);
+    background-color: var(--color-green-700);
+    border: 2px solid var(--color-green-700);
+}
+
+.doc .admonitionblock.warning .icon,
+.doc .admonitionblock.caution .icon {
+    color: var(--color-red-500);
+    background-color: var(--color-red-500);
+    border: 2px solid var(--color-red-500);
 }
 
 .doc .admonitionblock.important .icon {
-    color: #D52424;
+    color: var(--color-gray-neutral-700);
+    background-color: var(--color-gray-neutral-700);
+    border: 2px solid var(--color-gray-neutral-700);
 }
 
-.doc .admonitionblock.note .icon {
-    color: #1E71D4;
+.dark-mode .doc .admonitionblock.important .icon {
+    color: var(--color-gray-neutral-500);
+    background-color: var(--color-gray-neutral-500);
+    border: 2px solid var(--color-gray-neutral-500);
 }
+
 
 .doc .admonitionblock .icon i::after {
     color: white;

@@ -94,6 +94,15 @@
     --color-purple-secondary-light: #F2F6F7 ;
     --color-purple-secondary-dark: #65596E;
     --color-purple-secondary-darker: #9982a3;
+    --color-red-500: #D91620;
+    --color-yellow-500: #916707;
+    --color-green-500: #008040;
+    --color-green-700: #095933;
+    --color-purple-500: #4C146B;
+    --color-gray-neutral-700: #494A4D;
+    --color-gray-neutral-500: #6B6F73;
+    --color-purple-700: #463851;
+
     
     /* fonts */
     --rem-base: 18;

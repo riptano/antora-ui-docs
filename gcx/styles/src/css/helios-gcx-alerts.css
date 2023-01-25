@@ -10,57 +10,69 @@
 
 .doc .admonitionblock.caution tr {
     display: block;
-    background: #d8ddf2;
+    background: var(--color-white);
     border: 2px solid #3b4260;
     border-radius: 6px;
 }
 
 .doc .admonitionblock.caution td.content {
-    color: #3b4260;
+    color: var(--color-black);
 }
 
 .doc .admonitionblock.tip tr {
     display: block;
-    background: #F0F8F4;
-    border: 2px solid #008040;
+    background: var(--color-white);
+    border: 2px solid var(--color-green-700);
     border-radius: 6px;
 }
 
 .doc .admonitionblock.tip td.content {
-    color: #008040;
+    color: var(--color-black);
+}
+
+.dark-mode .doc .admonitionblock td.content{
+    background: var(--color-purple-700);
+    color: var(--color-white)!important;
 }
 
 .doc .admonitionblock.warning tr {
     display: block;
-    background: #F9F6F0;
-    border: 2px solid #916707;
+    background: var(--color-white);
+    border: 2px solid var(--color-red-500);
     border-radius: 6px;
 }
 
 .doc .admonitionblock.warning td.content {
-    color: #916707;
+    color: var(--color-black);
 }
 
 .doc .admonitionblock.important tr {
     display: block;
-    background: #FEF1F1;
-    border: 2px solid #D52424;
+    background: var(--color-white);
+    border: 2px solid var(--color-gray-neutral-700);
+    border-radius: 6px;
+}
+
+.dark-mode .doc .admonitionblock.important tr {
+    display: block;
+    background: var(--color-white);
+    border: 2px solid var(--color-gray-neutral-500);
     border-radius: 6px;
 }
 
 .doc .admonitionblock.important td.content {
-    color: #D52424;
+    color: var(--color-black);
 }
 
 .doc .admonitionblock.note tr {
     display: block;
-    background: #F3F8FF;
-    border: 2px solid #1E71D4;
+    background: var(--color-white);
+    border: 2px solid var(--color-green-700);
     border-radius: 6px;
 }
 
 .doc .admonitionblock.note td.content {
-    color: #1E71D4;
+    color: var(--color-black);
 }
 
 .doc .exampleblock>.content {
