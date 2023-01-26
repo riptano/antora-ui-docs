@@ -17,7 +17,7 @@ ifdef::env-github[]
 :badges:
 endif::[]
 // Project URLs:
-:url-project: https://github.com/riptano/antora-ui-docs
+:url-project: git@github.com:riptano/antora-ui-docs.git
 :url-site: https://docs.datastax.com
 //:url-preview: https://gitlab.com/antora/antora-ui-default
 // External URLs:
