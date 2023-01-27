@@ -25,3 +25,21 @@
 .dark-mode .toc .toc-menu a:hover {
     color: #c8cbd3;
 }
+
+/* Setting the content menu sticky */
+
+.toc.sidebar .toc-menu {
+    top: 0!important;
+    overflow-y: auto;
+    max-height: 100vh;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.toc.sidebar .toc-menu::-webkit-scrollbar {
+    display: none;
+}
+
+.dark-mode .sidebar.toc .toc-menu a:focus {
+    background-color: var(--color-purple-secondary-dark);
+}

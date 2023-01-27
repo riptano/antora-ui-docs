@@ -100,3 +100,17 @@ li.nav-item.toggler[data-depth="4"]>.nav-item-toggle`).forEach(function (btn) {
     btn.previousElementSibling.style.color = ''
   })
 })
+
+
+document.querySelector(".nav-controls button#expand").addEventListener("click", function (event) {
+  document.querySelectorAll("li.nav-item.toggler").forEach(function (item) {
+    item.classList.add("is-active");
+  })
+})
+
+document.querySelector(".nav-controls button#collapse").addEventListener("click", function (event) {
+  document.querySelectorAll("li.nav-item.toggler").forEach(function (item) {
+    item.classList.remove("is-active");
+  })
+})
+

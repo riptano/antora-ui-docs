@@ -33,6 +33,7 @@
 }
 
 .nav.pagination {
+    hyphens: none!important;
     margin-bottom: 20px;
 }
 
@@ -47,7 +48,7 @@
 }
 
 .full-articles {
-    flex: 0 1 50%;
+    flex: 0 1 49%;
     z-index: 999;
 }
 
@@ -87,7 +88,7 @@
 
 .doc .sect1 {
     margin-top: 1rem!important;
-    padding: 20px 0 20px 20px;
+    padding: 20px 10px 20px 20px;
     border-width: 1px 0px 1px 1px;
     border-style: solid;
     border-top-left-radius: 6px;
@@ -104,17 +105,21 @@
 }
 
 .doc .sect1 .paragraph {
-    padding: 0 1rem;
+    padding: 0 0rem;
 }
 
 .doc .sect1.active {
     background-color: #eceef0;
-    border-top-left-radius: 6px;
-    border-bottom-left-radius: 6px;
-    border-width: 1px 0px 1px 1px;
+    border-radius: 6px;
+    border-width: 1px;
     border-style: solid;
     border-color: var(--section-divider-color);
 }
+
+.doc {
+    hyphens: none!important;
+}
+
 
 /*Card Styles*/
 
@@ -200,4 +205,18 @@
         max-width: calc(828 / 18 * 1rem);
         min-width: 0;
     }
+}
+
+/* Make right sidebar sticky */
+
+main > .content {
+    position: relative;
+}
+
+.doc .listingblock:hover pre.highlight  .source-toolbox {
+    visibility: visible!important;
+}
+
+.doc .listingblock:hover .source-toolbox {
+    visibility: hidden;
 }

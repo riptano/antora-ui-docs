@@ -2,6 +2,16 @@
   <div class="navbar-end-custom">
       <input type="checkbox" name="collapse" class="collapse" id="collapse"/><label class="collapse_label" for="collapse"></label>
     </div>
+  <div class="nav-controls">
+    <div id="expandable">
+      <button type="button" id="expand" aria-label="Expand All">+</button>
+      <span class="tooltiptext">Expand All</span>
+    </div>
+    <div id="collapsable">
+      <button type="button" id="collapse" aria-label="Collapse All">-</button>
+      <span class="tooltiptext">Collapse All</span>
+    </div>
+  </div>
   <aside class="nav main-content">
     <div class="panels">
     {{> nav-menu}}

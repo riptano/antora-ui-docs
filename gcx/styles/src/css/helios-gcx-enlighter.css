@@ -8,8 +8,13 @@ div.enlighter {
     /* for Chrome, Safari, and Opera */
 }
 
+.enlighter-t-bootstrap4 {
+    height: 100%;
+}
+
 .enlighter-default {
     font-family: 'Roboto Mono', monospace!important;
+    font-weight: lighter;
     margin: 0!important;
     overflow: scroll!important;
     -ms-overflow-style: none;
@@ -103,7 +108,7 @@ div.enlighter {
 }
 
 .dark-mode .doc .sect1.active {
-    background-color: var(--color-interface-night-800);
+    background-color: var(--color-purple-secondary-dark);
 }
 
 .dark-mode .enlighter-t-bootstrap4 div.enlighter>div.enlighter-special {

@@ -48,26 +48,30 @@
 }
 
 .doc .admonitionblock.caution a {
-    color: #3b4260!important;
+    color: var(--color-black)!important;
     text-decoration: underline;
 }
 
 .doc .admonitionblock.tip a {
-    color: #008040!important;
+    color: var(--color-black)!important;
     text-decoration: underline;
 }
 
 .doc .admonitionblock.warning a {
-    color: #916707!important;
+    color: var(--color-black)!important;
     text-decoration: underline;
 }
 
 .doc .admonitionblock.important a {
-    color: #D52424!important;
+    color: var(--color-black)!important;
     text-decoration: underline;
 }
 
 .doc .admonitionblock.note a {
-    color: #1E71D4!important;
+    color: var(--color-black)!important;
     text-decoration: underline;
+}
+
+.dark-mode .doc .admonitionblock.note a {
+    color: var(--color-white)!important;
 }
