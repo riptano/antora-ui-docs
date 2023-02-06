@@ -220,3 +220,10 @@ main > .content {
 .doc .listingblock:hover .source-toolbox {
     visibility: hidden;
 }
+
+@media screen and (min-width: 1281px) {
+    .doc .center{
+        max-width: 43%!important;
+    }
+}
+    

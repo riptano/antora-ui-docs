@@ -14,6 +14,13 @@ const bundleJSsrc = () =>
     .pipe(concat('site.js'))
     .pipe(dest('styles/build/js'));
 
+// Bundle a site.js for the 404 error page, excluding 01-nav.js
+const bundleJS404 = () =>
+    src(['styles/src/js/*.js','!styles/src/js/01-nav.js'])
+    .pipe(concat('site404.js'))
+    .pipe(dest('styles/build/js'));
+
+
 const bundleJShelpers = () => {
     return src([
         'styles/src/helpers/**/*.js',
@@ -78,4 +85,4 @@ const zipBundle = () => {
     .pipe(dest('styles/build/'));
 }
 
-exports.bundle = series(cleanBuild, bundleCSS, bundleHeliosCSS, parallel(bundleJSsrc,bundleJShelpers, bundleStencil), renameHighlight, cleanHighlight, bundleHB, bundleImg, zipBundle);
+exports.bundle = series(cleanBuild, bundleCSS, bundleHeliosCSS, bundleJS404, parallel(bundleJSsrc, bundleJShelpers, bundleStencil), renameHighlight, cleanHighlight, bundleHB, bundleImg, zipBundle);
