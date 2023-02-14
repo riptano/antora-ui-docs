@@ -20,5 +20,7 @@ footer .container-fluid {
     font-weight: bold;
 }
 
-/*Dark mode: Footer*/
+.wh_footer.notFound{
+    position: fixed;
+}
 
