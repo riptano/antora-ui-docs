@@ -54,3 +54,19 @@
     </div>
   </nav>
 </header>
+<script>
+  function loadAlternative(element, list) {
+  var image = new Image();
+
+  image.onload = function() {
+    element.src = this.href;
+  }
+
+  image.onerror = function() {
+    if (list.length) {
+      loadAlternative(element, list);
+    }
+  }
+  image.src = list.shift();
+}
+</script>

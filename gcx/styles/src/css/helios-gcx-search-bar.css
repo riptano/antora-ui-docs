@@ -12,6 +12,11 @@
     height: 40px;
 }
 
+.ds-search-input-icon.not-found {
+    margin-top: 20px;
+    width: 70%;
+}
+
 .ds-search-input-icon input,
 .ds-search-input-icon input:focus,
 .ds-search-input-icon input:focus-visible {
