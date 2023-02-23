@@ -7,13 +7,13 @@
   <link rel="stylesheet" href="/en/home/assets/css/site.css">
   <title>Oops! We can't find that page {{#with site.title}} :: {{this}}{{/with}}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 </head>
 
 <body class="article status-404">
   <header class="header">
     <nav class="navbar">
       <div class="navbar-brand">
-        <!-- <a href="{{{or site.url (or siteRootUrl siteRootPath)}}}"> -->
         <a href="https://docs.datastax.com">
           <img src="/en/home/assets/img/logo.svg" alt="">
         </a>
@@ -85,7 +85,7 @@
     margin-top: 6rem;
     margin-bottom: 6rem;
 ">
-      <h1 class="page" style="font-size: calc(2rem + 2px);">Oops! We can’t find that page. </h1>
+      <h1 class="page" style="font-size: calc(2rem + 2px);">Oops! We can't find that page. </h1>
       <div class="paragraph">
         <p style="font-size: calc(1rem + 2px); text-align: justify;">The page you're looking for doesn't exist. It might have been moved or
           maybe there was a typo in the URL. If you typed the URL of this page manually, please double check that you
@@ -210,22 +210,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   document.addEventListener('click', function (event) {
-    //No es un clic en el sidebar
-    //if (!event.target.matches('li[data-depth="1"]') && !event.target.matches('.switch')) return;
-    /*    if (event.target.closest('li.nav-item.toggler')) {
-                      console.log(event.target)
-                      event.target.closest('li.nav-item.toggler').classList.toggle('is-active')
-                    }
-                    /*if ((event.target.matches('span.nav-text') ||
-                                event.target.matches('button.nav-item-toggle')) &&
-                            (event.target.offsetParent.matches('li[data-depth="1"]') ||
-                                event.target.offsetParent.matches('li[data-depth="0"]'))) {
-                            event.target.offsetParent.classList.toggle('is-active');
-                        }
-                        if (event.target.matches('li[data-depth="1"]') ||
-                            event.target.matches('li[data-depth="0"]')) {
-                            event.target.classList.toggle('is-active');
-                        }*/
     if (event.target.matches('.switch')) {
       var root = document.getElementsByTagName('html')[0]
       if (event.target.checked) {
