@@ -227,3 +227,8 @@ main > .content {
     }
 }
     
+@media screen and (max-width: 767px) {
+    article.doc .center{
+        max-width: 100%!important;
+    }
+}
