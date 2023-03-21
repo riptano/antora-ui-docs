@@ -75,3 +75,15 @@
 .dark-mode .doc .admonitionblock.note a {
     color: var(--color-white)!important;
 }
+
+.dark-mode .doc .admonitionblock.important a {
+    color: var(--color-white)!important;
+}
+
+.dark-mode .doc .admonitionblock.warning a {
+    color: var(--color-white)!important;
+}
+
+.dark-mode .doc .admonitionblock.tip a {
+    color: var(--color-white)!important;
+}
