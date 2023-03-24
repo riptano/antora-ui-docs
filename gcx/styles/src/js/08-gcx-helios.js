@@ -114,3 +114,24 @@ document.querySelector(".nav-controls button#collapse").addEventListener("click"
   })
 })
 
+document.querySelectorAll(`.nav-item>span.nav-text+.nav-item-toggle`).forEach(function (btn) {
+  btn.addEventListener('mouseover', (event) => {
+    var theme = document.querySelector('html').classList.contains('dark-mode')
+    if (theme) {
+      btn.previousElementSibling.style.backgroundColor = 'var(--color-purple-secondary-dark)'
+    } else {
+      btn.previousElementSibling.style.backgroundColor = 'var(--color-purple-secondary-light)'
+      btn.previousElementSibling.style.color = 'var(--color-interface-night-900)'
+    }
+  })
+  btn.addEventListener('mouseout', (event) => {
+    btn.previousElementSibling.style.backgroundColor = ''
+    btn.previousElementSibling.style.color = ''
+  })
+})
+
+document.querySelectorAll(".nav-item> span.nav-text").forEach(function (item) {
+  item.addEventListener("click", function (event) {
+    item.parentElement.classList.toggle("is-active");
+  })
+})
