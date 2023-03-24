@@ -29,7 +29,7 @@ endif::[]
 :url-node: https://nodejs.org
 :url-nvm: https://github.com/creationix/nvm
 :url-nvm-install: {url-nvm}#installation
-:url-couchbase: https://couchbase.com
+:url-datastax: https://datastax.com
 
 ifdef::badges[]
 image:https://img.shields.io/static/v1?label=release&amp;message={current-release}&amp;color=blue[Latest Release,link={url-project}/releases/download/{current-release}/ui-bundle.zip,format=svg]
