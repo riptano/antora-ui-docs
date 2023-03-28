@@ -44,7 +44,7 @@
 }
 
 .dark-mode .landing-card .content {
-    color: var(--color-black)
+    color: var(--color-white)
 }
 
 .full-articles {
@@ -139,6 +139,11 @@
     box-shadow: 0px 6px 8px rgb(32 41 58 / 8%), 0px 4px 10px rgb(32 41 58 / 8%), 0px 3px 12px rgb(32 41 58 / 12%);
     border-radius: 6px;
     width: 100%;
+}
+
+.dark-mode .doc .sidebarblock {
+    background: var(--color-purple-700);
+    box-shadow: 0px 6px 8px rgb(255 255 255 / 8%), 0px 4px 10px rgb(255 255 255 / 8%), 0px 3px 12px rgb(255 255 255 / 12%);
 }
 
 .doc {
