@@ -6,13 +6,14 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="/en/home/assets/css/site.css">
   <title>Oops! We can't find that page {{#with site.title}} :: {{this}}{{/with}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 </head>
 
-<body class="status-404">
+<body class="article status-404">
   <header class="header">
     <nav class="navbar">
       <div class="navbar-brand">
-        <!-- <a href="{{{or site.url (or siteRootUrl siteRootPath)}}}"> -->
         <a href="https://docs.datastax.com">
           <img src="/en/home/assets/img/logo.svg" alt="">
         </a>
@@ -84,7 +85,7 @@
     margin-top: 6rem;
     margin-bottom: 6rem;
 ">
-      <h1 class="page" style="font-size: calc(2rem + 2px);">Oops! We can’t find that page. </h1>
+      <h1 class="page" style="font-size: calc(2rem + 2px);">Oops! We can't find that page. </h1>
       <div class="paragraph">
         <p style="font-size: calc(1rem + 2px); text-align: justify;">The page you're looking for doesn't exist. It might have been moved or
           maybe there was a typo in the URL. If you typed the URL of this page manually, please double check that you
@@ -166,5 +167,60 @@
         root.classList.add('dark-mode');
       }
     }();
+
+    function isMobile () {
+  // eslint-disable-next-line no-undef
+  if (sessionStorage.desktop) return false
+  // eslint-disable-next-line no-undef
+  else if (localStorage.mobile) return true
+  // eslint-disable-next-line max-len
+  var mobile = ['iphone', 'ipad', 'android', 'blackberry', 'nokia', 'opera mini', 'windows mobile', 'windows phone', 'iemobile']
+  for (var i in mobile) { if (navigator.userAgent.toLowerCase().indexOf(mobile[i].toLowerCase()) > 0) return true }
+  return false
+}
+
+window.addEventListener('DOMContentLoaded', (event) => {
+  var theme = window.localStorage.getItem('theme')
+
+  var path = window.location.pathname
+  var page = path.split('/').pop()
+  var name = page.replace('.html', '')
+  console.log(name)
+  const sidebar = document.querySelector('.sidebar')
+  const col = document.getElementById('collapse')
+  var checkbox = document.getElementById('switch')
+  if (theme) {
+    checkbox.checked = true
+  } else {
+    checkbox.checked = false
+  }
+
+  if (name === 'landing' && !isMobile()) {
+    col.checked = true
+    sidebar.classList.add('small-container')
+  }
+
+  var elements = document.body.getElementsByTagName('pre')
+  for (var i = 0; i < elements.length; i++) {
+    for (const child of elements[i].children) {
+      if (child.tagName === 'CODE') {
+        elements[i].classList.add('has-code')
+      }
+    }
+  }
+
+  document.addEventListener('click', function (event) {
+    if (event.target.matches('.switch')) {
+      var root = document.getElementsByTagName('html')[0]
+      if (event.target.checked) {
+        window.localStorage.setItem('theme', 'dark')
+        root.classList.add('dark-mode')
+      } else {
+        window.localStorage.removeItem('theme')
+        root.classList.remove('dark-mode')
+      }
+    }
+  }, false)
+})
   </script>
 </body>

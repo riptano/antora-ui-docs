@@ -39,7 +39,7 @@ const bundleJSsrc = () =>
 
 // Bundle a site.js for the 404 error page, excluding 01-nav.js
 const bundleJS404 = () =>{
-    return src(['styles/src/js/*.js','!styles/src/js/01-nav.js'])
+    return src(['styles/src/js/*.js','!styles/src/js/01-nav.js', '!styles/src/js/08-gcx-helios.js'])
     .pipe(concat('site404.js'))
     .pipe(dest('build/js'));
 }
