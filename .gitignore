@@ -1,4 +1,7 @@
-build/
+build
 node_modules/
 public/
-
+.DS_store
+*~
+.vscode
+.java-version
