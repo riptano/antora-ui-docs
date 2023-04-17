@@ -1,6 +1,6 @@
 = DataStax Antora UI
 // Variables:
-:current-release: prod-2
+:current-release: prod-9
 // Settings:
 :!example-caption:
 :experimental:
@@ -16,25 +16,20 @@ ifdef::env-github[]
 :!toc-title:
 :badges:
 endif::[]
-// Project URLs:
-:url-project: git@github.com:riptano/antora-ui-docs.git
+// Project URIs:
+:project-repo-name: riptano/antora-ui-docs
+:url-project: https://github.com/{project-repo-name}
 :url-site: https://docs.datastax.com
-//:url-preview: https://gitlab.com/antora/antora-ui-default
-// External URLs:
+:url-repo: git@github.com:{project-repo-name}.git
+// External URIs:
 :url-antora: https://antora.org
-:url-antora-docs: https://docs.antora.org
-:url-antora-default-ui: https://gitlab.com/antora/antora-ui-default
 :url-git: https://git-scm.com
 :url-git-dl: {url-git}/downloads
 :url-gulp: http://gulpjs.com
-:url-opendevise: https://opendevise.com
-:url-nodejs: https://nodejs.org
+:url-node: https://nodejs.org
 :url-nvm: https://github.com/creationix/nvm
 :url-nvm-install: {url-nvm}#installation
-:url-source-maps: https://developer.mozilla.org/en-US/docs/Tools/Debugger/How_to/Use_a_source_map
-:url-create-release: https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release
 :url-datastax: https://datastax.com
-
 
 ifdef::badges[]
 image:https://img.shields.io/static/v1?label=release&amp;message={current-release}&amp;color=blue[Latest Release,link={url-project}/releases/download/{current-release}/ui-bundle.zip,format=svg]
