@@ -1,6 +1,6 @@
 = DataStax Antora UI
 // Variables:
-:current-release: prod-9
+:current-release: prod-12
 // Settings:
 :!example-caption:
 :experimental:
@@ -30,6 +30,8 @@ endif::[]
 :url-nvm: https://github.com/creationix/nvm
 :url-nvm-install: {url-nvm}#installation
 :url-datastax: https://datastax.com
+:url-site-local-home-yaml: https://github.com/riptano/docs-home/blob/main/playbooks/site-local-home.yaml#L20-L34
+:url-site-publish-home-yaml: https://github.com/riptano/docs-home/blob/main/playbooks/site-publish-home.yaml#L20-L34
 
 ifdef::badges[]
 image:https://img.shields.io/static/v1?label=release&amp;message={current-release}&amp;color=blue[Latest Release,link={url-project}/releases/download/{current-release}/ui-bundle.zip,format=svg]
@@ -61,6 +63,57 @@ ui:
 NOTE: The `snapshot` flag tells Antora to fetch the UI when the `--fetch` command-line flag is present.
 This setting is required because updates to the UI bundle are pushed to the same URL.
 If the URL were to be unique, this setting would not be required.
+
+[#search-dependencies]
+== docs-home playbook dependencies for search results
+
+To ensure that we correctly deploy the latest search assets to the doc servers, we added `supplemental-ui` settings in the {url-site-local-home-yaml}[site-local-home.yaml] and {url-site-publish-home-yaml}[site-publish-home.yaml] playbooks.
+
+[source,yaml]
+----
+ui:
+  bundle:
+    url: https://github.com/riptano/antora-ui-docs/releases/latest/download/ui-bundle.zip
+    snapshot: true
+  supplemental_files:
+  - path: css/siteSearch.css
+    contents: ./supplemental-ui/siteSearch.css
+  - path: js/siteSearch.js
+    contents: ./supplemental-ui/siteSearch.js
+  output_dir: assets
+----
+
+The generated siteSearch.[ css | js ] files are not updated often. However, if they change, there's a *manual step* to copy the latest:
+
+*From:*
+
+* https://github.com/riptano/antora-ui-docs/tree/main/gcx/algoliaSearch/src/css
+* https://github.com/riptano/antora-ui-docs/tree/main/gcx/algoliaSearch/src/js
+
+To: https://github.com/riptano/docs-home/tree/main/playbooks/supplemental-ui
+
+Once done, a `bsys build home` and `bsys deploy home <server>` will rsync the files to the right locations.
+
+*On coppi:*
+
+[source,shell]
+----
+/var/www/en/home/assets/css/siteSearch.css
+/var/www/en/home/assets/js/siteSearch.js
+----
+
+*On docs-preview and live docs site:*
+
+[source,shell]
+----
+/datastax/www/docs.datastax.com/en/home/assets/css/siteSearch.css
+/datastax/www/docs.datastax.com/en/home/assets/js/siteSearch.js
+----
+
+In addition, the latest search results page, index.html, must be deployed to /en/search/index.html. This file resides in this antora-ui-docs repo folder:
+
+https://github.com/riptano/antora-ui-docs/tree/main/gcx/algoliaSearch
+
 
 == Development quickstart
 
