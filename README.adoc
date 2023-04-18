@@ -67,7 +67,7 @@ If the URL were to be unique, this setting would not be required.
 [#search-dependencies]
 == docs-home playbook dependencies for search results
 
-To ensure that we correctly deploy the latest search assets to the doc servers, we added `supplemental-ui` settings in the {url-site-local-home-yaml}[site-local-home.yaml] and {url-site-publish-home-yaml}[site-publish-home.yaml] playbooks.
+To ensure that we correctly deploy the latest search assets to the doc servers, we added a `supplemental-files` section in the {url-site-local-home-yaml}[site-local-home.yaml] and {url-site-publish-home-yaml}[site-publish-home.yaml] playbooks.
 
 [source,yaml]
 ----
