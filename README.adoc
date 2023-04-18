@@ -30,8 +30,8 @@ endif::[]
 :url-nvm: https://github.com/creationix/nvm
 :url-nvm-install: {url-nvm}#installation
 :url-datastax: https://datastax.com
-:url-site-local-home-yaml: https://github.com/riptano/docs-home/blob/main/playbooks/site-local-home.yaml#L20-L34
-:url-site-publish-home-yaml: https://github.com/riptano/docs-home/blob/main/playbooks/site-publish-home.yaml#L20-L34
+:url-site-local-home-yaml: https://github.com/riptano/docs-home/blob/main/playbooks/site-local-home.yaml
+:url-site-publish-home-yaml: https://github.com/riptano/docs-home/blob/main/playbooks/site-publish-home.yaml
 
 ifdef::badges[]
 image:https://img.shields.io/static/v1?label=release&amp;message={current-release}&amp;color=blue[Latest Release,link={url-project}/releases/download/{current-release}/ui-bundle.zip,format=svg]
