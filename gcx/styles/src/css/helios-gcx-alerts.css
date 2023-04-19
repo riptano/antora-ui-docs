@@ -26,6 +26,10 @@
     border-radius: 6px;
 }
 
+.dark-mode .doc .admonitionblock.tip tr {
+    background: var(--color-purple-700);
+}
+
 .doc .admonitionblock.tip td.content {
     color: var(--color-black);
 }

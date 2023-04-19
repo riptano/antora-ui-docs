@@ -47,10 +47,19 @@
     color: var(--black)!important;
 }
 
+.dark-mode .doc .sidebarblock {
+    background: var(--color-purple-700);
+}
+
 .doc .admonitionblock.caution a {
     color: var(--color-black)!important;
     text-decoration: underline;
 }
+
+.dark-mode .doc .admonitionblock.caution a {
+    color: var(--color-white)!important;
+}
+
 
 .doc .admonitionblock.tip a {
     color: var(--color-black)!important;
