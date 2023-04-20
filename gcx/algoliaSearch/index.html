@@ -5,15 +5,19 @@
   <link rel="icon" href="https://www.datastax.com/favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="/en/home/assets/css/site.css">
-  <title>Oops! We can't find that page {{#with site.title}} :: {{this}}{{/with}}</title>
+  <link rel="stylesheet" type="text/css" href="/en/home/assets/css/siteSearch.css">
+  <link href="https://fonts.googleapis.com/css2?family=Sora&display=swap" rel="stylesheet">
+  <title>Search</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@8.0.0/themes/reset-min.css" integrity="sha256-2AeJLzExpZvqLUxMfcs+4DWcMwNfpnjUeAAvEtPr0wU=" crossorigin="anonymous">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 
-<body class="article status-404">
+<body>
   <header class="header">
     <nav class="navbar">
       <div class="navbar-brand">
+        <!-- <a href="{{{or site.url (or siteRootUrl siteRootPath)}}}"> -->
         <a href="https://docs.datastax.com">
           <img src="/en/home/assets/img/logo.svg" alt="">
         </a>
@@ -27,7 +31,7 @@
         <div class="navbar-end">
           <div class="doc-link">
             <ul id="ds_sites_list">
-              <li><a href="https://docs.datastax.com/en/glossary/docs" target="_blank">Glossary</a></li>
+              <li><a href="/en/glossary/docs" target="_blank">Glossary</a></li>
               <li><a href="https://support.datastax.com/" target="_blank">Support</a></li>
               <li><a href="https://downloads.datastax.com/" target="_blank">Downloads</a></li>
               <li><a href="https://www.datastax.com/" target="_self">DataStax Home</a></li>
@@ -69,38 +73,54 @@
       </div>
     </nav>
   </header>
-  <article class="doc" style="
-    display: flex;
-    justify-content: center!important;
-    padding-left: 24px;
-    padding-right: 24px;
-    max-width: 100%!important;
-">
-
-    <div class="center" style="
-    flex-wrap: wrap;
-    margin-right: -12px;
-    margin-left: -12px;
-    max-width: 65%;
-    margin-top: 6rem;
-    margin-bottom: 6rem;
-">
-      <h1 class="page" style="font-size: calc(2rem + 2px);">Oops! We can't find that page. </h1>
-      <div class="paragraph">
-        <p style="font-size: calc(1rem + 2px); text-align: justify;">The page you're looking for doesn't exist. It might have been moved or
-          maybe there was a typo in the URL. If you typed the URL of this page manually, please double check that you
-          entered the address correctly.
-        </p>
-      </div>
-      <div class="paragraph">
-        <p style="font-size: calc(1rem + 2px); text-align: justify">
-          Go to the DataStax docs <a href="https://docs.datastax.com/">home page</a>.
-        </p>
-      </div>
-    </div>
-
-  </article>
-  <footer class="wh_footer notFound">
+  <h1 class="searchTitle">What can we help you find?</h1>
+    <div id="algoliaSearchContainer">
+        <main class="search-container">
+          <div class="left-panel hidden">
+            <div id="categories">
+              <div class="control">
+                <a  id="closeFilter">X</a>
+              </div>
+              <div class="title">
+                <h3>Filter by product</h3>
+              </div>
+              
+              <ul>
+                <li><label><input class="alg-filter" type="radio" name="index_filter" value="crawler_docs-v2-astra-serverless"> Astra DB Serverless</label></li>
+                <li><label><input class="alg-filter" type="radio" name="index_filter" value="crawler_docs-v2-astra-classic"> Astra DB Classic</label></li>
+                <li><label><input class="alg-filter" type="radio" name="index_filter" value="crawler_docs-v2-astra-streaming"> Astra Streaming</label></li>
+                <li><label><input class="alg-filter" type="radio" name="index_filter" value="crawler_docs-v2-streaming"> Streaming</label></li>
+                <li><label><input class="alg-filter" type="radio" name="index_filter" value="crawler_docs-v2-streaming-connectors"> Streaming Connectors</label></li>
+                <li><label><input class="alg-filter" type="radio" name="index_filter" value="crawler_docs-v2-luna-streaming"> Luna Streaming</label></li>
+                <li><label><input class="alg-filter" type="radio" name="index_filter" value="crawler_docs-v2-dse-current"> DataStax Enterprise 6.8</label></li>
+                <li><label><input class="alg-filter" type="radio" name="index_filter" value="crawler_docs-v2-dse-older"> DataStax Enterprise 5.1</label></li>
+                <li><label><input class="alg-filter" type="radio" name="index_filter" value="crawler_docs-v2-opscenter-current"> OpsCenter 6.8</label></li>
+                <li><label><input class="alg-filter" type="radio" name="index_filter" value="crawler_docs-v2-cassandra-current"> Apache Cassandra 3.x</label></li>
+                <li><label><input class="alg-filter" type="radio" name="index_filter" value="crawler_docs-v2-CQL-current"> CQL</label></li>
+                <li><label><input class="alg-filter" type="radio" name="index_filter" value="crawler_docs-v2-studio-current"> Studio 6.8</label></li>
+                <li><label><input class="alg-filter" type="radio" name="index_filter" value="crawler_docs-v2-docker"> Docker</label></li>
+                
+                <!--li><label><input class="alg-filter" type="radio" name="index_filter" value="crawler_docs.datastax.com"> DataStax</label></li-->
+                <!-- li><label><input class="alg-filter" type="radio" name="index_filter" value="crawler_docs_ja_docs.datastax.com"> Japanese</label></li -->
+                <!--li><label><input class="alg-filter" type="radio" name="index_filter" value="crawler_docs-v2-streaming.tmp"> Streaming (old)</label></li-->
+                <!--li><label><input class="alg-filter" type="radio" name="index_filter" value="crawler_docs-v2-luna-streaming.bak"> Luna Streaming (old)</label></li-->
+              </ul>
+              <button id="clearFilters">Clear</button>
+            </div>
+          </div>
+          <div class="right-panel">
+            <div id="searchbox"></div>
+            <div id="stats"></div>
+            <div class="controlFilters">
+              <a id="openFilter">Filter <span class="material-symbols-outlined">
+                filter_alt
+                </span></a>
+            </div>
+            <div id="hits"></div>
+            <div id="pagination"></div>
+        </div>
+        </main>
+  <footer class="wh_footer">
     <div class="container-fluid">
         <div class="footer-container">
             <div class="bottom-icons">
@@ -167,19 +187,7 @@
         root.classList.add('dark-mode');
       }
     }();
-
-    function isMobile () {
-  // eslint-disable-next-line no-undef
-  if (sessionStorage.desktop) return false
-  // eslint-disable-next-line no-undef
-  else if (localStorage.mobile) return true
-  // eslint-disable-next-line max-len
-  var mobile = ['iphone', 'ipad', 'android', 'blackberry', 'nokia', 'opera mini', 'windows mobile', 'windows phone', 'iemobile']
-  for (var i in mobile) { if (navigator.userAgent.toLowerCase().indexOf(mobile[i].toLowerCase()) > 0) return true }
-  return false
-}
-
-window.addEventListener('DOMContentLoaded', (event) => {
+    window.addEventListener('DOMContentLoaded', (event) => {
   var theme = window.localStorage.getItem('theme')
 
   var path = window.location.pathname
@@ -210,6 +218,22 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   document.addEventListener('click', function (event) {
+    //No es un clic en el sidebar
+    //if (!event.target.matches('li[data-depth="1"]') && !event.target.matches('.switch')) return;
+    /*    if (event.target.closest('li.nav-item.toggler')) {
+                      console.log(event.target)
+                      event.target.closest('li.nav-item.toggler').classList.toggle('is-active')
+                    }
+                    /*if ((event.target.matches('span.nav-text') ||
+                                event.target.matches('button.nav-item-toggle')) &&
+                            (event.target.offsetParent.matches('li[data-depth="1"]') ||
+                                event.target.offsetParent.matches('li[data-depth="0"]'))) {
+                            event.target.offsetParent.classList.toggle('is-active');
+                        }
+                        if (event.target.matches('li[data-depth="1"]') ||
+                            event.target.matches('li[data-depth="0"]')) {
+                            event.target.classList.toggle('is-active');
+                        }*/
     if (event.target.matches('.switch')) {
       var root = document.getElementsByTagName('html')[0]
       if (event.target.checked) {
@@ -223,4 +247,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }, false)
 })
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.14.3/dist/algoliasearch-lite.umd.js" integrity="sha256-dyJcbGuYfdzNfifkHxYVd/rzeR6SLLcDFYEidcybldM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.51.1/dist/instantsearch.production.min.js" integrity="sha256-y6I4MY/blLHk4a7G33zp97DcnBFRY2iMId4FObo8toI=" crossorigin="anonymous"></script>
+  <script src="/en/home/assets/js/siteSearch.js"></script>
 </body>
+
+
