@@ -18,9 +18,11 @@ ifdef::env-github[]
 endif::[]
 // Project URIs:
 :project-repo-name: riptano/antora-ui-docs
+:url-repo: git@github.com:{project-repo-name}.git
 :url-project: https://github.com/{project-repo-name}
 :url-site: https://docs.datastax.com
-:url-repo: git@github.com:{project-repo-name}.git
+:url-coppi: https://coppi.aws.dsinternal.org
+:url-docs-preview: http://docs-preview.datastax.com
 // External URIs:
 :url-antora: https://antora.org
 :url-git: https://git-scm.com
@@ -30,8 +32,7 @@ endif::[]
 :url-nvm: https://github.com/creationix/nvm
 :url-nvm-install: {url-nvm}#installation
 :url-datastax: https://datastax.com
-:url-site-local-home-yaml: https://github.com/riptano/docs-home/blob/main/playbooks/site-local-home.yaml
-:url-site-publish-home-yaml: https://github.com/riptano/docs-home/blob/main/playbooks/site-publish-home.yaml
+:url-docs-home: https://github.com/riptano/docs-home
 
 ifdef::badges[]
 image:https://img.shields.io/static/v1?label=release&amp;message={current-release}&amp;color=blue[Latest Release,link={url-project}/releases/download/{current-release}/ui-bundle.zip,format=svg]
@@ -65,16 +66,27 @@ This setting is required because updates to the UI bundle are pushed to the same
 If the URL were to be unique, this setting would not be required.
 
 [#search-dependencies]
-== docs-home playbook dependencies for search results
+=== About site search UI dependencies
 
-To ensure that we correctly deploy the latest search assets to the doc servers, we added a `supplemental-files` section in the {url-site-local-home-yaml}[site-local-home.yaml] and {url-site-publish-home-yaml}[site-publish-home.yaml] playbooks.
+Additional tasks must be performed in order for the site search functionality on {url-site}[docs.datastax.com] to work properly.
+These tasks only need to be performed when changes are made to the following files:
+
+[%header.autowidth.stretch]
+|===
+|Files |Tasks
+
+|{url-project}/blob/main/gcx/algoliaSearch/index.html[_gcx/algoliaSearch/index.html_]
+|Copy this file to the _/en/search_ directory on the {url-coppi}/en/search/[coppi] and {url-docs-preview}/en/search/[docs-preview] servers.
+
+|{url-project}/tree/main/gcx/algoliaSearch/src[_gcx/algoliaSearch/src/*_]
+|Copy these files to the _playbooks/supplemental-ui_ directory in the {url-docs-home}/tree/main/playbooks/supplemental-ui[docs-home] repository.
+|===
+
+In the {url-docs-home}[docs-home] repository, the {url-docs-home}/blob/main/playbooks/site-local-home.yaml[_site-local-home.yaml_] and {url-docs-home}/blob/main/playbooks/site-publish-home.yaml[_site-publish-home.yaml_] playbooks are configured to incorporate the files from the _supplemental-ui_ directory into the assets directory of the generated site:
 
 [source,yaml]
 ----
 ui:
-  bundle:
-    url: https://github.com/riptano/antora-ui-docs/releases/latest/download/ui-bundle.zip
-    snapshot: true
   supplemental_files:
   - path: css/siteSearch.css
     contents: ./supplemental-ui/siteSearch.css
@@ -83,37 +95,27 @@ ui:
   output_dir: assets
 ----
 
-The generated siteSearch.[ css | js ] files are not updated often. However, if they change, there's a *manual step* to copy the latest:
+Whenever files are changed or added within the _supplemental-ui_ directory, the `home` docset must then be built and deployed to all of the docs servers to ensure that the servers have the latest site search assets.
 
-*From:*
+[source,console]
+----
+bsys build home
+bsys deploy home coppi
+bsys deploy home docs-preview
+bsys sync
+----
 
-* https://github.com/riptano/antora-ui-docs/tree/main/gcx/algoliaSearch/src/css
-* https://github.com/riptano/antora-ui-docs/tree/main/gcx/algoliaSearch/src/js
-
-To: https://github.com/riptano/docs-home/tree/main/playbooks/supplemental-ui
-
-Once done, a `bsys build home` and `bsys deploy home <server>` will rsync the files to the right locations.
-
-*On coppi:*
-
-[source,shell]
+.coppi asset locations
 ----
 /var/www/en/home/assets/css/siteSearch.css
 /var/www/en/home/assets/js/siteSearch.js
 ----
 
-*On docs-preview and live docs site:*
-
-[source,shell]
+.docs-preview asset locations
 ----
 /datastax/www/docs.datastax.com/en/home/assets/css/siteSearch.css
 /datastax/www/docs.datastax.com/en/home/assets/js/siteSearch.js
 ----
-
-In addition, the latest search results page, index.html, must be deployed to /en/search/index.html. This file resides in this antora-ui-docs repo folder:
-
-https://github.com/riptano/antora-ui-docs/tree/main/gcx/algoliaSearch
-
 
 == Development quickstart
 
