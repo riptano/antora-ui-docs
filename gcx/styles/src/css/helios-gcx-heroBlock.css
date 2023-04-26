@@ -23,9 +23,18 @@
   }
   
   
+  .toolbar:has(~ .content .dsHeroBlock),
+  h1.page:has(~ #preamble .dsHeroBlock) {
+    visibility: hidden;
+  }
+
+  .toolbar:has(~ .dsHeroBlock),
+  .dsHeroBlock + .content h1.page {
+    display: none;
+  }  
   
   .dsHeroContent {
-    padding: 50px 60px;
+    padding: 72px 60px;
     width: 50%;
   }
   
