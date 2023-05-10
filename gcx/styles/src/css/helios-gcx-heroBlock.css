@@ -1,0 +1,49 @@
+.dsHeroBlock,
+.dsHeroBlock[data-banner="default"] {
+    background-image: url('../img/hero-banner-1.svg');
+    background-size: cover;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .dsHeroBlock[data-banner="alternative"]{
+    background-image: url('../img/hero-banner-2.svg');
+  }
+  
+  .dsHeroBlock[data-banner="astra"]{
+    background-image: url('../img/hero-banner-3-Astra.svg');
+  }
+  
+  .dsHeroBlock[data-banner="dse"]{
+    background-image: url('../img/hero-banner-4-DSE.svg');
+  }
+
+  .dsHeroBlock[data-banner="luna"]{
+    background-image: url('../img/hero-banner-5-Luna.svg');
+  }
+  
+  
+  .toolbar:has(~ .content .dsHeroBlock),
+  h1.page:has(~ #preamble .dsHeroBlock) {
+    visibility: hidden;
+  }
+
+  .toolbar:has(~ .dsHeroBlock),
+  .dsHeroBlock + .content h1.page {
+    display: none;
+  }  
+  
+  .dsHeroContent {
+    padding: 72px 60px;
+    width: 50%;
+  }
+  
+  .dsHeroTitle h1 {
+    font-weight: 400;
+  }
+
+  @media screen and (max-width: 820px) {
+    .dsHeroContent {
+        width: 100%;
+      }
+  }

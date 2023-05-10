@@ -400,6 +400,65 @@ CAUTION: If you do not check this box, then the release is immediately promoted 
 
 . Update the `:current-release:` attribute in the header of this README to reference the tag of the latest bundle (if it is not pre-release), then commit that update to the repository.
 
+== Hero block
+There are two files that need to be updated in order to include the hero block in a page
+
+* helios-gcs-heroBlock.css
+* The .adoc file you want to add the hero block
+
+=== Define Background css
+
+. To define the hero block background, it needs to be done in the `helios-gcs-heroBlock.css` file located under /gcx/styles/src/css/  path
+. It requires to set the class identifier name/value and the path to the background image which can be an svg file.
+. The class identifier name/value would be any meaningful value you would like to use to identify the background image.
+.. The identifier name will be used to reference the background image in the .adoc where the hero will be setup.
+.. If the identifier name is not defined, it will use the default setup image.
+
+For the below code portion .dsHeroBlock, .dsHeroBlock[data-banner="default"] would be the default image to set in case no identifier or "default" identifier is set
+-----
+.dsHeroBlock,
+.dsHeroBlock[data-banner="default"] {
+    background-image: url('../img/hero-banner-1.svg');
+    background-size: cover;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+  }
+-----
+
+To set a specific background image, it will be done by setting the identifier value and the image path
+----
+.dsHeroBlock[data-banner="alternative"]{
+  background-image: url('../img/hero-banner-2.svg');
+}
+----
+
+=== Define the hero block in a .adoc file
+The structure to set a hero block in an `.adoc` file is as shown in the code block below. This will add the hero block to the top of the page which will have a background, title, content.
+
+. Hero Block background (class="dsHeroBlock")
+.. This is set by adding `<div class="dsHeroBlock" data-banner="alternative">` where the "data-banner identifier will be the name especified for the image in the `helios-gcs-heroBlock.css`  file.
+. [.hero.title]
+.. This tag is used to set the hero banner title
+. [.hero.content]
+.. This tag is used to set the hero banner content under the title.
+
+----
+++++
+<div class="dsHeroBlock" data-banner="alternative">
+++++
+
+[.hero.title]
+Documentation Home
+
+[.hero.content]
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.
+
+++++
+</div>
+++++
+----
+
+
 == Copyright and license
 
 === Antora Default UI
