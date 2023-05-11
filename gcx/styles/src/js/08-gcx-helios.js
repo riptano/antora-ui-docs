@@ -135,3 +135,28 @@ document.querySelectorAll(".nav-item> span.nav-text").forEach(function (item) {
     item.parentElement.classList.toggle("is-active");
   })
 })
+
+var heroBlock = document.querySelector('.dsHeroBlock')
+var heroTitle = document.querySelector('.paragraph.hero.title p').innerHTML
+var heroContent = document.querySelector('.paragraph.hero.content p').innerHTML
+
+var heroHTML = `<div class="dsHeroContent">
+  <div class="dsHeroTitle">
+    <h1> ${heroTitle} </h1>
+  </div>
+  <div class="dsHeroDescription">
+    <p> ${heroContent} </p>
+  </div>
+</div>`
+
+document.querySelector('.dsHeroBlock').remove()
+
+if (heroBlock) {
+  var target = document.querySelector('main.article')
+  target.insertBefore(heroBlock, target.children[1])
+
+  /* fallback for firefox :has pseudo-class */
+  document.querySelector('.dsHeroBlock').innerHTML = heroHTML
+  document.querySelector('.toolbar').style.display = 'none'
+  document.querySelector('h1.page').style.display = 'none'
+}

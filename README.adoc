@@ -1,6 +1,6 @@
 = DataStax Antora UI
 // Variables:
-:current-release: prod-9
+:current-release: prod-13
 // Settings:
 :!example-caption:
 :experimental:
@@ -18,9 +18,11 @@ ifdef::env-github[]
 endif::[]
 // Project URIs:
 :project-repo-name: riptano/antora-ui-docs
+:url-repo: git@github.com:{project-repo-name}.git
 :url-project: https://github.com/{project-repo-name}
 :url-site: https://docs.datastax.com
-:url-repo: git@github.com:{project-repo-name}.git
+:url-coppi: https://coppi.aws.dsinternal.org
+:url-docs-preview: http://docs-preview.datastax.com
 // External URIs:
 :url-antora: https://antora.org
 :url-git: https://git-scm.com
@@ -30,6 +32,7 @@ endif::[]
 :url-nvm: https://github.com/creationix/nvm
 :url-nvm-install: {url-nvm}#installation
 :url-datastax: https://datastax.com
+:url-docs-home: https://github.com/riptano/docs-home
 
 ifdef::badges[]
 image:https://img.shields.io/static/v1?label=release&amp;message={current-release}&amp;color=blue[Latest Release,link={url-project}/releases/download/{current-release}/ui-bundle.zip,format=svg]
@@ -61,6 +64,58 @@ ui:
 NOTE: The `snapshot` flag tells Antora to fetch the UI when the `--fetch` command-line flag is present.
 This setting is required because updates to the UI bundle are pushed to the same URL.
 If the URL were to be unique, this setting would not be required.
+
+[#search-dependencies]
+=== About site search UI dependencies
+
+Additional tasks must be performed in order for the site search functionality on {url-site}[docs.datastax.com] to work properly.
+These tasks only need to be performed when changes are made to the following files:
+
+[%header.autowidth.stretch]
+|===
+|Files |Tasks
+
+|{url-project}/blob/main/gcx/algoliaSearch/index.html[_gcx/algoliaSearch/index.html_]
+|Copy this file to the _/en/search_ directory on the {url-coppi}/en/search/[coppi] and {url-docs-preview}/en/search/[docs-preview] servers.
+
+|{url-project}/tree/main/gcx/algoliaSearch/src[_gcx/algoliaSearch/src/*_]
+|Copy these files to the _playbooks/supplemental-ui_ directory in the {url-docs-home}/tree/main/playbooks/supplemental-ui[docs-home] repository.
+|===
+
+In the {url-docs-home}[docs-home] repository, the {url-docs-home}/blob/main/playbooks/site-local-home.yaml[_site-local-home.yaml_] and {url-docs-home}/blob/main/playbooks/site-publish-home.yaml[_site-publish-home.yaml_] playbooks are configured to incorporate the files from the _supplemental-ui_ directory into the assets directory of the generated site:
+
+[source,yaml]
+----
+ui:
+  supplemental_files:
+  - path: css/siteSearch.css
+    contents: ./supplemental-ui/siteSearch.css
+  - path: js/siteSearch.js
+    contents: ./supplemental-ui/siteSearch.js
+  output_dir: assets
+----
+
+Whenever files are changed or added within the _supplemental-ui_ directory, the `home` docset must then be built and deployed to all of the docs servers to ensure that the servers have the latest site search assets.
+
+[source,console]
+----
+bsys build home
+bsys deploy home coppi
+bsys deploy home docs-preview
+bsys sync
+----
+
+.coppi asset locations
+----
+/var/www/en/home/assets/css/siteSearch.css
+/var/www/en/home/assets/js/siteSearch.js
+----
+
+.docs-preview asset locations
+----
+/datastax/www/docs.datastax.com/en/home/assets/css/siteSearch.css
+/datastax/www/docs.datastax.com/en/home/assets/js/siteSearch.js
+----
 
 == Development quickstart
 
@@ -344,6 +399,65 @@ You can then edit the release in the future to remove the *Pre-release* label, i
 CAUTION: If you do not check this box, then the release is immediately promoted to *Latest*, and all DataStax docs will consume the new UI bundle the next time they are built.
 
 . Update the `:current-release:` attribute in the header of this README to reference the tag of the latest bundle (if it is not pre-release), then commit that update to the repository.
+
+== Hero block
+There are two files that need to be updated in order to include the hero block in a page
+
+* helios-gcs-heroBlock.css
+* The .adoc file you want to add the hero block
+
+=== Define Background css
+
+. To define the hero block background, it needs to be done in the `helios-gcs-heroBlock.css` file located under /gcx/styles/src/css/  path
+. It requires to set the class identifier name/value and the path to the background image which can be an svg file.
+. The class identifier name/value would be any meaningful value you would like to use to identify the background image.
+.. The identifier name will be used to reference the background image in the .adoc where the hero will be setup.
+.. If the identifier name is not defined, it will use the default setup image.
+
+For the below code portion .dsHeroBlock, .dsHeroBlock[data-banner="default"] would be the default image to set in case no identifier or "default" identifier is set
+-----
+.dsHeroBlock,
+.dsHeroBlock[data-banner="default"] {
+    background-image: url('../img/hero-banner-1.svg');
+    background-size: cover;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+  }
+-----
+
+To set a specific background image, it will be done by setting the identifier value and the image path
+----
+.dsHeroBlock[data-banner="alternative"]{
+  background-image: url('../img/hero-banner-2.svg');
+}
+----
+
+=== Define the hero block in a .adoc file
+The structure to set a hero block in an `.adoc` file is as shown in the code block below. This will add the hero block to the top of the page which will have a background, title, content.
+
+. Hero Block background (class="dsHeroBlock")
+.. This is set by adding `<div class="dsHeroBlock" data-banner="alternative">` where the "data-banner identifier will be the name especified for the image in the `helios-gcs-heroBlock.css`  file.
+. [.hero.title]
+.. This tag is used to set the hero banner title
+. [.hero.content]
+.. This tag is used to set the hero banner content under the title.
+
+----
+++++
+<div class="dsHeroBlock" data-banner="alternative">
+++++
+
+[.hero.title]
+Documentation Home
+
+[.hero.content]
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.
+
+++++
+</div>
+++++
+----
+
 
 == Copyright and license
 

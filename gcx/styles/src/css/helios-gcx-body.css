@@ -44,7 +44,7 @@
 }
 
 .dark-mode .landing-card .content {
-    color: var(--color-black)
+    color: var(--color-white)
 }
 
 .full-articles {
@@ -141,6 +141,10 @@
     width: 100%;
 }
 
+.dark-mode .doc .sidebarblock {
+    background: var(--color-purple-700);
+}
+
 .doc {
     color: var(--color-black);
 }
@@ -226,7 +230,7 @@ main > .content {
         max-width: 43%!important;
     }
 }
-    
+
 @media screen and (max-width: 767px) {
     article.doc .center{
         max-width: 100%!important;

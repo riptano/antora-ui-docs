@@ -47,7 +47,7 @@
 }
 
 .dark-mode .doc .sidebarblock>.content>.title{
-    color: var(--black);
+    color: var(--white);
 }
 
 
