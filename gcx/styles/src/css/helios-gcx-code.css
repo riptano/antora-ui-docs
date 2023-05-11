@@ -57,3 +57,23 @@ code::before {
 .helios-card.mdc-card--outlined {
     margin-top: 4rem;
 }
+
+.helios-card.mdc-card--outlined {
+    margin-top: 4rem;
+}
+
+.helios-card.mdc-card--outlined.rated {
+    margin: 0 0 2rem 0;
+    text-align: center;
+}
+
+.helios-card p.rated {
+    margin: 0 0 1rem 0;text-align:center
+}
+
+.helios-card p.terms {
+    font-size: 14px;
+}
+.helios-card span.final {
+    padding:2rem; var(--spacing-space01)
+}

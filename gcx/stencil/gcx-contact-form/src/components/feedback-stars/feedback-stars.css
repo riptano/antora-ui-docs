@@ -18,7 +18,8 @@
     fill: #d8d8d8 !important;
 }
 
-.stars[data-stars] .star polygon {
+
+.stars:not([data-stars="0"]) .star polygon {
     fill: #ffd055;
 }
 
