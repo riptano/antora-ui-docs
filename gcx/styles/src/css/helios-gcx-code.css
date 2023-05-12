@@ -58,10 +58,6 @@ code::before {
     margin-top: 4rem;
 }
 
-.helios-card.mdc-card--outlined {
-    margin-top: 4rem;
-}
-
 .helios-card.mdc-card--outlined.rated {
     margin: 0 0 2rem 0;
     text-align: center;

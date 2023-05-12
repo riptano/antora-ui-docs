@@ -32,23 +32,6 @@ export function buildFeedbackRating(subject, id, rate) {
   return feedbackRating;
 }
 
-export function addRatingList(rate) {
-  const addRate = {
-    page: window.location.href,
-    rate: rate
-  }
-  const ratingList = JSON.parse(sessionStorage.getItem('docs_rating')) || []
-  ratingList.push(addRate)
-  sessionStorage.setItem('docs_rating', JSON.stringify(ratingList));
-}
-
-export function getRatingList() {
-  const url = window.location.href;
-  const ratingList = JSON.parse(sessionStorage.getItem('docs_rating')) || []
-  const rate = ratingList.filter(function(s){ return s.page == url })[0]
-  return rate
-}
-
 import { MDCTextFieldHelperText } from "@material/textfield/helper-text";
 import { MDCTextField } from "@material/textfield";
 import { MDCSwitch } from "@material/switch";

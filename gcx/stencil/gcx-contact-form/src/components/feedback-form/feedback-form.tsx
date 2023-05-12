@@ -104,7 +104,7 @@ export class FeedbackForm {
     }
   }
 
-  renderStarts() {     
+  renderStarts() {
     return (
       <div id="feedback" class="feedback-wrapper helios-card mdc-card mdc-card--outlined">
         <h2>{this.article}</h2>
