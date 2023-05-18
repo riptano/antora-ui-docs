@@ -18,6 +18,10 @@
     fill: #d8d8d8 !important;
 }
 
+.stars:not([data-stars="0"]) {
+    pointer-events: none;
+}
+
 .stars:not([data-stars="0"]) .star polygon {
     fill: #ffd055;
 }

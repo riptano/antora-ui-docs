@@ -15,18 +15,17 @@ export class FeedbackForm {
   @State() suggestions: string = '';
   @State() formState: 'initial' | 'submitting' | 'error' | 'complete' = 'initial';
   @State() showErrorEmail = false;
+  @State() ready = false;
 
   @Listen('rateArticle')
   async todoCompletedHandler(event: CustomEvent<number>) {
-    if(this.formState == 'initial') {
-      const rate = event.detail;
-      this.id = this.randomString()
-      if (rate) {
-        this.formState = 'submitting';
-        this.rate = rate;        
-        event.preventDefault();
-        await this.fetchSubmitRating();
-      }
+    const rate = event.detail;
+    this.id = this.randomString()
+    if (rate) {
+      this.formState = 'submitting';
+      this.rate = rate;        
+      event.preventDefault();
+      await this.fetchSubmitRating();
     }
   }
   async submitForm(e) {
@@ -48,11 +47,22 @@ export class FeedbackForm {
     }
     return this.showErrorEmail;
   }
+
+  checkButton() {
+    if(this.email && this.suggestions) {
+      this.ready = true;
+    } else {
+      this.ready = false
+    }
+  }
+
   handleEmail(event) {
     this.email = event.target.value;
+    this.checkButton()
   }
   handleSugges(event) {
     this.suggestions = event.target.value;
+    this.checkButton()
   }
   randomString() {
     return String(
@@ -63,8 +73,11 @@ export class FeedbackForm {
 
   async fetchSubmit() {
     if (!this.validInput()) {
+      let submitBtn = document.querySelector('.helios-button .mdc-button__label');
+      submitBtn.innerHTML = 'Sending...'
+      this.ready = false
       let articleTitle = document.querySelector('h1.page').innerHTML;
-      const data = buildFeedbackInfo(articleTitle, /*this.rate,*/this.id, this.name, this.email, this.suggestions);
+      const data = buildFeedbackInfo(articleTitle, this.id, this.rate, this.name, this.email, this.suggestions);
       try {
         await fetch(CONTACT_US, {
           method: 'POST',
@@ -180,7 +193,7 @@ export class FeedbackForm {
               If you provided an email address, we may contact you in the future regarding your feedback.</p>
             </div>
             <div class="row">
-              <button type="submit" class="helios-button mdc-button">
+              <button type="submit" disabled={!this.ready} class="helios-button mdc-button">
                 <span class="mdc-button__label">Submit</span>
               </button>
             </div>

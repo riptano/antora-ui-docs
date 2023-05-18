@@ -3,17 +3,18 @@ export function format(first: string, middle: string, last: string): string {
     (last ? ` ${last}` : "");
 }
 
-export function buildFeedbackInfo(subject, /*rate,*/ id, name, email, suggestions) {
+export function buildFeedbackInfo(subject, id, rate, name, email, suggestions) {
   const feedbackInfo = {
-    email: "docs@datastax.com",
-    subject: `Feedback | ${subject}`,
-    message: `
-    Page: <a href="${window.location.href}">${subject}</a>
-    ID: ${id}
-    Name: ${name}
-    Email: ${email}
-    Suggestions: ${suggestions}
-    `,
+    //email: "docs@datastax.com",
+    //subject: `Feedback | ${subject}`,
+    //message:
+    id: id,
+    page: `<a href="${window.location.href}">${subject}</a>`,
+    rate: rate,
+    name: name,
+    email: email,
+    suggestions: suggestions
+    
     // Rating: ${rate}
   };
   return feedbackInfo;
@@ -21,13 +22,13 @@ export function buildFeedbackInfo(subject, /*rate,*/ id, name, email, suggestion
 
 export function buildFeedbackRating(subject, id, rate) {
   const feedbackRating = {
-    email: "docs@datastax.com",
-    subject: `Rating | ${subject}`,
-    message: `
-    Page: <a href="${window.location.href}">${subject}</a>
-    ID: ${id}
-    Rating: ${rate}
-    `,
+    //email: "docs@datastax.com",
+    //subject: `Rating | ${subject}`,
+    //message:
+    id: id,
+    page: `<a href="${window.location.href}">${subject}</a>`,
+    rate: rate
+    //
   };
   return feedbackRating;
 }
@@ -60,4 +61,5 @@ export function initTextField(validInput) {
     },
   );
 }
+
 export const CONTACT_US = "https://contact.api.docs.datastax.com/contact-us";
