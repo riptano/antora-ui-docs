@@ -1,4 +1,6 @@
-.doc .admonitionblock .title {
+.doc .admonitionblock .title,
+.doc .admonitionblock .content > .title,
+.doc .admonitionblock .content > .paragraph > .title {
     color: var(--color-black);
 }
 
@@ -8,10 +10,16 @@
 .doc .listingblock .title,
 .doc .openblock .title,
 .doc .tableblock caption {
-    color: var(--heading-font-color);
+    color: var(--color-black);
+}
+
+.doc .admonitionblock .quoteblock .title {
+  color: var(--quote-font-color);
 }
 
 .dark-mode .doc .admonitionblock .title,
+.dark-mode .doc .admonitionblock .content > .title,
+.dark-mode .doc .admonitionblock .content > .paragraph > .title,
 .dark-mode .doc .exampleblock .title,
 .dark-mode .doc .imageblock .title,
 .dark-mode .doc .literalblock .title,

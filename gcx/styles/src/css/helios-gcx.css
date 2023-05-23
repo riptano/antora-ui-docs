@@ -507,7 +507,7 @@ gcx-full .full-articles {
 .doc .listingblock .title,
 .doc .openblock .title,
 .doc .tableblock caption {
-    color: var(--heading-font-color);
+    color: var(--color-black);
 }
 
 .dark-mode .doc .admonitionblock .title,

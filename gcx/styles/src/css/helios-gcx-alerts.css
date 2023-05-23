@@ -16,7 +16,7 @@
     display: table-cell;
 }
 
-.doc .admonitionblock.caution tr {
+.doc .admonitionblock.caution > table > tbody > tr {
     display: block;
     background: var(--color-white);
     border: 2px solid #3b4260;
@@ -47,7 +47,7 @@
     color: var(--color-white)!important;
 }
 
-.doc .admonitionblock.warning tr {
+.doc .admonitionblock.warning > table > tbody > tr {
     display: block;
     background: var(--color-white);
     border: 2px solid var(--color-red-500);
@@ -58,7 +58,7 @@
     color: var(--color-black);
 }
 
-.doc .admonitionblock.important tr {
+.doc .admonitionblock.important > table > tbody > tr {
     display: block;
     background: var(--color-white);
     border: 2px solid var(--color-gray-neutral-700);
@@ -76,7 +76,7 @@
     color: var(--color-black);
 }
 
-.doc .admonitionblock.note tr {
+.doc .admonitionblock.note > table > tbody > tr {
     display: block;
     background: var(--color-white);
     border: 2px solid var(--color-green-700);
