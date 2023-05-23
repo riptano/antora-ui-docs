@@ -49,7 +49,7 @@ export class FeedbackForm {
   }
 
   checkButton() {
-    if(this.email && this.suggestions) {
+    if((!this.validInput()&&this.email) || this.suggestions.length > 1) {
       this.ready = true;
     } else {
       this.ready = false
@@ -59,6 +59,7 @@ export class FeedbackForm {
   handleEmail(event) {
     this.email = event.target.value;
     this.checkButton()
+    this.validInput()
   }
   handleSugges(event) {
     this.suggestions = event.target.value;
