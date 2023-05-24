@@ -1,9 +1,10 @@
-.doc .admonitionblock .title,
-.doc .admonitionblock .content > .title,
-.doc .admonitionblock .content > .paragraph > .title {
+.doc .admonitionblock .title {
     color: var(--color-black);
 }
 
+
+.doc .title,
+.doc .admonitionblock .title,
 .doc .exampleblock .title,
 .doc .imageblock .title,
 .doc .literalblock .title,
@@ -14,12 +15,11 @@
 }
 
 .doc .admonitionblock .quoteblock .title {
-  color: var(--quote-font-color);
+  color: var(--color-black);
 }
 
+.dark-mode .doc .title,
 .dark-mode .doc .admonitionblock .title,
-.dark-mode .doc .admonitionblock .content > .title,
-.dark-mode .doc .admonitionblock .content > .paragraph > .title,
 .dark-mode .doc .exampleblock .title,
 .dark-mode .doc .imageblock .title,
 .dark-mode .doc .literalblock .title,
@@ -47,7 +47,7 @@
 }
 
 .dark-mode .doc .quoteblock .title {
-    color: inherit;
+    color: var(--color-black);
 }
 
 .dark-mode .doc h2:not(.discrete) {
