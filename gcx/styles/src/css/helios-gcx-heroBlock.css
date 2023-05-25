@@ -2,8 +2,14 @@
 .dsHeroBlock[data-banner="default"] {
     background-image: url('../img/hero-banner-1.svg');
     background-size: cover;
+    background-position: center;
     color: white;
     font-family: 'Roboto', sans-serif;
+    padding: 72px 60px;
+    min-height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
   }
   
   .dsHeroBlock[data-banner="alternative"]{
@@ -34,16 +40,44 @@
   }  
   
   .dsHeroContent {
-    padding: 72px 60px;
-    width: 50%;
+    width: 60%;
   }
   
   .dsHeroTitle h1 {
     font-weight: 400;
+    font-size: 1.9em;
   }
 
-  @media screen and (max-width: 820px) {
+  .dsHeroDescription {
+    font-size: 18px;
+  }
+
+  @media screen and (max-width: 992px) {
+    .dsHeroBlock {
+      padding: 20px 30px;
+      min-height: 170px;
+      margin-bottom: 30px;
+    }
     .dsHeroContent {
         width: 100%;
-      }
+    }
+    .dsHeroTitle h1 {
+      font-size: 1.2em;
+    }
+    .dsHeroDescription {
+      font-size: 14px;
+    }
+  }
+
+  @media screen and (max-width: 1460px) and (min-width: 992px) {
+    .dsHeroBlock {
+      padding: 50px 60px;
+      margin-bottom: 20px;
+    }
+    .dsHeroContent {
+        width: 80%;
+    }
+    .dsHeroTitle h1 {
+      font-size: 1.6em;
+    }
   }
