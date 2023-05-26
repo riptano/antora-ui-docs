@@ -24,7 +24,7 @@
     display: none;
 }
 
-@media screen and (min-width:769px) {
+@media screen and (min-width:1024px) {
     .navbar-end .navbar-end__group {
         display: flex;
     }
@@ -62,7 +62,7 @@
     align-items: center;
 }
 
-@media screen and (min-width:769px) {
+@media screen and (min-width:1024px) {
     .doc-link {
         display: flex;
     }
