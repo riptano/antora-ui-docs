@@ -9,11 +9,16 @@
     border: 2px solid var(--color-green-700);
 }
 
-.doc .admonitionblock.warning .icon,
-.doc .admonitionblock.caution .icon {
+.doc .admonitionblock.warning .icon {
     color: var(--color-red-500);
     background-color: var(--color-red-500);
     border: 2px solid var(--color-red-500);
+}
+
+.doc .admonitionblock.caution .icon {
+    color: #E64328;
+    background-color: #E64328;
+    border: 2px solid #E64328;
 }
 
 .doc .admonitionblock.important .icon {
