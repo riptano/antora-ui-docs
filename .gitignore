@@ -1,4 +1,5 @@
 build/
+gcx/build/
 node_modules/
 public/
-
+.DS_store

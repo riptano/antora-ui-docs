@@ -40,11 +40,11 @@
 }
 
 .dark-mode .sidebarblock a.xref.page{
-    color: var(--black);
+    color: var(--color-white);
 }
 
 .dark-mode .sidebarblock a{
-    color: var(--black)!important;
+    color: var(--color-white)!important;
 }
 
 .doc .admonitionblock.caution a {

@@ -446,6 +446,9 @@ label.collapse_label:after {
     color: #fff;
 }
 
+li.nav-item.toggler.is-active[data-depth="1"] .nav-text{
+    padding: 8px 0px 8px 90px;
+}
 
 .dark-mode li.nav-item.toggler.is-active[data-depth="1"] .nav-text {
     color: var(--white);
@@ -495,7 +498,7 @@ label.collapse_label:after {
 
 
 .dark-mode li.nav-item.toggler.is-active[data-depth="2"] .nav-text {
-    color: #fff;
+    color: #fff; 
 }
 
 
