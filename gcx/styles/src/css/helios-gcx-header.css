@@ -68,7 +68,7 @@
     }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1024px) {
     .is-clipped--navbar .navbar-menu {
         background: #2e394e;
         box-shadow: none!important;
