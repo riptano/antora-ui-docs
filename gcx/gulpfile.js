@@ -10,6 +10,12 @@ const cleanTempBuild = () => {
         .pipe(clean());
 }
 
+// cleans up the ui-bundle folder
+const cleanUiBuild = () => {
+    return src('build/*', { read: false, allowEmpty: true })
+        .pipe(clean());
+}
+
 // unzips the antora ui-bundle into the tempBuild folder
 const unzipBundle = () => {
     return src('../build/ui-bundle.zip')
@@ -121,4 +127,4 @@ const cleanHeliosBuild = () => {
     .pipe(clean());
 }
 
-exports.bundle = series(cleanTempBuild,unzipBundle,cleanImg,cleanHBLayouts,cleanBuild,cleanCSS,bundleCSS,bundleHeliosCSS, parallel(bundleStencil),bundleJS404, bundleJShelpers, mergeJS, cleanHighlight, bundleHB, bundleImg, zipBundle, cleanTempBuild, cleanHeliosBuild);
+exports.bundle = series(cleanTempBuild,cleanUiBuild,unzipBundle,cleanImg,cleanHBLayouts,cleanBuild,cleanCSS,bundleCSS,bundleHeliosCSS, parallel(bundleStencil),bundleJS404, bundleJShelpers, mergeJS, cleanHighlight, bundleHB, bundleImg, zipBundle, cleanTempBuild, cleanHeliosBuild);
