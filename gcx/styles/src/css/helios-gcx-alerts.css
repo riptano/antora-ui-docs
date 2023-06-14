@@ -16,6 +16,10 @@
     display: table-cell;
 }
 
+.doc .admonitionblock tr {
+    word-break: break-word;
+}
+
 .doc .admonitionblock.caution > table > tbody > tr {
     display: block;
     background: var(--color-white);
