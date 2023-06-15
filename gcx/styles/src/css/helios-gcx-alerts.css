@@ -8,10 +8,22 @@
     display: block;
 }
 
-.doc .admonitionblock.caution tr {
+.doc .admonitionblock .tableblock tr {
+    display: table-row;
+}   
+
+.doc .admonitionblock .tableblock.fit-content {
+    display: table-cell;
+}
+
+.doc .admonitionblock tr {
+    word-break: break-word;
+}
+
+.doc .admonitionblock.caution > table > tbody > tr {
     display: block;
     background: var(--color-white);
-    border: 2px solid #3b4260;
+    border: 2px solid #E64328;
     border-radius: 6px;
 }
 
@@ -19,11 +31,15 @@
     color: var(--color-black);
 }
 
-.doc .admonitionblock.tip tr {
+.doc .admonitionblock.tip > table > tbody > tr {
     display: block;
     background: var(--color-white);
     border: 2px solid var(--color-green-700);
     border-radius: 6px;
+}
+
+.dark-mode .doc .admonitionblock.tip tr {
+    background: var(--color-purple-700);
 }
 
 .doc .admonitionblock.tip td.content {
@@ -35,7 +51,7 @@
     color: var(--color-white)!important;
 }
 
-.doc .admonitionblock.warning tr {
+.doc .admonitionblock.warning > table > tbody > tr {
     display: block;
     background: var(--color-white);
     border: 2px solid var(--color-red-500);
@@ -46,7 +62,7 @@
     color: var(--color-black);
 }
 
-.doc .admonitionblock.important tr {
+.doc .admonitionblock.important > table > tbody > tr {
     display: block;
     background: var(--color-white);
     border: 2px solid var(--color-gray-neutral-700);
@@ -64,7 +80,7 @@
     color: var(--color-black);
 }
 
-.doc .admonitionblock.note tr {
+.doc .admonitionblock.note > table > tbody > tr {
     display: block;
     background: var(--color-white);
     border: 2px solid var(--color-green-700);

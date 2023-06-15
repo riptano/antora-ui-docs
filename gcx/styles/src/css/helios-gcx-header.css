@@ -24,7 +24,7 @@
     display: none;
 }
 
-@media screen and (min-width:769px) {
+@media screen and (min-width:1024px) {
     .navbar-end .navbar-end__group {
         display: flex;
     }
@@ -62,13 +62,13 @@
     align-items: center;
 }
 
-@media screen and (min-width:769px) {
+@media screen and (min-width:1024px) {
     .doc-link {
         display: flex;
     }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1024px) {
     .is-clipped--navbar .navbar-menu {
         background: #2e394e;
         box-shadow: none!important;

@@ -157,6 +157,6 @@ if (heroBlock) {
 
   /* fallback for firefox :has pseudo-class */
   document.querySelector('.dsHeroBlock').innerHTML = heroHTML
-  document.querySelector('.toolbar').style.display = 'none'
+  document.querySelector('.toolbar').classList.add('with-hero')
   document.querySelector('h1.page').style.display = 'none'
 }
