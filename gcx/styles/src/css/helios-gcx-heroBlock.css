@@ -35,11 +35,36 @@
     visibility: hidden;
   }
 
-  .toolbar:has(~ .dsHeroBlock),
+  .toolbar:has(~ .dsHeroBlock) .breadcrumbs,
   .dsHeroBlock + .content h1.page {
     display: none;
   }  
   
+  .toolbar.with-hero {
+    position: absolute;
+    background: transparent;
+  }
+
+  .toolbar.with-hero .breadcrumbs {
+    display: none;
+  }
+
+  .toolbar.with-hero .nav-toggle {
+    background: url(../img/menu-white.svg) no-repeat 50% 47.5%;
+    background-size: 49%;
+  }
+
+  .toolbar.with-hero .nav-toggle.is-active {
+    background: url(../img/back.svg) no-repeat 50% 47.5%;
+    background-size: 49%;
+  }
+
+  .dark-mode .toolbar.with-hero .nav-toggle.is-active {
+    background: url(../img/back-white.svg) no-repeat 50% 47.5%;
+    background-size: 49%;
+  }
+
+
   .dsHeroContent {
     width: 100%;
   }

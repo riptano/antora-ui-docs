@@ -1,3 +1,9 @@
+.doc .admonitionblock .title {
+    color: var(--color-black);
+}
+
+
+.doc .title,
 .doc .admonitionblock .title,
 .doc .exampleblock .title,
 .doc .imageblock .title,
@@ -5,9 +11,14 @@
 .doc .listingblock .title,
 .doc .openblock .title,
 .doc .tableblock caption {
-    color: var(--heading-font-color);
+    color: var(--color-black);
 }
 
+.doc .admonitionblock .quoteblock .title {
+  color: var(--color-black);
+}
+
+.dark-mode .doc .title,
 .dark-mode .doc .admonitionblock .title,
 .dark-mode .doc .exampleblock .title,
 .dark-mode .doc .imageblock .title,
@@ -19,6 +30,7 @@
 }
 
 .doc .sidebarblock>.content>.title {
+    color: var(--color-black);
     text-align: left;
 }
 
@@ -34,24 +46,8 @@
     text-decoration: none;
 }
 
-.doc .admonitionblock.caution .title {
-    color: #3b4260!important;
-}
-
-.doc .admonitionblock.tip .title {
-    color: #008040!important;
-}
-
-.doc .admonitionblock.warning .title {
-    color: #916707!important;
-}
-
-.doc .admonitionblock.important .title {
-    color: #D52424!important;
-}
-
-.doc .admonitionblock.note .title {
-    color: #1E71D4!important;
+.dark-mode .doc .quoteblock .title {
+    color: var(--color-black);
 }
 
 .dark-mode .doc h2:not(.discrete) {

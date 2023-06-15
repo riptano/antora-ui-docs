@@ -11,7 +11,9 @@
 .nav-container {
     width: 314px;
     box-shadow: 2px 0px 0px var(--nav-border-color);
-    transition: 150ms ease-in-out
+    transition: width 150ms ease-in-out, visibility 150ms ease-in-out;
+    background: white;
+    z-index: 4;
 }
 
 @media screen and (min-width:769px) {
@@ -286,10 +288,19 @@ label.collapse_label:after {
     width: 20px;
 }
 
+.nav-toggle.is-active {
+    position: absolute;
+    z-index: 99999;
+}
+
+.nav-container.sidebar.is-active +
+.article .toolbar.with-hero {
+    top: 0;
+    z-index: 9999;
+}
+
 @media only screen and (max-width: 600px) {
     .nav-toggle.is-active {
-        position: absolute;
-        z-index: 99999;
         top: 10px;
         left: 15px;
     }
@@ -305,11 +316,19 @@ label.collapse_label:after {
         background: white;
         z-index: 9999;
     }
-    .dark-mode .nav,
-    .dark-mode .nav-container {
-        background: var(--color-purple-background);
-        z-index: 9999;
+}
+
+@media only screen and (min-width: 600px) {
+    .nav-toggle.is-active {
+        top: 1rem;
+        left: 1.1rem;
     }
+}
+
+.dark-mode .nav,
+.dark-mode .nav-container {
+    background: var(--color-purple-background);
+    /*z-index: 9999;*/
 }
 
 .dark-mode .nav-toggle {
