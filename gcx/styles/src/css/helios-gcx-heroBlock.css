@@ -2,8 +2,15 @@
 .dsHeroBlock[data-banner="default"] {
     background-image: url('../img/hero-banner-1.svg');
     background-size: cover;
+    background-position: center;
     color: white;
     font-family: 'Roboto', sans-serif;
+    padding: 1rem;
+    height: 310px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 2rem;
   }
   
   .dsHeroBlock[data-banner="alternative"]{
@@ -59,16 +66,26 @@
 
 
   .dsHeroContent {
-    padding: 72px 60px;
-    width: 50%;
+    width: 100%;
   }
   
   .dsHeroTitle h1 {
     font-weight: 400;
   }
 
-  @media screen and (max-width: 820px) {
+
+  @media screen and (min-width: 1024px) {
+    .dsHeroBlock {
+      padding: 1rem 3rem;
+      margin-bottom: 0;
+    }
     .dsHeroContent {
-        width: 100%;
-      }
+        width: 70%;
+    }
+  }
+
+  @media screen and (min-width: 1460px) {
+    .dsHeroContent {
+        width: 55%;
+    }
   }
