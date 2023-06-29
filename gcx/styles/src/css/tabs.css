@@ -1,72 +1,117 @@
-.tabset {
-  margin-bottom: 20px;
+/*! Asciidoctor Tabs | Copyright (c) 2018-present Dan Allen | MIT License */
+.tabs {
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
-.tabs ul {
+.tablist > ul {
   display: flex;
   flex-wrap: wrap;
   list-style: none;
-  margin: 0 -0.25rem 0 0;
+  margin: 0;
   padding: 0;
 }
 
-.tabs li {
+.tablist > ul li {
   align-items: center;
-  border-bottom: 0;
-  border: 1px solid #808080;
+  background-color: #fff;
   cursor: pointer;
   display: flex;
   font-weight: bold;
-  height: 2.5rem;
-  line-height: 1;
-  margin-right: 0.25rem;
-  padding: 0 1.5rem;
+  line-height: 1.5;
+  padding: 0.25em 1em;
   position: relative;
-}
-
-.tabs.ulist li {
-  margin-bottom: 0;
+  border: 1px solid #808080;
+  border-bottom: none;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 }
 
-.tabs li + li {
-  margin-top: 0;
+.admonitionblock .tablist > ul li {
+  font-size: calc(16 / var(--rem-base) * 1rem);
+  font-style: italic;
 }
 
-.tabset.is-loading .tabs li:not(:first-child),
-.tabset:not(.is-loading) .tabs li:not(.is-active) {
+.tablist > ul li:focus-visible {
+  outline: none;
+}
+
+.tablist.ulist,
+.tablist.ulist > ul li {
+  margin: 0;
+}
+
+.tablist.ulist > ul li + li {
+  margin-left: 0.25em;
+}
+
+.tabs .tablist li::after {
+  content: "";
+  display: block;
+  height: 1px;
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+}
+
+.tabs.is-loading .tablist li:not(:first-child),
+.tabs:not(.is-loading) .tablist li:not(.is-selected) {
   background-color: #fafafa;
   color: #8e8e8e;
   font-weight: normal;
 }
 
-.tabset.is-loading .tabs li:first-child::after,
-.tabs li.is-active::after {
-  background-color: white;
-  content: "";
-  display: block;
-  height: 3px; /* Chrome doesn't always paint the line accurately, so add a little extra */
-  position: absolute;
-  bottom: -1.5px;
-  left: 0;
-  right: 0;
+.tabs.is-loading .tablist li:first-child::after,
+.tabs:not(.is-loading) .tablist li.is-selected::after {
+  background-color: #fff;
 }
 
-.tabset > .content {
-  border: 1px solid gray;
-  padding: 1.25rem;
+/*
+.tabs:not(.is-loading) .tablist li,
+.tabs:not(.is-loading) .tablist li::after {
+  transition: background-color 200ms ease-in-out;
+}
+*/
+
+.tablist > ul p {
+  line-height: inherit;
+  margin: 0;
+}
+
+.tabpanel {
+  background-color: #fff;
+  padding: 1.25em;
+  border: 1px solid #808080;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
   border-top-right-radius: 3px;
 }
 
-.tabset.is-loading .tab-pane:not(:first-child),
-.tabset:not(.is-loading) .tab-pane:not(.is-active) {
+.tabs.is-loading .tabpanel + .tabpanel,
+.tabs:not(.is-loading) .tabpanel.is-hidden {
   display: none;
 }
 
-.tab-pane > :first-child {
+.tabpanel > :first-child {
   margin-top: 0;
+}
+
+/* #content is a signature of the Asciidoctor standalone HTML output */
+#content .tabpanel > :last-child,
+#content .tabpanel > :last-child > :last-child,
+#content .tabpanel > :last-child > :last-child > li:last-child > :last-child {
+  margin-bottom: 0;
+}
+
+.tablecontainer {
+  overflow-x: auto;
+}
+
+#content .tablecontainer {
+  margin-bottom: 1.25em;
+}
+
+#content .tablecontainer > table.tableblock {
+  margin-bottom: 0;
 }

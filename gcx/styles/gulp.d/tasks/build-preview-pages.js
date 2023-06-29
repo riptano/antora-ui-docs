@@ -1,12 +1,6 @@
 'use strict'
 
-// NOTE remove patch after upgrading from asciidoctor.js to @asciidoctor/core
-Error.call = (self, ...args) => {
-  const err = new Error(...args)
-  return Object.assign(self, { message: err.message, stack: err.stack })
-}
-
-const asciidoctor = require('asciidoctor.js')()
+const Asciidoctor = require('@asciidoctor/core')()
 const fs = require('fs-extra')
 const handlebars = require('handlebars')
 const { obj: map } = require('through2')
@@ -26,7 +20,21 @@ module.exports = (src, previewSrc, previewDest, sink = () => map()) => (done) =>
       merge(compileLayouts(src), registerPartials(src), registerHelpers(src), copyImages(previewSrc, previewDest))
     ),
   ])
-    .then(([baseUiModel, { layouts }]) => [{ ...baseUiModel, env: process.env }, layouts])
+    .then(([baseUiModel, { layouts }]) => {
+      const extensions = ((baseUiModel.asciidoc || {}).extensions || []).map((request) => {
+        ASCIIDOC_ATTRIBUTES[request.replace(/^@|\.js$/, '').replace(/[/]/g, '-') + '-loaded'] = ''
+        const extension = require(request)
+        extension.register.call(Asciidoctor.Extensions)
+        return extension
+      })
+      const asciidoc = { extensions }
+      for (const component of Object.values(baseUiModel.site.components)) {
+        for (const version of component.versions || []) version.asciidoc = asciidoc
+      }
+      baseUiModel = { ...baseUiModel, env: process.env }
+      delete baseUiModel.asciidoc
+      return [baseUiModel, layouts]
+    })
     .then(([baseUiModel, layouts]) =>
       vfs
         .src('**/*.adoc', { base: previewSrc, cwd: previewSrc })
@@ -41,7 +49,7 @@ module.exports = (src, previewSrc, previewDest, sink = () => map()) => (done) =>
             if (file.stem === '404') {
               uiModel.page = { layout: '404', title: 'Page Not Found' }
             } else {
-              const doc = asciidoctor.load(file.contents, { safe: 'safe', attributes: ASCIIDOC_ATTRIBUTES })
+              const doc = Asciidoctor.load(file.contents, { safe: 'safe', attributes: ASCIIDOC_ATTRIBUTES })
               uiModel.page.attributes = Object.entries(doc.getAttributes())
                 .filter(([name, val]) => name.startsWith('page-'))
                 .reduce((accum, [name, val]) => {
