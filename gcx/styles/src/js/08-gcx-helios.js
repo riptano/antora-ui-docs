@@ -137,26 +137,53 @@ document.querySelectorAll(".nav-item> span.nav-text").forEach(function (item) {
 })
 
 var heroBlock = document.querySelector('.dsHeroBlock')
-var heroTitle = document.querySelector('.paragraph.hero.title p').innerHTML
-var heroContent = document.querySelector('.paragraph.hero.content p').innerHTML
-
-var heroHTML = `<div class="dsHeroContent">
-  <div class="dsHeroTitle">
-    <h1> ${heroTitle} </h1>
-  </div>
-  <div class="dsHeroDescription">
-    <p> ${heroContent} </p>
-  </div>
-</div>`
-
-document.querySelector('.dsHeroBlock').remove()
 
 if (heroBlock) {
+  var heroTitle = document.querySelector('.paragraph.hero.title p')
+  var heroContent = document.querySelector('.paragraph.hero.content p')
+
+  document.querySelector('.dsHeroBlock').remove()
+
   var target = document.querySelector('main.article')
   target.insertBefore(heroBlock, target.children[1])
 
+  var heroHTML = `<div class="dsHeroContent">
+    <div class="dsHeroTitle">
+      <h1> ${heroTitle.innerHTML} </h1>
+    </div>
+    <div class="dsHeroDescription">
+      <p> ${heroContent.innerHTML} </p>
+    </div>
+  </div>`
   /* fallback for firefox :has pseudo-class */
   document.querySelector('.dsHeroBlock').innerHTML = heroHTML
   document.querySelector('.toolbar').classList.add('with-hero')
   document.querySelector('h1.page').style.display = 'none'
+}
+
+
+let sliderBlock = document.querySelector('.swiper')
+if(sliderBlock) {
+  sliderBlock.firstElementChild.className = 'swiper-wrapper'
+  let prev = document.createElement('div');
+  let next = document.createElement('div');
+  let buttons = document.createElement('div');
+  buttons.className = 'swiper-button-wrapper';
+  prev.className = 'swiper-button-prev';
+  next.className = 'swiper-button-next';
+  buttons.appendChild(prev);
+  buttons.appendChild(next);
+  sliderBlock.appendChild(buttons);
+  const swiper = new Swiper('.swiper', {
+    // Optional parameters
+    direction: 'horizontal',
+    loop: false,
+    effect: 'fade',
+    slideClass: 'slide',
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
 }
