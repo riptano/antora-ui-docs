@@ -14,12 +14,13 @@
 
 .tablist > ul li {
   align-items: center;
-  background-color: #fff;
+  background-color: transparent;
   cursor: pointer;
   display: flex;
   font-weight: bold;
   line-height: 1.5;
-  padding: 0.25em 1em;
+  height: 2.5rem;
+  padding: 0 1.5rem;
   position: relative;
   border: 1px solid #808080;
   border-bottom: none;
@@ -54,6 +55,17 @@
   left: 0;
   right: 0;
 }
+
+.dark-mode .tablist > ul li:after {
+  background-color: white;
+  display: block;
+  height: 3px;
+  position: absolute;
+  bottom: -1.5px;
+  left: 0;
+  right: 0;
+}
+
 
 .tabs.is-loading .tablist li:not(:first-child),
 .tabs:not(.is-loading) .tablist li:not(.is-selected) {
@@ -114,4 +126,8 @@
 
 #content .tablecontainer > table.tableblock {
   margin-bottom: 0;
+}
+
+.tabpanel {
+  background: transparent;
 }
