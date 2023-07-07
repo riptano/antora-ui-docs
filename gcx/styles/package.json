@@ -53,7 +53,7 @@
     "require-directory": "~2.1",
     "require-from-string": "~2.0",
     "style-loader": "^3.3.1",
-    "stylelint": "~13",
+    "stylelint": "~15",
     "stylelint-config-standard": "~20.0",
     "through2": "~3.0",
     "typeface-roboto": "0.0.75",
