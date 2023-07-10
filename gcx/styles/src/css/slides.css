@@ -78,11 +78,6 @@ slide  {
   background: var(--color-purple-background)
 }
 
-.dark-mode .slide .image,
-.dark-mode slide .image {
-  filter: grayscale(1) invert(1);
-}
-
 .slide > .content {
   height: 100%;
   display: flex;
