@@ -56,17 +56,6 @@
   right: 0;
 }
 
-.dark-mode .tablist > ul li:after {
-  background-color: white;
-  display: block;
-  height: 3px;
-  position: absolute;
-  bottom: -1.5px;
-  left: 0;
-  right: 0;
-}
-
-
 .tabs.is-loading .tablist li:not(:first-child),
 .tabs:not(.is-loading) .tablist li:not(.is-selected) {
   background-color: #fafafa;
@@ -77,6 +66,16 @@
 .tabs.is-loading .tablist li:first-child::after,
 .tabs:not(.is-loading) .tablist li.is-selected::after {
   background-color: #fff;
+}
+
+.dark-mode .tabs.is-loading .tablist li:first-child::after,
+.dark-mode .tabs:not(.is-loading) .tablist li.is-selected::after {
+  background-color: var(--color-purple-background);
+}
+
+.dark-mode .admonitionblock .tabs.is-loading .tablist li:first-child::after,
+.dark-mode .admonitionblock .tabs:not(.is-loading) .tablist li.is-selected::after {
+  background-color: var(--color-purple-700);
 }
 
 /*
