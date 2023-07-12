@@ -40,7 +40,8 @@ swiper-container {
 .swiper-vertical > .swiper-wrapper {
   flex-direction: column;
 }
-.swiper-wrapper {
+.swiper-wrapper,
+.swiper > .content {
   position: relative;
   width: 100%;
   height: 100%;
@@ -298,7 +299,8 @@ swiper-container:not(.swiper-watch-progress) .swiper-lazy-preloader,
   height: 30px;
 }
 .swiper-button-prev:hover,
-.swiper-button-next:hover {
+.swiper-button-next:hover,
+.swiper-button-restart:hover {
   background: var(--color-purple-100);
 }
 .swiper-button-prev.swiper-button-disabled,
@@ -312,11 +314,6 @@ swiper-container:not(.swiper-watch-progress) .swiper-lazy-preloader,
 .swiper-button-next.swiper-button-disabled {
   position: absolute;
   right: 0;
-}
-.swiper-button-restart {
-  background: #aaa;
-  border-color: #aaa;
-  display: none;
 }
 
 .swiper-button-prev.swiper-button-hidden,
@@ -363,6 +360,9 @@ swiper-container:not(.swiper-watch-progress) .swiper-lazy-preloader,
 .swiper-button-next.swiper-button-disabled +
 .swiper-button-restart {
   display: flex;
+}
+.swiper-button-restart {
+  display: none;
 }
 .swiper-button-prev.swiper-button-disabled +
 .swiper-button-next:after {

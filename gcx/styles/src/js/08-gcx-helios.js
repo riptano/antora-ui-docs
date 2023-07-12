@@ -162,22 +162,23 @@ if (heroBlock) {
 }
 
 
-let sliderBlock = document.querySelector('.swiper')
-if(sliderBlock) {
-  sliderBlock.firstElementChild.className = 'swiper-wrapper'
-  let prev = document.createElement('div');
-  let next = document.createElement('div');
-  let restart = document.createElement('div');
-  let buttons = document.createElement('div');
-  buttons.className = 'swiper-button-wrapper';
-  prev.className = 'swiper-button-prev';
-  next.className = 'swiper-button-next';
-  restart.className = 'swiper-button-restart';
-  buttons.appendChild(prev);
-  buttons.appendChild(next);
-  buttons.appendChild(restart);
-  sliderBlock.appendChild(buttons);
-  const swiper = new Swiper('.swiper', {
+let sliderBlock = document.querySelectorAll('.swiper')
+sliderBlock.forEach( (s,i) => {
+  s.firstElementChild.className = 'swiper-wrapper'
+  let prev = document.createElement('div'),
+    next = document.createElement('div'),
+    restart = document.createElement('div'),
+    buttons = document.createElement('div')
+  buttons.className = 'swiper-button-wrapper'
+  prev.className = 'swiper-button-prev'
+  next.className = 'swiper-button-next'
+  restart.className = 'swiper-button-restart'
+  buttons.appendChild(prev)
+  buttons.appendChild(next)
+  buttons.appendChild(restart)
+  s.appendChild(buttons)
+  s.classList.add('slider-'+i)
+  const swiper = new Swiper('.swiper.slider-'+i, {
     // Optional parameters
     direction: 'horizontal',
     allowTouchMove: false,
@@ -190,9 +191,10 @@ if(sliderBlock) {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
     },
-  });
+  })
   restart.addEventListener('click', resetSlider)
   function resetSlider() {
       swiper.slideTo(0)
   }
-}
+})
+
