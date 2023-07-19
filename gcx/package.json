@@ -19,5 +19,8 @@
     "gulp-rename": "^2.0.0",
     "gulp-unzip": "^1.1.0",
     "gulp-zip": "^5.1.0"
+  },
+  "dependencies": {
+    "swiper": "^10.0.4"
   }
 }
