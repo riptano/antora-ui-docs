@@ -54,12 +54,14 @@ const bundleJS404 = () =>{
 
 const mergeJS = () => {
     return src(['tempBuild/js/site.js',
+    'node_modules/swiper/swiper-bundle.min.js',
     'styles/src/js/06-tabs-block.js',
     'styles/src/js/07-copy-to-clipboard.js',
     'styles/src/js/08-gcx-helios.js',])
     .pipe(concat('site.js'))
     .pipe(dest('build/js'));
 }
+
 
 const bundleJShelpers = () => {
     return src([

@@ -137,26 +137,64 @@ document.querySelectorAll(".nav-item> span.nav-text").forEach(function (item) {
 })
 
 var heroBlock = document.querySelector('.dsHeroBlock')
-var heroTitle = document.querySelector('.paragraph.hero.title p').innerHTML
-var heroContent = document.querySelector('.paragraph.hero.content p').innerHTML
-
-var heroHTML = `<div class="dsHeroContent">
-  <div class="dsHeroTitle">
-    <h1> ${heroTitle} </h1>
-  </div>
-  <div class="dsHeroDescription">
-    <p> ${heroContent} </p>
-  </div>
-</div>`
-
-document.querySelector('.dsHeroBlock').remove()
 
 if (heroBlock) {
+  var heroTitle = document.querySelector('.paragraph.hero.title p')
+  var heroContent = document.querySelector('.paragraph.hero.content p')
+
+  document.querySelector('.dsHeroBlock').remove()
+
   var target = document.querySelector('main.article')
   target.insertBefore(heroBlock, target.children[1])
 
+  var heroHTML = `<div class="dsHeroContent">
+    <div class="dsHeroTitle">
+      <h1> ${heroTitle.innerHTML} </h1>
+    </div>
+    <div class="dsHeroDescription">
+      <p> ${heroContent.innerHTML} </p>
+    </div>
+  </div>`
   /* fallback for firefox :has pseudo-class */
   document.querySelector('.dsHeroBlock').innerHTML = heroHTML
   document.querySelector('.toolbar').classList.add('with-hero')
   document.querySelector('h1.page').style.display = 'none'
 }
+
+
+let sliderBlock = document.querySelectorAll('.swiper')
+sliderBlock.forEach( (s,i) => {
+  s.firstElementChild.className = 'swiper-wrapper'
+  let prev = document.createElement('div'),
+    next = document.createElement('div'),
+    restart = document.createElement('div'),
+    buttons = document.createElement('div')
+  buttons.className = 'swiper-button-wrapper'
+  prev.className = 'swiper-button-prev'
+  next.className = 'swiper-button-next'
+  restart.className = 'swiper-button-restart'
+  buttons.appendChild(prev)
+  buttons.appendChild(next)
+  buttons.appendChild(restart)
+  s.appendChild(buttons)
+  s.classList.add('slider-'+i)
+  const swiper = new Swiper('.swiper.slider-'+i, {
+    // Optional parameters
+    direction: 'horizontal',
+    allowTouchMove: false,
+    touchStartPreventDefault: false,
+    loop: false,
+    effect: 'fade',
+    slideClass: 'slide',
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  })
+  restart.addEventListener('click', resetSlider)
+  function resetSlider() {
+      swiper.slideTo(0)
+  }
+})
+
