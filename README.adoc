@@ -1,6 +1,6 @@
 = DataStax Antora UI
 // Variables:
-:current-release: prod-15
+:current-release: prod-16
 // Settings:
 :!example-caption:
 :experimental:
