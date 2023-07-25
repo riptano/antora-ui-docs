@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <meta charset="utf-8">
   <link rel="icon" href="https://www.datastax.com/favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="/en/home/assets/css/site.css">
@@ -120,6 +121,7 @@
             <div id="pagination"></div>
         </div>
         </main>
+  </div>
   <footer class="wh_footer">
     <div class="container-fluid">
         <div class="footer-container">
@@ -145,7 +147,7 @@
                     <span>DataStax | <a href="https://www.datastax.com/legal/datastax-website-privacy-policy" target="_blank">Privacy policy</a>
                         | 
                         <a href="https://www.datastax.com/legal/datastax-website-terms-use" target="_blank">Terms of use</a>
-                        
+                    </span>
                 </p> 
             </div>
             <div>
@@ -250,6 +252,45 @@
   <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.14.3/dist/algoliasearch-lite.umd.js" integrity="sha256-dyJcbGuYfdzNfifkHxYVd/rzeR6SLLcDFYEidcybldM=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.51.1/dist/instantsearch.production.min.js" integrity="sha256-y6I4MY/blLHk4a7G33zp97DcnBFRY2iMId4FObo8toI=" crossorigin="anonymous"></script>
   <script src="/en/home/assets/js/siteSearch.js"></script>
+  <script>
+  window.intercomSettings = {
+      app_id: "bpbxnnmr",
+      api_base: "https://api-iam.intercom.io"
+    };
+  </script>
+  <script>
+  (function(){
+      var w=window;
+      var ic=w.Intercom;
+      if(typeof ic==="function"){
+          ic('reattach_activator');
+          ic('update',w.intercomSettings);
+      }else{
+          var d=document;
+          var i=function(){
+              i.c(arguments);
+          };
+          i.q=[];
+          i.c=function(args){
+              i.q.push(args);
+          };
+          w.Intercom=i;
+          var l=function(){
+              var s=d.createElement('script');
+              s.type='text/javascript';
+              s.async=true;
+              s.src='https://widget.intercom.io/widget/bpbxnnmr';
+              var x=d.getElementsByTagName('script')[0];
+              x.parentNode.insertBefore(s,x);
+          };
+          if(w.attachEvent){
+              w.attachEvent('onload',l);
+          }else{
+              w.addEventListener('load',l,false);
+          }
+      }
+  })();
+  </script>
 </body>
-
+</html>
 
