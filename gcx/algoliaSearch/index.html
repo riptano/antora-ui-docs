@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <meta charset="utf-8">
   <link rel="icon" href="https://www.datastax.com/favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="/en/home/assets/css/site.css">
@@ -11,13 +12,29 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@8.0.0/themes/reset-min.css" integrity="sha256-2AeJLzExpZvqLUxMfcs+4DWcMwNfpnjUeAAvEtPr0wU=" crossorigin="anonymous">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5FSG7Q');</script>
+  <!-- End Google Tag Manager -->
+  <script>
+  !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){if(window.analytics.initialized)return window.analytics[e].apply(window.analytics,arguments);var i=Array.prototype.slice.call(arguments);i.unshift(e);analytics.push(i);return analytics}};for(var i=0;i<analytics.methods.length;i++){var key=analytics.methods[i];analytics[key]=analytics.factory(key)}analytics.load=function(key,i){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=i};analytics._writeKey="d24gQtyKIUu5mLdkp11xjfiXLhRqx0HH";;analytics.SNIPPET_VERSION="4.16.1";
+  analytics.load("d24gQtyKIUu5mLdkp11xjfiXLhRqx0HH");
+  analytics.page();
+  }}();
+  </script>
 </head>
 
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FSG7Q"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
   <header class="header">
     <nav class="navbar">
       <div class="navbar-brand">
-        <!-- <a href="{{{or site.url (or siteRootUrl siteRootPath)}}}"> -->
         <a href="https://docs.datastax.com">
           <img src="/en/home/assets/img/logo.svg" alt="">
         </a>
@@ -120,6 +137,7 @@
             <div id="pagination"></div>
         </div>
         </main>
+  </div>
   <footer class="wh_footer">
     <div class="container-fluid">
         <div class="footer-container">
@@ -145,7 +163,7 @@
                     <span>DataStax | <a href="https://www.datastax.com/legal/datastax-website-privacy-policy" target="_blank">Privacy policy</a>
                         | 
                         <a href="https://www.datastax.com/legal/datastax-website-terms-use" target="_blank">Terms of use</a>
-                        
+                    </span>
                 </p> 
             </div>
             <div>
@@ -218,22 +236,6 @@
   }
 
   document.addEventListener('click', function (event) {
-    //No es un clic en el sidebar
-    //if (!event.target.matches('li[data-depth="1"]') && !event.target.matches('.switch')) return;
-    /*    if (event.target.closest('li.nav-item.toggler')) {
-                      console.log(event.target)
-                      event.target.closest('li.nav-item.toggler').classList.toggle('is-active')
-                    }
-                    /*if ((event.target.matches('span.nav-text') ||
-                                event.target.matches('button.nav-item-toggle')) &&
-                            (event.target.offsetParent.matches('li[data-depth="1"]') ||
-                                event.target.offsetParent.matches('li[data-depth="0"]'))) {
-                            event.target.offsetParent.classList.toggle('is-active');
-                        }
-                        if (event.target.matches('li[data-depth="1"]') ||
-                            event.target.matches('li[data-depth="0"]')) {
-                            event.target.classList.toggle('is-active');
-                        }*/
     if (event.target.matches('.switch')) {
       var root = document.getElementsByTagName('html')[0]
       if (event.target.checked) {
@@ -250,6 +252,15 @@
   <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.14.3/dist/algoliasearch-lite.umd.js" integrity="sha256-dyJcbGuYfdzNfifkHxYVd/rzeR6SLLcDFYEidcybldM=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.51.1/dist/instantsearch.production.min.js" integrity="sha256-y6I4MY/blLHk4a7G33zp97DcnBFRY2iMId4FObo8toI=" crossorigin="anonymous"></script>
   <script src="/en/home/assets/js/siteSearch.js"></script>
+  <script>
+  window.intercomSettings = {
+      app_id: "bpbxnnmr",
+      api_base: "https://api-iam.intercom.io"
+    };
+  </script>
+  <script>
+  !function(){var t=window,e=t.Intercom;if("function"==typeof e)e("reattach_activator"),e("update",t.intercomSettings);else{var n=document,a=function(){a.c(arguments)};a.q=[],a.c=function(t){a.q.push(t)},t.Intercom=a;var c=function(){var t=n.createElement("script");t.type="text/javascript",t.async=!0,t.src="https://widget.intercom.io/widget/bpbxnnmr";var e=n.getElementsByTagName("script")[0];e.parentNode.insertBefore(t,e)};t.attachEvent?t.attachEvent("onload",c):t.addEventListener("load",c,!1)}}();
+  </script>
 </body>
-
+</html>
 
