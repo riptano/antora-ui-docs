@@ -63,6 +63,7 @@ when lightbox is opened for inlined SVG:
         svg.appendChild(use)
         closeLink.appendChild(svg)
       } else {
+        // https://codepen.io/marianab/pen/gOPJOjJ
         let svgIcon = `<svg xmlns="http://www.w3.org/2000/svg" height="329pt" viewBox="0 0 329.26933 329" width="329pt">
           <path d="m194.800781 164.769531 128.210938-128.214843c8.34375-8.339844 8.34375-21.824219 
           0-30.164063-8.339844-8.339844-21.824219-8.339844-30.164063 0l-128.214844 
