@@ -182,7 +182,8 @@ sliderBlock.forEach( (s,i) => {
     // Optional parameters
     direction: 'horizontal',
     allowTouchMove: false,
-    touchStartPreventDefault: false,
+    //touchStartPreventDefault: false,
+    watchSlidesProgress: true,
     loop: false,
     effect: 'fade',
     slideClass: 'slide',
