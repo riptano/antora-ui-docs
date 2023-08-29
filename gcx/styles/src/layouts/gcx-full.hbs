@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head> 
+  <head>
 {{> head defaultPageTitle='Untitled'}}
   </head>
   <body class="article{{#with (or page.attributes.role page.role)}} {{{this}}}{{/with}}">
@@ -15,15 +15,15 @@
   {{> article-404}}
   {{else}}
   <!--{{> toc}}-->
-  <script id="antora-main-block" type="text/html">  
+  <script id="antora-main-block" type="text/html">
   {{> article}}
-  </script> 
+  </script>
   <gcx-full template-script="antora-main-block" ></gcx-full>
   {{/if}}
     </div>
   </main>
 
-  <script> 
+  <script>
     let schemaScript = document.querySelector("#antora-main-block").innerHTML;
     var htmlObject = document.createElement('div');
     htmlObject.innerHTML = schemaScript;
@@ -41,8 +41,8 @@
     }
   </script>
   </div>
-{{> footer}} 
-
+{{> footer}}
 {{> intercom}}
+{{> tracking-pixel}}
   </body>
 </html>
