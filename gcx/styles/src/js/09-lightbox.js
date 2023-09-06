@@ -106,12 +106,12 @@ when lightbox is opened for inlined SVG:
   }
 
   function open () {
-    lightbox.style.display = 'block'
+    lightbox.style.display = 'flex'
     document.body.style.overflow = 'hidden'
   }
 
   function isOpen () {
-    return lightbox && lightbox.style.display === 'block'
+    return lightbox && lightbox.style.display === 'flex'
   }
 
   function close (e) {
@@ -126,9 +126,9 @@ when lightbox is opened for inlined SVG:
     var ratioSource = source.offsetWidth / source.offsetHeight
     var ratioTarget = target.offsetWidth / target.offsetHeight
     if (ratioSource < ratioTarget) {
-      img.style.height = '90vh'
+      img.style.height = '70vh'
     } else {
-      img.style.width = '90vw'
+      img.style.width = '70vw'
     }
   }
   /* swiper slider img*/
@@ -158,6 +158,11 @@ when lightbox is opened for inlined SVG:
       img.src = e.currentTarget.src
       img.alt = e.currentTarget.alt
       setImageSize(img, element.parentNode, content.parentNode)
+
+      /* Render swiper
+      let str = e.currentTarget.closest('.swiper').className
+      let index = parseInt(str.match(/slider-(\d+)/i)[1]);
+      content.appendChild(sliderBlock[index])*/
       content.appendChild(img)
       open()
     })
