@@ -57,7 +57,8 @@ const mergeJS = () => {
     'node_modules/swiper/swiper-bundle.min.js',
     'styles/src/js/06-tabs-block.js',
     'styles/src/js/07-copy-to-clipboard.js',
-    'styles/src/js/08-gcx-helios.js'])
+    'styles/src/js/08-gcx-helios.js',
+    'styles/src/js/09-lightbox.js'])
     .pipe(concat('site.js'))
     .pipe(dest('build/js'))
 }
