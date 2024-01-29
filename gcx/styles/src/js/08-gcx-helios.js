@@ -1,4 +1,11 @@
 /*Dark theme verification*/
+function getTheme () {
+  var localStorage = window.localStorage.getItem('theme')
+  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+  if (localStorage) return localStorage
+  if (prefersDark) return 'dark'
+  return 'light'
+}
 
 function isMobile () {
   // eslint-disable-next-line no-undef
@@ -12,7 +19,7 @@ function isMobile () {
 }
 
 window.addEventListener('DOMContentLoaded', (event) => {
-  var theme = window.localStorage.getItem('theme')
+  var theme = getTheme()
 
   var path = window.location.pathname
   var page = path.split('/').pop()
@@ -194,7 +201,7 @@ sliderBlock.forEach( (s,i) => {
   })
   restart.addEventListener('click', resetSlider)
   function resetSlider() {
-      swiper.slideTo(0)
+    swiper.slideTo(0)
   }
 })
 

@@ -5,12 +5,18 @@
     <!-- End Google Tag Manager (noscript) -->
     {{/with}}
     <script>
-      !function(){
-        var theme = window.localStorage.getItem('theme');
-        var root = document.getElementsByTagName('html')[0];
-        if (theme === 'dark') {
-          root.classList.add('dark-mode');
-        }
-      }();
+    function getTheme() {
+      var localStorage = window.localStorage.getItem("theme");
+      var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (localStorage) return localStorage;
+      if (prefersDark) return "dark";
+      return "light";
+    }
+    !function () {
+      var root = document.getElementsByTagName('html')[0];
+      if (getTheme() === 'dark') {
+        root.classList.add('dark-mode');
+      }
+    }();
     </script>
   
