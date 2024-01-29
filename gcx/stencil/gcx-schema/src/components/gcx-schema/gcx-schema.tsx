@@ -10,7 +10,7 @@ export class MyComponent {
     const theme = window.localStorage.getItem("theme");
     let checkbox: any = document.getElementById("switch");
     let root = document.getElementsByTagName("html")[0];
-    if (theme) {
+    if (theme === 'dark') {
       root.classList.add("dark-mode");
       checkbox.checked = true;
     } else {

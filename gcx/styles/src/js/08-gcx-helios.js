@@ -17,11 +17,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
   var path = window.location.pathname
   var page = path.split('/').pop()
   var name = page.replace('.html', '')
-  console.log(name)
   const sidebar = document.querySelector('.sidebar')
   const col = document.getElementById('collapse')
   var checkbox = document.getElementById('switch')
-  if (theme) {
+  if (theme === 'dark') {
     checkbox.checked = true
   } else {
     checkbox.checked = false
@@ -64,7 +63,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         window.localStorage.setItem('theme', 'dark')
         root.classList.add('dark-mode')
       } else {
-        window.localStorage.removeItem('theme')
+        window.localStorage.setItem('theme', 'light')
         root.classList.remove('dark-mode')
       }
     }

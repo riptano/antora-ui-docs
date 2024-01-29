@@ -8,7 +8,7 @@
       !function(){
         var theme = window.localStorage.getItem('theme');
         var root = document.getElementsByTagName('html')[0];
-        if (theme) {
+        if (theme === 'dark') {
           root.classList.add('dark-mode');
         }
       }();
