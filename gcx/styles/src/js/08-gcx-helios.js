@@ -1,4 +1,11 @@
 /*Dark theme verification*/
+function getTheme () {
+  var localStorage = window.localStorage.getItem('theme')
+  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+  if (localStorage) return localStorage
+  if (prefersDark) return 'dark'
+  return 'light'
+}
 
 function isMobile () {
   // eslint-disable-next-line no-undef
@@ -12,16 +19,15 @@ function isMobile () {
 }
 
 window.addEventListener('DOMContentLoaded', (event) => {
-  var theme = window.localStorage.getItem('theme')
+  var theme = getTheme()
 
   var path = window.location.pathname
   var page = path.split('/').pop()
   var name = page.replace('.html', '')
-  console.log(name)
   const sidebar = document.querySelector('.sidebar')
   const col = document.getElementById('collapse')
   var checkbox = document.getElementById('switch')
-  if (theme) {
+  if (theme === 'dark') {
     checkbox.checked = true
   } else {
     checkbox.checked = false
@@ -64,7 +70,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         window.localStorage.setItem('theme', 'dark')
         root.classList.add('dark-mode')
       } else {
-        window.localStorage.removeItem('theme')
+        window.localStorage.setItem('theme', 'light')
         root.classList.remove('dark-mode')
       }
     }
@@ -195,7 +201,7 @@ sliderBlock.forEach( (s,i) => {
   })
   restart.addEventListener('click', resetSlider)
   function resetSlider() {
-      swiper.slideTo(0)
+    swiper.slideTo(0)
   }
 })
 
