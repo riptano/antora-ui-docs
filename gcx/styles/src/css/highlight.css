@@ -199,6 +199,12 @@
   font-weight: bold;
 }
 
+.dark-mode .doc pre.highlight,
+.dark-mode .doc pre:not(.highlight) {
+  background: var(--color-prism-dark-background);
+  border: 1px solid var(--color-prism-dark-border);
+}
+
 pre code.hljs {
   display: block;
   overflow-x: auto;
