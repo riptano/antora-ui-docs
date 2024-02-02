@@ -2,37 +2,30 @@
     padding: 0 1.5rem;;
 }
 
-.doc .admonitionblock.tip .icon,
-.doc .admonitionblock.note .icon {
+.doc .admonitionblock.tip > table > tbody > tr > .icon,
+.doc .admonitionblock.note > table > tbody > tr >  .icon {
     color: var(--color-green-700);
     background-color: var(--color-green-700);
     border: 2px solid var(--color-green-700);
 }
 
-.doc .admonitionblock.warning .icon {
+.doc .admonitionblock.warning > table > tbody > tr > .icon {
     color: var(--color-red-500);
     background-color: var(--color-red-500);
     border: 2px solid var(--color-red-500);
 }
 
-.doc .admonitionblock.caution .icon {
+.doc .admonitionblock.caution > table > tbody > tr > .icon {
     color: #E64328;
     background-color: #E64328;
     border: 2px solid #E64328;
 }
 
-.doc .admonitionblock.important .icon {
+.doc .admonitionblock.important > table > tbody > tr > .icon {
     color: var(--color-gray-neutral-700);
     background-color: var(--color-gray-neutral-700);
     border: 2px solid var(--color-gray-neutral-700);
 }
-
-.dark-mode .doc .admonitionblock.important .icon {
-    color: var(--color-gray-neutral-500);
-    background-color: var(--color-gray-neutral-500);
-    border: 2px solid var(--color-gray-neutral-500);
-}
-
 
 .doc .admonitionblock .icon i::after {
     color: white;

@@ -1,5 +1,5 @@
 /*! Adapted from the GitHub style by Vasily Polovnyov <vast@whiteants.net> */
-/* .hljs-comment,
+.hljs-comment,
 .hljs-quote {
   color: #998;
   font-style: italic;
@@ -8,7 +8,7 @@
 .hljs-keyword,
 .hljs-selector-tag,
 .hljs-subst {
-  color: #333;
+  color: var(--color-prism-light-purple);
   font-weight: var(--monospace-font-weight-bold);
 }
 
@@ -17,7 +17,7 @@
 .hljs-variable,
 .hljs-template-variable,
 .hljs-tag .hljs-attr {
-  color: #008080;
+  color: var(--color-prism-light-orange);
 }
 
 .hljs-string,
@@ -199,6 +199,12 @@
   font-weight: bold;
 }
 
+.dark-mode .doc pre.highlight,
+.dark-mode .doc pre:not(.highlight) {
+  background: var(--color-prism-dark-background);
+  border: 1px solid var(--color-prism-dark-border);
+}
+
 pre code.hljs {
   display: block;
   overflow-x: auto;
@@ -272,7 +278,7 @@ code.hljs {
 .hljs-addition,
 .hljs-title.class_.inherited__,
 .hljs-string {
-  color: #637200;
+  color: var(--color-prism-light-orange);
 }
 
 .hljs-built_in,

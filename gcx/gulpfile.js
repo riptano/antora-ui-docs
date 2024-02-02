@@ -88,7 +88,7 @@ const cleanCSS = () => {
 }
 
 const bundleCSS = () =>
-  src(['styles/src/css/**/*.css', '!styles/src/css/**/helios-gcx.css', '!styles/src/css/**/highlight.css'])
+  src(['styles/src/css/**/*.css', '!styles/src/css/**/helios-gcx.css'])
     .pipe(concat('siteTemp.css'))
     .pipe(dest('styles/build/css'))
 
