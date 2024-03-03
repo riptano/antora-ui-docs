@@ -72,7 +72,7 @@ search.addWidgets([
 
   instantsearch.widgets.pagination({
     container: '#pagination',
-    
+
   }),
 
   instantsearch.widgets.configure({
@@ -83,8 +83,8 @@ search.addWidgets([
     query: query || ""
   }),
 
-  
-  
+
+
 ]);
 
 // Create a function that adds a space after every "." or ":", also, separate a word that contains a capital letter after the initial letter if its not an acronym
@@ -110,7 +110,7 @@ function updateIndex() {
   window.history.pushState({}, '', url);
 
   location.reload();
-  
+
 }
 
 // Check if the url has a query parameter called category, if so, set the proper radio input to checked
@@ -169,7 +169,7 @@ document.querySelector('.ais-SearchBox-input').addEventListener('keyup', functio
 
   // Get the #categories radio input that is checked, then append the value to the url as a query parameter, also append the query parameter if it exists
   var selectedCategory = document.querySelector('#categories ul li label input[type="radio"]:checked');
-  var category = selectedCategory==null?"all":selectedCategory.value 
+  var category = selectedCategory==null?"all":selectedCategory.value
   var url = window.location.href.split('?')[0] + '?category=' + category;
   // Check ir the .ais-SearchBox-input has a value, if so, append it to the url as a query parameter
   if (query_) {
