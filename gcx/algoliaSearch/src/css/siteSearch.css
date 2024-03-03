@@ -259,7 +259,7 @@ em {
 }
 
 .ais-SearchBox-input {
-    width: 100%; 
+    width: 100%;
     padding: 12px 12px;
     padding-left: 36px!important;
     font-weight: normal;
@@ -650,7 +650,7 @@ footer {
     -ms-user-select: none;
     user-select: none;
   }
-  
+
   /* Hide the browser's default checkbox
   .ais-refinement-list--label input {
     position: absolute;
@@ -660,7 +660,7 @@ footer {
     width: 0;
   }
   */
-  
+
   /* Create a custom checkbox */
   .checkmark {
     position: absolute;
@@ -675,30 +675,30 @@ footer {
     position: relative;
     left: 32px;
   }
-  
+
   /* On mouse-over, add a grey background color */
   .ais-refinement-list--label:hover input ~ .checkmark {
     background-color: #ccc;
   }
-  
+
   /* When the checkbox is checked, add a blue background */
   .ais-refinement-list--label input:checked ~ .checkmark {
     border: 2px solid #1464DB;
     background-color: #1464DB;
   }
-  
+
   /* Create the checkmark/indicator (hidden when not checked) */
   .checkmark:after {
     content: "";
     position: absolute;
     display: none;
   }
-  
+
   /* Show the checkmark when checked */
   .ais-refinement-list--label input:checked ~ .checkmark:after {
     display: block;
   }
-  
+
   /* Style the checkmark/indicator */
   .ais-refinement-list--label .checkmark:after {
     left: 6px;
