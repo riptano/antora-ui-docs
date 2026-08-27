@@ -34,6 +34,13 @@ endif::[]
 :url-datastax: https://datastax.com
 :url-docs-home: https://github.com/riptano/docs-home
 
+[IMPORTANT]
+====
+🚨*This repository is deprecated and archived*🚨
+
+The DataStax docs site UI is now maintained in https://github.com/riptano/docs-ui.
+====
+
 ifdef::badges[]
 image:https://img.shields.io/static/v1?label=release&amp;message={current-release}&amp;color=blue[Latest Release,link={url-project}/releases/download/{current-release}/ui-bundle.zip,format=svg]
 endif::[]
